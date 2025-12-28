@@ -3,24 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaifuku Player Pro</title>
+    <title>Kaifuku Player</title>
     <style>
-        /* Estilo Cine Puro */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            overflow: hidden; /* Evita barras de scroll */
-        }
-        .artplayer-app {
-            width: 100%;
-            height: 100vh;
-        }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+        .artplayer-app { width: 100%; height: 100vh; }
     </style>
     
-    <!-- LIBRERÍAS DEL REPRODUCTOR (Artplayer) -->
+    <!-- Librerías Artplayer + Plugin ASS -->
     <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/artplayer-plugin-libass/dist/artplayer-plugin-libass.min.js"></script>
 </head>
@@ -29,18 +18,16 @@
     <div class="artplayer-app"></div>
 
     <script>
-        // 1. TU VIDEO MP4 (Dropbox Directo)
+        // 1. TU VIDEO MP4 (Dropbox)
         var urlVideo = 'https://www.dropbox.com/scl/fi/t5dk25qofwrue0khq8bud/Kaifuku-Jutsushi-no-Yarinaoshi-01.mp4?rlkey=x75csi8c2jpa6guf1u9xisjgr&st=24j93tv0&dl=1';
 
-        // 2. TU SUBTÍTULO .ASS (Desde GitHub)
-        // IMPORTANTE: Cambia este link por el de tu archivo .ass real cuando lo subas.
-        // Por ahora uso uno de prueba para que veas que el sistema funciona.
-        var urlSubtitulo = 'https://raw.githubusercontent.com/weizhenye/ASS/master/demo.ass'; 
+        // 2. TU SUBTÍTULO .ASS (GitHub RAW Correcto)
+        var urlSubtitulo = 'https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/manga/123456.ass'; 
 
         var art = new Artplayer({
             container: '.artplayer-app',
             url: urlVideo,
-            theme: '#ff0040', // Color rojo neón estilo Kaifuku
+            theme: '#ff0040', 
             volume: 0.8,
             isLive: false,
             autoplay: false,
@@ -49,37 +36,17 @@
             fullscreenWeb: true,
             autoPlayback: true,
             airplay: true,
-            
-            // MENU DE CONFIGURACIÓN
             setting: true,
-            flip: true,
-            playbackRate: true,
-            aspectRatio: true,
-
-            // ACTIVAR PLUGIN DE SUBTÍTULOS ASS
+            
+            // PLUGIN DE SUBTÍTULOS
             plugins: [
                 artplayerPluginLibAss({
-                    url: urlSubtitulo,
+                    url: urlSubtitulo, // Carga tus subtítulos
                 }),
-            ],
-            
-            // CONTROLES DE CAPAS (Opcional)
-            controls: [
-                {
-                    position: 'right',
-                    html: 'Subtitle', // Botón para mostrar status
-                    tooltip: 'Estado ASS',
-                    click: function () {
-                        console.info('Subtítulos ASS activos');
-                    },
-                },
             ],
         });
         
-        // Ajuste para móviles (oculta barras del navegador si es posible)
-        art.on('ready', () => {
-            console.log('Player Listo');
-        });
+        console.log("Cine listo: Video + ASS");
     </script>
 </body>
 </html>
