@@ -169,7 +169,449 @@
                 <span class="badge">18+</span>
                 <span>1 Temporada</span>
                 <span>2024</span>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Max Stream Style</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        :root { --bg: #0b0c0f; --text: #ffffff; --text-gray: #a8a8a8; --accent: #3b82f6; }
+        
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--bg); color: var(--text); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .view { display: none; }
+        .view.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- HOME --- */
+        header { 
+            padding: 15px; 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); 
+            position: fixed; width: 100%; z-index: 50; top:0; 
+            pointer-events: auto;
+        }
+
+        .header-content { display: flex; justify-content: flex-start; align-items: center; }
+        
+        .search-btn { 
+            background: none; border: none; color: white; cursor: pointer; padding: 0; 
+            display: flex; align-items: center; justify-content: center;
+        }
+        .search-btn svg { width: 28px; height: 28px; fill: white; filter: drop-shadow(0 2px 5px black); }
+        
+        /* --- PANTALLA DE BÚSQUEDA --- */
+        .search-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 100; display: none;
+            flex-direction: column; padding: 20px; box-sizing: border-box;
+        }
+        .search-overlay.active { display: flex; animation: fadeIn 0.2s; }
+        
+        .search-bar-container { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .search-input {
+            flex: 1; background: #222; border: 1px solid #333; color: white;
+            padding: 12px; border-radius: 8px; font-size: 16px; outline: none;
+        }
+        .close-search { background: none; border: none; color: #ccc; font-size: 14px; cursor: pointer; font-weight: 600; }
+
+        .search-results { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); 
+            gap: 12px; overflow-y: auto; 
+        }
+
+        .anime-grid {
+            padding: 80px 20px 20px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 12px;
+        }
+        .poster-wrapper { cursor: pointer; }
+        .poster {
+            width: 100%; aspect-ratio: 2/3; border-radius: 6px; overflow: hidden; background: #1a1a1a;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin-bottom: 8px;
+        }
+        .poster img { width: 100%; height: 100%; object-fit: cover; }
+        .anime-title { font-size: 13px; font-weight: 500; color: #ddd; }
+
+        /* --- DETALLE --- */
+        .hero-container {
+            position: relative; width: 100%; aspect-ratio: 16/9; background: #000;
+        }
+        .hero-bg { width: 100%; height: 100%; object-fit: cover; display: none; } 
+        
+        .video-player {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: black; border: none; z-index: 20; display: block;
+        }
+
+        .content-body { padding: 20px; position: relative; z-index: 10; }
+        
+        .show-title { 
+            font-size: 18px; 
+            font-weight: 800; 
+            line-height: 1.2; 
+            margin-bottom: 8px; 
+            cursor: pointer; 
+        }
+        .show-title:active { opacity: 0.7; }
+
+        /* REGRESADO A SU ESTADO ORIGINAL */
+        .meta-row { display: flex; gap: 10px; font-size: 13px; color: var(--text-gray); margin-bottom: 20px; align-items: center; }
+        .badge { border: 1px solid var(--text-gray); padding: 1px 4px; border-radius: 2px; font-size: 11px; }
+
+        /* --- SELECTOR DE EPISODIOS (CUADROS) --- */
+        .ep-count-header {
+            text-align: right; color: var(--text-gray); font-size: 12px; margin-bottom: 8px; font-weight: 500;
+        }
+
+        .ep-selector-row {
+            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px;
+            scrollbar-width: none; 
+        }
+        .ep-selector-row::-webkit-scrollbar { display: none; }
+
+        .ep-box {
+            width: 50px; height: 50px; background: #1e1e24; border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 15px; color: #e0e0e0; flex-shrink: 0;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .ep-box.active {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+        .ep-box:active { transform: scale(0.95); }
+
+        /* --- SINOPSIS --- */
+        .synopsis { font-size: 13px; line-height: 1.5; color: #ccc; margin-bottom: 5px; }
+        .synopsis.collapsed {
+             display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .read-more-btn {
+            color: var(--accent); font-weight: 600; cursor: pointer; font-size: 13px; 
+            margin-bottom: 30px; display: inline-block;
+        }
+
+        /* --- TAMBIÉN PODRÍA GUSTARTE --- */
+        .section-header { font-size: 15px; font-weight: 700; margin-bottom: 15px; margin-top: 10px; color: #eee; }
+        
+        .rec-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+        }
+        .rec-item { cursor: pointer; }
+        .rec-poster {
+            width: 100%; aspect-ratio: 2/3; border-radius: 4px; overflow: hidden; background: #222;
+        }
+        .rec-poster img { width: 100%; height: 100%; object-fit: cover; }
+        .rec-title { font-size: 11px; margin-top: 5px; color: #ccc; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+    </style>
+</head>
+<body>
+
+    <!-- BÚSQUEDA -->
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-bar-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Buscar animes..." oninput="handleSearch()">
+            <button class="close-search" onclick="closeSearch()">Cancelar</button>
+        </div>
+        <div class="search-results" id="search-results"></div>
+    </div>
+
+    <!-- HOME -->
+    <div id="home-view" class="view active">
+        <header>
+            <div class="header-content">
+                <button class="search-btn" onclick="openSearch()">
+                     <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </button>
+            </div>
+        </header>
+        <div class="anime-grid" id="anime-grid"></div>
+    </div>
+
+    <!-- DETALLE -->
+    <div id="detail-view" class="view">
+        <div class="hero-container" id="hero-area">
+            <img id="hero-img" class="hero-bg" src="" alt="">
+            <video id="main-video" class="video-player" controls controlsList="nodownload"></video>
+        </div>
+
+        <div class="content-body">
+            <div id="detail-title" class="show-title" onclick="window.history.back()"></div>
+            
+            <!-- AQUÍ ESTÁ LO QUE PEDISTE: REGRESADO AL ORIGINAL -->
+            <div class="meta-row">
+                <span class="badge">16+</span>
+                <span>1 Temporada</span>
+                <span>2024</span>
                 <span>HD</span>
+            </div>
+
+            <!-- Contador de capítulos -->
+            <div class="ep-count-header" id="ep-count-text">0 Capítulos</div>
+
+            <!-- Fila de botones cuadrados -->
+            <div class="ep-selector-row" id="ep-selector"></div>
+            
+            <!-- SINOPSIS -->
+            <p id="detail-synopsis" class="synopsis"></p>
+            <div id="read-more-btn" class="read-more-btn" onclick="toggleSynopsis()">vea más</div>
+
+            <!-- Recomendaciones -->
+            <div class="section-header">También podría gustarte</div>
+            <div class="rec-grid" id="recommendations-container"></div>
+        </div>
+    </div>
+
+<script>
+// --- TU LISTA DE ANIMES ---
+// Para agregar un anime nuevo, copia desde "{" hasta "}," y pega abajo.
+
+const library = [
+    
+    // --- INICIO ANIME: KAIFUKU ---
+    {
+        id: "kaifuku",
+        titulo: "Kaifuku Jutsushi no Yarinaoshi",
+        poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
+        banner: "", 
+        sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
+        episodios: [
+            // Copia esta linea para agregar episodio:
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/7fny6ghs08w9d9015g7cz/Kaifuku-Jutsushi-no-Yarinaoshi-01_burn-in_1920x1080_x264.mp4?rlkey=b3pguga4gx7uemxv60pub69w4&raw=1" },
+            { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/w19uigzymyigbnx3ip5nc/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=tttvwwlnwdvza81h9thwct0nj&raw=1" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/ieneivr9soyt7wci8747l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=h04iis1nid3etone6ruagt03g&raw=1" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/4me92yis6xb4blury52kw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=z1d7une3hop4vkakri7fsry52&raw=1" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/t5aw53haphid360n0pw4u/Kaifuku-Jutsushi-no-Yarinaoshi-05_burn-in_1920x1080_x264.mp4?rlkey=qhk4jle84d846xk5y5pmlhse1&raw=1" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/ixsf0pdbinb3u5dkwfwya/Kaifuku-Jutsushi-no-Yarinaoshi-06_burn-in_1920x1080_x264.mp4?rlkey=1803aa8u9tbwz6ibqd9tsveae&raw=1" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/hddcbloiphenv4d1jak3v/Kaifuku-Jutsushi-no-Yarinaoshi-07_burn-in_1920x1080_x264.mp4?rlkey=iex8003454pfse0xdbeh1jpfv&st=2287ui7a&raw=1" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5gfx8y1c9iavzrei5cnhx/Kaifuku-Jutsushi-no-Yarinaoshi-08_burn-in_1920x1080_x264.mp4?rlkey=1uwa9cnqyoxmypt1ofogb555h&st=8z3oz7r1&raw=1" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/telnfnvk1ma4mcuagnpit/Kaifuku-Jutsushi-no-Yarinaoshi-09_burn-in_1920x1080_x264.mp4?rlkey=b7vf8i6vk6usg95ifpgx8pzbq&st=acz6wdyf&raw=1" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/l4htnerli767jea01fxtm/Kaifuku-Jutsushi-no-Yarinaoshi-10_burn-in_1920x1080_x264.mp4?rlkey=pu6bqygr76zv1l742utlm3w1s&st=27krzl8j&raw=1" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/bz7s59bllxekjo2mxphl7/Kaifuku-Jutsushi-no-Yarinaoshi-11_burn-in_1920x1080_x264.mp4?rlkey=wjb5dgbgiliutrm6suzae94uh&st=zk75hgqr&raw=1" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    // --- FIN ANIME ---
+
+    // --- INICIO ANIME: Dokyuu Hentai HxEros ---
+    {
+        id: "Dokyuu",
+        titulo: "Dokyuu Hentai HxEros",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        sinopsis: "La secundaria Retto Enjo es miembro del grupo de héroes HXEROS, que luchan juntos para salvar la tierra del Kiseichuu.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    }
+    // --- FIN ANIME ---
+
+];
+</script>
+
+<script>
+    // --- VARIABLES DE ESTADO ---
+    let currentAnime = null;
+    let currentEpIndex = 0;
+    let needsSynopsisCheck = false; // Flag para la sinopsis
+
+    // --- ELEMENTOS DOM ---
+    const homeView = document.getElementById('home-view');
+    const detailView = document.getElementById('detail-view');
+    const grid = document.getElementById('anime-grid');
+    const mainVideo = document.getElementById('main-video');
+    const heroImg = document.getElementById('hero-img');
+    
+    // Elementos Detalle
+    const detailTitle = document.getElementById('detail-title');
+    const epCountText = document.getElementById('ep-count-text');
+    const epSelector = document.getElementById('ep-selector');
+    const detailSynopsis = document.getElementById('detail-synopsis');
+    const readMoreBtn = document.getElementById('read-more-btn');
+    const recContainer = document.getElementById('recommendations-container');
+
+    // Buscador
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    // --- INICIO ---
+    function initApp() {
+        if(!window.location.hash) window.location.hash = "home";
+        
+        if (typeof library !== 'undefined') {
+            renderGrid();
+        } else {
+            console.error("Falta data.js");
+            grid.innerHTML = "<p style='text-align:center; margin-top:50px;'>Error: data.js no encontrado.</p>";
+        }
+
+        window.addEventListener('hashchange', handleRouting);
+        handleRouting();
+    }
+
+    function handleRouting() {
+        if (window.location.hash === '#detail' && currentAnime) {
+            showDetailView();
+        } else {
+            showHomeView();
+        }
+    }
+
+    // --- HOME & GRID ---
+    function renderGrid(data = library, container = grid) {
+        container.innerHTML = "";
+        data.forEach(anime => {
+            const card = document.createElement('div');
+            card.className = "poster-wrapper"; 
+            card.onclick = () => { closeSearch(); openAnimeDetail(anime); };
+            card.innerHTML = `
+                <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                <div class="anime-title">${anime.titulo}</div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // --- DETALLE ---
+    function openAnimeDetail(anime) {
+        currentAnime = anime;
+        currentEpIndex = 0;
+        prepareDetailView(anime);
+        window.location.hash = "detail"; 
+    }
+
+    function prepareDetailView(anime) {
+        // 1. Info básica
+        detailTitle.innerText = anime.titulo;
+        
+        // 2. Sinopsis (LÓGICA CORREGIDA)
+        detailSynopsis.innerText = anime.sinopsis || "";
+        detailSynopsis.classList.add('collapsed');
+        readMoreBtn.innerText = "vea más";
+        readMoreBtn.style.display = 'none'; // Ocultar por defecto
+        needsSynopsisCheck = true; // Marcar para que showDetailView haga la comprobación
+
+        // 3. Generar Botones de Episodios (Cuadros)
+        epSelector.innerHTML = "";
+        const totalEps = anime.episodios.length;
+        epCountText.innerText = `${totalEps} Capítulos`;
+
+        anime.episodios.forEach((ep, index) => {
+            const btn = document.createElement('div');
+            btn.className = 'ep-box';
+            btn.innerText = ep.num;
+            btn.onclick = () => playEpisode(index);
+            epSelector.appendChild(btn);
+        });
+
+        // 4. Recomendaciones
+        renderRecommendations(anime.id);
+
+        // 5. Iniciar primer episodio
+        if (totalEps > 0) {
+            playEpisode(0);
+        } else {
+            mainVideo.style.display = 'none';
+            heroImg.style.display = 'block';
+            heroImg.src = anime.banner || anime.poster;
+        }
+    }
+
+    function playEpisode(index) {
+        if (!currentAnime || !currentAnime.episodios[index]) return;
+        currentEpIndex = index;
+        const episode = currentAnime.episodios[index];
+
+        heroImg.style.display = "none";
+        mainVideo.style.display = "block";
+        mainVideo.src = episode.link;
+        mainVideo.play();
+
+        // Actualizar azul
+        const buttons = epSelector.querySelectorAll('.ep-box');
+        buttons.forEach((btn, i) => {
+            if (i === index) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+        
+        // Scroll al botón
+        if(buttons[index]) {
+            buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+
+        document.getElementById('hero-area').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function renderRecommendations(currentId) {
+        recContainer.innerHTML = "";
+        const recs = library.filter(a => a.id !== currentId);
+        
+        if (recs.length === 0) {
+            recContainer.innerHTML = "<div style='color:#555; font-size:12px;'>No hay más sugerencias.</div>";
+            return;
+        }
+
+        recs.forEach(anime => {
+            const item = document.createElement('div');
+            item.className = 'rec-item';
+            item.onclick = () => openAnimeDetail(anime);
+            item.innerHTML = `
+                <div class="rec-poster"><img src="${anime.poster}" alt=""></div>
+                <div class="rec-title">${anime.titulo}</div>
+            `;
+            recContainer.appendChild(item);
+        });
+    }
+
+    // --- UTILIDADES ---
+    function toggleSynopsis() {
+        if (detailSynopsis.classList.contains('collapsed')) {
+            detailSynopsis.classList.remove('collapsed');
+            readMoreBtn.innerText = "vea menos";
+        } else {
+            detailSynopsis.classList.add('collapsed');
+            readMoreBtn.innerText = "vea más";
+        }
+    }
+
+    function showDetailView() {
+        switchView(detailView);
+        window.scrollTo(0, 0);
+
+        // LÓGICA CORREGIDA: Comprobar la altura de la sinopsis ahora que es visible
+        if (needsSynopsisCheck) {
+            if (detailSynopsis.scrollHeight > detailSynopsis.clientHeight) {
+                readMoreBtn.style.display = 'inline-block';
+            } else {
+                readMoreBtn.style.display = 'none';
+                detailSynopsis.classList.remove('collapsed');
+            }
+            needsSynopsisCheck = false; // Resetear el flag
+        }
+    }
+
+    function showHomeView() {
+        mainVideo.pause();
+        mainVideo.src = "";
+        switchView(homeView);
+        if(window.location.hash === '#detail') history.replaceState(null, null, '#home');
+    }
+
+    function switchView(view) {
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        view.classList.add('active');
+                   <span>HD</span>
             </div>
 
             <!-- BOTÃ“N PRINCIPAL -->
@@ -194,144 +636,7 @@
             <!-- Selector -->
             <div class="season-select">
                 Temporada 1 <span>â–¼</span>
-            </div>
-
-            <!-- 3. LISTA DE EPISODIOS -->
-            <div class="ep-list" id="episodes-container"></div>
-        </div>
-    </div>
-
-    <script>
-        // ==========================================
-        //  BASE DE DATOS (Tus enlaces Dropbox)
-        // ==========================================
-        const library = [
-            {
-                id: "elf",
-                titulo: "Sukebe Elf Tanbouki",
-                poster: "https://veohentai.com/wp-content/uploads/2023/07/Sukebe-Elf-Tanbouki-Episode-1.jpg",
-                // Usamos una imagen ancha para el banner
-                banner: "https://images6.alphacoders.com/112/thumb-1920-1126197.jpg", 
-                sinopsis: "Keyaru, un hÃ©roe sanador que es explotado por otros hÃ©roes, obtiene la oportunidad de retroceder en el tiempo.",
-                episodios: [
-                    { 
-                        num: 1, 
-                        nombre: "El inicio de la venganza", 
-                        duracion: "24m",
-                        // Usamos el banner como miniatura si no hay otra
-                        thumb: "https://images6.alphacoders.com/112/thumb-1920-1126197.jpg",
-                        link: "https://www.dropbox.com/scl/fi/9rhs0u2gtmx4d6elu8r30/Sukebe-Elf-Tanbouki-1_burn-in_3840x2160_x264.mp4?rlkey=spllrbuhfwaq3uda7hmjas8b8&st=f2ou4pom&raw=1" 
-                    },
-                    { 
-                        num: 2, 
-                        nombre: "La continuaciÃ³n oscura", 
-                        duracion: "23m",
-                        thumb: "https://images6.alphacoders.com/112/thumb-1920-1126197.jpg",
-                        link: "https://www.dropbox.com/scl/fi/2xy4tfin44zzebhh9xv7e/Sukebe-Elf-Tanbouki-2_burn-in_3840x2160_x264.mp4?rlkey=0boevey1kfow6wrn4b8h60zbp&st=xel0h8hq&raw=1" 
-                    }
-                ]
-            },
-            {
-                id: "onepunch",
-                titulo: "One Punch Man",
-                poster: "https://m.media-amazon.com/images/M/MV5BMTQ4MTk1ODk3M15BMl5BanBnXkFtZTgwMDgxNjE2NzE@._V1_.jpg",
-                banner: "https://images8.alphacoders.com/640/thumb-1920-640956.jpg",
-                sinopsis: "Saitama es un hÃ©roe por diversiÃ³n, pero es tan fuerte que se aburre.",
-                episodios: [
-                    { 
-                        num: 1, 
-                        nombre: "Gaki ni Modotte", 
-                        duracion: "24m",
-                        thumb: "https://images8.alphacoders.com/640/thumb-1920-640956.jpg",
-                        link: "https://www.dropbox.com/scl/fi/ha1iafyei1il8chcxo6xm/Gaki-ni-Modotte-Yarinaoshi-01_burn-in_3840x2160_x264.mp4?rlkey=pztorjul7poddxjapxdqpazg7&st=eqkf667d&raw=1" 
-                    }
-                ]
-            }
-        ];
-
-        // VARIABLES GLOBALES
-        const homeView = document.getElementById('home-view');
-        const detailView = document.getElementById('detail-view');
-        const grid = document.getElementById('anime-grid');
-        const heroImg = document.getElementById('hero-img');
-        const mainIframe = document.getElementById('main-iframe');
-        
-        let currentAnime = null; // Para saber cuÃ¡l estÃ¡ abierto
-
-        function initApp() {
-            grid.innerHTML = "";
-            library.forEach(anime => {
-                const card = document.createElement('div');
-                card.onclick = () => openAnimeDetail(anime);
-                card.innerHTML = `
-                    <div class="poster"><img src="${anime.poster}" alt=""></div>
-                    <div class="anime-title">${anime.titulo}</div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function openAnimeDetail(anime) {
-            currentAnime = anime; // Guardamos referencia
-            
-            // 1. Resetear UI
-            mainIframe.src = "";
-            mainIframe.style.display = "none"; // Ocultar video
-            heroImg.style.display = "block";   // Mostrar imagen
-            
-            // 2. Llenar datos
-            heroImg.src = anime.banner;
-            document.getElementById('detail-title').innerText = anime.titulo;
-            document.getElementById('detail-synopsis').innerText = anime.sinopsis;
-
-            // 3. Generar Lista de Episodios Estilo "Max"
-            const epList = document.getElementById('episodes-container');
-            epList.innerHTML = "";
-            
-            anime.episodios.forEach(ep => {
-                const card = document.createElement('div');
-                card.className = 'ep-card';
-                card.onclick = () => playEpisode(ep.link, card); // Clic en toda la tarjeta
-                
-                card.innerHTML = `
-                    <div class="ep-thumb">
-                        <img src="${ep.thumb || anime.banner}" alt="">
-                        <div class="mini-play">â–¶</div>
-                    </div>
-                    <div class="ep-info">
-                        <div class="ep-title">${ep.num}. ${ep.nombre}</div>
-                        <div class="ep-meta">2024 â€¢ ${ep.duracion}</div>
-                        <div class="ep-desc">${anime.sinopsis}</div> 
-                    </div>
-                    <div class="ep-actions">
-                        <span style="font-size:14px; color:#aaa">â¬‡</span>
-                    </div>
-                `;
-                epList.appendChild(card);
-            });
-
-            switchView(detailView);
-            window.scrollTo(0,0);
-        }
-
-        // FunciÃ³n del BotÃ³n Grande Blanco
-        function playFirstEpisode() {
-            if(currentAnime && currentAnime.episodios.length > 0) {
-                // Simular clic en el primer episodio de la lista
-                const firstLink = currentAnime.episodios[0].link;
-                playEpisode(firstLink, null);
-            }
-        }
-
-        function playEpisode(url, cardElement) {
-            // 1. Mostrar Video
-            heroImg.style.display = "none";
-            mainIframe.style.display = "block";
-            mainIframe.src = url;
-
-            // 2. Colorear tÃ­tulo en la lista
-            document.querySelectorAll('.ep-title').forEach(el => el.classList.remove('active'));
-            if(cardElement) {
+(cardElement) {
                 const title = cardElement.querySelector('.ep-title');
                 if(title) title.classList.add('active');
             }
