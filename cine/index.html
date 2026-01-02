@@ -22,13 +22,18 @@
 
         /* --- HOME --- */
         header { 
-            padding: 15px; 
+            padding: 22px 15px 8px 15px; 
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); 
             position: fixed; width: 100%; z-index: 50; top:0; 
             pointer-events: auto;
+            box-sizing: border-box;
         }
 
-        .header-content { display: flex; justify-content: flex-start; align-items: center; }
+        .header-content { 
+            display: flex; 
+            justify-content: flex-start; 
+            align-items: center; 
+        }
         
         .search-btn { 
             background: none; border: none; color: white; cursor: pointer; padding: 0; 
@@ -63,7 +68,7 @@
         }
         .poster-wrapper { cursor: pointer; }
         .poster {
-            width: 100%; aspect-ratio: 2/3; border-radius: 6px; overflow: hidden; background: #1a1a1a;
+            width: 100%; aspect-ratio: 2/3; border-radius: 0; overflow: hidden; background: #1a1a1a;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin-bottom: 8px;
         }
         .poster img { width: 100%; height: 100%; object-fit: cover; }
@@ -91,7 +96,6 @@
         }
         .show-title:active { opacity: 0.7; }
 
-        /* REGRESADO A SU ESTADO ORIGINAL */
         .meta-row { display: flex; gap: 10px; font-size: 13px; color: var(--text-gray); margin-bottom: 20px; align-items: center; }
         .badge { border: 1px solid var(--text-gray); padding: 1px 4px; border-radius: 2px; font-size: 11px; }
 
@@ -133,7 +137,9 @@
         .section-header { font-size: 15px; font-weight: 700; margin-bottom: 15px; margin-top: 10px; color: #eee; }
         
         .rec-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 12px;
         }
         .rec-item { cursor: pointer; }
         .rec-poster {
@@ -171,18 +177,17 @@
     <div id="detail-view" class="view">
         <div class="hero-container" id="hero-area">
             <img id="hero-img" class="hero-bg" src="" alt="">
-            <video id="main-video" class="video-player" controls controlsList="nodownload"></video>
+            <video id="main-video" class="video-player" controls controlsList="nodownload" preload="metadata"></video>
         </div>
 
         <div class="content-body">
             <div id="detail-title" class="show-title" onclick="window.history.back()"></div>
             
-            <!-- AQUÍ ESTÁ LO QUE PEDISTE: REGRESADO AL ORIGINAL -->
             <div class="meta-row">
-                <span class="badge">16+</span>
-                <span>1 Temporada</span>
-                <span>2024</span>
-                <span>HD</span>
+                <span id="detail-rating" class="badge"></span>
+                <span id="detail-season"></span>
+                <span id="detail-year"></span>
+                <span id="detail-quality"></span>
             </div>
 
             <!-- Contador de capítulos -->
@@ -196,26 +201,25 @@
             <div id="read-more-btn" class="read-more-btn" onclick="toggleSynopsis()">vea más</div>
 
             <!-- Recomendaciones -->
-            <div class="section-header">También podría gustarte</div>
+            <div class="section-header">Más como esto</div>
             <div class="rec-grid" id="recommendations-container"></div>
         </div>
     </div>
 
 <script>
 // --- TU LISTA DE ANIMES ---
-// Para agregar un anime nuevo, copia desde "{" hasta "}," y pega abajo.
-
 const library = [
-    
-    // --- INICIO ANIME: KAIFUKU ---
     {
-        id: "kaifuku",
+        id: "hell",
         titulo: "Kaifuku Jutsushi no Yarinaoshi",
         poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
-        banner: "", 
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2024",
+        calidad: "HD",
         sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
         episodios: [
-            // Copia esta linea para agregar episodio:
             { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/e5dmog7me85b664ubxj4o/Kaifuku-Jutsushi-no-Yarinaoshi-01_burn-in_1920x1080_x264.mp4?rlkey=c8diu7p1sm6kfqqsx5v6txd29&raw=1" },
             { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/9bpzu4gammnzxhag21fum/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=ees37euad411k2f6joofrhqpu&raw=1" },
             { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/q8u5t1ir92bqivqwegv2l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=mac8w5knysntpukes45qzg9jr&raw=1" },
@@ -230,21 +234,22 @@ const library = [
             { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
         ]
     },
-    // --- FIN ANIME ---
-
-    // --- INICIO ANIME: Dokyuu Hentai HxEros ---
     {
         id: "Dokyuu",
         titulo: "Dokyuu Hentai HxEros",
         poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
         banner: "",
-        sinopsis: "La secundaria Retto Enjo es miembro del grupo de héroes HXEROS, que luchan juntos para salvar la tierra del Kiseichuu.",
+        rating: "TV-MA",
+        temporada: "1 Temporada",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "La Tierra enfrenta una amenaza sin precedentes por una invasión del misterioso Kiseichuu. Los Kiseichuu se alimentan de energía sexual humana, también conocida como energía H, y debilitan a la población humana. El estudiante de secundaria Retto Enjo es miembro del grupo de héroes HXEROS, que luchan juntos para salvar la tierra del Kiseichuu.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/feqrylrzqc80864ix3g02/Dokyuu-Hentai-HxEros-1_burn-in_1920x1080_x264.mp4?rlkey=hahqtg8h8k4aw8vr1h4mfrsmz&raw=1" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/sr0opl3w0s6h0rslc9dl5/Dokyuu-Hentai-HxEros-2_burn-in_1920x1080_x264.mp4?rlkey=l512o8dfjup93p4xgp4ayjwsj&raw=1" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/n689mhhxnojijgbx9gh7l/Dokyuu-Hentai-HxEros-3_burn-in_1920x1080_x264.mp4?rlkey=d9r9n0etcg1deg1o3zcx8al61&raw=1" }
         ]
     }
-    // --- FIN ANIME ---
-
 ];
 </script>
 
@@ -252,7 +257,8 @@ const library = [
     // --- VARIABLES DE ESTADO ---
     let currentAnime = null;
     let currentEpIndex = 0;
-    let needsSynopsisCheck = false; // Flag para la sinopsis
+    let needsSynopsisCheck = false; 
+    let hasPlayedAnyVideo = false; // [NUEVO] Flag para la nueva lógica de autoplay
 
     // --- ELEMENTOS DOM ---
     const homeView = document.getElementById('home-view');
@@ -260,8 +266,8 @@ const library = [
     const grid = document.getElementById('anime-grid');
     const mainVideo = document.getElementById('main-video');
     const heroImg = document.getElementById('hero-img');
+    const heroArea = document.getElementById('hero-area');
     
-    // Elementos Detalle
     const detailTitle = document.getElementById('detail-title');
     const epCountText = document.getElementById('ep-count-text');
     const epSelector = document.getElementById('ep-selector');
@@ -269,7 +275,11 @@ const library = [
     const readMoreBtn = document.getElementById('read-more-btn');
     const recContainer = document.getElementById('recommendations-container');
 
-    // Buscador
+    const detailRating = document.getElementById('detail-rating');
+    const detailSeason = document.getElementById('detail-season');
+    const detailYear = document.getElementById('detail-year');
+    const detailQuality = document.getElementById('detail-quality');
+
     const searchOverlay = document.getElementById('search-overlay');
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
@@ -287,10 +297,20 @@ const library = [
 
         window.addEventListener('hashchange', handleRouting);
         handleRouting();
+        
+        setupTouchControls();
+
+        // [NUEVO] Listener para activar el flag de autoplay después del primer play manual.
+        mainVideo.addEventListener('play', () => {
+            if (!hasPlayedAnyVideo) {
+                hasPlayedAnyVideo = true;
+            }
+        });
     }
 
     function handleRouting() {
-        if (window.location.hash === '#detail' && currentAnime) {
+        const hash = window.location.hash;
+        if (hash.startsWith('#detail') && currentAnime) {
             showDetailView();
         } else {
             showHomeView();
@@ -314,27 +334,35 @@ const library = [
 
     // --- DETALLE ---
     function openAnimeDetail(anime) {
+        hasPlayedAnyVideo = false; // [NUEVO] Resetea el flag para cada anime nuevo que se abre.
         currentAnime = anime;
         currentEpIndex = 0;
-        prepareDetailView(anime);
-        window.location.hash = "detail"; 
-    }
-
-    function prepareDetailView(anime) {
-        // 1. Info básica
-        detailTitle.innerText = anime.titulo;
+        prepareDetailView(anime); 
         
-        // 2. Sinopsis (LÓGICA CORREGIDA)
+        if (window.location.hash.startsWith('#detail')) {
+            showDetailView(); 
+        } else {
+            window.location.hash = "detail"; 
+        }
+    }
+    
+    function prepareDetailView(anime) {
+        detailTitle.innerText = anime.titulo;
+
+        detailRating.innerText = anime.rating || "";
+        detailSeason.innerText = anime.temporada || "";
+        detailYear.innerText = anime.ano || "";
+        detailQuality.innerText = anime.calidad || "";
+        
         detailSynopsis.innerText = anime.sinopsis || "";
         detailSynopsis.classList.add('collapsed');
         readMoreBtn.innerText = "vea más";
-        readMoreBtn.style.display = 'none'; // Ocultar por defecto
-        needsSynopsisCheck = true; // Marcar para que showDetailView haga la comprobación
+        readMoreBtn.style.display = 'none'; 
+        needsSynopsisCheck = true; 
 
-        // 3. Generar Botones de Episodios (Cuadros)
         epSelector.innerHTML = "";
         const totalEps = anime.episodios.length;
-        epCountText.innerText = `${totalEps} Capítulos`;
+        epCountText.innerText = `${totalEps} ${totalEps === 1 ? 'Capítulo' : 'Capítulos'}`;
 
         anime.episodios.forEach((ep, index) => {
             const btn = document.createElement('div');
@@ -344,10 +372,8 @@ const library = [
             epSelector.appendChild(btn);
         });
 
-        // 4. Recomendaciones
         renderRecommendations(anime.id);
 
-        // 5. Iniciar primer episodio
         if (totalEps > 0) {
             playEpisode(0);
         } else {
@@ -357,7 +383,8 @@ const library = [
         }
     }
 
-    function playEpisode(index) {
+    // [CORREGIDO] Lógica de autoplay actualizada.
+    function playEpisode(index, isAutoChained = false) {
         if (!currentAnime || !currentAnime.episodios[index]) return;
         currentEpIndex = index;
         const episode = currentAnime.episodios[index];
@@ -365,21 +392,25 @@ const library = [
         heroImg.style.display = "none";
         mainVideo.style.display = "block";
         mainVideo.src = episode.link;
-        mainVideo.play();
 
-        // Actualizar azul
+        // Reproduce automáticamente si es el siguiente video en la cadena
+        // O si el usuario ya ha iniciado la reproducción manualmente antes.
+        if (isAutoChained || hasPlayedAnyVideo) {
+            mainVideo.play();
+        }
+
         const buttons = epSelector.querySelectorAll('.ep-box');
         buttons.forEach((btn, i) => {
-            if (i === index) btn.classList.add('active');
-            else btn.classList.remove('active');
+            btn.classList.toggle('active', i === index);
         });
         
-        // Scroll al botón
         if(buttons[index]) {
             buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
 
-        document.getElementById('hero-area').scrollIntoView({ behavior: 'smooth' });
+        if (!isAutoChained) {
+            document.getElementById('hero-area').scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
     function renderRecommendations(currentId) {
@@ -403,38 +434,74 @@ const library = [
         });
     }
 
+    // --- Control por gestos ---
+    let isDragging = false;
+    let startX = 0;
+    let startVideoTime = 0;
+    // [CORREGIDO] Se aumenta el valor para que el deslizamiento sea mucho más rápido.
+    const swipeSeekFactor = 1.0; 
+
+    function setupTouchControls() {
+        heroArea.addEventListener('touchstart', handleTouchStart);
+        heroArea.addEventListener('touchmove', handleTouchMove);
+        heroArea.addEventListener('touchend', handleTouchEnd);
+    }
+    
+    function handleTouchStart(e) {
+        if (mainVideo.paused || !mainVideo.duration) return;
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        startVideoTime = mainVideo.currentTime;
+    }
+
+    function handleTouchMove(e) {
+        if (!isDragging) return;
+        e.preventDefault(); 
+        const currentX = e.touches[0].clientX;
+        const deltaX = currentX - startX;
+        
+        const timeOffset = deltaX * swipeSeekFactor;
+        let newTime = startVideoTime + timeOffset;
+
+        newTime = Math.max(0, Math.min(mainVideo.duration, newTime));
+        
+        mainVideo.currentTime = newTime;
+    }
+
+    function handleTouchEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+    }
+
+
     // --- UTILIDADES ---
     function toggleSynopsis() {
-        if (detailSynopsis.classList.contains('collapsed')) {
-            detailSynopsis.classList.remove('collapsed');
-            readMoreBtn.innerText = "vea menos";
-        } else {
-            detailSynopsis.classList.add('collapsed');
-            readMoreBtn.innerText = "vea más";
-        }
+        detailSynopsis.classList.toggle('collapsed');
+        readMoreBtn.innerText = detailSynopsis.classList.contains('collapsed') ? "vea más" : "vea menos";
     }
 
     function showDetailView() {
         switchView(detailView);
         window.scrollTo(0, 0);
 
-        // LÓGICA CORREGIDA: Comprobar la altura de la sinopsis ahora que es visible
         if (needsSynopsisCheck) {
-            if (detailSynopsis.scrollHeight > detailSynopsis.clientHeight) {
-                readMoreBtn.style.display = 'inline-block';
-            } else {
-                readMoreBtn.style.display = 'none';
-                detailSynopsis.classList.remove('collapsed');
-            }
-            needsSynopsisCheck = false; // Resetear el flag
+            setTimeout(() => {
+                const isOverflowing = detailSynopsis.scrollHeight > detailSynopsis.clientHeight;
+                readMoreBtn.style.display = isOverflowing ? 'inline-block' : 'none';
+                if (!isOverflowing) {
+                    detailSynopsis.classList.remove('collapsed');
+                }
+            }, 50); 
+            needsSynopsisCheck = false;
         }
     }
 
     function showHomeView() {
         mainVideo.pause();
         mainVideo.src = "";
+        currentAnime = null; 
         switchView(homeView);
-        if(window.location.hash === '#detail') history.replaceState(null, null, '#home');
+        if(window.location.hash !== '#home') history.replaceState(null, null, '#home');
     }
 
     function switchView(view) {
@@ -458,9 +525,10 @@ const library = [
         renderGrid(filtered, searchResults);
     }
 
+    // El listener para el final del video ahora llama a playEpisode con el segundo parámetro en 'true'
     mainVideo.addEventListener('ended', () => {
-        if (currentEpIndex < currentAnime.episodios.length - 1) {
-            playEpisode(currentEpIndex + 1);
+        if (currentAnime && currentEpIndex < currentAnime.episodios.length - 1) {
+            playEpisode(currentEpIndex + 1, true);
         }
     });
 
@@ -469,4 +537,3 @@ const library = [
 </script>
 </body>
 </html>
-
