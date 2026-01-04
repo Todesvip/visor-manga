@@ -250,7 +250,7 @@
             </div>
         </header>
         
-        <div style="padding-top: 80px;">
+        <div style="padding-top: 10px;">
             <!-- RECIÉN AÑADIDOS (HORIZONTAL) -->
             <div class="section-title">Recién añadidos</div>
             <div class="horizontal-list" id="recent-list"></div>
@@ -468,23 +468,29 @@ const library = [
 
     function handleRouting() {
         const hash = window.location.hash;
+        const bottomNav = document.querySelector('.bottom-nav');
         
         // Reset nav active state
         document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
 
         if (hash.startsWith('#detail') && currentAnime) {
             showDetailView();
+            if (bottomNav) bottomNav.style.display = 'none';
         } else if (hash === '#fulllist') {
             showFullListView();
+            if (bottomNav) bottomNav.style.display = 'none';
         } else if (hash === '#explore') {
             showExploreView();
             document.getElementById('nav-explore').classList.add('active');
+            if (bottomNav) bottomNav.style.display = 'flex';
         } else if (hash === '#settings') {
             showSettingsView();
             document.getElementById('nav-settings').classList.add('active');
+            if (bottomNav) bottomNav.style.display = 'flex';
         } else {
             showHomeView();
             document.getElementById('nav-home').classList.add('active');
+            if (bottomNav) bottomNav.style.display = 'flex';
         }
     }
 
