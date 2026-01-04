@@ -16,6 +16,14 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* Evitar arrastrar imágenes al deslizar en móvil */
+        img {
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
         .view { display: none; }
         .view.active { display: block; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
