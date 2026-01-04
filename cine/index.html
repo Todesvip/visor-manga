@@ -73,6 +73,7 @@
 
         @media (max-width: 600px) {
             .horizontal-item { flex: 0 0 140px; }
+            .continue-item { flex: 0 0 260px; }
         }
 
         .view-all-btn {
@@ -239,9 +240,38 @@
             padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600;
         }
 
+        /* --- SPLASH SCREEN --- */
+        #splash-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg); z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+        .splash-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .loading-spinner {
+            width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1);
+            border-top-color: var(--accent); border-radius: 50%;
+            animation: spin 1s linear infinite; margin-bottom: 15px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        #splash-status { color: #888; font-size: 14px; font-weight: 500; }
+        #retry-btn {
+            margin-top: 20px; padding: 10px 25px; background: var(--accent); color: white;
+            border: none; border-radius: 20px; font-weight: bold; cursor: pointer; display: none;
+        }
+
     </style>
 </head>
 <body>
+
+    <!-- SPLASH SCREEN -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="loading-spinner" id="splash-spinner"></div>
+            <div id="splash-status">Iniciando...</div>
+            <button id="retry-btn" onclick="location.reload()">Reintentar</button>
+        </div>
+    </div>
 
     <!-- HOME -->
     <div id="home-view" class="view active">
@@ -885,6 +915,69 @@ const library = [
     });
 
     initApp();
+    
+    // --- LOGICA DE INICIO (SPLASH SCREEN) ---
+    async function launchApp() {
+        const splash = document.getElementById('splash-screen');
+        const status = document.getElementById('splash-status');
+        const spinner = document.getElementById('splash-spinner');
+        const retryBtn = document.getElementById('retry-btn');
+
+        // 1. Verificar conexión básica
+        if (!navigator.onLine) {
+            showError("Sin conexión a internet");
+            return;
+        }
+
+        // 2. Precargar imágenes
+        try {
+            status.innerText = "Cargando contenido...";
+            
+            // Recolectar imágenes
+            const imagesToLoad = [];
+            library.forEach(anime => {
+                if(anime.poster) imagesToLoad.push(anime.poster);
+                if(anime.banner) imagesToLoad.push(anime.banner);
+            });
+
+            // Crear promesas de carga
+            const loadPromises = imagesToLoad.map(src => {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.src = src;
+                    img.onload = resolve;
+                    img.onerror = resolve; // Continuar aunque falle una imagen específica
+                });
+            });
+
+            // Esperar a que carguen (o timeout de 8s)
+            await Promise.race([
+                Promise.all(loadPromises),
+                new Promise(resolve => setTimeout(resolve, 8000))
+            ]);
+
+            // 3. Transición al Home
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 500);
+
+        } catch (e) {
+            console.error("Error en carga:", e);
+            // En caso de error inesperado, dejar entrar
+            splash.style.display = 'none';
+        }
+
+        function showError(msg) {
+            spinner.style.display = 'none';
+            status.innerText = msg;
+            status.style.color = '#ff4444';
+            retryBtn.style.display = 'block';
+        }
+    }
+
+    // Ejecutar carga
+    launchApp();
 
 </script>
 </body>
