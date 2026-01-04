@@ -34,37 +34,29 @@
             justify-content: flex-start; 
             align-items: center; 
         }
-        
+
         .search-btn { 
             background: none; border: none; color: white; cursor: pointer; padding: 0; 
             display: flex; align-items: center; justify-content: center;
         }
         .search-btn svg { width: 28px; height: 28px; fill: white; filter: drop-shadow(0 2px 5px black); }
         
-        /* --- PANTALLA DE BÚSQUEDA --- */
-        .search-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 100; display: none;
-            flex-direction: column; padding: 20px; box-sizing: border-box;
-        }
-        .search-overlay.active { display: flex; animation: fadeIn 0.2s; }
-        
-        .search-bar-container { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        /* --- EXPLORE / BUSCADOR --- */
+        .explore-header { padding: 20px 15px 10px; position: sticky; top: 0; background: var(--bg); z-index: 10; }
+        .search-bar-container { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .search-input {
-            flex: 1; background: #222; border: 1px solid #333; color: white;
+            flex: 1; background: #1e1e24; border: 1px solid #333; color: white;
             padding: 12px; border-radius: 8px; font-size: 16px; outline: none;
         }
-        .close-search { background: none; border: none; color: #ccc; font-size: 14px; cursor: pointer; font-weight: 600; }
-
         .search-results { 
             display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); 
-            gap: 12px; overflow-y: auto; 
+            gap: 12px; padding: 0 15px 20px;
         }
 
         /* --- NUEVO HOME (HORIZONTAL) --- */
         .section-title {
-            font-size: 15px; font-weight: 700; margin: 0 0 15px 0; padding-left: 15px; color: #eee;
-            letter-spacing: 0.5px;
+            font-size: 20px; font-weight: 600; margin: 20px 0 12px 0; padding-left: 15px; color: #ffffff;
+            letter-spacing: 0px;
         }
 
         .horizontal-list {
@@ -78,6 +70,10 @@
         .horizontal-list::-webkit-scrollbar { display: none; }
         
         .horizontal-item { flex: 0 0 180px; cursor: pointer; scroll-snap-align: start; }
+
+        @media (max-width: 600px) {
+            .horizontal-item { flex: 0 0 140px; }
+        }
 
         .view-all-btn {
             display: none; /* Se oculta por defecto, se activa con JS si > 10 */
@@ -101,9 +97,15 @@
             display: flex; align-items: center; gap: 10px;
         }
         .continue-title-mini { font-size: 12px; font-weight: bold; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
-        .continue-ep-mini { font-size: 11px; color: var(--accent); font-weight: 600; }
+        .continue-ep-mini { font-size: 11px; color: #00ff88; font-weight: 600; }
         .play-icon-mini {
             font-size: 24px; color: white; opacity: 0.9; filter: drop-shadow(0 2px 5px black);
+        }
+        .continue-progress-bg {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: rgba(255,255,255,0.2);
+        }
+        .continue-progress-fill {
+            height: 100%; background: #00ff88; box-shadow: 0 0 8px #00ff88; width: 0%; transition: width 0.2s;
         }
 
         /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
@@ -201,26 +203,50 @@
             display: flex; align-items: center; gap: 5px;
         }
 
+        /* --- BOTTOM NAV --- */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
+            background: #0b0c0f; border-top: 1px solid #222;
+            display: flex; justify-content: space-around; align-items: center;
+            z-index: 90; padding-bottom: env(safe-area-inset-bottom);
+        }
+        .nav-item {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: var(--text-gray); text-decoration: none; font-size: 10px; gap: 4px;
+            background: none; border: none; cursor: pointer; flex: 1; height: 100%;
+        }
+        .nav-item.active { color: var(--accent); }
+        .nav-item svg { width: 22px; height: 22px; fill: currentColor; }
+        
+        /* Ajuste para que el contenido no quede tapado por el nav */
+        .view { padding-bottom: 70px; }
+        
+        /* AJUSTES */
+        .settings-content { padding: 40px 20px; text-align: center; color: #777; }
+
+        /* --- HISTORIAL AJUSTES --- */
+        .history-list { display: flex; flex-direction: column; gap: 10px; padding-bottom: 20px; margin-top: 20px; }
+        .history-item { 
+            display: flex; align-items: center; gap: 10px; 
+            background: #1e1e24; padding: 10px; border-radius: 8px; text-align: left;
+        }
+        .history-poster { width: 50px; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px; }
+        .history-info { flex: 1; min-width: 0; }
+        .history-title { font-size: 14px; font-weight: 600; color: #eee; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .history-ep { font-size: 12px; color: var(--text-gray); }
+        .history-remove-btn {
+            background: rgba(255, 68, 68, 0.1); color: #ff4444; border: 1px solid #ff4444; 
+            padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600;
+        }
+
     </style>
 </head>
 <body>
-
-    <!-- BÚSQUEDA -->
-    <div id="search-overlay" class="search-overlay">
-        <div class="search-bar-container">
-            <input type="text" id="search-input" class="search-input" placeholder="Buscar animes..." oninput="handleSearch()">
-            <button class="close-search" onclick="closeSearch()">Cancelar</button>
-        </div>
-        <div class="search-results" id="search-results"></div>
-    </div>
 
     <!-- HOME -->
     <div id="home-view" class="view active">
         <header>
             <div class="header-content">
-                <button class="search-btn" onclick="openSearch()">
-                     <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                </button>
             </div>
         </header>
         
@@ -234,6 +260,26 @@
                 <div class="section-title">Continuar viendo</div>
                 <div class="horizontal-list" id="continue-list"></div>
             </div>
+        </div>
+    </div>
+
+    <!-- EXPLORE (BUSCADOR) -->
+    <div id="explore-view" class="view">
+        <div class="explore-header">
+            <div class="search-bar-container">
+                <input type="text" id="search-input" class="search-input" placeholder="Buscar animes..." oninput="handleSearch()">
+            </div>
+        </div>
+        <div class="search-results" id="search-results"></div>
+    </div>
+
+    <!-- AJUSTES -->
+    <div id="settings-view" class="view">
+        <div class="settings-content">
+            <h2>Ajustes</h2>
+            <p>Versión 1.0.0</p>
+            <h3 style="color: #eee; margin-top: 30px; margin-bottom: 10px; text-align: left; font-size: 16px;">Historial</h3>
+            <div id="settings-history-list" class="history-list"></div>
         </div>
     </div>
 
@@ -283,7 +329,71 @@
         </div>
     </div>
 
-<script src="data.js"></script>
+    <!-- BARRA DE NAVEGACIÓN INFERIOR -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="window.location.hash='home'" id="nav-home">
+            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
+        </button>
+        <button class="nav-item" onclick="window.location.hash='explore'" id="nav-explore">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> Explore
+        </button>
+        <button class="nav-item" onclick="window.location.hash='settings'" id="nav-settings">
+            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.04.24.24.41.48.41h3.84c.24 0 .43-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.08-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg> Ajustes
+        </button>
+    </nav>
+
+<script>
+const library = [
+    {
+        id: "Kaifuku",
+        titulo: "Kaifuku Jutsushi no Yarinaoshi",
+        poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2024",
+        calidad: "HD",
+        sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/e5dmog7me85b664ubxj4o/Kaifuku-Jutsushi-no-Yarinaoshi-01_burn-in_1920x1080_x264.mp4?rlkey=c8diu7p1sm6kfqqsx5v6txd29&raw=1" },
+            { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/9bpzu4gammnzxhag21fum/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=ees37euad411k2f6joofrhqpu&raw=1" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/q8u5t1ir92bqivqwegv2l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=mac8w5knysntpukes45qzg9jr&raw=1" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/1ly5zhhl7d6581w73t8yw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=ymqf9wxv49w15urdokckrezsc&raw=1" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/3fsm5w2c4ol8aila3ois8/Kaifuku-Jutsushi-no-Yarinaoshi-05_burn-in_1920x1080_x264.mp4?rlkey=uy6iym4rxobt1osmoq76pv0f7&raw=1" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/mbrqi1eas7i0h0pdl5s1r/Kaifuku-Jutsushi-no-Yarinaoshi-06_burn-in_1920x1080_x264.mp4?rlkey=8nu4i5tf00c1o8llnyk2nk92x&raw=1" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/uor4mciu4kvaz45y9gnqm/Kaifuku-Jutsushi-no-Yarinaoshi-07_burn-in_1920x1080_x264.mp4?rlkey=oeuwdc0tqzlm1m3q9s04sikwd&raw=1" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/xfq4nmhguw3te06l36w7b/Kaifuku-Jutsushi-no-Yarinaoshi-08_burn-in_1920x1080_x264.mp4?rlkey=ktykp0fz18zqqqjrh5xt9vmsb&raw=1" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/telnfnvk1ma4mcuagnpit/Kaifuku-Jutsushi-no-Yarinaoshi-09_burn-in_1920x1080_x264.mp4?rlkey=b7vf8i6vk6usg95ifpgx8pzbq&st=acz6wdyf&raw=1" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/l4htnerli767jea01fxtm/Kaifuku-Jutsushi-no-Yarinaoshi-10_burn-in_1920x1080_x264.mp4?rlkey=pu6bqygr76zv1l742utlm3w1s&st=27krzl8j&raw=1" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/bz7s59bllxekjo2mxphl7/Kaifuku-Jutsushi-no-Yarinaoshi-11_burn-in_1920x1080_x264.mp4?rlkey=wjb5dgbgiliutrm6suzae94uh&st=zk75hgqr&raw=1" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "Dokyuu Hentai HxEros",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "La Tierra enfrenta una amenaza sin precedentes por una invasión del misterioso Kiseichuu. Los Kiseichuu se alimentan de energía sexual humana, también conocida como energía H, y debilitan a la población humana. El estudiante de secundaria Retto Enjo es miembro del grupo de héroes HXEROS, que luchan juntos para salvar la tierra del Kiseichuu.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/feqrylrzqc80864ix3g02/Dokyuu-Hentai-HxEros-1_burn-in_1920x1080_x264.mp4?rlkey=hahqtg8h8k4aw8vr1h4mfrsmz&raw=1" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/sr0opl3w0s6h0rslc9dl5/Dokyuu-Hentai-HxEros-2_burn-in_1920x1080_x264.mp4?rlkey=l512o8dfjup93p4xgp4ayjwsj&raw=1" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/n689mhhxnojijgbx9gh7l/Dokyuu-Hentai-HxEros-3_burn-in_1920x1080_x264.mp4?rlkey=d9r9n0etcg1deg1o3zcx8al61&raw=1" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/pjbanl2kxgmsonfduhk84/Dokyuu-Hentai-HxEros-4_burn-in_1920x1080_x264.mp4?rlkey=00g1ceuhluae9prvirzuqjt20&raw=1" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/60j7ju6othu2ru32bg9xl/Dokyuu-Hentai-HxEros-5_burn-in_1920x1080_x264.mp4?rlkey=62y1s6duv0eg3lgoizjw03tnw&raw=1" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5j3y06dp31rw83775brj5/Dokyuu-Hentai-HxEros-6_burn-in_1920x1080_x264.mp4?rlkey=jffbk9ezn5fp2jl5ugiw6jbo5&raw=1" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/81d4zirj94c7mzxqylx8o/Dokyuu-Hentai-HxEros-7_burn-in_1920x1080_x264.mp4?rlkey=o05z59srsk71rzh820lhcfmp1&raw=1" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5hbribjp543lqvvbovvd7/Dokyuu-Hentai-HxEros-8_burn-in_1920x1080_x264.mp4?rlkey=jzvo9eed97y067gsvadsnjcpe&raw=1" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/4v6ssdqatfj4n4ro5ygxc/Dokyuu-Hentai-HxEros-9_burn-in_1920x1080_x264.mp4?rlkey=ud4rk70zi69l3bd3eorhaztmk&raw=1" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/om9f9oz1k8v89kkprquk7/Dokyuu-Hentai-HxEros-10_burn-in_1920x1080_x264.mp4?rlkey=9006ln3eoijygflxhlvgkmonk&raw=1" }
+        ]
+    }
+];
+</script>
 
 <script>
     // --- VARIABLES DE ESTADO ---
@@ -291,9 +401,12 @@
     let currentEpIndex = 0;
     let needsSynopsisCheck = false; 
     let hasPlayedAnyVideo = false; // [NUEVO] Flag para la nueva lógica de autoplay
+    let lastSaveTime = 0;
 
     // --- ELEMENTOS DOM ---
     const homeView = document.getElementById('home-view');
+    const exploreView = document.getElementById('explore-view');
+    const settingsView = document.getElementById('settings-view');
     const fullListView = document.getElementById('full-list-view');
     const detailView = document.getElementById('detail-view');
     const fullGrid = document.getElementById('full-grid');
@@ -313,7 +426,6 @@
     const detailYear = document.getElementById('detail-year');
     const detailQuality = document.getElementById('detail-quality');
 
-    const searchOverlay = document.getElementById('search-overlay');
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
 
@@ -339,25 +451,49 @@
                 hasPlayedAnyVideo = true;
             }
         });
+
+        // Guardar progreso periódicamente
+        mainVideo.addEventListener('timeupdate', () => {
+            if (!currentAnime) return;
+            const now = Date.now();
+            if (now - lastSaveTime > 5000) {
+                saveWatchProgress(currentAnime.id, currentEpIndex, mainVideo.currentTime, mainVideo.duration);
+                lastSaveTime = now;
+            }
+        });
+        mainVideo.addEventListener('pause', () => {
+            if(currentAnime) saveWatchProgress(currentAnime.id, currentEpIndex, mainVideo.currentTime, mainVideo.duration);
+        });
     }
 
     function handleRouting() {
         const hash = window.location.hash;
+        
+        // Reset nav active state
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
         if (hash.startsWith('#detail') && currentAnime) {
             showDetailView();
         } else if (hash === '#fulllist') {
             showFullListView();
+        } else if (hash === '#explore') {
+            showExploreView();
+            document.getElementById('nav-explore').classList.add('active');
+        } else if (hash === '#settings') {
+            showSettingsView();
+            document.getElementById('nav-settings').classList.add('active');
         } else {
             showHomeView();
+            document.getElementById('nav-home').classList.add('active');
         }
     }
 
     // --- RENDERIZADO ---
     function renderHome() {
-        // 1. Recién añadidos (Horizontal, max 10)
+        // 1. Recién añadidos (Horizontal, max 2)
         const recentContainer = document.getElementById('recent-list');
         recentContainer.innerHTML = "";
-        const recentItems = library.slice(0, 10);
+        const recentItems = library.slice(0, 2);
         
         recentItems.forEach(anime => {
             // Limitar título a 26 caracteres (ej: "Hell Mode: Yarikomizuki no")
@@ -381,7 +517,7 @@
         data.forEach(anime => {
             const card = document.createElement('div');
             card.className = "poster-wrapper"; 
-            card.onclick = () => { closeSearch(); openAnimeDetail(anime); };
+            card.onclick = () => { openAnimeDetail(anime); };
             card.innerHTML = `
                 <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
                 <div class="anime-title">${anime.titulo}</div>
@@ -395,9 +531,14 @@
         const container = document.getElementById('continue-watching-container');
         const list = document.getElementById('continue-list');
         // Usamos una nueva clave para guardar el array de historial
-        const history = JSON.parse(localStorage.getItem('myApp_watchHistory') || '[]');
+        let history = [];
+        try {
+            history = JSON.parse(localStorage.getItem('myApp_watchHistory') || '[]');
+        } catch (e) {
+            history = [];
+        }
         
-        if (history.length === 0) {
+        if (!Array.isArray(history) || history.length === 0) {
             container.style.display = 'none';
             return;
         }
@@ -423,6 +564,7 @@
             
             // Preferir banner, si no poster
             const img = anime.banner || anime.poster;
+            const percent = (item.currentTime && item.duration) ? (item.currentTime / item.duration) * 100 : 0;
             
             div.innerHTML = `
                 <img src="${img}" alt="${anime.titulo}">
@@ -432,6 +574,9 @@
                         <div class="continue-title-mini">${displayTitle}</div>
                         <div class="continue-ep-mini">${epName}</div>
                     </div>
+                </div>
+                <div class="continue-progress-bg">
+                    <div class="continue-progress-fill" style="width: ${percent}%"></div>
                 </div>
             `;
             list.appendChild(div);
@@ -499,14 +644,23 @@
         mainVideo.style.display = "block";
         mainVideo.src = episode.link;
 
+        // Intentar reanudar si es el mismo episodio guardado
+        try {
+            const history = JSON.parse(localStorage.getItem('myApp_watchHistory') || '[]');
+            const entry = history.find(h => h.animeId === currentAnime.id);
+            if (entry && entry.epIndex === index && entry.currentTime) {
+                mainVideo.currentTime = entry.currentTime;
+            }
+        } catch(e) {}
+
         // Reproduce automáticamente si es el siguiente video en la cadena
         // O si el usuario ya ha iniciado la reproducción manualmente antes.
         if (isAutoChained || hasPlayedAnyVideo) {
             mainVideo.play();
         }
 
-        // [NUEVO] Guardar progreso
-        saveWatchProgress(currentAnime.id, index);
+        // Guardar estado inicial
+        saveWatchProgress(currentAnime.id, index, mainVideo.currentTime, 0);
 
         const buttons = epSelector.querySelectorAll('.ep-box');
         buttons.forEach((btn, i) => {
@@ -522,7 +676,7 @@
         }
     }
 
-    function saveWatchProgress(animeId, epIndex) {
+    function saveWatchProgress(animeId, epIndex, currentTime = 0, duration = 0) {
         let history = [];
         try {
             history = JSON.parse(localStorage.getItem('myApp_watchHistory') || '[]');
@@ -532,7 +686,7 @@
         history = history.filter(item => item.animeId !== animeId);
         
         // Agregar al inicio
-        history.unshift({ animeId, epIndex });
+        history.unshift({ animeId, epIndex, currentTime, duration });
         
         // Limitar a 10 items
         if (history.length > 10) history.pop();
@@ -570,7 +724,7 @@
 
     function setupTouchControls() {
         heroArea.addEventListener('touchstart', handleTouchStart);
-        heroArea.addEventListener('touchmove', handleTouchMove);
+        heroArea.addEventListener('touchmove', handleTouchMove, { passive: false });
         heroArea.addEventListener('touchend', handleTouchEnd);
     }
     
@@ -632,6 +786,19 @@
         if(window.location.hash !== '#home') history.replaceState(null, null, '#home');
     }
 
+    function showExploreView() {
+        switchView(exploreView);
+        // Si está vacío, mostrar sugerencias iniciales (toda la librería o random)
+        if(!searchInput.value) renderGrid(library, searchResults);
+        else handleSearch();
+        setTimeout(() => searchInput.focus(), 100);
+    }
+
+    function showSettingsView() {
+        switchView(settingsView);
+        renderSettingsHistory();
+    }
+
     function switchView(view) {
         document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
         view.classList.add('active');
@@ -650,20 +817,58 @@
         window.history.back();
     }
 
-    // Buscador
-    function openSearch() {
-        searchOverlay.classList.add('active');
-        searchInput.focus();
-        renderGrid(library, searchResults);
-    }
-    function closeSearch() {
-        searchOverlay.classList.remove('active');
-        searchInput.value = "";
-    }
     function handleSearch() {
         const query = searchInput.value.toLowerCase();
         const filtered = library.filter(a => a.titulo.toLowerCase().includes(query));
         renderGrid(filtered, searchResults);
+    }
+
+    // --- HISTORIAL EN AJUSTES ---
+    function renderSettingsHistory() {
+        const container = document.getElementById('settings-history-list');
+        container.innerHTML = "";
+        
+        let history = [];
+        try {
+            history = JSON.parse(localStorage.getItem('myApp_watchHistory') || '[]');
+        } catch (e) { history = []; }
+
+        if (history.length === 0) {
+            container.innerHTML = "<p style='color:#555; font-size:13px;'>No hay animes en el historial.</p>";
+            return;
+        }
+
+        history.forEach(item => {
+            const anime = library.find(a => a.id === item.animeId);
+            if (!anime) return; // Si el anime ya no existe en la librería
+
+            const epIndex = item.epIndex;
+            const epName = anime.episodios[epIndex] ? `Episodio ${anime.episodios[epIndex].num}` : `Episodio ${epIndex + 1}`;
+            
+            const div = document.createElement('div');
+            div.className = 'history-item';
+            div.innerHTML = `
+                <img src="${anime.poster}" class="history-poster" alt="poster">
+                <div class="history-info">
+                    <div class="history-title">${anime.titulo}</div>
+                    <div class="history-ep">${epName}</div>
+                </div>
+                <button class="history-remove-btn" onclick="removeFromHistory('${anime.id}')">Borrar</button>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function removeFromHistory(animeId) {
+        let history = [];
+        try {
+            history = JSON.parse(localStorage.getItem('myApp_watchHistory') || '[]');
+        } catch (e) { history = []; }
+
+        const newHistory = history.filter(item => item.animeId !== animeId);
+        localStorage.setItem('myApp_watchHistory', JSON.stringify(newHistory));
+        
+        renderSettingsHistory(); // Actualizar la lista visualmente
     }
 
     // El listener para el final del video ahora llama a playEpisode con el segundo parámetro en 'true'
