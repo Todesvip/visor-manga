@@ -61,10 +61,56 @@
             gap: 12px; overflow-y: auto; 
         }
 
-        .anime-grid {
-            padding: 80px 20px 20px;
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            gap: 12px;
+        /* --- NUEVO HOME (HORIZONTAL) --- */
+        .section-title {
+            font-size: 15px; font-weight: 700; margin: 0 0 15px 0; padding-left: 15px; color: #eee;
+            letter-spacing: 0.5px;
+        }
+
+        .horizontal-list {
+            display: flex; overflow-x: auto; gap: 10px; padding: 0 15px; /* <--- Aumenta este 15px para mover los posters a la derecha */
+            scrollbar-width: none; margin-bottom: 25px;
+            scroll-snap-type: x mandatory;
+        }
+        /* Control específico para mover la lista de Recién añadidos a la derecha */
+        #recent-list { padding-left: 15px; /* <--- CAMBIA ESTE NÚMERO para mover toda la fila a la derecha */ }
+
+        .horizontal-list::-webkit-scrollbar { display: none; }
+        
+        .horizontal-item { flex: 0 0 180px; cursor: pointer; scroll-snap-align: start; }
+
+        .view-all-btn {
+            display: none; /* Se oculta por defecto, se activa con JS si > 10 */
+            width: calc(100% - 30px); margin: 0 auto 30px;
+            padding: 12px; background: #1e1e24; border: 1px solid #333;
+            color: var(--accent); border-radius: 8px; font-weight: 600; cursor: pointer;
+            text-align: center; font-size: 14px;
+        }
+
+        /* --- CONTINUAR VIENDO (LISTA) --- */
+        .continue-item {
+            flex: 0 0 350px; /* <--- CAMBIA ESTE NÚMERO (200px) PARA EL TAMAÑO */
+            aspect-ratio: 16/9; position: relative; cursor: pointer; scroll-snap-align: start;
+            border: 1px solid #333; background: #000;
+            /* Sin border-radius para que sea con puntas */
+        }
+        .continue-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        .continue-info-mini {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 8px;
+            background: linear-gradient(to top, black, transparent); box-sizing: border-box;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .continue-title-mini { font-size: 12px; font-weight: bold; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+        .continue-ep-mini { font-size: 11px; color: var(--accent); font-weight: 600; }
+        .play-icon-mini {
+            font-size: 24px; color: white; opacity: 0.9; filter: drop-shadow(0 2px 5px black);
+        }
+
+        /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
+        .full-list-grid {
+            padding: 80px 15px 20px;
+            display: grid; grid-template-columns: 1fr 1fr; 
+            gap: 15px;
         }
         .poster-wrapper { cursor: pointer; }
         .poster {
@@ -93,6 +139,7 @@
             line-height: 1.2; 
             margin-bottom: 8px; 
             cursor: pointer; 
+            color: #eee; letter-spacing: 0.5px;
         }
         .show-title:active { opacity: 0.7; }
 
@@ -148,6 +195,12 @@
         .rec-poster img { width: 100%; height: 100%; object-fit: cover; }
         .rec-title { font-size: 11px; margin-top: 5px; color: #ccc; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 
+        /* Botón volver genérico */
+        .back-btn {
+            background: none; border: none; color: white; font-size: 16px; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; gap: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -170,7 +223,31 @@
                 </button>
             </div>
         </header>
-        <div class="anime-grid" id="anime-grid"></div>
+        
+        <div style="padding-top: 80px;">
+            <!-- RECIÉN AÑADIDOS (HORIZONTAL) -->
+            <div class="section-title">Recién añadidos</div>
+            <div class="horizontal-list" id="recent-list"></div>
+            
+            <!-- CONTINUAR VIENDO -->
+            <div id="continue-watching-container" style="display:none;">
+                <div class="section-title">Continuar viendo</div>
+                <div class="horizontal-list" id="continue-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISTA LISTA COMPLETA -->
+    <div id="full-list-view" class="view">
+        <header>
+            <div class="header-content">
+                <button class="back-btn" onclick="closeFullList()">
+                    <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white;filter:drop-shadow(0 2px 3px black);"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                    Lista completa
+                </button>
+            </div>
+        </header>
+        <div class="full-list-grid" id="full-grid"></div>
     </div>
 
     <!-- DETALLE -->
@@ -210,7 +287,7 @@
 // --- TU LISTA DE ANIMES ---
 const library = [
     {
-        id: "hell",
+        id: "Kaifuku",
         titulo: "Kaifuku Jutsushi no Yarinaoshi",
         poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
         banner: "",
@@ -269,8 +346,9 @@ const library = [
 
     // --- ELEMENTOS DOM ---
     const homeView = document.getElementById('home-view');
+    const fullListView = document.getElementById('full-list-view');
     const detailView = document.getElementById('detail-view');
-    const grid = document.getElementById('anime-grid');
+    const fullGrid = document.getElementById('full-grid');
     const mainVideo = document.getElementById('main-video');
     const heroImg = document.getElementById('hero-img');
     const heroArea = document.getElementById('hero-area');
@@ -296,10 +374,10 @@ const library = [
         if(!window.location.hash) window.location.hash = "home";
         
         if (typeof library !== 'undefined') {
-            renderGrid();
+            renderHome();
         } else {
             console.error("Falta data.js");
-            grid.innerHTML = "<p style='text-align:center; margin-top:50px;'>Error: data.js no encontrado.</p>";
+            document.body.innerHTML = "<p style='text-align:center; margin-top:50px;'>Error: data.js no encontrado.</p>";
         }
 
         window.addEventListener('hashchange', handleRouting);
@@ -319,13 +397,38 @@ const library = [
         const hash = window.location.hash;
         if (hash.startsWith('#detail') && currentAnime) {
             showDetailView();
+        } else if (hash === '#fulllist') {
+            showFullListView();
         } else {
             showHomeView();
         }
     }
 
-    // --- HOME & GRID ---
-    function renderGrid(data = library, container = grid) {
+    // --- RENDERIZADO ---
+    function renderHome() {
+        // 1. Recién añadidos (Horizontal, max 10)
+        const recentContainer = document.getElementById('recent-list');
+        recentContainer.innerHTML = "";
+        const recentItems = library.slice(0, 10);
+        
+        recentItems.forEach(anime => {
+            // Limitar título a 26 caracteres (ej: "Hell Mode: Yarikomizuki no")
+            const displayTitle = anime.titulo.length > 26 ? anime.titulo.substring(0, 26) : anime.titulo;
+            const div = document.createElement('div');
+            div.className = 'horizontal-item';
+            div.onclick = () => openAnimeDetail(anime);
+            div.innerHTML = `
+                <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                <div class="anime-title">${displayTitle}</div>
+            `;
+            recentContainer.appendChild(div);
+        });
+
+        // 3. Continuar Viendo
+        loadContinueWatching();
+    }
+
+    function renderGrid(data, container) {
         container.innerHTML = "";
         data.forEach(anime => {
             const card = document.createElement('div');
@@ -336,6 +439,54 @@ const library = [
                 <div class="anime-title">${anime.titulo}</div>
             `;
             container.appendChild(card);
+        });
+    }
+
+    // --- LÓGICA CONTINUAR VIENDO ---
+    function loadContinueWatching() {
+        const container = document.getElementById('continue-watching-container');
+        const list = document.getElementById('continue-list');
+        // Usamos una nueva clave para guardar el array de historial
+        const history = JSON.parse(localStorage.getItem('myApp_watchHistory') || '[]');
+        
+        if (history.length === 0) {
+            container.style.display = 'none';
+            return;
+        }
+
+        container.style.display = 'block';
+        list.innerHTML = "";
+
+        history.forEach(item => {
+            const anime = library.find(a => a.id === item.animeId);
+            if (!anime) return;
+
+            const epIndex = item.epIndex;
+            const epName = anime.episodios[epIndex] ? `Episodio ${anime.episodios[epIndex].num}` : `Episodio ${epIndex + 1}`;
+            
+            // Limitar título a 26 caracteres
+            const displayTitle = anime.titulo.length > 26 ? anime.titulo.substring(0, 26) : anime.titulo;
+            const div = document.createElement('div');
+            div.className = 'continue-item';
+            div.onclick = () => {
+                openAnimeDetail(anime);
+                playEpisode(epIndex);
+            };
+            
+            // Preferir banner, si no poster
+            const img = anime.banner || anime.poster;
+            
+            div.innerHTML = `
+                <img src="${img}" alt="${anime.titulo}">
+                <div class="continue-info-mini">
+                    <div class="play-icon-mini">▶</div>
+                    <div style="flex: 1; min-width: 0;">
+                        <div class="continue-title-mini">${displayTitle}</div>
+                        <div class="continue-ep-mini">${epName}</div>
+                    </div>
+                </div>
+            `;
+            list.appendChild(div);
         });
     }
 
@@ -406,6 +557,9 @@ const library = [
             mainVideo.play();
         }
 
+        // [NUEVO] Guardar progreso
+        saveWatchProgress(currentAnime.id, index);
+
         const buttons = epSelector.querySelectorAll('.ep-box');
         buttons.forEach((btn, i) => {
             btn.classList.toggle('active', i === index);
@@ -418,6 +572,24 @@ const library = [
         if (!isAutoChained) {
             document.getElementById('hero-area').scrollIntoView({ behavior: 'smooth' });
         }
+    }
+
+    function saveWatchProgress(animeId, epIndex) {
+        let history = [];
+        try {
+            history = JSON.parse(localStorage.getItem('myApp_watchHistory') || '[]');
+        } catch(e) { history = []; }
+
+        // Eliminar si ya existe para ponerlo al principio (actualizar)
+        history = history.filter(item => item.animeId !== animeId);
+        
+        // Agregar al inicio
+        history.unshift({ animeId, epIndex });
+        
+        // Limitar a 10 items
+        if (history.length > 10) history.pop();
+        
+        localStorage.setItem('myApp_watchHistory', JSON.stringify(history));
     }
 
     function renderRecommendations(currentId) {
@@ -446,7 +618,7 @@ const library = [
     let startX = 0;
     let startVideoTime = 0;
     // [CORREGIDO] Se aumenta el valor para que el deslizamiento sea mucho más rápido.
-    const swipeSeekFactor = 2.5; 
+    const swipeSeekFactor = 1.0; 
 
     function setupTouchControls() {
         heroArea.addEventListener('touchstart', handleTouchStart);
@@ -508,12 +680,26 @@ const library = [
         mainVideo.src = "";
         currentAnime = null; 
         switchView(homeView);
+        renderHome(); // Recargar para actualizar "Continuar viendo"
         if(window.location.hash !== '#home') history.replaceState(null, null, '#home');
     }
 
     function switchView(view) {
         document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
         view.classList.add('active');
+    }
+
+    // --- LISTA COMPLETA ---
+    function openFullList() {
+        renderGrid(library, fullGrid);
+        window.location.hash = "fulllist";
+    }
+    function showFullListView() {
+        renderGrid(library, fullGrid);
+        switchView(fullListView);
+    }
+    function closeFullList() {
+        window.history.back();
     }
 
     // Buscador
