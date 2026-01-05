@@ -20,6 +20,8 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         /* Evitar arrastrar imágenes al deslizar en móvil */
@@ -61,6 +63,8 @@
         .search-input {
             flex: 1; background: #1e1e24; border: 1px solid #333; color: white;
             padding: 12px; border-radius: 8px; font-size: 16px; outline: none;
+            -webkit-user-select: text;
+            user-select: text;
         }
         .search-results { 
             display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); 
@@ -375,8 +379,7 @@
         
         <div style="padding-top: 10px;">
             <!-- RECIÉN AÑADIDOS (HORIZONTAL) -->
-            <div class="section-title">Recientemente agregados</div>
-            <div class="horizontal-list" id="recent-list"></div>
+            <div class="full-list-grid" id="recent-list" style="padding: 0 15px 20px;"></div>
         </div>
     </div>
 
@@ -673,12 +676,8 @@ let library = publicLibrary;
             if (bottomNav) bottomNav.style.display = 'flex';
         }
 
-        // Controlar visibilidad del botón ojo
-        if ((hash.startsWith('#detail') || hash === '#manga') && currentAnime && currentAnime.id === 'Kaifuku') {
-            mangaToggleBtn.classList.add('show');
-        } else {
-            mangaToggleBtn.classList.remove('show');
-        }
+        // Actualizar estado del botón manga
+        updateMangaButtonState();
     }
 
     function switchTab(tab) {
@@ -686,6 +685,23 @@ let library = publicLibrary;
         if (window.location.hash !== hash) {
             history.replaceState(null, null, hash);
             handleRouting();
+        }
+    }
+
+    function updateMangaButtonState() {
+        const hash = window.location.hash;
+        // 1. Mostrar/Ocultar botón (Solo Kaifuku y en vistas permitidas)
+        if (currentAnime && currentAnime.id === 'Kaifuku' && (hash.startsWith('#detail') || hash === '#manga')) {
+            mangaToggleBtn.classList.add('show');
+        } else {
+            mangaToggleBtn.classList.remove('show');
+        }
+
+        // 2. Sincronizar icono del ojo con la vista actual
+        if (hash === '#manga') {
+            mangaToggleBtn.classList.add('is-visible');
+        } else {
+            mangaToggleBtn.classList.remove('is-visible');
         }
     }
 
@@ -711,22 +727,20 @@ let library = publicLibrary;
 
     // --- RENDERIZADO ---
     function renderHome() {
-        // 1. Recién añadidos (Horizontal, max 2)
+        // 1. Recién añadidos (Grid 2 columnas, max 20)
         const recentContainer = document.getElementById('recent-list');
         recentContainer.innerHTML = "";
-        const recentItems = library.slice(0, 2);
+        const recentItems = library.slice(0, 20);
         
         recentItems.forEach(anime => {
-            // Limitar título a 26 caracteres (ej: "Hell Mode: Yarikomizuki no")
-            const displayTitle = anime.titulo.length > 26 ? anime.titulo.substring(0, 26) : anime.titulo;
-            const div = document.createElement('div');
-            div.className = 'horizontal-item';
-            div.onclick = () => openAnimeDetail(anime);
-            div.innerHTML = `
+            const card = document.createElement('div');
+            card.className = "poster-wrapper"; 
+            card.onclick = () => { openAnimeDetail(anime); };
+            card.innerHTML = `
                 <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
-                <div class="anime-title">${displayTitle}</div>
+                <div class="anime-title">${anime.titulo}</div>
             `;
-            recentContainer.appendChild(div);
+            recentContainer.appendChild(card);
         });
     }
 
@@ -751,12 +765,9 @@ let library = publicLibrary;
         currentEpIndex = 0;
         prepareDetailView(anime); 
 
-        // Resetear estado del botón ojo
-        mangaToggleBtn.classList.remove('is-visible');
-        // El botón se mostrará en handleRouting si el ID coincide
-        
         if (window.location.hash.startsWith('#detail')) {
             showDetailView(); 
+            updateMangaButtonState();
         } else {
             window.location.hash = "detail"; 
         }
