@@ -8,6 +8,12 @@
         /* --- ESTILOS GENERALES --- */
         :root { --bg: #0b0c0f; --text: #ffffff; --text-gray: #a8a8a8; --accent: #3b82f6; }
         
+        /* --- ELIMINAR SOMBRA DE CONTROLES DE VIDEO --- */
+        video::-webkit-media-controls-panel {
+            background-image: none !important;
+        }
+        /* --------------------------------------------- */
+        
         body { 
             margin: 0; padding: 0; 
             background-color: var(--bg); color: var(--text); 
