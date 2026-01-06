@@ -993,8 +993,7 @@ let library = publicLibrary;
 
     // Variables Manga
     const TOTAL_PAGINAS = 77;      
-    const CARPETA_MANGA = 'manga'; 
-    const EXTENSION = '.webp'; 
+    const CARPETA_MANGA = 'dato1'; 
 
     function loadMangaImages() {
         const contenedor = document.getElementById('contenedor-imagenes');
@@ -1002,15 +1001,30 @@ let library = publicLibrary;
         const loading = document.getElementById('loading-manga');
         
         loading.style.display = 'none';
+        
+        // Lista de extensiones a probar (prioridad: webp -> jpg -> png)
+        const extensiones = ['.webp', '.jpg', '.png', '.jpeg'];
 
         for (let i = 1; i <= TOTAL_PAGINAS; i++) {
             const img = document.createElement('img');
             img.className = 'pag';
             img.id = `img-${i}`;
-            img.src = `${CARPETA_MANGA}/${i}${EXTENSION}`;
+            
+            // Intentar cargar con la primera extensión
+            let extIndex = 0;
+            img.src = `${CARPETA_MANGA}/${i}${extensiones[0]}`;
+            
             if (i > 3) img.loading = "lazy";
             
-            img.onerror = function() { this.style.display='none'; };
+            // Si falla, probar la siguiente extensión
+            img.onerror = function() {
+                extIndex++;
+                if (extIndex < extensiones.length) {
+                    this.src = `${CARPETA_MANGA}/${i}${extensiones[extIndex]}`;
+                } else {
+                    this.style.display = 'none';
+                }
+            };
             img.onload = () => img.classList.add('loaded');
             
             contenedor.appendChild(img);
