@@ -1009,23 +1009,34 @@ let library = publicLibrary;
             const img = document.createElement('img');
             img.className = 'pag';
             img.id = `img-${i}`;
-            
-            // Intentar cargar con la primera extensión
-            let extIndex = 0;
-            img.src = `${CARPETA_MANGA}/${i}${extensiones[0]}`;
-            
             if (i > 3) img.loading = "lazy";
             
-            // Si falla, probar la siguiente extensión
-            img.onerror = function() {
-                extIndex++;
-                if (extIndex < extensiones.length) {
-                    this.src = `${CARPETA_MANGA}/${i}${extensiones[extIndex]}`;
+            // Generar todas las combinaciones posibles (1.jpg, 01.jpg, 001.jpg, etc.)
+            const candidatos = [];
+            const variantesNum = [String(i), String(i).padStart(2, '0'), String(i).padStart(3, '0')];
+            // Eliminar duplicados (ej: "100" vs "100")
+            const unicosNum = [...new Set(variantesNum)];
+            
+            unicosNum.forEach(num => {
+                extensiones.forEach(ext => candidatos.push(`${CARPETA_MANGA}/${num}${ext}`));
+            });
+
+            // Lógica de "prueba y error" automática
+            let intento = 0;
+            const cargarSiguiente = () => {
+                if (intento < candidatos.length) {
+                    img.src = candidatos[intento];
+                    intento++;
                 } else {
-                    this.style.display = 'none';
+                    img.style.display = 'none'; // Fallaron todas
                 }
             };
+            
+            img.onerror = cargarSiguiente;
             img.onload = () => img.classList.add('loaded');
+            
+            // Iniciar carga
+            cargarSiguiente();
             
             contenedor.appendChild(img);
 
