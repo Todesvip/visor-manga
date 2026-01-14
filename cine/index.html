@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title></title>
+    <title>Todesvip</title>
     <style>
         /* --- ESTILOS GENERALES --- */
-        :root { --bg: #0b0c0f; --text: #ffffff; --text-gray: #a8a8a8; --accent: #3b82f6; }
+        :root { --bg: #000000; --text: #ffffff; --text-gray: #a8a8a8; --accent: #00A4DC; }
         
         /* --- ELIMINAR SOMBRA DE CONTROLES DE VIDEO --- */
         video::-webkit-media-controls-panel {
@@ -35,40 +35,113 @@
         .view { display: none; }
         .view.active { display: block; animation: fadeIn 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
 
         /* --- HOME --- */
         header { 
-            padding: 22px 15px 8px 15px; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); 
+            padding: 15px 20px; 
+            background-color: #101010; /* Color Jellyfin (Gris muy oscuro) */
             position: fixed; width: 100%; z-index: 50; top:0; 
             pointer-events: auto;
             box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
         }
 
         .header-content { 
             display: flex; 
-            justify-content: flex-start; 
+            justify-content: space-between; 
             align-items: center; 
         }
 
-        .search-btn { 
-            background: none; border: none; color: white; cursor: pointer; padding: 0; 
-            display: flex; align-items: center; justify-content: center;
+        .header-right { display: flex; gap: 20px; align-items: center; }
+        .nav-btn { background: none; border: none; padding: 0; cursor: pointer; display: flex; }
+        .nav-btn svg { width: 28px; height: 28px; fill: #b0b0b0; filter: drop-shadow(0 2px 5px black); transition: fill 0.2s; }
+        .nav-btn:hover svg { fill: white; }
+
+        /* LOGO MÁS GRANDE */
+        .logo-btn svg { width: 45px; height: 45px; transition: none; }
+
+        /* --- CAMPO DE CÓDIGO (REEMPLAZA LOGO) --- */
+        .code-input-container {
+            flex-basis: 100px; /* Ancho base */
+            margin-right: 10px;
         }
-        .search-btn svg { width: 28px; height: 28px; fill: white; filter: drop-shadow(0 2px 5px black); }
+        .code-input {
+            width: 100%;
+            background-color: rgba(15, 15, 15, 0.75);
+            color: #ccc; border: none; border-radius: 8px;
+            padding: 8px 12px; font-size: 14px; font-weight: 600;
+            outline: none; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-align: center; letter-spacing: 2px;
+        }
+        .code-input::placeholder { color: #888; letter-spacing: normal; }
+        .code-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
+        /* Ocultar flechas en input de número */
+        .code-input::-webkit-outer-spin-button, .code-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .code-input[type=number] { -moz-appearance: textfield; }
         
-        /* --- EXPLORE / BUSCADOR --- */
-        .explore-header { padding: 20px 15px 10px; position: sticky; top: 0; background: var(--bg); z-index: 10; }
-        .search-bar-container { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .search-input {
-            flex: 1; background: #1e1e24; border: 1px solid #333; color: white;
-            padding: 12px; border-radius: 8px; font-size: 16px; outline: none;
-            -webkit-user-select: text;
-            user-select: text;
+        /* --- BUSCADOR EN HEADER --- */
+        .header-search-container {
+            flex: 1; margin: 0 15px; display: flex; justify-content: flex-end; }
+        .header-search-active-view {
+            display: none; /* Oculto por defecto */
+            align-items: center;
+            gap: 10px;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            padding: 0 15px;
+            box-sizing: border-box;
+            background-color: #101010; /* Mismo que el header */
+            z-index: 1;
         }
-        .search-results { 
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); 
-            gap: 12px; padding: 0 15px 20px;
+        header.search-active .header-search-active-view {
+            display: flex; /* Se muestra en modo búsqueda */
+        }
+        header.search-active .header-content {
+            visibility: hidden; /* Se oculta el contenido normal para mantener la altura */
+        }
+
+        .header-search-input {
+            width: 100%; max-width: 300px;
+            flex-grow: 1; /* Ocupa el espacio restante */
+            background-color: rgba(15, 15, 15, 0.75); backdrop-filter: blur(12px);
+            color: #ccc;
+            border: none; border-radius: 8px;
+            padding: 8px 12px; font-size: 14px; font-weight: 500;
+            outline: none; transition: width 0.3s;
+            outline: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .header-search-input::placeholder { color: #888; }
+
+        /* --- RESULTADOS DE BÚSQUEDA (TEXTO) --- */
+        #global-search-results {
+            position: fixed; top: 75px; left: 0; width: 100%; height: calc(100% - 75px);
+            background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(5px);
+            z-index: 45; overflow-y: auto; display: none;
+            padding: 10px 0;
+        }
+        .search-result-card {
+            display: flex; gap: 15px; padding: 15px;
+            border-bottom: none;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .search-result-card:hover { background: #1a1a1a; }
+        .search-poster-img {
+            width: 100px; aspect-ratio: 2/3; object-fit: cover; 
+            border-radius: 0; flex-shrink: 0;
+        }
+        .search-info {
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .search-title {
+            color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 5px;
+        }
+        .search-desc {
+            color: #ccc; font-size: 11px; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
         }
 
         /* --- NUEVO HOME (HORIZONTAL) --- */
@@ -77,13 +150,21 @@
             letter-spacing: 0px;
         }
 
+        .home-content { padding-top: 80px; }
+
         .horizontal-list {
-            display: flex; overflow-x: auto; gap: 10px; padding: 0 15px; /* <--- Aumenta este 15px para mover los posters a la derecha */
+            display: flex; overflow-x: auto; gap: 10px; padding: 0;
+            scroll-padding-left: 15px; /* Para que el snap se alinee con el título */
             scrollbar-width: none; margin-bottom: 25px;
             scroll-snap-type: x mandatory;
         }
-        /* Control específico para mover la lista de Recién añadidos a la derecha */
-        #recent-list { padding-left: 15px; /* <--- CAMBIA ESTE NÚMERO para mover toda la fila a la derecha */ }
+        
+        /* Espaciadores para alinear (5px ancho + 10px gap = 15px total, igual que el título) */
+        .horizontal-list::before, .horizontal-list::after {
+            content: ''; display: block; flex: 0 0 5px;
+        }
+
+        #recent-list { padding-left: 0; }
 
         .horizontal-list::-webkit-scrollbar { display: none; }
         
@@ -99,6 +180,30 @@
             padding: 12px; background: #1e1e24; border: 1px solid #333;
             color: var(--accent); border-radius: 8px; font-weight: 600; cursor: pointer;
             text-align: center; font-size: 14px;
+        }
+
+        /* --- DIRECTORIO (GRID TIPO SASA) --- */
+        .directory-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+            padding: 0 15px 20px; margin-top: 80px; /* Margen para bajarlo del header fijo */
+        }
+        .dir-card {
+            background-color: #1e1e24; border-radius: 16px; height: 100px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-decoration: none; color: white; position: relative; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s, background 0.2s;
+        }
+        .dir-card:active { transform: scale(0.96); background-color: #25252b; }
+        
+        .dir-icon {
+            width: 28px; height: 28px; margin-bottom: 8px;
+            fill: var(--accent);
+        }
+        .dir-title {
+            font-size: 14px; font-weight: 700; margin-bottom: 2px;
+        }
+        .dir-subtitle {
+            font-size: 11px; color: var(--text-gray);
         }
 
         /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
@@ -138,6 +243,13 @@
         }
         .show-title:active { opacity: 0.7; }
 
+        .show-subtitle {
+            font-size: 15px;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
         .meta-row { display: flex; gap: 10px; font-size: 13px; color: var(--text-gray); margin-bottom: 20px; align-items: center; }
         .badge { border: 1px solid var(--text-gray); padding: 1px 4px; border-radius: 2px; font-size: 11px; }
 
@@ -153,42 +265,26 @@
         .ep-selector-row::-webkit-scrollbar { display: none; }
 
         .ep-box {
-            width: 50px; height: 50px; background: #1e1e24; border-radius: 4px;
+            width: 50px; height: 50px; 
+            background: rgba(15, 15, 15, 0.75); backdrop-filter: blur(12px);
+            border-radius: 8px; border: none;
             display: flex; align-items: center; justify-content: center;
-            font-weight: bold; font-size: 15px; color: #e0e0e0; flex-shrink: 0;
-            cursor: pointer; transition: background 0.2s;
+            font-weight: 600; font-size: 1rem; color: #ccc; flex-shrink: 0;
+            cursor: pointer; transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
         .ep-box.active {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+            background: rgba(255, 255, 255, 0.15); color: white; 
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
         }
         .ep-box:active { transform: scale(0.95); }
 
         /* --- SINOPSIS --- */
         .synopsis { font-size: 13px; line-height: 1.5; color: #ccc; margin-bottom: 5px; }
-        .synopsis.collapsed {
-             display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-        }
         .read-more-btn {
-            color: var(--accent); font-weight: 600; cursor: pointer; font-size: 13px; 
-            margin-bottom: 30px; display: inline-block;
+            display: none !important;
         }
-
-        /* --- TAMBIÉN PODRÍA GUSTARTE --- */
-        .section-header { font-size: 15px; font-weight: 700; margin-bottom: 15px; margin-top: 10px; color: #eee; }
-        
-        .rec-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            gap: 12px;
-        }
-        .rec-item { cursor: pointer; }
-        .rec-poster {
-            width: 100%; aspect-ratio: 2/3; border-radius: 4px; overflow: hidden; background: #222;
-        }
-        .rec-poster img { width: 100%; height: 100%; object-fit: cover; }
-        .rec-title { font-size: 11px; margin-top: 5px; color: #ccc; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 
         /* Botón volver genérico */
         .back-btn {
@@ -196,23 +292,8 @@
             display: flex; align-items: center; gap: 5px;
         }
 
-        /* --- BOTTOM NAV --- */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
-            background: #0b0c0f; border-top: 1px solid #222;
-            display: flex; justify-content: space-around; align-items: center;
-            z-index: 90; padding-bottom: env(safe-area-inset-bottom);
-        }
-        .nav-item {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: var(--text-gray); text-decoration: none; font-size: 10px; gap: 4px;
-            background: none; border: none; cursor: pointer; flex: 1; height: 100%;
-        }
-        .nav-item.active { color: var(--accent); }
-        .nav-item svg { width: 22px; height: 22px; fill: currentColor; }
-        
         /* Ajuste para que el contenido no quede tapado por el nav */
-        .view { padding-bottom: 70px; }
+        .view { padding-bottom: 20px; }
         
         /* AJUSTES */
         .settings-content { padding: 40px 20px; text-align: center; color: #777; }
@@ -374,6 +455,23 @@
         .visibility-toggle-btn { display: none; }
         /* Mostrar solo cuando se active via JS */
         .visibility-toggle-btn.show { display: flex; }
+
+        /* --- PAGINACIÓN --- */
+        .pagination-container {
+            display: flex; justify-content: center; gap: 8px; padding: 20px 0;
+            width: 100%;
+        }
+        .page-btn {
+            background: #1e1e24; color: #ccc; border: none;
+            width: 35px; height: 35px; border-radius: 50%;
+            font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s, color 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .page-btn.active {
+            background: var(--accent); color: white;
+            box-shadow: 0 0 10px var(--accent);
         }
 
     </style>
@@ -389,42 +487,57 @@
         </div>
     </div>
 
+    <!-- HEADER GLOBAL (Movido fuera de home-view) -->
+    <header id="main-header">
+        <div class="header-content">
+            <div class="code-input-container">
+                <input type="tel" id="code-input" class="code-input" placeholder="Clave" pattern="[0-9]*" inputmode="numeric">
+            </div>
+            
+            <div class="header-search-container">
+                <input type="text" id="header-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch()">
+            </div>
+
+            <div class="header-right">
+                <div class="nav-btn" id="search-action-btn">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+                <div class="nav-btn" onclick="toggleAppMode()">
+                    <svg viewBox="0 0 24 24"><path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-.11 0-.21-.04-.3-.12-.21-.2-.21-.53 0-.74 1.22-1.22 1.88-2.53 1.88-3.71 0-.28.22-.5.5s.5.22.5.5c0 1.53-.86 3.16-2.28 4.57-.08.08-.19.12-.3.12zM12.5 22c-1.31 0-2.42-.56-3.25-1.55-.18-.21-.15-.52.06-.7.21-.18.52-.15.7.06.61.73 1.45 1.13 2.49 1.13.28 0 .5.22.5.5s-.22.56-.5.56z"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="header-search-active-view">
+            <div class="nav-btn" id="search-back-btn">
+                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            </div>
+            <input type="text" id="header-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch()">
+        </div>
+    </header>
+
+    <!-- RESULTADOS DE BÚSQUEDA GLOBAL (TEXTO) -->
+    <div id="global-search-results"></div>
+
     <!-- HOME -->
     <div id="home-view" class="view active">
-        <header>
-            <div class="header-content">
-            </div>
-        </header>
-        
-        <div style="padding-top: 10px;">
+        <div class="home-content">
             <!-- RECIÉN AÑADIDOS (HORIZONTAL) -->
-            <div class="full-list-grid" id="recent-list" style="padding: 0 15px 20px;"></div>
-        </div>
-    </div>
+            <div class="section-title">Recientes</div>
+            <div class="horizontal-list" id="recent-list"></div>
 
-    <!-- EXPLORE (BUSCADOR) -->
-    <div id="explore-view" class="view">
-        <div class="explore-header">
-            <div class="search-bar-container">
-                <input type="text" id="search-input" class="search-input" placeholder="Buscar animes..." oninput="handleSearch()">
-            </div>
+            <!-- MÁS POPULARES (HORIZONTAL) -->
+            <div class="section-title">Más populares</div>
+            <div class="horizontal-list" id="popular-list"></div>
+
+            <!-- ANIMES LATINO (HORIZONTAL) -->
+            <div class="section-title">Animes Latino</div>
+            <div class="horizontal-list" id="latino-list"></div>
         </div>
-        <div class="search-results" id="search-results"></div>
     </div>
 
     <!-- AJUSTES -->
     <div id="settings-view" class="view">
         <div class="settings-content">
-            <h2>Ajustes</h2>
-            <p>Versión 1.0.0</p>
-            
-            <div class="switch-container">
-                <span class="switch-label">Restricciones de contenido</span>
-                <label class="switch">
-                    <input type="checkbox" id="restriction-toggle" onchange="toggleRestrictions()">
-                    <span class="slider"></span>
-                </label>
-            </div>
         </div>
     </div>
 
@@ -450,6 +563,7 @@
 
         <div class="content-body">
             <div id="detail-title" class="show-title" onclick="window.history.back()"></div>
+            <div id="detail-subtitle" class="show-subtitle"></div>
             
             <div class="meta-row">
                 <span id="detail-rating" class="badge"></span>
@@ -458,19 +572,14 @@
                 <span id="detail-quality"></span>
             </div>
 
-            <!-- Contador de capítulos -->
-            <div class="ep-count-header" id="ep-count-text">0 Capítulos</div>
-
             <!-- Fila de botones cuadrados -->
             <div class="ep-selector-row" id="ep-selector"></div>
             
+            <!-- Contador de capítulos (Movido abajo) -->
+            <div class="ep-count-header" id="ep-count-text">0 Capítulos</div>
+            
             <!-- SINOPSIS -->
             <p id="detail-synopsis" class="synopsis"></p>
-            <div id="read-more-btn" class="read-more-btn" onclick="toggleSynopsis()">vea más</div>
-
-            <!-- Recomendaciones -->
-            <div class="section-header">Más como esto</div>
-            <div class="rec-grid" id="recommendations-container"></div>
         </div>
     </div>
 
@@ -506,24 +615,12 @@
         </svg>
     </div>
 
-    <!-- BARRA DE NAVEGACIÓN INFERIOR -->
-    <nav class="bottom-nav">
-        <button class="nav-item active" onclick="switchTab('home')" id="nav-home">
-            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
-        </button>
-        <button class="nav-item" onclick="switchTab('explore')" id="nav-explore">
-            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> Explore
-        </button>
-        <button class="nav-item" onclick="switchTab('settings')" id="nav-settings">
-            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.04.24.24.41.48.41h3.84c.24 0 .43-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.08-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg> Ajustes
-        </button>
-    </nav>
-
 <script>
 const publicLibrary = [
     {
         id: "Kaifuku",
         titulo: "Kaifuku Jutsushi no Yarinaoshi",
+        titulo_jp: "回復術士のやり直し",
         poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
         banner: "",
         rating: "16+",
@@ -625,9 +722,11 @@ let library = publicLibrary;
     // --- VARIABLES DE ESTADO ---
     let currentAnime = null;
     let currentEpIndex = 0;
-    let needsSynopsisCheck = false; 
     let hasPlayedAnyVideo = false; // [NUEVO] Flag para la nueva lógica de autoplay
     let isRestrictedMode = false;
+    let privatePage = 1; // Página actual del modo privado
+    const itemsPerPage = 20; // 2 columnas * 10 filas = 20 items
+    const SECRET_CODE = "4560";
 
     // --- ELEMENTOS DOM ---
     const homeView = document.getElementById('home-view');
@@ -642,20 +741,24 @@ let library = publicLibrary;
     const heroArea = document.getElementById('hero-area');
     
     const detailTitle = document.getElementById('detail-title');
+    const detailSubtitle = document.getElementById('detail-subtitle');
     const epCountText = document.getElementById('ep-count-text');
     const epSelector = document.getElementById('ep-selector');
     const detailSynopsis = document.getElementById('detail-synopsis');
-    const readMoreBtn = document.getElementById('read-more-btn');
-    const recContainer = document.getElementById('recommendations-container');
 
     const detailRating = document.getElementById('detail-rating');
     const detailSeason = document.getElementById('detail-season');
     const detailYear = document.getElementById('detail-year');
     const detailQuality = document.getElementById('detail-quality');
 
-    const searchInput = document.getElementById('search-input');
-    const searchResults = document.getElementById('search-results');
+    const headerSearchInput = document.getElementById('header-search-input');
+    const globalSearchResults = document.getElementById('global-search-results');
+    const codeInput = document.getElementById('code-input');
     
+    const mainHeader = document.getElementById('main-header');
+    const searchActionBtn = document.getElementById('search-action-btn');
+    const searchBackBtn = document.getElementById('search-back-btn');
+
     const mangaToggleBtn = document.getElementById('manga-toggle-btn');
     let mangaLoaded = false;
 
@@ -687,6 +790,9 @@ let library = publicLibrary;
         
         setupTouchControls();
 
+        searchActionBtn.addEventListener('click', openSearch);
+        searchBackBtn.addEventListener('click', closeSearch);
+
         // [NUEVO] Listener para activar el flag de autoplay después del primer play manual.
         mainVideo.addEventListener('play', () => {
             if (!hasPlayedAnyVideo) {
@@ -695,34 +801,31 @@ let library = publicLibrary;
         });
     }
 
+    function openSearch() {
+        mainHeader.classList.add('search-active');
+        headerSearchInput.focus();
+    }
+
+    function closeSearch() {
+        mainHeader.classList.remove('search-active');
+        headerSearchInput.value = ''; // Limpiar input
+        handleGlobalSearch(); // Limpiar resultados
+    }
+
     function handleRouting() {
         const hash = window.location.hash;
-        const bottomNav = document.querySelector('.bottom-nav');
         
         // Reset nav active state
-        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        // document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
 
         if (hash.startsWith('#detail') && currentAnime) {
             showDetailView();
-            if (bottomNav) bottomNav.style.display = 'none';
         } else if (hash === '#manga') {
             showMangaView();
-            if (bottomNav) bottomNav.style.display = 'none';
         } else if (hash === '#fulllist') {
             showFullListView();
-            if (bottomNav) bottomNav.style.display = 'none';
-        } else if (hash === '#explore') {
-            showExploreView();
-            document.getElementById('nav-explore').classList.add('active');
-            if (bottomNav) bottomNav.style.display = 'flex';
-        } else if (hash === '#settings') {
-            showSettingsView();
-            document.getElementById('nav-settings').classList.add('active');
-            if (bottomNav) bottomNav.style.display = 'flex';
         } else {
             showHomeView();
-            document.getElementById('nav-home').classList.add('active');
-            if (bottomNav) bottomNav.style.display = 'flex';
         }
 
         // Actualizar estado del botón manga
@@ -754,34 +857,119 @@ let library = publicLibrary;
         }
     }
 
-    function toggleRestrictions() {
-        const toggle = document.getElementById('restriction-toggle');
-        isRestrictedMode = toggle.checked;
-        
-        // Guardar estado
-        localStorage.setItem('myApp_restrictedMode', isRestrictedMode);
-        
-        // Cambiar librería
-        library = isRestrictedMode ? privateLibrary : publicLibrary;
-        
-        // Refrescar vistas
-        renderHome();
-        if (document.getElementById('explore-view').classList.contains('active')) {
-            showExploreView();
+    function toggleAppMode() {
+        // Si ya estamos en modo privado, al tocar el icono se vuelve al modo público.
+        if (isRestrictedMode) {
+            isRestrictedMode = false;
+            library = publicLibrary;
+            localStorage.setItem('myApp_restrictedMode', 'false');
+            renderHome();
+            switchTab('home');
+            return;
         }
-        if (document.getElementById('full-list-view').classList.contains('active')) {
-            openFullList();
+
+        // Si estamos en modo público, verificar el código.
+        if (codeInput.value === SECRET_CODE) {
+            isRestrictedMode = true;
+            library = privateLibrary;
+            localStorage.setItem('myApp_restrictedMode', 'true');
+            renderHome();
+            switchTab('home');
+        } else {
+            // Código incorrecto: animar y limpiar.
+            codeInput.classList.add('shake');
+            setTimeout(() => codeInput.classList.remove('shake'), 700);
+            codeInput.value = "";
         }
     }
 
     // --- RENDERIZADO ---
     function renderHome() {
-        // 1. Recién añadidos (Grid 2 columnas, max 20)
-        const recentContainer = document.getElementById('recent-list');
-        recentContainer.innerHTML = "";
-        const recentItems = library.slice(0, 20);
+        const homeContent = document.querySelector('.home-content');
         
-        recentItems.forEach(anime => {
+        if (isRestrictedMode) {
+            // --- MODO PRIVADO (GRID PAGINADO) ---
+            // "Donde está el icono de huella... videos de 2 hasta abajo... hasta 10 lineas"
+            homeContent.innerHTML = `
+                <div class="full-list-grid" id="private-grid" style="padding-top:20px;"></div>
+                <div id="private-pagination" class="pagination-container"></div>
+            `;
+            renderPrivateGrid();
+        } else {
+            // --- MODO PÚBLICO (LISTAS HORIZONTALES) ---
+            homeContent.innerHTML = `
+                <div class="section-title">Recientes</div>
+                <div class="horizontal-list" id="recent-list"></div>
+
+                <div class="section-title">Más populares</div>
+                <div class="horizontal-list" id="popular-list"></div>
+
+                <div class="section-title">Animes Latino</div>
+                <div class="horizontal-list" id="latino-list"></div>
+            `;
+
+            // 1. Recién añadidos
+            const recentContainer = document.getElementById('recent-list');
+            let recentItems = library.filter(a => a.id === 'Kaifuku');
+            if (recentItems.length === 0) recentItems = library.slice(0, 10);
+            
+            recentItems.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "horizontal-item"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                recentContainer.appendChild(card);
+            });
+
+            // 2. Más populares
+            const popularContainer = document.getElementById('popular-list');
+            let popularItems = library.filter(a => a.id === 'Dokyuu');
+            if (popularItems.length === 0) popularItems = library.slice(0, 10);
+            
+            popularItems.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "horizontal-item"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                popularContainer.appendChild(card);
+            });
+
+            // 3. Animes Latino
+            const latinoContainer = document.getElementById('latino-list');
+            let latinoItems = library.filter(a => a.id === 'Overlord');
+            if (latinoItems.length === 0) latinoItems = library.slice(0, 10);
+            
+            latinoItems.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "horizontal-item"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                latinoContainer.appendChild(card);
+            });
+        }
+    }
+
+    function renderPrivateGrid() {
+        const grid = document.getElementById('private-grid');
+        const pagination = document.getElementById('private-pagination');
+        if(!grid) return;
+
+        // Calcular items de la página actual
+        const start = (privatePage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const items = library.slice(start, end);
+
+        grid.innerHTML = "";
+        items.forEach(anime => {
             const card = document.createElement('div');
             card.className = "poster-wrapper"; 
             card.onclick = () => { openAnimeDetail(anime); };
@@ -789,8 +977,26 @@ let library = publicLibrary;
                 <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
                 <div class="anime-title">${anime.titulo}</div>
             `;
-            recentContainer.appendChild(card);
+            grid.appendChild(card);
         });
+
+        // Renderizar controles de paginación (1, 2, 3...)
+        pagination.innerHTML = "";
+        const totalPages = Math.ceil(library.length / itemsPerPage);
+        
+        if(totalPages > 1) {
+            for(let i=1; i<=totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.className = `page-btn ${i === privatePage ? 'active' : ''}`;
+                btn.innerText = i;
+                btn.onclick = () => {
+                    privatePage = i;
+                    renderPrivateGrid();
+                    window.scrollTo(0,0);
+                };
+                pagination.appendChild(btn);
+            }
+        }
     }
 
     function renderGrid(data, container) {
@@ -812,18 +1018,13 @@ let library = publicLibrary;
         hasPlayedAnyVideo = false; // [NUEVO] Resetea el flag para cada anime nuevo que se abre.
         currentAnime = anime;
         currentEpIndex = 0;
-        prepareDetailView(anime); 
-
-        if (window.location.hash.startsWith('#detail')) {
-            showDetailView(); 
-            updateMangaButtonState();
-        } else {
-            window.location.hash = "detail"; 
-        }
+        prepareDetailView(anime);
+        window.location.hash = "detail";
     }
     
     function prepareDetailView(anime) {
         detailTitle.innerText = anime.titulo;
+        detailSubtitle.innerText = anime.titulo_jp || "";
 
         detailRating.innerText = anime.rating || "";
         detailSeason.innerText = anime.temporada || "";
@@ -831,10 +1032,6 @@ let library = publicLibrary;
         detailQuality.innerText = anime.calidad || "";
         
         detailSynopsis.innerText = anime.sinopsis || "";
-        detailSynopsis.classList.add('collapsed');
-        readMoreBtn.innerText = "vea más";
-        readMoreBtn.style.display = 'none'; 
-        needsSynopsisCheck = true; 
 
         epSelector.innerHTML = "";
         const totalEps = anime.episodios.length;
@@ -847,8 +1044,6 @@ let library = publicLibrary;
             btn.onclick = () => playEpisode(index);
             epSelector.appendChild(btn);
         });
-
-        renderRecommendations(anime.id);
 
         if (totalEps > 0) {
             playEpisode(0);
@@ -887,27 +1082,6 @@ let library = publicLibrary;
         if (!isAutoChained) {
             document.getElementById('hero-area').scrollIntoView({ behavior: 'smooth' });
         }
-    }
-
-    function renderRecommendations(currentId) {
-        recContainer.innerHTML = "";
-        const recs = library.filter(a => a.id !== currentId);
-        
-        if (recs.length === 0) {
-            recContainer.innerHTML = "<div style='color:#555; font-size:12px;'>No hay más sugerencias.</div>";
-            return;
-        }
-
-        recs.forEach(anime => {
-            const item = document.createElement('div');
-            item.className = 'rec-item';
-            item.onclick = () => openAnimeDetail(anime);
-            item.innerHTML = `
-                <div class="rec-poster"><img src="${anime.poster}" alt=""></div>
-                <div class="rec-title">${anime.titulo}</div>
-            `;
-            recContainer.appendChild(item);
-        });
     }
 
     // --- Control por gestos ---
@@ -951,25 +1125,10 @@ let library = publicLibrary;
 
 
     // --- UTILIDADES ---
-    function toggleSynopsis() {
-        detailSynopsis.classList.toggle('collapsed');
-        readMoreBtn.innerText = detailSynopsis.classList.contains('collapsed') ? "vea más" : "vea menos";
-    }
-
     function showDetailView() {
+        document.getElementById('main-header').style.transform = 'translateY(-100%)'; // Ocultar header en reproductor
         switchView(detailView);
         window.scrollTo(0, 0);
-
-        if (needsSynopsisCheck) {
-            setTimeout(() => {
-                const isOverflowing = detailSynopsis.scrollHeight > detailSynopsis.clientHeight;
-                readMoreBtn.style.display = isOverflowing ? 'inline-block' : 'none';
-                if (!isOverflowing) {
-                    detailSynopsis.classList.remove('collapsed');
-                }
-            }, 50); 
-            needsSynopsisCheck = false;
-        }
     }
 
     function showHomeView() {
@@ -978,19 +1137,14 @@ let library = publicLibrary;
         currentAnime = null; 
         mangaToggleBtn.classList.remove('show'); // Asegurar ocultar
         switchView(homeView);
+        document.getElementById('main-header').style.transform = 'translateY(0)'; // Mostrar header
         renderHome(); // Recargar para actualizar "Continuar viendo"
         if(window.location.hash !== '#home') history.replaceState(null, null, '#home');
     }
 
-    function showExploreView() {
-        switchView(exploreView);
-        // Si está vacío, mostrar sugerencias iniciales (toda la librería o random)
-        if(!searchInput.value) renderGrid(library, searchResults);
-        else handleSearch();
-    }
-
     function showSettingsView() {
         switchView(settingsView);
+        document.getElementById('main-header').style.transform = 'translateY(0)';
     }
 
     function switchView(view) {
@@ -1005,16 +1159,46 @@ let library = publicLibrary;
     }
     function showFullListView() {
         renderGrid(library, fullGrid);
+        document.getElementById('main-header').style.transform = 'translateY(0)';
         switchView(fullListView);
     }
     function closeFullList() {
         window.history.back();
     }
 
-    function handleSearch() {
-        const query = searchInput.value.toLowerCase();
+    function handleGlobalSearch() {
+        const query = headerSearchInput.value.toLowerCase().trim();
+        
+        if (!query) {
+            globalSearchResults.style.display = 'none';
+            return;
+        }
+
         const filtered = library.filter(a => a.titulo.toLowerCase().includes(query));
-        renderGrid(filtered, searchResults);
+        globalSearchResults.innerHTML = "";
+        globalSearchResults.style.display = 'block';
+
+        filtered.forEach(anime => {
+            const item = document.createElement('div');
+            item.className = 'search-result-card';
+            item.innerHTML = `
+                <img src="${anime.poster}" class="search-poster-img">
+                <div class="search-info">
+                    <div class="search-title">${anime.titulo}</div>
+                    <div class="search-desc">${anime.sinopsis || 'Sin descripción.'}</div>
+                </div>
+            `;
+            item.onclick = () => {
+                globalSearchResults.style.display = 'none';
+                headerSearchInput.value = "";
+                openAnimeDetail(anime);
+            };
+            globalSearchResults.appendChild(item);
+        });
+
+        if (filtered.length === 0) {
+            globalSearchResults.innerHTML = "<div style='padding:20px; color:#888; text-align:center;'>No se encontraron resultados</div>";
+        }
     }
 
     // --- LÓGICA MANGA ---
@@ -1031,6 +1215,7 @@ let library = publicLibrary;
     }
 
     function showMangaView() {
+        document.getElementById('main-header').style.transform = 'translateY(-100%)'; // Ocultar header en manga
         mainVideo.pause();
         switchView(mangaView);
         mangaToggleBtn.classList.add('is-visible'); // Asegurar estado visual
