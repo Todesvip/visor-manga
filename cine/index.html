@@ -804,6 +804,13 @@ let library = publicLibrary;
                 hasPlayedAnyVideo = true;
             }
         });
+
+        // [NUEVO] Listener para corregir visibilidad del botón de manga al salir de pantalla completa.
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                updateMangaButtonState();
+            }
+        });
     }
 
     function shakeSearch() {
@@ -1248,7 +1255,7 @@ let library = publicLibrary;
     }
 
     // Variables Manga
-    const TOTAL_PAGINAS = 77;      
+    const TOTAL_PAGINAS = 10;      
     const CARPETA_MANGA = 'dato1'; 
 
     function loadMangaImages() {
