@@ -1415,9 +1415,19 @@ let library = publicLibrary;
 
     // --- CAROUSEL PORTADAS MANGA ---
     let coverInterval = null;
-    const kaifukuCovers = [];
-    for (let i = 1; i <= 17; i++) {
-        kaifukuCovers.push(`https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/Kaifuku/${String(i).padStart(2, '0')}.jpg`);
+    const TOTAL_COVERS = 17;
+    const COVER_BASE_URL = 'https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/Kaifuku/';
+
+    function setCoverSource(img, index) {
+        const num = String(index).padStart(2, '0');
+        img.onerror = null; 
+        // Intentar webp primero
+        img.src = `${COVER_BASE_URL}${num}.webp`;
+        // Si falla, intentar jpg
+        img.onerror = function() {
+            this.onerror = null;
+            this.src = `${COVER_BASE_URL}${num}.jpg`;
+        };
     }
 
     function startCoverCarousel() {
@@ -1428,9 +1438,13 @@ let library = publicLibrary;
         
         const update = () => {
             if (!img1 || !img2) return;
-            img1.src = kaifukuCovers[currentIndex % kaifukuCovers.length];
-            img2.src = kaifukuCovers[(currentIndex + 1) % kaifukuCovers.length];
-            currentIndex = (currentIndex + 2) % kaifukuCovers.length;
+            const idx1 = (currentIndex % TOTAL_COVERS) + 1;
+            const idx2 = ((currentIndex + 1) % TOTAL_COVERS) + 1;
+            
+            setCoverSource(img1, idx1);
+            setCoverSource(img2, idx2);
+            
+            currentIndex = (currentIndex + 2) % TOTAL_COVERS;
         };
         
         update(); // Actualizar inmediatamente
