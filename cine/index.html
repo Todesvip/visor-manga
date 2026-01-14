@@ -337,7 +337,7 @@
         .visibility-toggle-btn {
             position: fixed; bottom: 20px; right: 20px; z-index: 2000;
             width: 24px; height: 24px;
-            background: rgba(0, 0, 0, 0.3);
+            background: transparent;
             border: none;
             border-radius: 50%;
             display: none; /* Hidden by default */
@@ -476,6 +476,21 @@
             box-shadow: 0 0 10px var(--accent);
         }
 
+        /* --- MANGA LIST VIEW --- */
+        .manga-list-content { padding: 20px 20px 20px; }
+        .cover-container { display: flex; gap: 10px; margin-bottom: 15px; }
+        .cover-img { width: 50%; aspect-ratio: 2/3; object-fit: cover; border-radius: 0; }
+        .description { font-size: 14px; color: #ccc; margin-bottom: 30px; line-height: 1.6; }
+        .chapter-box { border: 1px solid #333; margin-bottom: 40px; border-radius: 0; overflow: hidden; }
+        .chapter-item { 
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 15px; border-bottom: 1px solid #333; 
+            color: #eee; text-decoration: none; font-size: 14px; 
+            background: #1e1e24; transition: background 0.2s; cursor: pointer;
+        }
+        .chapter-item:last-child { border-bottom: none; }
+        .chapter-item:hover { background-color: #25252b; }
+
     </style>
 </head>
 <body>
@@ -583,6 +598,21 @@
                 <span id="detail-year"></span>
                 <span id="detail-quality"></span>
             </div>
+        </div>
+    </div>
+
+    <!-- MANGA LIST VIEW -->
+    <div id="manga-list-view" class="view">
+        <div class="manga-list-content">
+            <div class="cover-container">
+                <img src="https://imagizer.imageshack.com/img924/1909/k0nVIt.jpg" class="cover-img" alt="Cover 1">
+                <img src="https://imagizer.imageshack.com/img923/3354/C9inch.jpg" class="cover-img" alt="Cover 2">
+            </div>
+            <div class="description">
+                Yo había determinado que los magos sanadores sólo son capaces de sanar. Yo había admitido que son una existencia que no puede hacer nada por sí mismos. No pueden luchar si no confían en alguien, y porque son ese tipo de existencia, son explotados por otros. Siendo explotado repetidamente, he llegado a este punto, y para cuando me di cuenta de mi error, era demasiado tarde. Mi vida había terminado. Por eso voy a empezar de nuevo. Así, utilizando la magia curativa en el mundo mismo para retroceder cuatro años, decidí rehacer todo.
+            </div>
+            <div class="section-title" style="color:white; border-bottom-color: var(--accent);">Capítulos</div>
+            <div class="chapter-box" id="chapter-list-container"></div>
         </div>
     </div>
 
@@ -738,6 +768,7 @@ let library = publicLibrary;
     const fullListView = document.getElementById('full-list-view');
     const detailView = document.getElementById('detail-view');
     const mangaView = document.getElementById('manga-view');
+    const mangaListView = document.getElementById('manga-list-view');
     const fullGrid = document.getElementById('full-grid');
     const mainVideo = document.getElementById('main-video');
     const heroImg = document.getElementById('hero-img');
@@ -848,6 +879,8 @@ let library = publicLibrary;
             showDetailView();
         } else if (hash === '#manga') {
             showMangaView();
+        } else if (hash === '#mangalist') {
+            showMangaListView();
         } else if (hash === '#fulllist') {
             showFullListView();
         } else {
@@ -869,14 +902,14 @@ let library = publicLibrary;
     function updateMangaButtonState() {
         const hash = window.location.hash;
         // 1. Mostrar/Ocultar botón (Solo Kaifuku y en vistas permitidas)
-        if (currentAnime && currentAnime.id === 'Kaifuku' && (hash.startsWith('#detail') || hash === '#manga')) {
+        if (currentAnime && currentAnime.id === 'Kaifuku' && (hash.startsWith('#detail') || hash === '#manga' || hash === '#mangalist')) {
             mangaToggleBtn.classList.add('show');
         } else {
             mangaToggleBtn.classList.remove('show');
         }
 
         // 2. Sincronizar icono del ojo con la vista actual
-        if (hash === '#manga') {
+        if (hash === '#manga' || hash === '#mangalist') {
             mangaToggleBtn.classList.add('is-visible');
         } else {
             mangaToggleBtn.classList.remove('is-visible');
@@ -1165,6 +1198,12 @@ let library = publicLibrary;
         window.scrollTo(0, 0);
     }
 
+    function showMangaListView() {
+        document.getElementById('main-header').style.transform = 'translateY(-100%)';
+        switchView(mangaListView);
+        renderMangaList();
+    }
+
     function showHomeView() {
         mainVideo.pause();
         mainVideo.src = "";
@@ -1238,13 +1277,13 @@ let library = publicLibrary;
     // --- LÓGICA MANGA ---
     function toggleMangaMode() {
         if (mangaToggleBtn.classList.contains('is-visible')) {
-            // Está abierto (Manga), cerrar -> ir a Video
+            // Está abierto (Manga o Lista), cerrar -> ir atrás
             mangaToggleBtn.classList.remove('is-visible');
             window.history.back(); // Volver a detail
         } else {
-            // Está cerrado (Video), abrir -> ir a Manga
+            // Está cerrado (Video), abrir -> ir a Manga List
             mangaToggleBtn.classList.add('is-visible');
-            window.location.hash = "manga";
+            window.location.hash = "mangalist";
         }
     }
 
@@ -1354,6 +1393,22 @@ let library = publicLibrary;
         document.getElementById('sheet-overlay').style.display = 'none';
         const dest = document.getElementById(`img-${num}`);
         if(dest) dest.scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+
+    function renderMangaList() {
+        const container = document.getElementById('chapter-list-container');
+        if(container.children.length > 0) return; // Evitar re-render
+        
+        for (let i = 70; i >= 1; i--) {
+            const num = i.toString().padStart(2, '0');
+            const item = document.createElement('div');
+            item.className = 'chapter-item';
+            item.innerHTML = `<span>Kaifuku, Chapter ${num}</span>`;
+            item.onclick = () => {
+                if (i === 1) window.location.hash = 'manga';
+            };
+            container.appendChild(item);
+        }
     }
 
     // El listener para el final del video ahora llama a playEpisode con el segundo parámetro en 'true'
