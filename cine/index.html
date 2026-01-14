@@ -605,8 +605,8 @@
     <div id="manga-list-view" class="view">
         <div class="manga-list-content">
             <div class="cover-container">
-                <img src="https://imagizer.imageshack.com/img924/1909/k0nVIt.jpg" class="cover-img" alt="Cover 1">
-                <img src="https://imagizer.imageshack.com/img923/3354/C9inch.jpg" class="cover-img" alt="Cover 2">
+                <img id="cover-img-1" src="https://imagizer.imageshack.com/img924/1909/k0nVIt.jpg" class="cover-img" alt="Cover 1">
+                <img id="cover-img-2" src="https://imagizer.imageshack.com/img923/3354/C9inch.jpg" class="cover-img" alt="Cover 2">
             </div>
             <div class="description">
                 Yo había determinado que los magos sanadores sólo son capaces de sanar. Yo había admitido que son una existencia que no puede hacer nada por sí mismos. No pueden luchar si no confían en alguien, y porque son ese tipo de existencia, son explotados por otros. Siendo explotado repetidamente, he llegado a este punto, y para cuando me di cuenta de mi error, era demasiado tarde. Mi vida había terminado. Por eso voy a empezar de nuevo. Así, utilizando la magia curativa en el mundo mismo para retroceder cuatro años, decidí rehacer todo.
@@ -1202,6 +1202,7 @@ let library = publicLibrary;
         document.getElementById('main-header').style.transform = 'translateY(-100%)';
         switchView(mangaListView);
         renderMangaList();
+        startCoverCarousel();
     }
 
     function showHomeView() {
@@ -1223,6 +1224,7 @@ let library = publicLibrary;
     function switchView(view) {
         document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
         view.classList.add('active');
+        if (view !== mangaListView) stopCoverCarousel();
     }
 
     // --- LISTA COMPLETA ---
@@ -1408,6 +1410,37 @@ let library = publicLibrary;
                 if (i === 1) window.location.hash = 'manga';
             };
             container.appendChild(item);
+        }
+    }
+
+    // --- CAROUSEL PORTADAS MANGA ---
+    let coverInterval = null;
+    const kaifukuCovers = [];
+    for (let i = 1; i <= 17; i++) {
+        kaifukuCovers.push(`https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/Kaifuku/${String(i).padStart(2, '0')}.jpg`);
+    }
+
+    function startCoverCarousel() {
+        stopCoverCarousel();
+        let currentIndex = 0;
+        const img1 = document.getElementById('cover-img-1');
+        const img2 = document.getElementById('cover-img-2');
+        
+        const update = () => {
+            if (!img1 || !img2) return;
+            img1.src = kaifukuCovers[currentIndex % kaifukuCovers.length];
+            img2.src = kaifukuCovers[(currentIndex + 1) % kaifukuCovers.length];
+            currentIndex = (currentIndex + 2) % kaifukuCovers.length;
+        };
+        
+        update(); // Actualizar inmediatamente
+        coverInterval = setInterval(update, 5000);
+    }
+
+    function stopCoverCarousel() {
+        if (coverInterval) {
+            clearInterval(coverInterval);
+            coverInterval = null;
         }
     }
 
