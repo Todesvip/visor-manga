@@ -565,10 +565,6 @@
             <div id="detail-title" class="show-title" onclick="window.history.back()"></div>
             <div id="detail-subtitle" class="show-subtitle"></div>
             
-            <div class="meta-row">
-                <!-- Espaciador para mantener el diseño original -->
-            </div>
-
             <!-- Fila de botones cuadrados -->
             <div class="ep-selector-row" id="ep-selector"></div>
             
@@ -806,11 +802,15 @@ let library = publicLibrary;
         });
 
         // [NUEVO] Listener para corregir visibilidad del botón de manga al salir de pantalla completa.
-        document.addEventListener('fullscreenchange', () => {
-            if (!document.fullscreenElement) {
-                updateMangaButtonState();
-            }
-        });
+        const onFullscreenChange = () => {
+            setTimeout(() => {
+                if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                    updateMangaButtonState();
+                }
+            }, 300);
+        };
+        document.addEventListener('fullscreenchange', onFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', onFullscreenChange);
     }
 
     function shakeSearch() {
