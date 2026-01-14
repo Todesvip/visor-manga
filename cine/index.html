@@ -337,11 +337,13 @@
         .visibility-toggle-btn {
             position: fixed; bottom: 20px; right: 20px; z-index: 2000;
             width: 24px; height: 24px;
-            background: transparent;
+            background: rgba(0, 0, 0, 0.3);
             border: none;
+            border-radius: 50%;
             display: none; /* Hidden by default */
             align-items: center; justify-content: center;
             cursor: pointer;
+            transform: translateZ(0); /* Fix renderizado móvil */
         }
         .visibility-toggle-btn svg {
             width: 100%; height: 100%;
@@ -806,6 +808,10 @@ let library = publicLibrary;
             setTimeout(() => {
                 if (!document.fullscreenElement && !document.webkitFullscreenElement) {
                     updateMangaButtonState();
+                    // Forzar repintado para evitar que el botón quede invisible
+                    mangaToggleBtn.style.display = 'none';
+                    mangaToggleBtn.offsetHeight; // Trigger reflow
+                    mangaToggleBtn.style.removeProperty('display');
                 }
             }, 300);
         };
