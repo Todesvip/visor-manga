@@ -76,7 +76,7 @@
             text-align: center; letter-spacing: 2px;
         }
         .code-input::placeholder { color: #888; letter-spacing: normal; }
-        .code-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
+        .code-input.shake, .header-search-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
         /* Ocultar flechas en input de número */
         .code-input::-webkit-outer-spin-button, .code-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         .code-input[type=number] { -moz-appearance: textfield; }
@@ -565,21 +565,21 @@
             <div id="detail-title" class="show-title" onclick="window.history.back()"></div>
             <div id="detail-subtitle" class="show-subtitle"></div>
             
-            <div class="meta-row">
-                <span id="detail-rating" class="badge"></span>
-                <span id="detail-season"></span>
-                <span id="detail-year"></span>
-                <span id="detail-quality"></span>
-            </div>
-
             <!-- Fila de botones cuadrados -->
             <div class="ep-selector-row" id="ep-selector"></div>
             
             <!-- Contador de capítulos (Movido abajo) -->
             <div class="ep-count-header" id="ep-count-text">0 Capítulos</div>
             
-            <!-- SINOPSIS -->
+            <div class="section-title" style="padding-left: 0; margin-top: 25px; margin-bottom: 10px;">Sinopsis</div>
             <p id="detail-synopsis" class="synopsis"></p>
+
+            <div class="meta-row" style="margin-top: 20px;">
+                <span id="detail-rating" class="badge"></span>
+                <span id="detail-season"></span>
+                <span id="detail-year"></span>
+                <span id="detail-quality"></span>
+            </div>
         </div>
     </div>
 
@@ -790,7 +790,7 @@ let library = publicLibrary;
         
         setupTouchControls();
 
-        searchActionBtn.addEventListener('click', openSearch);
+        searchActionBtn.addEventListener('click', shakeSearch);
         searchBackBtn.addEventListener('click', closeSearch);
 
         // [NUEVO] Listener para activar el flag de autoplay después del primer play manual.
@@ -798,6 +798,14 @@ let library = publicLibrary;
             if (!hasPlayedAnyVideo) {
                 hasPlayedAnyVideo = true;
             }
+        });
+    }
+
+    function shakeSearch() {
+        const searchInputs = document.querySelectorAll('.header-search-input');
+        searchInputs.forEach(input => {
+            input.classList.add('shake');
+            setTimeout(() => input.classList.remove('shake'), 700);
         });
     }
 
@@ -1090,6 +1098,7 @@ let library = publicLibrary;
     let startVideoTime = 0;
     // [CORREGIDO] Se aumenta el valor para que el deslizamiento sea mucho más rápido.
     const swipeSeekFactor = 2.5; 
+    let lastSeekTimestamp = 0; // Variable para controlar la frecuencia
 
     function setupTouchControls() {
         heroArea.addEventListener('touchstart', handleTouchStart);
@@ -1102,11 +1111,18 @@ let library = publicLibrary;
         isDragging = true;
         startX = e.touches[0].clientX;
         startVideoTime = mainVideo.currentTime;
+        lastSeekTimestamp = 0;
     }
 
     function handleTouchMove(e) {
         if (!isDragging) return;
         e.preventDefault(); 
+
+        // Evitar que se actualice demasiadas veces por segundo (evita el bug de congelamiento)
+        const now = Date.now();
+        if (now - lastSeekTimestamp < 50) return; 
+        lastSeekTimestamp = now;
+
         const currentX = e.touches[0].clientX;
         const deltaX = currentX - startX;
         
