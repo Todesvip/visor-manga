@@ -680,7 +680,7 @@ const publicLibrary = [
         id: "Osananajimi",
         titulo: "Osananajimi to wa Love Comedy ni Naranai",
         titulo_jp: "幼馴染とはラブコメにならない",
-        poster: "https://ibb.co/ZRGz3MxJ",
+        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/02.jpg",
         banner: "",
         rating: "16+",
         temporada: "1 Temporada",
@@ -1049,7 +1049,7 @@ let library = publicLibrary;
 
             // 1. Recién añadidos
             const recentContainer = document.getElementById('recent-list');
-            let recentItems = library.slice(-10).reverse();
+            let recentItems = library.filter(a => a.id !== 'Dokyuu' && a.id !== 'Overlord').slice(-10).reverse();
             
             recentItems.forEach(anime => {
                 const card = document.createElement('div');
