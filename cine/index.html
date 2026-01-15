@@ -1033,8 +1033,7 @@ let library = publicLibrary;
 
             // 1. Recién añadidos
             const recentContainer = document.getElementById('recent-list');
-            let recentItems = library.filter(a => a.id === 'Kaifuku' || a.id === 'Gushing');
-            if (recentItems.length === 0) recentItems = library.slice(0, 10);
+            let recentItems = library.slice(-10).reverse();
             
             recentItems.forEach(anime => {
                 const card = document.createElement('div');
@@ -1264,6 +1263,7 @@ let library = publicLibrary;
 
     function showMangaListView() {
         document.getElementById('main-header').style.transform = 'translateY(-100%)';
+        mainVideo.pause();
         switchView(mangaListView);
         renderMangaList();
         startCoverCarousel();
