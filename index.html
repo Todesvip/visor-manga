@@ -2,289 +2,1640 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- CAMBIO AQUÍ: Eliminé el bloqueo de escala para permitir ZOOM -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zen Manga Reader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Todesvip</title>
     <style>
-        /* --- BASE --- */
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            width: 100%;
-            height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: white;
-            scroll-behavior: smooth;
+        /* --- ESTILOS GENERALES --- */
+        :root { --bg: #000000; --text: #ffffff; --text-gray: #a8a8a8; --accent: #00A4DC; }
+        
+        /* --- ELIMINAR SOMBRA DE CONTROLES DE VIDEO --- */
+        video::-webkit-media-controls-panel {
+            background-image: none !important;
+        }
+        /* --------------------------------------------- */
+        
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--bg); color: var(--text); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
-            /* user-select: none;  <-- LO QUITÉ: A veces bloquea la selección necesaria para el zoom */
+            -webkit-user-select: none;
+            user-select: none;
         }
 
-        /* --- VISOR DE IMÁGENES --- */
-        .visor {
-            max-width: 100%; /* Permitir que ocupe todo al hacer zoom */
-            margin: 0 auto;
-            padding-bottom: 100px; 
-            min-height: 100vh;
-            cursor: pointer;
-            
-            /* Optimización para zoom suave */
-            touch-action: pan-x pan-y pinch-zoom;
-        }
-
-        .pag {
-            display: block;
-            width: 100%; /* Ajuste fluido */
-            max-width: 500px; /* Mantiene el ancho ideal en PC, pero se estira en móvil */
-            height: auto;
-            margin: 0 auto; /* Centrado */
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            background-color: #0a0a0a;
-            min-height: 400px;
-        }
-
-        .pag.loaded {
-            opacity: 1;
-        }
-
-        /* --- LA ISLA DINÁMICA --- */
-        .dynamic-dock-container {
-            position: fixed;
-            bottom: 30px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            z-index: 1000;
+        /* Evitar arrastrar imágenes al deslizar en móvil */
+        img {
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            user-select: none;
             pointer-events: none;
-            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
         }
 
-        .dynamic-dock-container.hidden {
-            transform: translateY(150%);
-        }
+        .view { display: none; }
+        .view.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
 
-        .dynamic-island {
+        /* --- HOME --- */
+        header { 
+            padding: 15px 20px; 
+            background-color: #101010; /* Color Jellyfin (Gris muy oscuro) */
+            position: fixed; width: 100%; z-index: 50; top:0; 
             pointer-events: auto;
-            position: relative;
-            width: auto;
-            min-width: 120px;
-            height: 50px;
-            background: rgba(30, 30, 30, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .header-right { display: flex; gap: 20px; align-items: center; }
+        .nav-btn { background: none; border: none; padding: 0; cursor: pointer; display: flex; }
+        .nav-btn svg { width: 28px; height: 28px; fill: #b0b0b0; filter: drop-shadow(0 2px 5px black); transition: fill 0.2s; }
+        .nav-btn:hover svg { fill: white; }
+
+        /* LOGO MÁS GRANDE */
+        .logo-btn svg { width: 45px; height: 45px; transition: none; }
+
+        /* --- CAMPO DE CÓDIGO (REEMPLAZA LOGO) --- */
+        .code-input-container {
+            flex-basis: 100px; /* Ancho base */
+            margin-right: 10px;
+        }
+        .code-input {
+            width: 100%;
+            background-color: rgba(15, 15, 15, 0.75);
+            color: #ccc; border: none; border-radius: 8px;
+            padding: 8px 12px; font-size: 14px; font-weight: 600;
+            outline: none; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-align: center; letter-spacing: 2px;
+        }
+        .code-input::placeholder { color: #888; letter-spacing: normal; }
+        .code-input.shake, .header-search-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
+        /* Ocultar flechas en input de número */
+        .code-input::-webkit-outer-spin-button, .code-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .code-input[type=number] { -moz-appearance: textfield; }
+        
+        /* --- BUSCADOR EN HEADER --- */
+        .header-search-container {
+            flex: 1; margin: 0 15px; display: flex; justify-content: flex-end; }
+        .header-search-active-view {
+            display: none; /* Oculto por defecto */
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            transition: transform 0.2s;
-            overflow: hidden;
-        }
-
-        .dynamic-island:active {
-            transform: scale(0.95);
-        }
-
-        .island-progress {
+            gap: 10px;
             position: absolute;
             top: 0; left: 0;
-            height: 100%;
-            width: 0%;
-            background: rgba(255, 255, 255, 0.15);
-            z-index: 1;
-            transition: width 0.1s linear;
-        }
-
-        .island-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #eee;
-        }
-
-        /* --- BOTTOM SHEET --- */
-        .bottom-sheet-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 2000;
-            animation: fadeIn 0.3s forwards;
-        }
-
-        .bottom-sheet {
-            position: fixed;
-            bottom: 0; left: 0; width: 100%;
-            background: #1c1c1e;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            padding: 20px;
-            padding-bottom: 40px;
+            width: 100%; height: 100%;
+            padding: 0 15px;
             box-sizing: border-box;
-            transform: translateY(100%);
-            animation: slideUp 0.3s forwards cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-            max-height: 70vh;
+            background-color: #101010; /* Mismo que el header */
+            z-index: 1;
+        }
+        header.search-active .header-search-active-view {
+            display: flex; /* Se muestra en modo búsqueda */
+        }
+        header.search-active .header-content {
+            visibility: hidden; /* Se oculta el contenido normal para mantener la altura */
         }
 
-        .sheet-handle {
-            width: 40px; height: 5px; background: #444;
-            border-radius: 10px; margin: 0 auto 20px auto;
+        .header-search-input {
+            width: 100%; max-width: 300px;
+            flex-grow: 1; /* Ocupa el espacio restante */
+            background-color: rgba(15, 15, 15, 0.75); backdrop-filter: blur(12px);
+            color: #ccc;
+            border: none; border-radius: 8px;
+            padding: 8px 12px; font-size: 14px; font-weight: 500;
+            outline: none; transition: width 0.3s;
+            outline: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .header-search-input::placeholder { color: #888; }
+
+        /* --- RESULTADOS DE BÚSQUEDA (TEXTO) --- */
+        #global-search-results {
+            position: fixed; top: 75px; left: 0; width: 100%; height: calc(100% - 75px);
+            background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(5px);
+            z-index: 45; overflow-y: auto; display: none;
+            padding: 10px 0;
+        }
+        .search-result-card {
+            display: flex; gap: 15px; padding: 15px;
+            border-bottom: none;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .search-result-card:hover { background: #1a1a1a; }
+        .search-poster-img {
+            width: 100px; aspect-ratio: 2/3; object-fit: cover; 
+            border-radius: 0; flex-shrink: 0;
+        }
+        .search-info {
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .search-title {
+            color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 5px;
+        }
+        .search-desc {
+            color: #ccc; font-size: 11px; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
         }
 
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
-            overflow-y: auto;
-            padding: 5px;
+        /* --- NUEVO HOME (HORIZONTAL) --- */
+        .section-title {
+            font-size: 20px; font-weight: 600; margin: 20px 0 12px 0; padding-left: 15px; color: #ffffff;
+            letter-spacing: 0px;
         }
 
-        .grid-btn {
-            aspect-ratio: 1;
-            background: #2c2c2e;
-            border: none;
-            border-radius: 12px;
-            color: #fff;
-            font-size: 1rem;
-            font-weight: bold;
+        .home-content { padding-top: 80px; }
+
+        .horizontal-list {
+            display: flex; overflow-x: auto; gap: 10px; padding: 0;
+            scroll-padding-left: 15px; /* Para que el snap se alinee con el título */
+            scrollbar-width: none; margin-bottom: 25px;
+            scroll-snap-type: x mandatory;
+        }
+        
+        /* Espaciadores para alinear (5px ancho + 10px gap = 15px total, igual que el título) */
+        .horizontal-list::before, .horizontal-list::after {
+            content: ''; display: block; flex: 0 0 5px;
+        }
+
+        #recent-list { padding-left: 0; }
+
+        .horizontal-list::-webkit-scrollbar { display: none; }
+        
+        .horizontal-item { flex: 0 0 180px; cursor: pointer; scroll-snap-align: start; }
+
+        @media (max-width: 600px) {
+            .horizontal-item { flex: 0 0 140px; }
+        }
+
+        .view-all-btn {
+            display: none; /* Se oculta por defecto, se activa con JS si > 10 */
+            width: calc(100% - 30px); margin: 0 auto 30px;
+            padding: 12px; background: #1e1e24; border: 1px solid #333;
+            color: var(--accent); border-radius: 8px; font-weight: 600; cursor: pointer;
+            text-align: center; font-size: 14px;
+        }
+
+        /* --- DIRECTORIO (GRID TIPO SASA) --- */
+        .directory-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+            padding: 0 15px 20px; margin-top: 80px; /* Margen para bajarlo del header fijo */
+        }
+        .dir-card {
+            background-color: #1e1e24; border-radius: 16px; height: 100px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-decoration: none; color: white; position: relative; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s, background 0.2s;
+        }
+        .dir-card:active { transform: scale(0.96); background-color: #25252b; }
+        
+        .dir-icon {
+            width: 28px; height: 28px; margin-bottom: 8px;
+            fill: var(--accent);
+        }
+        .dir-title {
+            font-size: 14px; font-weight: 700; margin-bottom: 2px;
+        }
+        .dir-subtitle {
+            font-size: 11px; color: var(--text-gray);
+        }
+
+        /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
+        .full-list-grid {
+            padding: 80px 15px 20px;
+            display: grid; grid-template-columns: 1fr 1fr; 
+            gap: 15px;
+        }
+        .poster-wrapper { cursor: pointer; }
+        .poster {
+            width: 100%; aspect-ratio: 2/3; border-radius: 0; overflow: hidden; background: #1a1a1a;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin-bottom: 8px;
+        }
+        .poster img { width: 100%; height: 100%; object-fit: cover; }
+        .anime-title { font-size: 13px; font-weight: 500; color: #ddd; }
+
+        /* --- DETALLE --- */
+        .hero-container {
+            position: relative; width: 100%; aspect-ratio: 16/9; background: #000;
+        }
+        .hero-bg { width: 100%; height: 100%; object-fit: cover; display: none; } 
+        
+        .video-player {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: black; border: none; z-index: 20; display: block;
+        }
+
+        .content-body { padding: 20px; position: relative; z-index: 10; }
+        
+        .show-title { 
+            font-size: 18px; 
+            font-weight: 800; 
+            line-height: 1.2; 
+            margin-bottom: 8px; 
+            cursor: pointer; 
+            color: #eee; letter-spacing: 0.5px;
+        }
+        .show-title:active { opacity: 0.7; }
+
+        .show-subtitle {
+            font-size: 15px;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .meta-row { display: flex; gap: 10px; font-size: 13px; color: var(--text-gray); margin-bottom: 20px; align-items: center; }
+        .badge { border: 1px solid var(--text-gray); padding: 1px 4px; border-radius: 2px; font-size: 11px; }
+
+        /* --- SELECTOR DE EPISODIOS (CUADROS) --- */
+        .ep-count-header {
+            text-align: right; color: var(--text-gray); font-size: 12px; margin-bottom: 8px; font-weight: 500;
+        }
+
+        .ep-selector-row {
+            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px;
+            scrollbar-width: none; 
+        }
+        .ep-selector-row::-webkit-scrollbar { display: none; }
+
+        .ep-box {
+            width: 50px; height: 50px; 
+            background: rgba(15, 15, 15, 0.75); backdrop-filter: blur(12px);
+            border-radius: 8px; border: none;
             display: flex; align-items: center; justify-content: center;
+            font-weight: 600; font-size: 1rem; color: #ccc; flex-shrink: 0;
+            cursor: pointer; transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .ep-box.active {
+            background: rgba(255, 255, 255, 0.15); color: white; 
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+        }
+        .ep-box:active { transform: scale(0.95); }
+
+        /* --- SINOPSIS --- */
+        .synopsis { font-size: 13px; line-height: 1.5; color: #ccc; margin-bottom: 5px; }
+        .read-more-btn {
+            display: none !important;
+        }
+
+        /* Botón volver genérico */
+        .back-btn {
+            background: none; border: none; color: white; font-size: 16px; font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; gap: 5px;
+        }
+
+        /* Ajuste para que el contenido no quede tapado por el nav */
+        .view { padding-bottom: 20px; }
+        
+        /* AJUSTES */
+        .settings-content { padding: 40px 20px; text-align: center; color: #777; }
+        
+        /* --- SWITCH TOGGLE (Ajustes) --- */
+        .switch-container {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #1e1e24; padding: 15px; border-radius: 8px; margin: 20px auto;
+            text-align: left; max-width: 400px;
+        }
+        .switch-label { font-size: 15px; color: white; font-weight: 500; }
+        .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--accent); }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        /* --- SPLASH SCREEN --- */
+        #splash-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg); z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+        .splash-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .loading-spinner {
+            width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1);
+            border-top-color: var(--accent); border-radius: 50%;
+            animation: spin 1s linear infinite; margin-bottom: 15px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        #splash-status { color: #888; font-size: 14px; font-weight: 500; }
+        #retry-btn {
+            margin-top: 20px; padding: 10px 25px; background: var(--accent); color: white;
+            border: none; border-radius: 20px; font-weight: bold; cursor: pointer; display: none;
+        }
+
+        /* --- MANGA READER & TOGGLE (Merged) --- */
+        /* Toggle Button */
+        .visibility-toggle-btn {
+            position: fixed; bottom: 20px; right: 20px; z-index: 2000;
+            width: 24px; height: 24px;
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            display: none; /* Hidden by default */
+            align-items: center; justify-content: center;
             cursor: pointer;
+            transform: translateZ(0); /* Fix renderizado móvil */
+        }
+        .visibility-toggle-btn svg {
+            width: 100%; height: 100%;
+            fill: none; stroke: #ccc; stroke-width: 2px;
+            stroke-linecap: round; stroke-linejoin: round;
+            transition: stroke 0.25s ease;
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.9));
+        }
+        .visibility-toggle-btn:hover svg { stroke: white; }
+        
+        #eye-open-path, #pupil { transition: opacity 0.25s ease-in-out; opacity: 0; }
+        #eye-closed-path { transition: opacity 0.25s ease-in-out; opacity: 1; }
+        
+        /* Estado Abierto (Manga Mode) */
+        .visibility-toggle-btn.is-visible #eye-open-path,
+        .visibility-toggle-btn.is-visible #pupil { opacity: 1; }
+        .visibility-toggle-btn.is-visible #eye-closed-path { opacity: 0; }
+
+        /* Manga View Styles */
+        #manga-view {
+            background-color: #000;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .visor {
+            max-width: 100%; margin: 0 auto; padding-bottom: 100px; min-height: 100vh;
+            touch-action: pan-x pan-y pinch-zoom;
+        }
+        .pag {
+            display: block; width: 100%; max-width: 500px; height: auto; margin: 0 auto;
+            opacity: 0; transition: opacity 0.5s ease; background-color: #0a0a0a; min-height: 400px;
+        }
+        .pag.loaded { opacity: 1; }
+
+        /* Dynamic Island Dock */
+        .dynamic-dock-container {
+            position: fixed; bottom: 20px; left: 0; width: 100%;
+            display: flex; justify-content: center; z-index: 1000;
+            pointer-events: none; transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        .dynamic-dock-container.hidden { transform: translateY(300%); }
+        .dynamic-island {
+            pointer-events: auto; position: relative; width: auto; min-width: 70px; height: 30px;
+            background: rgba(30, 30, 30, 0.9); backdrop-filter: blur(10px);
+            border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: transform 0.2s; overflow: hidden;
+        }
+        .dynamic-island:active { transform: scale(0.95); }
+        .island-progress {
+            position: absolute; top: 0; left: 0; height: 100%; width: 0%;
+            background: rgba(255, 255, 255, 0.15); z-index: 1; transition: width 0.1s linear;
+        }
+        .island-content {
+            position: relative; z-index: 2; display: flex; align-items: center; justify-content: center;
+            width: 100%; font-size: 0.85rem; font-weight: 600; color: #eee;
         }
 
-        .grid-btn.active {
-            background: #fff; color: #000;
+        /* Bottom Sheet */
+        .bottom-sheet-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 3000; animation: fadeIn 0.3s forwards;
         }
-
-        @keyframes fadeIn { to { opacity: 1; } }
+        .bottom-sheet {
+            position: fixed; bottom: 80px; /* Se eleva para salir desde el dock */
+            left: 0; width: 100%; 
+            background: transparent; 
+            padding: 0 10px; box-sizing: border-box;
+            display: flex; flex-direction: column; justify-content: flex-end; 
+            max-height: 65vh;
+            pointer-events: none; 
+        }
+        .sheet-handle {
+            display: none; 
+        }
+        .grid-container {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
+            overflow-y: auto; padding: 15px;
+            pointer-events: auto;
+            background: transparent; /* Sin fondo para efecto humo */
+            margin-bottom: 0;
+        }
+        .grid-btn {
+            aspect-ratio: 1; 
+            background: rgba(15, 15, 15, 0.75); /* Estilo humo denso */
+            backdrop-filter: blur(12px);
+            border: none;
+            border-radius: 8px; 
+            color: #ccc; font-size: 1rem; font-weight: 600;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.2s, background 0.2s;
+            animation: smokeRise 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+        }
+        .grid-btn:active { transform: scale(0.95); }
+        .grid-btn.active { 
+            background: rgba(255, 255, 255, 0.15); color: white; 
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+        }
+        
+        @keyframes smokeRise { from { opacity: 0; transform: translateY(30px) scale(0.8); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+        /* Ajuste para que el botón del ojo no tape el contenido del manga */
+        #manga-view { padding-bottom: 80px; }
+        
+        /* Ocultar botón de ojo en otras vistas por defecto */
+        .visibility-toggle-btn { display: none; }
+        /* Mostrar solo cuando se active via JS */
+        .visibility-toggle-btn.show { display: flex; }
+
+        /* --- PAGINACIÓN --- */
+        .pagination-container {
+            display: flex; justify-content: center; gap: 8px; padding: 20px 0;
+            width: 100%;
+        }
+        .page-btn {
+            background: #1e1e24; color: #ccc; border: none;
+            width: 35px; height: 35px; border-radius: 50%;
+            font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s, color 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .page-btn.active {
+            background: var(--accent); color: white;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        /* --- MANGA LIST VIEW --- */
+        .manga-list-content { padding: 20px 20px 20px; }
+        .cover-container { display: flex; gap: 10px; margin-bottom: 15px; }
+        .cover-img { width: 50%; aspect-ratio: 2/3; object-fit: cover; border-radius: 0; }
+        .description { font-size: 14px; color: #ccc; margin-bottom: 30px; line-height: 1.6; }
+        .chapter-box { border: 1px solid #333; margin-bottom: 40px; border-radius: 0; overflow: hidden; }
+        .chapter-item { 
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 15px; border-bottom: 1px solid #333; 
+            color: #eee; text-decoration: none; font-size: 14px; 
+            background: #1e1e24; transition: background 0.2s; cursor: pointer;
+        }
+        .chapter-item:last-child { border-bottom: none; }
+        .chapter-item:hover { background-color: #25252b; }
 
     </style>
 </head>
 <body>
 
-    <!-- VISOR (Click para ocultar barra) -->
-    <main class="visor" id="contenedor-imagenes" onclick="toggleCinemaMode()">
-        <!-- 
-           AQUÍ YA NO HAY IMÁGENES MANUALES.
-           El script de abajo las creará automáticamente.
-        -->
-        <div id="loading" style="text-align:center; padding:50px; color:#555;">Cargando...</div>
-    </main>
-
-    <!-- UI FLOTANTE -->
-    <div class="dynamic-dock-container" id="dock-container">
-        <div class="dynamic-island" onclick="event.stopPropagation(); abrirSheet()">
-            <div class="island-progress" id="dock-progress"></div>
-            <div class="island-content"><span id="page-display">1</span></div>
+    <!-- SPLASH SCREEN -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="loading-spinner" id="splash-spinner"></div>
+            <div id="splash-status">Iniciando...</div>
+            <button id="retry-btn" onclick="location.reload()">Reintentar</button>
         </div>
     </div>
 
-    <!-- MENÚ -->
-    <div class="bottom-sheet-overlay" id="sheet-overlay" onclick="cerrarSheet(event)">
-        <div class="bottom-sheet">
-            <div class="sheet-handle"></div>
-            <div class="grid-container" id="grid-container"></div>
-        </div>
-    </div>
-
-    <script>
-        // --- CONFIGURACIÓN ---
-        const TOTAL_PAGINAS = 77;      
-        const CARPETA_MANGA = 'manga'; // Carpeta en GitHub
-        const EXTENSION = '.webp';     
-        // ---------------------
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const contenedor = document.getElementById('contenedor-imagenes');
-            const gridContainer = document.getElementById('grid-container');
-            const loading = document.getElementById('loading');
+    <!-- HEADER GLOBAL (Movido fuera de home-view) -->
+    <header id="main-header">
+        <div class="header-content">
+            <div class="code-input-container">
+                <input type="tel" id="code-input" class="code-input" placeholder="Clave" pattern="[0-9]*" inputmode="numeric">
+            </div>
             
-            // 1. GENERADOR AUTOMÁTICO DE IMÁGENES
-            loading.style.display = 'none';
+            <div class="header-search-container">
+                <input type="text" id="header-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch()">
+            </div>
 
-            for (let i = 1; i <= TOTAL_PAGINAS; i++) {
-                const img = document.createElement('img');
-                img.className = 'pag';
-                img.id = `img-${i}`;
-                
-                // RUTA INTELIGENTE
-                img.src = `${CARPETA_MANGA}/${i}${EXTENSION}`;
-                
-                if (i > 3) img.loading = "lazy";
+            <div class="header-right">
+                <div class="nav-btn" id="search-action-btn">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+                <div class="nav-btn" onclick="toggleAppMode()">
+                    <svg viewBox="0 0 24 24"><path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-.11 0-.21-.04-.3-.12-.21-.2-.21-.53 0-.74 1.22-1.22 1.88-2.53 1.88-3.71 0-.28.22-.5.5s.5.22.5.5c0 1.53-.86 3.16-2.28 4.57-.08.08-.19.12-.3.12zM12.5 22c-1.31 0-2.42-.56-3.25-1.55-.18-.21-.15-.52.06-.7.21-.18.52-.15.7.06.61.73 1.45 1.13 2.49 1.13.28 0 .5.22.5.5s-.22.56-.5.56z"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="header-search-active-view">
+            <div class="nav-btn" id="search-back-btn">
+                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            </div>
+            <input type="text" id="header-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch()">
+        </div>
+    </header>
 
-                img.onerror = function() { 
-                    this.style.display='none'; 
-                    console.log(`Falta la imagen ${i}`); 
-                };
+    <!-- RESULTADOS DE BÚSQUEDA GLOBAL (TEXTO) -->
+    <div id="global-search-results"></div>
 
-                img.onload = () => img.classList.add('loaded');
-                
-                contenedor.appendChild(img);
+    <!-- HOME -->
+    <div id="home-view" class="view active">
+        <div class="home-content">
+            <!-- RECIÉN AÑADIDOS (HORIZONTAL) -->
+            <div class="section-title">Recientes</div>
+            <div class="horizontal-list" id="recent-list"></div>
 
-                // Crear botón menú
-                const btn = document.createElement('button');
-                btn.className = 'grid-btn';
-                btn.id = `btn-${i}`;
-                btn.innerText = i;
-                btn.onclick = () => irAPagina(i);
-                gridContainer.appendChild(btn);
+            <!-- MÁS POPULARES (HORIZONTAL) -->
+            <div class="section-title">Más populares</div>
+            <div class="horizontal-list" id="popular-list"></div>
+
+            <!-- ANIMES LATINO (HORIZONTAL) -->
+            <div class="section-title">Animes Latino</div>
+            <div class="horizontal-list" id="latino-list"></div>
+        </div>
+    </div>
+
+    <!-- AJUSTES -->
+    <div id="settings-view" class="view">
+        <div class="settings-content">
+        </div>
+    </div>
+
+    <!-- VISTA LISTA COMPLETA -->
+    <div id="full-list-view" class="view">
+        <header>
+            <div class="header-content">
+                <button class="back-btn" onclick="closeFullList()">
+                    <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white;filter:drop-shadow(0 2px 3px black);"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                    Lista completa
+                </button>
+            </div>
+        </header>
+        <div class="full-list-grid" id="full-grid"></div>
+    </div>
+
+    <!-- DETALLE -->
+    <div id="detail-view" class="view">
+        <div class="hero-container" id="hero-area">
+            <img id="hero-img" class="hero-bg" src="" alt="">
+            <video id="main-video" class="video-player" controls controlsList="nodownload" preload="metadata"></video>
+        </div>
+
+        <div class="content-body">
+            <div id="detail-title" class="show-title" onclick="window.history.back()"></div>
+            <div id="detail-subtitle" class="show-subtitle"></div>
+            
+            <!-- Fila de botones cuadrados -->
+            <div class="ep-selector-row" id="ep-selector"></div>
+            
+            <!-- Contador de capítulos (Movido abajo) -->
+            <div class="ep-count-header" id="ep-count-text">0 Capítulos</div>
+            
+            <!-- SINOPSIS -->
+            <div class="section-title" style="padding-left: 0; margin-top: 25px; margin-bottom: 10px;">Sinopsis</div>
+            <p id="detail-synopsis" class="synopsis"></p>
+
+            <div class="meta-row" style="margin-top: 20px;">
+                <span id="detail-rating" class="badge"></span>
+                <span id="detail-season"></span>
+                <span id="detail-year"></span>
+                <span id="detail-quality"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MANGA LIST VIEW -->
+    <div id="manga-list-view" class="view">
+        <div class="manga-list-content">
+            <div class="cover-container">
+                <img id="cover-img-1" src="https://imagizer.imageshack.com/img924/1909/k0nVIt.jpg" class="cover-img" alt="Cover 1">
+                <img id="cover-img-2" src="https://imagizer.imageshack.com/img923/3354/C9inch.jpg" class="cover-img" alt="Cover 2">
+            </div>
+            <div class="description">
+                Yo había determinado que los magos sanadores sólo son capaces de sanar. Yo había admitido que son una existencia que no puede hacer nada por sí mismos. No pueden luchar si no confían en alguien, y porque son ese tipo de existencia, son explotados por otros. Siendo explotado repetidamente, he llegado a este punto, y para cuando me di cuenta de mi error, era demasiado tarde. Mi vida había terminado. Por eso voy a empezar de nuevo. Así, utilizando la magia curativa en el mundo mismo para retroceder cuatro años, decidí rehacer todo.
+            </div>
+            <div class="section-title" style="color:white; border-bottom-color: var(--accent);">Capítulos</div>
+            <div class="chapter-box" id="chapter-list-container"></div>
+        </div>
+    </div>
+
+    <!-- MANGA VIEW -->
+    <div id="manga-view" class="view">
+        <main class="visor" id="contenedor-imagenes" onclick="toggleCinemaMode()">
+            <div id="loading-manga" style="text-align:center; padding:50px; color:#555;">Cargando manga...</div>
+        </main>
+        
+        <!-- UI FLOTANTE MANGA -->
+        <div class="dynamic-dock-container" id="dock-container">
+            <div class="dynamic-island" onclick="event.stopPropagation(); abrirSheet()">
+                <div class="island-progress" id="dock-progress"></div>
+                <div class="island-content"><span id="page-display">1</span></div>
+            </div>
+        </div>
+
+        <!-- MENÚ MANGA -->
+        <div class="bottom-sheet-overlay" id="sheet-overlay" onclick="cerrarSheet(event)">
+            <div class="bottom-sheet">
+                <div class="sheet-handle"></div>
+                <div class="grid-container" id="grid-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÓN FLOTANTE OJO (Toggle) -->
+    <div class="visibility-toggle-btn" id="manga-toggle-btn" onclick="toggleMangaMode()">
+        <svg viewBox="0 0 24 24">
+            <path id="eye-open-path" d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle id="pupil" cx="12" cy="12" r="3"></circle>
+            <path id="eye-closed-path" d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07l-4.24-4.24M1 1l22 22"></path>
+        </svg>
+    </div>
+
+<script>
+const publicLibrary = [
+    {
+        id: "Kaifuku",
+        titulo: "Kaifuku Jutsushi no Yarinaoshi",
+        titulo_jp: "回復術士のやり直し",
+        poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2024",
+        calidad: "HD",
+        sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/e5dmog7me85b664ubxj4o/Kaifuku-Jutsushi-no-Yarinaoshi-01_burn-in_1920x1080_x264.mp4?rlkey=c8diu7p1sm6kfqqsx5v6txd29&raw=1" },
+            { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/9bpzu4gammnzxhag21fum/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=ees37euad411k2f6joofrhqpu&raw=1" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/q8u5t1ir92bqivqwegv2l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=mac8w5knysntpukes45qzg9jr&raw=1" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/1ly5zhhl7d6581w73t8yw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=ymqf9wxv49w15urdokckrezsc&raw=1" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/3fsm5w2c4ol8aila3ois8/Kaifuku-Jutsushi-no-Yarinaoshi-05_burn-in_1920x1080_x264.mp4?rlkey=uy6iym4rxobt1osmoq76pv0f7&raw=1" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/mbrqi1eas7i0h0pdl5s1r/Kaifuku-Jutsushi-no-Yarinaoshi-06_burn-in_1920x1080_x264.mp4?rlkey=8nu4i5tf00c1o8llnyk2nk92x&raw=1" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/uor4mciu4kvaz45y9gnqm/Kaifuku-Jutsushi-no-Yarinaoshi-07_burn-in_1920x1080_x264.mp4?rlkey=oeuwdc0tqzlm1m3q9s04sikwd&raw=1" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/xfq4nmhguw3te06l36w7b/Kaifuku-Jutsushi-no-Yarinaoshi-08_burn-in_1920x1080_x264.mp4?rlkey=ktykp0fz18zqqqjrh5xt9vmsb&raw=1" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/telnfnvk1ma4mcuagnpit/Kaifuku-Jutsushi-no-Yarinaoshi-09_burn-in_1920x1080_x264.mp4?rlkey=b7vf8i6vk6usg95ifpgx8pzbq&st=acz6wdyf&raw=1" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/l4htnerli767jea01fxtm/Kaifuku-Jutsushi-no-Yarinaoshi-10_burn-in_1920x1080_x264.mp4?rlkey=pu6bqygr76zv1l742utlm3w1s&st=27krzl8j&raw=1" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/bz7s59bllxekjo2mxphl7/Kaifuku-Jutsushi-no-Yarinaoshi-11_burn-in_1920x1080_x264.mp4?rlkey=wjb5dgbgiliutrm6suzae94uh&st=zk75hgqr&raw=1" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5h095e08abs3cmoynfv3o/Kaifuku-Jutsushi-no-Yarinaoshi-12_burn-in_1920x1080_x264.mp4?rlkey=tpy6frxyuefi3j2ubhxi3nqlo&st=zijcq5jh&raw=1" }
+        ]
+    },
+    {
+        id: "Rick",
+        titulo: "Rick and Morty",
+        titulo_jp: "",
+        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/03.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "Temporada 1",
+        ano: "2013",
+        calidad: "HD",
+        sinopsis: "Después de haber estado desaparecido durante casi 20 años, Rick Sánchez llega de imprevisto a la puerta de la casa de su hija Beth y se va a vivir con ella y su familia utilizando el garaje como su laboratorio personal.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/128?hash=2adf2b" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/129?hash=779143" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/130?hash=cedf9c" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/131?hash=53fe6b" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/132?hash=dc8bda" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/133?hash=004280" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/135?hash=a53cde" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/134?hash=6ed9b8" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/138?hash=cc174e" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/137?hash=4cc8b5" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/136?hash=6cf23a" }
+        ]
+    },
+    {
+        id: "Osananajimi",
+        titulo: "Osananajimi to wa Love Comedy ni Naranai",
+        titulo_jp: "幼馴染とはラブコメにならない",
+        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/02.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2026",
+        calidad: "HD",
+        sinopsis: "El estudiante de secundaria Eiyuu tiene un dilema: ¡sus dos amigas de la infancia, Shio y Akari, se han convertido en dos chicas casi demasiado guapas! Aunque ellas no parecen darle mucha importancia, él no puede evitar verlas con otros ojos. Si alguna vez se dieran cuenta de cómo han cambiado sus sentimientos, ¡la vergüenza sería insoportable! Sin embargo, lo que Eiyuu no sabe es que Shio y Akari podrían sentir lo mismo por él. Un triángulo amoroso que se desarrolla lentamente, en el que todas las heroínas son amigas de la infancia, ¡tan frustrante como irresistible!",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/125?hash=230825" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/126?hash=5f3ee8" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/127?hash=b85f2d" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "Dokyuu Hentai HxEros",
+        titulo_jp: "ド級編隊エグゼロス",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "La Tierra enfrenta una amenaza sin precedentes por una invasión del misterioso Kiseichuu. Los Kiseichuu se alimentan de energía sexual humana, también conocida como energía H, y debilitan a la población humana. El estudiante de secundaria Retto Enjo es miembro del grupo de héroes HXEROS, que luchan juntos para salvar la tierra del Kiseichuu.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/feqrylrzqc80864ix3g02/Dokyuu-Hentai-HxEros-1_burn-in_1920x1080_x264.mp4?rlkey=hahqtg8h8k4aw8vr1h4mfrsmz&raw=1" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/sr0opl3w0s6h0rslc9dl5/Dokyuu-Hentai-HxEros-2_burn-in_1920x1080_x264.mp4?rlkey=l512o8dfjup93p4xgp4ayjwsj&raw=1" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/n689mhhxnojijgbx9gh7l/Dokyuu-Hentai-HxEros-3_burn-in_1920x1080_x264.mp4?rlkey=d9r9n0etcg1deg1o3zcx8al61&raw=1" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/pjbanl2kxgmsonfduhk84/Dokyuu-Hentai-HxEros-4_burn-in_1920x1080_x264.mp4?rlkey=00g1ceuhluae9prvirzuqjt20&raw=1" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/60j7ju6othu2ru32bg9xl/Dokyuu-Hentai-HxEros-5_burn-in_1920x1080_x264.mp4?rlkey=62y1s6duv0eg3lgoizjw03tnw&raw=1" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5j3y06dp31rw83775brj5/Dokyuu-Hentai-HxEros-6_burn-in_1920x1080_x264.mp4?rlkey=jffbk9ezn5fp2jl5ugiw6jbo5&raw=1" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/81d4zirj94c7mzxqylx8o/Dokyuu-Hentai-HxEros-7_burn-in_1920x1080_x264.mp4?rlkey=o05z59srsk71rzh820lhcfmp1&raw=1" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/5hbribjp543lqvvbovvd7/Dokyuu-Hentai-HxEros-8_burn-in_1920x1080_x264.mp4?rlkey=jzvo9eed97y067gsvadsnjcpe&raw=1" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/4v6ssdqatfj4n4ro5ygxc/Dokyuu-Hentai-HxEros-9_burn-in_1920x1080_x264.mp4?rlkey=ud4rk70zi69l3bd3eorhaztmk&raw=1" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/om9f9oz1k8v89kkprquk7/Dokyuu-Hentai-HxEros-10_burn-in_1920x1080_x264.mp4?rlkey=9006ln3eoijygflxhlvgkmonk&raw=1" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/zsuo32y9c1ogth8fthpkq/Dokyuu-Hentai-HxEros-11_burn-in_1920x1080_x264.mp4?rlkey=fk5skpsgd7n85mg7wcmnoc4fp&raw=1" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/r231e7kuu01g299f838vu/Dokyuu-Hentai-HxEros-12_burn-in_1920x1080_x264.mp4?rlkey=0yys298yqh7jodubn33yy6629&raw=1" },
+            { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/v5oo6hxbfjufox1de74r9/Dokyuu-Hentai-HxEros-13_burn-in_1920x1080_x264.mp4?rlkey=51yewk18u54wugbv41nbb5mz8&raw=1" },
+            { num: 14, nombre: "Episodio 14", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/wl85jyrgv08xqzoiz9m50/Dokyuu-Hentai-HxEros-14_burn-in_1920x1080_x264.mp4?rlkey=s5tn7jdul4906g3kxejql7bwn&raw=1" }
+        ]
+    },
+    {
+        id: "Gushing",
+        titulo: "Gushing over Magical Girls",
+        titulo_jp: "魔法少女にあこがれて",
+        poster: "https://cdn.myanimelist.net/images/anime/1525/139345.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "Desde su niñez, Utena Hiiragi siempre ha sido una ferviente admiradora de las chicas mágicas e incluso sueña con ser una de ellas. Un día, se encuentra con una mascota parlante que le ofrece el poder de hacer realidad su mayor deseo. Sin dudarlo, acepta y es envuelta por una misteriosa magia. Sin embargo, al completar su transformación, ¡se da cuenta de que ahora forma parte de una terrible organización malvada! Así comienza la historia de una chica dulce y tímida, amante de las chicas mágicas, que se ve arrastrada hacia el mal por error, convirtiéndose en una sádica villana. ¿Podrán las Tres Magias soportar su intenso juego de sadomasoquismo entre el bien y el mal?",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/113?hash=9cd8c8" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/114?hash=a21135" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/112?hash=c90c4a" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/118?hash=bbfa4b" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/116?hash=32175c" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/121?hash=92a153" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/119?hash=8b15b0" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/122?hash=5fb899" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/117?hash=7947f6" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/115?hash=b5b5e5" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/120?hash=ee4ba7" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/123?hash=27fb3b" },
+            { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/124?hash=56fbee" }
+        ]
+    },
+    {
+        id: "Overlord",
+        titulo: "Overlord",
+        titulo_jp: "オーバーロード",
+        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/01.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "1 Temporada",
+        ano: "2015",
+        calidad: "HD",
+        sinopsis: "Yggdrasil es un popular juego en línea que cierra sus servidores. Sin embargo, Momonga, un poderoso mago, decide no salir del juego. Como resultado, se transforma en un esqueleto y se convierte en el mago más poderoso del mundo. Ahora, sin padres, amigos o lugar en la sociedad, este joven ordinario se esfuerza por dominar el nuevo mundo en el que se ha convertido el juego.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/18?hash=89e50b" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/22?hash=3c9f97" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/25?hash=f945e7" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/36?hash=0a8c83" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/29?hash=3fa407" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/38?hash=185c15" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/40?hash=c5874c" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/43?hash=d747b1" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/47?hash=7b3b35" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/49?hash=4e4418" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/51?hash=28cc58" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://managerial-veronike-todesvip1-0d6b955f.koyeb.app/stream/52?hash=d390ce" }
+        ]
+    }
+    
+];
+
+const privateLibrary = [
+    {
+        id: "Sukebe",
+        titulo: "Sukebe Elf Tanbouki",
+        titulo_jp: "スケベエルフ探訪記",
+        poster: "https://veohentai.com/wp-content/uploads/2023/07/Sukebe-Elf-Tanbouki-Episode-1.jpg",
+        banner: "",
+        rating: "+18",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "Sukebe Elf Tanbouki, que retrata la vida sexual de una elfa tetona y lasciva, ignorante e ingenua en el ámbito sexual, ¡ha sido adaptada al anime! ―Los elfos Sukebe son una raza legendaria que viste trajes folclóricos obscenos sobre sus cuerpos regordetes y lascivos. -Kazu, una bióloga que continúa investigando a la legendaria elfa lasciva, basándose en las palabras dejadas por su abuelo, finalmente conoció a Maana, una elfa tetona, pura e inocente, lasciva y con un disfraz obsceno, sin conocimientos sexuales. ¡Arrozal! Kazu, quien finalmente no puede soportar las muchas tentaciones inconscientes de la pura Maana, y una elfa Muchiskebe ignorante que se está volviendo lasciva en un abrir y cerrar de ojos.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/106?hash=fafaaa" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/105?hash=6162e0" }
+        ]
+    },
+    {
+        id: "Gaki",
+        titulo: "Gaki ni Modotte Yarinaoshi!!!",
+        titulo_jp: "スケベエルフ探訪記",
+        poster: "https://veohentai.com/wp-content/uploads/2022/08/gaki-ni-modotte-yarinaoshi-1-cv3.png",
+        banner: "",
+        rating: "+18",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "Desde niño, las mujeres han acosado a Boku, lo que lo marca, anclado en el pasado e incapaz de seguir adelante con su vida. Un día, Kasumi, su amor de la infancia, lo invita a su boda. Mientras observa a todos a su alrededor llevar una vida adulta feliz, Boku se da cuenta de que lo han dejado atrás, lo que le hace desear poder empezar de cero. De alguna manera, este deseo se hace realidad y termina viajando en el tiempo a su preadolescencia. Pronto conoce a Sera Narumiya, su antigua vecina, quien lo acosó con frecuencia durante sus años escolares. Ante la oportunidad de rehacer su vida, Boku decide afrontar sus problemas del pasado, pero ahora con la mentalidad de un adulto; esto incluye, por supuesto, un enfoque más sexual al tratar con mujeres problemáticas.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/108?hash=cccf05" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/107?hash=2b6743" }
+        ]
+    },
+    {
+        id: "Hachishaku",
+        titulo: "Hachishaku Hachiwa Keraku Meguri: Igyou Kaikitan The Animation",
+        titulo_jp: "",
+        poster: "https://veohentai.com/wp-content/uploads/2022/08/hachishaku-hachiwa-keraku-meguri-igyou-kaikitan-GAPGn.jpg",
+        banner: "",
+        rating: "18+",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "Basado en el manga erótico de Jyoka.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/109?hash=86ff4a" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/111?hash=a3b142" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://swift-aphid-todesvip1-b006ad8a.koyeb.app/stream/110?hash=21990b" }
+        ]
+    }
+];
+
+let library = publicLibrary;
+</script>
+
+<script>
+    // --- VARIABLES DE ESTADO ---
+    let currentAnime = null;
+    let currentEpIndex = 0;
+    let hasPlayedAnyVideo = false; // [NUEVO] Flag para la nueva lógica de autoplay
+    let isRestrictedMode = false;
+    let privatePage = 1; // Página actual del modo privado
+    const itemsPerPage = 20; // 2 columnas * 10 filas = 20 items
+    const SECRET_CODE = "4560";
+
+    // --- ELEMENTOS DOM ---
+    const homeView = document.getElementById('home-view');
+    const exploreView = document.getElementById('explore-view');
+    const settingsView = document.getElementById('settings-view');
+    const fullListView = document.getElementById('full-list-view');
+    const detailView = document.getElementById('detail-view');
+    const mangaView = document.getElementById('manga-view');
+    const mangaListView = document.getElementById('manga-list-view');
+    const fullGrid = document.getElementById('full-grid');
+    const mainVideo = document.getElementById('main-video');
+    const heroImg = document.getElementById('hero-img');
+    const heroArea = document.getElementById('hero-area');
+    
+    const detailTitle = document.getElementById('detail-title');
+    const detailSubtitle = document.getElementById('detail-subtitle');
+    const epCountText = document.getElementById('ep-count-text');
+    const epSelector = document.getElementById('ep-selector');
+    const detailSynopsis = document.getElementById('detail-synopsis');
+
+    const detailRating = document.getElementById('detail-rating');
+    const detailSeason = document.getElementById('detail-season');
+    const detailYear = document.getElementById('detail-year');
+    const detailQuality = document.getElementById('detail-quality');
+
+    const headerSearchInput = document.getElementById('header-search-input');
+    const globalSearchResults = document.getElementById('global-search-results');
+    const codeInput = document.getElementById('code-input');
+    
+    const mainHeader = document.getElementById('main-header');
+    const searchActionBtn = document.getElementById('search-action-btn');
+    const searchBackBtn = document.getElementById('search-back-btn');
+
+    const mangaToggleBtn = document.getElementById('manga-toggle-btn');
+    let mangaLoaded = false;
+
+    // --- INICIO ---
+    function initApp() {
+        if(!window.location.hash) window.location.hash = "home";
+        
+        if (typeof library !== 'undefined') {
+            renderHome();
+        } else {
+            console.error("Falta data.js");
+            document.body.innerHTML = "<p style='text-align:center; margin-top:50px;'>Error: data.js no encontrado.</p>";
+        }
+
+        // Cargar estado del switch
+        const savedState = localStorage.getItem('myApp_restrictedMode');
+        if (savedState === 'true') {
+            isRestrictedMode = true;
+            library = privateLibrary;
+        } else {
+            library = publicLibrary;
+        }
+        
+        const toggleBtn = document.getElementById('restriction-toggle');
+        if(toggleBtn) toggleBtn.checked = isRestrictedMode;
+
+        window.addEventListener('hashchange', handleRouting);
+        handleRouting();
+        
+        setupTouchControls();
+
+        searchActionBtn.addEventListener('click', shakeSearch);
+        searchBackBtn.addEventListener('click', closeSearch);
+
+        // [NUEVO] Listener para activar el flag de autoplay después del primer play manual.
+        mainVideo.addEventListener('play', () => {
+            if (!hasPlayedAnyVideo) {
+                hasPlayedAnyVideo = true;
             }
-
-            iniciarObserver();
         });
 
-        // --- LÓGICA DE UI ---
+        // [NUEVO] Listener para corregir visibilidad del botón de manga al salir de pantalla completa.
+        const onFullscreenChange = () => {
+            setTimeout(() => {
+                if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                    updateMangaButtonState();
+                    // Forzar repintado para evitar que el botón quede invisible
+                    mangaToggleBtn.style.display = 'none';
+                    mangaToggleBtn.offsetHeight; // Trigger reflow
+                    mangaToggleBtn.style.removeProperty('display');
+                }
+            }, 300);
+        };
+        document.addEventListener('fullscreenchange', onFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+    }
+
+    function shakeSearch() {
+        const searchInputs = document.querySelectorAll('.header-search-input');
+        searchInputs.forEach(input => {
+            input.classList.add('shake');
+            setTimeout(() => input.classList.remove('shake'), 700);
+        });
+    }
+
+    function openSearch() {
+        mainHeader.classList.add('search-active');
+        headerSearchInput.focus();
+    }
+
+    function closeSearch() {
+        mainHeader.classList.remove('search-active');
+        headerSearchInput.value = ''; // Limpiar input
+        handleGlobalSearch(); // Limpiar resultados
+    }
+
+    function handleRouting() {
+        const hash = window.location.hash;
+        
+        // Reset nav active state
+        // document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+        if (hash.startsWith('#detail') && currentAnime) {
+            showDetailView();
+        } else if (hash === '#manga') {
+            showMangaView();
+        } else if (hash === '#mangalist') {
+            showMangaListView();
+        } else if (hash === '#fulllist') {
+            showFullListView();
+        } else {
+            showHomeView();
+        }
+
+        // Actualizar estado del botón manga
+        updateMangaButtonState();
+    }
+
+    function switchTab(tab) {
+        const hash = '#' + tab;
+        if (window.location.hash !== hash) {
+            history.replaceState(null, null, hash);
+            handleRouting();
+        }
+    }
+
+    function updateMangaButtonState() {
+        const hash = window.location.hash;
+        // 1. Mostrar/Ocultar botón (Solo Kaifuku y en vistas permitidas)
+        if (currentAnime && currentAnime.id === 'Kaifuku' && (hash.startsWith('#detail') || hash === '#manga' || hash === '#mangalist')) {
+            mangaToggleBtn.classList.add('show');
+        } else {
+            mangaToggleBtn.classList.remove('show');
+        }
+
+        // 2. Sincronizar icono del ojo con la vista actual
+        if (hash === '#manga' || hash === '#mangalist') {
+            mangaToggleBtn.classList.add('is-visible');
+        } else {
+            mangaToggleBtn.classList.remove('is-visible');
+        }
+    }
+
+    function toggleAppMode() {
+        // Si ya estamos en modo privado, al tocar el icono se vuelve al modo público.
+        if (isRestrictedMode) {
+            isRestrictedMode = false;
+            library = publicLibrary;
+            localStorage.setItem('myApp_restrictedMode', 'false');
+            renderHome();
+            switchTab('home');
+            return;
+        }
+
+        // Si estamos en modo público, verificar el código.
+        if (codeInput.value === SECRET_CODE) {
+            isRestrictedMode = true;
+            library = privateLibrary;
+            localStorage.setItem('myApp_restrictedMode', 'true');
+            renderHome();
+            switchTab('home');
+        } else {
+            // Código incorrecto: animar y limpiar.
+            codeInput.classList.add('shake');
+            setTimeout(() => codeInput.classList.remove('shake'), 700);
+            codeInput.value = "";
+        }
+    }
+
+    // --- RENDERIZADO ---
+    function renderHome() {
+        const homeContent = document.querySelector('.home-content');
+        
+        if (isRestrictedMode) {
+            // --- MODO PRIVADO (GRID PAGINADO) ---
+            // "Donde está el icono de huella... videos de 2 hasta abajo... hasta 10 lineas"
+            homeContent.innerHTML = `
+                <div class="full-list-grid" id="private-grid" style="padding-top:20px;"></div>
+                <div id="private-pagination" class="pagination-container"></div>
+            `;
+            renderPrivateGrid();
+        } else {
+            // --- MODO PÚBLICO (LISTAS HORIZONTALES) ---
+            homeContent.innerHTML = `
+                <div class="section-title">Recientes</div>
+                <div class="horizontal-list" id="recent-list"></div>
+
+                <div class="section-title">Más populares</div>
+                <div class="horizontal-list" id="popular-list"></div>
+
+                <div class="section-title">Animes Latino</div>
+                <div class="horizontal-list" id="latino-list"></div>
+            `;
+
+            // 1. Recién añadidos
+            const recentContainer = document.getElementById('recent-list');
+            let recentItems = library.filter(a => a.id !== 'Dokyuu' && a.id !== 'Overlord').slice(-10).reverse();
+            
+            recentItems.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "horizontal-item"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                recentContainer.appendChild(card);
+            });
+
+            // 2. Más populares
+            const popularContainer = document.getElementById('popular-list');
+            let popularItems = library.filter(a => a.id === 'Dokyuu');
+            if (popularItems.length === 0) popularItems = library.slice(0, 10);
+            
+            popularItems.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "horizontal-item"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                popularContainer.appendChild(card);
+            });
+
+            // 3. Animes Latino
+            const latinoContainer = document.getElementById('latino-list');
+            let latinoItems = library.filter(a => a.id === 'Overlord');
+            if (latinoItems.length === 0) latinoItems = library.slice(0, 10);
+            
+            latinoItems.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "horizontal-item"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                latinoContainer.appendChild(card);
+            });
+        }
+    }
+
+    function renderPrivateGrid() {
+        const grid = document.getElementById('private-grid');
+        const pagination = document.getElementById('private-pagination');
+        if(!grid) return;
+
+        // Calcular items de la página actual
+        const start = (privatePage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const items = library.slice(start, end);
+
+        grid.innerHTML = "";
+        items.forEach(anime => {
+            const card = document.createElement('div');
+            card.className = "poster-wrapper"; 
+            card.onclick = () => { openAnimeDetail(anime); };
+            card.innerHTML = `
+                <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                <div class="anime-title">${anime.titulo}</div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Renderizar controles de paginación (1, 2, 3...)
+        pagination.innerHTML = "";
+        const totalPages = Math.ceil(library.length / itemsPerPage);
+        
+        if(totalPages > 1) {
+            for(let i=1; i<=totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.className = `page-btn ${i === privatePage ? 'active' : ''}`;
+                btn.innerText = i;
+                btn.onclick = () => {
+                    privatePage = i;
+                    renderPrivateGrid();
+                    window.scrollTo(0,0);
+                };
+                pagination.appendChild(btn);
+            }
+        }
+    }
+
+    function renderGrid(data, container) {
+        container.innerHTML = "";
+        data.forEach(anime => {
+            const card = document.createElement('div');
+            card.className = "poster-wrapper"; 
+            card.onclick = () => { openAnimeDetail(anime); };
+            card.innerHTML = `
+                <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                <div class="anime-title">${anime.titulo}</div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // --- DETALLE ---
+    function openAnimeDetail(anime) {
+        hasPlayedAnyVideo = false; // [NUEVO] Resetea el flag para cada anime nuevo que se abre.
+        currentAnime = anime;
+        currentEpIndex = 0;
+        prepareDetailView(anime);
+        window.location.hash = "detail";
+    }
+    
+    function prepareDetailView(anime) {
+        detailTitle.innerText = anime.titulo;
+        detailSubtitle.innerText = anime.titulo_jp || "";
+
+        detailRating.innerText = anime.rating || "";
+        detailSeason.innerText = anime.temporada || "";
+        detailYear.innerText = anime.ano || "";
+        detailQuality.innerText = anime.calidad || "";
+        
+        detailSynopsis.innerText = anime.sinopsis || "";
+
+        epSelector.innerHTML = "";
+        const totalEps = anime.episodios.length;
+        epCountText.innerText = `${totalEps} ${totalEps === 1 ? 'Capítulo' : 'Capítulos'}`;
+
+        anime.episodios.forEach((ep, index) => {
+            const btn = document.createElement('div');
+            btn.className = 'ep-box';
+            btn.innerText = ep.num;
+            btn.onclick = () => playEpisode(index);
+            epSelector.appendChild(btn);
+        });
+
+        if (totalEps > 0) {
+            playEpisode(0);
+        } else {
+            mainVideo.style.display = 'none';
+            heroImg.style.display = 'block';
+            heroImg.src = anime.banner || anime.poster;
+        }
+    }
+
+    // [CORREGIDO] Lógica de autoplay actualizada.
+    function playEpisode(index, isAutoChained = false) {
+        if (!currentAnime || !currentAnime.episodios[index]) return;
+        currentEpIndex = index;
+        const episode = currentAnime.episodios[index];
+
+        heroImg.style.display = "none";
+        mainVideo.style.display = "block";
+        mainVideo.src = episode.link;
+
+        // Reproduce automáticamente si es el siguiente video en la cadena
+        // O si el usuario ya ha iniciado la reproducción manualmente antes.
+        if (isAutoChained || hasPlayedAnyVideo) {
+            mainVideo.play();
+        }
+
+        const buttons = epSelector.querySelectorAll('.ep-box');
+        buttons.forEach((btn, i) => {
+            btn.classList.toggle('active', i === index);
+        });
+        
+        if(buttons[index]) {
+            buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+
+        if (!isAutoChained) {
+            document.getElementById('hero-area').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    // --- Control por gestos ---
+    let isDragging = false;
+    let startX = 0;
+    let startVideoTime = 0;
+    // [CORREGIDO] Se aumenta el valor para que el deslizamiento sea mucho más rápido.
+    const swipeSeekFactor = 2.5; 
+    let lastSeekTimestamp = 0; // Variable para controlar la frecuencia
+
+    function setupTouchControls() {
+        heroArea.addEventListener('touchstart', handleTouchStart);
+        heroArea.addEventListener('touchmove', handleTouchMove, { passive: false });
+        heroArea.addEventListener('touchend', handleTouchEnd);
+    }
+    
+    function handleTouchStart(e) {
+        if (mainVideo.paused || !mainVideo.duration) return;
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        startVideoTime = mainVideo.currentTime;
+        lastSeekTimestamp = 0;
+    }
+
+    function handleTouchMove(e) {
+        if (!isDragging) return;
+        e.preventDefault(); 
+
+        // Evitar que se actualice demasiadas veces por segundo (evita el bug de congelamiento)
+        const now = Date.now();
+        if (now - lastSeekTimestamp < 50) return; 
+        lastSeekTimestamp = now;
+
+        const currentX = e.touches[0].clientX;
+        const deltaX = currentX - startX;
+        
+        const timeOffset = deltaX * swipeSeekFactor;
+        let newTime = startVideoTime + timeOffset;
+
+        newTime = Math.max(0, Math.min(mainVideo.duration, newTime));
+        
+        mainVideo.currentTime = newTime;
+    }
+
+    function handleTouchEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+    }
+
+
+    // --- UTILIDADES ---
+    function showDetailView() {
+        document.getElementById('main-header').style.transform = 'translateY(-100%)'; // Ocultar header en reproductor
+        switchView(detailView);
+        window.scrollTo(0, 0);
+    }
+
+    function showMangaListView() {
+        document.getElementById('main-header').style.transform = 'translateY(-100%)';
+        mainVideo.pause();
+        switchView(mangaListView);
+        renderMangaList();
+        startCoverCarousel();
+    }
+
+    function showHomeView() {
+        mainVideo.pause();
+        mainVideo.src = "";
+        currentAnime = null; 
+        mangaToggleBtn.classList.remove('show'); // Asegurar ocultar
+        switchView(homeView);
+        document.getElementById('main-header').style.transform = 'translateY(0)'; // Mostrar header
+        renderHome(); // Recargar para actualizar "Continuar viendo"
+        if(window.location.hash !== '#home') history.replaceState(null, null, '#home');
+    }
+
+    function showSettingsView() {
+        switchView(settingsView);
+        document.getElementById('main-header').style.transform = 'translateY(0)';
+    }
+
+    function switchView(view) {
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        view.classList.add('active');
+        if (view !== mangaListView) stopCoverCarousel();
+    }
+
+    // --- LISTA COMPLETA ---
+    function openFullList() {
+        renderGrid(library, fullGrid);
+        window.location.hash = "fulllist";
+    }
+    function showFullListView() {
+        renderGrid(library, fullGrid);
+        document.getElementById('main-header').style.transform = 'translateY(0)';
+        switchView(fullListView);
+    }
+    function closeFullList() {
+        window.history.back();
+    }
+
+    function handleGlobalSearch() {
+        const query = headerSearchInput.value.toLowerCase().trim();
+        
+        if (!query) {
+            globalSearchResults.style.display = 'none';
+            return;
+        }
+
+        const filtered = library.filter(a => a.titulo.toLowerCase().includes(query));
+        globalSearchResults.innerHTML = "";
+        globalSearchResults.style.display = 'block';
+
+        filtered.forEach(anime => {
+            const item = document.createElement('div');
+            item.className = 'search-result-card';
+            item.innerHTML = `
+                <img src="${anime.poster}" class="search-poster-img">
+                <div class="search-info">
+                    <div class="search-title">${anime.titulo}</div>
+                    <div class="search-desc">${anime.sinopsis || 'Sin descripción.'}</div>
+                </div>
+            `;
+            item.onclick = () => {
+                globalSearchResults.style.display = 'none';
+                headerSearchInput.value = "";
+                openAnimeDetail(anime);
+            };
+            globalSearchResults.appendChild(item);
+        });
+
+        if (filtered.length === 0) {
+            globalSearchResults.innerHTML = "<div style='padding:20px; color:#888; text-align:center;'>No se encontraron resultados</div>";
+        }
+    }
+
+    // --- LÓGICA MANGA ---
+    function toggleMangaMode() {
+        if (mangaToggleBtn.classList.contains('is-visible')) {
+            // Está abierto (Manga o Lista), cerrar -> ir atrás
+            mangaToggleBtn.classList.remove('is-visible');
+            window.history.back(); // Volver a detail
+        } else {
+            // Está cerrado (Video), abrir -> ir a Manga List
+            mangaToggleBtn.classList.add('is-visible');
+            window.location.hash = "mangalist";
+        }
+    }
+
+    function showMangaView() {
+        document.getElementById('main-header').style.transform = 'translateY(-100%)'; // Ocultar header en manga
+        mainVideo.pause();
+        switchView(mangaView);
+        mangaToggleBtn.classList.add('is-visible'); // Asegurar estado visual
+        
+        if (!mangaLoaded) {
+            loadMangaImages();
+            mangaLoaded = true;
+        }
+    }
+
+    // Variables Manga
+    const TOTAL_PAGINAS = 10;      
+    const CARPETA_MANGA = 'dato1'; 
+
+    function loadMangaImages() {
+        const contenedor = document.getElementById('contenedor-imagenes');
+        const gridContainer = document.getElementById('grid-container');
+        const loading = document.getElementById('loading-manga');
+        
+        loading.style.display = 'none';
+        
+        // Lista de extensiones a probar (prioridad: webp -> jpg -> png)
+        const extensiones = ['.webp', '.jpg', '.png', '.jpeg'];
+
+        for (let i = 1; i <= TOTAL_PAGINAS; i++) {
+            const img = document.createElement('img');
+            img.className = 'pag';
+            img.id = `img-${i}`;
+            if (i > 3) img.loading = "lazy";
+            
+            // Generar todas las combinaciones posibles (1.jpg, 01.jpg, 001.jpg, etc.)
+            const candidatos = [];
+            const variantesNum = [String(i), String(i).padStart(2, '0'), String(i).padStart(3, '0')];
+            // Eliminar duplicados (ej: "100" vs "100")
+            const unicosNum = [...new Set(variantesNum)];
+            
+            unicosNum.forEach(num => {
+                extensiones.forEach(ext => candidatos.push(`${CARPETA_MANGA}/${num}${ext}`));
+            });
+
+            // Lógica de "prueba y error" automática
+            let intento = 0;
+            const cargarSiguiente = () => {
+                if (intento < candidatos.length) {
+                    img.src = candidatos[intento];
+                    intento++;
+                } else {
+                    img.style.display = 'none'; // Fallaron todas
+                }
+            };
+            
+            img.onerror = cargarSiguiente;
+            img.onload = () => img.classList.add('loaded');
+            
+            // Iniciar carga
+            cargarSiguiente();
+            
+            contenedor.appendChild(img);
+
+            // Botón menú
+            const btn = document.createElement('button');
+            btn.className = 'grid-btn';
+            btn.id = `btn-${i}`;
+            btn.innerText = i;
+            btn.onclick = () => irAPagina(i);
+            gridContainer.appendChild(btn);
+        }
+        iniciarObserver();
+    }
+
+    function iniciarObserver() {
         const pageDisplay = document.getElementById('page-display');
         const dockProgress = document.getElementById('dock-progress');
+        
+        const imagenes = document.querySelectorAll('.pag');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const num = parseInt(entry.target.id.split('-')[1]);
+                    pageDisplay.innerText = num;
+                    const porcentaje = (num / TOTAL_PAGINAS) * 100;
+                    dockProgress.style.width = `${porcentaje}%`;
+                    
+                    document.querySelectorAll('.grid-btn').forEach(b => b.classList.remove('active'));
+                    const btn = document.getElementById(`btn-${num}`);
+                    if(btn) btn.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "-40% 0px -40% 0px" });
+        imagenes.forEach(img => observer.observe(img));
+    }
 
-        function iniciarObserver() {
-            const imagenes = document.querySelectorAll('.pag');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const num = parseInt(entry.target.id.split('-')[1]);
-                        actualizarUI(num);
-                    }
+    let isDockHidden = false;
+    function toggleCinemaMode() {
+        const dock = document.getElementById('dock-container');
+        isDockHidden ? dock.classList.remove('hidden') : dock.classList.add('hidden');
+        isDockHidden = !isDockHidden;
+    }
+    function abrirSheet() { document.getElementById('sheet-overlay').style.display = 'block'; }
+    function cerrarSheet(e) { if(e.target.id === 'sheet-overlay') document.getElementById('sheet-overlay').style.display = 'none'; }
+    function irAPagina(num) {
+        document.getElementById('sheet-overlay').style.display = 'none';
+        const dest = document.getElementById(`img-${num}`);
+        if(dest) dest.scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+
+    function renderMangaList() {
+        const container = document.getElementById('chapter-list-container');
+        if(container.children.length > 0) return; // Evitar re-render
+        
+        for (let i = 70; i >= 1; i--) {
+            const num = i.toString().padStart(2, '0');
+            const item = document.createElement('div');
+            item.className = 'chapter-item';
+            item.innerHTML = `<span>Kaifuku, Chapter ${num}</span>`;
+            item.onclick = () => {
+                if (i === 1) window.location.hash = 'manga';
+            };
+            container.appendChild(item);
+        }
+    }
+
+    // --- CAROUSEL PORTADAS MANGA ---
+    let coverInterval = null;
+    const TOTAL_COVERS = 17;
+    const COVER_BASE_URL = 'https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/Kaifuku/';
+
+    function setCoverSource(img, index) {
+        const num = String(index).padStart(2, '0');
+        img.onerror = null; 
+        // Intentar webp primero
+        img.src = `${COVER_BASE_URL}${num}.webp`;
+        // Si falla, intentar jpg
+        img.onerror = function() {
+            this.onerror = null;
+            this.src = `${COVER_BASE_URL}${num}.jpg`;
+        };
+    }
+
+    function startCoverCarousel() {
+        stopCoverCarousel();
+        let currentIndex = 0;
+        const img1 = document.getElementById('cover-img-1');
+        const img2 = document.getElementById('cover-img-2');
+        
+        const update = () => {
+            if (!img1 || !img2) return;
+            const idx1 = (currentIndex % TOTAL_COVERS) + 1;
+            const idx2 = ((currentIndex + 1) % TOTAL_COVERS) + 1;
+            
+            setCoverSource(img1, idx1);
+            setCoverSource(img2, idx2);
+            
+            currentIndex = (currentIndex + 2) % TOTAL_COVERS;
+        };
+        
+        update(); // Actualizar inmediatamente
+        coverInterval = setInterval(update, 5000);
+    }
+
+    function stopCoverCarousel() {
+        if (coverInterval) {
+            clearInterval(coverInterval);
+            coverInterval = null;
+        }
+    }
+
+    // El listener para el final del video ahora llama a playEpisode con el segundo parámetro en 'true'
+    mainVideo.addEventListener('ended', () => {
+        if (currentAnime && currentEpIndex < currentAnime.episodios.length - 1) {
+            playEpisode(currentEpIndex + 1, true);
+        }
+    });
+
+    initApp();
+    
+    // --- LOGICA DE INICIO (SPLASH SCREEN) ---
+    async function launchApp() {
+        const splash = document.getElementById('splash-screen');
+        const status = document.getElementById('splash-status');
+        const spinner = document.getElementById('splash-spinner');
+        const retryBtn = document.getElementById('retry-btn');
+
+        // 1. Verificar conexión básica
+        if (!navigator.onLine) {
+            showError("Sin conexión a internet");
+            return;
+        }
+
+        // 2. Precargar imágenes
+        try {
+            status.innerText = "Cargando contenido...";
+            
+            // Recolectar imágenes
+            const imagesToLoad = [];
+            library.forEach(anime => {
+                if(anime.poster) imagesToLoad.push(anime.poster);
+                if(anime.banner) imagesToLoad.push(anime.banner);
+            });
+
+            // Crear promesas de carga
+            const loadPromises = imagesToLoad.map(src => {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.src = src;
+                    img.onload = resolve;
+                    img.onerror = resolve; // Continuar aunque falle una imagen específica
                 });
-            }, { threshold: 0.1, rootMargin: "-40% 0px -40% 0px" });
-            imagenes.forEach(img => observer.observe(img));
+            });
+
+            // Esperar a que carguen (o timeout de 8s)
+            await Promise.race([
+                Promise.all(loadPromises),
+                new Promise(resolve => setTimeout(resolve, 8000))
+            ]);
+
+            // 3. Transición al Home
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 500);
+
+        } catch (e) {
+            console.error("Error en carga:", e);
+            // En caso de error inesperado, dejar entrar
+            splash.style.display = 'none';
         }
 
-        function actualizarUI(num) {
-            pageDisplay.innerText = num;
-            const porcentaje = (num / TOTAL_PAGINAS) * 100;
-            dockProgress.style.width = `${porcentaje}%`;
-            document.querySelectorAll('.grid-btn').forEach(b => b.classList.remove('active'));
-            const btn = document.getElementById(`btn-${num}`);
-            if(btn) btn.classList.add('active');
+        function showError(msg) {
+            spinner.style.display = 'none';
+            status.innerText = msg;
+            status.style.color = '#ff4444';
+            retryBtn.style.display = 'block';
         }
+    }
 
-        let isHidden = false;
-        function toggleCinemaMode() {
-            const dock = document.getElementById('dock-container');
-            isHidden ? dock.classList.remove('hidden') : dock.classList.add('hidden');
-            isHidden = !isHidden;
-        }
+    // Ejecutar carga
+    launchApp();
 
-        function abrirSheet() { document.getElementById('sheet-overlay').style.display = 'block'; }
-        function cerrarSheet(e) { if(e.target.id === 'sheet-overlay') document.getElementById('sheet-overlay').style.display = 'none'; }
-        function irAPagina(num) {
-            document.getElementById('sheet-overlay').style.display = 'none';
-            const dest = document.getElementById(`img-${num}`);
-            if(dest) dest.scrollIntoView({behavior: 'smooth', block: 'start'});
-        }
-    </script>
+</script>
 </body>
 </html>
-
