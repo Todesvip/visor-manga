@@ -1224,6 +1224,16 @@ let library = publicLibrary;
         currentEpIndex = index;
         const episode = currentAnime.episodios[index];
 
+        // --- CÓDIGO NUEVO: CONEXIÓN CON APP ANDROID ---
+        // Si detecta que estamos dentro de la APK, manda el video al reproductor profesional
+        if (typeof Android !== "undefined" && Android.playVideo) {
+            console.log("Abriendo en reproductor nativo: " + episode.link);
+            Android.playVideo(episode.link);
+            return; // ¡IMPORTANTE! Detiene el código aquí para no cargar el video web de fondo
+        }
+        // ----------------------------------------------
+
+        // LÓGICA ANTIGUA (SOLO PARA CUANDO PRUEBAS EN PC)
         heroImg.style.display = "none";
         mainVideo.style.display = "block";
         mainVideo.src = episode.link;
