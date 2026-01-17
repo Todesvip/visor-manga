@@ -76,7 +76,7 @@
             text-align: center; letter-spacing: 2px;
         }
         .code-input::placeholder { color: #888; letter-spacing: normal; }
-        .code-input.shake, .header-search-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
+        .code-input.shake, .header-search-input.shake, .chapter-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
         /* Ocultar flechas en input de número */
         .code-input::-webkit-outer-spin-button, .code-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         .code-input[type=number] { -moz-appearance: textfield; }
@@ -504,7 +504,7 @@
 
         /* --- CHAPTER NAV INPUT --- */
         .chapter-nav-container {
-            position: fixed; bottom: 20px; left: 20px; z-index: 1900;
+            position: fixed; bottom: 20px; left: 10px; z-index: 1900;
             width: auto; padding: 0;
             opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
@@ -1510,6 +1510,12 @@ let library = publicLibrary;
         // Quitar loading
         setTimeout(() => loading.remove(), 500);
 
+        // Sentinel para detectar el final (y mostrar el buscador incluso si no hay imágenes)
+        const sentinel = document.createElement('div');
+        sentinel.id = 'manga-sentinel';
+        sentinel.style.height = '10px';
+        contenedor.appendChild(sentinel);
+
         // Agregar buscador de capítulos al final
         const navDiv = document.createElement('div');
         navDiv.className = 'chapter-nav-container';
@@ -1531,13 +1537,40 @@ let library = publicLibrary;
         if (e.key === 'Enter') goToChapter();
     }
 
+    function verificarCapitulo(num) {
+        return new Promise((resolve, reject) => {
+            const folder = 'dato' + num;
+            const extensiones = ['.webp', '.jpg', '.png', '.jpeg'];
+            const variantesNum = ['1', '01', '001']; 
+            
+            let candidatos = [];
+            variantesNum.forEach(n => extensiones.forEach(ext => candidatos.push(`${folder}/${n}${ext}`)));
+
+            let intento = 0;
+            const img = new Image();
+            const probar = () => {
+                if (intento >= candidatos.length) { reject(); return; }
+                img.src = candidatos[intento];
+            };
+            img.onload = () => resolve();
+            img.onerror = () => { intento++; probar(); };
+            probar();
+        });
+    }
+
     function goToChapter() {
-        const val = document.getElementById('chapter-input').value.trim();
-        if (val) {
-            // Asume formato 'dato' + numero (ej: dato2, dato75)
+        const input = document.getElementById('chapter-input');
+        const val = input.value.trim();
+        if (!val) return;
+
+        verificarCapitulo(val).then(() => {
             loadMangaImages('dato' + val);
             document.getElementById('manga-view').scrollTop = 0;
-        }
+        }).catch(() => {
+            input.classList.add('shake');
+            setTimeout(() => input.classList.remove('shake'), 700);
+            if (navigator.vibrate) navigator.vibrate(200);
+        });
     }
 
     function iniciarObserver() {
@@ -1563,13 +1596,13 @@ let library = publicLibrary;
 
         // Observer para mostrar el buscador SOLO al final
         const navDiv = document.querySelector('.chapter-nav-container');
-        const lastImg = document.getElementById(`img-${TOTAL_PAGINAS}`);
+        const sentinel = document.getElementById('manga-sentinel');
         
-        if (lastImg && navDiv) {
+        if (sentinel && navDiv) {
             const lastObserver = new IntersectionObserver((entries) => {
                 entries[0].isIntersecting ? navDiv.classList.add('visible') : navDiv.classList.remove('visible');
             }, { threshold: 0.1 });
-            lastObserver.observe(lastImg);
+            lastObserver.observe(sentinel);
         }
     }
 
