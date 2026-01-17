@@ -504,7 +504,7 @@
 
         /* --- CHAPTER NAV INPUT --- */
         .chapter-nav-container {
-            position: fixed; bottom: 20px; left: 10px; z-index: 1900;
+            position: fixed; top: 20px; left: 10px; z-index: 1900;
             width: auto; padding: 0;
             opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
@@ -524,13 +524,14 @@
             outline: none; border-bottom: 2px solid var(--accent);
         }
         .chapter-go-btn {
-            width: 24px; height: 24px; border-radius: 50%; border: none;
-            background: var(--accent); color: white;
+            width: 24px; height: 24px; border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 15, 15, 0.75); color: #ccc;
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: transform 0.2s;
+            cursor: pointer; transition: transform 0.2s, background 0.2s;
         }
-        .chapter-go-btn:active { transform: scale(0.9); }
-        .chapter-go-btn svg { width: 14px; height: 14px; fill: white; }
+        .chapter-go-btn:active { transform: scale(0.9); background: rgba(255, 255, 255, 0.15); }
+        .chapter-go-btn svg { width: 14px; height: 14px; fill: #ccc; }
 
     </style>
 </head>
