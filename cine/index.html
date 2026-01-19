@@ -588,7 +588,7 @@
             <div class="section-title">Más populares</div>
             <div class="horizontal-list" id="popular-list"></div>
 
-            <!-- ANIMES LATINO (HORIZONTAL) -->
+            <!-- ANIME LATINO (HORIZONTAL) -->
             <div class="section-title">Anime Latino</div>
             <div class="horizontal-list" id="latino-list"></div>
         </div>
@@ -639,6 +639,12 @@
                 <span id="detail-season"></span>
                 <span id="detail-year"></span>
                 <span id="detail-quality"></span>
+            </div>
+
+            <!-- SECCIÓN TEMPORADAS (Solo Overlord) -->
+            <div id="detail-seasons-view" style="display: none;">
+                <div class="section-title" style="padding-left: 0; margin-bottom: 10px;">Temporadas</div>
+                <div class="horizontal-list" id="detail-seasons-list" style="margin-left: -20px; width: calc(100% + 40px); padding-left: 5px;"></div>
             </div>
         </div>
     </div>
@@ -840,6 +846,32 @@ const publicLibrary = [
             { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/219?hash=cfeb64" },
             { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/222?hash=0ccccd" }
         ]
+    },
+    {
+        id: "Overlord II",
+        titulo: "Overlord II",
+        titulo_jp: "ーバーロード II",
+        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/05.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "Temporada 2",
+        ano: "2018",
+        calidad: "HD",
+        sinopsis: "Lord Ainz Ooal Gown da el primer paso en su plan para expandir su fama por todo el nuevo mundo. En compañía de la pléyade Narberal y bajo la falsa identidad del guerrero Momon, se instalará en la ciudad de E-Rantel y se registrará en el gremio de aventureros.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/224?hash=5b85bb" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/223?hash=31377c" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/225?hash=5c7532" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/231?hash=194f30" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/230?hash=2ed76a" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/233?hash=c83b40" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/235?hash=7e8429" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/234?hash=dd47f0" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/238?hash=74cbbe" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/242?hash=166063" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/240?hash=ecec8c" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "https://vague-flossy-kamver-9313da8d.koyeb.app/stream/243?hash=b96cf3" }
+        ]
     }
     
 ];
@@ -931,6 +963,8 @@ let library = publicLibrary;
     const detailSeason = document.getElementById('detail-season');
     const detailYear = document.getElementById('detail-year');
     const detailQuality = document.getElementById('detail-quality');
+    const detailSeasonsView = document.getElementById('detail-seasons-view');
+    const detailSeasonsList = document.getElementById('detail-seasons-list');
 
     const headerSearchInput = document.getElementById('header-search-input');
     const globalSearchResults = document.getElementById('global-search-results');
@@ -1108,7 +1142,7 @@ let library = publicLibrary;
                 <div class="section-title">Más populares</div>
                 <div class="horizontal-list" id="popular-list"></div>
 
-                <div class="section-title">Animes Latino</div>
+                <div class="section-title">Anime Latino</div>
                 <div class="horizontal-list" id="latino-list"></div>
 
                 <div class="section-title">Reciente en Series</div>
@@ -1117,7 +1151,7 @@ let library = publicLibrary;
 
             // 1. Recién añadidos
             const recentContainer = document.getElementById('recent-list');
-            let recentItems = library.filter(a => a.id !== 'Dokyuu' && a.id !== 'Overlord' && a.id !== 'Rick').slice(-10).reverse();
+            let recentItems = library.filter(a => a.id !== 'Dokyuu' && a.id !== 'Overlord' && a.id !== 'Overlord II' && a.id !== 'Rick').slice(-10).reverse();
             
             recentItems.forEach(anime => {
                 const card = document.createElement('div');
@@ -1146,7 +1180,7 @@ let library = publicLibrary;
                 popularContainer.appendChild(card);
             });
 
-            // 3. Animes Latino
+            // 3. Anime Latino
             const latinoContainer = document.getElementById('latino-list');
             let latinoItems = library.filter(a => a.id === 'Overlord');
             if (latinoItems.length === 0) latinoItems = library.slice(0, 10);
@@ -1272,6 +1306,27 @@ let library = publicLibrary;
             mainVideo.style.display = 'none';
             heroImg.style.display = 'block';
             heroImg.src = anime.banner || anime.poster;
+        }
+
+        // Lógica para mostrar Temporadas (Solo Overlord)
+        if (anime.titulo.includes("Overlord")) {
+            const seasons = library.filter(a => a.titulo.includes("Overlord"));
+            if (seasons.length > 0) {
+                detailSeasonsView.style.display = 'block';
+                detailSeasonsList.innerHTML = "";
+                seasons.forEach(s => {
+                    const card = document.createElement('div');
+                    card.className = "horizontal-item";
+                    card.onclick = () => { openAnimeDetail(s); };
+                    card.innerHTML = `
+                        <div class="poster"><img src="${s.poster}" alt="${s.titulo}"></div>
+                        <div class="anime-title">${s.titulo}</div>
+                    `;
+                    detailSeasonsList.appendChild(card);
+                });
+            }
+        } else {
+            detailSeasonsView.style.display = 'none';
         }
     }
 
