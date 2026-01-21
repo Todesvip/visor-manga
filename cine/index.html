@@ -640,10 +640,12 @@
                 <span id="detail-season"></span>
                 <span id="detail-year"></span>
                 <span id="detail-quality"></span>
+                <span id="detail-seasons-toggle" class="badge" style="display:none; cursor:pointer; margin-left:10px;">Ocultar</span>
             </div>
 
             <!-- SECCIÓN TEMPORADAS (Solo Overlord) -->
             <div id="detail-seasons-view" style="display: none;">
+                <div class="section-title" style="padding-left: 0; margin-bottom: 15px;">Temporada</div>
                 <div class="horizontal-list" id="detail-seasons-list" style="margin-left: -20px; width: calc(100% + 40px); padding-left: 5px;"></div>
             </div>
         </div>
@@ -1309,6 +1311,7 @@ let library = publicLibrary;
         }
 
         // Lógica para mostrar Temporadas (Solo Overlord)
+        const toggleBtn = document.getElementById('detail-seasons-toggle');
         if (anime.titulo.includes("Overlord")) {
             const seasons = library.filter(a => a.titulo.includes("Overlord"));
             if (seasons.length > 0) {
@@ -1324,9 +1327,26 @@ let library = publicLibrary;
                     `;
                     detailSeasonsList.appendChild(card);
                 });
+                
+                // Configurar botón de ocultar/mostrar
+                toggleBtn.style.display = 'inline-block';
+                toggleBtn.innerText = "Ocultar";
+                toggleBtn.onclick = () => {
+                    if (detailSeasonsView.style.display === 'none') {
+                        detailSeasonsView.style.display = 'block';
+                        toggleBtn.innerText = "Ocultar";
+                    } else {
+                        detailSeasonsView.style.display = 'none';
+                        toggleBtn.innerText = "Mostrar";
+                    }
+                };
+            } else {
+                detailSeasonsView.style.display = 'none';
+                toggleBtn.style.display = 'none';
             }
         } else {
             detailSeasonsView.style.display = 'none';
+            toggleBtn.style.display = 'none';
         }
     }
 
