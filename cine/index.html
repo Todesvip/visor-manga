@@ -1554,6 +1554,8 @@ let library = publicLibrary;
 
     // 2. Mostrar/Ocultar Controles
     let controlsTimer;
+    let lastTouchTime = 0;
+
     const showControls = () => {
         videoContainer.classList.add('active');
         clearTimeout(controlsTimer);
@@ -1562,7 +1564,12 @@ let library = publicLibrary;
         }, 3000);
     };
     
-    videoContainer.addEventListener('mousemove', showControls);
+    videoContainer.addEventListener('touchstart', () => { lastTouchTime = Date.now(); }, { passive: true });
+    
+    videoContainer.addEventListener('mousemove', () => {
+        if (Date.now() - lastTouchTime < 500) return;
+        showControls();
+    });
     
     videoContainer.addEventListener('click', (e) => {
         if (e.target.closest('.bottom-bar') || e.target.closest('.center-play') || e.target.closest('.cc-menu')) return;
