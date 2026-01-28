@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Todesvip</title>
+    <!-- Librería de subtítulos -->
+    <script src="./assets/js/subtitles-octopus.js"></script>
+
     <style>
         /* --- ESTILOS GENERALES --- */
         :root { --bg: #000000; --text: #ffffff; --text-gray: #a8a8a8; --accent: #00A4DC; }
@@ -227,9 +230,85 @@
         }
         .hero-bg { width: 100%; height: 100%; object-fit: cover; display: none; } 
         
-        .video-player {
+        /* --- REPRODUCTOR AVANZADO (INTEGRACIÓN) --- */
+        #video-container {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: black; border: none; z-index: 20; display: block;
+            background-color: #000; overflow: hidden; z-index: 20; display: none; /* Oculto por defecto */
+        }
+        
+        #main-video { width: 100%; height: 100%; display: block; object-fit: contain; position: relative; z-index: 0; }
+
+        /* CAPA DE CONTROLES (OVERLAY) */
+        .controls-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s;
+            pointer-events: none; display: flex; flex-direction: column; justify-content: space-between;
+            z-index: 20;
+        }
+
+        /* Mostrar controles cuando esté activo o pausado */
+        #video-container.active .controls-overlay,
+        #video-container.paused .controls-overlay { opacity: 1; pointer-events: auto; }
+
+        /* BOTÓN PLAY GIGANTE CENTRAL */
+        .center-play {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 64px; height: 64px; background: rgba(0, 0, 0, 0.6); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
+        }
+        .center-play svg { width: 32px; height: 32px; fill: white; margin-left: 4px; }
+
+        /* BARRA INFERIOR */
+        .bottom-bar {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 10px 15px; display: flex; flex-direction: column; gap: 5px; margin-top: auto;
+        }
+
+        /* FILA DE CONTROLES */
+        .controls-row { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+        .controls-left { display: flex; align-items: center; gap: 15px; }
+
+        /* TIEMPOS */
+        .time-display { color: #ddd; font-size: 13px; font-weight: 500; min-width: 80px; text-align: center; }
+
+        /* BARRA DE PROGRESO */
+        .progress-container {
+            width: 100%; height: 20px; display: flex; align-items: center; cursor: pointer; margin: 0;
+        }
+        .progress-bg { width: 100%; height: 3px; background: rgba(255,255,255,0.3); position: relative; }
+        .progress-fill { height: 100%; width: 0%; background: #fff; position: absolute; top: 0; left: 0; }
+        .progress-handle {
+            width: 12px; height: 12px; background: #fff; border-radius: 50%;
+            position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); display: none;
+        }
+        .progress-container:hover .progress-handle,
+        .progress-container:active .progress-handle { display: block; transform: translate(-50%, -50%) scale(1.2); }
+
+        /* BOTONES DERECHA */
+        .right-buttons { display: flex; gap: 10px; align-items: center; }
+        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; opacity: 0.8; transition: opacity 0.2s; }
+        .icon-btn:hover { opacity: 1; }
+        .icon-btn svg { width: 24px; height: 24px; fill: white; }
+        .icon-btn.cc-active svg { fill: #fff; border-bottom: 2px solid #fff; }
+        
+        /* MENÚ DE SUBTÍTULOS */
+        .cc-menu-container { position: relative; }
+        .cc-menu {
+            display: none; position: absolute; bottom: 100%; right: 0;
+            background: rgba(18, 18, 18, 0.95); border-radius: 0;
+            margin-bottom: 10px; min-width: 150px; z-index: 21;
+        }
+        .cc-menu button {
+            background: none; border: none; color: #ccc; font-size: 14px;
+            padding: 10px 20px; width: 100%; text-align: left; cursor: pointer; display: block;
+        }
+        .cc-menu button:hover { background: rgba(255, 255, 255, 0.1); }
+        .cc-menu button.active { font-weight: bold; color: #fff; background: rgba(255, 255, 255, 0.05); }
+        
+        /* CANVAS SUBTÍTULOS */
+        #video-container canvas {
+            position: absolute !important; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 10;
         }
 
         .content-body { padding: 20px; position: relative; z-index: 10; }
@@ -618,7 +697,47 @@
     <div id="detail-view" class="view">
         <div class="hero-container" id="hero-area">
             <img id="hero-img" class="hero-bg" src="" alt="">
-            <video id="main-video" class="video-player" controls controlsList="nodownload" preload="metadata"></video>
+            
+            <!-- REPRODUCTOR PERSONALIZADO -->
+            <div id="video-container" class="paused">
+                <video id="main-video" playsinline></video>
+
+                <!-- CAPA DE CONTROLES -->
+                <div class="controls-overlay">
+                    <!-- Botón Central -->
+                    <button class="center-play" id="btn-center-play">
+                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+
+                    <!-- Barra Inferior -->
+                    <div class="bottom-bar">
+                        <div class="controls-row">
+                            <div class="controls-left">
+                                <div class="time-display">
+                                    <span id="curr-time">0:00</span> / <span id="dur-time">0:00</span>
+                                </div>
+                            </div>
+                            <div class="right-buttons">
+                                <div class="cc-menu-container">
+                                    <button class="icon-btn" id="btn-cc" title="Subtítulos">
+                                        <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>
+                                    </button>
+                                    <div class="cc-menu" id="cc-menu"></div>
+                                </div>
+                                <button class="icon-btn" id="btn-fs" title="Pantalla Completa">
+                                    <svg viewBox="0 0 24 24"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="progress-container" id="progress-area">
+                            <div class="progress-bg">
+                                <div class="progress-fill" id="progress-bar"></div>
+                                <div class="progress-handle" id="progress-knob"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="content-body">
@@ -697,7 +816,7 @@ const publicLibrary = [
         calidad: "HD",
         sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/e5dmog7me85b664ubxj4o/Kaifuku-Jutsushi-no-Yarinaoshi-01_burn-in_1920x1080_x264.mp4?rlkey=c8diu7p1sm6kfqqsx5v6txd29&raw=1" },
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Kaifuku%20Jutsushi%20No%20Yarinaoshi%2001.mp4", subtitulo: "https://dimagemfondo.github.io/visor-imgen/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass" },
             { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/9bpzu4gammnzxhag21fum/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=ees37euad411k2f6joofrhqpu&raw=1" },
             { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/q8u5t1ir92bqivqwegv2l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=mac8w5knysntpukes45qzg9jr&raw=1" },
             { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/1ly5zhhl7d6581w73t8yw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=ymqf9wxv49w15urdokckrezsc&raw=1" },
@@ -952,6 +1071,19 @@ let library = publicLibrary;
     const mangaView = document.getElementById('manga-view');
     const fullGrid = document.getElementById('full-grid');
     const mainVideo = document.getElementById('main-video');
+    const videoContainer = document.getElementById('video-container'); // Contenedor del reproductor
+    
+    // Elementos del reproductor personalizado
+    const btnCenter = document.getElementById('btn-center-play');
+    const btnCC = document.getElementById('btn-cc');
+    const ccMenu = document.getElementById('cc-menu');
+    const btnFS = document.getElementById('btn-fs');
+    const progressArea = document.getElementById('progress-area');
+    const progressBar = document.getElementById('progress-bar');
+    const progressKnob = document.getElementById('progress-knob');
+    const currTimeText = document.getElementById('curr-time');
+    const durTimeText = document.getElementById('dur-time');
+
     const heroImg = document.getElementById('hero-img');
     const heroArea = document.getElementById('hero-area');
     
@@ -1305,7 +1437,7 @@ let library = publicLibrary;
         if (totalEps > 0) {
             playEpisode(0);
         } else {
-            mainVideo.style.display = 'none';
+            videoContainer.style.display = 'none';
             heroImg.style.display = 'block';
             heroImg.src = anime.banner || anime.poster;
         }
@@ -1350,22 +1482,40 @@ let library = publicLibrary;
         }
     }
 
-    // [CORREGIDO] Lógica de autoplay actualizada.
     function playEpisode(index, isAutoChained = false) {
         if (!currentAnime || !currentAnime.episodios[index]) return;
         currentEpIndex = index;
         const episode = currentAnime.episodios[index];
 
-        heroImg.style.display = "none";
-        mainVideo.style.display = "block";
-        mainVideo.src = episode.link;
+        // Primero, revisamos si la app de Android nos está "escuchando".
+        if (typeof Android !== 'undefined' && Android.playVideo) {
+            // Si es así, le pasamos las URLs al código nativo de Java.
+            const videoLink = episode.link;
+            const subtitleLink = episode.subtitulo || null; // Si no hay subtitulo, pasamos null
 
-        // Reproduce automáticamente si es el siguiente video en la cadena
-        // O si el usuario ya ha iniciado la reproducción manualmente antes.
-        if (isAutoChained || hasPlayedAnyVideo) {
-            mainVideo.play();
+            if (subtitleLink) {
+                Android.playVideo(videoLink, subtitleLink);
+            } else {
+                Android.playVideo(videoLink);
+            }
+            
+        } else {
+            // Si no estamos en la app, usamos el reproductor web personalizado.
+            console.log("Interfaz 'Android' no encontrada. Usando reproductor web.");
+            heroImg.style.display = "none";
+            videoContainer.style.display = "block"; // Mostrar el contenedor del nuevo reproductor
+            mainVideo.src = episode.link;
+
+            if (isAutoChained || hasPlayedAnyVideo) {
+                mainVideo.play();
+            }
+            
+            // Cargar subtítulos para el reproductor web
+            if (octopusInstance) { octopusInstance.freeTrack(); octopusInstance = null; }
+            setupSubtitles(episode.subtitulo);
         }
 
+        // El resto de la función para actualizar la UI se mantiene.
         const buttons = epSelector.querySelectorAll('.ep-box');
         buttons.forEach((btn, i) => {
             btn.classList.toggle('active', i === index);
@@ -1380,6 +1530,131 @@ let library = publicLibrary;
         }
     }
 
+    // --- LÓGICA DEL REPRODUCTOR PERSONALIZADO ---
+    let octopusInstance = null;
+    let currentSubUrl = 'none';
+
+    // 1. Play/Pausa
+    const iconPlay = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+    const iconPause = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+
+    const togglePlay = (e) => {
+        if (e) e.stopPropagation();
+        if (mainVideo.paused) {
+            mainVideo.play();
+            btnCenter.innerHTML = iconPause;
+            videoContainer.classList.remove('paused');
+        } else {
+            mainVideo.pause();
+            btnCenter.innerHTML = iconPlay;
+            videoContainer.classList.add('paused');
+        }
+    };
+    btnCenter.addEventListener('click', togglePlay);
+    mainVideo.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
+
+    // 2. Mostrar/Ocultar Controles
+    let controlsTimer;
+    const activateControls = () => {
+        videoContainer.classList.add('active');
+        clearTimeout(controlsTimer);
+        controlsTimer = setTimeout(() => {
+            if (!mainVideo.paused) videoContainer.classList.remove('active');
+        }, 3000);
+    };
+    videoContainer.addEventListener('mousemove', activateControls);
+    videoContainer.addEventListener('touchstart', activateControls);
+    videoContainer.addEventListener('click', activateControls);
+
+    // 3. Barra de Progreso
+    const formatTime = s => {
+        if (isNaN(s)) return "0:00";
+        const m = Math.floor(s/60);
+        const sc = Math.floor(s%60);
+        return `${m}:${sc<10?'0':''}${sc}`;
+    };
+    mainVideo.addEventListener('loadedmetadata', () => durTimeText.textContent = formatTime(mainVideo.duration));
+    mainVideo.addEventListener('timeupdate', () => {
+        const pct = (mainVideo.currentTime / mainVideo.duration) * 100;
+        progressBar.style.width = `${pct}%`;
+        progressKnob.style.left = `${pct}%`;
+        currTimeText.textContent = formatTime(mainVideo.currentTime);
+    });
+    const scrub = (e) => {
+        const rect = progressArea.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX; 
+        let pos = (clientX - rect.left) / rect.width;
+        pos = Math.max(0, Math.min(1, pos));
+        mainVideo.currentTime = pos * mainVideo.duration;
+    };
+    let isScrubbing = false;
+    progressArea.addEventListener('mousedown', (e) => { isScrubbing = true; scrub(e); });
+    progressArea.addEventListener('touchstart', (e) => { isScrubbing = true; scrub(e); });
+    document.addEventListener('mouseup', () => isScrubbing = false);
+    document.addEventListener('touchend', () => isScrubbing = false);
+
+    // 4. Subtítulos
+    function setupSubtitles(subUrl) {
+        ccMenu.innerHTML = '';
+        currentSubUrl = 'none';
+        btnCC.classList.remove('cc-active');
+
+        // Opción None
+        const noneBtn = document.createElement('button');
+        noneBtn.textContent = 'None';
+        noneBtn.classList.add('active');
+        noneBtn.onclick = () => {
+            if (octopusInstance) octopusInstance.freeTrack();
+            updateCCMenu('none');
+        };
+        ccMenu.appendChild(noneBtn);
+
+        if (subUrl) {
+            const subBtn = document.createElement('button');
+            subBtn.textContent = 'Español';
+            subBtn.onclick = () => {
+                if (!octopusInstance) {
+                    octopusInstance = new SubtitlesOctopus({
+                        video: mainVideo,
+                        subUrl: subUrl,
+                        fonts: ['/visor-imgen/fonts/Arial.woff2'], // Asegúrate de que esta ruta sea correcta o usa una URL absoluta
+                        workerUrl: './assets/js/subtitles-octopus-worker.js' 
+                    });
+                } else {
+                    octopusInstance.setTrackByUrl(subUrl);
+                }
+                updateCCMenu(subUrl);
+            };
+            ccMenu.appendChild(subBtn);
+        }
+    }
+
+    function updateCCMenu(activeUrl) {
+        currentSubUrl = activeUrl;
+        btnCC.classList.toggle('cc-active', activeUrl !== 'none');
+        Array.from(ccMenu.children).forEach(btn => {
+            btn.classList.toggle('active', (btn.textContent === 'None' && activeUrl === 'none') || (btn.textContent === 'Español' && activeUrl !== 'none'));
+        });
+        ccMenu.style.display = 'none';
+    }
+
+    btnCC.addEventListener('click', (e) => {
+        e.stopPropagation();
+        ccMenu.style.display = ccMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // 5. Fullscreen
+    btnFS.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!document.fullscreenElement) {
+            if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
+            else if (videoContainer.webkitRequestFullscreen) videoContainer.webkitRequestFullscreen();
+        } else {
+            if (document.exitFullscreen) document.exitFullscreen();
+            else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        }
+    });
+
     // --- Control por gestos ---
     let isDragging = false;
     let startX = 0;
@@ -1389,9 +1664,9 @@ let library = publicLibrary;
     let lastSeekTimestamp = 0; // Variable para controlar la frecuencia
 
     function setupTouchControls() {
-        heroArea.addEventListener('touchstart', handleTouchStart);
-        heroArea.addEventListener('touchmove', handleTouchMove, { passive: false });
-        heroArea.addEventListener('touchend', handleTouchEnd);
+        // heroArea.addEventListener('touchstart', handleTouchStart); // Desactivado para no interferir con el nuevo reproductor
+        // heroArea.addEventListener('touchmove', handleTouchMove, { passive: false }); // Desactivado para no interferir con el nuevo reproductor
+        // heroArea.addEventListener('touchend', handleTouchEnd); // Desactivado para no interferir con el nuevo reproductor
     }
     
     function handleTouchStart(e) {
@@ -1438,6 +1713,7 @@ let library = publicLibrary;
     function showHomeView() {
         mainVideo.pause();
         mainVideo.src = "";
+        videoContainer.style.display = 'none'; // Ocultar reproductor
         currentAnime = null; 
         mangaToggleBtn.classList.remove('show'); // Asegurar ocultar
         switchView(homeView);
