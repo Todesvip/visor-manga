@@ -296,8 +296,15 @@
         .preview-box video {
             width: 100%; height: 100%; object-fit: cover; opacity: 0.8;
         }
-        .preview-time {
+        #preview-img {
+            width: 100%; height: 100%;
+            background-color: #000;
+            background-repeat: no-repeat;
             display: none;
+        }
+        .preview-time {
+            position: absolute; bottom: 0; width: 100%; text-align: center;
+            background: rgba(0,0,0,0.7); color: #fff; font-size: 12px; padding: 2px 0;
         }
 
         /* BOTONES DERECHA */
@@ -751,7 +758,7 @@
                                 <div class="progress-handle" id="progress-knob"></div>
                             </div>
                             <div class="preview-box" id="preview-box">
-                                <video id="preview-video" muted playsinline></video>
+                <div id="preview-img"></div>
                                 <div class="preview-time" id="preview-time">0:00</div>
                             </div>
                         </div>
@@ -836,7 +843,7 @@ const publicLibrary = [
         calidad: "HD",
         sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Kaifuku%20Jutsushi%20No%20Yarinaoshi%2001.mp4", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass" },
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Kaifuku%20Jutsushi%20No%20Yarinaoshi%2001.mp4", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass" },
             { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/9bpzu4gammnzxhag21fum/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=ees37euad411k2f6joofrhqpu&raw=1" },
             { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/q8u5t1ir92bqivqwegv2l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=mac8w5knysntpukes45qzg9jr&raw=1" },
             { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/1ly5zhhl7d6581w73t8yw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=ymqf9wxv49w15urdokckrezsc&raw=1" },
@@ -1105,7 +1112,7 @@ let library = publicLibrary;
     const durTimeText = document.getElementById('dur-time');
     
     const previewBox = document.getElementById('preview-box');
-    const previewVideo = document.getElementById('preview-video');
+    const previewImg = document.getElementById('preview-img');
     const previewTime = document.getElementById('preview-time');
 
     const heroImg = document.getElementById('hero-img');
@@ -1529,7 +1536,9 @@ let library = publicLibrary;
             heroImg.style.display = "none";
             videoContainer.style.display = "block"; // Mostrar el contenedor del nuevo reproductor
             mainVideo.src = episode.link;
-            previewVideo.src = episode.link; // Sincronizar fuente para miniatura
+            
+            // Cargar Sprite si existe
+            loadSprite(episode.sprite);
 
             if (isAutoChained || hasPlayedAnyVideo) {
                 mainVideo.play();
@@ -1623,8 +1632,43 @@ let library = publicLibrary;
         currTimeText.textContent = formatTime(mainVideo.currentTime);
     });
     
+    // --- LÓGICA DE SPRITES ---
+    let spriteData = [];
+    function loadSprite(url) {
+        spriteData = [];
+        if (!url) return;
+        
+        fetch(url)
+            .then(r => r.text())
+            .then(text => {
+                const lines = text.split('\n');
+                const timeRegex = /(\d{2}):(\d{2}):(\d{2})\.(\d{3})/;
+                const parseTime = (t) => {
+                    const parts = t.match(timeRegex);
+                    if(!parts) return 0;
+                    return parseInt(parts[1])*3600 + parseInt(parts[2])*60 + parseInt(parts[3]) + parseInt(parts[4])/1000;
+                };
+                
+                let currentStart = 0;
+                let currentEnd = 0;
+                
+                for(let i=0; i<lines.length; i++) {
+                    const line = lines[i].trim();
+                    if(line.includes('-->')) {
+                        const times = line.split('-->');
+                        currentStart = parseTime(times[0].trim());
+                        currentEnd = parseTime(times[1].trim());
+                    } else if (line.includes('#xywh=')) {
+                        const [imgUrl, coords] = line.split('#xywh=');
+                        const [x, y, w, h] = coords.split(',');
+                        spriteData.push({ start: currentStart, end: currentEnd, url: imgUrl, x, y, w, h });
+                    }
+                }
+            })
+            .catch(e => console.error("Error loading sprite:", e));
+    }
+
     // Función para actualizar la miniatura
-    let lastPreviewUpdate = 0;
     const updatePreview = (clientX) => {
         const rect = progressArea.getBoundingClientRect();
         let pos = (clientX - rect.left) / rect.width;
@@ -1639,11 +1683,19 @@ let library = publicLibrary;
         previewBox.style.display = 'block';
         previewTime.textContent = formatTime(time);
 
-        // Actualizar video de preview (con throttle para rendimiento)
-        const now = Date.now();
-        if (now - lastPreviewUpdate > 150) { 
-            previewVideo.currentTime = time;
-            lastPreviewUpdate = now;
+        // Mostrar sprite si existe datos
+        if (spriteData.length > 0) {
+            const cue = spriteData.find(c => time >= c.start && time < c.end);
+            if (cue) {
+                previewImg.style.display = 'block';
+                previewImg.style.backgroundImage = `url(${cue.url})`;
+                previewImg.style.backgroundPosition = `-${cue.x}px -${cue.y}px`;
+                previewImg.style.backgroundSize = 'auto'; // Asume que el sprite es del tamaño correcto o usa coordenadas exactas
+            } else {
+                previewImg.style.display = 'none';
+            }
+        } else {
+            previewImg.style.display = 'none';
         }
     };
 
