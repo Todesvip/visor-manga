@@ -256,16 +256,16 @@
             width: 64px; height: 64px; background: rgba(0, 0, 0, 0.6); border-radius: 50%;
             display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
         }
-        .center-play svg { width: 32px; height: 32px; fill: white; margin-left: 4px; }
+        .center-play svg { width: 32px; height: 32px; fill: white; }
 
         /* BARRA INFERIOR */
         .bottom-bar {
             background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            padding: 10px 15px; display: flex; flex-direction: column; gap: 5px; margin-top: auto;
+            padding: 20px 0 5px 0; display: flex; flex-direction: column; gap: 0; margin-top: auto;
         }
 
         /* FILA DE CONTROLES */
-        .controls-row { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+        .controls-row { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 20px 2px 20px; box-sizing: border-box; }
         .controls-left { display: flex; align-items: center; gap: 15px; }
 
         /* TIEMPOS */
@@ -273,12 +273,12 @@
 
         /* BARRA DE PROGRESO */
         .progress-container {
-            width: 100%; height: 20px; display: flex; align-items: center; cursor: pointer; margin: 0;
+            width: 100%; height: 3px; display: flex; align-items: flex-end; cursor: pointer; margin: 0;
         }
-        .progress-bg { width: 100%; height: 3px; background: rgba(255,255,255,0.3); position: relative; }
+        .progress-bg { width: 100%; height: 100%; background: rgba(255,255,255,0.3); position: relative; }
         .progress-fill { height: 100%; width: 0%; background: #fff; position: absolute; top: 0; left: 0; }
         .progress-handle {
-            width: 12px; height: 12px; background: #fff; border-radius: 50%;
+            width: 8px; height: 8px; background: #fff; border-radius: 50%;
             position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); display: none;
         }
         .progress-container:hover .progress-handle,
@@ -286,7 +286,7 @@
 
         /* BOTONES DERECHA */
         .right-buttons { display: flex; gap: 10px; align-items: center; }
-        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; opacity: 0.8; transition: opacity 0.2s; }
+        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; justify-content: center; align-items: center; opacity: 0.8; transition: opacity 0.2s; }
         .icon-btn:hover { opacity: 1; }
         .icon-btn svg { width: 24px; height: 24px; fill: white; }
         .icon-btn.cc-active svg { fill: #fff; border-bottom: 2px solid #fff; }
@@ -1551,20 +1551,29 @@ let library = publicLibrary;
         }
     };
     btnCenter.addEventListener('click', togglePlay);
-    mainVideo.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
 
     // 2. Mostrar/Ocultar Controles
     let controlsTimer;
-    const activateControls = () => {
+    const showControls = () => {
         videoContainer.classList.add('active');
         clearTimeout(controlsTimer);
         controlsTimer = setTimeout(() => {
             if (!mainVideo.paused) videoContainer.classList.remove('active');
         }, 3000);
     };
-    videoContainer.addEventListener('mousemove', activateControls);
-    videoContainer.addEventListener('touchstart', activateControls);
-    videoContainer.addEventListener('click', activateControls);
+    
+    videoContainer.addEventListener('mousemove', showControls);
+    
+    videoContainer.addEventListener('click', (e) => {
+        if (e.target.closest('.bottom-bar') || e.target.closest('.center-play') || e.target.closest('.cc-menu')) return;
+        
+        if (videoContainer.classList.contains('active')) {
+            videoContainer.classList.remove('active');
+            clearTimeout(controlsTimer);
+        } else {
+            showControls();
+        }
+    });
 
     // 3. Barra de Progreso
     const formatTime = s => {
