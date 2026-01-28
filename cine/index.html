@@ -273,9 +273,10 @@
 
         /* BARRA DE PROGRESO */
         .progress-container {
-            width: 100%; height: 3px; display: flex; align-items: flex-end; cursor: pointer; margin: 0;
+            width: 100%; height: 15px; display: flex; align-items: center; cursor: pointer; margin: 0;
+            width: 100%; height: 15px; display: flex; align-items: center; cursor: pointer; margin: 0; position: relative;
         }
-        .progress-bg { width: 100%; height: 100%; background: rgba(255,255,255,0.3); position: relative; }
+        .progress-bg { width: 100%; height: 3px; background: rgba(255,255,255,0.3); position: relative; }
         .progress-fill { height: 100%; width: 0%; background: #fff; position: absolute; top: 0; left: 0; }
         .progress-handle {
             width: 8px; height: 8px; background: #fff; border-radius: 50%;
@@ -283,6 +284,21 @@
         }
         .progress-container:hover .progress-handle,
         .progress-container:active .progress-handle { display: block; transform: translate(-50%, -50%) scale(1.2); }
+
+        /* MINIATURA DE VISTA PREVIA */
+        .preview-box {
+            position: absolute; bottom: 25px; left: 0; transform: translateX(-50%);
+            width: 160px; height: 90px; background: #000;
+            border: none; border-radius: 0;
+            display: none; overflow: hidden; pointer-events: none; z-index: 30;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .preview-box video {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.8;
+        }
+        .preview-time {
+            display: none;
+        }
 
         /* BOTONES DERECHA */
         .right-buttons { display: flex; gap: 10px; align-items: center; }
@@ -734,6 +750,10 @@
                                 <div class="progress-fill" id="progress-bar"></div>
                                 <div class="progress-handle" id="progress-knob"></div>
                             </div>
+                            <div class="preview-box" id="preview-box">
+                                <video id="preview-video" muted playsinline></video>
+                                <div class="preview-time" id="preview-time">0:00</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1083,6 +1103,10 @@ let library = publicLibrary;
     const progressKnob = document.getElementById('progress-knob');
     const currTimeText = document.getElementById('curr-time');
     const durTimeText = document.getElementById('dur-time');
+    
+    const previewBox = document.getElementById('preview-box');
+    const previewVideo = document.getElementById('preview-video');
+    const previewTime = document.getElementById('preview-time');
 
     const heroImg = document.getElementById('hero-img');
     const heroArea = document.getElementById('hero-area');
@@ -1505,6 +1529,7 @@ let library = publicLibrary;
             heroImg.style.display = "none";
             videoContainer.style.display = "block"; // Mostrar el contenedor del nuevo reproductor
             mainVideo.src = episode.link;
+            previewVideo.src = episode.link; // Sincronizar fuente para miniatura
 
             if (isAutoChained || hasPlayedAnyVideo) {
                 mainVideo.play();
@@ -1591,23 +1616,72 @@ let library = publicLibrary;
     };
     mainVideo.addEventListener('loadedmetadata', () => durTimeText.textContent = formatTime(mainVideo.duration));
     mainVideo.addEventListener('timeupdate', () => {
+        if (isScrubbing) return;
         const pct = (mainVideo.currentTime / mainVideo.duration) * 100;
         progressBar.style.width = `${pct}%`;
         progressKnob.style.left = `${pct}%`;
         currTimeText.textContent = formatTime(mainVideo.currentTime);
     });
+    
+    // Función para actualizar la miniatura
+    let lastPreviewUpdate = 0;
+    const updatePreview = (clientX) => {
+        const rect = progressArea.getBoundingClientRect();
+        let pos = (clientX - rect.left) / rect.width;
+        pos = Math.max(0, Math.min(1, pos));
+        const time = pos * mainVideo.duration;
+
+        // Posición visual (clamp para que no se salga de la pantalla)
+        const boxWidth = 160; 
+        const visualX = Math.max(boxWidth/2, Math.min(rect.width - boxWidth/2, pos * rect.width));
+        
+        previewBox.style.left = `${visualX}px`;
+        previewBox.style.display = 'block';
+        previewTime.textContent = formatTime(time);
+
+        // Actualizar video de preview (con throttle para rendimiento)
+        const now = Date.now();
+        if (now - lastPreviewUpdate > 150) { 
+            previewVideo.currentTime = time;
+            lastPreviewUpdate = now;
+        }
+    };
+
     const scrub = (e) => {
         const rect = progressArea.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX; 
         let pos = (clientX - rect.left) / rect.width;
         pos = Math.max(0, Math.min(1, pos));
-        mainVideo.currentTime = pos * mainVideo.duration;
+        
+        const pct = pos * 100;
+        progressBar.style.width = `${pct}%`;
+        progressKnob.style.left = `${pct}%`;
+        
+        if (mainVideo.duration) {
+            mainVideo.currentTime = pos * mainVideo.duration;
+            currTimeText.textContent = formatTime(mainVideo.currentTime);
+        }
+        updatePreview(clientX); // Mostrar miniatura al arrastrar
     };
+    
     let isScrubbing = false;
-    progressArea.addEventListener('mousedown', (e) => { isScrubbing = true; scrub(e); });
-    progressArea.addEventListener('touchstart', (e) => { isScrubbing = true; scrub(e); });
-    document.addEventListener('mouseup', () => isScrubbing = false);
-    document.addEventListener('touchend', () => isScrubbing = false);
+    
+    const startScrub = (e) => { isScrubbing = true; scrub(e); };
+    const moveScrub = (e) => { if (isScrubbing) { e.preventDefault(); scrub(e); } };
+    const endScrub = () => { isScrubbing = false; previewBox.style.display = 'none'; };
+
+    progressArea.addEventListener('mousedown', startScrub);
+    progressArea.addEventListener('touchstart', startScrub, { passive: false });
+    
+    // Eventos para Hover (PC)
+    progressArea.addEventListener('mousemove', (e) => updatePreview(e.clientX));
+    progressArea.addEventListener('mouseleave', () => previewBox.style.display = 'none');
+    
+    document.addEventListener('mousemove', moveScrub);
+    document.addEventListener('touchmove', moveScrub, { passive: false });
+    
+    document.addEventListener('mouseup', endScrub);
+    document.addEventListener('touchend', endScrub);
 
     // 4. Subtítulos
     function setupSubtitles(subUrl) {
