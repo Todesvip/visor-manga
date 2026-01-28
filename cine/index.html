@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Todesvip</title>
     <!-- Librería de subtítulos -->
-    <script src="./assets/js/subtitles-octopus.js"></script>
+    <script src="https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus.js"></script>
 
     <style>
         /* --- ESTILOS GENERALES --- */
@@ -1617,8 +1617,8 @@ let library = publicLibrary;
                     octopusInstance = new SubtitlesOctopus({
                         video: mainVideo,
                         subUrl: subUrl,
-                        fonts: ['/visor-manga/fonts/Arial.woff2'], // Asegúrate de que esta ruta sea correcta o usa una URL absoluta
-                        workerUrl: '/visor-manga/assets/js/subtitles-octopus-worker.js' 
+                        fonts: ['https://todesvip.github.io/visor-manga/fonts/Arial.woff2'], // Asegúrate de que esta ruta sea correcta o usa una URL absoluta
+                        workerUrl: 'https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus-worker.js' 
                     });
                 } else {
                     octopusInstance.setTrackByUrl(subUrl);
