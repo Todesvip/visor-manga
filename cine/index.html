@@ -233,7 +233,7 @@
         /* --- REPRODUCTOR AVANZADO (INTEGRACIÓN) --- */
         #video-container {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #000; overflow: hidden; z-index: 20; display: none; /* Oculto por defecto */
+            background-color: #000; z-index: 20; display: none; /* Oculto por defecto */
         }
         
         #main-video { width: 100%; height: 100%; display: block; object-fit: contain; position: relative; z-index: 0; }
@@ -241,8 +241,9 @@
         /* CAPA DE CONTROLES (OVERLAY) */
         .controls-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: transparent; opacity: 0; transition: opacity 0.3s;
-            pointer-events: none; display: flex; flex-direction: column; justify-content: space-between;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 25%, transparent 75%, rgba(0,0,0,0.5));
+            opacity: 0; transition: opacity 0.3s;
+            pointer-events: none;
             z-index: 20;
         }
 
@@ -254,6 +255,7 @@
         .center-controls {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
             display: flex; align-items: center; gap: 40px;
+            pointer-events: none;
         }
 
         /* BOTÓN PLAY GIGANTE CENTRAL */
@@ -261,11 +263,13 @@
             position: relative; transform: none; top: auto; left: auto;
             width: 64px; height: 64px; background: rgba(0, 0, 0, 0.6); border-radius: 50%;
             display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
+            pointer-events: auto;
         }
         /* BOTONES SKIP */
         .skip-btn {
             width: 50px; height: 50px; background: rgba(0, 0, 0, 0.6); border-radius: 50%;
             display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
+            pointer-events: auto;
         }
         .center-play svg {
             width: 32px; height: 32px; fill: white;
@@ -276,11 +280,13 @@
         /* BARRA INFERIOR */
         .bottom-bar {
             background: transparent;
-            padding: 10px 0 0 0; display: flex; flex-direction: column; gap: 0; margin-top: auto;
+            /* Contenedor para la fila de controles, se posiciona al fondo */
+            position: absolute; bottom: 15px; /* Se eleva para dejar espacio a la barra de progreso */
+            left: 0; width: 100%;
         }
 
         /* FILA DE CONTROLES */
-        .controls-row { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 20px 2px 20px; box-sizing: border-box; }
+        .controls-row { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 20px; box-sizing: border-box; }
         .controls-left { display: flex; align-items: center; gap: 15px; }
 
         /* TIEMPOS */
@@ -288,17 +294,20 @@
 
         /* BARRA DE PROGRESO */
         .progress-container {
-            width: 100%; height: 15px; display: flex; align-items: center; cursor: pointer; margin: 0;
-            width: 100%; height: 15px; display: flex; align-items: center; cursor: pointer; margin: 0; position: relative;
+            /* Se posiciona absolutamente en el borde inferior */
+            position: absolute; bottom: 0; left: 0;
+            width: 100%; height: 15px; /* Área táctil */
+            display: flex; align-items: flex-end; cursor: pointer;
         }
         .progress-bg { width: 100%; height: 3px; background: rgba(255,255,255,0.3); position: relative; }
         .progress-fill { height: 100%; width: 0%; background: #fff; position: absolute; top: 0; left: 0; }
         .progress-handle {
             width: 8px; height: 8px; background: #fff; border-radius: 50%;
-            position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); display: none;
+            position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%);
+            z-index: 5;
+            transition: width .15s ease, height .15s ease;
         }
-        .progress-container:hover .progress-handle,
-        .progress-container:active .progress-handle { display: block; transform: translate(-50%, -50%) scale(1.2); }
+        .progress-container:active .progress-handle { width: 12px; height: 12px; }
 
         /* MINIATURA DE VISTA PREVIA */
         .preview-box {
@@ -779,14 +788,15 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="progress-container" id="progress-area">
-                            <div class="progress-bg">
-                                <div class="progress-fill" id="progress-bar"></div>
-                                <div class="progress-handle" id="progress-knob"></div>
-                            </div>
-                            <div class="preview-box" id="preview-box">
-                <div id="preview-img"></div>
-                            </div>
+                    </div>
+                    <!-- La barra de progreso se mueve fuera para posicionarla independientemente -->
+                    <div class="progress-container" id="progress-area">
+                        <div class="progress-bg">
+                            <div class="progress-fill" id="progress-bar"></div>
+                            <div class="progress-handle" id="progress-knob"></div>
+                        </div>
+                        <div class="preview-box" id="preview-box">
+                            <div id="preview-img"></div>
                         </div>
                     </div>
                 </div>
