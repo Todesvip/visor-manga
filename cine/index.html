@@ -1638,6 +1638,10 @@ let library = publicLibrary;
         spriteData = [];
         if (!url) return;
         
+        // Obtener la ruta base del archivo VTT para resolver imágenes relativas
+        const lastSlash = url.lastIndexOf('/');
+        const baseUrl = lastSlash !== -1 ? url.substring(0, lastSlash + 1) : '';
+
         fetch(url)
             .then(r => r.text())
             .then(text => {
@@ -1659,7 +1663,13 @@ let library = publicLibrary;
                         currentStart = parseTime(times[0].trim());
                         currentEnd = parseTime(times[1].trim());
                     } else if (line.includes('#xywh=')) {
-                        const [imgUrl, coords] = line.split('#xywh=');
+                        let [imgUrl, coords] = line.split('#xywh=');
+                        
+                        // Si la URL de la imagen es relativa (no empieza con http/https), agregar la base del VTT
+                        if (imgUrl && !imgUrl.includes('://') && !imgUrl.startsWith('data:')) {
+                            imgUrl = baseUrl + imgUrl;
+                        }
+
                         const [x, y, w, h] = coords.split(',');
                         spriteData.push({ start: currentStart, end: currentEnd, url: imgUrl, x, y, w, h });
                     }
@@ -1670,6 +1680,12 @@ let library = publicLibrary;
 
     // Función para actualizar la miniatura
     const updatePreview = (clientX) => {
+        // Si no hay sprites cargados, no mostrar el cuadro de vista previa
+        if (spriteData.length === 0) {
+            previewBox.style.display = 'none';
+            return;
+        }
+
         const rect = progressArea.getBoundingClientRect();
         let pos = (clientX - rect.left) / rect.width;
         pos = Math.max(0, Math.min(1, pos));
