@@ -302,10 +302,6 @@
             background-repeat: no-repeat;
             display: none;
         }
-        .preview-time {
-            position: absolute; bottom: 0; width: 100%; text-align: center;
-            background: rgba(0,0,0,0.7); color: #fff; font-size: 12px; padding: 2px 0;
-        }
 
         /* BOTONES DERECHA */
         .right-buttons { display: flex; gap: 10px; align-items: center; }
@@ -759,7 +755,6 @@
                             </div>
                             <div class="preview-box" id="preview-box">
                 <div id="preview-img"></div>
-                                <div class="preview-time" id="preview-time">0:00</div>
                             </div>
                         </div>
                     </div>
@@ -1113,7 +1108,6 @@ let library = publicLibrary;
     
     const previewBox = document.getElementById('preview-box');
     const previewImg = document.getElementById('preview-img');
-    const previewTime = document.getElementById('preview-time');
 
     const heroImg = document.getElementById('hero-img');
     const heroArea = document.getElementById('hero-area');
@@ -1634,8 +1628,13 @@ let library = publicLibrary;
     
     // --- LÓGICA DE SPRITES ---
     let spriteData = [];
+    let spriteTotalWidth = 0;
+    let spriteTotalHeight = 0;
+
     function loadSprite(url, imgOverride) {
         spriteData = [];
+        spriteTotalWidth = 0;
+        spriteTotalHeight = 0;
         if (!url) return;
         
         // Obtener la ruta base del archivo VTT para resolver imágenes relativas
@@ -1675,6 +1674,16 @@ let library = publicLibrary;
                         spriteData.push({ start: currentStart, end: currentEnd, url: imgUrl, x, y, w, h });
                     }
                 }
+
+                // Precargar imagen para obtener dimensiones totales (necesario para el escalado HD)
+                if (spriteData.length > 0) {
+                    const img = new Image();
+                    img.src = spriteData[0].url;
+                    img.onload = () => {
+                        spriteTotalWidth = img.naturalWidth;
+                        spriteTotalHeight = img.naturalHeight;
+                    };
+                }
             })
             .catch(e => console.error("Error loading sprite:", e));
     }
@@ -1698,7 +1707,6 @@ let library = publicLibrary;
         
         previewBox.style.left = `${visualX}px`;
         previewBox.style.display = 'block';
-        previewTime.textContent = formatTime(time);
 
         // Mostrar sprite si existe datos
         if (spriteData.length > 0) {
@@ -1706,8 +1714,23 @@ let library = publicLibrary;
             if (cue) {
                 previewImg.style.display = 'block';
                 previewImg.style.backgroundImage = `url(${cue.url})`;
-                previewImg.style.backgroundPosition = `-${cue.x}px -${cue.y}px`;
-                previewImg.style.backgroundSize = 'auto'; // Asume que el sprite es del tamaño correcto o usa coordenadas exactas
+                
+                const spriteW = parseFloat(cue.w);
+                // Auto-escalado: Si el sprite es más grande que la caja (160px), lo reducimos proporcionalmente
+                if (spriteTotalWidth > 0 && spriteW > 160) {
+                    const scale = 160 / spriteW;
+                    const bgW = spriteTotalWidth * scale;
+                    const bgH = spriteTotalHeight * scale;
+                    const bgX = parseFloat(cue.x) * scale;
+                    const bgY = parseFloat(cue.y) * scale;
+                    
+                    previewImg.style.backgroundSize = `${bgW}px ${bgH}px`;
+                    previewImg.style.backgroundPosition = `-${bgX}px -${bgY}px`;
+                } else {
+                    // Tamaño nativo (160px o menor)
+                    previewImg.style.backgroundSize = 'auto';
+                    previewImg.style.backgroundPosition = `-${cue.x}px -${cue.y}px`;
+                }
             } else {
                 previewImg.style.display = 'none';
             }
