@@ -246,9 +246,6 @@
             pointer-events: none;
             z-index: 20;
         }
- 
-        /* Mostrar controles cuando el contenedor tiene la clase 'controls-visible' */
-        #video-container.controls-visible .controls-overlay { opacity: 1; pointer-events: auto; }
 
         /* Mostrar controles cuando esté activo o pausado */
         #video-container.active .controls-overlay,
@@ -748,7 +745,6 @@
             
             <!-- REPRODUCTOR PERSONALIZADO -->
             <div id="video-container" class="paused">
-            <div id="video-container">
                 <video id="main-video" playsinline></video>
 
                 <!-- CAPA DE CONTROLES -->
@@ -1634,23 +1630,8 @@ let library = publicLibrary;
             btnCenter.innerHTML = iconPlay;
             videoContainer.classList.add('paused');
         }
-        if (mainVideo.paused) mainVideo.play();
-        else mainVideo.pause();
     };
     btnCenter.addEventListener('click', togglePlay);
-
-    // Centralizar el cambio de UI en los eventos del video para mayor robustez
-    mainVideo.addEventListener('play', () => {
-        videoContainer.classList.remove('paused');
-        btnCenter.innerHTML = iconPause;
-        showControls(); 
-    });
-    mainVideo.addEventListener('pause', () => {
-        videoContainer.classList.add('paused');
-        btnCenter.innerHTML = iconPlay;
-        videoContainer.classList.add('controls-visible');
-        clearTimeout(controlsTimer);
-    });
 
     // 1.1 Botones Skip
     btnRewind.addEventListener('click', (e) => {
@@ -1667,13 +1648,11 @@ let library = publicLibrary;
 
     const showControls = () => {
         videoContainer.classList.add('active');
-        videoContainer.classList.add('controls-visible');
         clearTimeout(controlsTimer);
         controlsTimer = setTimeout(() => {
             // No ocultar si el video está pausado o si se está arrastrando la barra
             if (!mainVideo.paused && !isScrubbing) {
                 videoContainer.classList.remove('active');
-                videoContainer.classList.remove('controls-visible');
             }
         }, 3000);
     };
@@ -1697,8 +1676,6 @@ let library = publicLibrary;
             // Nos aseguramos de que no haya un temporizador de ocultación activo.
             clearTimeout(controlsTimer);
         }
-        videoContainer.classList.toggle('controls-visible');
-        clearTimeout(controlsTimer);
     });
 
     // 3. Barra de Progreso
