@@ -246,9 +246,10 @@
             pointer-events: none;
             z-index: 20;
         }
- 
-        /* Mostrar controles cuando el contenedor tiene la clase 'controls-visible' */
-        #video-container.controls-visible .controls-overlay { opacity: 1; pointer-events: auto; }
+
+        /* Mostrar controles cuando esté activo o pausado */
+        #video-container.active .controls-overlay,
+        #video-container.paused .controls-overlay { opacity: 1; pointer-events: auto; }
 
         /* CONTENEDOR CENTRAL */
         .center-controls {
@@ -743,7 +744,7 @@
             <img id="hero-img" class="hero-bg" src="" alt="">
             
             <!-- REPRODUCTOR PERSONALIZADO -->
-            <div id="video-container">
+            <div id="video-container" class="paused">
                 <video id="main-video" playsinline></video>
 
                 <!-- CAPA DE CONTROLES -->
@@ -1581,9 +1582,13 @@ let library = publicLibrary;
             // Lógica de reproducción y estado de UI
             if (isAutoChained || hasPlayedAnyVideo) {
                 mainVideo.play();
+                videoContainer.classList.remove('paused');
+                btnCenter.innerHTML = iconPause;
             } else {
                 // Forzar estado pausado en carga manual inicial
                 mainVideo.pause();
+                videoContainer.classList.add('paused');
+                btnCenter.innerHTML = iconPlay;
             }
             
             // Cargar subtítulos para el reproductor web
@@ -1616,23 +1621,17 @@ let library = publicLibrary;
 
     const togglePlay = (e) => {
         if (e) e.stopPropagation();
-        if (mainVideo.paused) mainVideo.play();
-        else mainVideo.pause();
+        if (mainVideo.paused) {
+            mainVideo.play();
+            btnCenter.innerHTML = iconPause;
+            videoContainer.classList.remove('paused');
+        } else {
+            mainVideo.pause();
+            btnCenter.innerHTML = iconPlay;
+            videoContainer.classList.add('paused');
+        }
     };
     btnCenter.addEventListener('click', togglePlay);
-
-    // Centralizar el cambio de UI en los eventos del video para mayor robustez
-    mainVideo.addEventListener('play', () => {
-        videoContainer.classList.remove('paused');
-        btnCenter.innerHTML = iconPause;
-        showControls(); 
-    });
-    mainVideo.addEventListener('pause', () => {
-        videoContainer.classList.add('paused');
-        btnCenter.innerHTML = iconPlay;
-        videoContainer.classList.add('controls-visible');
-        clearTimeout(controlsTimer);
-    });
 
     // 1.1 Botones Skip
     btnRewind.addEventListener('click', (e) => {
@@ -1648,18 +1647,19 @@ let library = publicLibrary;
     let controlsTimer;
 
     const showControls = () => {
-        videoContainer.classList.add('controls-visible');
+        videoContainer.classList.add('active');
         clearTimeout(controlsTimer);
         controlsTimer = setTimeout(() => {
             // No ocultar si el video está pausado o si se está arrastrando la barra
             if (!mainVideo.paused && !isScrubbing) {
-                videoContainer.classList.remove('controls-visible');
+                videoContainer.classList.remove('active');
             }
         }, 3000);
     };
     
     // Para PC: Mostrar controles al mover el mouse
     videoContainer.addEventListener('mousemove', (e) => {
+        // Esto evita que se active en pantallas táctiles.
         if (e.pointerType && e.pointerType !== 'mouse') return;
         showControls();
     });
@@ -1668,8 +1668,14 @@ let library = publicLibrary;
         if (e.target.closest('.bottom-bar') || e.target.closest('.center-controls') || e.target.closest('.cc-menu')) return;
         
         // En móvil (y PC), un clic/toque simplemente alterna la visibilidad de los controles.
-        videoContainer.classList.toggle('controls-visible');
-        clearTimeout(controlsTimer);
+        if (videoContainer.classList.contains('active')) {
+            videoContainer.classList.remove('active');
+            clearTimeout(controlsTimer);
+        } else {
+            videoContainer.classList.add('active');
+            // Nos aseguramos de que no haya un temporizador de ocultación activo.
+            clearTimeout(controlsTimer);
+        }
     });
 
     // 3. Barra de Progreso
