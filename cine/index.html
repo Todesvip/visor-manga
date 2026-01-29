@@ -233,7 +233,7 @@
         /* --- REPRODUCTOR AVANZADO (INTEGRACIÓN) --- */
         #video-container {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #000; overflow: hidden; z-index: 20; display: none; /* Oculto por defecto */
+            background-color: #000; z-index: 20; display: none; /* Oculto por defecto */
         }
         
         #main-video { width: 100%; height: 100%; display: block; object-fit: contain; position: relative; z-index: 0; }
@@ -241,8 +241,9 @@
         /* CAPA DE CONTROLES (OVERLAY) */
         .controls-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.3s;
-            pointer-events: none; display: flex; flex-direction: column; justify-content: space-between;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 25%, transparent 75%, rgba(0,0,0,0.5));
+            opacity: 0; transition: opacity 0.3s;
+            pointer-events: none;
             z-index: 20;
         }
 
@@ -250,22 +251,44 @@
         #video-container.active .controls-overlay,
         #video-container.paused .controls-overlay { opacity: 1; pointer-events: auto; }
 
+        /* CONTENEDOR CENTRAL */
+        .center-controls {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            display: flex; align-items: center; gap: 40px;
+            pointer-events: none;
+        }
+
         /* BOTÓN PLAY GIGANTE CENTRAL */
         .center-play {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            position: relative; transform: none; top: auto; left: auto;
             width: 64px; height: 64px; background: rgba(0, 0, 0, 0.6); border-radius: 50%;
             display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
+            pointer-events: auto;
         }
-        .center-play svg { width: 32px; height: 32px; fill: white; margin-left: 4px; }
+        /* BOTONES SKIP */
+        .skip-btn {
+            width: 50px; height: 50px; background: rgba(0, 0, 0, 0.6); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
+            pointer-events: auto;
+        }
+        .center-play svg {
+            width: 32px; height: 32px; fill: white;
+        }
+        /* Ajuste visual solo para el ícono de Play (cuando está pausado) */
+        #video-container.paused .center-play svg { margin-left: 4px; }
+
+        .skip-btn svg { width: 24px; height: 24px; }
 
         /* BARRA INFERIOR */
         .bottom-bar {
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            padding: 10px 15px; display: flex; flex-direction: column; gap: 5px; margin-top: auto;
+            background: transparent;
+            /* Contenedor para la fila de controles, se posiciona al fondo */
+            position: absolute; bottom: 15px; /* Se eleva para dejar espacio a la barra de progreso */
+            left: 0; width: 100%;
         }
 
         /* FILA DE CONTROLES */
-        .controls-row { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+        .controls-row { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 20px; box-sizing: border-box; }
         .controls-left { display: flex; align-items: center; gap: 15px; }
 
         /* TIEMPOS */
@@ -273,20 +296,42 @@
 
         /* BARRA DE PROGRESO */
         .progress-container {
-            width: 100%; height: 20px; display: flex; align-items: center; cursor: pointer; margin: 0;
+            /* Se posiciona absolutamente en el borde inferior */
+            position: absolute; bottom: 0; left: 0;
+            width: 100%; height: 15px; /* Área táctil */
+            display: flex; align-items: flex-end; cursor: pointer;
         }
         .progress-bg { width: 100%; height: 3px; background: rgba(255,255,255,0.3); position: relative; }
         .progress-fill { height: 100%; width: 0%; background: #fff; position: absolute; top: 0; left: 0; }
         .progress-handle {
-            width: 12px; height: 12px; background: #fff; border-radius: 50%;
-            position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); display: none;
+            width: 8px; height: 8px; background: #fff; border-radius: 50%;
+            position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%);
+            z-index: 5;
+            transition: width .15s ease, height .15s ease;
         }
-        .progress-container:hover .progress-handle,
-        .progress-container:active .progress-handle { display: block; transform: translate(-50%, -50%) scale(1.2); }
+        .progress-container:active .progress-handle { width: 12px; height: 12px; }
+
+        /* MINIATURA DE VISTA PREVIA */
+        .preview-box {
+            position: absolute; bottom: 20px; left: 0; transform: translateX(-50%);
+            width: 160px; height: 90px; background: #000;
+            border: none; border-radius: 0;
+            display: none; overflow: hidden; pointer-events: none; z-index: 30;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .preview-box video {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.8;
+        }
+        #preview-img {
+            width: 100%; height: 100%;
+            background-color: #000;
+            background-repeat: no-repeat;
+            display: none;
+        }
 
         /* BOTONES DERECHA */
         .right-buttons { display: flex; gap: 10px; align-items: center; }
-        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; opacity: 0.8; transition: opacity 0.2s; }
+        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; justify-content: center; align-items: center; opacity: 0.8; transition: opacity 0.2s; }
         .icon-btn:hover { opacity: 1; }
         .icon-btn svg { width: 24px; height: 24px; fill: white; }
         .icon-btn.cc-active svg { fill: #fff; border-bottom: 2px solid #fff; }
@@ -704,10 +749,26 @@
 
                 <!-- CAPA DE CONTROLES -->
                 <div class="controls-overlay">
-                    <!-- Botón Central -->
-                    <button class="center-play" id="btn-center-play">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </button>
+                    <!-- Controles Centrales -->
+                    <div class="center-controls">
+                        <button class="skip-btn" id="btn-rewind">
+                            <svg viewBox="0 0 24 24" style="fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                                <path d="M3 3v5h5"></path>
+                                <text x="12" y="16" text-anchor="middle" font-size="8" style="fill: white; stroke: none; font-family: Arial, sans-serif; font-weight: bold;">10</text>
+                            </svg>
+                        </button>
+                        <button class="center-play" id="btn-center-play">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <button class="skip-btn" id="btn-forward">
+                            <svg viewBox="0 0 24 24" style="fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
+                                <path d="M21 12a9 9 0 1 1-9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                                <path d="M21 3v5h-5"></path>
+                                <text x="12" y="16" text-anchor="middle" font-size="8" style="fill: white; stroke: none; font-family: Arial, sans-serif; font-weight: bold;">10</text>
+                            </svg>
+                        </button>
+                    </div>
 
                     <!-- Barra Inferior -->
                     <div class="bottom-bar">
@@ -729,11 +790,15 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="progress-container" id="progress-area">
-                            <div class="progress-bg">
-                                <div class="progress-fill" id="progress-bar"></div>
-                                <div class="progress-handle" id="progress-knob"></div>
-                            </div>
+                    </div>
+                    <!-- La barra de progreso se mueve fuera para posicionarla independientemente -->
+                    <div class="progress-container" id="progress-area">
+                        <div class="progress-bg">
+                            <div class="progress-fill" id="progress-bar"></div>
+                            <div class="progress-handle" id="progress-knob"></div>
+                        </div>
+                        <div class="preview-box" id="preview-box">
+                            <div id="preview-img"></div>
                         </div>
                     </div>
                 </div>
@@ -816,7 +881,7 @@ const publicLibrary = [
         calidad: "HD",
         sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Kaifuku%20Jutsushi%20No%20Yarinaoshi%2001.mp4", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass" },
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/sprite.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/sprite.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Kaifuku%20Jutsushi%20No%20Yarinaoshi%2001.mp4", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass" },
             { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/9bpzu4gammnzxhag21fum/Kaifuku-Jutsushi-no-Yarinaoshi-02_burn-in_1920x1080_x264.mp4?rlkey=ees37euad411k2f6joofrhqpu&raw=1" },
             { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/q8u5t1ir92bqivqwegv2l/Kaifuku-Jutsushi-no-Yarinaoshi-03_burn-in_1920x1080_x264.mp4?rlkey=mac8w5knysntpukes45qzg9jr&raw=1" },
             { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "https://dl.dropboxusercontent.com/scl/fi/1ly5zhhl7d6581w73t8yw/Kaifuku-Jutsushi-no-Yarinaoshi-04_burn-in_1920x1080_x264.mp4?rlkey=ymqf9wxv49w15urdokckrezsc&raw=1" },
@@ -1075,6 +1140,8 @@ let library = publicLibrary;
     
     // Elementos del reproductor personalizado
     const btnCenter = document.getElementById('btn-center-play');
+    const btnRewind = document.getElementById('btn-rewind');
+    const btnForward = document.getElementById('btn-forward');
     const btnCC = document.getElementById('btn-cc');
     const ccMenu = document.getElementById('cc-menu');
     const btnFS = document.getElementById('btn-fs');
@@ -1083,6 +1150,9 @@ let library = publicLibrary;
     const progressKnob = document.getElementById('progress-knob');
     const currTimeText = document.getElementById('curr-time');
     const durTimeText = document.getElementById('dur-time');
+    
+    const previewBox = document.getElementById('preview-box');
+    const previewImg = document.getElementById('preview-img');
 
     const heroImg = document.getElementById('hero-img');
     const heroArea = document.getElementById('hero-area');
@@ -1505,9 +1575,20 @@ let library = publicLibrary;
             heroImg.style.display = "none";
             videoContainer.style.display = "block"; // Mostrar el contenedor del nuevo reproductor
             mainVideo.src = episode.link;
+            
+            // Cargar Sprite si existe
+            loadSprite(episode.sprite, episode.spriteImg);
 
+            // Lógica de reproducción y estado de UI
             if (isAutoChained || hasPlayedAnyVideo) {
                 mainVideo.play();
+                videoContainer.classList.remove('paused');
+                btnCenter.innerHTML = iconPause;
+            } else {
+                // Forzar estado pausado en carga manual inicial
+                mainVideo.pause();
+                videoContainer.classList.add('paused');
+                btnCenter.innerHTML = iconPlay;
             }
             
             // Cargar subtítulos para el reproductor web
@@ -1551,35 +1632,50 @@ let library = publicLibrary;
         }
     };
     btnCenter.addEventListener('click', togglePlay);
-    mainVideo.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); });
-    // mainVideo.addEventListener('click', (e) => { e.stopPropagation(); togglePlay(); }); // Se elimina para que el toque en el video controle la visibilidad de los controles, no el play/pausa.
+
+    // 1.1 Botones Skip
+    btnRewind.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mainVideo.currentTime = Math.max(0, mainVideo.currentTime - 10);
+    });
+    btnForward.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mainVideo.currentTime = Math.min(mainVideo.duration, mainVideo.currentTime + 10);
+    });
 
     // 2. Mostrar/Ocultar Controles
     let controlsTimer;
-    const activateControls = () => {
-    let isScrubbing = false; // Se mueve la declaración aquí para usarla en la función de abajo.
-    const showControlsTemporarily = () => {
+
+    const showControls = () => {
         videoContainer.classList.add('active');
         clearTimeout(controlsTimer);
         controlsTimer = setTimeout(() => {
-            if (!mainVideo.paused) videoContainer.classList.remove('active');
-            if (!mainVideo.paused && !isScrubbing) videoContainer.classList.remove('active');
+            // No ocultar si el video está pausado o si se está arrastrando la barra
+            if (!mainVideo.paused && !isScrubbing) {
+                videoContainer.classList.remove('active');
+            }
         }, 3000);
     };
-    videoContainer.addEventListener('mousemove', activateControls);
-    videoContainer.addEventListener('touchstart', activateControls);
-    videoContainer.addEventListener('click', activateControls);
-    videoContainer.addEventListener('mousemove', showControlsTemporarily); // Mantiene el comportamiento en PC
-
-    // En cualquier dispositivo, un clic/toque en un área vacía alterna la visibilidad de los controles.
+    
+    // Para PC: Mostrar controles al mover el mouse
+    videoContainer.addEventListener('mousemove', (e) => {
+        // Esto evita que se active en pantallas táctiles.
+        if (e.pointerType && e.pointerType !== 'mouse') return;
+        showControls();
+    });
+    
     videoContainer.addEventListener('click', (e) => {
-        // Si se hizo clic en un control (botón de play, barra inferior), no hacer nada.
-        if (e.target.closest('.center-play') || e.target.closest('.bottom-bar')) {
-            return;
+        if (e.target.closest('.bottom-bar') || e.target.closest('.center-controls') || e.target.closest('.cc-menu')) return;
+        
+        // En móvil (y PC), un clic/toque simplemente alterna la visibilidad de los controles.
+        if (videoContainer.classList.contains('active')) {
+            videoContainer.classList.remove('active');
+            clearTimeout(controlsTimer);
+        } else {
+            videoContainer.classList.add('active');
+            // Nos aseguramos de que no haya un temporizador de ocultación activo.
+            clearTimeout(controlsTimer);
         }
-        // Alternar la clase 'active' para mostrar/ocultar los controles.
-        videoContainer.classList.toggle('active');
-        clearTimeout(controlsTimer); // Si se muestran manualmente, se cancela el temporizador de ocultación.
     });
 
     // 3. Barra de Progreso
@@ -1591,23 +1687,181 @@ let library = publicLibrary;
     };
     mainVideo.addEventListener('loadedmetadata', () => durTimeText.textContent = formatTime(mainVideo.duration));
     mainVideo.addEventListener('timeupdate', () => {
+        if (isScrubbing) return;
         const pct = (mainVideo.currentTime / mainVideo.duration) * 100;
         progressBar.style.width = `${pct}%`;
         progressKnob.style.left = `${pct}%`;
         currTimeText.textContent = formatTime(mainVideo.currentTime);
     });
+    
+    // --- LÓGICA DE SPRITES ---
+    let spriteData = [];
+    let spriteTotalWidth = 0;
+    let spriteTotalHeight = 0;
+
+    function loadSprite(url, imgOverride) {
+        spriteData = [];
+        spriteTotalWidth = 0;
+        spriteTotalHeight = 0;
+        if (!url) return;
+        
+        // Obtener la ruta base del archivo VTT para resolver imágenes relativas
+        const lastSlash = url.lastIndexOf('/');
+        const baseUrl = lastSlash !== -1 ? url.substring(0, lastSlash + 1) : '';
+
+        fetch(url)
+            .then(r => r.text())
+            .then(text => {
+                const lines = text.split('\n');
+                const timeRegex = /(\d{2}):(\d{2}):(\d{2})\.(\d{3})/;
+                const parseTime = (t) => {
+                    const parts = t.match(timeRegex);
+                    if(!parts) return 0;
+                    return parseInt(parts[1])*3600 + parseInt(parts[2])*60 + parseInt(parts[3]) + parseInt(parts[4])/1000;
+                };
+                
+                let currentStart = 0;
+                let currentEnd = 0;
+                
+                for(let i=0; i<lines.length; i++) {
+                    const line = lines[i].trim();
+                    if(line.includes('-->')) {
+                        const times = line.split('-->');
+                        currentStart = parseTime(times[0].trim());
+                        currentEnd = parseTime(times[1].trim());
+                    } else if (line.includes('#xywh=')) {
+                        let [imgUrl, coords] = line.split('#xywh=');
+                        
+                        if (imgOverride) {
+                            imgUrl = imgOverride;
+                        } else if (imgUrl && !imgUrl.includes('://') && !imgUrl.startsWith('data:')) {
+                            imgUrl = baseUrl + imgUrl;
+                        }
+
+                        const [x, y, w, h] = coords.split(',');
+                        spriteData.push({ start: currentStart, end: currentEnd, url: imgUrl, x, y, w, h });
+                    }
+                }
+
+                // Precargar imagen para obtener dimensiones totales (necesario para el escalado HD)
+                if (spriteData.length > 0) {
+                    const img = new Image();
+                    img.src = spriteData[0].url;
+                    img.onload = () => {
+                        spriteTotalWidth = img.naturalWidth;
+                        spriteTotalHeight = img.naturalHeight;
+                    };
+                }
+            })
+            .catch(e => console.error("Error loading sprite:", e));
+    }
+
+    // Función para actualizar la miniatura
+    const updatePreview = (clientX) => {
+        // Si no hay sprites cargados, no mostrar el cuadro de vista previa
+        if (spriteData.length === 0) {
+            previewBox.style.display = 'none';
+            return;
+        }
+
+        const rect = progressArea.getBoundingClientRect();
+        let pos = (clientX - rect.left) / rect.width;
+        pos = Math.max(0, Math.min(1, pos));
+        const time = pos * mainVideo.duration;
+
+        // Posición visual (clamp para que no se salga de la pantalla)
+        const boxWidth = 160; 
+        const visualX = Math.max(boxWidth/2, Math.min(rect.width - boxWidth/2, pos * rect.width));
+        
+        previewBox.style.left = `${visualX}px`;
+        previewBox.style.display = 'block';
+
+        // Mostrar sprite si existe datos
+        if (spriteData.length > 0) {
+            const cue = spriteData.find(c => time >= c.start && time < c.end);
+            if (cue) {
+                previewImg.style.display = 'block';
+                previewImg.style.backgroundImage = `url(${cue.url})`;
+                
+                const spriteW = parseFloat(cue.w);
+                // Auto-escalado: Si el sprite es más grande que la caja (160px), lo reducimos proporcionalmente
+                if (spriteTotalWidth > 0 && spriteW > 160) {
+                    const scale = 160 / spriteW;
+                    const bgW = spriteTotalWidth * scale;
+                    const bgH = spriteTotalHeight * scale;
+                    const bgX = parseFloat(cue.x) * scale;
+                    const bgY = parseFloat(cue.y) * scale;
+                    
+                    previewImg.style.backgroundSize = `${bgW}px ${bgH}px`;
+                    previewImg.style.backgroundPosition = `-${bgX}px -${bgY}px`;
+                } else {
+                    // Tamaño nativo (160px o menor)
+                    previewImg.style.backgroundSize = 'auto';
+                    previewImg.style.backgroundPosition = `-${cue.x}px -${cue.y}px`;
+                }
+            } else {
+                previewImg.style.display = 'none';
+            }
+        } else {
+            previewImg.style.display = 'none';
+        }
+    };
+
+    let scrubTargetTime = null;
+
     const scrub = (e) => {
         const rect = progressArea.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX; 
         let pos = (clientX - rect.left) / rect.width;
         pos = Math.max(0, Math.min(1, pos));
-        mainVideo.currentTime = pos * mainVideo.duration;
+        
+        const pct = pos * 100;
+        progressBar.style.width = `${pct}%`;
+        progressKnob.style.left = `${pct}%`;
+        
+        if (mainVideo.duration) {
+            scrubTargetTime = pos * mainVideo.duration;
+            currTimeText.textContent = formatTime(scrubTargetTime);
+        }
+        updatePreview(clientX); // Mostrar miniatura al arrastrar
     };
+    
     let isScrubbing = false;
-    progressArea.addEventListener('mousedown', (e) => { isScrubbing = true; scrub(e); });
-    progressArea.addEventListener('touchstart', (e) => { isScrubbing = true; scrub(e); });
-    document.addEventListener('mouseup', () => isScrubbing = false);
-    document.addEventListener('touchend', () => isScrubbing = false);
+    
+    const startScrub = (e) => { 
+        isScrubbing = true; 
+        showControls();
+        scrub(e); 
+    };
+    const moveScrub = (e) => { 
+        if (isScrubbing) { 
+            e.preventDefault(); 
+            showControls();
+            scrub(e); 
+        } 
+    };
+    const endScrub = () => { 
+        isScrubbing = false; 
+        previewBox.style.display = 'none'; 
+        if (scrubTargetTime !== null) {
+            mainVideo.currentTime = scrubTargetTime;
+            scrubTargetTime = null;
+        }
+        showControls();
+    };
+
+    progressArea.addEventListener('mousedown', startScrub);
+    progressArea.addEventListener('touchstart', startScrub, { passive: false });
+    
+    // Eventos para Hover (PC)
+    progressArea.addEventListener('mousemove', (e) => updatePreview(e.clientX));
+    progressArea.addEventListener('mouseleave', () => previewBox.style.display = 'none');
+    
+    document.addEventListener('mousemove', moveScrub);
+    document.addEventListener('touchmove', moveScrub, { passive: false });
+    
+    document.addEventListener('mouseup', endScrub);
+    document.addEventListener('touchend', endScrub);
 
     // 4. Subtítulos
     function setupSubtitles(subUrl) {
