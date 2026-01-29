@@ -273,8 +273,10 @@
         }
         .center-play svg {
             width: 32px; height: 32px; fill: white;
-            margin-left: 4px; /* Ajuste visual para centrar el ícono de play */
         }
+        /* Ajuste visual solo para el ícono de Play (cuando está pausado) */
+        #video-container.paused .center-play svg { margin-left: 4px; }
+
         .skip-btn svg { width: 24px; height: 24px; }
 
         /* BARRA INFERIOR */
@@ -1643,33 +1645,36 @@ let library = publicLibrary;
 
     // 2. Mostrar/Ocultar Controles
     let controlsTimer;
-    let lastTouchTime = 0;
 
     const showControls = () => {
         videoContainer.classList.add('active');
         clearTimeout(controlsTimer);
         controlsTimer = setTimeout(() => {
-            if (!mainVideo.paused && !isScrubbing) videoContainer.classList.remove('active');
+            // No ocultar si el video está pausado o si se está arrastrando la barra
+            if (!mainVideo.paused && !isScrubbing) {
+                videoContainer.classList.remove('active');
+            }
         }, 3000);
     };
     
-    videoContainer.addEventListener('touchstart', () => { lastTouchTime = Date.now(); }, { passive: true });
-    
-    videoContainer.addEventListener('mousemove', () => {
-        if (Date.now() - lastTouchTime < 500) return;
+    // Para PC: Mostrar controles al mover el mouse
+    videoContainer.addEventListener('mousemove', (e) => {
+        // Esto evita que se active en pantallas táctiles.
+        if (e.pointerType && e.pointerType !== 'mouse') return;
         showControls();
     });
     
     videoContainer.addEventListener('click', (e) => {
         if (e.target.closest('.bottom-bar') || e.target.closest('.center-controls') || e.target.closest('.cc-menu')) return;
         
+        // En móvil (y PC), un clic/toque simplemente alterna la visibilidad de los controles.
         if (videoContainer.classList.contains('active')) {
             videoContainer.classList.remove('active');
             clearTimeout(controlsTimer);
         } else {
-            // Al hacer clic/tocar, los controles se muestran y permanecen visibles
-            // hasta que se vuelva a tocar. El temporizador de auto-ocultado ahora es principalmente para el mouse.
             videoContainer.classList.add('active');
+            // Nos aseguramos de que no haya un temporizador de ocultación activo.
+            clearTimeout(controlsTimer);
         }
     });
 
