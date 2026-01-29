@@ -1588,7 +1588,7 @@ let library = publicLibrary;
         videoContainer.classList.add('active');
         clearTimeout(controlsTimer);
         controlsTimer = setTimeout(() => {
-            if (!mainVideo.paused) videoContainer.classList.remove('active');
+            if (!mainVideo.paused && !isScrubbing) videoContainer.classList.remove('active');
         }, 3000);
     };
     
@@ -1739,6 +1739,8 @@ let library = publicLibrary;
         }
     };
 
+    let scrubTargetTime = null;
+
     const scrub = (e) => {
         const rect = progressArea.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX; 
@@ -1750,17 +1752,35 @@ let library = publicLibrary;
         progressKnob.style.left = `${pct}%`;
         
         if (mainVideo.duration) {
-            mainVideo.currentTime = pos * mainVideo.duration;
-            currTimeText.textContent = formatTime(mainVideo.currentTime);
+            scrubTargetTime = pos * mainVideo.duration;
+            currTimeText.textContent = formatTime(scrubTargetTime);
         }
         updatePreview(clientX); // Mostrar miniatura al arrastrar
     };
     
     let isScrubbing = false;
     
-    const startScrub = (e) => { isScrubbing = true; scrub(e); };
-    const moveScrub = (e) => { if (isScrubbing) { e.preventDefault(); scrub(e); } };
-    const endScrub = () => { isScrubbing = false; previewBox.style.display = 'none'; };
+    const startScrub = (e) => { 
+        isScrubbing = true; 
+        showControls();
+        scrub(e); 
+    };
+    const moveScrub = (e) => { 
+        if (isScrubbing) { 
+            e.preventDefault(); 
+            showControls();
+            scrub(e); 
+        } 
+    };
+    const endScrub = () => { 
+        isScrubbing = false; 
+        previewBox.style.display = 'none'; 
+        if (scrubTargetTime !== null) {
+            mainVideo.currentTime = scrubTargetTime;
+            scrubTargetTime = null;
+        }
+        showControls();
+    };
 
     progressArea.addEventListener('mousedown', startScrub);
     progressArea.addEventListener('touchstart', startScrub, { passive: false });
