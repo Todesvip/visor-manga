@@ -1695,11 +1695,16 @@ let library = publicLibrary;
             .then(r => r.text())
             .then(text => {
                 const lines = text.split('\n');
-                const timeRegex = /(\d{2}):(\d{2}):(\d{2})\.(\d{3})/;
+                // Corregido: Regex flexible para soportar MM:SS.mmm y HH:MM:SS.mmm
+                const timeRegex = /(?:(\d{2}):)?(\d{2}):(\d{2})\.(\d{3})/;
                 const parseTime = (t) => {
                     const parts = t.match(timeRegex);
                     if(!parts) return 0;
-                    return parseInt(parts[1])*3600 + parseInt(parts[2])*60 + parseInt(parts[3]) + parseInt(parts[4])/1000;
+                    const h = parts[1] ? parseInt(parts[1]) : 0;
+                    const m = parseInt(parts[2]);
+                    const s = parseInt(parts[3]);
+                    const ms = parseInt(parts[4]);
+                    return h*3600 + m*60 + s + ms/1000;
                 };
                 
                 let currentStart = 0;
@@ -2057,7 +2062,7 @@ let library = publicLibrary;
         mangaToggleBtn.classList.add('is-visible'); // Asegurar estado visual
 
         // Asegurar que siempre inicie el scroll arriba (Imagen 1)
-        mangaView.scrollTop = 0;
+        window.scrollTo(0, 0);
         
         if (!mangaLoaded) {
             loadMangaImages();
