@@ -255,27 +255,27 @@
         /* CONTENEDOR CENTRAL */
         .center-controls {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            display: flex; align-items: center; gap: 40px;
+            display: flex; align-items: center; gap: 20px;
             pointer-events: none;
         }
 
         /* BOTÓN PLAY GIGANTE CENTRAL */
         .center-play {
             position: relative; transform: none; top: auto; left: auto;
-            width: 64px; height: 64px; background: none; border-radius: 50%;
+            width: 80px; height: 80px; background: none; border-radius: 50%;
             display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
             pointer-events: auto;
         }
         /* BOTONES SKIP */
         .skip-btn {
-            width: 64px; height: 64px; background: none;
+            width: 80px; height: 80px; background: none;
             display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
             pointer-events: auto;
         }
-        .skip-btn svg { width: 32px; height: 32px; }
+        .skip-btn svg { width: 48px; height: 48px; }
 
         .center-play svg {
-            width: 32px; height: 32px; fill: white;
+            width: 48px; height: 48px; fill: white;
         }
         /* Ajuste visual solo para el ícono de Play (cuando está pausado) */
         #video-container.paused .center-play svg { margin-left: 4px; }
