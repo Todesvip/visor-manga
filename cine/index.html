@@ -81,8 +81,8 @@
         .code-input::placeholder { color: #888; letter-spacing: normal; }
         .code-input.shake, .header-search-input.shake, .chapter-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
         /* Ocultar flechas en input de número */
-        .code-input::-webkit-outer-spin-button, .code-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-        .code-input[type=number] { -moz-appearance: textfield; }
+        .code-input::-webkit-outer-spin-button, .code-input::-webkit-inner-spin-button, .chapter-input::-webkit-outer-spin-button, .chapter-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .code-input[type=number], .chapter-input[type=number] { -moz-appearance: textfield; }
         
         /* --- BUSCADOR EN HEADER --- */
         .header-search-container {
@@ -1564,6 +1564,7 @@ let library = publicLibrary;
             console.log("Interfaz 'Android' no encontrada. Usando reproductor web.");
             heroImg.style.display = "none";
             videoContainer.style.display = "block"; // Mostrar el contenedor del nuevo reproductor
+            mainVideo.poster = episode.thumb || "";
             mainVideo.src = episode.link;
             mainVideo.currentTime = 0;
             // Reiniciar barra de progreso
