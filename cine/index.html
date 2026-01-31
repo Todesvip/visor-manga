@@ -653,7 +653,9 @@
             background: transparent; border: none; color: white;
             width: 30px; text-align: center; font-weight: 700; font-size: 13px;
             outline: none; border-bottom: 2px solid #ccc;
+            appearance: none; -webkit-appearance: none;
         }
+        .chapter-input:focus { color: white; background: transparent; }
         .chapter-go-btn {
             width: 24px; height: 24px; border-radius: 50%;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -2154,7 +2156,7 @@ let library = publicLibrary;
         navDiv.innerHTML = `
             <div class="chapter-nav-box">
                 <span class="chapter-label">Capítulo:</span>
-                <input type="number" id="chapter-input" class="chapter-input" placeholder="75" onkeypress="handleChapterInput(event)">
+                <input type="tel" pattern="[0-9]*" inputmode="numeric" id="chapter-input" class="chapter-input" placeholder="75" onkeypress="handleChapterInput(event)">
                 <button class="chapter-go-btn" onclick="goToChapter()">
                     <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                 </button>
