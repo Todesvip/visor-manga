@@ -424,7 +424,7 @@
         }
 
         /* Ajuste para que el contenido no quede tapado por el nav */
-        .view { padding-bottom: 70px; }
+        .view { padding-bottom: 20px; }
         
         /* AJUSTES */
         .settings-content { padding: 40px 20px; text-align: center; color: #777; }
@@ -663,38 +663,6 @@
         .chapter-go-btn:active { transform: scale(0.9); background: rgba(255, 255, 255, 0.15); }
         .chapter-go-btn svg { width: 14px; height: 14px; fill: #ccc; }
 
-        /* --- BARRA DE NAVEGACIÓN INFERIOR --- */
-        .bottom-main-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #101010;
-            display: flex;
-            justify-content: space-around;
-            padding: 15px 0;
-            box-shadow: 0 -4px 8px rgba(0,0,0,0.5);
-            z-index: 1500;
-            box-sizing: border-box;
-        }
-        .bottom-main-nav .nav-button {
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            display: flex;
-        }
-        .bottom-main-nav .nav-button svg {
-            width: 28px;
-            height: 28px;
-            fill: #b0b0b0;
-            filter: drop-shadow(0 2px 5px black);
-            transition: fill 0.2s;
-        }
-        .bottom-main-nav .nav-button:hover svg {
-            fill: white;
-        }
-
     </style>
 </head>
 <body>
@@ -707,22 +675,6 @@
             <button id="retry-btn" onclick="location.reload()">Reintentar</button>
         </div>
     </div>
-
-    <!-- BARRA DE NAVEGACIÓN INFERIOR -->
-    <nav class="bottom-main-nav" id="bottom-nav-bar">
-      <a href="#" class="nav-button" onclick="return false;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 21H5C4.44772 21 4 20.5523 4 20V11L1 11L11.3273 1.6115C11.7087 1.26475 12.2913 1.26475 12.6727 1.6115L23 11L20 11V20C20 20.5523 19.5523 21 19 21ZM6 19H18V9.15745L12 3.7029L6 9.15745V19Z"/></svg>
-      </a>
-      <a href="#" class="nav-button" onclick="return false;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4C3 3.44772 3.44772 3 4 3H10C10.5523 3 11 3.44772 11 4V10C11 10.5523 10.5523 11 10 11H4C3.44772 11 3 10.5523 3 10V4ZM3 14C3 13.4477 3.44772 13 4 13H10C10.5523 13 11 13.4477 11 14V20C11 20.5523 10.5523 21 10 21H4C3.44772 21 3 20.5523 3 20V14ZM13 4C13 3.44772 13.4477 3 14 3H20C20.5523 3 21 3.44772 21 4V10C21 10.5523 20.5523 11 20 11H14C13.4477 11 13 10.5523 13 10V4ZM13 14C13 13.4477 13.4477 13 14 13H20C20.5523 13 21 13.4477 21 14V20C21 20.5523 20.5523 21 20 21H14C13.4477 21 13 20.5523 13 20V14ZM15 5V9H19V5H15ZM15 15V19H19V15H15ZM5 5V9H9V5H5ZM5 15V19H9V15H5Z"></path></svg>
-      </a>
-      <a href="#" class="nav-button" onclick="return false;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6069 6.99482C19.5307 6.69695 19.3152 6.47221 19.0684 6.40288C18.6299 6.28062 16.501 6 12.001 6C7.50098 6 5.37252 6.28073 4.93225 6.40323C4.68776 6.47123 4.4723 6.69593 4.3951 6.99482C4.2863 7.41923 4.00098 9.19595 4.00098 12C4.00098 14.804 4.2863 16.5808 4.3954 17.0064C4.47126 17.3031 4.68676 17.5278 4.93251 17.5968C5.37252 17.7193 7.50098 18 12.001 18C16.501 18 18.6299 17.7194 19.0697 17.5968C19.3142 17.5288 19.5297 17.3041 19.6069 17.0052C19.7157 16.5808 20.001 14.8 20.001 12C20.001 9.2 19.7157 7.41923 19.6069 6.99482ZM21.5442 6.49818C22.001 8.28 22.001 12 22.001 12C22.001 12 22.001 15.72 21.5442 17.5018C21.2897 18.4873 20.547 19.2618 19.6056 19.5236C17.8971 20 12.001 20 12.001 20C12.001 20 6.10837 20 4.39637 19.5236C3.45146 19.2582 2.70879 18.4836 2.45774 17.5018C2.00098 15.72 2.00098 12 2.00098 12C2.00098 12 2.00098 8.28 2.45774 6.49818C2.71227 5.51273 3.45495 4.73818 4.39637 4.47636C6.10837 4 12.001 4 12.001 4C12.001 4 17.8971 4 19.6056 4.47636C20.5505 4.74182 21.2932 5.51636 21.5442 6.49818ZM10.001 15.5V8.5L16.001 12L10.001 15.5Z"></path></svg>
-      </a>
-      <a href="#" class="nav-button" onclick="return false;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 22H18V20C18 18.3431 16.6569 17 15 17H9C7.34315 17 6 18.3431 6 20V22H4V20C4 17.2386 6.23858 15 9 15H15C17.7614 15 20 17.2386 20 20V22ZM12 13C8.68629 13 6 10.3137 6 7C6 3.68629 8.68629 1 12 1C15.3137 1 18 3.68629 18 7C18 10.3137 15.3137 13 12 13ZM12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"></path></svg>
-      </a>
-    </nav>
 
     <!-- HEADER GLOBAL (Movido fuera de home-view) -->
     <header id="main-header">
@@ -1176,7 +1128,6 @@ let library = publicLibrary;
     const fullGrid = document.getElementById('full-grid');
     const mainVideo = document.getElementById('main-video');
     const videoContainer = document.getElementById('video-container'); // Contenedor del reproductor
-    const bottomNavBar = document.getElementById('bottom-nav-bar');
     
     // Elementos del reproductor personalizado
     const btnCenter = document.getElementById('btn-center-play');
@@ -2015,7 +1966,6 @@ let library = publicLibrary;
     // --- UTILIDADES ---
     function showDetailView() {
         document.getElementById('main-header').style.transform = 'translateY(-100%)'; // Ocultar header en reproductor
-        bottomNavBar.style.display = 'none';
         switchView(detailView);
         window.scrollTo(0, 0);
     }
@@ -2028,14 +1978,12 @@ let library = publicLibrary;
         mangaToggleBtn.classList.remove('show'); // Asegurar ocultar
         switchView(homeView);
         document.getElementById('main-header').style.transform = 'translateY(0)'; // Mostrar header
-        bottomNavBar.style.display = 'flex';
         renderHome(); // Recargar para actualizar "Continuar viendo"
         if(window.location.hash !== '#home') history.replaceState(null, null, '#home');
     }
 
     function showSettingsView() {
         switchView(settingsView);
-        bottomNavBar.style.display = 'flex';
         document.getElementById('main-header').style.transform = 'translateY(0)';
     }
 
@@ -2052,7 +2000,6 @@ let library = publicLibrary;
     function showFullListView() {
         renderGrid(library, fullGrid);
         document.getElementById('main-header').style.transform = 'translateY(0)';
-        bottomNavBar.style.display = 'flex';
         switchView(fullListView);
     }
     function closeFullList() {
@@ -2110,7 +2057,6 @@ let library = publicLibrary;
 
     function showMangaView() {
         document.getElementById('main-header').style.transform = 'translateY(-100%)'; // Ocultar header en manga
-        bottomNavBar.style.display = 'none';
         mainVideo.pause();
         switchView(mangaView);
         mangaToggleBtn.classList.add('is-visible'); // Asegurar estado visual
