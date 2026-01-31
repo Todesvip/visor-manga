@@ -7,9 +7,18 @@
     <!-- Librería de subtítulos -->
     <script src="https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus.js"></script>
 
+    <!-- OPTIMIZACIÓN: Preconectar a servidores para que el video inicie antes -->
+    <link rel="preconnect" href="https://ia601709.us.archive.org">
+    <link rel="preconnect" href="https://ia801709.us.archive.org">
+    <link rel="preconnect" href="https://vague-flossy-kamver-9313da8d.koyeb.app">
+
     <style>
         /* --- ESTILOS GENERALES --- */
         :root { --bg: #000000; --text: #ffffff; --text-gray: #a8a8a8; --accent: #00A4DC; }
+        
+        /* Ocultar barra de desplazamiento visualmente */
+        ::-webkit-scrollbar { display: none; }
+        * { scrollbar-width: none; }
         
         /* --- ELIMINAR SOMBRA DE CONTROLES DE VIDEO --- */
         video::-webkit-media-controls-panel {
@@ -237,7 +246,25 @@
             pointer-events: auto;
         }
         
-        #main-video { width: 100%; height: 100%; display: block; object-fit: contain; position: relative; z-index: 0; pointer-events: none; }
+        #main-video { 
+            width: 100%; height: 100%; display: block; object-fit: contain; position: relative; z-index: 0; pointer-events: none;
+            /* FORZAR ACELERACIÓN DE HARDWARE (Hace que vaya más fluido en Android) */
+            transform: translate3d(0, 0, 0); will-change: transform;
+        }
+
+        /* --- SPINNER CARGA VIDEO --- */
+        .video-loader {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 25; pointer-events: none; display: none;
+        }
+        .video-spinner {
+            width: 50px; height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: #00E676; /* Verde profesional neón */
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            box-shadow: 0 0 15px rgba(0, 230, 118, 0.2); /* Resplandor sutil */
+        }
 
         /* CAPA DE CONTROLES (OVERLAY) */
         .controls-overlay {
@@ -295,7 +322,14 @@
         .controls-left { display: flex; align-items: center; gap: 15px; }
 
         /* TIEMPOS */
-        .time-display { color: #ddd; font-size: 13px; font-weight: 500; min-width: 80px; text-align: center; }
+        .time-display { 
+            color: rgba(255, 255, 255, 0.6); /* Color gris para la duración y la barra */
+            font-size: 12px; font-weight: 600; 
+            font-variant-numeric: tabular-nums; /* Evita que los números salten al cambiar */
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        }
+        #curr-time { color: #ffffff; } /* Tiempo actual en blanco puro */
 
         /* BARRA DE PROGRESO */
         .progress-container {
@@ -305,10 +339,10 @@
             display: flex; align-items: flex-end; cursor: pointer;
             pointer-events: auto;
         }
-        .progress-bg { width: 100%; height: 3px; background: rgba(255,255,255,0.3); position: relative; }
-        .progress-fill { height: 100%; width: 0%; background: #fff; position: absolute; top: 0; left: 0; }
+        .progress-bg { width: 100%; height: 3px; background: rgba(0, 230, 118, 0.2); position: relative; }
+        .progress-fill { height: 100%; width: 0%; background: #00E676; position: absolute; top: 0; left: 0; }
         .progress-handle {
-            width: 8px; height: 8px; background: #fff; border-radius: 50%;
+            width: 8px; height: 8px; background: #00E676; border-radius: 50%;
             position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%);
             z-index: 5;
             transition: width .15s ease, height .15s ease;
@@ -410,7 +444,7 @@
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
             text-shadow: 0 0 5px rgba(255,255,255,0.5);
         }
-        .ep-box:active { transform: scale(0.95); }
+        .ep-box:active { transform: none; }
 
         /* --- SINOPSIS --- */
         .synopsis { font-size: 13px; line-height: 1.5; color: #ccc; margin-bottom: 5px; }
@@ -453,12 +487,13 @@
         }
         .splash-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .loading-spinner {
-            width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1);
-            border-top-color: var(--accent); border-radius: 50%;
-            animation: spin 1s linear infinite; margin-bottom: 15px;
+            width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1);
+            border-left-color: #00E676; border-radius: 50%;
+            animation: spin 0.8s linear infinite; margin-bottom: 0;
+            box-shadow: 0 0 15px rgba(0, 230, 118, 0.2);
         }
         @keyframes spin { to { transform: rotate(360deg); } }
-        #splash-status { color: #888; font-size: 14px; font-weight: 500; }
+        #splash-status { color: #888; font-size: 14px; font-weight: 500; display: none; margin-top: 20px; }
         #retry-btn {
             margin-top: 20px; padding: 10px 25px; background: var(--accent); color: white;
             border: none; border-radius: 20px; font-weight: bold; cursor: pointer; display: none;
@@ -674,7 +709,7 @@
     <div id="splash-screen">
         <div class="splash-content">
             <div class="loading-spinner" id="splash-spinner"></div>
-            <div id="splash-status">Iniciando...</div>
+            <div id="splash-status"></div>
             <button id="retry-btn" onclick="location.reload()">Reintentar</button>
         </div>
     </div>
@@ -753,7 +788,12 @@
             
             <!-- REPRODUCTOR PERSONALIZADO -->
             <div id="video-container" class="paused">
-                <video id="main-video" playsinline></video>
+                <video id="main-video" playsinline preload="auto"></video>
+
+                <!-- SPINNER DE CARGA -->
+                <div id="video-loader" class="video-loader">
+                    <div class="video-spinner"></div>
+                </div>
 
                 <!-- CAPA DE CONTROLES -->
                 <div class="controls-overlay">
@@ -1131,6 +1171,7 @@ let library = publicLibrary;
     const fullGrid = document.getElementById('full-grid');
     const mainVideo = document.getElementById('main-video');
     const videoContainer = document.getElementById('video-container'); // Contenedor del reproductor
+    const videoLoader = document.getElementById('video-loader'); // Spinner
     
     // Elementos del reproductor personalizado
     const btnCenter = document.getElementById('btn-center-play');
@@ -1211,6 +1252,13 @@ let library = publicLibrary;
             }
         });
 
+    // --- EVENTOS DE CARGA (SPINNER) ---
+    mainVideo.addEventListener('loadstart', () => videoLoader.style.display = 'block'); // Al empezar a cargar
+    mainVideo.addEventListener('waiting', () => videoLoader.style.display = 'block');   // Si se detiene por buffer
+    mainVideo.addEventListener('canplay', () => videoLoader.style.display = 'none');   // Cuando ya puede reproducir
+    mainVideo.addEventListener('playing', () => videoLoader.style.display = 'none');   // Cuando ya está reproduciendo
+    mainVideo.addEventListener('error', () => videoLoader.style.display = 'none');     // Si hay error
+
         // [NUEVO] Listener para corregir visibilidad del botón de manga al salir de pantalla completa.
         const onFullscreenChange = () => {
             setTimeout(() => {
@@ -1254,7 +1302,7 @@ let library = publicLibrary;
 
         if (hash.startsWith('#detail') && currentAnime) {
             showDetailView();
-        } else if (hash === '#manga') {
+        } else if (hash === '#manga' && currentAnime) {
             showMangaView();
         } else if (hash === '#fulllist') {
             showFullListView();
@@ -1568,6 +1616,8 @@ let library = publicLibrary;
             videoContainer.style.display = "block"; // Mostrar el contenedor del nuevo reproductor
             mainVideo.poster = episode.thumb || "";
             mainVideo.src = episode.link;
+            mainVideo.load(); // Forzar al navegador a procesar el nuevo video inmediatamente
+            mainVideo.preload = "auto"; // Forzar precarga inmediata
             mainVideo.currentTime = 0;
             // Reiniciar barra de progreso
             progressBar.style.width = '0%';
@@ -1600,7 +1650,7 @@ let library = publicLibrary;
         });
         
         if(buttons[index]) {
-            buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
         }
 
         if (!isAutoChained) {
@@ -1617,6 +1667,7 @@ let library = publicLibrary;
     const iconPause = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
 
     const togglePlay = (e) => {
+        e.stopPropagation();
         if (mainVideo.paused) {
             mainVideo.play();
             btnCenter.innerHTML = iconPause;
@@ -2199,7 +2250,7 @@ let library = publicLibrary;
 
         verificarCapitulo(val).then(() => {
             loadMangaImages('dato' + val);
-            document.getElementById('manga-view').scrollTop = 0;
+            window.scrollTo(0, 0);
         }).catch(() => {
             input.classList.add('shake');
             setTimeout(() => input.classList.remove('shake'), 700);
@@ -2267,7 +2318,6 @@ let library = publicLibrary;
 
         // 2. Precargar imágenes
         try {
-            status.innerText = "Cargando contenido...";
             
             // Recolectar imágenes
             const imagesToLoad = [];
@@ -2307,6 +2357,7 @@ let library = publicLibrary;
         function showError(msg) {
             spinner.style.display = 'none';
             status.innerText = msg;
+            status.style.display = 'block';
             status.style.color = '#ff4444';
             retryBtn.style.display = 'block';
         }
