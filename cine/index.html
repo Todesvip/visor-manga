@@ -343,7 +343,7 @@
             display: flex; align-items: flex-end; cursor: pointer;
             pointer-events: auto;
         }
-        .progress-bg { width: 100%; height: 3px; background: rgba(0, 230, 118, 0.2); position: relative; }
+        .progress-bg { width: 100%; height: 3px; background: rgba(30, 70, 40, 0.6); position: relative; }
         .progress-fill { height: 100%; width: 0%; background: #00E676; position: absolute; top: 0; left: 0; }
         .progress-handle {
             width: 8px; height: 8px; background: #00E676; border-radius: 50%;
@@ -1665,6 +1665,7 @@ let library = publicLibrary;
     // --- LÓGICA DEL REPRODUCTOR PERSONALIZADO ---
     let octopusInstance = null;
     let currentSubUrl = 'none';
+    let subtitlePreference = 'none'; // [NUEVO] Variable para recordar la elección
 
     // 1. Play/Pausa
     const iconPlay = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
@@ -1918,11 +1919,26 @@ let library = publicLibrary;
         currentSubUrl = 'none';
         btnCC.classList.remove('cc-active');
 
+        // Función auxiliar para cargar
+        const loadSub = (url) => {
+            if (!octopusInstance) {
+                octopusInstance = new SubtitlesOctopus({
+                    video: mainVideo,
+                    subUrl: url,
+                    fonts: ['https://todesvip.github.io/visor-manga/fonts/Arial.woff2'], 
+                    workerUrl: 'https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus-worker.js' 
+                });
+            } else {
+                octopusInstance.setTrackByUrl(url);
+            }
+        };
+
         // Opción None
         const noneBtn = document.createElement('button');
         noneBtn.textContent = 'None';
-        noneBtn.classList.add('active');
+        // La clase active se gestiona en updateCCMenu
         noneBtn.onclick = () => {
+            subtitlePreference = 'none'; // Guardar preferencia
             if (octopusInstance) octopusInstance.freeTrack();
             updateCCMenu('none');
         };
@@ -1932,19 +1948,21 @@ let library = publicLibrary;
             const subBtn = document.createElement('button');
             subBtn.textContent = 'Español';
             subBtn.onclick = () => {
-                if (!octopusInstance) {
-                    octopusInstance = new SubtitlesOctopus({
-                        video: mainVideo,
-                        subUrl: subUrl,
-                        fonts: ['https://todesvip.github.io/visor-manga/fonts/Arial.woff2'], // Asegúrate de que esta ruta sea correcta o usa una URL absoluta
-                        workerUrl: 'https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus-worker.js' 
-                    });
-                } else {
-                    octopusInstance.setTrackByUrl(subUrl);
-                }
+                subtitlePreference = 'Español'; // Guardar preferencia
+                loadSub(subUrl);
                 updateCCMenu(subUrl);
             };
             ccMenu.appendChild(subBtn);
+
+            // Auto-activar si la preferencia es Español
+            if (subtitlePreference === 'Español') {
+                loadSub(subUrl);
+                updateCCMenu(subUrl);
+            } else {
+                updateCCMenu('none');
+            }
+        } else {
+            updateCCMenu('none');
         }
     }
 
