@@ -250,6 +250,7 @@
             width: 100%; height: 100%; display: block; object-fit: contain; position: relative; z-index: 0; pointer-events: none;
             /* FORZAR ACELERACIÓN DE HARDWARE (Hace que vaya más fluido en Android) */
             transform: translate3d(0, 0, 0); will-change: transform;
+            background-color: #000; /* Fondo negro para videos sin poster */
         }
 
         /* --- SPINNER CARGA VIDEO --- */
@@ -919,7 +920,7 @@ const publicLibrary = [
         calidad: "HD",
         sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://todesvip.github.io/visor-manga/thumb/Kaifuku Jutsushi no Yarinaoshi 01_thumb1.jpg", sprite: "https://todesvip.github.io/visor-manga/sprit/sprite.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/sprite.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Kaifuku%20Jutsushi%20no%20Yarinaoshi%2001.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass" },
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/sprite.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/sprite.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Kaifuku%20Jutsushi%20no%20Yarinaoshi%2001.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Kaifuku Jutsushi no Yarinaoshi 01.spa.ass" },
             { num: 2, nombre: "Episodio 2", duracion: "23m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/sprite2.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/sprite2.jpg", link: "https://ia801709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Kaifuku%20Jutsushi%20no%20Yarinaoshi%2002.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Kaifuku Jutsushi no Yarinaoshi 02.spa.ass" },
             { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/sprite3.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/sprite3.jpg", link: "https://ia801709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Kaifuku%20Jutsushi%20no%20Yarinaoshi%2003.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Kaifuku Jutsushi no Yarinaoshi 03.spa.ass" },
             { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/sprite4.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/sprite4.jpg", link: "https://ia801709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Kaifuku%20Jutsushi%20no%20Yarinaoshi%2004.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Kaifuku Jutsushi no Yarinaoshi 04.spa.ass" },
@@ -1618,7 +1619,11 @@ let library = publicLibrary;
             console.log("Interfaz 'Android' no encontrada. Usando reproductor web.");
             heroImg.style.display = "none";
             videoContainer.style.display = "block"; // Mostrar el contenedor del nuevo reproductor
-            mainVideo.poster = episode.thumb || "";
+            if (episode.thumb) {
+                mainVideo.poster = episode.thumb;
+            } else {
+                mainVideo.removeAttribute("poster");
+            }
             mainVideo.src = episode.link;
             mainVideo.load(); // Forzar al navegador a procesar el nuevo video inmediatamente
             mainVideo.preload = "auto"; // Forzar precarga inmediata
