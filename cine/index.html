@@ -8,14 +8,10 @@
     <script src="https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus.js"></script>
 
     <!-- OPTIMIZACIÓN: Preconectar a servidores para que el video inicie antes -->
-    <link rel="preconnect" href="https://ia601709.us.archive.org">
-    <link rel="preconnect" href="https://ia801709.us.archive.org">
-    <link rel="preconnect" href="https://ia600701.us.archive.org">
-    <link rel="preconnect" href="https://ia601707.us.archive.org">
-    
+
     <style>
         /* --- ESTILOS GENERALES --- */
-        :root { --bg: #000000; --text: #ffffff; --text-gray: #a8a8a8; --accent: #00E676; }
+        :root { --bg: #000000; --text: #ffffff; --text-gray: #a8a8a8; --accent: #ffffff; }
         
         /* Ocultar barra de desplazamiento visualmente */
         ::-webkit-scrollbar { display: none; width: 0; background: transparent; }
@@ -262,7 +258,7 @@
         .video-spinner {
             width: 50px; height: 50px;
             border: 4px solid rgba(255, 255, 255, 0.1);
-            border-left-color: #00E676; /* Verde profesional neón */
+            border-left-color: #ffffff;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
@@ -346,9 +342,9 @@
             pointer-events: auto;
         }
         .progress-bg { width: 100%; height: 3px; background: transparent; position: relative; }
-        .progress-fill { height: 100%; width: 0%; background: #00E676; position: absolute; top: 0; left: 0; }
+        .progress-fill { height: 100%; width: 0%; background: #ffffff; position: absolute; top: 0; left: 0; }
         .progress-handle {
-            width: 8px; height: 8px; background: #00E676; border-radius: 50%;
+            width: 8px; height: 8px; background: #ffffff; border-radius: 50%;
             position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%);
             z-index: 5;
             transition: width .15s ease, height .15s ease;
@@ -444,7 +440,7 @@
             overflow: hidden;
         }
         .ep-box.active {
-            background: var(--accent); color: white; 
+            background: var(--accent); color: black; 
         }
         .ep-box:active { transform: none; }
 
@@ -490,13 +486,13 @@
         .splash-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .loading-spinner {
             width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1);
-            border-left-color: #00E676; border-radius: 50%;
+            border-left-color: #ffffff; border-radius: 50%;
             animation: spin 0.8s linear infinite; margin-bottom: 0;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         #splash-status { color: #888; font-size: 14px; font-weight: 500; display: none; margin-top: 20px; }
         #retry-btn {
-            margin-top: 20px; padding: 10px 25px; background: var(--accent); color: white;
+            margin-top: 20px; padding: 10px 25px; background: var(--accent); color: black;
             border: none; border-radius: 20px; font-weight: bold; cursor: pointer; display: none;
         }
 
@@ -513,7 +509,7 @@
             transition: background 0.2s, color 0.2s;
         }
         .page-btn.active {
-            background: var(--accent); color: white;
+            background: var(--accent); color: black;
         }
 
     </style>
