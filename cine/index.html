@@ -13,10 +13,11 @@
         /* --- ESTILOS GENERALES --- */
         :root { --bg: #000000; --text: #ffffff; --text-gray: #a8a8a8; --accent: #ffffff; }
         
-        /* Ocultar barra de desplazamiento visualmente */
-        ::-webkit-scrollbar { display: none; width: 0; background: transparent; }
-        * { scrollbar-width: none; -ms-overflow-style: none; }
-        html, body { scrollbar-width: none; }
+        /* Oculta la barra de desplazamiento pero permite el scroll */
+        body::-webkit-scrollbar,
+        *::-webkit-scrollbar {
+          display: none;
+        }
         
         /* --- ELIMINAR SOMBRA DE CONTROLES DE VIDEO --- */
         video::-webkit-media-controls-panel {
