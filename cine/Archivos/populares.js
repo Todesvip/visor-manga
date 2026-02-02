@@ -1,1 +1,85 @@
+const popularesData = [
+    {
+        id: "Nazo",
+        titulo: "Nazo no Kanojo",
+        titulo_jp: "謎の彼女X",
+        poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx12467-FtvouFLt2Vkr.jpg",
+        banner: "",
+        rating: "13+",
+        temporada: "Temporada 1",
+        ano: "2012",
+        calidad: "HD",
+        sinopsis: "Cuando el extrañamente peculiar Mikoto Urabe se transfiere a la clase de Akira Tsubaki, descubre que la vida le ha lanzado la bola curva más extraña que jamás haya existido. Porque si bien Urabe puede ser una solitaria antisocial que duerme en su escritorio, lleva un par de tijeras en ropa interior y estalla en repentinos ataques de risa loca, hay algo en ella que Tsubaki simplemente no puede identificar. Hasta que accidentalmente mete el dedo en él y, de repente, la frase \"compartir saliva con una chica\" adquiere un significado completamente nuevo. Antes de que pueda limpiarse la baba de la cara, Tsubaki se vuelve misteriosamente adicta a Urabe, lo cual no es ni la mitad de extraño que el hecho de que ella no sólo encuentra esto normal, sino que ya parece tener planes para su nuevo novio babeante.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite1.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2001.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 01.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite2.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2002.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 02.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite3.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite3.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2003.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 03.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite4.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite4.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2004.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 04.es.ass" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite5.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite5.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2005.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 05.es.ass" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite6.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite6.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2006.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 06.es.ass" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite7.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite7.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2007.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 07.es.ass" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite8.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite8.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2008.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 08.es.ass" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite9.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite9.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2009.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 09.es.ass" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite10.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite10.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2010.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 10.es.ass" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite11.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite11.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2011.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 11.es.ass" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite12.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite12.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2012.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 12.es.ass" },
+            { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite13.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/01/sprite13.jpg", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Nazo%20no%20Kanojo%20X%20-%2013.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-manga/src/Nazo no Kanojo X - 13.es.ass" }
+        ]
+    },
+    {
+        id: "Dokyuu",
+        titulo: "Dokyuu Hentai HxEros",
+        titulo_jp: "ド級編隊エグゼロス",
+        poster: "https://static.zerochan.net/Dokyuu.Hentai.HxEros.1024.2875525.webp",
+        banner: "",
+        rating: "TV-MA",
+        temporada: "1 Temporada",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "La Tierra enfrenta una amenaza sin precedentes por una invasión del misterioso Kiseichuu. Los Kiseichuu se alimentan de energía sexual humana, también conocida como energía H, y debilitan a la población humana. El estudiante de secundaria Retto Enjo es miembro del grupo de héroes HXEROS, que luchan juntos para salvar la tierra del Kiseichuu.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", link: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", link: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", link: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", link: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", link: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", link: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", link: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", link: "" },
+            { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "", link: "" },
+            { num: 14, nombre: "Episodio 14", duracion: "24m", thumb: "", link: "" }
+        ]
+    },
+    {
+        id: "Gushing",
+        titulo: "Gushing Over Magical Girls",
+        titulo_jp: "魔法少女にあこがれて",
+        poster: "https://m.media-amazon.com/images/M/MV5BNWU3ZWI4Y2YtNzUwZi00OGY3LWFkYjEtYTZkYmQ5Nzg5OTE5XkEyXkFqcGc@.jpg",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2024",
+        calidad: "HD",
+        sinopsis: "Hiiragi Utena es una gran fanática de las chicas mágicas que protegen su ciudad, así que cuando tiene la oportunidad de convertirse en una, aprovecha la oportunidad para unirse a sus filas en tecnicolor... pero cuando se transforma, descubre que no está destinada a ser una atrevida bienhechora, ¡sino una villana del lado del mal! Al principio, intenta dejar su nuevo trabajo como líder de los malos locales, pero rápidamente se da cuenta de que lo disfruta y que es totalmente natural atormentar a las chicas mágicas que tanto ama. ¡Con un estallido y un gemido, el viaje de Hiragi como un sádico atormentador de chicas mágicas ha comenzado!",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite1.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite1.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2001.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 01.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite2.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite2.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2002.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 02.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite3.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite3.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2003.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 03.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite4.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite4.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2004.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 04.es.ass" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite5.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite5.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2005.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 05.es.ass" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite6.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite6.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2006.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 06.es.ass" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite7.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite7.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2007.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 07.es.ass" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite8.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite8.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2008.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 08.es.ass" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite9.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite9.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2009.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 09.es.ass" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite10.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite10.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2010.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 10.es.ass" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite11.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite11.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2011.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 11.es.ass" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite12.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite12.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2012.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 12.es.ass" },
+            { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/02/sprite13.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/02/sprite13.jpg", link: "https://ia601709.us.archive.org/29/items/seihou-shouka-saint-lime-1/Gushing%20Over%20Magical%20Girls%2013.mkv", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Gushing Over Magical Girls 13.es.ass" }
+        ]
+    }
+];
 
