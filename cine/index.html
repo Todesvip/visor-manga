@@ -676,7 +676,7 @@
     </div>
 
 <!-- CARGA DE ARCHIVOS SEPARADOS -->
-<script src="cine/Archivos/reciente.js"></script>
+<script src="cine/Archivos/recientes.js"></script>
 <script src="cine/Archivos/populares.js"></script>
 <script src="cine/Archivos/latino.js"></script>
 <script src="cine/Archivos/series.js"></script>
@@ -685,7 +685,7 @@
 <script>
     // Combinar todas las listas públicas para el buscador y la lista completa
     const publicLibrary = [
-        ...(typeof recienteData !== 'undefined' ? recienteData : []),
+        ...(typeof recientesData !== 'undefined' ? recientesData : []),
         ...(typeof popularesData !== 'undefined' ? popularesData : []),
         ...(typeof latinoData !== 'undefined' ? latinoData : []),
         ...(typeof seriesData !== 'undefined' ? seriesData : [])
@@ -897,8 +897,8 @@
 
             // 1. Recién añadidos
             const recentContainer = document.getElementById('recent-list');
-            // Usamos directamente la lista del archivo reciente.js
-            let recentItems = typeof recienteData !== 'undefined' ? recienteData : [];
+            // Usamos directamente la lista del archivo recientes.js
+            let recentItems = typeof recientesData !== 'undefined' ? recientesData : [];
             
             recentItems.forEach(anime => {
                 const card = document.createElement('div');
