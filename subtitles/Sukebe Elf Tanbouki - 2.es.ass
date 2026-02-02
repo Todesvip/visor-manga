@@ -102,7 +102,7 @@ Dialogue: 10,0:05:13.24,0:05:15.67,Default,,0,0,0,,Soy el siguiente, ¿vale?
 Dialogue: 10,0:05:16.22,0:05:19.32,Default,,0,0,0,,Luego es mi turno\Ndespués de eso.
 Dialogue: 10,0:05:19.32,0:05:20.26,Default,,0,0,0,,¿¡Eh!?
 Dialogue: 10,0:05:20.88,0:05:22.63,Default,,0,0,0,,¿No es eso obvio?
-Dialogue: 10,0:05:22.63,0:05:26.18,Default,,0,0,0,,Tendrás que dejarnos\Nembarazados a los dos ahora.
+Dialogue: 10,0:05:22.63,0:05:26.18,Default,,0,0,0,,Tendrás que dejarnos\Nembarazadas a las dos ahora.
 Dialogue: 10,0:05:26.81,0:05:29.62,Default,,0,0,0,,Por eso, sensei...
 Dialogue: 10,0:05:29.62,0:05:31.28,Default,,0,0,0,,De aquí en adelante...
 Dialogue: 10,0:05:31.28,0:05:32.67,Default,,0,0,0,,¡Cuídanos!
@@ -220,3 +220,4 @@ Dialogue: 10,0:14:17.74,0:14:22.18,Alternate,,0,0,0,,Y entonces, un hombre como 
 Dialogue: 10,0:14:25.60,0:14:30.16,Alternate,,0,0,0,,...¡logré conseguir tres\Nesposas maravillosas!
 Dialogue: 0,0:05:34.43,0:05:36.39,Signs,,0,0,0,,{\fad(988,0)\an5\be0.3\fnFOT Pop Happiness Std Stripped\pos(640,480)\fs52\c&H4F3CDF&\3c&H4F3CDF&\bord4}Unos días más tarde...
 Dialogue: 1,0:05:34.43,0:05:36.39,Signs,,0,0,0,,{\fad(988,0)\an5\be0,3\fnFOT Pop Happiness Std Stripped\pos(640,480)\fs52\c&HFFFFFF&}Unos días más tarde...
+
