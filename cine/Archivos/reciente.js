@@ -1,4 +1,4 @@
-const recientesData = [
+const recienteData = [
     {
         id: "Kaifuku",
         titulo: "Kaifuku Jutsushi no Yarinaoshi",
