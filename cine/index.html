@@ -685,7 +685,7 @@
 <script>
     // Combinar todas las listas públicas para el buscador y la lista completa
     const publicLibrary = [
-        ...(typeof recienteData !== 'undefined' ? recientesData : []),
+        ...(typeof recienteData !== 'undefined' ? recienteData : []),
         ...(typeof popularesData !== 'undefined' ? popularesData : []),
         ...(typeof latinoData !== 'undefined' ? latinoData : []),
         ...(typeof seriesData !== 'undefined' ? seriesData : [])
@@ -897,8 +897,8 @@
 
             // 1. Recién añadidos
             const recentContainer = document.getElementById('recent-list');
-            // Usamos directamente la lista del archivo recientes.js
-            let recentItems = typeof recientesData !== 'undefined' ? recientesData : [];
+            // Usamos directamente la lista del archivo reciente.js
+            let recentItems = typeof recienteData !== 'undefined' ? recienteData : [];
             
             recentItems.forEach(anime => {
                 const card = document.createElement('div');
