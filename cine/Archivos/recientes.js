@@ -26,6 +26,32 @@ const recientesData = [
         ]
     },
     {
+        id: "Peter",
+        titulo: "Peter Grill to Kenja no Jikan",
+        titulo_jp: "ピーターグリルと賢者の時間",
+        poster: "https://media.kitsu.app/anime/poster_images/42563/original.png",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "Peter Grill es el luchador más fuerte del mundo, pero su ascenso a la cima tuvo una consecuencia inesperada: ¡las mujeres de todo el mundo, tanto humanas como monstruos, quieren tener hijos genéticamente superiores! Dado que actualmente está comprometido con el amor de su vida, Peter no está muy interesado en su repentina popularidad, ¡y necesitará cada gramo de autocontrol para que Peter mantenga sus manos sobre sí mismo y su relación con su amante en una sola pieza!",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2001.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 01.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2002.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 02.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2003.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 03.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2004.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 04.es.ass" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2005.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 05.es.ass" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2006.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 06.es.ass" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2007.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 07.es.ass" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2008.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 08.es.ass" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2009.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 09.es.ass" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2010.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 10.es.ass" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2011.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 11.es.ass" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20-%2012.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan - 12.es.ass" }
+        ]
+    },
+    {
         id: "Yuusha",
         titulo: "Yuusha Party ni Kawaii Ko ga Ita node, Kokuhaku shitemita",
         titulo_jp: "",
