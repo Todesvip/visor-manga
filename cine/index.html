@@ -1022,7 +1022,6 @@
         detailSynopsis.innerText = anime.sinopsis || "";
 
         epSelector.innerHTML = "";
-        epSelector.scrollLeft = 0;
         const totalEps = anime.episodios.length;
         epCountText.innerText = `${totalEps} ${totalEps === 1 ? 'Capítulo' : 'Capítulos'}`;
 
@@ -1033,6 +1032,9 @@
             btn.onclick = () => playEpisode(index);
             epSelector.appendChild(btn);
         });
+
+        // Forzar el scroll al inicio DESPUÉS de agregar los botones
+        epSelector.scrollLeft = 0;
 
         if (totalEps > 0) {
             playEpisode(0);
