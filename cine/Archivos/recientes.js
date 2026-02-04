@@ -52,7 +52,7 @@ const recientesData = [
         ]
     },
     {
-        id: "Peter",
+        id: "Peter2",
         titulo: "Peter Grill to Kenja no Jikan Super Extra",
         titulo_jp: "ピーター・グリルと賢者の時間 Super Extra",
         poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx141400-IHU8WRGMWrCh.jpg",
