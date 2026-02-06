@@ -77,38 +77,6 @@ const recientesData = [
             { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20S02E12.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan S02E12.es.ass" }
         ]
     },
-    {
-        id: "Yuusha",
-        titulo: "Yuusha Party ni Kawaii Ko ga Ita node, Kokuhaku shitemita",
-        titulo_jp: "",
-        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/04.jpg",
-        banner: "",
-        rating: "16+",
-        temporada: "1 Temporada",
-        ano: "2026",
-        calidad: "HD",
-        sinopsis: "¡Youki murió en un accidente de tráfico y renació en un mundo fantástico! Sin embargo, en lugar de convertirse en el héroe de las leyendas, acabó reencarnándose en un demonio todopoderoso. Como no tenía ningún deseo de convertirse en el Señor de los Demonios, se quedó en el castillo del Señor de los Demonios como un guardián de bajo rango cualquiera. Un día, el grupo del héroe viene a atacar y, por capricho, él derrota a todo el grupo. Después de curar al grupo del héroe y prepararse para enviarlos de vuelta a la ciudad, se fija en la sacerdotisa y se enamora a primera vista.",
-        episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "" }
-        ]
-    },
-    {
-        id: "Osananajimi",
-        titulo: "Osananajimi to wa Love Comedy ni Naranai",
-        titulo_jp: "幼馴染とはラブコメにならない",
-        poster: "https://raw.githubusercontent.com/Todesvip/visor-manga/main/cine/imagen/06.jpg",
-        banner: "",
-        rating: "16+",
-        temporada: "1 Temporada",
-        ano: "2026",
-        calidad: "HD",
-        sinopsis: "El estudiante de secundaria Eiyuu tiene un dilema: ¡sus dos amigas de la infancia, Shio y Akari, se han convertido en dos chicas casi demasiado guapas! Aunque ellas no parecen darle mucha importancia, él no puede evitar verlas con otros ojos. Si alguna vez se dieran cuenta de cómo han cambiado sus sentimientos, ¡la vergüenza sería insoportable! Sin embargo, lo que Eiyuu no sabe es que Shio y Akari podrían sentir lo mismo por él. Un triángulo amoroso que se desarrolla lentamente, en el que todas las heroínas son amigas de la infancia, ¡tan frustrante como irresistible!",
-        episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", link: "" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", link: "" }
-        ]
-    }
 ];
 
 
