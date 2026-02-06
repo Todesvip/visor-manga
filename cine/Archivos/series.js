@@ -23,7 +23,7 @@ const seriesData = [
             { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/10.Encuent-Ricks%20en%20la%20Rick-cera%20fase.ia.mp4" },
             { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/11.Ricksy%20Business.ia.mp4" }
         ]
-    }
+    },
     {
         id: "Rick2",
         titulo: "Rick and Morty 2",
