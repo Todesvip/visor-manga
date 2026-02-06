@@ -985,25 +985,12 @@
     function openAnimeDetail(anime) {
         hasPlayedAnyVideo = false; 
         currentAnime = anime;
-        
-        // Recuperar progreso guardado
-        let savedEp = 0;
-        let savedTime = 0;
-        try {
-            const saved = JSON.parse(localStorage.getItem('progreso_' + anime.titulo));
-            if (saved) {
-                savedEp = saved.ep || 0;
-                savedTime = saved.time || 0;
-                if (savedEp >= anime.episodios.length) savedEp = 0;
-            }
-        } catch (e) {}
-
-        currentEpIndex = savedEp;
-        prepareDetailView(anime, savedEp, savedTime);
+        currentEpIndex = 0;
+        prepareDetailView(anime);
         window.location.hash = "detail";
     }
     
-    function prepareDetailView(anime, startEp = 0, startTime = 0) {
+    function prepareDetailView(anime) {
         detailTitle.innerText = anime.titulo;
         detailSubtitle.innerText = anime.titulo_jp || "";
 
@@ -1030,7 +1017,7 @@
         epSelector.scrollLeft = 0;
 
         if (totalEps > 0) {
-            playEpisode(startEp, false, startTime);
+            playEpisode(0);
         } else {
             videoContainer.style.display = 'none';
             heroImg.style.display = 'block';
@@ -1038,7 +1025,7 @@
         }
     }
 
-    function playEpisode(index, isAutoChained = false, startTime = 0) {
+    function playEpisode(index, isAutoChained = false) {
         if (!currentAnime || !currentAnime.episodios[index]) return;
         currentEpIndex = index;
         const episode = currentAnime.episodios[index];
@@ -1069,11 +1056,7 @@
             mainVideo.load(); // Forzar al navegador a procesar el nuevo video inmediatamente
             mainVideo.preload = "auto"; // Forzar precarga inmediata
             
-            if (startTime > 0) {
-                mainVideo.currentTime = startTime;
-            } else {
-                mainVideo.currentTime = 0;
-            }
+            mainVideo.currentTime = 0;
             // Reiniciar barra de progreso
             progressBar.style.width = '0%';
             progressKnob.style.left = '0%';
@@ -1180,31 +1163,12 @@
     };
     mainVideo.addEventListener('loadedmetadata', () => durTimeText.textContent = formatTime(mainVideo.duration));
     
-    // Guardar progreso
-    let lastSaveTime = 0;
-    function saveCurrentProgress() {
-        if (!currentAnime || !mainVideo) return;
-        const data = {
-            ep: currentEpIndex,
-            time: mainVideo.currentTime
-        };
-        localStorage.setItem('progreso_' + currentAnime.titulo, JSON.stringify(data));
-    }
-    mainVideo.addEventListener('pause', saveCurrentProgress);
-
     mainVideo.addEventListener('timeupdate', () => {
         if (isScrubbing) return;
         const pct = (mainVideo.currentTime / mainVideo.duration) * 100;
         progressBar.style.width = `${pct}%`;
         progressKnob.style.left = `${pct}%`;
         currTimeText.textContent = formatTime(mainVideo.currentTime);
-        
-        // Guardar cada 5 segundos
-        const now = Date.now();
-        if (now - lastSaveTime > 5000) {
-            saveCurrentProgress();
-            lastSaveTime = now;
-        }
     });
     
     // --- LÓGICA DE SPRITES ---
