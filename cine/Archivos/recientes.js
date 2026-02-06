@@ -77,6 +77,31 @@ const recientesData = [
             { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601802.us.archive.org/12/items/nazo-no-kanojo-x-01/Peter%20Grill%20to%20Kenja%20no%20Jikan%20S02E12.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Peter Grill to Kenja no Jikan S02E12.es.ass" }
         ]
     },
+       {
+        id: "Nukitashi",
+        titulo: "Nukitashi - The Animation",
+        titulo_jp: "ぬきたし THE ANIMATION",
+        poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx174188-fZg8iePD9Dca.jpg",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2025",
+        calidad: "HD",
+        sinopsis: "La isla del eterno verano, la isla Seiran. Junnosuke Tachibana, cuya casa familiar estaba en esta isla, regresó a ella con su hermana, Asane Tachibana, tras la muerte de sus padres. Sin embargo, la isla Seiran se ha convertido en un lugar de locura debido a la implementación de la Ley Pervertida, una ley diseñada para combatir la disminución de la población. Esta ley permite e incluso fomenta actos sexuales lascivos en toda la isla, y negarse a participar en “actividades reproductivas” se castiga casi con la misma severidad que un delito.Junnosuke, una virgen orgullosa y acérrima defensora de la virginidad, cuestiona la legitimidad de esta ley. Decidido a proteger su pureza y la de su amada hermana, forma el frente anti-cópula NLNS No Love No Sex y se propone destruir la Ley Pervertida de una vez por todas.¡Yo… destruiré la Ley Pervertida!",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2001.mkv", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2002.mkv", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2003.mkv", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2004.mkv", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2005.mkv", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2006.mkv", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2007.mkv", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2008.mkv", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2009.mkv", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2010.mkv", subtitulo: "" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2011.mkv", subtitulo: "" }
+        ]
+    },
 ];
 
 
