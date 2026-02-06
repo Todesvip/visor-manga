@@ -150,7 +150,7 @@
 
         /* --- NUEVO HOME (HORIZONTAL) --- */
         .section-title {
-            font-size: 20px; font-weight: 600; margin: 20px 0 12px 0; padding-left: 15px; color: #ffffff;
+            font-size: 16px; font-weight: 600; margin: 15px 0 10px 0; padding-left: 20px; color: #ffffff;
             letter-spacing: 0px;
         }
 
@@ -158,24 +158,25 @@
 
         .horizontal-list {
             display: flex; overflow-x: auto; gap: 10px; padding: 0;
-            scroll-padding-left: 15px; /* Para que el snap se alinee con el título */
+            scroll-padding-left: 20px; /* Para que el snap se alinee con el título */
             scrollbar-width: none; margin-bottom: 25px;
             scroll-snap-type: x mandatory;
         }
         
-        /* Espaciadores para alinear (5px ancho + 10px gap = 15px total, igual que el título) */
+        /* Espaciadores para alinear */
         .horizontal-list::before, .horizontal-list::after {
-            content: ''; display: block; flex: 0 0 5px;
+            content: ''; display: block; flex: 0 0 10px;
         }
 
         #recent-list { padding-left: 0; }
 
         .horizontal-list::-webkit-scrollbar { display: none; }
         
-        .horizontal-item { flex: 0 0 180px; cursor: pointer; scroll-snap-align: start; }
+        .horizontal-item { flex: 0 0 130px; cursor: pointer; scroll-snap-align: start; transition: transform 0.2s; }
+        .horizontal-item:active { transform: scale(0.95); }
 
         @media (max-width: 600px) {
-            .horizontal-item { flex: 0 0 140px; }
+            .horizontal-item { flex: 0 0 105px; }
         }
 
         .view-all-btn {
@@ -535,7 +536,7 @@
                     <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
                 </div>
                 <div class="nav-btn" onclick="toggleAppMode()">
-                    <svg viewBox="0 0 24 24"><path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-.11 0-.21-.04-.3-.12-.21-.2-.21-.53 0-.74 1.22-1.22 1.88-2.53 1.88-3.71 0-.28.22-.5.5s.5.22.5.5c0 1.53-.86 3.16-2.28 4.57-.08.08-.19.12-.3.12zM12.5 22c-1.31 0-2.42-.56-3.25-1.55-.18-.21-.15-.52.06-.7.21-.18.52-.15.7.06.61.73 1.45 1.13 2.49 1.13.28 0 .5.22.5.5s-.22.56-.5.56z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M15.0049 2.00281C17.214 2.00281 19.0049 3.79367 19.0049 6.00281C19.0049 6.73184 18.8098 7.41532 18.4691 8.00392L23.0049 8.00281V10.0028H21.0049V20.0028C21.0049 20.5551 20.5572 21.0028 20.0049 21.0028H4.00488C3.4526 21.0028 3.00488 20.5551 3.00488 20.0028V10.0028H1.00488V8.00281L5.54065 8.00392C5.19992 7.41532 5.00488 6.73184 5.00488 6.00281C5.00488 3.79367 6.79574 2.00281 9.00488 2.00281C10.2001 2.00281 11.2729 2.52702 12.0058 3.35807C12.7369 2.52702 13.8097 2.00281 15.0049 2.00281ZM11.0049 10.0028H5.00488V19.0028H11.0049V10.0028ZM19.0049 10.0028H13.0049V19.0028H19.0049V10.0028ZM9.00488 4.00281C7.90031 4.00281 7.00488 4.89824 7.00488 6.00281C7.00488 7.05717 7.82076 7.92097 8.85562 7.99732L9.00488 8.00281H11.0049V6.00281C11.0049 5.00116 10.2686 4.1715 9.30766 4.02558L9.15415 4.00829L9.00488 4.00281ZM15.0049 4.00281C13.9505 4.00281 13.0867 4.81869 13.0104 5.85355L13.0049 6.00281V8.00281H15.0049C16.0592 8.00281 16.923 7.18693 16.9994 6.15207L17.0049 6.00281C17.0049 4.89824 16.1095 4.00281 15.0049 4.00281Z"></path></svg>
                 </div>
             </div>
         </div>
@@ -672,7 +673,6 @@
 <!-- CARGA DE ARCHIVOS SEPARADOS -->
 <script src="https://todesvip.github.io/visor-manga/cine/Archivos/recientes.js"></script>
 <script src="https://todesvip.github.io/visor-manga/cine/Archivos/populares.js"></script>
-<script src="https://todesvip.github.io/visor-manga/cine/Archivos/latino.js"></script>
 <script src="https://todesvip.github.io/visor-manga/cine/Archivos/series.js"></script>
 <script src="https://todesvip.github.io/visor-manga/cine/Archivos/privados.js"></script>
 
@@ -681,7 +681,6 @@
     const publicLibrary = [
         ...(typeof recientesData !== 'undefined' ? recientesData : []),
         ...(typeof popularesData !== 'undefined' ? popularesData : []),
-        ...(typeof latinoData !== 'undefined' ? latinoData : []),
         ...(typeof seriesData !== 'undefined' ? seriesData : [])
     ];
     const privateLibrary = typeof privadosData !== 'undefined' ? privadosData : [];
@@ -870,14 +869,11 @@
                 <div class="section-title">Recientes</div>
                 <div class="horizontal-list" id="recent-list"></div>
 
-                <div class="section-title">Más populares</div>
-                <div class="horizontal-list" id="popular-list"></div>
-
-                <div class="section-title">Anime Latino</div>
-                <div class="horizontal-list" id="latino-list"></div>
-
                 <div class="section-title">Reciente en Series</div>
                 <div class="horizontal-list" id="series-list"></div>
+
+                <div class="section-title">Más populares</div>
+                <div class="horizontal-list" id="popular-list"></div>
             `;
 
             // 1. Recién añadidos
@@ -912,23 +908,7 @@
                 popularContainer.appendChild(card);
             });
 
-            // 3. Anime Latino
-            const latinoContainer = document.getElementById('latino-list');
-            // Usamos directamente la lista del archivo latino.js
-            let latinoItems = typeof latinoData !== 'undefined' ? latinoData : [];
-            
-            latinoItems.forEach(anime => {
-                const card = document.createElement('div');
-                card.className = "horizontal-item"; 
-                card.onclick = () => { openAnimeDetail(anime); };
-                card.innerHTML = `
-                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
-                    <div class="anime-title">${anime.titulo}</div>
-                `;
-                latinoContainer.appendChild(card);
-            });
-
-            // 4. Reciente en Series
+            // 3. Reciente en Series
             const seriesContainer = document.getElementById('series-list');
             // Usamos directamente la lista del archivo series.js
             let seriesItems = typeof seriesData !== 'undefined' ? seriesData : [];
