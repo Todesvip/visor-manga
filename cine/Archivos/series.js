@@ -24,4 +24,28 @@ const seriesData = [
             { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/11.Ricksy%20Business.ia.mp4" }
         ]
     }
+    {
+        id: "Rick2",
+        titulo: "Rick and Morty 2",
+        titulo_jp: "",
+        poster: "https://rickymortylatam.com/wp-content/uploads/2024/01/Rick_y_Morty_Temporada_2-e1704777349198-757x1024.webp",
+        banner: "",
+        rating: "16+",
+        temporada: "Temporada 2",
+        ano: "2013",
+        calidad: "HD",
+        sinopsis: "",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/01.ia.mkv", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/02.ia.mkv", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/03.ia.mkv", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/04.ia.mkv", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/05.ia.mkv", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/06.ia.mkv", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/07.ia.mkv", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/08.ia.mkv", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/09.ia.mkv", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/10.ia.mkv", subtitulo: "" }
+        ]
+    },
 ];
