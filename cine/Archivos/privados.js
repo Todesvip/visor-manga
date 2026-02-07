@@ -16,6 +16,22 @@ const privadosData = [
         ]
     },
     {
+        id: "Abandon",
+        titulo: "Abandon 100 Nuki Shinai to Derarenai Fushigi na Kyoushitsu",
+        titulo_jp: "Abandon‐100ヌキしないと出られない不思議な教室‐",
+        poster: "https://veohentai.com/wp-content/uploads/2022/08/abandon-100-nuki-shinai-to-derarenai-fushigi-na-kyoushitsu-1-cv1.png",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2022",
+        calidad: "HD",
+        sinopsis: "Una aplicación móvil que cumple el deseo de un chico de ser director de cine porno. Y los actores serán sus propios compañeros de clase.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Abandon%20100%20Nuki%20Shinai%20to%20Derarenai%20Fushigi%20na%20Kyoushitsu%20-%201.mkv", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Abandon%20100%20Nuki%20Shinai%20to%20Derarenai%20Fushigi%20na%20Kyoushitsu%20-%202.mkv", subtitulo: "" }
+        ]
+    },
+    {
         id: "3Ping",
         titulo: "3Ping Lovers Ippu Nisai no Sekai e Youkoso The Animation",
         titulo_jp: "3PingLovers!☆一夫二妻の世界へようこそ♪ THE ANIMATION",
