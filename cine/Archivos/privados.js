@@ -27,8 +27,8 @@ const privadosData = [
         calidad: "HD",
         sinopsis: "Una aplicación móvil que cumple el deseo de un chico de ser director de cine porno. Y los actores serán sus propios compañeros de clase.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Abandon%20100%20Nuki%20Shinai%20to%20Derarenai%20Fushigi%20na%20Kyoushitsu%20-%201.mkv", subtitulo: "" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Abandon%20100%20Nuki%20Shinai%20to%20Derarenai%20Fushigi%20na%20Kyoushitsu%20-%202.mkv", subtitulo: "" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Abandon%20100%20Nuki%20Shinai%20to%20Derarenai%20Fushigi%20na%20Kyoushitsu%20-%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Abandon 100 Nuki Shinai to Derarenai Fushigi na Kyoushitsu - 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Abandon%20100%20Nuki%20Shinai%20to%20Derarenai%20Fushigi%20na%20Kyoushitsu%20-%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Abandon 100 Nuki Shinai to Derarenai Fushigi na Kyoushitsu - 2.es.ass" }
         ]
     },
     {
