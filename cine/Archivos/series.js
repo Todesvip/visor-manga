@@ -36,16 +36,16 @@ const seriesData = [
         calidad: "HD",
         sinopsis: "",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/01.ia.mkv", subtitulo: "" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/02.ia.mkv", subtitulo: "" },
-            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/03.ia.mkv", subtitulo: "" },
-            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/04.ia.mkv", subtitulo: "" },
-            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/05.ia.mkv", subtitulo: "" },
-            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/06.ia.mkv", subtitulo: "" },
-            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/07.ia.mkv", subtitulo: "" },
-            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/08.ia.mkv", subtitulo: "" },
-            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/09.ia.mkv", subtitulo: "" },
-            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/10.ia.mkv", subtitulo: "" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/01.ia.mp4", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/02.ia.mp4", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/03.ia.mp4", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/04.ia.mp4", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/05.ia.mp4", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/06.ia.mp4", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/07.ia.mp4", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/08.ia.mp4", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/09.ia.mp4", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/10.ia.mp4", subtitulo: "" }
         ]
     },
 ];
