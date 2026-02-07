@@ -34,7 +34,7 @@ const seriesData = [
         temporada: "Temporada 2",
         ano: "2013",
         calidad: "HD",
-        sinopsis: "",
+        sinopsis: "Rick, Morty y Summer reparan la casa con el tiempo congelado. Depués de seis meses así, el científico decide descongelarlo. Esta descongelación del tiempo, provoca que acaben en una dimensión paralela en descomposición. En esta temporada, se enfrentan a parásitos alienígenas, Jerrys alternativos y hasta una dimensión que posiblemente no exista. Además, toda la familia irá a diferentes planetas donde los ciudadanos pueden infringir las normas o asisten a una desafortunada boda.",
         episodios: [
             { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/01.ia.mp4", subtitulo: "" },
             { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/02.ia.mp4", subtitulo: "" },
