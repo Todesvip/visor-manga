@@ -31,6 +31,30 @@ const privadosData = [
         ]
     },
     {
+        id: "Sakusei",
+        titulo: "Sakusei Byoutou The Animation",
+        titulo_jp: "搾精病棟 THE ANIMATION",
+        poster: "https://veohentai.com/wp-content/uploads/2022/08/sakusei-byoutou-1-cv2.png",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2021",
+        calidad: "HD",
+        sinopsis: "Basado en la colección CG de Sakusei Kenkyuujo (搾精研究所). Yamada padece una extraña enfermedad y, como resultado, tiene que eyacular una vez cada tres horas. Sin embargo, ahora se rompió ambas manos y terminó en el hospital. Como resultado, tiene que pedir a las enfermeras del hospital que se ocupen de sus necesidades.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%201.mkv", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%202.mkv", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%203.mkv", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%204.mkv", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%205.mkv", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%206.mkv", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%207.mkv", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%208.mkv", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%209.mkv", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%210.mkv", subtitulo: "" }
+        ]
+    },
+    {
         id: "Gaki",
         titulo: "Gaki ni Modotte Yarinaoshi!!!",
         titulo_jp: "ガキに戻ってやり直し!!!",
