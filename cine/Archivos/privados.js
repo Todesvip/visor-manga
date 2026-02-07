@@ -58,8 +58,8 @@ const privadosData = [
         calidad: "HD",
         sinopsis: "Ruruna no se siente segura de su asociación Gyaru (término Gyaru utilizado para las jóvenes a la moda). Debido a que Ruruna nunca había tenido relaciones sexuales, no pudo participar charlando y contando historias con los amigos de Gyaru que siempre están hablando de problemas sexuales. Finalmente, Ria le ofrece a Ruruna tener sexo con el hermano menor de Ria, para que Ruruna pueda tener experiencia sobre sexo y pueda llegar a contar historias con otros amigos sobre sexo.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Cherry%20%26%20Gals%E2%86%91%E2%86%91%201.mkv", subtitulo: "" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Cherry%20%26%20Gals%E2%86%91%E2%86%91%202.mkv", subtitulo: "" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Cherry%20%26%20Gals%E2%86%91%E2%86%91%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Cherry & Gals↑↑ 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Cherry%20%26%20Gals%E2%86%91%E2%86%91%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Cherry & Gals↑↑ 2.es.ass" }
         ]
     },
     {
