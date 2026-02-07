@@ -74,8 +74,8 @@ const privadosData = [
         calidad: "HD",
         sinopsis: "Después de reprobar sus exámenes de ingreso, la hermosa y talentosa estudiante de último año cae a un nuevo nivel y se convierte en una total esclava sexual.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Dropout%201.mkv", subtitulo: "" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Dropout%202.mkv", subtitulo: "" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Dropout%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Dropout 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Dropout%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Dropout 2.es.ass" }
         ]
     },
     {
