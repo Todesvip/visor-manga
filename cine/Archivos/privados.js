@@ -42,7 +42,7 @@ const privadosData = [
         calidad: "HD",
         sinopsis: "Basado en la colección CG de Sakusei Kenkyuujo (搾精研究所). Yamada padece una extraña enfermedad y, como resultado, tiene que eyacular una vez cada tres horas. Sin embargo, ahora se rompió ambas manos y terminó en el hospital. Como resultado, tiene que pedir a las enfermeras del hospital que se ocupen de sus necesidades.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%201.mkv", subtitulo: "" },
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%201.mp4", subtitulo: "" },
             { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%202.mkv", subtitulo: "" },
             { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%203.mkv", subtitulo: "" },
             { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%204.mkv", subtitulo: "" },
@@ -51,7 +51,7 @@ const privadosData = [
             { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%207.mkv", subtitulo: "" },
             { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%208.mkv", subtitulo: "" },
             { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%209.mkv", subtitulo: "" },
-            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%210.mkv", subtitulo: "" }
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%210.mp4", subtitulo: "" }
         ]
     },
     {
