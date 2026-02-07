@@ -31,6 +31,22 @@ const privadosData = [
         ]
     },
     {
+        id: "Dropout",
+        titulo: "Dropout",
+        titulo_jp: "ドロップアウト",
+        poster: "https://veohentai.com/wp-content/uploads/2022/08/drop-out-1-EvLZG.jpg",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2016",
+        calidad: "HD",
+        sinopsis: "Después de reprobar sus exámenes de ingreso, la hermosa y talentosa estudiante de último año cae a un nuevo nivel y se convierte en una total esclava sexual.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Dropout%201.mkv", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Dropout%202.mkv", subtitulo: "" }
+        ]
+    },
+    {
         id: "Rance",
         titulo: "Rance Hikari wo Motomete The Animation",
         titulo_jp: "ランス01 光をもとめて THE ANIMATION",
