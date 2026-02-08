@@ -94,6 +94,7 @@ const privadosData = [
             { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 2.es.ass" },
             { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%203.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 3.es.ass" },
             { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%204.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 4.es.ass" }
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://player.odycdn.com/api/v3/streams/free/01/70d9ae611b882873234e6fc85b9898fc1561223f/3e7d8e.mp4", subtitulo: "" }
         ]
     },
     {
