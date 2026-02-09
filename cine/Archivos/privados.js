@@ -118,7 +118,7 @@ const privadosData = [
             { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%207.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Sakusei Byoutou The Animation - 7.spa.ass" },
             { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%208.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Sakusei Byoutou The Animation - 8.spa.ass" },
             { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%209.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Sakusei Byoutou The Animation - 9.es.ass" },
-            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%210.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Sakusei Byoutou The Animation - 10.es.ass" }
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sakusei%20Byoutou%20The%20Animation%20-%2010.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Sakusei Byoutou The Animation - 10.es.ass" }
         ]
     },
     {
