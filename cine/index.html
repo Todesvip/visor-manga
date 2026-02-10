@@ -507,6 +507,35 @@
             background: var(--accent); color: black;
         }
 
+        /* --- SOLUCIÓN APILAMIENTO (Subtítulos sobre Controles) --- */
+        /* 
+          1. Contenedor del video: Lo establecemos como el punto de referencia
+             para el apilamiento de sus hijos.
+        */
+        #video-container {
+            position: relative; /* ¡Esto es crucial para que z-index funcione en los hijos! */
+        }
+
+        /*
+          2. Controles del reproductor: Les damos un z-index base.
+             Esto incluye la barra inferior, el botón de play central, etc.
+        */
+        .bottom-bar {
+            z-index: 10;
+            position: absolute; /* Mantenemos absolute para no romper el layout, pero habilita z-index */
+        }
+
+        #btn-center-play {
+            z-index: 10;
+        }
+
+        /* 
+          3. Contenedor de subtítulos: Le damos el z-index MÁS ALTO.
+             Esto asegura que siempre esté por encima de los controles.
+        */
+        .libassjs-canvas-parent {
+            z-index: 20 !important; /* Un número más alto que el de los controles */
+        }
     </style>
 </head>
 <body>
