@@ -781,6 +781,21 @@
     mainVideo.addEventListener('canplay', () => videoLoader.style.display = 'none');   // Cuando ya puede reproducir
     mainVideo.addEventListener('playing', () => videoLoader.style.display = 'none');   // Cuando ya está reproduciendo
     mainVideo.addEventListener('error', () => videoLoader.style.display = 'none');     // Si hay error
+
+    // Esta función se encarga de redimensionar el canvas de los subtítulos.
+    const handleFullscreenChange = () => {
+        if (octopusInstance) {
+            // Se usa un pequeño retraso para asegurar que el navegador haya actualizado las dimensiones del contenedor.
+            setTimeout(() => {
+                octopusInstance.resize();
+            }, 100);
+        }
+    };
+
+    // Agregamos los listeners para el evento de pantalla completa.
+    // Se usan ambos para máxima compatibilidad entre navegadores.
+    videoContainer.addEventListener('fullscreenchange', handleFullscreenChange);
+    videoContainer.addEventListener('webkitfullscreenchange', handleFullscreenChange);
     }
 
     function shakeSearch() {
