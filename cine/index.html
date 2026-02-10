@@ -782,13 +782,22 @@
     mainVideo.addEventListener('playing', () => videoLoader.style.display = 'none');   // Cuando ya está reproduciendo
     mainVideo.addEventListener('error', () => videoLoader.style.display = 'none');     // Si hay error
 
-    // Esta función se encarga de redimensionar el canvas de los subtítulos.
+    // Esta función se encarga de redimensionar el canvas de los subtítulos de forma más robusta.
     const handleFullscreenChange = () => {
         if (octopusInstance) {
-            // Se usa un pequeño retraso para asegurar que el navegador haya actualizado las dimensiones del contenedor.
+            // 1. Llamada inmediata: Intenta redimensionar al instante para reducir el parpadeo.
+            octopusInstance.resize();
+
+            // 2. Llamada con retraso: Asegura que si el navegador tardó en actualizar las dimensiones,
+            //    se corrija el tamaño de los subtítulos.
             setTimeout(() => {
                 octopusInstance.resize();
-            }, 100);
+            }, 150); // Usamos 150ms para dar un margen extra.
+
+            // 3. (Opcional, pero recomendado) Una última llamada de seguridad para sistemas lentos.
+            setTimeout(() => {
+                octopusInstance.resize();
+            }, 500);
         }
     };
 
