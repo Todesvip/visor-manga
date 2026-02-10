@@ -536,6 +536,17 @@
         .libassjs-canvas-parent {
             z-index: 20 !important; /* Un número más alto que el de los controles */
         }
+
+        .libassjs-canvas {
+            /* ¡Aquí está la magia! Anima cualquier cambio en estas propiedades */
+            transition: width 0.25s ease-in-out, 
+                        height 0.25s ease-in-out, 
+                        top 0.25s ease-in-out, 
+                        left 0.25s ease-in-out;
+
+            /* (Opcional) Una pequeña pista para que los navegadores optimicen la animación */
+            will-change: width, height, top, left;
+        }
     </style>
 </head>
 <body>
@@ -811,29 +822,37 @@
     mainVideo.addEventListener('playing', () => videoLoader.style.display = 'none');   // Cuando ya está reproduciendo
     mainVideo.addEventListener('error', () => videoLoader.style.display = 'none');     // Si hay error
 
-    // Esta función se encarga de redimensionar el canvas de los subtítulos de forma más robusta.
+    // --- [INICIO DE LA SOLUCIÓN DEFINITIVA] ---
     const handleFullscreenChange = () => {
         if (octopusInstance) {
-            // 1. Llamada inmediata: Intenta redimensionar al instante para reducir el parpadeo.
+
+            // 1. Redimensionado INMEDIATO:
+            // Se ejecuta al instante para que la librería sepa que viene un cambio.
+            // Esto reduce la posibilidad de que el lienzo desaparezca.
             octopusInstance.resize();
 
-            // 2. Llamada con retraso: Asegura que si el navegador tardó en actualizar las dimensiones,
-            //    se corrija el tamaño de los subtítulos.
+            // 2. Redimensionado en el SIGUIENTE 'tick' del navegador:
+            // `setTimeout` con 0ms es un truco para decirle al JS: "espera un instante
+            // a que el navegador empiece la transición CSS, y LUEGO ejecuta esto".
+            // Esto sincroniza el redibujado con el inicio de la animación.
             setTimeout(() => {
                 octopusInstance.resize();
-            }, 150); // Usamos 150ms para dar un margen extra.
+            }, 0); // 0ms, para ejecución casi inmediata pero en el próximo ciclo de renderizado.
 
-            // 3. (Opcional, pero recomendado) Una última llamada de seguridad para sistemas lentos.
+            // 3. Redimensionado de SEGURIDAD (Opcional pero recomendado):
+            // Una última llamada después de que la animación CSS haya terminado (250ms).
+            // Esto asegura que si hubo algún cálculo extraño, se corrija al final.
             setTimeout(() => {
                 octopusInstance.resize();
-            }, 500);
+            }, 300); // Un poco más que la duración de la transición.
         }
     };
 
     // Agregamos los listeners para el evento de pantalla completa.
-    // Se usan ambos para máxima compatibilidad entre navegadores.
+    // Los listeners no cambian, pero asegúrate de que estén ahí
     videoContainer.addEventListener('fullscreenchange', handleFullscreenChange);
     videoContainer.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    // --- [FIN DE LA SOLUCIÓN DEFINITIVA] ---
     }
 
     function shakeSearch() {
