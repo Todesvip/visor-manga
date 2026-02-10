@@ -507,45 +507,28 @@
             background: var(--accent); color: black;
         }
 
-        /* --- SOLUCIÓN APILAMIENTO (Subtítulos sobre Controles) --- */
-        /* 
-          1. Contenedor del video: Lo establecemos como el punto de referencia
-             para el apilamiento de sus hijos.
-        */
+        /* ================================================================
+           Bloque de CSS Definitivo para la Fluidez del Reproductor
+           ================================================================ */
+
+        /* 1. Posiciona el contenedor principal para que los hijos se ubiquen respecto a él */
         #video-container {
-            position: relative; /* ¡Esto es crucial para que z-index funcione en los hijos! */
+            position: relative;
+            background-color: #000; /* Fondo negro para evitar cualquier parpadeo de otro color */
         }
 
-        /*
-          2. Controles del reproductor: Les damos un z-index base.
-             Esto incluye la barra inferior, el botón de play central, etc.
-        */
-        .bottom-bar {
-            z-index: 10;
-            position: absolute; /* Mantenemos absolute para no romper el layout, pero habilita z-index */
-        }
+        /* 2. Capa de Controles (z-index bajo) */
+        .bottom-bar, .video-loader { z-index: 10; position: absolute; }
+        #btn-center-play { z-index: 10; position: relative; }
 
-        #btn-center-play {
-            z-index: 10;
-        }
-
-        /* 
-          3. Contenedor de subtítulos: Le damos el z-index MÁS ALTO.
-             Esto asegura que siempre esté por encima de los controles.
-        */
+        /* 3. Capa de Subtítulos (z-index alto y la magia de la transición) */
         .libassjs-canvas-parent {
-            z-index: 20 !important; /* Un número más alto que el de los controles */
-        }
+            /* ¡Siempre encima de los controles! */
+            z-index: 20 !important;
 
-        .libassjs-canvas {
-            /* ¡Aquí está la magia! Anima cualquier cambio en estas propiedades */
-            transition: width 0.25s ease-in-out, 
-                        height 0.25s ease-in-out, 
-                        top 0.25s ease-in-out, 
-                        left 0.25s ease-in-out;
-
-            /* (Opcional) Una pequeña pista para que los navegadores optimicen la animación */
-            will-change: width, height, top, left;
+            /* ¡LA CLAVE DE LA FLUIDEZ! */
+            /* Anima suavemente cualquier cambio de tamaño o posición durante 0.2s */
+            transition: all 0.2s ease-in-out;
         }
     </style>
 </head>
@@ -821,38 +804,6 @@
     mainVideo.addEventListener('canplay', () => videoLoader.style.display = 'none');   // Cuando ya puede reproducir
     mainVideo.addEventListener('playing', () => videoLoader.style.display = 'none');   // Cuando ya está reproduciendo
     mainVideo.addEventListener('error', () => videoLoader.style.display = 'none');     // Si hay error
-
-    // --- [INICIO DE LA SOLUCIÓN DEFINITIVA] ---
-    const handleFullscreenChange = () => {
-        if (octopusInstance) {
-
-            // 1. Redimensionado INMEDIATO:
-            // Se ejecuta al instante para que la librería sepa que viene un cambio.
-            // Esto reduce la posibilidad de que el lienzo desaparezca.
-            octopusInstance.resize();
-
-            // 2. Redimensionado en el SIGUIENTE 'tick' del navegador:
-            // `setTimeout` con 0ms es un truco para decirle al JS: "espera un instante
-            // a que el navegador empiece la transición CSS, y LUEGO ejecuta esto".
-            // Esto sincroniza el redibujado con el inicio de la animación.
-            setTimeout(() => {
-                octopusInstance.resize();
-            }, 0); // 0ms, para ejecución casi inmediata pero en el próximo ciclo de renderizado.
-
-            // 3. Redimensionado de SEGURIDAD (Opcional pero recomendado):
-            // Una última llamada después de que la animación CSS haya terminado (250ms).
-            // Esto asegura que si hubo algún cálculo extraño, se corrija al final.
-            setTimeout(() => {
-                octopusInstance.resize();
-            }, 300); // Un poco más que la duración de la transición.
-        }
-    };
-
-    // Agregamos los listeners para el evento de pantalla completa.
-    // Los listeners no cambian, pero asegúrate de que estén ahí
-    videoContainer.addEventListener('fullscreenchange', handleFullscreenChange);
-    videoContainer.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-    // --- [FIN DE LA SOLUCIÓN DEFINITIVA] ---
     }
 
     function shakeSearch() {
@@ -1493,6 +1444,13 @@
     // 5. Fullscreen
     btnFS.addEventListener('click', (e) => {
         e.stopPropagation();
+
+        // Redimensiona INMEDIATAMENTE ANTES de pedir la pantalla completa.
+        // Esto prepara a la librería para el cambio.
+        if (octopusInstance) {
+            octopusInstance.resize();
+        }
+
         if (!document.fullscreenElement) {
             if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
             else if (videoContainer.webkitRequestFullscreen) videoContainer.webkitRequestFullscreen();
@@ -1500,6 +1458,16 @@
             if (document.exitFullscreen) document.exitFullscreen();
             else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
         }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+        // Usamos un pequeño timeout para darle tiempo al navegador a estabilizarse
+        // después de la transición de CSS.
+        setTimeout(() => {
+            if (octopusInstance) {
+                octopusInstance.resize();
+            }
+        }, 250); // Un poco más que la duración de la transición CSS (0.2s)
     });
 
     // --- Control por gestos ---
