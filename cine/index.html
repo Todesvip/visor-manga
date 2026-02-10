@@ -507,29 +507,6 @@
             background: var(--accent); color: black;
         }
 
-        /* ================================================================
-           Bloque de CSS Definitivo para la Fluidez del Reproductor
-           ================================================================ */
-
-        /* 1. Posiciona el contenedor principal para que los hijos se ubiquen respecto a él */
-        #video-container {
-            position: relative;
-            background-color: #000; /* Fondo negro para evitar cualquier parpadeo de otro color */
-        }
-
-        /* 2. Capa de Controles (z-index bajo) */
-        .bottom-bar, .video-loader { z-index: 10; position: absolute; }
-        #btn-center-play { z-index: 10; position: relative; }
-
-        /* 3. Capa de Subtítulos (z-index alto y la magia de la transición) */
-        .libassjs-canvas-parent {
-            /* ¡Siempre encima de los controles! */
-            z-index: 20 !important;
-
-            /* ¡LA CLAVE DE LA FLUIDEZ! */
-            /* Anima suavemente cualquier cambio de tamaño o posición durante 0.2s */
-            transition: all 0.2s ease-in-out;
-        }
     </style>
 </head>
 <body>
@@ -1444,13 +1421,6 @@
     // 5. Fullscreen
     btnFS.addEventListener('click', (e) => {
         e.stopPropagation();
-
-        // Redimensiona INMEDIATAMENTE ANTES de pedir la pantalla completa.
-        // Esto prepara a la librería para el cambio.
-        if (octopusInstance) {
-            octopusInstance.resize();
-        }
-
         if (!document.fullscreenElement) {
             if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
             else if (videoContainer.webkitRequestFullscreen) videoContainer.webkitRequestFullscreen();
@@ -1458,16 +1428,6 @@
             if (document.exitFullscreen) document.exitFullscreen();
             else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
         }
-    });
-
-    document.addEventListener('fullscreenchange', () => {
-        // Usamos un pequeño timeout para darle tiempo al navegador a estabilizarse
-        // después de la transición de CSS.
-        setTimeout(() => {
-            if (octopusInstance) {
-                octopusInstance.resize();
-            }
-        }, 250); // Un poco más que la duración de la transición CSS (0.2s)
     });
 
     // --- Control por gestos ---
