@@ -48,4 +48,30 @@ const seriesData = [
             { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/10.ia.mp4", subtitulo: "" }
         ]
     },
+    {
+        id: "16",
+        titulo: "Rick and Morty 3",
+        titulo_jp: "",
+        poster: "https://static.wikia.nocookie.net/rickandmorty/images/b/be/Season3.jpg/revision/latest?cb=20200718093040",
+        banner: "",
+        rating: "16+",
+        temporada: "Temporada 3",
+        ano: "2017",
+        calidad: "HD",
+        sinopsis: "La Tercera Temporada es la Temporada 3 de Rick y Morty. La temporada consta de 10 episodios. Fue anunciado por primera vez por Adult Swim en agosto de 2015, y se estrenó sin previo aviso el 1 de abril de 2017, como un truco del día de los Inocentes. El primer episodio se repitió durante toda la noche en su primera emisión en el canal. El resto de la temporada comenzó a emitirse el 30 de julio de 2017, casi cuatro meses después de que se emitió el primer episodio. La temporada concluyó con Día de Rick y Morty el 1 de octubre de 2017.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/01.mp4", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/02.mp4", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/03.mp4", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/04.mp4", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/05.mp4", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/06.mp4", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/07.mp4", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/08.mp4", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/09.mp4", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/10.mp4", subtitulo: "" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/11.mp4", subtitulo: "" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/12.mp4", subtitulo: "" }
+        ]
+    }
 ];
