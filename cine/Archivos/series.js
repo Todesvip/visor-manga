@@ -52,7 +52,7 @@ const seriesData = [
         id: "16",
         titulo: "Rick and Morty 3",
         titulo_jp: "",
-        poster: "https://static.wikia.nocookie.net/rickandmorty/images/b/be/Season3.jpg/revision/latest?cb=20200718093040",
+        poster: "https://Dimagemfondo.github.io/visor-imgen/img/Rick_y_Morty_Temporada_3.webp",
         banner: "",
         rating: "16+",
         temporada: "Temporada 3",
@@ -69,9 +69,7 @@ const seriesData = [
             { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/07.mp4", subtitulo: "" },
             { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/08.mp4", subtitulo: "" },
             { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/09.mp4", subtitulo: "" },
-            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/10.mp4", subtitulo: "" },
-            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/11.mp4", subtitulo: "" },
-            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/12.mp4", subtitulo: "" }
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600905.us.archive.org/13/items/se3d3/10.mp4", subtitulo: "" }
         ]
     }
 ];
