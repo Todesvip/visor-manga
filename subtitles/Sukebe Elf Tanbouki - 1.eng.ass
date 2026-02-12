@@ -25,8 +25,8 @@ Video Position: 20207
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,Lato,54,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,2.25,1.5,2,30,30,40,1
-Style: Alternate,Lato,54,&H00FFFFFF,&H00FFFFFF,&H00333333,&H96000000,0,-1,0,0,100,100,0,0,1,2.25,1.5,2,30,30,40,1
+Style: Default,Arial,54,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,2.25,1.5,2,30,30,40,1
+Style: Alternate,Arial,54,&H00FFFFFF,&H00FFFFFF,&H00333333,&H96000000,0,-1,0,0,100,100,0,0,1,2.25,1.5,2,30,30,40,1
 Style: Signs,brush-tipTerrence trial,48,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
 Style: Credits,Segoe UI Semibold,36,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1
 Style: Title A,Bumper,80,&H00FFFFFF,&H000000FF,&H004631E1,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,0,0,0,1
@@ -241,4 +241,5 @@ Comment: 0,0:06:23.82,0:06:23.82,Default,,0,0,0,,Part 3
 Comment: 0,0:10:07.50,0:10:07.50,Default,,0,0,0,,Part 4
 Comment: 0,0:13:46.97,0:13:46.97,Default,,0,0,0,,Part 5
 Comment: 0,0:14:36.85,0:14:36.85,Default,,0,0,0,,Ending
+
 
