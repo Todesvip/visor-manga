@@ -25,8 +25,8 @@ Video Position: 17933
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,Lato,49,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,2.2,1.5,2,30,30,40,1
-Style: Alternate,Lato,49,&H00FFFFFF,&H00FFFFFF,&H00333333,&H96000000,0,-1,0,0,100,100,0,0,1,2.2,1.5,2,30,30,40,1
+Style: Default,Arial,49,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,2.2,1.5,2,30,30,40,1
+Style: Alternate,Arial,49,&H00FFFFFF,&H00FFFFFF,&H00333333,&H96000000,0,-1,0,0,100,100,0,0,1,2.2,1.5,2,30,30,40,1
 Style: Signs,brush-tipTerrence trial,48,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
 Style: Credits,Segoe UI Semibold,36,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1
 Style: Title A,Bumper,80,&H00FFFFFF,&H000000FF,&H004631E1,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,0,0,0,1
@@ -220,4 +220,5 @@ Dialogue: 10,0:14:17.74,0:14:22.18,Alternate,,0,0,0,,Y entonces, un hombre como 
 Dialogue: 10,0:14:25.60,0:14:30.16,Alternate,,0,0,0,,...¡logré conseguir tres\Nesposas maravillosas!
 Dialogue: 0,0:05:34.43,0:05:36.39,Signs,,0,0,0,,{\fad(988,0)\an5\be0.3\fnFOT Pop Happiness Std Stripped\pos(640,480)\fs52\c&H4F3CDF&\3c&H4F3CDF&\bord4}Unos días más tarde...
 Dialogue: 1,0:05:34.43,0:05:36.39,Signs,,0,0,0,,{\fad(988,0)\an5\be0,3\fnFOT Pop Happiness Std Stripped\pos(640,480)\fs52\c&HFFFFFF&}Unos días más tarde...
+
 
