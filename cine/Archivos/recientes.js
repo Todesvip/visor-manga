@@ -26,6 +26,32 @@ const recientesData = [
         ]
     },
     {
+        id: "Nande",
+        titulo: "Nande Koko ni Sensei ga!",
+        titulo_jp: "なんでここに先生が!?",
+        poster: "https://m.media-amazon.com/images/M/MV5BOGY4MjdjYTQtMjJlYS00MDFjLWE2YWMtYzRmN2JmMjI0MWQ4XkEyXkFqcGc@.jpg",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2019",
+        calidad: "HD",
+        sinopsis: "Puede que Kawanuma West sea una escuela pública, pero algunos de sus estudiantes están a punto de recibir lecciones privadas de educación sexual, cortesía de cuatro profesoras muy atractivas. Para ser claros, ninguna de nuestras profesionales de la educación comienza sus semestres escribiendo \"involucrarse con un miembro masculino afortunado de mi clase\" en sus agendas diarias... ¡pero siguen sucediendo cosas extrañas e inexplicables que empujan a nuestros combos maestro/alumno a situaciones sexualmente cargadas donde algo seguramente sucederá! Ya sea caer al agua, puertas que arrancan la ropa o ese elemento común de la vida escolar japonesa, la colisión accidental entre el pecho y la cara, estas pobres mujeres simplemente no pueden evitarlo. ¿Y qué se supone que deben hacer los muchachos mientras se ven arrastrados cada vez más hacia excitantes trampas TILF de proporciones épicas?",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2001.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 01.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2002.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 02.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2003.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 03.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2004.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 04.es.ass" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2005.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 05.es.ass" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2006.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 06.es.ass" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2007.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 07.es.ass" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2008.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 08.es.ass" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2009.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 09.es.ass" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2010.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 10.es.ass" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2011.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 11.es.ass" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2012.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 12.es.ass" }
+        ]
+    },
+    {
         id: "Ishuzoku",
         titulo: "Ishuzoku Reviewers",
         titulo_jp: "異種族レビュアーズ",
