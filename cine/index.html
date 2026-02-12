@@ -1363,8 +1363,17 @@
                 octopusInstance = new SubtitlesOctopus({
                     video: mainVideo,
                     subUrl: url,
-                    fonts: ['https://todesvip.github.io/visor-manga/fonts/Arial.woff2', 'https://todesvip.github.io/visor-manga/fonts/trebuc.ttf', 'https://todesvip.github.io/visor-manga/fonts/Franco-C3SA.ttf'], 
-                    workerUrl: 'https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus-worker.js' 
+                    fonts: ['https://todesvip.github.io/visor-manga/fonts/Arial.woff2', 'https://todesvip.github.io/visor-manga/fonts/trebuc.ttf'], 
+                    workerUrl: 'https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus-worker.js',
+                    // CRÍTICO: Optimizaciones para renderizado instantáneo
+                    renderAhead: 0, // Sin pre-render (reduce latencia)
+                    targetFps: 60,  // 60 FPS para fluidez
+                    lossyRender: false, // Calidad máxima
+                    asyncRender: false, // Render síncrono (más rápido en fullscreen)
+                    onReady: () => {
+                        // Forzar resize inicial
+                        if (octopusInstance.resize) octopusInstance.resize();
+                    }
                 });
             } else {
                 octopusInstance.setTrackByUrl(url);
@@ -1421,6 +1430,15 @@
     // 5. Fullscreen
     btnFS.addEventListener('click', (e) => {
         e.stopPropagation();
+        
+        // CRÍTICO: Pre-redimensionar ANTES de entrar a fullscreen
+        if (octopusInstance && octopusInstance.resize && !document.fullscreenElement) {
+            // Redimensionar preventivamente
+            requestAnimationFrame(() => {
+                if (octopusInstance.resize) octopusInstance.resize();
+            });
+        }
+        
         if (!document.fullscreenElement) {
             if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
             else if (videoContainer.webkitRequestFullscreen) videoContainer.webkitRequestFullscreen();
@@ -1429,6 +1447,21 @@
             else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
         }
     });
+
+    // CRÍTICO: Redimensionar subtítulos INSTANTÁNEAMENTE al cambiar fullscreen
+    const handleFullscreenChange = () => {
+        if (octopusInstance && octopusInstance.resize) {
+            // Forzar redimensionamiento inmediato (0ms de delay)
+            octopusInstance.resize();
+            // Doble seguridad: redimensionar nuevamente después de 10ms
+            setTimeout(() => octopusInstance.resize(), 10);
+        }
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
 
     // --- Control por gestos ---
     let isDragging = false;
