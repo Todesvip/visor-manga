@@ -130,6 +130,33 @@ const recientesData = [
         ]
     },
     {
+        id: "Midori",
+        titulo: "Midori no Hibi",
+        titulo_jp: "美鳥の日々",
+        poster: "https://media.kitsu.app/anime/poster_images/297/original.jpg",
+        banner: "",
+        rating: "16+",
+        temporada: "Temporada 1",
+        ano: "2004",
+        calidad: "HD",
+        sinopsis: "El delincuente de secundaria Seiji Sawamura está desesperado por tener una novia, especialmente después de haber sido rechazado por 20 chicas últimamente. Tiene miedo de acabar con su vida teniendo su mano derecha como única compañera. Al parecer, eso no cambia cuando un día despierta y descubre que su mano derecha se ha convertido en una chica llamada Midori Kasugano, quien le confiesa que ha estado enamorada de él durante los últimos tres años.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2001.mkv", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2002.mkv", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2003.mkv", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2004.mkv", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2005.mkv", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2006.mkv", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2007.mkv", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2008.mkv", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2009.mkv", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2010.mkv", subtitulo: "" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2011.mkv", subtitulo: "" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2012.mkv", subtitulo: "" },
+            { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Midori%20no%20Hibi%2013.mkv", subtitulo: "" }
+        ]
+    },
+    {
         id: "Nukitashi",
         titulo: "Nukitashi - The Animation",
         titulo_jp: "ぬきたし THE ANIMATION",
