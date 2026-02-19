@@ -15,6 +15,26 @@ const privadosData = [
             { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/01/sprite2.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/01/sprite2.jpg", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%202.mp4", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Sukebe%20Elf%20Tanbouki%20-%202.es.ass" }
         ]
     },
+    {
+        id: "Hajimete",
+        titulo: "Hajimete no Hitozuma",
+        titulo_jp: "初めてのヒトヅマ",
+        poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx113947-POn7IuMfAJZp.png",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2020",
+        calidad: "HD",
+        sinopsis: "Episodios 1 y 2 - Ore ga Mita Koto no Nai Kanojo Una pareja enamorada, pensando en casarse, tiene por delante una difícil decisión. Quizás tengan que mudarse con el padre de Tomoya. Sin embargo, ese ni siquiera es el comienzo del problema, al aparecer en la casa de su padre, Kanako se da cuenta de que no solo conoce a su padre... sino que se ha acostado con él... varias veces. Episodio 3 - Sexo a domicilio Lo único que quería era que su hijo la ayudara a mudarse... pero aparentemente él tenía \"actividades de club\". Entonces solicitó la ayuda de uno de sus superiores que trabaja para una empresa de mudanzas. Desafortunadamente, sin embargo, ella no tiene dinero... así que la única forma de pagar... Episodio 4 - JK Bitch no Renai Soudan ¡La zorra más grande de la clase tuvo que aparecer cuando estaba tratando de ordenar mis pensamientos, y mientras lidiaba con cosas tan vergonzosas también! Episodio 5 - JK Mama no Shikentaisaku Es probable que Kawai repruebe sus exámenes finales, por lo que, por sugerencia de Fujimaki, lo invita a su casa para ayudarla a estudiar. Sin embargo, Kawai prefiere dedicar más tiempo a actividades sexuales que a estudiar. Ayako, la madre de Kawai, quiere que su hija estudie mucho, por lo que le propuso a Fujimaki tener tiempo para tener sexo con ella. Episodio 6 - Oyako no Omoi Su hijo llega a casa después de haber sido acosado, pero ella tuvo que escuchar esto de boca de uno de sus compañeros... ¿qué podrá hacer?",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite1.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Hajimete%20no%20Hitozuma%20-%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hajimete no Hitozuma - 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite2.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Hajimete%20no%20Hitozuma%20-%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hajimete no Hitozuma - 2.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite3.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite3.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Hajimete%20no%20Hitozuma%20-%203.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hajimete no Hitozuma - 3.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite4.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite4.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Hajimete%20no%20Hitozuma%20-%204.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hajimete no Hitozuma - 4.es.ass" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite5.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite5.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Hajimete%20no%20Hitozuma%20-%205.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hajimete no Hitozuma - 5.es.ass" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite6.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite6.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Hajimete%20no%20Hitozuma%20-%206.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hajimete no Hitozuma - 6.es.ass" }
+        ]
+    },
         {
         id: "Goblin",
         titulo: "Goblin no suana",
