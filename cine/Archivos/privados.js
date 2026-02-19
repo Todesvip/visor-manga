@@ -16,6 +16,28 @@ const privadosData = [
         ]
     },
     {
+        id: "Harem",
+        titulo: "Harem Camp",
+        titulo_jp: "ハーレムきゃんぷっ！",
+        poster: "https://cdn.myanimelist.net/images/anime/1669/126883l.jpg",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2022",
+        calidad: "HD",
+        sinopsis: "Kensuke estaba disfrutando de un campamento en solitario cuando de repente tiene que compartir su tienda con tres chicas y su novio... ¿o no?",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite1.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Harem%20Camp%20-%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Harem Camp - 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite2.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Harem%20Camp%20-%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Harem Camp - 2.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite3.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite3.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Harem%20Camp%20-%203.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Harem Camp - 3.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite4.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite4.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Harem%20Camp%20-%204.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Harem Camp - 4.es.ass" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite5.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite5.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Harem%20Camp%20-%205.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Harem Camp - 5.es.ass" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite6.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite6.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Harem%20Camp%20-%206.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Harem Camp - 6.es.ass" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite7.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite7.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Harem%20Camp%20-%207.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Harem Camp - 7.es.ass" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite8.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/16/sprite8.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Harem%20Camp%20-%208.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Harem Camp - 8.es.ass" }
+        ]
+    },
+    {
         id: "Hajimete",
         titulo: "Hajimete no Hitozuma",
         titulo_jp: "初めてのヒトヅマ",
