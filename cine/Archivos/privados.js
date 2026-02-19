@@ -15,6 +15,24 @@ const privadosData = [
             { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://todesvip.github.io/visor-manga/sprit/01/sprite2.vtt", spriteImg: "https://todesvip.github.io/visor-manga/sprit/01/sprite2.jpg", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Sukebe%20Elf%20Tanbouki%20-%202.mp4", subtitulo: "https://todesvip.github.io/visor-manga/subtitles/Sukebe%20Elf%20Tanbouki%20-%202.es.ass" }
         ]
     },
+        {
+        id: "Goblin",
+        titulo: "Goblin no suana",
+        titulo_jp: "ゴブリンの巣穴",
+        poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx159076-DL4CWXTZQVoB.jpg",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2023",
+        calidad: "HD",
+        sinopsis: "Basado en el juego erótico de doujin de Peperoncino (ぺぺろんちーの). En este mundo hay monstruos malvados llamados duendes. Son demonios humildes que se pueden encontrar en todas partes..., al menos así es como los perciben los humanos. Atacan a personas, secuestran mujeres, las violan, las dejan embarazadas y se reproducen repetidamente.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/14/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/14/sprite1.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Goblin%20no%20Suana%20-%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Goblin no Suana - 1.es.ass", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Goblin no Suana - 1.eng.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/14/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/14/sprite2.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Goblin%20no%20Suana%20-%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Goblin no Suana - 2.es.ass", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Goblin no Suana - 1.eng.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/14/sprite3.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/14/sprite3.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Goblin%20no%20Suana%20-%203.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Goblin no Suana - 3.es.ass", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Goblin no Suana - 1.eng.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/14/sprite4.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/14/sprite4.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Goblin%20no%20Suana%20-%204.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Goblin no Suana - 4.es.ass", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Goblin no Suana - 1.eng.ass" }
+        ]
+    },
     {
         id: "Abandon",
         titulo: "Abandon 100 Nuki Shinai to Derarenai Fushigi na Kyoushitsu",
