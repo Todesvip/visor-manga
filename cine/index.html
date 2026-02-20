@@ -59,8 +59,9 @@
             opacity: 0;
             transition: opacity 0.7s ease;
             cursor: pointer;
+            pointer-events: none;
         }
-        .hero-slide.active { opacity: 1; }
+        .hero-slide.active { opacity: 1; pointer-events: auto; }
 
         .hero-slide-bg {
             position: absolute;
@@ -122,6 +123,18 @@
             font-family: var(--font-mono);
             font-size: 0.58rem;
         }
+
+        .hero-description {
+            font-size: 12px;
+            color: #ccc;
+            line-height: 1.4;
+            margin-top: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Limitar a 2 líneas */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+        }
         
         .hero-year-text {
             color: #ffffff;
@@ -131,28 +144,6 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.8);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-
-        .hero-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--accent);
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0 4px 20px var(--glow);
-            margin-top: 10px;
-            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
-            transition: transform 0.15s;
-        }
-        .hero-btn:active { transform: scale(0.97); }
-        .hero-btn svg { width: 12px; height: 12px; fill: #fff; }
 
         /* Indicadores carrusel */
         .hero-dots {
@@ -1127,10 +1118,7 @@
                                 <div class="hero-genre-tag">EP ${epCount}</div>
                                 <span class="hero-year-text">${anime.ano || ''}</span>
                             </div>
-                            <button class="hero-btn" onclick="event.stopPropagation(); ${onclickAction}">
-                                <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
-                                VER AHORA
-                            </button>
+                            <p class="hero-description">${anime.sinopsis || ''}</p>
                         </div>
                     </div>
                 `;
