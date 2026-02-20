@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Void</title>
     <!-- Librería de subtítulos -->
-    <script src="https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus.js"></script>
+    <script src="https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- OPTIMIZACIÓN: Preconectar a servidores para que el video inicie antes -->
 
     <style>
         /* --- ESTILOS GENERALES --- */
-        :root { --bg: #000000; --text: #ffffff; --text-gray: #a8a8a8; --accent: #ffffff; }
+        :root { --bg: #000000; --text: #ffffff; --text-gray: #6b7280; --accent: #e63946; --glow: rgba(230,57,70,0.35); --surface2: #12141f; --border: rgba(255,255,255,0.07); --font-mono: 'Space Mono', monospace; }
         
         /* --- ELIMINAR SOMBRA DE CONTROLES DE VIDEO --- */
         video::-webkit-media-controls-panel {
@@ -37,74 +38,136 @@
         }
 
         .view { display: none; }
-        .view.active { display: block; animation: fadeIn 0.3s; }
+        .view.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
 
-        /* --- HOME --- */
-        header { 
-            padding: 15px 20px; 
-            background-color: #101010; /* Color Jellyfin (Gris muy oscuro) */
-            position: fixed; width: 100%; z-index: 50; top:0; 
-            pointer-events: auto;
-            box-sizing: border-box;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
-        }
-
-        .header-content { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-
-        .header-right { display: flex; gap: 20px; align-items: center; }
-        .nav-btn { background: none; border: none; padding: 0; cursor: pointer; display: flex; }
-        .nav-btn svg { width: 28px; height: 28px; fill: #b0b0b0; filter: drop-shadow(0 2px 5px black); transition: fill 0.2s; }
-        .nav-btn:hover svg { fill: white; }
-
-        /* LOGO MÁS GRANDE */
-        .logo-btn svg { width: 45px; height: 45px; transition: none; }
-
-        /* --- CAMPO DE CÓDIGO (REEMPLAZA LOGO) --- */
-        .code-input-container {
-            flex-basis: 100px; /* Ancho base */
-            margin-right: 10px;
-        }
-        .code-input {
+        /* --- CARRUSEL HERO --- */
+        .hero-carousel {
+            position: relative;
             width: 100%;
-            background-color: rgba(15, 15, 15, 0.75);
-            color: #ccc; border: none; border-radius: 8px;
-            padding: 8px 12px; font-size: 14px; font-weight: 600;
-            outline: none;
-            text-align: center; letter-spacing: 2px;
+            height: 58vw;
+            min-height: 240px;
+            max-height: 380px;
+            overflow: hidden;
+            background: #000;
         }
-        .code-input::placeholder { color: #888; letter-spacing: normal; }
-        .code-input.shake, .header-search-input.shake, .chapter-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
-        /* Ocultar flechas en input de número */
-        .code-input::-webkit-outer-spin-button, .code-input::-webkit-inner-spin-button, .chapter-input::-webkit-outer-spin-button, .chapter-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-        .code-input[type=number], .chapter-input[type=number] { -moz-appearance: textfield; }
-        
-        /* --- BUSCADOR EN HEADER --- */
-        .header-search-container {
-            flex: 1; margin: 0 15px; display: flex; justify-content: flex-end; }
-        .header-search-active-view {
-            display: none; /* Oculto por defecto */
-            align-items: center;
-            gap: 10px;
+        .hero-slide {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            padding: 0 15px;
-            box-sizing: border-box;
-            background-color: #101010; /* Mismo que el header */
-            z-index: 1;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+            cursor: pointer;
         }
-        header.search-active .header-search-active-view {
-            display: flex; /* Se muestra en modo búsqueda */
+        .hero-slide.active { opacity: 1; }
+
+        .hero-slide-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center top;
+            transform: scale(1.05);
+            transition: transform 7s ease-out;
         }
-        header.search-active .header-content {
-            visibility: hidden; /* Se oculta el contenido normal para mantener la altura */
+        .hero-slide.active .hero-slide-bg { transform: scale(1); }
+
+        .hero-gradient {
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(to right, rgba(7,8,13,0.92) 0%, rgba(7,8,13,0.4) 60%, transparent 100%),
+                linear-gradient(to top, var(--bg) 0%, transparent 40%);
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 20px;
+            left: 16px;
+            right: 40%;
+        }
+        .hero-genre-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-gray);
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 3px 8px;
+            margin-bottom: 0;
+            border-radius: 4px;
+        }
+        .hero-title {
+            font-family: var(--font-mono);
+            font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+            line-height: 1.2;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.58rem;
+        }
+        
+        .hero-year-text {
+            color: #ffffff;
+            font-size: 13px; 
+            font-weight: 600; 
+            font-variant-numeric: tabular-nums;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--glow);
+            margin-top: 10px;
+            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+            transition: transform 0.15s;
+        }
+        .hero-btn:active { transform: scale(0.97); }
+        .hero-btn svg { width: 12px; height: 12px; fill: #fff; }
+
+        /* Indicadores carrusel */
+        .hero-dots {
+            position: absolute;
+            bottom: 10px;
+            right: 16px;
+            display: flex;
+            gap: 5px;
+        }
+        .hero-dot {
+            width: 18px;
+            height: 2px;
+            background: var(--glow);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .hero-dot.active {
+            width: 28px;
+            background: var(--accent);
+            box-shadow: 0 0 6px var(--accent);
         }
 
         .header-search-input {
@@ -115,17 +178,67 @@
             border: none; border-radius: 8px;
             padding: 8px 12px; font-size: 14px; font-weight: 500;
             outline: none; transition: width 0.3s;
-            outline: none;
         }
         .header-search-input::placeholder { color: #888; }
+        .header-search-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
+
+        /* Ocultar flechas en input de número */
+        input[type=number]::-webkit-outer-spin-button, 
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .settings-code-input {
+            text-align: center; letter-spacing: 2px;
+        }
+
+        /* --- BOTÓN LUPA FLOTANTE (TOP) --- */
+        .top-search-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            z-index: 20;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+        }
+        .top-search-btn svg { width: 28px; height: 28px; fill: white; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.8)); }
+
+        /* --- PANTALLA DE BÚSQUEDA (OVERLAY) --- */
+        .search-overlay {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--bg);
+            z-index: 100;
+            flex-direction: column;
+        }
+        .search-overlay.active { display: flex; }
+        
+        .search-header-bar {
+            display: flex; align-items: center; padding: 15px; gap: 15px;
+            background-color: #101010; border-bottom: none;
+        }
+        .search-back-btn {
+            background: none; border: none; padding: 0; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .search-back-btn svg { width: 32px; height: 32px; fill: white; }
 
         /* --- RESULTADOS DE BÚSQUEDA (TEXTO) --- */
         #global-search-results {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #0a0a0a;
-            z-index: 45; overflow-y: auto; display: none;
-            padding: 80px 0 20px 0;
-            box-sizing: border-box;
+            width: 100%; flex: 1;
+            background: transparent;
+            overflow-y: auto; display: none;
+            padding: 10px 0;
         }
         .search-result-card {
             display: flex; gap: 15px; padding: 15px;
@@ -154,7 +267,7 @@
             letter-spacing: 0px;
         }
 
-        .home-content { padding-top: 80px; }
+        .home-content { padding-top: 0; }
 
         .horizontal-list {
             display: flex; overflow-x: auto; gap: 10px; padding: 0;
@@ -176,7 +289,7 @@
         .horizontal-item:active { transform: scale(0.95); }
 
         @media (max-width: 600px) {
-            .horizontal-item { flex: 0 0 30vw; }
+            .horizontal-item { flex: 0 0 33vw; }
         }
 
         .view-all-btn {
@@ -190,7 +303,7 @@
         /* --- DIRECTORIO (GRID TIPO SASA) --- */
         .directory-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-            padding: 0 15px 20px; margin-top: 80px; /* Margen para bajarlo del header fijo */
+            padding: 20px 15px;
         }
         .dir-card {
             background-color: #1e1e24; border-radius: 16px; height: 100px;
@@ -213,7 +326,7 @@
 
         /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
         .full-list-grid {
-            padding: 80px 15px 20px;
+            padding: 20px 15px;
             display: grid; grid-template-columns: 1fr 1fr; 
             gap: 15px;
         }
@@ -270,7 +383,6 @@
         /* Mostrar controles cuando esté activo o pausado */
         #video-container.active .controls-overlay,
         #video-container.paused .controls-overlay { opacity: 1; pointer-events: none; }
-        #video-container.active .controls-overlay { opacity: 1; pointer-events: none; }
 
         /* CONTENEDOR CENTRAL */
         .center-controls {
@@ -452,16 +564,23 @@
         }
 
         /* Ajuste para que el contenido no quede tapado por el nav */
-        .view { padding-bottom: 20px; }
+        .view { padding-bottom: 80px; }
         
         /* AJUSTES */
-        .settings-content { padding: 40px 20px; text-align: center; color: #777; }
+        .settings-content { padding: 20px; }
+        .settings-title { font-size: 24px; font-weight: 700; margin-bottom: 30px; }
+        .settings-section { background: #1a1a1a; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .settings-section-title { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
+        .settings-section-desc { font-size: 13px; color: #888; margin-bottom: 20px; }
+        .settings-action-btn {
+            width: 100%; padding: 12px; background: var(--accent); color: black;
+            border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
+            font-size: 15px;
+        }
         
         /* --- SWITCH TOGGLE (Ajustes) --- */
         .switch-container {
-            display: flex; align-items: center; justify-content: space-between;
-            background: #1e1e24; padding: 15px; border-radius: 8px; margin: 20px auto;
-            text-align: left; max-width: 400px;
+            display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;
         }
         .switch-label { font-size: 15px; color: white; font-weight: 500; }
         .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
@@ -481,7 +600,7 @@
         .splash-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .loading-spinner {
             width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1);
-            border-left-color: #ffffff; border-radius: 50%;
+            border-left-color: #e63946; border-radius: 50%;
             animation: spin 0.8s linear infinite; margin-bottom: 0;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -507,6 +626,28 @@
             background: var(--accent); color: black;
         }
 
+        /* --- NUEVA NAVEGACIÓN INFERIOR --- */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: #101010;
+            display: flex; justify-content: space-around;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+            z-index: 50;
+            transition: transform 0.3s ease;
+        }
+        .nav-item {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 8px 12px;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .nav-item svg { width: 26px; height: 26px; fill: currentColor; margin-bottom: 2px; }
+        .nav-item span { font-size: 11px; font-weight: 500; }
+        .nav-item.active {
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -520,57 +661,51 @@
         </div>
     </div>
 
-    <!-- HEADER GLOBAL (Movido fuera de home-view) -->
-    <header id="main-header">
-        <div class="header-content">
-            <div class="code-input-container">
-                <input type="tel" id="code-input" class="code-input" placeholder="Clave" pattern="[0-9]*" inputmode="numeric">
-            </div>
-            
-            <div class="header-search-container">
-                <input type="text" id="header-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch(this)">
-            </div>
-
-            <div class="header-right">
-                <div class="nav-btn" id="search-action-btn">
-                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                </div>
-                <div class="nav-btn" onclick="toggleAppMode()">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.7577 11.8281L18.6066 3.97919L20.0208 5.3934L18.6066 6.80761L21.0815 9.28249L19.6673 10.6967L17.1924 8.22183L15.7782 9.63604L17.8995 11.7574L16.4853 13.1716L14.364 11.0503L12.1719 13.2423C13.4581 15.1837 13.246 17.8251 11.5355 19.5355C9.58291 21.4882 6.41709 21.4882 4.46447 19.5355C2.51184 17.5829 2.51184 14.4171 4.46447 12.4645C6.17493 10.754 8.81633 10.5419 10.7577 11.8281ZM10.1213 18.1213C11.2929 16.9497 11.2929 15.0503 10.1213 13.8787C8.94975 12.7071 7.05025 12.7071 5.87868 13.8787C4.70711 15.0503 4.70711 16.9497 5.87868 18.1213C7.05025 19.2929 8.94975 19.2929 10.1213 18.1213Z"></path></svg>
-                </div>
-            </div>
+    <!-- PANTALLA DE BÚSQUEDA -->
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-header-bar">
+            <button class="search-back-btn" onclick="closeSearchOverlay()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>
+            </button>
+            <input type="text" id="overlay-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch(this)">
         </div>
-        <div class="header-search-active-view">
-            <div class="nav-btn" id="search-back-btn">
-                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-            </div>
-            <input type="text" id="header-search-input-mobile" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch(this)">
-        </div>
-    </header>
-
-    <!-- RESULTADOS DE BÚSQUEDA GLOBAL (TEXTO) -->
-    <div id="global-search-results"></div>
+        <div id="global-search-results"></div>
+    </div>
 
     <!-- HOME -->
     <div id="home-view" class="view active">
         <div class="home-content">
-            <!-- RECIÉN AÑADIDOS (HORIZONTAL) -->
+            <div class="hero-carousel" id="hero-carousel">
+                <!-- Populated by JS -->
+            </div>
             <div class="section-title">Recientes</div>
             <div class="horizontal-list" id="recent-list"></div>
 
             <!-- MÁS POPULARES (HORIZONTAL) -->
             <div class="section-title">Más populares</div>
             <div class="horizontal-list" id="popular-list"></div>
-
-            <!-- ANIME LATINO (HORIZONTAL) -->
-            <div class="section-title">Anime Latino</div>
-            <div class="horizontal-list" id="latino-list"></div>
         </div>
     </div>
 
     <!-- AJUSTES -->
     <div id="settings-view" class="view">
         <div class="settings-content">
+            <h1 class="settings-title">Ajustes</h1>
+
+            <div class="settings-section">
+                <div class="switch-container">
+                    <div class="settings-label">Modo Privado</div>
+                </div>
+                <p class="settings-section-desc">
+                    Activa esta opción para acceder al contenido exclusivo.
+                </p>
+
+                <div id="code-entry-section">
+                    <p class="settings-section-desc" style="margin-bottom: 10px;">Código de acceso</p>
+                    <input type="tel" id="settings-code-input" class="header-search-input settings-code-input" placeholder="••••" pattern="[0-9]*" inputmode="numeric">
+                    <button class="settings-action-btn" style="margin-top: 20px;" onclick="enterPrivateMode()">Activar</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -670,6 +805,18 @@
         </div>
     </div>
 
+    <!-- NAVEGACIÓN INFERIOR -->
+    <nav class="bottom-nav" id="bottom-nav">
+        <div class="nav-item active" id="nav-home" onclick="switchTab('home')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 21H5C4.44772 21 4 20.5523 4 20V11L1 11L11.3273 1.6115C11.7087 1.26475 12.2913 1.26475 12.6727 1.6115L23 11L20 11V20C20 20.5523 19.5523 21 19 21ZM6 19H18V9.15745L12 3.7029L6 9.15745V19ZM12 15C10.6193 15 9.5 13.8807 9.5 12.5C9.5 11.1193 10.6193 9.99998 12 9.99998C13.3807 9.99998 14.5 11.1193 14.5 12.5C14.5 13.8807 13.3807 15 12 15Z"></path></svg>
+            <span>Inicio</span>
+        </div>
+        <div class="nav-item" id="nav-settings" onclick="switchTab('settings')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8.68637 4.00008L11.293 1.39348C11.6835 1.00295 12.3167 1.00295 12.7072 1.39348L15.3138 4.00008H19.0001C19.5524 4.00008 20.0001 4.4478 20.0001 5.00008V8.68637L22.6067 11.293C22.9972 11.6835 22.9972 12.3167 22.6067 12.7072L20.0001 15.3138V19.0001C20.0001 19.5524 19.5524 20.0001 19.0001 20.0001H15.3138L12.7072 22.6067C12.3167 22.9972 11.6835 22.9972 11.293 22.6067L8.68637 20.0001H5.00008C4.4478 20.0001 4.00008 19.5524 4.00008 19.0001V15.3138L1.39348 12.7072C1.00295 12.3167 1.00295 11.6835 1.39348 11.293L4.00008 8.68637V5.00008C4.00008 4.4478 4.4478 4.00008 5.00008 4.00008H8.68637ZM6.00008 6.00008V9.5148L3.5148 12.0001L6.00008 14.4854V18.0001H9.5148L12.0001 20.4854L14.4854 18.0001H18.0001V14.4854L20.4854 12.0001L18.0001 9.5148V6.00008H14.4854L12.0001 3.5148L9.5148 6.00008H6.00008ZM12.0001 16.0001C9.79094 16.0001 8.00008 14.2092 8.00008 12.0001C8.00008 9.79094 9.79094 8.00008 12.0001 8.00008C14.2092 8.00008 16.0001 9.79094 16.0001 12.0001C16.0001 14.2092 14.2092 16.0001 12.0001 16.0001ZM12.0001 14.0001C13.1047 14.0001 14.0001 13.1047 14.0001 12.0001C14.0001 10.8955 13.1047 10.0001 12.0001 10.0001C10.8955 10.0001 10.0001 10.8955 10.0001 12.0001C10.0001 13.1047 10.8955 14.0001 12.0001 14.0001Z"></path></svg>
+            <span>Ajustes</span>
+        </div>
+    </nav>
+
 <!-- CARGA DE ARCHIVOS SEPARADOS -->
 <script src="https://todesvip.github.io/visor-manga/cine/Archivos/recientes.js"></script>
 <script src="https://todesvip.github.io/visor-manga/cine/Archivos/populares.js"></script>
@@ -685,6 +832,11 @@
     ];
     const privateLibrary = typeof privadosData !== 'undefined' ? privadosData : [];
     let library = publicLibrary;
+
+    // Advertir si no se cargaron datos (posible fallo de red o scripts externos)
+    if (publicLibrary.length === 0) {
+        console.warn("⚠️ No se cargaron datos de la librería. Verifica que los scripts externos estén accesibles.");
+    }
 </script>
 
 <script>
@@ -695,7 +847,7 @@
     let isRestrictedMode = false;
     let privatePage = 1; // Página actual del modo privado
     const itemsPerPage = 20; // 2 columnas * 10 filas = 20 items
-    const SECRET_CODE = "4560";
+    const SECRET_CODE = atob("NDU2MA=="); // Código de acceso (codificado)
 
     // --- ELEMENTOS DOM ---
     const homeView = document.getElementById('home-view');
@@ -736,13 +888,7 @@
     const detailYear = document.getElementById('detail-year');
     const detailQuality = document.getElementById('detail-quality');
 
-    const headerSearchInput = document.getElementById('header-search-input');
     const globalSearchResults = document.getElementById('global-search-results');
-    const codeInput = document.getElementById('code-input');
-    
-    const mainHeader = document.getElementById('main-header');
-    const searchActionBtn = document.getElementById('search-action-btn');
-    const searchBackBtn = document.getElementById('search-back-btn');
 
     // --- INICIO ---
     function initApp() {
@@ -756,17 +902,11 @@
         } else {
             library = publicLibrary;
         }
-        
-        const toggleBtn = document.getElementById('restriction-toggle');
-        if(toggleBtn) toggleBtn.checked = isRestrictedMode;
 
         window.addEventListener('hashchange', handleRouting);
         handleRouting();
         
         setupTouchControls();
-
-        searchActionBtn.addEventListener('click', shakeSearch);
-        searchBackBtn.addEventListener('click', closeSearch);
 
         // [NUEVO] Listener para activar el flag de autoplay después del primer play manual.
         mainVideo.addEventListener('play', () => {
@@ -783,72 +923,96 @@
     mainVideo.addEventListener('error', () => videoLoader.style.display = 'none');     // Si hay error
     }
 
-    function shakeSearch() {
-        const searchInputs = document.querySelectorAll('.header-search-input');
-        searchInputs.forEach(input => {
-            input.classList.add('shake');
-            setTimeout(() => input.classList.remove('shake'), 700);
-        });
+    function openSearchOverlay() {
+        document.getElementById('search-overlay').classList.add('active');
+        document.getElementById('overlay-search-input').focus();
     }
 
-    function openSearch() {
-        mainHeader.classList.add('search-active');
-        headerSearchInput.focus();
-    }
-
-    function closeSearch() {
-        mainHeader.classList.remove('search-active');
-        document.querySelectorAll('.header-search-input').forEach(el => el.value = ""); // Limpiar todos los inputs
-        handleGlobalSearch(); // Limpiar resultados
+    function closeSearchOverlay() {
+        document.getElementById('search-overlay').classList.remove('active');
+        document.getElementById('overlay-search-input').value = "";
+        document.getElementById('global-search-results').innerHTML = "";
     }
 
     function handleRouting() {
         const hash = window.location.hash;
-        
-        // Reset nav active state
-        // document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
 
         if (hash.startsWith('#detail') && currentAnime) {
             showDetailView();
-        } else if (hash === '#fulllist') {
-            showFullListView();
+        } else if (hash === '#settings') {
+            showSettingsView();
         } else {
             showHomeView();
         }
+        updateNavActiveState(hash);
     }
 
     function switchTab(tab) {
         const hash = '#' + tab;
         if (window.location.hash !== hash) {
-            history.replaceState(null, null, hash);
+            // Usar pushState para que el botón de atrás del navegador funcione
+            history.pushState({ tab }, null, hash);
             handleRouting();
         }
     }
+    // Manejar el botón "atrás" del navegador
+    window.onpopstate = handleRouting;
 
-    function toggleAppMode() {
-        // Si ya estamos en modo privado, al tocar el icono se vuelve al modo público.
-        if (isRestrictedMode) {
-            isRestrictedMode = false;
-            library = publicLibrary;
-            localStorage.setItem('myApp_restrictedMode', 'false');
-            renderHome();
-            switchTab('home');
-            return;
-        }
+    function enterPrivateMode() {
+        const settingsCodeInput = document.getElementById('settings-code-input');
+        if (!settingsCodeInput) return;
 
-        // Si estamos en modo público, verificar el código.
-        if (codeInput.value === SECRET_CODE) {
+        if (settingsCodeInput.value === SECRET_CODE) {
             isRestrictedMode = true;
             library = privateLibrary;
             localStorage.setItem('myApp_restrictedMode', 'true');
-            renderHome();
             switchTab('home');
         } else {
-            // Código incorrecto: animar y limpiar.
-            codeInput.classList.add('shake');
-            setTimeout(() => codeInput.classList.remove('shake'), 700);
-            codeInput.value = "";
+            settingsCodeInput.classList.add('shake');
+            setTimeout(() => settingsCodeInput.classList.remove('shake'), 700);
+            settingsCodeInput.value = "";
         }
+    }
+
+    function exitPrivateMode() {
+        isRestrictedMode = false;
+        library = publicLibrary;
+        privatePage = 1; // Resetear página al salir del modo privado
+        localStorage.setItem('myApp_restrictedMode', 'false');
+        renderHome();
+        window.scrollTo(0, 0);
+    }
+
+    // ===== CARRUSEL HERO =====
+    let _heroCurrent = 0;
+    let _heroTimer = null;
+    let _heroTotal = 3;
+
+    function heroGoTo(idx) {
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-dot');
+        if (!slides[idx] || !slides[_heroCurrent] || !dots[_heroCurrent]) return;
+        slides[_heroCurrent].classList.remove('active');
+        dots[_heroCurrent].classList.remove('active');
+        _heroCurrent = idx;
+        slides[idx].classList.add('active');
+        dots[idx].classList.add('active');
+        resetHeroTimer();
+    }
+
+    function heroNext() {
+        heroGoTo((_heroCurrent + 1) % _heroTotal);
+    }
+
+    function resetHeroTimer() {
+        clearInterval(_heroTimer);
+        _heroTimer = setInterval(heroNext, 4500);
+    }
+
+    function initHeroCarousel() {
+        _heroCurrent = 0;
+        _heroTotal = document.querySelectorAll('.hero-slide').length;
+        resetHeroTimer();
     }
 
     // --- RENDERIZADO ---
@@ -858,14 +1022,25 @@
         if (isRestrictedMode) {
             // --- MODO PRIVADO (GRID PAGINADO) ---
             // "Donde está el icono de huella... videos de 2 hasta abajo... hasta 10 lineas"
+            document.getElementById('bottom-nav').style.display = 'none';
             homeContent.innerHTML = `
-                <div class="full-list-grid" id="private-grid" style="padding-top:20px;"></div>
+                <div class="search-header-bar" style="position: sticky; top: 0; background: var(--bg); z-index: 40; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
+                    <button class="search-back-btn" onclick="exitPrivateMode()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>
+                    </button>
+                    <span style="font-size: 18px; font-weight: 600; color: white;">Contenido Exclusivo</span>
+                </div>
+                <div class="full-list-grid" id="private-grid"></div>
                 <div id="private-pagination" class="pagination-container"></div>
             `;
             renderPrivateGrid();
         } else {
             // --- MODO PÚBLICO (LISTAS HORIZONTALES) ---
+            document.getElementById('bottom-nav').style.display = 'flex';
             homeContent.innerHTML = `
+                <div class="hero-carousel" id="hero-carousel">
+                    <!-- Populated by JS -->
+                </div>
                 <div class="section-title">Recientes</div>
                 <div class="horizontal-list" id="recent-list"></div>
 
@@ -876,11 +1051,48 @@
                 <div class="horizontal-list" id="popular-list"></div>
             `;
 
+            // --- Llenar Carrusel ---
+            const heroCarousel = document.getElementById('hero-carousel');
+            let recentItems = typeof recientesData !== 'undefined' ? recientesData : [];
+            let popularItems = typeof popularesData !== 'undefined' ? popularesData : [];
+            let seriesItems = typeof seriesData !== 'undefined' ? seriesData : [];
+            let heroSources = [...recentItems, ...popularItems].filter(a => a.banner || a.poster).slice(0, 3);
+            
+            let heroHTML = '';
+            heroSources.forEach((anime, i) => {
+                const onclickAction = `openAnimeDetail(library.find(a => a.titulo === '${anime.titulo.replace(/'/g, "\\'")}'))`;
+                const epCount = (anime.episodios && anime.episodios.length) ? anime.episodios.length : 0;
+                heroHTML += `
+                    <div class="hero-slide ${i === 0 ? 'active' : ''}" onclick="${onclickAction}">
+                        <div class="hero-slide-bg" style="background-image: url('${anime.banner || anime.poster}');"></div>
+                        <div class="hero-gradient"></div>
+                        <div class="hero-content">
+                            <div class="hero-title">${anime.titulo}</div>
+                            <div class="hero-meta">
+                                <div class="hero-genre-tag">EP ${epCount}</div>
+                                <span class="hero-year-text">${anime.ano || ''}</span>
+                            </div>
+                            <button class="hero-btn" onclick="event.stopPropagation(); ${onclickAction}">
+                                <svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14"/></svg>
+                                VER AHORA
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            heroHTML += `
+                <div class="hero-dots">
+                    ${heroSources.map((_, i) => `<div class="hero-dot ${i === 0 ? 'active' : ''}" data-idx="${i}" onclick="event.stopPropagation(); heroGoTo(${i})"></div>`).join('')}
+                </div>
+                <div class="top-search-btn" onclick="event.stopPropagation(); openSearchOverlay()">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+            `;
+            heroCarousel.innerHTML = heroHTML;
+            initHeroCarousel();
+
             // 1. Recién añadidos
             const recentContainer = document.getElementById('recent-list');
-            // Usamos directamente la lista del archivo recientes.js
-            let recentItems = typeof recientesData !== 'undefined' ? recientesData : [];
-            
             recentItems.forEach(anime => {
                 const card = document.createElement('div');
                 card.className = "horizontal-item"; 
@@ -894,9 +1106,6 @@
 
             // 2. Más populares
             const popularContainer = document.getElementById('popular-list');
-            // Usamos directamente la lista del archivo populares.js
-            let popularItems = typeof popularesData !== 'undefined' ? popularesData : [];
-            
             popularItems.forEach(anime => {
                 const card = document.createElement('div');
                 card.className = "horizontal-item"; 
@@ -910,9 +1119,6 @@
 
             // 3. Reciente en Series
             const seriesContainer = document.getElementById('series-list');
-            // Usamos directamente la lista del archivo series.js
-            let seriesItems = typeof seriesData !== 'undefined' ? seriesData : [];
-            
             seriesItems.forEach(anime => {
                 const card = document.createElement('div');
                 card.className = "horizontal-item"; 
@@ -924,6 +1130,14 @@
                 seriesContainer.appendChild(card);
             });
         }
+    }
+
+    function renderSettings() {
+        const codeEntry = document.getElementById('code-entry-section');
+        if (!codeEntry) return;
+
+        // Ocultar la sección para introducir código si ya estamos en modo privado
+        codeEntry.style.display = isRestrictedMode ? 'none' : 'block';
     }
 
     function renderPrivateGrid() {
@@ -1054,7 +1268,6 @@
             }
             mainVideo.src = episode.link;
             mainVideo.load(); // Forzar al navegador a procesar el nuevo video inmediatamente
-            mainVideo.preload = "auto"; // Forzar precarga inmediata
             
             mainVideo.currentTime = 0;
             // Reiniciar barra de progreso
@@ -1430,75 +1643,43 @@
         }
     });
 
-    // --- Control por gestos ---
-    let isDragging = false;
-    let startX = 0;
-    let startVideoTime = 0;
-    // [CORREGIDO] Se aumenta el valor para que el deslizamiento sea mucho más rápido.
-    const swipeSeekFactor = 2.5; 
-    let lastSeekTimestamp = 0; // Variable para controlar la frecuencia
-
+    // --- Control por gestos (desactivado, reservado para uso futuro) ---
     function setupTouchControls() {
-        // heroArea.addEventListener('touchstart', handleTouchStart); // Desactivado para no interferir con el nuevo reproductor
-        // heroArea.addEventListener('touchmove', handleTouchMove, { passive: false }); // Desactivado para no interferir con el nuevo reproductor
-        // heroArea.addEventListener('touchend', handleTouchEnd); // Desactivado para no interferir con el nuevo reproductor
-    }
-    
-    function handleTouchStart(e) {
-        if (mainVideo.paused || !mainVideo.duration) return;
-        isDragging = true;
-        startX = e.touches[0].clientX;
-        startVideoTime = mainVideo.currentTime;
-        lastSeekTimestamp = 0;
-    }
-
-    function handleTouchMove(e) {
-        if (!isDragging) return;
-        e.preventDefault(); 
-
-        // Evitar que se actualice demasiadas veces por segundo (evita el bug de congelamiento)
-        const now = Date.now();
-        if (now - lastSeekTimestamp < 50) return; 
-        lastSeekTimestamp = now;
-
-        const currentX = e.touches[0].clientX;
-        const deltaX = currentX - startX;
-        
-        const timeOffset = deltaX * swipeSeekFactor;
-        let newTime = startVideoTime + timeOffset;
-
-        newTime = Math.max(0, Math.min(mainVideo.duration, newTime));
-        
-        mainVideo.currentTime = newTime;
-    }
-
-    function handleTouchEnd(e) {
-        if (!isDragging) return;
-        isDragging = false;
+        // Gestos de seek por deslizamiento desactivados para no interferir con el reproductor.
     }
 
 
     // --- UTILIDADES ---
     function showDetailView() {
-        document.getElementById('main-header').style.transform = 'translateY(-100%)'; // Ocultar header en reproductor
+        document.getElementById('bottom-nav').style.transform = 'translateY(100%)'; // Ocultar nav
         switchView(detailView);
         window.scrollTo(0, 0);
     }
 
     function showHomeView() {
-        mainVideo.pause();
-        mainVideo.src = "";
-        videoContainer.style.display = 'none'; // Ocultar reproductor
-        currentAnime = null; 
+        if (currentAnime) { // Solo si venimos de la vista de detalle
+            mainVideo.pause();
+            mainVideo.src = "";
+            videoContainer.style.display = 'none';
+            currentAnime = null; 
+        }
         switchView(homeView);
-        document.getElementById('main-header').style.transform = 'translateY(0)'; // Mostrar header
-        renderHome(); // Recargar para actualizar "Continuar viendo"
-        if(window.location.hash !== '#home') history.replaceState(null, null, '#home');
+        document.getElementById('bottom-nav').style.transform = 'translateY(0)'; // Mostrar nav
+        renderHome();
     }
 
     function showSettingsView() {
+        mainVideo.pause();
         switchView(settingsView);
-        document.getElementById('main-header').style.transform = 'translateY(0)';
+        document.getElementById('bottom-nav').style.transform = 'translateY(0)';
+        renderSettings();
+    }
+
+    function updateNavActiveState(hash) {
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        const activeId = hash === '#settings' ? 'nav-settings' : 'nav-home';
+        const activeEl = document.getElementById(activeId);
+        if (activeEl) activeEl.classList.add('active');
     }
 
     function switchView(view) {
@@ -1513,7 +1694,7 @@
     }
     function showFullListView() {
         renderGrid(library, fullGrid);
-        document.getElementById('main-header').style.transform = 'translateY(0)';
+        document.getElementById('bottom-nav').style.transform = 'translateY(0)';
         switchView(fullListView);
     }
     function closeFullList() {
@@ -1521,7 +1702,7 @@
     }
 
     function handleGlobalSearch(sender) {
-        const input = sender || headerSearchInput;
+        const input = sender;
         const query = input.value.toLowerCase().trim();
         
         if (!query) {
@@ -1545,7 +1726,7 @@
             `;
             item.onclick = () => {
                 globalSearchResults.style.display = 'none';
-                document.querySelectorAll('.header-search-input').forEach(el => el.value = "");
+                closeSearchOverlay();
                 openAnimeDetail(anime);
             };
             globalSearchResults.appendChild(item);
@@ -1563,7 +1744,11 @@
         }
     });
 
-    initApp();
+    try {
+        initApp();
+    } catch (e) {
+        console.error("Error al iniciar la app:", e);
+    }
     
     // --- LOGICA DE INICIO (SPLASH SCREEN) ---
     async function launchApp() {
@@ -1582,8 +1767,11 @@
         try {
             
             // Recolectar imágenes
+            // OPTIMIZACIÓN: Solo precargar las primeras imágenes para evitar bloqueo
             const imagesToLoad = [];
-            library.forEach(anime => {
+            // Limitar a los primeros 15 items para asegurar un inicio rápido
+            const itemsToPreload = (typeof library !== 'undefined' && Array.isArray(library)) ? library.slice(0, 15) : [];
+            itemsToPreload.forEach(anime => {
                 if(anime.poster) imagesToLoad.push(anime.poster);
                 if(anime.banner) imagesToLoad.push(anime.banner);
             });
