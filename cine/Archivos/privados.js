@@ -16,6 +16,22 @@ const privadosData = [
         ]
     },
     {
+        id: "Fella",
+        titulo: "Fella Hame Lips",
+        titulo_jp: "フェラハメりっぷす",
+        poster: "https://Dimagemfondo.github.io/visor-imgen/img/02/folder.jpg",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2016",
+        calidad: "HD",
+        sinopsis: "Un día, Taro encuentra una muñeca sexual de próxima generación que se parece a la mujer que le gusta y la compra. Cuando llega, lo cambia rápidamente y se da cuenta de que da un error. ¡Ya estaba cachondo y a punto de explotar! Utiliza la muñeca sexual, Naoko, antes de arreglarla, ¡y no puede evitar correrse dentro de su boca! ¡Se corre varias veces en su boca! Con una muñeca sexual que ya no se puede arreglar...",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/17/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/17/sprite1.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Fella%20Hame%20Lips%20-%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Fella Hame Lips - 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/17/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/17/sprite2.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Fella%20Hame%20Lips%20-%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Fella Hame Lips - 2.es.ass" }
+        ]
+    },
+    {
         id: "Harem",
         titulo: "Harem Camp",
         titulo_jp: "ハーレムきゃんぷっ！",
