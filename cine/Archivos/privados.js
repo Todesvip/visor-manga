@@ -19,7 +19,7 @@ const privadosData = [
         id: "Fella",
         titulo: "Fella Hame Lips",
         titulo_jp: "フェラハメりっぷす",
-        poster: "https://Dimagemfondo.github.io/visor-imgen/img/02/folder.jpg",
+        poster: "https://dimagemfondo.github.io/visor-imgen/img/02/folder.jpg",
         banner: "",
         rating: "18+",
         temporada: "Temporada 1",
