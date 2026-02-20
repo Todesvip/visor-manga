@@ -606,7 +606,7 @@
         .splash-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .loading-spinner {
             width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1);
-            border-left-color: #e63946; border-radius: 50%;
+            border-left-color: var(--accent); border-radius: 50%;
             animation: spin 0.8s linear infinite; margin-bottom: 0;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -697,6 +697,19 @@
     <div id="settings-view" class="view">
         <div class="settings-content">
             <h1 class="settings-title">Ajustes</h1>
+
+            <div class="settings-section">
+                <div class="switch-container">
+                    <div class="switch-label">Color de Tema (Morado)</div>
+                    <label class="switch">
+                        <input type="checkbox" id="accent-color-switch" onchange="toggleAccentColor(this)">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <p class="settings-section-desc">
+                    Cambia el color de acento entre Rojo y Morado.
+                </p>
+            </div>
 
             <div class="settings-section">
                 <div class="switch-container">
@@ -909,6 +922,17 @@
             library = publicLibrary;
         }
 
+        // Cargar color de acento guardado
+        const savedColor = localStorage.getItem('myApp_accentColor');
+        const colorSwitch = document.getElementById('accent-color-switch');
+        if (savedColor === 'purple') {
+            document.documentElement.style.setProperty('--accent', '#6c63ff');
+            document.documentElement.style.setProperty('--glow', 'rgba(108, 99, 255, 0.35)');
+            if (colorSwitch) colorSwitch.checked = true;
+        } else {
+            if (colorSwitch) colorSwitch.checked = false;
+        }
+
         window.addEventListener('hashchange', handleRouting);
         handleRouting();
         
@@ -987,6 +1011,21 @@
         localStorage.setItem('myApp_restrictedMode', 'false');
         renderHome();
         window.scrollTo(0, 0);
+    }
+
+    function toggleAccentColor(checkbox) {
+        const root = document.documentElement;
+        if (checkbox.checked) {
+            // Cambiar a Morado
+            root.style.setProperty('--accent', '#6c63ff');
+            root.style.setProperty('--glow', 'rgba(108, 99, 255, 0.35)');
+            localStorage.setItem('myApp_accentColor', 'purple');
+        } else {
+            // Volver a Rojo (Original)
+            root.style.setProperty('--accent', '#e63946');
+            root.style.setProperty('--glow', 'rgba(230, 57, 70, 0.35)');
+            localStorage.setItem('myApp_accentColor', 'red');
+        }
     }
 
     // ===== CARRUSEL HERO =====
