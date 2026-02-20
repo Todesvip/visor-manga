@@ -35,7 +35,7 @@ const privadosData = [
         id: "Fella",
         titulo: "Fella Pure Mitarashi-san Chi no Jijou The Animation",
         titulo_jp: "フェラピュア ~御手洗さん家の事情~ THE ANIMATION",
-        poster: "https://Dimagemfondo.github.io/visor-imgen img/03/folder.jpg",
+        poster: "https://dimagemfondo.github.io/visor-imgen/img/03/folder.jpg",
         banner: "",
         rating: "18+",
         temporada: "Temporada 1",
