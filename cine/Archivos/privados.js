@@ -111,7 +111,7 @@ const privadosData = [
         id: "3Ping",
         titulo: "3Ping Lovers Ippu Nisai no Sekai e Youkoso The Animation",
         titulo_jp: "3PingLovers!☆一夫二妻の世界へようこそ♪ THE ANIMATION",
-        poster: "https://dimagemfondo.github.io/visor-imgen/img/folder.jpg",
+        poster: "https://dimagemfondo.github.io/visor-imgen/img/01/folder.jpg",
         banner: "",
         rating: "18+",
         temporada: "Temporada 1",
