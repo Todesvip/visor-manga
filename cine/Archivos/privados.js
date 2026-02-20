@@ -17,6 +17,21 @@ const privadosData = [
     },
     {
         id: "Fella",
+        titulo: "Fella Pure Mitarashi-san Chi no Jijou The Animation",
+        titulo_jp: "フェラピュア ~御手洗さん家の事情~ THE ANIMATION",
+        poster: "https://Dimagemfondo.github.io/visor-imgen img/03/folder.jpg",
+        banner: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2014",
+        calidad: "HD",
+        sinopsis: "Todo el mundo ve a la presidenta del consejo estudiantil, Mitarai Keiko, como la chica perfecta, pero lo que no saben es que lo que más le gusta en el mundo es practicarle una felación a su hermano menor, Noboru. Como sus padres siempre viajan, cumplen este deseo con bastante frecuencia y de maneras bastante aventureras.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/18/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/18/sprite1.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Fella%20Pure%20Mitarashi-san%20Chi%20no%20Jijou%20The%20Animation%20-%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Fella Pure Mitarashi-san Chi no Jijou The Animation - 1.eng.ass" }
+        ]
+    },
+    {
+        id: "Fella",
         titulo: "Fella Hame Lips",
         titulo_jp: "フェラハメりっぷす",
         poster: "https://dimagemfondo.github.io/visor-imgen/img/02/folder.jpg",
