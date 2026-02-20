@@ -104,7 +104,7 @@ const privadosData = [
             { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite6.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/15/sprite6.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Hajimete%20no%20Hitozuma%20-%206.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hajimete no Hitozuma - 6.es.ass" }
         ]
     },
-        {
+    {
         id: "Goblin",
         titulo: "Goblin no suana",
         titulo_jp: "ゴブリンの巣穴",
