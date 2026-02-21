@@ -16,6 +16,25 @@ const privadosData = [
         ]
     },
     {
+        id: "Shounen",
+        titulo: "Shounen ga Otona ni Natta Natsu",
+        titulo_jp: "少年が大人になった夏",
+        poster: "https://Dimagemfondo.github.io/visor-imgen/img/04/05.webp",
+        banner: "",
+        logo: "",
+        rating: "18+",
+        temporada: "Temporada 1",
+        ano: "2024",
+        calidad: "HD",
+        sinopsis: "Ryuuki Kirishima es un niño que vive con su hermana mayor, Reiko, tras la trágica muerte de sus padres en un accidente automovilístico. Un día de verano, Ryuuki y sus amigos se reúnen para mirar videos para adultos por diversión. Aunque Ryuuki no suele disfrutar de este tipo de contenido, se siente inexplicablemente atraído por los vídeos protagonizados por Kiriru, una nueva y popular actriz porno. Mientras observa, Ryuuki siente una fuerte atracción por Kiriru y, para su sorpresa, ella aparece ante él en persona.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/20/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/20/sprite1.jpg", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Shounen%20ga%20Otona%20ni%20Natta%20Natsu%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Shounen ga Otona ni Natta Natsu 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/20/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/20/sprite2.jpg", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Shounen%20ga%20Otona%20ni%20Natta%20Natsu%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Shounen ga Otona ni Natta Natsu 2.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/20/sprite3.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/20/sprite3.jpg", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Shounen%20ga%20Otona%20ni%20Natta%20Natsu%203.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Shounen ga Otona ni Natta Natsu 3.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/20/sprite4.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/20/sprite4.jpg", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Shounen%20ga%20Otona%20ni%20Natta%20Natsu%204.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Shounen ga Otona ni Natta Natsu 4.es.ass" }
+        ]
+    },
+    {
         id: "Yuusha-hime",
         titulo: "Yuusha-hime Miria",
         titulo_jp: "勇者姫ミリア",
