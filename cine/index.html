@@ -2,1868 +2,778 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Void</title>
-    <!-- Librería de subtítulos -->
-    <script src="https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- OPTIMIZACIÓN: Preconectar a servidores para que el video inicie antes -->
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Episodios JSON</title>
     <style>
-        /* --- ESTILOS GENERALES --- */
-        :root { --bg: #000000; --text: #ffffff; --text-gray: #6b7280; --accent: #e63946; --glow: rgba(230,57,70,0.35); --surface2: #12141f; --border: rgba(255,255,255,0.07); --font-mono: 'Space Mono', monospace; }
-        
-        /* --- ELIMINAR SOMBRA DE CONTROLES DE VIDEO --- */
-        video::-webkit-media-controls-panel {
-            background-image: none !important;
-        }
-        /* --------------------------------------------- */        
-        body { 
-            margin: 0; padding: 0; 
-            background-color: var(--bg); color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-
-        /* Evitar arrastrar imágenes al deslizar en móvil */
-        img {
-            -webkit-user-drag: none;
-            -webkit-user-select: none;
-            user-select: none;
-            pointer-events: none;
-        }
-
-        .view { display: none; }
-        .view.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
-        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-
-        /* --- CARRUSEL HERO --- */
-        .hero-carousel {
-            position: relative;
-            width: 100%;
-            height: 58vw;
-            min-height: 240px;
-            max-height: 380px;
-            overflow: hidden;
-            background: #000;
-        }
-        .hero-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.7s ease;
-            cursor: pointer;
-            pointer-events: none;
-        }
-        .hero-slide.active { opacity: 1; pointer-events: auto; }
-
-        .hero-slide-bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center top;
-            transform: scale(1.05);
-            transition: transform 7s ease-out;
-        }
-        .hero-slide.active .hero-slide-bg { transform: scale(1); }
-
-        .hero-gradient {
-            position: absolute;
-            inset: 0;
-            background: 
-                linear-gradient(to right, rgba(7,8,13,0.92) 0%, rgba(7,8,13,0.4) 60%, transparent 100%),
-                linear-gradient(to top, var(--bg) 0%, transparent 40%);
-        }
-
-        .hero-content {
-            position: absolute;
-            bottom: 20px;
-            left: 16px;
-            right: 40%;
-        }
-        .hero-genre-tag {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 0.6rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-gray);
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 3px 8px;
-            margin-bottom: 0;
-            border-radius: 4px;
-        }
-        .hero-title {
-            font-family: var(--font-mono);
-            font-size: clamp(1.2rem, 4.5vw, 1.8rem);
-            line-height: 1.2;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 8px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-        }
-        .hero-logo {
-            max-width: 70%;
-            max-height: 80px;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.7));
-        }
-        .hero-meta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-            font-family: var(--font-mono);
-            font-size: 0.58rem;
-        }
-
-        .hero-description {
-            font-size: 12px;
-            color: #ccc;
-            line-height: 1.4;
-            margin-top: 8px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2; /* Limitar a 2 líneas */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
-        }
-        
-        .hero-year-text {
-            color: #ffffff;
-            font-size: 13px; 
-            font-weight: 600; 
-            font-variant-numeric: tabular-nums;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        /* Indicadores carrusel */
-        .hero-dots {
-            position: absolute;
-            bottom: 10px;
-            right: 16px;
-            display: flex;
-            gap: 5px;
-        }
-        .hero-dot {
-            width: 18px;
-            height: 2px;
-            background: var(--glow);
-            border-radius: 2px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .hero-dot.active {
-            width: 28px;
-            background: var(--accent);
-            box-shadow: 0 0 6px var(--accent);
-        }
-
-        .header-search-input {
-            width: 100%; max-width: 300px;
-            flex-grow: 1; /* Ocupa el espacio restante */
-            background-color: #1e1e24;
-            color: #ccc;
-            border: none; border-radius: 8px;
-            padding: 8px 12px; font-size: 14px; font-weight: 500;
-            outline: none; transition: width 0.3s;
-        }
-        .header-search-input::placeholder { color: #888; }
-        .header-search-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
-
-        /* Ocultar flechas en input de número */
-        input[type=number]::-webkit-outer-spin-button, 
-        input[type=number]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        input[type=number] {
-            -moz-appearance: textfield;
-        }
-
-        .settings-code-input {
-            text-align: center; letter-spacing: 2px;
-        }
-
-        /* --- BOTÓN LUPA FLOTANTE (TOP) --- */
-        .top-search-btn {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            z-index: 20;
-            width: 40px;
-            height: 40px;
-            background: transparent;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            border: none;
-        }
-        .top-search-btn svg { width: 28px; height: 28px; fill: white; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.8)); }
-
-        /* --- PANTALLA DE BÚSQUEDA (OVERLAY) --- */
-        .search-overlay {
-            display: none;
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--bg);
-            z-index: 100;
-            flex-direction: column;
-        }
-        .search-overlay.active { display: flex; }
-        
-        .search-header-bar {
-            display: flex; align-items: center; padding: 15px; gap: 15px;
-            background-color: #101010; border-bottom: none;
-        }
-        .search-back-btn {
-            background: none; border: none; padding: 0; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .search-back-btn svg { width: 32px; height: 32px; fill: white; }
-
-        /* --- RESULTADOS DE BÚSQUEDA (TEXTO) --- */
-        #global-search-results {
-            width: 100%; flex: 1;
-            background: transparent;
-            overflow-y: auto; display: none;
-            padding: 10px 0;
-        }
-        .search-result-card {
-            display: flex; gap: 15px; padding: 15px;
-            border-bottom: none;
-            cursor: pointer; transition: background 0.2s;
-        }
-        .search-result-card:hover { background: #1a1a1a; }
-        .search-poster-img {
-            width: 100px; aspect-ratio: 2/3; object-fit: cover; 
-            border-radius: 0; flex-shrink: 0;
-        }
-        .search-info {
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .search-title {
-            color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 5px;
-        }
-        .search-desc {
-            color: #ccc; font-size: 11px; line-height: 1.4;
-            display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
-        }
-
-        /* --- NUEVO HOME (HORIZONTAL) --- */
-        .section-title {
-            font-size: 16px; font-weight: 600; margin: 15px 0 10px 0; padding-left: 20px; color: #ffffff;
-            letter-spacing: 0px;
-        }
-
-        .home-content { padding-top: 0; }
-
-        .horizontal-list {
-            display: flex; overflow-x: auto; gap: 10px; padding: 0;
-            scroll-padding-left: 20px; /* Para que el snap se alinee con el título */
-            scrollbar-width: none; margin-bottom: 25px;
-            scroll-snap-type: x mandatory;
-        }
-        
-        /* Espaciadores para alinear */
-        .horizontal-list::before, .horizontal-list::after {
-            content: ''; display: block; flex: 0 0 10px;
-        }
-
-        #recent-list { padding-left: 0; }
-
-        .horizontal-list::-webkit-scrollbar { display: none; }
-        
-        .horizontal-item { flex: 0 0 130px; cursor: pointer; scroll-snap-align: start; transition: transform 0.2s; }
-        .horizontal-item:active { transform: scale(0.95); }
-
-        @media (max-width: 600px) {
-            .horizontal-item { flex: 0 0 33vw; }
-        }
-
-        .view-all-btn {
-            display: none; /* Se oculta por defecto, se activa con JS si > 10 */
-            width: calc(100% - 30px); margin: 0 auto 30px;
-            padding: 12px; background: #1e1e24; border: 1px solid #333;
-            color: var(--accent); border-radius: 8px; font-weight: 600; cursor: pointer;
-            text-align: center; font-size: 14px;
-        }
-
-        /* --- DIRECTORIO (GRID TIPO SASA) --- */
-        .directory-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-            padding: 20px 15px;
-        }
-        .dir-card {
-            background-color: #1e1e24; border-radius: 16px; height: 100px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-decoration: none; color: white; position: relative; cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-        }
-        .dir-card:active { transform: scale(0.96); background-color: #25252b; }
-        
-        .dir-icon {
-            width: 28px; height: 28px; margin-bottom: 8px;
-            fill: var(--accent);
-        }
-        .dir-title {
-            font-size: 14px; font-weight: 700; margin-bottom: 2px;
-        }
-        .dir-subtitle {
-            font-size: 11px; color: var(--text-gray);
-        }
-
-        /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
-        .full-list-grid {
-            padding: 20px 15px;
-            display: grid; grid-template-columns: 1fr 1fr; 
-            gap: 15px;
-        }
-        .poster-wrapper { cursor: pointer; }
-        .poster {
-            width: 100%; aspect-ratio: 2/3; border-radius: 0; overflow: hidden; background: #1a1a1a;
-            margin-bottom: 8px;
-        }
-        .poster img { width: 100%; height: 100%; object-fit: cover; }
-        .anime-title { font-size: 13px; font-weight: 500; color: #ddd; }
-
-        /* --- DETALLE --- */
-        .hero-container {
-            position: relative; width: 100%; aspect-ratio: 16/9; background: #000;
-        }
-        .hero-bg { width: 100%; height: 100%; object-fit: cover; display: none; } 
-        
-        /* --- REPRODUCTOR AVANZADO (INTEGRACIÓN) --- */
-        #video-container {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #000; z-index: 30; display: none; /* Oculto por defecto */
-            pointer-events: auto;
-        }
-        
-        #main-video { 
-            width: 100%; height: 100%; display: block; object-fit: contain; position: relative; z-index: 0; pointer-events: none;
-            /* FORZAR ACELERACIÓN DE HARDWARE (Hace que vaya más fluido en Android) */
-            transform: translate3d(0, 0, 0); will-change: transform;
-            background-color: #000; /* Fondo negro para videos sin poster */
-        }
-
-        /* --- SPINNER CARGA VIDEO --- */
-        .video-loader {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            z-index: 25; pointer-events: none; display: none;
-        }
-        .video-spinner {
-            width: 50px; height: 50px;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-left-color: #ffffff;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        /* CAPA DE CONTROLES (OVERLAY) */
-        .controls-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 25%, transparent 75%, rgba(0,0,0,0.5));
-            opacity: 0; transition: opacity 0.3s;
-            pointer-events: none;
-            z-index: 20;
-        }
-
-        /* Mostrar controles cuando esté activo o pausado */
-        #video-container.active .controls-overlay,
-        #video-container.paused .controls-overlay { opacity: 1; pointer-events: none; }
-
-        /* CONTENEDOR CENTRAL */
-        .center-controls {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            display: flex; align-items: center; gap: 20px;
-            pointer-events: none;
-        }
-
-        /* BOTÓN PLAY GIGANTE CENTRAL */
-        .center-play {
-            position: relative; transform: none; top: auto; left: auto;
-            width: 80px; height: 80px; background: none; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
-            pointer-events: auto;
-        }
-        /* BOTONES SKIP */
-        .skip-btn {
-            width: 80px; height: 80px; background: none;
-            display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
-            pointer-events: auto;
-        }
-        .skip-btn svg { width: 48px; height: 48px; }
-
-        .center-play svg {
-            width: 48px; height: 48px; fill: white;
-        }
-        /* Ajuste visual solo para el ícono de Play (cuando está pausado) */
-        #video-container.paused .center-play svg { margin-left: 4px; }
-
-        /* BARRA SUPERIOR (NUEVO) */
-        .top-bar {
-            position: absolute; top: 0; left: 0; width: 100%;
-            padding: 15px 20px; box-sizing: border-box;
-            display: flex; justify-content: flex-end; align-items: center;
-            pointer-events: none; z-index: 22;
-        }
-
-        /* BARRA INFERIOR */
-        .bottom-bar {
-            background: transparent;
-            /* Contenedor para la fila de controles, se posiciona al fondo */
-            position: absolute; bottom: 20px; /* Un poco más arriba para separar de la barra de progreso */
-            left: 0; width: 100%;
-            pointer-events: none;
-        }
-
-        /* FILA DE CONTROLES */
-        .controls-row { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 20px; box-sizing: border-box; }
-
-        /* TIEMPOS */
-        .time-text { 
-            color: #ffffff; /* Blanco puro para ambos tiempos */
-            font-size: 13px; font-weight: 600; 
-            font-variant-numeric: tabular-nums;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
-        }
-
-        /* BARRA DE PROGRESO */
-        .progress-container {
-            /* Se posiciona absolutamente en el borde inferior */
-            position: absolute; bottom: 0; left: 0;
-            width: 100%; height: 5px; /* Área táctil reducida */
-            display: flex; align-items: flex-end; cursor: pointer;
-            pointer-events: auto;
-        }
-        .progress-bg { width: 100%; height: 3px; background: rgba(255, 255, 255, 0.2); position: relative; }
-        .progress-fill { height: 100%; width: 0%; background: white; position: absolute; top: 0; left: 0; }
-        .progress-handle {
-            width: 8px; height: 8px; background: white; border-radius: 50%;
-            position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%);
-            z-index: 5;
-            transition: width .15s ease, height .15s ease;
-        }
-        .progress-container:active .progress-handle { width: 12px; height: 12px; }
-
-        /* MINIATURA DE VISTA PREVIA */
-        .preview-box {
-            position: absolute; bottom: 20px; left: 0; transform: translateX(-50%);
-            width: 160px; height: 90px; background: #000;
-            border: none; border-radius: 0;
-            display: none; overflow: hidden; pointer-events: none; z-index: 30;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        .preview-box video {
-            width: 100%; height: 100%; object-fit: cover; opacity: 0.8;
-        }
-        #preview-img {
-            width: 100%; height: 100%;
-            background-color: #000;
-            background-repeat: no-repeat;
-            display: none;
-        }
-
-        /* BOTONES DERECHA */
-        .right-buttons { display: flex; gap: 10px; align-items: center; pointer-events: auto; }
-        .icon-btn { background: none; border: none; cursor: pointer; padding: 5px; display: flex; justify-content: center; align-items: center; opacity: 0.8; transition: opacity 0.2s; }
-        .icon-btn:hover { opacity: 1; }
-        .icon-btn svg { width: 24px; height: 24px; fill: white; }
-        
-        /* MENÚ DE SUBTÍTULOS */
-        .cc-menu-container { position: relative; }
-        .cc-menu {
-            display: none; position: absolute; top: 100%; right: 0; /* Abre hacia abajo ahora */
-            background: rgba(18, 18, 18, 0.95); border-radius: 0;
-            margin-top: 10px; min-width: 150px; z-index: 21;
-            pointer-events: auto;
-        }
-        .cc-menu button {
-            background: none; border: none; color: #ccc; font-size: 14px;
-            padding: 10px 20px; width: 100%; text-align: left; cursor: pointer; display: block;
-        }
-        .cc-menu button:hover { background: rgba(255, 255, 255, 0.1); }
-        .cc-menu button.active { font-weight: bold; color: #fff; background: rgba(255, 255, 255, 0.05); }
-        
-        /* CANVAS SUBTÍTULOS */
-        #video-container canvas {
-            position: absolute !important; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 10;
-        }
-
-        .content-body { padding: 20px; position: relative; z-index: 25; background-color: var(--bg); }
-        
-        .show-title { 
-            font-size: 18px; 
-            font-weight: 800; 
-            line-height: 1.2; 
-            margin-bottom: 8px; 
-            cursor: pointer; 
-            color: #eee; letter-spacing: 0.5px;
-            width: fit-content;
-        }
-        .show-title:active { opacity: 0.7; }
-
-        .show-subtitle {
-            font-size: 15px;
-            color: var(--text-gray);
-            margin-bottom: 12px;
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-
-        .meta-row { display: flex; gap: 10px; font-size: 13px; color: var(--text-gray); margin-bottom: 20px; align-items: center; }
-        .badge { border: 1px solid var(--text-gray); padding: 1px 4px; border-radius: 2px; font-size: 11px; }
-
-        /* --- SELECTOR DE EPISODIOS (CUADROS) --- */
-        .ep-count-header {
-            text-align: right; color: var(--text-gray); font-size: 12px; margin-bottom: 8px; font-weight: 500;
-        }
-
-        .ep-selector-row {
-            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px;
-            scrollbar-width: none; 
-        }
-        .ep-selector-row::-webkit-scrollbar { display: none; }
-
-        .ep-box {
-            width: 50px; height: 50px; 
-            background: #1e1e24;
-            border-radius: 8px; border: none;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 600; font-size: 1rem; color: #ccc; flex-shrink: 0;
-            cursor: pointer; transition: transform 0.2s, background 0.2s;
-            overflow: hidden;
-        }
-        .ep-box.active {
-            background: #000000;
-        }
-        .ep-box:active { transform: none; }
-
-        /* --- SINOPSIS --- */
-        .synopsis { font-size: 13px; line-height: 1.5; color: #ccc; margin-bottom: 5px; }
-        .read-more-btn {
-            display: none !important;
-        }
-
-        /* Botón volver genérico */
-        .back-btn {
-            background: none; border: none; color: white; font-size: 16px; font-weight: 600; cursor: pointer;
-            display: flex; align-items: center; gap: 5px;
-        }
-
-        /* Ajuste para que el contenido no quede tapado por el nav */
-        .view { padding-bottom: 80px; }
-        
-        /* AJUSTES */
-        .settings-content { padding: 20px; }
-        .settings-title { font-size: 24px; font-weight: 700; margin-bottom: 30px; }
-        .settings-section { background: #1a1a1a; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .settings-section-title { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
-        .settings-section-desc { font-size: 13px; color: #888; margin-bottom: 20px; }
-        .settings-action-btn {
-            width: 100%; padding: 12px; background: var(--accent); color: black;
-            border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
-            font-size: 15px;
-        }
-        
-        /* --- SWITCH TOGGLE (Ajustes) --- */
-        .switch-container {
-            display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;
-        }
-        .switch-label { font-size: 15px; color: white; font-weight: 500; }
-        .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: var(--accent); }
-        input:checked + .slider:before { transform: translateX(22px); }
-
-        /* --- SPLASH SCREEN --- */
-        #splash-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg); z-index: 9999;
-            display: flex; justify-content: center; align-items: center;
-            transition: opacity 0.5s ease-out;
-        }
-        .splash-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .loading-spinner {
-            width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1);
-            border-left-color: var(--accent); border-radius: 50%;
-            animation: spin 0.8s linear infinite; margin-bottom: 0;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        #splash-status { color: #888; font-size: 14px; font-weight: 500; display: none; margin-top: 20px; }
-        #retry-btn {
-            margin-top: 20px; padding: 10px 25px; background: var(--accent); color: black;
-            border: none; border-radius: 20px; font-weight: bold; cursor: pointer; display: none;
-        }
-
-        /* --- PAGINACIÓN --- */
-        .pagination-container {
-            display: flex; justify-content: center; gap: 8px; padding: 20px 0;
-            width: 100%;
-        }
-        .page-btn {
-            background: #1e1e24; color: #ccc; border: none;
-            width: 35px; height: 35px; border-radius: 50%;
-            font-weight: 600; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: background 0.2s, color 0.2s;
-        }
-        .page-btn.active {
-            background: var(--accent); color: black;
-        }
-
-        /* --- NUEVA NAVEGACIÓN INFERIOR --- */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background: #101010;
-            display: flex; justify-content: space-around;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
-            z-index: 50;
-            transition: transform 0.3s ease;
-        }
-        .nav-item {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 8px 12px;
-            color: #888;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .nav-item svg { width: 26px; height: 26px; fill: currentColor; margin-bottom: 2px; }
-        .nav-item span { font-size: 11px; font-weight: 500; }
-        .nav-item.active {
-            color: white;
-        }
-
+        body { font-family: monospace; background: #1a1a1a; color: #0f0; padding: 20px; }
+        textarea { width: 100%; height: 150px; background: #333; color: #fff; border: 1px solid #555; padding: 10px; }
+        button { padding: 10px 20px; background: #0f0; color: #000; border: none; cursor: pointer; font-weight: bold; margin: 10px 0; }
+        button:hover { background: #0c0; }
+        input[type="text"] { width: 100%; background: #333; color: #fff; border: 1px solid #555; padding: 10px; margin-bottom: 10px; box-sizing: border-box; }
+        pre { background: #222; padding: 20px; border: 1px solid #444; white-space: pre-wrap; word-wrap: break-word; color: #fff; }
+        .row { display: flex; gap: 20px; margin-top: 10px; }
+        .col { flex: 1; }
     </style>
 </head>
 <body>
 
-    <!-- SPLASH SCREEN -->
-    <div id="splash-screen">
-        <div class="splash-content">
-            <div class="loading-spinner" id="splash-spinner"></div>
-            <div id="splash-status"></div>
-            <button id="retry-btn" onclick="location.reload()">Reintentar</button>
+    <h2>1. Datos del Anime:</h2>
+    <div style="display:flex; gap:10px;">
+        <input type="text" id="inputTitulo" placeholder="Título" style="flex:1;">
+        <button onclick="buscarAnime()" style="width:auto; margin:0 0 10px 0; background:#00A4DC; color:white; white-space: nowrap;">BUSCAR DATOS</button>
+    </div>
+    <div id="animeSearchResults" style="display:none; margin-bottom:15px; padding:10px; border:1px solid #444; background:#222;"></div>
+
+    <input type="text" id="inputTituloJp" placeholder="Título Japonés">
+    <input type="text" id="inputPoster" placeholder="URL Poster">
+    <div style="display:flex; gap:10px;">
+        <input type="text" id="inputBanner" placeholder="URL Banner (Backdrop)" style="flex:1;">
+        <input type="text" id="inputLogo" placeholder="URL Logo (ClearArt)" style="flex:1;">
+    </div>
+    <input type="text" id="inputRating" placeholder="Rating">
+    <input type="text" id="inputTemporada" placeholder="Temporada">
+    <input type="text" id="inputAno" placeholder="Año">
+    <div style="display:flex; gap:10px;">
+        <input type="text" id="inputSubtitulos" placeholder="Link Subtítulo (Episodio 1)" style="flex:1;">
+        <input type="number" id="inputCantEps" placeholder="#" style="width: 60px;" title="Cantidad de episodios">
+    </div>
+    <div style="display:flex; gap:10px;">
+        <input type="text" id="inputSprite" placeholder="Link Sprite (Episodio 1)" style="flex:1;">
+        <input type="number" id="inputCantEpsSprite" placeholder="#" style="width: 60px;" title="Cantidad de episodios">
+    </div>
+    <div style="display:flex; gap:10px;">
+        <input type="text" id="inputSpriteImg" placeholder="Link Sprite Img (Episodio 1)" style="flex:1;">
+        <input type="number" id="inputCantEpsSpriteImg" placeholder="#" style="width: 60px;" title="Cantidad de episodios">
+    </div>
+    <label style="display:block; margin-bottom:5px;">Sinopsis:</label>
+    <textarea id="inputSinopsis" placeholder="Sinopsis..." style="height: 60px; margin-bottom: 15px;"></textarea>
+
+    <h2>2. Pega aquí tu lista de links (uno por línea):</h2>
+    <div style="display:flex; gap:20px; align-items:center; margin-bottom:10px;">
+        <div>
+            <span style="color:#fff; font-size:14px;">Formato:</span>
+            <label style="margin-left:5px; cursor:pointer;"><input type="radio" name="videoFormat" value="mkv" checked> MKV</label>
+            <label style="margin-left:10px; cursor:pointer;"><input type="radio" name="videoFormat" value="mp4"> MP4</label>
+        </div>
+        <div>
+            <span style="color:#fff; font-size:14px;">Cantidad:</span>
+            <input type="number" id="inputCantEpsUrl" placeholder="#" style="width: 60px; margin-left:5px; margin-bottom:0;">
         </div>
     </div>
-
-    <!-- PANTALLA DE BÚSQUEDA -->
-    <div id="search-overlay" class="search-overlay">
-        <div class="search-header-bar">
-            <button class="search-back-btn" onclick="closeSearchOverlay()">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>
-            </button>
-            <input type="text" id="overlay-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch(this)">
-        </div>
-        <div id="global-search-results"></div>
-    </div>
-
-    <!-- HOME -->
-    <div id="home-view" class="view active">
-        <div class="home-content">
-            <div class="hero-carousel" id="hero-carousel">
-                <!-- Populated by JS -->
-            </div>
-            <div class="section-title">Recientes</div>
-            <div class="horizontal-list" id="recent-list"></div>
-
-            <!-- MÁS POPULARES (HORIZONTAL) -->
-            <div class="section-title">Más populares</div>
-            <div class="horizontal-list" id="popular-list"></div>
-        </div>
-    </div>
-
-    <!-- AJUSTES -->
-    <div id="settings-view" class="view">
-        <div class="settings-content">
-            <h1 class="settings-title">Ajustes</h1>
-
-            <div class="settings-section">
-                <div class="switch-container">
-                    <div class="switch-label">Color de Tema (Morado)</div>
-                    <label class="switch">
-                        <input type="checkbox" id="accent-color-switch" onchange="toggleAccentColor(this)">
-                        <span class="slider"></span>
-                    </label>
-                </div>
-                <p class="settings-section-desc">
-                    Cambia el color de acento entre Rojo y Morado.
-                </p>
-            </div>
-
-            <div class="settings-section">
-                <div class="switch-container">
-                    <div class="settings-label">Modo Privado</div>
-                </div>
-                <p class="settings-section-desc">
-                    Activa esta opción para acceder al contenido exclusivo.
-                </p>
-
-                <div id="code-entry-section">
-                    <p class="settings-section-desc" style="margin-bottom: 10px;">Código de acceso</p>
-                    <input type="tel" id="settings-code-input" class="header-search-input settings-code-input" placeholder="••••" pattern="[0-9]*" inputmode="numeric">
-                    <button class="settings-action-btn" style="margin-top: 20px;" onclick="enterPrivateMode()">Activar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- VISTA LISTA COMPLETA -->
-    <div id="full-list-view" class="view">
-        <header>
-            <div class="header-content">
-                <button class="back-btn" onclick="closeFullList()">
-                    <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white;filter:drop-shadow(0 2px 3px black);"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-                    Lista completa
-                </button>
-            </div>
-        </header>
-        <div class="full-list-grid" id="full-grid"></div>
-    </div>
-
-    <!-- DETALLE -->
-    <div id="detail-view" class="view">
-        <div class="hero-container" id="hero-area">
-            <img id="hero-img" class="hero-bg" src="" alt="">
-            
-            <!-- REPRODUCTOR PERSONALIZADO -->
-            <div id="video-container" class="paused">
-                <video id="main-video" playsinline preload="auto"></video>
-
-                <!-- SPINNER DE CARGA -->
-                <div id="video-loader" class="video-loader">
-                    <div class="video-spinner"></div>
-                </div>
-
-                <!-- CAPA DE CONTROLES -->
-                <div class="controls-overlay">
-                    <!-- BARRA SUPERIOR (CC y Fullscreen) -->
-                    <div class="top-bar">
-                        <div class="right-buttons">
-                            <div class="cc-menu-container">
-                                <button class="icon-btn" id="btn-cc" title="Subtítulos">
-                                    <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>
-                                </button>
-                                <div class="cc-menu" id="cc-menu"></div>
-                            </div>
-                            <button class="icon-btn" id="btn-fs" title="Pantalla Completa">
-                                <svg viewBox="0 0 24 24"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Controles Centrales -->
-                    <div class="center-controls">
-                        <button class="center-play" id="btn-center-play">
-                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </button>
-                    </div>
-
-                    <!-- Barra Inferior -->
-                    <div class="bottom-bar">
-                        <div class="controls-row">
-                            <span id="curr-time" class="time-text">0:00</span>
-                            <span id="dur-time" class="time-text">0:00</span>
-                        </div>
-                    </div>
-                    <!-- La barra de progreso se mueve fuera para posicionarla independientemente -->
-                    <div class="progress-container" id="progress-area">
-                        <div class="progress-bg">
-                            <div class="progress-fill" id="progress-bar"></div>
-                            <div class="progress-handle" id="progress-knob"></div>
-                        </div>
-                        <div class="preview-box" id="preview-box">
-                            <div id="preview-img"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-body">
-            <div id="detail-title" class="show-title" onclick="window.history.back()"></div>
-            <div id="detail-subtitle" class="show-subtitle"></div>
-            
-            <!-- Fila de botones cuadrados -->
-            <div class="ep-selector-row" id="ep-selector"></div>
-            
-            <!-- Contador de capítulos (Movido abajo) -->
-            <div class="ep-count-header" id="ep-count-text">0 Capítulos</div>
-            
-            <!-- SINOPSIS -->
-            <div class="section-title" style="padding-left: 0; margin-top: 25px; margin-bottom: 10px;">Sinopsis</div>
-            <p id="detail-synopsis" class="synopsis"></p>
-
-            <div class="meta-row" style="margin-top: 20px;">
-                <span id="detail-rating" class="badge"></span>
-                <span id="detail-season"></span>
-                <span id="detail-year"></span>
-                <span id="detail-quality"></span>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- NAVEGACIÓN INFERIOR -->
-    <nav class="bottom-nav" id="bottom-nav">
-        <div class="nav-item active" id="nav-home" onclick="switchTab('home')">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 21H5C4.44772 21 4 20.5523 4 20V11L1 11L11.3273 1.6115C11.7087 1.26475 12.2913 1.26475 12.6727 1.6115L23 11L20 11V20C20 20.5523 19.5523 21 19 21ZM6 19H18V9.15745L12 3.7029L6 9.15745V19ZM12 15C10.6193 15 9.5 13.8807 9.5 12.5C9.5 11.1193 10.6193 9.99998 12 9.99998C13.3807 9.99998 14.5 11.1193 14.5 12.5C14.5 13.8807 13.3807 15 12 15Z"></path></svg>
-            <span>Inicio</span>
-        </div>
-        <div class="nav-item" id="nav-settings" onclick="switchTab('settings')">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8.68637 4.00008L11.293 1.39348C11.6835 1.00295 12.3167 1.00295 12.7072 1.39348L15.3138 4.00008H19.0001C19.5524 4.00008 20.0001 4.4478 20.0001 5.00008V8.68637L22.6067 11.293C22.9972 11.6835 22.9972 12.3167 22.6067 12.7072L20.0001 15.3138V19.0001C20.0001 19.5524 19.5524 20.0001 19.0001 20.0001H15.3138L12.7072 22.6067C12.3167 22.9972 11.6835 22.9972 11.293 22.6067L8.68637 20.0001H5.00008C4.4478 20.0001 4.00008 19.5524 4.00008 19.0001V15.3138L1.39348 12.7072C1.00295 12.3167 1.00295 11.6835 1.39348 11.293L4.00008 8.68637V5.00008C4.00008 4.4478 4.4478 4.00008 5.00008 4.00008H8.68637ZM6.00008 6.00008V9.5148L3.5148 12.0001L6.00008 14.4854V18.0001H9.5148L12.0001 20.4854L14.4854 18.0001H18.0001V14.4854L20.4854 12.0001L18.0001 9.5148V6.00008H14.4854L12.0001 3.5148L9.5148 6.00008H6.00008ZM12.0001 16.0001C9.79094 16.0001 8.00008 14.2092 8.00008 12.0001C8.00008 9.79094 9.79094 8.00008 12.0001 8.00008C14.2092 8.00008 16.0001 9.79094 16.0001 12.0001C16.0001 14.2092 14.2092 16.0001 12.0001 16.0001ZM12.0001 14.0001C13.1047 14.0001 14.0001 13.1047 14.0001 12.0001C14.0001 10.8955 13.1047 10.0001 12.0001 10.0001C10.8955 10.0001 10.0001 10.8955 10.0001 12.0001C10.0001 13.1047 10.8955 14.0001 12.0001 14.0001Z"></path></svg>
-            <span>Ajustes</span>
-        </div>
-    </nav>
-
-<!-- CARGA DE ARCHIVOS SEPARADOS -->
-<script src="https://todesvip.github.io/visor-manga/cine/Archivos/recientes.js"></script>
-<script src="https://todesvip.github.io/visor-manga/cine/Archivos/populares.js"></script>
-<script src="https://todesvip.github.io/visor-manga/cine/Archivos/series.js"></script>
-<script src="https://todesvip.github.io/visor-manga/cine/Archivos/privados.js"></script>
-
-<script>
-    // Combinar todas las listas públicas para el buscador y la lista completa
-    const publicLibrary = [
-        ...(typeof recientesData !== 'undefined' ? recientesData : []),
-        ...(typeof popularesData !== 'undefined' ? popularesData : []),
-        ...(typeof seriesData !== 'undefined' ? seriesData : [])
-    ];
-    const privateLibrary = typeof privadosData !== 'undefined' ? privadosData : [];
-    let library = publicLibrary;
-
-    // Advertir si no se cargaron datos (posible fallo de red o scripts externos)
-    if (publicLibrary.length === 0) {
-        console.warn("⚠️ No se cargaron datos de la librería. Verifica que los scripts externos estén accesibles.");
-    }
-</script>
-
-<script>
-    // --- VARIABLES DE ESTADO ---
-    let currentAnime = null;
-    let currentEpIndex = 0;
-    let hasPlayedAnyVideo = false; // [NUEVO] Flag para la nueva lógica de autoplay
-    let isRestrictedMode = false;
-    let privatePage = 1; // Página actual del modo privado
-    const itemsPerPage = 20; // 2 columnas * 10 filas = 20 items
-    const SECRET_CODE = atob("NDU2MA=="); // Código de acceso (codificado)
-
-    // --- ELEMENTOS DOM ---
-    const homeView = document.getElementById('home-view');
-    const exploreView = document.getElementById('explore-view');
-    const settingsView = document.getElementById('settings-view');
-    const fullListView = document.getElementById('full-list-view');
-    const detailView = document.getElementById('detail-view');
-    const fullGrid = document.getElementById('full-grid');
-    const mainVideo = document.getElementById('main-video');
-    const videoContainer = document.getElementById('video-container'); // Contenedor del reproductor
-    const videoLoader = document.getElementById('video-loader'); // Spinner
+    <textarea id="inputUrls" placeholder="https://ia601709.us.archive.org/.../video.mp4\nhttps://ia601709.us.archive.org/.../video.mp4"></textarea>
     
-    // Elementos del reproductor personalizado
-    const btnCenter = document.getElementById('btn-center-play');
-    const btnCC = document.getElementById('btn-cc');
-    const ccMenu = document.getElementById('cc-menu');
-    const btnFS = document.getElementById('btn-fs');
-    const progressArea = document.getElementById('progress-area');
-    const progressBar = document.getElementById('progress-bar');
-    const progressKnob = document.getElementById('progress-knob');
-    const currTimeText = document.getElementById('curr-time');
-    const durTimeText = document.getElementById('dur-time');
+    <div style="display:flex; gap:10px; align-items:center; margin-top:10px;">
+        <button onclick="generarJson()" style="margin:0;">CONVERTIR A JSON</button>
+        <div style="flex:1;">
+            <textarea style="height:45px; margin:0; font-size:12px; color:#ccc;" placeholder="Notas...">https://todesvip.github.io/visor-manga/subtitles/&#10;https://Dimagemfondo.github.io/visor-imgen/sprite/sprite1.vtt</textarea>
+        </div>
+    </div>
+
+    <h2>2. Copia tu código aquí:</h2>
+    <pre id="outputJson">El resultado aparecerá aquí...</pre>
+    <button id="btnCopy" onclick="copiarCodigo()" style="display:none; background: #1f6feb;">COPIAR CÓDIGO</button>
+
+    <hr style="border-color: #444; margin: 40px 0;">
+
+    <h2>3. Generador de Sprites (Beta):</h2>
+    <p style="font-size:12px; color:#aaa;">Recomendado: Usa "Seleccionar archivo". <b>Nota:</b> Los navegadores suelen fallar con <b>MKV</b>. Usa <b>MP4</b> si es posible.</p>
     
-    const previewBox = document.getElementById('preview-box');
-    const previewImg = document.getElementById('preview-img');
-
-    const heroImg = document.getElementById('hero-img');
-    const heroArea = document.getElementById('hero-area');
+    <input type="file" id="spriteVideoFile" accept="video/*,.mkv,.mp4" style="margin-bottom:10px; color:#fff;">
+    <p style="font-size:12px; color:#aaa;">O intenta con URL (puede fallar):</p>
+    <input type="text" id="spriteVideoUrl" placeholder="URL del video (mp4)">
+    <label style="color:#aaa; font-size:12px; display:block; margin-bottom:10px;"><input type="checkbox" id="useProxy"> Usar Proxy (marcar si la URL da error)</label>
     
-    const detailTitle = document.getElementById('detail-title');
-    const detailSubtitle = document.getElementById('detail-subtitle');
-    const epCountText = document.getElementById('ep-count-text');
-    const epSelector = document.getElementById('ep-selector');
-    const detailSynopsis = document.getElementById('detail-synopsis');
+    <button onclick="iniciarGeneracionSprite()" style="background: #00A4DC; color: white;">GENERAR SPRITE</button>
+    <div id="spriteStatus" style="color: yellow; margin-bottom: 10px; font-weight: bold;"></div>
 
-    const detailRating = document.getElementById('detail-rating');
-    const detailSeason = document.getElementById('detail-season');
-    const detailYear = document.getElementById('detail-year');
-    const detailQuality = document.getElementById('detail-quality');
+    <div class="row">
+        <div class="col">
+            <label>Imagen Sprite:</label>
+            <button id="btnDownImg" onclick="descargarImagen()" style="display:none; width:100%; background:#444; color:#fff; margin-bottom:5px; cursor:pointer;">Descargar Imagen (.jpg)</button>
+            <img id="spriteOutputImg" style="max-width:100%; border:1px solid #555; display:block; margin-top:5px;">
+        </div>
+        <div class="col">
+            <label>Código .vtt:</label>
+            <button id="btnDownVtt" onclick="descargarVtt()" style="display:none; width:100%; background:#444; color:#fff; margin-bottom:5px; cursor:pointer;">Descargar Archivo (.vtt)</button>
+            <textarea id="vttOutput" style="height:300px; font-size:12px;" placeholder="El código VTT aparecerá aquí..."></textarea>
+        </div>
+    </div>
 
-    const globalSearchResults = document.getElementById('global-search-results');
+    <hr style="border-color: #444; margin: 40px 0;">
 
-    // --- INICIO ---
-    function initApp() {
-        if(!window.location.hash) window.location.hash = "home";
-        
-        // Cargar estado del switch
-        const savedState = localStorage.getItem('myApp_restrictedMode');
-        if (savedState === 'true') {
-            isRestrictedMode = true;
-            library = privateLibrary;
-        } else {
-            library = publicLibrary;
-        }
+    <h2>4. Generador de Thumb:</h2>
+    <p style="font-size:12px; color:#aaa;">Selecciona un video para extraer 2 imágenes en alta calidad.</p>
+    
+    <input type="file" id="thumbVideoFile" accept="video/*,.mkv,.mp4" style="margin-bottom:10px; color:#fff;">
+    <p style="font-size:12px; color:#aaa;">O intenta con URL (puede fallar):</p>
+    <input type="text" id="thumbVideoUrl" placeholder="URL del video (mp4)">
+    <label style="color:#aaa; font-size:12px; display:block; margin-bottom:10px;"><input type="checkbox" id="thumbUseProxy"> Usar Proxy</label>
+    
+    <button onclick="iniciarGeneracionThumb()" style="background: #E50914; color: white;">GENERAR THUMBS</button>
+    <div id="thumbStatus" style="color: yellow; margin-bottom: 10px; font-weight: bold;"></div>
 
-        // Cargar color de acento guardado
-        const savedColor = localStorage.getItem('myApp_accentColor');
-        const colorSwitch = document.getElementById('accent-color-switch');
-        if (savedColor === 'purple') {
-            document.documentElement.style.setProperty('--accent', '#6c63ff');
-            document.documentElement.style.setProperty('--glow', 'rgba(108, 99, 255, 0.35)');
-            if (colorSwitch) colorSwitch.checked = true;
-        } else {
-            if (colorSwitch) colorSwitch.checked = false;
-        }
+    <!-- Contenedor dinámico para 10 imágenes -->
+    <div id="thumbOutputContainer" style="display:none; flex-wrap: wrap; gap: 10px;"></div>
 
-        window.addEventListener('hashchange', handleRouting);
-        handleRouting();
-        
-        setupTouchControls();
-
-        // [NUEVO] Listener para activar el flag de autoplay después del primer play manual.
-        mainVideo.addEventListener('play', () => {
-            if (!hasPlayedAnyVideo) {
-                hasPlayedAnyVideo = true;
-            }
-        });
-
-    // --- EVENTOS DE CARGA (SPINNER) ---
-    mainVideo.addEventListener('loadstart', () => videoLoader.style.display = 'block'); // Al empezar a cargar
-    mainVideo.addEventListener('waiting', () => videoLoader.style.display = 'block');   // Si se detiene por buffer
-    mainVideo.addEventListener('canplay', () => videoLoader.style.display = 'none');   // Cuando ya puede reproducir
-    mainVideo.addEventListener('playing', () => videoLoader.style.display = 'none');   // Cuando ya está reproduciendo
-    mainVideo.addEventListener('error', () => videoLoader.style.display = 'none');     // Si hay error
-    }
-
-    function openSearchOverlay() {
-        document.getElementById('search-overlay').classList.add('active');
-        document.getElementById('overlay-search-input').focus();
-    }
-
-    function closeSearchOverlay() {
-        document.getElementById('search-overlay').classList.remove('active');
-        document.getElementById('overlay-search-input').value = "";
-        document.getElementById('global-search-results').innerHTML = "";
-    }
-
-    function handleRouting() {
-        const hash = window.location.hash;
-
-        if (hash.startsWith('#detail') && currentAnime) {
-            showDetailView();
-        } else if (hash === '#settings') {
-            showSettingsView();
-        } else {
-            showHomeView();
-        }
-        updateNavActiveState(hash);
-    }
-
-    function switchTab(tab) {
-        const hash = '#' + tab;
-        if (window.location.hash !== hash) {
-            // Usar pushState para que el botón de atrás del navegador funcione
-            history.pushState({ tab }, null, hash);
-            handleRouting();
-        }
-    }
-    // Manejar el botón "atrás" del navegador
-    window.onpopstate = handleRouting;
-
-    function enterPrivateMode() {
-        const settingsCodeInput = document.getElementById('settings-code-input');
-        if (!settingsCodeInput) return;
-
-        if (settingsCodeInput.value === SECRET_CODE) {
-            isRestrictedMode = true;
-            library = privateLibrary;
-            localStorage.setItem('myApp_restrictedMode', 'true');
-            switchTab('home');
-        } else {
-            settingsCodeInput.classList.add('shake');
-            setTimeout(() => settingsCodeInput.classList.remove('shake'), 700);
-            settingsCodeInput.value = "";
-        }
-    }
-
-    function exitPrivateMode() {
-        isRestrictedMode = false;
-        library = publicLibrary;
-        privatePage = 1; // Resetear página al salir del modo privado
-        localStorage.setItem('myApp_restrictedMode', 'false');
-        renderHome();
-        window.scrollTo(0, 0);
-    }
-
-    function toggleAccentColor(checkbox) {
-        const root = document.documentElement;
-        if (checkbox.checked) {
-            // Cambiar a Morado
-            root.style.setProperty('--accent', '#6c63ff');
-            root.style.setProperty('--glow', 'rgba(108, 99, 255, 0.35)');
-            localStorage.setItem('myApp_accentColor', 'purple');
-        } else {
-            // Volver a Rojo (Original)
-            root.style.setProperty('--accent', '#e63946');
-            root.style.setProperty('--glow', 'rgba(230, 57, 70, 0.35)');
-            localStorage.setItem('myApp_accentColor', 'red');
-        }
-    }
-
-    // ===== CARRUSEL HERO =====
-    let _heroCurrent = 0;
-    let _heroTimer = null;
-    let _heroTotal = 3;
-
-    function heroGoTo(idx) {
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.hero-dot');
-        if (!slides[idx] || !slides[_heroCurrent] || !dots[_heroCurrent]) return;
-        slides[_heroCurrent].classList.remove('active');
-        dots[_heroCurrent].classList.remove('active');
-        _heroCurrent = idx;
-        slides[idx].classList.add('active');
-        dots[idx].classList.add('active');
-        resetHeroTimer();
-    }
-
-    function heroNext() {
-        heroGoTo((_heroCurrent + 1) % _heroTotal);
-    }
-
-    function resetHeroTimer() {
-        clearInterval(_heroTimer);
-        _heroTimer = setInterval(heroNext, 4500);
-    }
-
-    function initHeroCarousel() {
-        _heroCurrent = 0;
-        _heroTotal = document.querySelectorAll('.hero-slide').length;
-        resetHeroTimer();
-    }
-
-    // --- RENDERIZADO ---
-    function renderHome() {
-        const homeContent = document.querySelector('.home-content');
-        
-        if (isRestrictedMode) {
-            // --- MODO PRIVADO (GRID PAGINADO) ---
-            // "Donde está el icono de huella... videos de 2 hasta abajo... hasta 10 lineas"
-            document.getElementById('bottom-nav').style.display = 'none';
-            homeContent.innerHTML = `
-                <div class="search-header-bar" style="position: sticky; top: 0; background: var(--bg); z-index: 40; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
-                    <button class="search-back-btn" onclick="exitPrivateMode()">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>
-                    </button>
-                    <span style="font-size: 18px; font-weight: 600; color: white;">Contenido Exclusivo</span>
-                </div>
-                <div class="full-list-grid" id="private-grid"></div>
-                <div id="private-pagination" class="pagination-container"></div>
-            `;
-            renderPrivateGrid();
-        } else {
-            // --- MODO PÚBLICO (LISTAS HORIZONTALES) ---
-            document.getElementById('bottom-nav').style.display = 'flex';
-            homeContent.innerHTML = `
-                <div class="hero-carousel" id="hero-carousel">
-                    <!-- Populated by JS -->
-                </div>
-                <div class="section-title">Recientes</div>
-                <div class="horizontal-list" id="recent-list"></div>
-
-                <div class="section-title">Reciente en Series</div>
-                <div class="horizontal-list" id="series-list"></div>
-
-                <div class="section-title">Más populares</div>
-                <div class="horizontal-list" id="popular-list"></div>
-            `;
-
-            // --- Llenar Carrusel ---
-            const heroCarousel = document.getElementById('hero-carousel');
-            let recentItems = typeof recientesData !== 'undefined' ? recientesData : [];
-            let popularItems = typeof popularesData !== 'undefined' ? popularesData : [];
-            let seriesItems = typeof seriesData !== 'undefined' ? seriesData : [];
-            let heroSources = [...recentItems, ...popularItems].filter(a => a.banner || a.poster).slice(0, 3);
+    <script>
+        async function buscarAnime() {
+            const query = document.getElementById('inputTitulo').value.trim();
+            if (!query) return alert("Escribe un título primero.");
             
-            let heroHTML = '';
-            heroSources.forEach((anime, i) => {
-                const onclickAction = `openAnimeDetail(library.find(a => a.titulo === '${anime.titulo.replace(/'/g, "\\'")}'))`;
-                const epCount = (anime.episodios && anime.episodios.length) ? anime.episodios.length : 0;
+            const statusDiv = document.getElementById('animeSearchResults');
+            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = 'Buscando en AniList, Jikan, Kitsu e IMDb...';
 
-                let titleOrLogo = `<div class="hero-title">${anime.titulo}</div>`;
-                let bgImage = anime.banner || anime.poster;
-
-                if (anime.titulo && anime.titulo.toLowerCase().includes('kaifuku')) {
-                    titleOrLogo = `<img src="https://dimagemfondo.github.io/visor-imgen/img/04/Logo.png" class="hero-logo" alt="Logo">`;
-                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/04/img01.webp";
-                } else if (anime.titulo && anime.titulo.toLowerCase().includes('ishuzoku')) {
-                    titleOrLogo = `<img src="https://Dimagemfondo.github.io/visor-imgen/img/04/Logo (1).png" class="hero-logo" alt="Logo">`;
-                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/04/img02.webp";
-                } else if (anime.titulo && anime.titulo.toLowerCase().includes('nande')) {
-                    titleOrLogo = `<img src="https://dimagemfondo.github.io/visor-imgen/img/04/Logo%20(2).png" class="hero-logo" alt="Logo">`;
-                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/04/img.webp";
+            // Query GraphQL para AniList
+            const gqlQuery = `
+            query ($search: String) {
+              Page(page: 1, perPage: 5) {
+                media(search: $search, type: ANIME, sort: SEARCH_MATCH) {
+                  id
+                  title {
+                    romaji
+                    english
+                    native
+                  }
+                  coverImage {
+                    extraLarge
+                    large
+                  }
+                  description
+                  startDate {
+                    year
+                  }
+                  isAdult
+                  externalLinks {
+                    site
+                    url
+                  }
                 }
-
-                heroHTML += `
-                    <div class="hero-slide ${i === 0 ? 'active' : ''}" onclick="${onclickAction}">
-                        <div class="hero-slide-bg" style="background-image: url('${bgImage}');"></div>
-                        <div class="hero-gradient"></div>
-                        <div class="hero-content">
-                            ${titleOrLogo}
-                            <div class="hero-meta">
-                                <div class="hero-genre-tag">EP ${epCount}</div>
-                                <span class="hero-year-text">${anime.ano || ''}</span>
-                            </div>
-                            <p class="hero-description">${anime.sinopsis || ''}</p>
-                        </div>
-                    </div>
-                `;
-            });
-            heroHTML += `
-                <div class="hero-dots">
-                    ${heroSources.map((_, i) => `<div class="hero-dot ${i === 0 ? 'active' : ''}" data-idx="${i}" onclick="event.stopPropagation(); heroGoTo(${i})"></div>`).join('')}
-                </div>
-                <div class="top-search-btn" onclick="event.stopPropagation(); openSearchOverlay()">
-                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                </div>
+              }
+            }
             `;
-            heroCarousel.innerHTML = heroHTML;
-            initHeroCarousel();
 
-            // 1. Recién añadidos
-            const recentContainer = document.getElementById('recent-list');
-            recentItems.forEach(anime => {
-                const card = document.createElement('div');
-                card.className = "horizontal-item"; 
-                card.onclick = () => { openAnimeDetail(anime); };
-                card.innerHTML = `
-                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
-                    <div class="anime-title">${anime.titulo}</div>
-                `;
-                recentContainer.appendChild(card);
-            });
+            // Promesas para buscar en paralelo
+            const pAniList = fetch('https://graphql.anilist.co', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ query: gqlQuery, variables: { search: query } })
+            }).then(res => res.json());
 
-            // 2. Más populares
-            const popularContainer = document.getElementById('popular-list');
-            popularItems.forEach(anime => {
-                const card = document.createElement('div');
-                card.className = "horizontal-item"; 
-                card.onclick = () => { openAnimeDetail(anime); };
-                card.innerHTML = `
-                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
-                    <div class="anime-title">${anime.titulo}</div>
-                `;
-                popularContainer.appendChild(card);
-            });
+            const pJikan = fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}&limit=1`)
+                .then(res => res.json());
 
-            // 3. Reciente en Series
-            const seriesContainer = document.getElementById('series-list');
-            seriesItems.forEach(anime => {
-                const card = document.createElement('div');
-                card.className = "horizontal-item"; 
-                card.onclick = () => { openAnimeDetail(anime); };
-                card.innerHTML = `
-                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
-                    <div class="anime-title">${anime.titulo}</div>
-                `;
-                seriesContainer.appendChild(card);
-            });
-        }
-    }
+            const pKitsu = fetch(`https://kitsu.io/api/edge/anime?filter[text]=${encodeURIComponent(query)}&page[limit]=1`)
+                .then(res => res.json());
 
-    function renderSettings() {
-        const codeEntry = document.getElementById('code-entry-section');
-        if (!codeEntry) return;
+            // IMDb (vía Proxy para evitar CORS y obtener imagen original)
+            const pImdb = fetch(`https://corsproxy.io/?` + encodeURIComponent(`https://v2.sg.media-imdb.com/suggestion/${query.charAt(0).toLowerCase()}/${encodeURIComponent(query)}.json`))
+                .then(res => res.json());
 
-        // Ocultar la sección para introducir código si ya estamos en modo privado
-        codeEntry.style.display = isRestrictedMode ? 'none' : 'block';
-    }
-
-    function renderPrivateGrid() {
-        const grid = document.getElementById('private-grid');
-        const pagination = document.getElementById('private-pagination');
-        if(!grid) return;
-
-        // Calcular items de la página actual
-        const start = (privatePage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const items = library.slice(start, end);
-
-        grid.innerHTML = "";
-        items.forEach(anime => {
-            const card = document.createElement('div');
-            card.className = "poster-wrapper"; 
-            card.onclick = () => { openAnimeDetail(anime); };
-            card.innerHTML = `
-                <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
-                <div class="anime-title">${anime.titulo}</div>
-            `;
-            grid.appendChild(card);
-        });
-
-        // Renderizar controles de paginación (1, 2, 3...)
-        pagination.innerHTML = "";
-        const totalPages = Math.ceil(library.length / itemsPerPage);
-        
-        if(totalPages > 1) {
-            for(let i=1; i<=totalPages; i++) {
-                const btn = document.createElement('button');
-                btn.className = `page-btn ${i === privatePage ? 'active' : ''}`;
-                btn.innerText = i;
-                btn.onclick = () => {
-                    privatePage = i;
-                    renderPrivateGrid();
-                    window.scrollTo(0,0);
-                };
-                pagination.appendChild(btn);
-            }
-        }
-    }
-
-    function renderGrid(data, container) {
-        container.innerHTML = "";
-        data.forEach(anime => {
-            const card = document.createElement('div');
-            card.className = "poster-wrapper"; 
-            card.onclick = () => { openAnimeDetail(anime); };
-            card.innerHTML = `
-                <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
-                <div class="anime-title">${anime.titulo}</div>
-            `;
-            container.appendChild(card);
-        });
-    }
-
-    // --- DETALLE ---
-    function openAnimeDetail(anime) {
-        hasPlayedAnyVideo = false; 
-        currentAnime = anime;
-        currentEpIndex = 0;
-        prepareDetailView(anime);
-        window.location.hash = "detail";
-    }
-    
-    function prepareDetailView(anime) {
-        detailTitle.innerText = anime.titulo;
-        detailSubtitle.innerText = anime.titulo_jp || "";
-
-        detailRating.innerText = anime.rating || "";
-        detailSeason.innerText = anime.temporada || "";
-        detailYear.innerText = anime.ano || "";
-        detailQuality.innerText = anime.calidad || "";
-        
-        detailSynopsis.innerText = anime.sinopsis || "";
-
-        epSelector.innerHTML = "";
-        const totalEps = anime.episodios.length;
-        epCountText.innerText = `${totalEps} ${totalEps === 1 ? 'Capítulo' : 'Capítulos'}`;
-
-        anime.episodios.forEach((ep, index) => {
-            const btn = document.createElement('div');
-            btn.className = 'ep-box';
-            btn.innerText = ep.num;
-            btn.onclick = () => playEpisode(index);
-            epSelector.appendChild(btn);
-        });
-
-        // Forzar el scroll al inicio DESPUÉS de agregar los botones
-        epSelector.scrollLeft = 0;
-
-        if (totalEps > 0) {
-            playEpisode(0);
-        } else {
-            videoContainer.style.display = 'none';
-            heroImg.style.display = 'block';
-            heroImg.src = anime.banner || anime.poster;
-        }
-    }
-
-    function playEpisode(index, isAutoChained = false) {
-        if (!currentAnime || !currentAnime.episodios[index]) return;
-        currentEpIndex = index;
-        const episode = currentAnime.episodios[index];
-
-        // Primero, revisamos si la app de Android nos está "escuchando".
-        if (typeof Android !== 'undefined' && Android.playVideo) {
-            // Si es así, le pasamos las URLs al código nativo de Java.
-            const videoLink = episode.link;
-            const subtitleLink = episode.subtitulo || null; // Si no hay subtitulo, pasamos null
-
-            if (subtitleLink) {
-                Android.playVideo(videoLink, subtitleLink);
-            } else {
-                Android.playVideo(videoLink);
-            }
-            
-        } else {
-            // Si no estamos en la app, usamos el reproductor web personalizado.
-            console.log("Interfaz 'Android' no encontrada. Usando reproductor web.");
-            heroImg.style.display = "none";
-            videoContainer.style.display = "block"; // Mostrar el contenedor del nuevo reproductor
-            if (episode.thumb) {
-                mainVideo.poster = episode.thumb;
-            } else {
-                mainVideo.removeAttribute("poster");
-            }
-            mainVideo.src = episode.link;
-            mainVideo.load(); // Forzar al navegador a procesar el nuevo video inmediatamente
-            
-            mainVideo.currentTime = 0;
-            // Reiniciar barra de progreso
-            progressBar.style.width = '0%';
-            progressKnob.style.left = '0%';
-            
-            // Cargar Sprite si existe
-            loadSprite(episode.sprite, episode.spriteImg);
-
-            // Lógica de reproducción y estado de UI
-            if (isAutoChained || hasPlayedAnyVideo) {
-                mainVideo.play();
-                videoContainer.classList.remove('paused');
-                btnCenter.innerHTML = iconPause;
-            } else {
-                // Forzar estado pausado en carga manual inicial
-                mainVideo.pause();
-                videoContainer.classList.add('paused');
-                btnCenter.innerHTML = iconPlay;
-            }
-            
-            // Cargar subtítulos para el reproductor web
-            if (octopusInstance) { octopusInstance.freeTrack(); octopusInstance = null; }
-            setupSubtitles(episode.subtitulo);
-        }
-
-        // El resto de la función para actualizar la UI se mantiene.
-        const buttons = epSelector.querySelectorAll('.ep-box');
-        buttons.forEach((btn, i) => {
-            btn.classList.toggle('active', i === index);
-        });
-        
-        if(buttons[index]) {
-            buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
-        }
-
-        if (!isAutoChained) {
-            document.getElementById('hero-area').scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-
-    // --- LÓGICA DEL REPRODUCTOR PERSONALIZADO ---
-    let octopusInstance = null;
-    let currentSubUrl = 'none';
-    let subtitlePreference = 'none'; // [NUEVO] Variable para recordar la elección
-
-    // 1. Play/Pausa
-    const iconPlay = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-    const iconPause = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
-
-    const togglePlay = (e) => {
-        e.stopPropagation();
-        if (mainVideo.paused) {
-            mainVideo.play();
-            btnCenter.innerHTML = iconPause;
-            videoContainer.classList.remove('paused');
-            showControls();
-        } else {
-            mainVideo.pause();
-            btnCenter.innerHTML = iconPlay;
-            videoContainer.classList.add('paused');
-            showControls();
-        }
-    };
-    btnCenter.addEventListener('click', togglePlay);
-
-    // 2. Mostrar/Ocultar Controles
-    let controlsTimer;
-
-    const showControls = () => {
-        videoContainer.classList.add('active');
-        clearTimeout(controlsTimer);
-        controlsTimer = setTimeout(() => {
-            // No ocultar si el video está pausado o si se está arrastrando la barra
-            if (!mainVideo.paused && !isScrubbing) {
-                videoContainer.classList.remove('active');
-            }
-        }, 3000);
-    };
-    
-    videoContainer.addEventListener('click', (e) => {
-        // Ignorar si el clic proviene de controles internos (aunque la mayoría detiene la propagación, es doble seguridad)
-        if (e.target.closest('.bottom-bar') || e.target.closest('.cc-menu') || e.target.closest('.progress-container')) return;
-        
-        // Lógica inteligente para el botón Play central
-        if (e.target.closest('.center-play')) {
-            // Si acabamos de pausar, mantener los controles visibles
-            if (mainVideo.paused) return;
-            // Si acabamos de dar play, dejar que el código de abajo oculte los controles
-        }
-
-        if (videoContainer.classList.contains('active')) {
-            videoContainer.classList.remove('active');
-            clearTimeout(controlsTimer);
-        } else {
-            showControls();
-        }
-    });
-    
-    // 3. Barra de Progreso
-    const formatTime = s => {
-        if (isNaN(s)) return "0:00";
-        const m = Math.floor(s/60);
-        const sc = Math.floor(s%60);
-        return `${m}:${sc<10?'0':''}${sc}`;
-    };
-    mainVideo.addEventListener('loadedmetadata', () => durTimeText.textContent = formatTime(mainVideo.duration));
-    
-    mainVideo.addEventListener('timeupdate', () => {
-        if (isScrubbing) return;
-        const pct = (mainVideo.currentTime / mainVideo.duration) * 100;
-        progressBar.style.width = `${pct}%`;
-        progressKnob.style.left = `${pct}%`;
-        currTimeText.textContent = formatTime(mainVideo.currentTime);
-    });
-    
-    // --- LÓGICA DE SPRITES ---
-    let spriteData = [];
-    let spriteTotalWidth = 0;
-    let spriteTotalHeight = 0;
-
-    function loadSprite(url, imgOverride) {
-        spriteData = [];
-        spriteTotalWidth = 0;
-        spriteTotalHeight = 0;
-        if (!url) return;
-        
-        // Obtener la ruta base del archivo VTT para resolver imágenes relativas
-        const lastSlash = url.lastIndexOf('/');
-        const baseUrl = lastSlash !== -1 ? url.substring(0, lastSlash + 1) : '';
-
-        fetch(url)
-            .then(r => r.text())
-            .then(text => {
-                const lines = text.split('\n');
-                // Corregido: Regex flexible para soportar MM:SS.mmm y HH:MM:SS.mmm
-                const timeRegex = /(?:(\d{2}):)?(\d{2}):(\d{2})\.(\d{3})/;
-                const parseTime = (t) => {
-                    const parts = t.match(timeRegex);
-                    if(!parts) return 0;
-                    const h = parts[1] ? parseInt(parts[1]) : 0;
-                    const m = parseInt(parts[2]);
-                    const s = parseInt(parts[3]);
-                    const ms = parseInt(parts[4]);
-                    return h*3600 + m*60 + s + ms/1000;
-                };
+            try {
+                const [resAniList, resJikan, resKitsu, resImdb] = await Promise.allSettled([pAniList, pJikan, pKitsu, pImdb]);
                 
-                let currentStart = 0;
-                let currentEnd = 0;
+                let html = '<p style="margin-top:0; font-size:12px; color:#ccc;">Resultados (Posters). La resolución saldrá abajo:</p><div style="display:flex; gap:10px; overflow-x:auto; padding-bottom:10px;">';
                 
-                for(let i=0; i<lines.length; i++) {
-                    const line = lines[i].trim();
-                    if(line.includes('-->')) {
-                        const times = line.split('-->');
-                        currentStart = parseTime(times[0].trim());
-                        currentEnd = parseTime(times[1].trim());
-                    } else if (line.includes('#xywh=')) {
-                        let [imgUrl, coords] = line.split('#xywh=');
-                        
-                        if (imgOverride) {
-                            imgUrl = imgOverride;
-                        } else if (imgUrl && !imgUrl.includes('://') && !imgUrl.startsWith('data:')) {
-                            imgUrl = baseUrl + imgUrl;
+                // 1. Procesar AniList (Prioridad para datos)
+                if (resAniList.status === 'fulfilled' && resAniList.value.data && resAniList.value.data.Page.media.length > 0) {
+                    const anime = resAniList.value.data.Page.media[0];
+                    // Prioridad: Extra Large (Poster Vertical)
+                    const imgUrl = anime.coverImage.extraLarge || anime.coverImage.large;
+                    
+                    if (imgUrl) html += renderImageBlock(imgUrl, "AniList");
+
+                    // Llenar datos
+                    document.getElementById('inputTituloJp').value = anime.title.native || "";
+                    document.getElementById('inputRating').value = anime.isAdult ? "18+" : "13+";
+                    document.getElementById('inputAno').value = anime.startDate.year || "";
+                    
+                    let sinopsis = anime.description || "";
+                    sinopsis = sinopsis.replace(/<br\s*\/?>/gi, "\n").replace(/<[^>]+>/g, "");
+                    traducirSinopsis(sinopsis);
+
+                    // --- INTEGRACIÓN ANIDB (Para portadas DVD/Uncensored) ---
+                    if (anime.externalLinks) {
+                        const anidbLink = anime.externalLinks.find(l => l.site === "AniDB");
+                        if (anidbLink) {
+                            const match = anidbLink.url.match(/anime\/(\d+)/);
+                            if (match) {
+                                try {
+                                    // Usamos corsproxy para acceder a la API HTTP de AniDB (Puerto 9001)
+                                    const anidbRes = await fetch(`https://corsproxy.io/?` + encodeURIComponent(`http://api.anidb.net:9001/httpapi?request=anime&client=kamverlord&clientver=1&protover=1&aid=${match[1]}`));
+                                    const anidbText = await anidbRes.text();
+                                    const parser = new DOMParser();
+                                    const xmlDoc = parser.parseFromString(anidbText, "text/xml");
+                                    const pic = xmlDoc.querySelector('picture');
+                                    if (pic && pic.textContent) {
+                                        html += renderImageBlock(`https://img7.anidb.net/pics/anime/${pic.textContent}`, "AniDB (Cover)");
+                                    }
+                                } catch (e) { console.error("Error AniDB:", e); }
+                            }
                         }
-
-                        const [x, y, w, h] = coords.split(',');
-                        spriteData.push({ start: currentStart, end: currentEnd, url: imgUrl, x, y, w, h });
                     }
                 }
 
-                // Precargar imagen para obtener dimensiones totales (necesario para el escalado HD)
-                if (spriteData.length > 0) {
-                    const img = new Image();
-                    img.src = spriteData[0].url;
-                    img.onload = () => {
-                        spriteTotalWidth = img.naturalWidth;
-                        spriteTotalHeight = img.naturalHeight;
-                    };
-                }
-            })
-            .catch(e => console.error("Error loading sprite:", e));
-    }
-
-    // Función para actualizar la miniatura
-    const updatePreview = (clientX) => {
-        // Si no hay sprites cargados, no mostrar el cuadro de vista previa
-        if (spriteData.length === 0) {
-            previewBox.style.display = 'none';
-            return;
-        }
-
-        const rect = progressArea.getBoundingClientRect();
-        let pos = (clientX - rect.left) / rect.width;
-        pos = Math.max(0, Math.min(1, pos));
-        const time = pos * mainVideo.duration;
-
-        // Posición visual (clamp para que no se salga de la pantalla)
-        const boxWidth = 160; 
-        const visualX = Math.max(boxWidth/2, Math.min(rect.width - boxWidth/2, pos * rect.width));
-        
-        previewBox.style.left = `${visualX}px`;
-        previewBox.style.display = 'block';
-
-        // Mostrar sprite si existe datos
-        if (spriteData.length > 0) {
-            const cue = spriteData.find(c => time >= c.start && time < c.end);
-            if (cue) {
-                previewImg.style.display = 'block';
-                previewImg.style.backgroundImage = `url(${cue.url})`;
+                // --- INTEGRACIÓN TMDB (TheMovieDB) ---
+                // Nota: Esta es una Key pública de demostración. Si falla, regístrate en themoviedb.org y pon tu propia API Key aquí.
+                const tmdbKey = "530419d5607d5ce3546355094d321ecb"; 
                 
-                const spriteW = parseFloat(cue.w);
-                // Auto-escalado: Si el sprite es más grande que la caja (160px), lo reducimos proporcionalmente
-                if (spriteTotalWidth > 0 && spriteW > 160) {
-                    const scale = 160 / spriteW;
-                    const bgW = spriteTotalWidth * scale;
-                    const bgH = spriteTotalHeight * scale;
-                    const bgX = parseFloat(cue.x) * scale;
-                    const bgY = parseFloat(cue.y) * scale;
-                    
-                    previewImg.style.backgroundSize = `${bgW}px ${bgH}px`;
-                    previewImg.style.backgroundPosition = `-${bgX}px -${bgY}px`;
-                } else {
-                    // Tamaño nativo (160px o menor)
-                    previewImg.style.backgroundSize = 'auto';
-                    previewImg.style.backgroundPosition = `-${cue.x}px -${cue.y}px`;
+                try {
+                    // 1. Buscar ID en TMDB
+                    const tmdbSearchUrl = `https://api.themoviedb.org/3/search/multi?api_key=${tmdbKey}&query=${encodeURIComponent(query)}&include_adult=true&language=es-MX`;
+                    const tmdbRes = await fetch(tmdbSearchUrl).then(r => r.json());
+
+                    if (tmdbRes.results && tmdbRes.results.length > 0) {
+                        // Filtramos para priorizar coincidencias exactas o relevantes
+                        const bestMatch = tmdbRes.results[0];
+                        const tmdbId = bestMatch.id;
+                        const type = bestMatch.media_type; // 'tv' o 'movie'
+
+                        // Mostrar Poster Principal de TMDB
+                        if (bestMatch.poster_path && !document.getElementById('inputPoster').value) {
+                            html += renderImageBlock(`https://image.tmdb.org/t/p/original${bestMatch.poster_path}`, "TMDB (Poster)");
+                        }
+
+                        // 2. Buscar imágenes adicionales (Fanart/Backdrops/Logos) usando el ID de TMDB
+                        const tmdbImagesUrl = `https://api.themoviedb.org/3/${type}/${tmdbId}/images?api_key=${tmdbKey}&include_image_language=ja,en,null`;
+                        const imagesRes = await fetch(tmdbImagesUrl).then(r => r.json());
+
+                        if (imagesRes.posters && imagesRes.posters.length > 0) {
+                            // Mostrar hasta 3 posters extra de alta calidad
+                            imagesRes.posters.slice(0, 3).forEach(p => {
+                                if (p.file_path !== bestMatch.poster_path) {
+                                    html += renderImageBlock(`https://image.tmdb.org/t/p/original${p.file_path}`, "TMDB (Extra)");
+                                }
+                            });
+                        }
+
+                        // --- NUEVO: BACKDROPS (Banners) ---
+                        if (imagesRes.backdrops && imagesRes.backdrops.length > 0) {
+                            // Poner el primero automáticamente si está vacío
+                            if(!document.getElementById('inputBanner').value) document.getElementById('inputBanner').value = `https://image.tmdb.org/t/p/original${imagesRes.backdrops[0].file_path}`;
+                            
+                            imagesRes.backdrops.slice(0, 4).forEach(b => {
+                                html += renderImageBlock(`https://image.tmdb.org/t/p/original${b.file_path}`, "TMDB Backdrop", "inputBanner");
+                            });
+                        }
+
+                        // --- NUEVO: LOGOS (ClearArt) ---
+                        if (imagesRes.logos && imagesRes.logos.length > 0) {
+                            if(!document.getElementById('inputLogo').value) document.getElementById('inputLogo').value = `https://image.tmdb.org/t/p/original${imagesRes.logos[0].file_path}`;
+                            imagesRes.logos.slice(0, 4).forEach(l => {
+                                html += renderImageBlock(`https://image.tmdb.org/t/p/original${l.file_path}`, "TMDB Logo", "inputLogo");
+                            });
+                        }
+                        
+                        // Intentar obtener Fanart.tv (si existe integración en TMDB a veces se puede deducir, pero requiere API Key propia de Fanart.tv)
+                        // Por ahora, TMDB suele tener los mismos contenidos que Fanart.tv en la sección de imágenes.
+
+                        // Si no hay sinopsis aún, usar la de TMDB
+                        if (!document.getElementById('inputSinopsis').value && bestMatch.overview) {
+                            document.getElementById('inputSinopsis').value = bestMatch.overview;
+                        }
+                    }
+                } catch (e) { console.error("Error TMDB:", e); }
+
+
+                // 2. Procesar Jikan (MAL)
+                if (resJikan.status === 'fulfilled' && resJikan.value.data && resJikan.value.data.length > 0) {
+                    const jikanData = resJikan.value.data[0];
+                    const imgUrl = jikanData.images?.jpg?.large_image_url || jikanData.images?.jpg?.image_url;
+                    if (imgUrl) html += renderImageBlock(imgUrl, "MyAnimeList");
+
+                    // Corregir Rating usando MAL (AniList suele poner 13+ a los Ecchi/Seinen)
+                    if (jikanData.rating) {
+                        let r = jikanData.rating;
+                        // R+ (Mild Nudity), Rx (Hentai), R-17+ (Violence/Profanity) -> Todo a 18+
+                        if (r.includes("Rx") || r.includes("R+") || r.includes("17+")) {
+                            document.getElementById('inputRating').value = "18+";
+                        } else if (r.includes("13+")) {
+                            document.getElementById('inputRating').value = "13+";
+                        }
+                    }
                 }
-            } else {
-                previewImg.style.display = 'none';
+
+                // 3. Procesar Kitsu (Alternativa a AniDB)
+                if (resKitsu.status === 'fulfilled' && resKitsu.value.data && resKitsu.value.data.length > 0) {
+                    const kitsuData = resKitsu.value.data[0];
+                    // Prioridad: PosterImage Original (Suele ser muy grande)
+                    const imgUrl = kitsuData.attributes?.posterImage?.original || kitsuData.attributes?.posterImage?.large;
+                    if (imgUrl) html += renderImageBlock(imgUrl, "Kitsu (AniDB Alt)");
+                }
+
+                // 4. Procesar IMDb
+                if (resImdb.status === 'fulfilled' && resImdb.value.d && resImdb.value.d.length > 0) {
+                    const imdbData = resImdb.value.d[0];
+                    let imgUrl = imdbData.i ? imdbData.i.imageUrl : null;
+                    if (imgUrl) {
+                        // Limpiar URL para obtener máxima resolución (quitar ._V1_...)
+                        imgUrl = imgUrl.split('._V1_')[0] + '.jpg';
+                        html += renderImageBlock(imgUrl, "IMDb API");
+                    }
+                }
+
+                html += '</div>';
+                statusDiv.innerHTML = html;
+
+            } catch (e) {
+                console.error(e);
+                statusDiv.innerHTML = 'Error al buscar: ' + e.message;
             }
-        } else {
-            previewImg.style.display = 'none';
         }
-    };
 
-    let scrubTargetTime = null;
-
-    const scrub = (e) => {
-        const rect = progressArea.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX; 
-        let pos = (clientX - rect.left) / rect.width;
-        pos = Math.max(0, Math.min(1, pos));
-        
-        const pct = pos * 100;
-        progressBar.style.width = `${pct}%`;
-        progressKnob.style.left = `${pct}%`;
-        
-        if (mainVideo.duration) {
-            scrubTargetTime = pos * mainVideo.duration;
-            currTimeText.textContent = formatTime(scrubTargetTime);
+        function renderImageBlock(url, source, targetId = 'inputPoster') {
+            return `
+            <div style="min-width:120px; text-align:center;">
+                <img src="${url}" referrerpolicy="no-referrer" style="width:100%; height:170px; object-fit:cover; border:1px solid #555; margin-bottom:5px;" onload="this.parentElement.querySelector('.res-tag').innerText = this.naturalWidth + 'x' + this.naturalHeight">
+                <div style="font-size:10px; color:#aaa; margin-bottom:2px;">${source}</div>
+                <div class="res-tag" style="font-size:11px; color:#ffff00; margin-bottom:4px; font-weight:bold;">Cargando...</div>
+                <button onclick="document.getElementById('${targetId}').value='${url}'" style="padding:2px; font-size:10px; width:100%; margin-bottom:2px;">USAR ESTA</button>
+                <a href="${url}" target="_blank" style="display:block; font-size:10px; color:#0f0;">VER / DESCARGAR</a>
+            </div>`;
         }
-        updatePreview(clientX); // Mostrar miniatura al arrastrar
-    };
-    
-    let isScrubbing = false;
-    
-    const startScrub = (e) => { 
-        isScrubbing = true; 
-        showControls();
-        scrub(e); 
-    };
-    const moveScrub = (e) => { 
-        if (isScrubbing) { 
-            e.preventDefault(); 
-            showControls();
-            scrub(e); 
-        } 
-    };
-    const endScrub = () => { 
-        if (!isScrubbing) return;
-        isScrubbing = false; 
-        previewBox.style.display = 'none'; 
-        if (scrubTargetTime !== null) {
-            mainVideo.currentTime = scrubTargetTime;
-            scrubTargetTime = null;
-        }
-        showControls();
-    };
 
-    progressArea.addEventListener('mousedown', startScrub);
-    progressArea.addEventListener('touchstart', startScrub, { passive: false });
-    
-    // Eventos para Hover (PC)
-    progressArea.addEventListener('mousemove', (e) => updatePreview(e.clientX));
-    progressArea.addEventListener('mouseleave', () => previewBox.style.display = 'none');
-    
-    document.addEventListener('mousemove', moveScrub);
-    document.addEventListener('touchmove', moveScrub, { passive: false });
-    
-    document.addEventListener('mouseup', endScrub);
-    document.addEventListener('touchend', endScrub);
+        async function traducirSinopsis(text) {
+            // Limpieza previa: Eliminar etiquetas de origen comunes en inglés y español
+            text = text.replace(/\[Written by MAL Rewrite\]/gi, "")
+                       .replace(/\(Source:.*?\)/gi, "")
+                       .replace(/\(Fuente:.*?\)/gi, "")
+                       .trim();
 
-    // 4. Subtítulos
-    function setupSubtitles(subUrl) {
-        // Ocultar menú
-        ccMenu.style.display = 'none';
-        ccMenu.innerHTML = '';
-        currentSubUrl = 'none';
-        btnCC.classList.remove('cc-active');
-
-        // Evitar error si la librería de subtítulos no cargó (offline o bloqueo)
-        if (typeof SubtitlesOctopus === 'undefined') return;
-
-        // Función auxiliar para cargar
-        const loadSub = (url) => {
-            if (!octopusInstance) {
-                octopusInstance = new SubtitlesOctopus({
-                    video: mainVideo,
-                    subUrl: url,
-                    fonts: ['https://todesvip.github.io/visor-manga/fonts/Arial.woff2', 'https://todesvip.github.io/visor-manga/fonts/trebuc.ttf', 'https://todesvip.github.io/visor-manga/fonts/Franco-C3SA.ttf'], 
-                    workerUrl: 'https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus-worker.js' 
-                });
-            } else {
-                octopusInstance.setTrackByUrl(url);
+            try {
+                const tr = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=es&dt=t&q=${encodeURIComponent(text)}`);
+                const trData = await tr.json();
+                if (trData && trData[0]) {
+                    let translated = trData[0].map(item => item[0]).join('');
+                    // Limpieza posterior: Eliminar etiquetas que aparezcan tras la traducción
+                    translated = translated.replace(/\(Fuente:.*?\)/gi, "").replace(/\(Source:.*?\)/gi, "").trim();
+                    document.getElementById('inputSinopsis').value = translated;
+                } else {
+                    document.getElementById('inputSinopsis').value = text;
+                }
+            } catch (e) { 
+                document.getElementById('inputSinopsis').value = text;
             }
-        };
+        }
 
-        // Opción None
-        const noneBtn = document.createElement('button');
-        noneBtn.textContent = 'None';
-        // La clase active se gestiona en updateCCMenu
-        noneBtn.onclick = () => {
-            subtitlePreference = 'none'; // Guardar preferencia
-            if (octopusInstance) octopusInstance.freeTrack();
-            updateCCMenu('none');
-        };
-        ccMenu.appendChild(noneBtn);
+        function generarJson() {
+            // Obtener datos de los inputs
+            const titulo = document.getElementById('inputTitulo').value.trim();
+            const tituloJp = document.getElementById('inputTituloJp').value.trim();
+            const poster = document.getElementById('inputPoster').value.trim();
+            const banner = document.getElementById('inputBanner').value.trim();
+            const logo = document.getElementById('inputLogo').value.trim();
+            const rating = document.getElementById('inputRating').value.trim();
+            const temporada = document.getElementById('inputTemporada').value.trim();
+            const ano = document.getElementById('inputAno').value.trim();
+            const sinopsis = document.getElementById('inputSinopsis').value.trim();
+            const subtituloBase = document.getElementById('inputSubtitulos').value.trim();
+            const spriteBase = document.getElementById('inputSprite').value.trim();
+            const spriteImgBase = document.getElementById('inputSpriteImg').value.trim();
+            const cantEps1 = parseInt(document.getElementById('inputCantEps').value.trim()) || 0;
+            const cantEps2 = parseInt(document.getElementById('inputCantEpsSprite').value.trim()) || 0;
+            const cantEps3 = parseInt(document.getElementById('inputCantEpsSpriteImg').value.trim()) || 0;
+            const cantEps4 = parseInt(document.getElementById('inputCantEpsUrl').value.trim()) || 0;
+            const cantEps = Math.max(cantEps1, cantEps2, cantEps3, cantEps4);
+            const format = document.querySelector('input[name="videoFormat"]:checked').value;
 
-        if (subUrl) {
-            const subBtn = document.createElement('button');
-            subBtn.textContent = 'Español';
-            subBtn.onclick = () => {
-                subtitlePreference = 'Español'; // Guardar preferencia
-                loadSub(subUrl);
-                updateCCMenu(subUrl);
-            };
-            ccMenu.appendChild(subBtn);
+            // Obtener el texto del input
+            const rawInput = document.getElementById('inputUrls').value;
+            // Separar por líneas y eliminar vacíos
+            let urls = rawInput.split('\n').filter(line => line.trim() !== '');
 
-            // Auto-activar si la preferencia es Español
-            if (subtitlePreference === 'Español') {
-                loadSub(subUrl);
-                updateCCMenu(subUrl);
-            } else {
-                updateCCMenu('none');
+            // Si solo hay 1 URL y se especificó cantidad, generar los episodios automáticamente
+            if (urls.length === 1 && cantEps > 1) {
+                const fullUrl = urls[0];
+                // Separar extensión para evitar incrementar números en ella (ej. mp4)
+                const lastDotIndex = fullUrl.lastIndexOf('.');
+                let baseUrl = fullUrl;
+                let ext = "";
+                if (lastDotIndex !== -1) {
+                    baseUrl = fullUrl.substring(0, lastDotIndex);
+                    ext = fullUrl.substring(lastDotIndex);
+                }
+
+                urls = [];
+                for (let i = 0; i < cantEps; i++) {
+                    const matches = baseUrl.match(/(\d+)/g);
+                    if (matches) {
+                        const lastNum = matches[matches.length - 1];
+                        const newNum = (parseInt(lastNum) + i).toString().padStart(lastNum.length, '0');
+                        const lastIndex = baseUrl.lastIndexOf(lastNum);
+                        urls.push(baseUrl.substring(0, lastIndex) + newNum + baseUrl.substring(lastIndex + lastNum.length) + ext);
+                    } else {
+                        urls.push(fullUrl);
+                    }
+                }
             }
-        } else {
-            updateCCMenu('none');
-        }
-    }
 
-    function updateCCMenu(activeUrl) {
-        currentSubUrl = activeUrl;
-        btnCC.classList.toggle('cc-active', activeUrl !== 'none');
-        Array.from(ccMenu.children).forEach(btn => {
-            btn.classList.toggle('active', (btn.textContent === 'None' && activeUrl === 'none') || (btn.textContent === 'Español' && activeUrl !== 'none'));
-        });
-        ccMenu.style.display = 'none';
-    }
+            // Generar las líneas de episodios con el formato compacto
+            const episodiosLines = urls.map((url, index) => {
+                // Limpiar la URL y aplicar formato
+                let cleanUrl = url.trim();
+                if (format === 'mkv') {
+                    cleanUrl = cleanUrl.replace(/\.mp4$/i, '.mkv');
+                } else {
+                    cleanUrl = cleanUrl.replace(/\.mkv$/i, '.mp4');
+                }
+                
+                // Generar Subtítulo (Incrementar número automáticamente)
+                let subUrl = "";
+                if (subtituloBase) {
+                    const matches = subtituloBase.match(/(\d+)/g);
+                    if (matches) {
+                        const lastNum = matches[matches.length - 1]; // Detectar el último número (ej: 01)
+                        const newNum = (index + 1).toString().padStart(lastNum.length, '0'); // Crear 01, 02, 03...
+                        const lastIndex = subtituloBase.lastIndexOf(lastNum);
+                        subUrl = subtituloBase.substring(0, lastIndex) + newNum + subtituloBase.substring(lastIndex + lastNum.length);
+                    } else { subUrl = subtituloBase; }
+                }
+                
+                // Generar Sprite (Incrementar número automáticamente)
+                let spriteUrl = "";
+                if (spriteBase) {
+                    const matches = spriteBase.match(/(\d+)/g);
+                    if (matches) {
+                        const lastNum = matches[matches.length - 1];
+                        const newNum = (parseInt(lastNum) + index).toString().padStart(lastNum.length, '0');
+                        const lastIndex = spriteBase.lastIndexOf(lastNum);
+                        spriteUrl = spriteBase.substring(0, lastIndex) + newNum + spriteBase.substring(lastIndex + lastNum.length);
+                    } else { spriteUrl = spriteBase; }
+                }
+                
+                // Generar Sprite Img (Incrementar número automáticamente)
+                let spriteImgUrl = "";
+                if (spriteImgBase) {
+                    const matches = spriteImgBase.match(/(\d+)/g);
+                    if (matches) {
+                        const lastNum = matches[matches.length - 1];
+                        const newNum = (parseInt(lastNum) + index).toString().padStart(lastNum.length, '0');
+                        const lastIndex = spriteImgBase.lastIndexOf(lastNum);
+                        spriteImgUrl = spriteImgBase.substring(0, lastIndex) + newNum + spriteImgBase.substring(lastIndex + lastNum.length);
+                    } else { spriteImgUrl = spriteImgBase; }
+                }
 
-    btnCC.addEventListener('click', (e) => {
-        e.stopPropagation();
-        ccMenu.style.display = ccMenu.style.display === 'block' ? 'none' : 'block';
-    });
+                // Formato de una sola línea: { num: 1, nombre: "Episodio 1", ... }
+                return `            { num: ${index + 1}, nombre: "Episodio ${index + 1}", duracion: "24m", thumb: "", sprite: "${spriteUrl}", spriteImg: "${spriteImgUrl}", link: "${cleanUrl}", subtitulo: "${subUrl}" }`;
+            }).join(',\n');
 
-    // 5. Fullscreen
-    btnFS.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (!document.fullscreenElement) {
-            if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
-            else if (videoContainer.webkitRequestFullscreen) videoContainer.webkitRequestFullscreen();
-        } else {
-            if (document.exitFullscreen) document.exitFullscreen();
-            else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-        }
-    });
+            // Lógica de valores por defecto
+            const finalTitulo = titulo || "16";
+            const finalId = titulo ? titulo.split(' ')[0] : "16"; // Primera palabra del título como ID
+            const finalTituloJp = tituloJp || "16";
+            const finalPoster = poster || "16";
+            const finalBanner = banner || "";
+            const finalLogo = logo || "";
+            const finalRating = rating || "TV-MA";
+            const finalTemporada = (temporada && /^\d+$/.test(temporada)) ? `Temporada ${temporada}` : (temporada || "Temporada 1");
+            const finalAno = ano || "2020";
+            const finalSinopsis = (sinopsis || "16").replace(/"/g, '\\"');
 
-    // --- Control por gestos (desactivado, reservado para uso futuro) ---
-    function setupTouchControls() {
-        // Gestos de seek por deslizamiento desactivados para no interferir con el reproductor.
-    }
+            // Construir el objeto final manualmente respetando la indentación
+            const resultado = `    {
+        id: "${finalId}",
+        titulo: "${finalTitulo}",
+        titulo_jp: "${finalTituloJp}",
+        poster: "${finalPoster}",
+        banner: "${finalBanner}",
+        logo: "${finalLogo}",
+        rating: "${finalRating}",
+        temporada: "${finalTemporada}",
+        ano: "${finalAno}",
+        calidad: "HD",
+        sinopsis: "${finalSinopsis}",
+        episodios: [
+${episodiosLines}
+        ]
+    },`;
 
-
-    // --- UTILIDADES ---
-    function showDetailView() {
-        document.getElementById('bottom-nav').style.transform = 'translateY(100%)'; // Ocultar nav
-        switchView(detailView);
-        window.scrollTo(0, 0);
-    }
-
-    function showHomeView() {
-        if (currentAnime) { // Solo si venimos de la vista de detalle
-            mainVideo.pause();
-            mainVideo.src = "";
-            videoContainer.style.display = 'none';
-            currentAnime = null; 
-        }
-        switchView(homeView);
-        document.getElementById('bottom-nav').style.transform = 'translateY(0)'; // Mostrar nav
-        renderHome();
-    }
-
-    function showSettingsView() {
-        mainVideo.pause();
-        switchView(settingsView);
-        document.getElementById('bottom-nav').style.transform = 'translateY(0)';
-        renderSettings();
-    }
-
-    function updateNavActiveState(hash) {
-        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-        const activeId = hash === '#settings' ? 'nav-settings' : 'nav-home';
-        const activeEl = document.getElementById(activeId);
-        if (activeEl) activeEl.classList.add('active');
-    }
-
-    function switchView(view) {
-        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-        view.classList.add('active');
-    }
-
-    // --- LISTA COMPLETA ---
-    function openFullList() {
-        renderGrid(library, fullGrid);
-        window.location.hash = "fulllist";
-    }
-    function showFullListView() {
-        renderGrid(library, fullGrid);
-        document.getElementById('bottom-nav').style.transform = 'translateY(0)';
-        switchView(fullListView);
-    }
-    function closeFullList() {
-        window.history.back();
-    }
-
-    function handleGlobalSearch(sender) {
-        const input = sender;
-        const query = input.value.toLowerCase().trim();
-        
-        if (!query) {
-            globalSearchResults.style.display = 'none';
-            return;
+            document.getElementById('outputJson').textContent = resultado;
+            document.getElementById('btnCopy').style.display = 'block';
         }
 
-        const filtered = library.filter(a => a.titulo.toLowerCase().includes(query));
-        globalSearchResults.innerHTML = "";
-        globalSearchResults.style.display = 'block';
-
-        filtered.forEach(anime => {
-            const item = document.createElement('div');
-            item.className = 'search-result-card';
-            item.innerHTML = `
-                <img src="${anime.poster}" class="search-poster-img">
-                <div class="search-info">
-                    <div class="search-title">${anime.titulo}</div>
-                    <div class="search-desc">${anime.sinopsis || 'Sin descripción.'}</div>
-                </div>
-            `;
-            item.onclick = () => {
-                globalSearchResults.style.display = 'none';
-                closeSearchOverlay();
-                openAnimeDetail(anime);
-            };
-            globalSearchResults.appendChild(item);
-        });
-
-        if (filtered.length === 0) {
-            globalSearchResults.innerHTML = "<div style='padding:20px; color:#888; text-align:center;'>No se encontraron resultados</div>";
-        }
-    }
-
-    // El listener para el final del video ahora llama a playEpisode con el segundo parámetro en 'true'
-    mainVideo.addEventListener('ended', () => {
-        if (currentAnime && currentEpIndex < currentAnime.episodios.length - 1) {
-            playEpisode(currentEpIndex + 1, true);
-        }
-    });
-
-    try {
-        initApp();
-    } catch (e) {
-        console.error("Error al iniciar la app:", e);
-    }
-    
-    // --- LOGICA DE INICIO (SPLASH SCREEN) ---
-    async function launchApp() {
-        const splash = document.getElementById('splash-screen');
-        const status = document.getElementById('splash-status');
-        const spinner = document.getElementById('splash-spinner');
-        const retryBtn = document.getElementById('retry-btn');
-
-        // 1. Verificar conexión básica
-        if (!navigator.onLine) {
-            showError("Sin conexión a internet");
-            return;
+        function copiarCodigo() {
+            const codigo = document.getElementById('outputJson').textContent;
+            navigator.clipboard.writeText(codigo).then(() => {
+                const btn = document.getElementById('btnCopy');
+                btn.innerText = "¡COPIADO!";
+                btn.style.background = "#238636";
+                setTimeout(() => {
+                    btn.innerText = "COPIAR CÓDIGO";
+                    btn.style.background = "#1f6feb";
+                }, 2000);
+            });
         }
 
-        // 2. Precargar imágenes
-        try {
+        // --- LÓGICA GENERADOR DE SPRITES ---
+        async function iniciarGeneracionSprite() {
+            const status = document.getElementById('spriteStatus');
+            const urlInput = document.getElementById('spriteVideoUrl');
+            const fileInput = document.getElementById('spriteVideoFile');
+            const vttOutput = document.getElementById('vttOutput');
+            const imgOutput = document.getElementById('spriteOutputImg');
+            const btnDownImg = document.getElementById('btnDownImg');
+            const btnDownVtt = document.getElementById('btnDownVtt');
+            const useProxy = document.getElementById('useProxy').checked;
+
+            let videoSrc = "";
+            let filename = "";
             
-            // Recolectar imágenes
-            // OPTIMIZACIÓN: Solo precargar las primeras imágenes para evitar bloqueo
-            const imagesToLoad = [];
-            // Limitar a los primeros 15 items para asegurar un inicio rápido
-            const itemsToPreload = (typeof library !== 'undefined' && Array.isArray(library)) ? library.slice(0, 15) : [];
-            itemsToPreload.forEach(anime => {
-                if(anime.poster) imagesToLoad.push(anime.poster);
-                if(anime.banner) imagesToLoad.push(anime.banner);
-            });
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                filename = file.name;
+                if (file.name.toLowerCase().endsWith('.mkv')) {
+                    status.textContent = "⚠️ Advertencia: Has seleccionado un MKV. La mayoría de navegadores NO soportan este formato para generar imágenes. Si falla, conviértelo a MP4.";
+                }
+                videoSrc = URL.createObjectURL(file);
+            } else if (urlInput.value.trim() !== "") {
+                let url = urlInput.value.trim();
+                filename = url.substring(url.lastIndexOf('/') + 1);
+                if (useProxy) {
+                    url = "https://corsproxy.io/?" + encodeURIComponent(url);
+                }
+                videoSrc = url;
+            } else {
+                alert("Por favor selecciona un archivo de video o pega una URL.");
+                return;
+            }
 
-            // Crear promesas de carga
-            const loadPromises = imagesToLoad.map(src => {
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    img.src = src;
-                    img.onload = resolve;
-                    img.onerror = resolve; // Continuar aunque falle una imagen específica
+            // Extraer el último número del nombre del archivo para usarlo en los nombres de los sprites.
+            let spriteNumber = '';
+            if (filename) {
+                const basename = filename.substring(0, filename.lastIndexOf('.'));
+                const matches = basename.match(/\d+/g);
+                if (matches && matches.length > 0) {
+                    spriteNumber = parseInt(matches[matches.length - 1], 10);
+                }
+            }
+            const spriteImageFilename = `sprite${spriteNumber}.jpg`;
+            const spriteVttFilename = `sprite${spriteNumber}.vtt`;
+
+            status.textContent = "Cargando video... (Esto puede tardar unos segundos)";
+            vttOutput.value = "";
+            imgOutput.src = "";
+            btnDownImg.style.display = "none";
+            btnDownVtt.style.display = "none";
+
+            const video = document.createElement('video');
+            video.crossOrigin = "anonymous"; // Intentar CORS para URLs
+            video.muted = true;
+            video.src = videoSrc;
+
+            try {
+                await new Promise((resolve, reject) => {
+                    video.onloadedmetadata = resolve;
+                    video.onerror = () => reject("Error al cargar el video. Posibles causas:\n1. Formato no soportado (MKV/HEVC). El navegador necesita MP4 (H.264).\n2. Bloqueo CORS (si usas URL).");
                 });
-            });
 
-            // Esperar a que carguen (o timeout de 8s)
-            await Promise.race([
-                Promise.all(loadPromises),
-                new Promise(resolve => setTimeout(resolve, 8000))
-            ]);
+                const duration = video.duration;
+                const interval = 10; // Capturar cada 10 segundos
+                
+                // Configuración: 320px (Calidad Retina/Alta Definición) - El reproductor ahora lo ajustará automáticamente
+                const width = 320;   
+                const aspectRatio = video.videoWidth / video.videoHeight;
+                const height = Math.round(width / aspectRatio);
+                
+                const cols = 8;      // Más columnas para evitar que la imagen sea demasiado alta
+                
+                const framesCount = Math.ceil(duration / interval);
+                const rows = Math.ceil(framesCount / cols);
+                
+                const canvas = document.createElement('canvas');
+                canvas.width = width * cols;
+                canvas.height = height * rows;
+                const ctx = canvas.getContext('2d');
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                
+                let vttContent = "WEBVTT\n\n";
+                
+                status.textContent = `Generando ${framesCount} miniaturas...`;
 
-            // 3. Transición al Home
-            splash.style.opacity = '0';
-            setTimeout(() => {
-                splash.style.display = 'none';
-            }, 500);
+                for (let i = 0; i < framesCount; i++) {
+                    const time = i * interval;
+                    video.currentTime = time;
+                    
+                    // Esperar a que el video busque el frame
+                    await new Promise(r => {
+                        const onSeek = () => {
+                            video.removeEventListener('seeked', onSeek);
+                            r();
+                        };
+                        video.addEventListener('seeked', onSeek);
+                    });
+                    
+                    const col = i % cols;
+                    const row = Math.floor(i / cols);
+                    const x = col * width;
+                    const y = row * height;
+                    
+                    ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, x, y, width, height);
+                    
+                    // Formato VTT
+                    const start = new Date(time * 1000).toISOString().substr(11, 12); // HH:mm:ss.sss
+                    const endVal = Math.min(time + interval, duration);
+                    const end = new Date(endVal * 1000).toISOString().substr(11, 12);
+                    
+                    vttContent += `${start} --> ${end}\n`;
+                    // Usar el nombre de archivo de sprite dinámico
+                    vttContent += `${spriteImageFilename}#xywh=${x},${y},${width},${height}\n\n`;
+                }
+                
+                // Finalizar
+                const imgData = canvas.toDataURL('image/jpeg', 1.0);
+                imgOutput.src = imgData;
+                vttOutput.value = vttContent;
 
-        } catch (e) {
-            console.error("Error en carga:", e);
-            // En caso de error inesperado, dejar entrar
-            splash.style.display = 'none';
+                btnDownImg.style.display = "block";
+                btnDownVtt.style.display = "block";
+                btnDownImg.dataset.filename = spriteImageFilename;
+                btnDownVtt.dataset.filename = spriteVttFilename;
+
+                status.textContent = "¡Generado con éxito! Usa los botones de abajo para descargar.";
+
+            } catch (error) {
+                console.error(error);
+                status.textContent = "Error: " + error;
+                alert(error);
+            }
         }
 
-        function showError(msg) {
-            spinner.style.display = 'none';
-            status.innerText = msg;
-            status.style.display = 'block';
-            status.style.color = '#ff4444';
-            retryBtn.style.display = 'block';
+        function descargarImagen() {
+            const imgData = document.getElementById('spriteOutputImg').src;
+            if(!imgData) return;
+            const link = document.createElement("a");
+            link.href = imgData;
+            link.download = document.getElementById('btnDownImg').dataset.filename || "sprite.jpg";
+            link.click();
         }
-    }
 
-    // Ejecutar carga
-    launchApp();
+        function descargarVtt() {
+            const content = document.getElementById('vttOutput').value;
+            if(!content) return;
+            const blob = new Blob([content], {type: "text/vtt"});
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = document.getElementById('btnDownVtt').dataset.filename || "sprite.vtt";
+            link.click();
+        }
 
-</script>
+        // --- LÓGICA GENERADOR DE THUMBS ---
+        async function iniciarGeneracionThumb() {
+            const status = document.getElementById('thumbStatus');
+            const urlInput = document.getElementById('thumbVideoUrl');
+            const fileInput = document.getElementById('thumbVideoFile');
+            const useProxy = document.getElementById('thumbUseProxy').checked;
+            const container = document.getElementById('thumbOutputContainer');
+
+            let videoSrc = "";
+            let filename = "video";
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                filename = file.name.substring(0, file.name.lastIndexOf('.'));
+                videoSrc = URL.createObjectURL(file);
+            } else if (urlInput.value.trim() !== "") {
+                let url = urlInput.value.trim();
+                filename = url.substring(url.lastIndexOf('/') + 1);
+                if (filename.indexOf('.') > -1) filename = filename.substring(0, filename.lastIndexOf('.'));
+                if (useProxy) {
+                    url = "https://corsproxy.io/?" + encodeURIComponent(url);
+                }
+                videoSrc = url;
+            } else {
+                alert("Por favor selecciona un archivo de video o pega una URL.");
+                return;
+            }
+
+            status.textContent = "Cargando video...";
+            container.style.display = "none";
+            container.innerHTML = "";
+
+            const video = document.createElement('video');
+            video.crossOrigin = "anonymous";
+            video.muted = true;
+            video.src = videoSrc;
+
+            try {
+                await new Promise((resolve, reject) => {
+                    video.onloadedmetadata = resolve;
+                    video.onerror = () => reject("Error al cargar el video.");
+                });
+
+                const duration = video.duration;
+                status.textContent = "Generando 10 thumbs...";
+
+                // Generar 10 imágenes distribuidas (la primera en 0.00s)
+                for (let i = 0; i < 10; i++) {
+                    const time = duration * (i / 10); // 0%, 10%, 20%...
+                    video.currentTime = time;
+                    await new Promise(r => {
+                        const onSeek = () => {
+                            video.removeEventListener('seeked', onSeek);
+                            r();
+                        };
+                        video.addEventListener('seeked', onSeek);
+                    });
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.95);
+                    const thumbName = `${filename}_thumb${i+1}.jpg`;
+
+                    // Crear elementos HTML dinámicamente
+                    const col = document.createElement('div');
+                    col.style.flex = "1 0 18%"; // 5 por fila
+                    col.style.minWidth = "150px";
+                    col.style.marginBottom = "10px";
+
+                    const label = document.createElement('label');
+                    label.textContent = `Thumb ${i+1} (${Math.floor(time)}s):`;
+                    label.style.display = "block";
+                    label.style.fontSize = "11px";
+                    label.style.color = "#ccc";
+
+                    const btn = document.createElement('button');
+                    btn.textContent = "Descargar";
+                    btn.style.width = "100%";
+                    btn.style.background = "#444";
+                    btn.style.color = "#fff";
+                    btn.style.marginBottom = "5px";
+                    btn.style.cursor = "pointer";
+                    btn.onclick = () => {
+                        const link = document.createElement("a");
+                        link.href = dataUrl;
+                        link.download = thumbName;
+                        link.click();
+                    };
+
+                    const img = document.createElement('img');
+                    img.src = dataUrl;
+                    img.style.maxWidth = "100%";
+                    img.style.border = "1px solid #555";
+                    img.style.display = "block";
+
+                    col.appendChild(label);
+                    col.appendChild(btn);
+                    col.appendChild(img);
+                    container.appendChild(col);
+                }
+
+                container.style.display = "flex";
+                container.style.flexWrap = "wrap";
+                container.style.gap = "10px";
+                status.textContent = "¡Thumbs generados!";
+
+            } catch (error) {
+                console.error(error);
+                status.textContent = "Error: " + error;
+            }
+        }
+    </script>
 </body>
 </html>
