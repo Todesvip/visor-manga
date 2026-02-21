@@ -1100,17 +1100,22 @@
                 const epCount = (anime.episodios && anime.episodios.length) ? anime.episodios.length : 0;
 
                 let titleOrLogo = `<div class="hero-title">${anime.titulo}</div>`;
+                let bgImage = anime.banner || anime.poster;
+
                 if (anime.titulo && anime.titulo.toLowerCase().includes('kaifuku')) {
                     titleOrLogo = `<img src="https://dimagemfondo.github.io/visor-imgen/img/04/Logo.png" class="hero-logo" alt="Logo">`;
+                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/04/img01.webp";
                 } else if (anime.titulo && anime.titulo.toLowerCase().includes('ishuzoku')) {
                     titleOrLogo = `<img src="https://Dimagemfondo.github.io/visor-imgen/img/04/Logo (1).png" class="hero-logo" alt="Logo">`;
+                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/04/img02.webp";
                 } else if (anime.titulo && anime.titulo.toLowerCase().includes('nande')) {
                     titleOrLogo = `<img src="https://dimagemfondo.github.io/visor-imgen/img/04/Logo%20(2).png" class="hero-logo" alt="Logo">`;
+                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/04/img.webp";
                 }
 
                 heroHTML += `
                     <div class="hero-slide ${i === 0 ? 'active' : ''}" onclick="${onclickAction}">
-                        <div class="hero-slide-bg" style="background-image: url('${anime.banner || anime.poster}');"></div>
+                        <div class="hero-slide-bg" style="background-image: url('${bgImage}');"></div>
                         <div class="hero-gradient"></div>
                         <div class="hero-content">
                             ${titleOrLogo}
