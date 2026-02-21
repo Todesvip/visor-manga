@@ -127,7 +127,7 @@ const privadosData = [
         id: "Goblin",
         titulo: "Goblin no suana",
         titulo_jp: "ゴブリンの巣穴",
-        poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx159076-DL4CWXTZQVoB.jpg",
+        poster: "https://dimagemfondo.github.io/visor-imgen/img/04/season01-poster.jpg",
         banner: "",
         rating: "18+",
         temporada: "Temporada 1",
