@@ -1088,8 +1088,9 @@
     function switchTab(tab) {
         const hash = '#' + tab;
         if (window.location.hash !== hash) {
-            // Usar pushState para que el botón de atrás del navegador funcione
-            history.pushState({ tab }, null, hash);
+            // replaceState: reemplaza sin acumular historial entre tabs
+            // Así deslizar atrás desde los tabs sale de la app directamente
+            history.replaceState({ tab }, null, hash);
             handleRouting();
         }
     }
@@ -1477,7 +1478,9 @@
         currentAnime = anime;
         currentEpIndex = 0;
         prepareDetailView(anime);
-        window.location.hash = "detail";
+        // pushState: este SÍ acumula historial, para que deslizar atrás desde el reproductor regrese al inicio
+        history.pushState({ tab: 'detail' }, null, '#detail');
+        handleRouting();
     }
     
     function prepareDetailView(anime) {
