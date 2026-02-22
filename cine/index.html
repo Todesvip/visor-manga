@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Void</title>
     <!-- Librería de subtítulos -->
     <script src="https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus.js" defer></script>
@@ -154,17 +154,30 @@
             gap: 5px;
         }
         .hero-dot {
-            width: 18px;
-            height: 2px;
-            background: var(--glow);
-            border-radius: 2px;
+            width: 20px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            transition: width 0.3s;
         }
         .hero-dot.active {
-            width: 28px;
+            width: 35px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .hero-dot.active::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; height: 100%;
             background: var(--accent);
-            box-shadow: 0 0 6px var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            animation: carouselProgress 4.5s linear forwards;
+        }
+        @keyframes carouselProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
         }
 
         .header-search-input {
@@ -196,7 +209,7 @@
         /* --- BOTÓN LUPA FLOTANTE (TOP) --- */
         .top-search-btn {
             position: absolute;
-            top: 5px;
+            top: calc(5px + env(safe-area-inset-top));
             right: 10px;
             z-index: 20;
             width: 40px;
@@ -221,7 +234,7 @@
         .search-overlay.active { display: flex; }
         
         .search-header-bar {
-            display: flex; align-items: center; padding: 15px; gap: 15px;
+            display: flex; align-items: center; padding: calc(15px + env(safe-area-inset-top)) 15px 15px 15px; gap: 15px;
             background-color: #101010; border-bottom: none;
             position: relative; /* Necesario para el menú desplegable */
         }
@@ -402,7 +415,7 @@
             display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
             pointer-events: auto;
         }
-        .skip-btn svg { width: 48px; height: 48px; }
+        .skip-btn svg { width: 48px; height: 48px; fill: white; }
 
         .center-play svg {
             width: 48px; height: 48px; fill: white;
@@ -413,8 +426,8 @@
         /* BARRA SUPERIOR (NUEVO) */
         .top-bar {
             position: absolute; top: 0; left: 0; width: 100%;
-            padding: 15px 20px; box-sizing: border-box;
-            display: flex; justify-content: flex-end; align-items: center;
+            padding: calc(15px + env(safe-area-inset-top)) 20px 15px 20px; box-sizing: border-box;
+            display: flex; justify-content: space-between; align-items: center;
             pointer-events: none; z-index: 22;
         }
 
@@ -422,7 +435,7 @@
         .bottom-bar {
             background: transparent;
             /* Contenedor para la fila de controles, se posiciona al fondo */
-            position: absolute; bottom: 20px; /* Un poco más arriba para separar de la barra de progreso */
+            position: absolute; bottom: calc(20px + env(safe-area-inset-bottom)); /* Un poco más arriba para separar de la barra de progreso */
             left: 0; width: 100%;
             pointer-events: none;
         }
@@ -441,7 +454,7 @@
         /* BARRA DE PROGRESO */
         .progress-container {
             /* Se posiciona absolutamente en el borde inferior */
-            position: absolute; bottom: 0; left: 0;
+            position: absolute; bottom: env(safe-area-inset-bottom); left: 0;
             width: 100%; height: 5px; /* Área táctil reducida */
             display: flex; align-items: flex-end; cursor: pointer;
             pointer-events: auto;
@@ -480,6 +493,16 @@
         .icon-btn:hover { opacity: 1; }
         .icon-btn svg { width: 24px; height: 24px; fill: white; }
         
+        /* FAVORITE BUTTON (NUEVO) */
+        .icon-btn#favorite-btn {
+            padding: 0; margin-right: 10px;
+            color: #888;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .icon-btn#favorite-btn.is-favorite { color: var(--accent); }
+        .icon-btn#favorite-btn:active { transform: scale(1.2); }
+        .icon-btn#favorite-btn svg { width: 24px; height: 24px; }
+
         /* MENÚ DE SUBTÍTULOS */
         .cc-menu-container { position: relative; }
         .cc-menu {
@@ -562,7 +585,7 @@
         }
 
         /* Ajuste para que el contenido no quede tapado por el nav */
-        .view { padding-bottom: 80px; }
+        .view { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
         
         /* AJUSTES */
         .settings-content { padding: 20px; }
@@ -630,18 +653,19 @@
             background: #101010;
             display: flex; justify-content: space-around;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+            padding-bottom: calc(10px + env(safe-area-inset-bottom));
             z-index: 50;
             transition: transform 0.3s ease;
         }
         .nav-item {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 8px 12px;
+            padding: 6px 12px;
             color: #888;
             cursor: pointer;
             transition: color 0.2s;
         }
-        .nav-item svg { width: 26px; height: 26px; fill: currentColor; margin-bottom: 2px; }
-        .nav-item span { font-size: 11px; font-weight: 500; }
+        .nav-item svg { width: 24px; height: 24px; fill: currentColor; margin-bottom: 2px; }
+        .nav-item span { font-size: 10px; font-weight: 500; }
         .nav-item.active {
             color: white;
         }
@@ -728,6 +752,23 @@
         </div>
     </div>
 
+    <!-- EXPLORAR -->
+    <div id="explore-view" class="view">
+        <div class="settings-content">
+            <h1 class="settings-title">Explorar</h1>
+            <div class="full-list-grid" id="explore-grid" style="padding: 0;"></div>
+        </div>
+    </div>
+
+    <!-- FAVORITOS -->
+    <div id="favorites-view" class="view">
+        <div class="settings-content">
+            <h1 class="settings-title">Mis listas</h1>
+            <div class="full-list-grid" id="favorites-grid" style="padding: 0;"></div>
+            <p id="no-favorites-msg" style="display: none; text-align: center; color: var(--text-gray); padding: 50px 0;">No has añadido nada a tus listas todavía.</p>
+        </div>
+    </div>
+
     <!-- AJUSTES -->
     <div id="settings-view" class="view">
         <div class="settings-content">
@@ -792,9 +833,15 @@
 
                 <!-- CAPA DE CONTROLES -->
                 <div class="controls-overlay">
-                    <!-- BARRA SUPERIOR (CC y Fullscreen) -->
+                    <!-- BARRA SUPERIOR -->
                     <div class="top-bar">
+                        <button class="icon-btn" onclick="window.history.back()" style="pointer-events: auto;" title="Atrás">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>
+                        </button>
                         <div class="right-buttons">
+                            <button class="icon-btn" id="btn-next-ep" title="Siguiente" onclick="playNextEpisode()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12.6667L5.77735 19.4818C5.54759 19.6349 5.23715 19.5729 5.08397 19.3431C5.02922 19.261 5 19.1645 5 19.0657V4.93426C5 4.65812 5.22386 4.43426 5.5 4.43426C5.59871 4.43426 5.69522 4.46348 5.77735 4.51823L16 11.3333V5C16 4.44772 16.4477 4 17 4C17.5523 4 18 4.44772 18 5V19C18 19.5523 17.5523 20 17 20C16.4477 20 16 19.5523 16 19V12.6667ZM7 7.73703V16.263L13.3944 12L7 7.73703Z"></path></svg>
+                            </button>
                             <div class="cc-menu-container">
                                 <button class="icon-btn" id="btn-cc" title="Subtítulos">
                                     <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>
@@ -809,8 +856,14 @@
 
                     <!-- Controles Centrales -->
                     <div class="center-controls">
+                        <button class="skip-btn" onclick="skip(-10)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C17.5228 2 22 6.47715 22 12 22 17.5228 17.5228 22 12 22 6.47715 22 2 17.5228 2 12H4C4 16.4183 7.58172 20 12 20 16.4183 20 20 16.4183 20 12 20 7.58172 16.4183 4 12 4 9.53614 4 7.33243 5.11383 5.86492 6.86543L8 9H2V3L4.44656 5.44648C6.28002 3.33509 8.9841 2 12 2ZM14.5 8.25C13.1193 8.25 12 9.36929 12 10.75V13.25C12 14.6307 13.1193 15.75 14.5 15.75 15.8807 15.75 17 14.6307 17 13.25V10.75C17 9.36929 15.8807 8.25 14.5 8.25ZM15.5 10.75V13.25C15.5 13.8023 15.0523 14.25 14.5 14.25 13.9477 14.25 13.5 13.8023 13.5 13.25V10.75C13.5 10.1977 13.9477 9.75 14.5 9.75 15.0523 9.75 15.5 10.1977 15.5 10.75ZM10 8.5H8.5V15.5H10V8.5Z"></path></svg>
+                        </button>
                         <button class="center-play" id="btn-center-play">
                             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <button class="skip-btn" onclick="skip(10)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47715 2 2 6.47715 2 12 2 17.5228 6.47715 22 12 22 17.5228 22 22 17.5228 22 12H20C20 16.4183 16.4183 20 12 20 7.58172 20 4 16.4183 4 12 4 7.58172 7.58172 4 12 4 14.4639 4 16.6676 5.11383 18.1351 6.86543L16.1384 8.86165C15.6996 8.48063 15.1267 8.25 14.5 8.25 13.1193 8.25 12 9.36929 12 10.75V13.25C12 14.6307 13.1193 15.75 14.5 15.75 15.8807 15.75 17 14.6307 17 13.25V10.75C17 10.0686 16.7274 9.45094 16.2854 9H22V3L19.5534 5.44648C17.72 3.33509 15.0159 2 12 2ZM15.5 10.75V13.25C15.5 13.8023 15.0523 14.25 14.5 14.25 13.9477 14.25 13.5 13.8023 13.5 13.25V10.75C13.5 10.1977 13.9477 9.75 14.5 9.75 15.0523 9.75 15.5 10.1977 15.5 10.75ZM10 8.5H8.5V15.5H10V8.5Z"></path></svg>
                         </button>
                     </div>
 
@@ -850,6 +903,9 @@
             <p id="detail-synopsis" class="synopsis"></p>
 
             <div class="meta-row" style="margin-top: 20px;">
+                <button id="favorite-btn" class="icon-btn" onclick="toggleFavorite()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 2H19C19.5523 2 20 2.44772 20 3V22.1433C20 22.4194 19.7761 22.6434 19.5 22.6434C19.4061 22.6434 19.314 22.6168 19.2344 22.5669L12 18.0313L4.76559 22.5669C4.53163 22.7136 4.22306 22.6429 4.07637 22.4089C4.02647 22.3293 4 22.2373 4 22.1433V3C4 2.44772 4.44772 2 5 2ZM18 4H6V19.4324L12 15.6707L18 19.4324V4Z"></path></svg>
+                </button>
                 <span id="detail-rating" class="badge"></span>
                 <span id="detail-season"></span>
                 <span id="detail-year"></span>
@@ -862,11 +918,19 @@
     <!-- NAVEGACIÓN INFERIOR -->
     <nav class="bottom-nav" id="bottom-nav">
         <div class="nav-item active" id="nav-home" onclick="switchTab('home')">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 21H5C4.44772 21 4 20.5523 4 20V11L1 11L11.3273 1.6115C11.7087 1.26475 12.2913 1.26475 12.6727 1.6115L23 11L20 11V20C20 20.5523 19.5523 21 19 21ZM6 19H18V9.15745L12 3.7029L6 9.15745V19ZM12 15C10.6193 15 9.5 13.8807 9.5 12.5C9.5 11.1193 10.6193 9.99998 12 9.99998C13.3807 9.99998 14.5 11.1193 14.5 12.5C14.5 13.8807 13.3807 15 12 15Z"></path></svg>
-            <span>Inicio</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 21H5C4.44772 21 4 20.5523 4 20V11L1 11L11.3273 1.6115C11.7087 1.26475 12.2913 1.26475 12.6727 1.6115L23 11L20 11V20C20 20.5523 19.5523 21 19 21ZM13 19H18V9.15745L12 3.7029L6 9.15745V19H11V13H13V19Z"></path></svg>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" id="nav-explore" onclick="switchTab('explore')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4C3 3.44772 3.44772 3 4 3H10C10.5523 3 11 3.44772 11 4V10C11 10.5523 10.5523 11 10 11H4C3.44772 11 3 10.5523 3 10V4ZM3 14C3 13.4477 3.44772 13 4 13H10C10.5523 13 11 13.4477 11 14V20C11 20.5523 10.5523 21 10 21H4C3.44772 21 3 20.5523 3 20V14ZM13 4C13 3.44772 13.4477 3 14 3H20C20.5523 3 21 3.44772 21 4V10C21 10.5523 20.5523 11 20 11H14C13.4477 11 13 10.5523 13 10V4ZM13 14C13 13.4477 13.4477 13 14 13H20C20.5523 13 21 13.4477 21 14V20C21 20.5523 20.5523 21 20 21H14C13.4477 21 13 20.5523 13 20V14ZM15 5V9H19V5H15ZM15 15V19H19V15H15ZM5 5V9H9V5H5ZM5 15V19H9V15H5Z"></path></svg>
+            <span>Explorar</span>
+        </div>
+        <div class="nav-item" id="nav-favorites" onclick="switchTab('favorites')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 2H19C19.5523 2 20 2.44772 20 3V22.1433C20 22.4194 19.7761 22.6434 19.5 22.6434C19.4061 22.6434 19.314 22.6168 19.2344 22.5669L12 18.0313L4.76559 22.5669C4.53163 22.7136 4.22306 22.6429 4.07637 22.4089C4.02647 22.3293 4 22.2373 4 22.1433V3C4 2.44772 4.44772 2 5 2ZM18 4H6V19.4324L12 15.6707L18 19.4324V4Z"></path></svg>
+            <span>Mis listas</span>
         </div>
         <div class="nav-item" id="nav-settings" onclick="switchTab('settings')">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8.68637 4.00008L11.293 1.39348C11.6835 1.00295 12.3167 1.00295 12.7072 1.39348L15.3138 4.00008H19.0001C19.5524 4.00008 20.0001 4.4478 20.0001 5.00008V8.68637L22.6067 11.293C22.9972 11.6835 22.9972 12.3167 22.6067 12.7072L20.0001 15.3138V19.0001C20.0001 19.5524 19.5524 20.0001 19.0001 20.0001H15.3138L12.7072 22.6067C12.3167 22.9972 11.6835 22.9972 11.293 22.6067L8.68637 20.0001H5.00008C4.4478 20.0001 4.00008 19.5524 4.00008 19.0001V15.3138L1.39348 12.7072C1.00295 12.3167 1.00295 11.6835 1.39348 11.293L4.00008 8.68637V5.00008C4.00008 4.4478 4.4478 4.00008 5.00008 4.00008H8.68637ZM6.00008 6.00008V9.5148L3.5148 12.0001L6.00008 14.4854V18.0001H9.5148L12.0001 20.4854L14.4854 18.0001H18.0001V14.4854L20.4854 12.0001L18.0001 9.5148V6.00008H14.4854L12.0001 3.5148L9.5148 6.00008H6.00008ZM12.0001 16.0001C9.79094 16.0001 8.00008 14.2092 8.00008 12.0001C8.00008 9.79094 9.79094 8.00008 12.0001 8.00008C14.2092 8.00008 16.0001 9.79094 16.0001 12.0001C16.0001 14.2092 14.2092 16.0001 12.0001 16.0001ZM12.0001 14.0001C13.1047 14.0001 14.0001 13.1047 14.0001 12.0001C14.0001 10.8955 13.1047 10.0001 12.0001 10.0001C10.8955 10.0001 10.0001 10.8955 10.0001 12.0001C10.0001 13.1047 10.8955 14.0001 12.0001 14.0001Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2.47363L23 11.9999L17.5 21.5262H6.5L1 11.9999L6.5 2.47363H17.5ZM16.3453 4.47363H7.6547L3.3094 11.9999L7.6547 19.5262H16.3453L20.6906 11.9999L16.3453 4.47363ZM8.63398 8.16979L10.366 7.16979L15.366 15.83L13.634 16.83L8.63398 8.16979Z"></path></svg>
             <span>Ajustes</span>
         </div>
     </nav>
@@ -901,12 +965,14 @@
     let isRestrictedMode = false;
     let privatePage = 1; // Página actual del modo privado
     const itemsPerPage = 20; // 2 columnas * 10 filas = 20 items
+    let favorites = [];
     const SECRET_CODE = atob("NDU2MA=="); // Código de acceso (codificado)
 
     // --- ELEMENTOS DOM ---
     const homeView = document.getElementById('home-view');
     const exploreView = document.getElementById('explore-view');
     const settingsView = document.getElementById('settings-view');
+    const favoritesView = document.getElementById('favorites-view');
     const fullListView = document.getElementById('full-list-view');
     const detailView = document.getElementById('detail-view');
     const fullGrid = document.getElementById('full-grid');
@@ -957,6 +1023,8 @@
             library = publicLibrary;
         }
 
+        loadFavorites();
+
         // Cargar color de acento guardado
         const savedColor = localStorage.getItem('myApp_accentColor');
         const colorSwitch = document.getElementById('accent-color-switch');
@@ -1006,6 +1074,10 @@
             showDetailView();
         } else if (hash === '#settings') {
             showSettingsView();
+        } else if (hash === '#explore') {
+            showExploreView();
+        } else if (hash === '#favorites') {
+            showFavoritesView();
         } else {
             showHomeView();
         }
@@ -1060,6 +1132,46 @@
             root.style.setProperty('--accent', '#e63946');
             root.style.setProperty('--glow', 'rgba(230, 57, 70, 0.35)');
             localStorage.setItem('myApp_accentColor', 'red');
+        }
+    }
+
+    // ===== FAVORITOS =====
+    function loadFavorites() {
+        const favs = localStorage.getItem('myApp_favorites');
+        favorites = favs ? JSON.parse(favs) : [];
+    }
+
+    function saveFavorites() {
+        localStorage.setItem('myApp_favorites', JSON.stringify(favorites));
+    }
+
+    function toggleFavorite() {
+        if (!currentAnime) return;
+        const animeId = currentAnime.titulo; // Usando título como ID único
+        const favIndex = favorites.indexOf(animeId);
+
+        if (favIndex > -1) {
+            favorites.splice(favIndex, 1); // Quitar de favoritos
+        } else {
+            favorites.push(animeId); // Añadir a favoritos
+        }
+        saveFavorites();
+        updateFavoriteButton();
+    }
+
+    function updateFavoriteButton() {
+        const favBtn = document.getElementById('favorite-btn');
+        if (!currentAnime || !favBtn) return;
+        
+        const isFav = favorites.includes(currentAnime.titulo);
+        favBtn.classList.toggle('is-favorite', isFav);
+
+        if (isFav) {
+            // Icono Sólido (Relleno)
+            favBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 2H19C19.5523 2 20 2.44772 20 3V22.1433C20 22.4194 19.7761 22.6434 19.5 22.6434C19.4061 22.6434 19.314 22.6168 19.2344 22.5669L12 18.0313L4.76559 22.5669C4.53163 22.7136 4.22306 22.6429 4.07637 22.4089C4.02647 22.3293 4 22.2373 4 22.1433V3C4 2.44772 4.44772 2 5 2Z"></path></svg>';
+        } else {
+            // Icono Borde (Original)
+            favBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 2H19C19.5523 2 20 2.44772 20 3V22.1433C20 22.4194 19.7761 22.6434 19.5 22.6434C19.4061 22.6434 19.314 22.6168 19.2344 22.5669L12 18.0313L4.76559 22.5669C4.53163 22.7136 4.22306 22.6429 4.07637 22.4089C4.02647 22.3293 4 22.2373 4 22.1433V3C4 2.44772 4.44772 2 5 2ZM18 4H6V19.4324L12 15.6707L18 19.4324V4Z"></path></svg>';
         }
     }
 
@@ -1180,7 +1292,7 @@
                 <div class="hero-carousel" id="hero-carousel">
                     <!-- Populated by JS -->
                 </div>
-                <div class="section-title">Anime Recientes</div>
+                <div class="section-title">Agregados Recientemente</div>
                 <div class="horizontal-list" id="recent-list"></div>
 
                 <div class="section-title">Reciente en Series</div>
@@ -1393,12 +1505,20 @@
         // Forzar el scroll al inicio DESPUÉS de agregar los botones
         epSelector.scrollLeft = 0;
 
+        updateFavoriteButton();
+
         if (totalEps > 0) {
             playEpisode(0);
         } else {
             videoContainer.style.display = 'none';
             heroImg.style.display = 'block';
             heroImg.src = anime.banner || anime.poster;
+        }
+    }
+
+    function playNextEpisode() {
+        if (currentAnime && currentEpIndex < currentAnime.episodios.length - 1) {
+            playEpisode(currentEpIndex + 1, true);
         }
     }
 
@@ -1427,7 +1547,7 @@
             if (episode.thumb) {
                 mainVideo.poster = episode.thumb;
             } else {
-                mainVideo.removeAttribute("poster");
+                mainVideo.poster = "https://dimagemfondo.github.io/visor-imgen/img/05/01.jpg";
             }
             mainVideo.src = episode.link;
             mainVideo.load(); // Forzar al navegador a procesar el nuevo video inmediatamente
@@ -1463,6 +1583,13 @@
             btn.classList.toggle('active', i === index);
         });
         
+        // Mostrar/ocultar botón de siguiente episodio
+        const btnNextEp = document.getElementById('btn-next-ep');
+        if (btnNextEp) {
+            const hasNext = index < currentAnime.episodios.length - 1;
+            btnNextEp.style.display = hasNext ? 'flex' : 'none';
+        }
+
         if(buttons[index]) {
             buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
         }
@@ -1496,6 +1623,11 @@
         }
     };
     btnCenter.addEventListener('click', togglePlay);
+
+    function skip(seconds) {
+        mainVideo.currentTime += seconds;
+        showControls();
+    }
 
     // 2. Mostrar/Ocultar Controles
     let controlsTimer;
@@ -1857,9 +1989,40 @@
         renderSettings();
     }
 
+    function showExploreView() {
+        mainVideo.pause();
+        switchView(exploreView);
+        document.getElementById('bottom-nav').style.transform = 'translateY(0)';
+        renderGrid(library, document.getElementById('explore-grid'));
+    }
+
+    function showFavoritesView() {
+        mainVideo.pause();
+        switchView(favoritesView);
+        document.getElementById('bottom-nav').style.transform = 'translateY(0)';
+        
+        const favoritesGrid = document.getElementById('favorites-grid');
+        const noFavsMsg = document.getElementById('no-favorites-msg');
+        
+        const favoriteAnimes = library.filter(anime => favorites.includes(anime.titulo));
+
+        if (favoriteAnimes.length > 0) {
+            noFavsMsg.style.display = 'none';
+            favoritesGrid.style.display = 'grid';
+            renderGrid(favoriteAnimes, favoritesGrid);
+        } else {
+            favoritesGrid.style.display = 'none';
+            noFavsMsg.style.display = 'block';
+        }
+    }
+
     function updateNavActiveState(hash) {
         document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-        const activeId = hash === '#settings' ? 'nav-settings' : 'nav-home';
+        let activeId = 'nav-home';
+        if (hash === '#settings') activeId = 'nav-settings';
+        if (hash === '#explore') activeId = 'nav-explore';
+        if (hash === '#favorites') activeId = 'nav-favorites';
+        
         const activeEl = document.getElementById(activeId);
         if (activeEl) activeEl.classList.add('active');
     }
