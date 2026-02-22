@@ -412,11 +412,11 @@
         }
         /* BOTONES SKIP */
         .skip-btn {
-            width: 80px; height: 80px; background: none;
+            width: 52px; height: 52px; background: none;
             display: flex; justify-content: center; align-items: center; cursor: pointer; border: none;
             pointer-events: auto;
         }
-        .skip-btn svg { width: 38px; height: 38px; fill: white; }
+        .skip-btn svg { width: 34px; height: 34px; fill: white; }
 
         .center-play svg {
             width: 48px; height: 48px; fill: white;
@@ -427,7 +427,7 @@
         /* BARRA SUPERIOR (NUEVO) */
         .top-bar {
             position: absolute; top: 0; left: 0; width: 100%;
-            padding: calc(15px + env(safe-area-inset-top)) 20px 15px 20px; box-sizing: border-box;
+            padding: calc(15px + env(safe-area-inset-top)) 20px 15px 6px; box-sizing: border-box;
             display: flex; justify-content: space-between; align-items: center;
             pointer-events: none; z-index: 22;
         }
@@ -836,20 +836,20 @@
                 <div class="controls-overlay">
                     <!-- BARRA SUPERIOR -->
                     <div class="top-bar">
-                        <button class="icon-btn" onclick="window.history.back()" style="pointer-events: auto;" title="Atrás">
+                        <button class="icon-btn" onclick="exitPlayer()" style="pointer-events: auto;" title="Atrás">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>
                         </button>
                         <div class="right-buttons">
-                            <button class="icon-btn" id="btn-next-ep" title="Siguiente" onclick="playNextEpisode()">
+                            <button class="icon-btn" id="btn-next-ep" title="Siguiente" style="pointer-events: auto;" onclick="event.stopPropagation(); playNextEpisode()">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12.6667L5.77735 19.4818C5.54759 19.6349 5.23715 19.5729 5.08397 19.3431C5.02922 19.261 5 19.1645 5 19.0657V4.93426C5 4.65812 5.22386 4.43426 5.5 4.43426C5.59871 4.43426 5.69522 4.46348 5.77735 4.51823L16 11.3333V5C16 4.44772 16.4477 4 17 4C17.5523 4 18 4.44772 18 5V19C18 19.5523 17.5523 20 17 20C16.4477 20 16 19.5523 16 19V12.6667ZM7 7.73703V16.263L13.3944 12L7 7.73703Z"></path></svg>
                             </button>
                             <div class="cc-menu-container">
-                                <button class="icon-btn" id="btn-cc" title="Subtítulos">
+                                <button class="icon-btn" id="btn-cc" title="Subtítulos" style="pointer-events: auto;">
                                     <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/></svg>
                                 </button>
                                 <div class="cc-menu" id="cc-menu"></div>
                             </div>
-                            <button class="icon-btn" id="btn-fs" title="Pantalla Completa">
+                            <button class="icon-btn" id="btn-fs" title="Pantalla Completa" style="pointer-events: auto;">
                                 <svg viewBox="0 0 24 24"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
                             </button>
                         </div>
@@ -1541,8 +1541,7 @@
             }
             
         } else {
-            // Si no estamos en la app, usamos el reproductor web personalizado.
-            console.log("Interfaz 'Android' no encontrada. Usando reproductor web.");
+            // Reproductor web personalizado
             heroImg.style.display = "none";
             videoContainer.style.display = "block"; // Mostrar el contenedor del nuevo reproductor
             if (episode.thumb) {
@@ -1552,8 +1551,8 @@
             }
             mainVideo.src = episode.link;
             mainVideo.load(); // Forzar al navegador a procesar el nuevo video inmediatamente
+            // (load() ya resetea currentTime a 0 automáticamente)
             
-            mainVideo.currentTime = 0;
             // Reiniciar barra de progreso
             progressBar.style.width = '0%';
             progressKnob.style.left = '0%';
@@ -1563,7 +1562,11 @@
 
             // Lógica de reproducción y estado de UI
             if (isAutoChained || hasPlayedAnyVideo) {
-                mainVideo.play();
+                mainVideo.play().catch(() => {
+                    // Autoplay bloqueado: mostrar estado pausado correctamente
+                    videoContainer.classList.add('paused');
+                    btnCenter.innerHTML = iconPlay;
+                });
                 videoContainer.classList.remove('paused');
                 btnCenter.innerHTML = iconPause;
             } else {
@@ -1947,14 +1950,45 @@
     });
 
     // 5. Fullscreen
+    function exitPlayer() {
+        // Si estamos en fullscreen, solo salir del fullscreen y resetear rotación (quedarse en el reproductor)
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+            try {
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            } catch(e) {}
+            const exitFn = document.exitFullscreen || document.webkitExitFullscreen;
+            if (exitFn) exitFn.call(document);
+            // No navegar atrás, solo salir del fullscreen
+        } else {
+            // Sin fullscreen: navegar atrás normalmente
+            window.history.back();
+        }
+    }
+
     btnFS.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (!document.fullscreenElement) {
-            if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
-            else if (videoContainer.webkitRequestFullscreen) videoContainer.webkitRequestFullscreen();
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+            const enterFS = videoContainer.requestFullscreen || videoContainer.webkitRequestFullscreen;
+            if (enterFS) {
+                enterFS.call(videoContainer).then(() => {
+                    // Intentar rotar a landscape al entrar en fullscreen
+                    try {
+                        if (screen.orientation && screen.orientation.lock) {
+                            screen.orientation.lock('landscape').catch(() => {});
+                        }
+                    } catch(e) {}
+                }).catch(() => {});
+            }
         } else {
-            if (document.exitFullscreen) document.exitFullscreen();
-            else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+            try {
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            } catch(e) {}
+            const exitFn = document.exitFullscreen || document.webkitExitFullscreen;
+            if (exitFn) exitFn.call(document);
         }
     });
 
@@ -1966,6 +2000,7 @@
 
     // --- UTILIDADES ---
     function showDetailView() {
+        clearInterval(_heroTimer); // Fix Bug 5: Pausar carrusel al entrar al detalle
         document.getElementById('bottom-nav').style.transform = 'translateY(100%)'; // Ocultar nav
         switchView(detailView);
         window.scrollTo(0, 0);
@@ -1974,9 +2009,15 @@
     function showHomeView() {
         if (currentAnime) { // Solo si venimos de la vista de detalle
             mainVideo.pause();
-            mainVideo.src = "";
+            // Fix Bug 2: Destruir instancia de subtítulos para liberar memoria/CPU
+            if (octopusInstance) {
+                try { octopusInstance.freeTrack(); octopusInstance = null; } catch(e) {}
+            }
+            // Fix Bug 3: Quitar src DESPUÉS de ocultar el contenedor para que loadstart no muestre el spinner
             videoContainer.style.display = 'none';
-            currentAnime = null; 
+            mainVideo.removeAttribute('src');
+            mainVideo.load();
+            currentAnime = null;
         }
         switchView(homeView);
         document.getElementById('bottom-nav').style.transform = 'translateY(0)'; // Mostrar nav
