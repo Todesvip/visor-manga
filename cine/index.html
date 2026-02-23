@@ -76,10 +76,8 @@
         .hero-gradient {
             position: absolute;
             inset: 0;
-            background: 
-                linear-gradient(to right, rgba(7,8,13,0.92) 0%, rgba(7,8,13,0.4) 60%, transparent 100%),
-                linear-gradient(to top, var(--bg) 0%, transparent 40%),
-                linear-gradient(to bottom, var(--bg) 0%, transparent 40%);
+            background: linear-gradient(to top, var(--bg) 0%, transparent 40%),
+                        linear-gradient(to bottom, var(--bg) 0%, transparent 30%);
         }
 
         .hero-content {
@@ -349,6 +347,69 @@
         }
         .dir-subtitle {
             font-size: 11px; color: var(--text-gray);
+        }
+
+        /* --- NUEVO: ESTILOS DE EXPLORAR --- */
+        .explore-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: calc(15px + env(safe-area-inset-top)) 15px 10px 20px;
+        }
+        .explore-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .top-search-btn-explore {
+            background: none; border: none; cursor: pointer; padding: 0;
+        }
+        .top-search-btn-explore svg {
+            width: 28px; height: 28px; fill: white; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.8));
+        }
+        .explore-subnav {
+            display: flex;
+            gap: 20px;
+            padding: 0 20px;
+            border-bottom: 1px solid var(--border);
+            margin-top: 30px; /* Espacio extra */
+        }
+        .explore-subnav-item {
+            background: none; border: none; color: var(--text-gray);
+            font-size: 14px; font-weight: 600; cursor: pointer;
+            padding: 0 0 15px 0;
+            position: relative;
+        }
+        .explore-subnav-item.active {
+            color: var(--text);
+        }
+        .explore-subnav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: -10px; width: calc(100% + 20px); height: 2px;
+            background-color: var(--accent); box-shadow: 0 0 8px var(--glow);
+        }
+
+        /* --- NUEVO: ESTILOS DE GÉNEROS --- */
+        .genre-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 20px 15px;
+            display: none; /* Oculto por defecto */
+        }
+        .genre-card {
+            background-color: #1e1e24;
+            border-radius: 8px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
         }
 
         /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
@@ -766,10 +827,18 @@
 
     <!-- EXPLORAR -->
     <div id="explore-view" class="view">
-        <div class="settings-content">
-            <h1 class="settings-title">Explorar</h1>
-            <div class="full-list-grid" id="explore-grid" style="padding: 0;"></div>
+        <div class="explore-header">
+            <h1 class="explore-title">Explorar</h1>
+            <button class="top-search-btn-explore" onclick="openSearchOverlay()">
+                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </button>
         </div>
+        <div class="explore-subnav">
+            <button id="subnav-all" class="explore-subnav-item active" onclick="showExploreSection('all')">Todo el anime</button>
+            <button id="subnav-genres" class="explore-subnav-item" onclick="showExploreSection('genres')">Generos de anime</button>
+        </div>
+        <div class="full-list-grid" id="explore-grid" style="padding: 25px 15px;"></div>
+        <div class="genre-grid" id="genre-grid"></div>
     </div>
 
     <!-- FAVORITOS -->
@@ -1348,10 +1417,10 @@
 
                 if (anime.titulo && anime.titulo.toLowerCase().includes('kaifuku')) {
                     titleOrLogo = `<img src="https://dimagemfondo.github.io/visor-imgen/img/04/Logo.png" class="hero-logo" alt="Logo">`;
-                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/04/img01.webp";
+                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/06/011.webp";
                 } else if (anime.titulo && anime.titulo.toLowerCase().includes('ishuzoku')) {
                     titleOrLogo = `<img src="https://Dimagemfondo.github.io/visor-imgen/img/04/Logo (1).png" class="hero-logo" alt="Logo">`;
-                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/04/img02.webp";
+                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/06/0f1.webp";
                 } else if (anime.titulo && anime.titulo.toLowerCase().includes('nande')) {
                     titleOrLogo = `<img src="https://dimagemfondo.github.io/visor-imgen/img/04/Logo%20(2).png" class="hero-logo" alt="Logo">`;
                     bgImage = "https://dimagemfondo.github.io/visor-imgen/img/04/img.webp";
@@ -1974,8 +2043,31 @@
         ccMenu.style.display = ccMenu.style.display === 'block' ? 'none' : 'block';
     });
 
+    // --- FUNCIÓN DE REFRESCO SILENCIOSO DE SUBTÍTULOS ---
+    function refreshSubtitleState() {
+        // Si está en 'none' o no hay instancia, no hacemos nada (como pediste)
+        if (subtitlePreference === 'none' || !octopusInstance) return;
+
+        // Buscamos el botón que corresponde a la preferencia actual (Español/English)
+        const buttons = Array.from(ccMenu.children);
+        const targetBtn = buttons.find(b => b.textContent === subtitlePreference);
+        
+        if (targetBtn && targetBtn.dataset.url) {
+            // Aplicamos el track directamente (esto es el "clic" silencioso)
+            // No abrimos el menú, solo mandamos la orden al motor de subtítulos
+            octopusInstance.setTrackByUrl(targetBtn.dataset.url);
+        }
+    }
+
     // 5. Fullscreen
     function exitPlayer() {
+        // Verificamos si está rotado (Landscape) antes de salir
+        const isRotated = window.innerWidth > window.innerHeight;
+        if (isRotated) {
+            // "si pongo el boton salir... cuando esta en rotado... se pondra clik"
+            setTimeout(refreshSubtitleState, 200);
+        }
+
         // Si estamos en fullscreen, solo salir del fullscreen y resetear rotación (quedarse en el reproductor)
         if (document.fullscreenElement || document.webkitFullscreenElement) {
             try {
@@ -2016,6 +2108,12 @@
             if (exitFn) exitFn.call(document);
         }
     });
+
+    // Detectar cambios automáticos de Fullscreen (Entrar y Volver)
+    // "cuando ponga full screen tambien debe ponerse clik automaticamente"
+    // "cuando ponga full screen para volver pues se podra clik"
+    document.addEventListener('fullscreenchange', () => setTimeout(refreshSubtitleState, 300));
+    document.addEventListener('webkitfullscreenchange', () => setTimeout(refreshSubtitleState, 300));
 
     // --- Control por gestos (desactivado, reservado para uso futuro) ---
     function setupTouchControls() {
@@ -2060,7 +2158,15 @@
         mainVideo.pause();
         switchView(exploreView);
         document.getElementById('bottom-nav').style.transform = 'translateY(0)';
+        
+        // Renderizar la cuadrícula de animes por defecto
         renderGrid(library, document.getElementById('explore-grid'));
+        
+        // Renderizar la cuadrícula de géneros (y dejarla oculta)
+        renderGenreGrid();
+
+        // Asegurarse de que la vista correcta esté visible al entrar
+        showExploreSection('all'); 
     }
 
     function showFavoritesView() {
@@ -2080,6 +2186,39 @@
         } else {
             favoritesGrid.style.display = 'none';
             noFavsMsg.style.display = 'block';
+        }
+    }
+
+    function renderGenreGrid() {
+        const genreGrid = document.getElementById('genre-grid');
+        if (genreGrid.children.length > 0) return; // Evitar re-renderizar
+
+        const genres = ["Acción", "Aventura", "Ciencia Ficción", "Comedia", "Drama", "Ecchi", "Fantasía", "Harem", "Mecha", "Misterio", "Psicológico", "Romance", "Seinen", "Shoujo", "Shounen", "Slice of Life", "Sobrenatural", "Terror"];
+        
+        genres.forEach(genre => {
+            const card = document.createElement('div');
+            card.className = 'genre-card';
+            card.innerText = genre;
+            genreGrid.appendChild(card);
+        });
+    }
+
+    function showExploreSection(section) {
+        const allBtn = document.getElementById('subnav-all');
+        const genresBtn = document.getElementById('subnav-genres');
+        const allGrid = document.getElementById('explore-grid');
+        const genreGrid = document.getElementById('genre-grid');
+
+        if (section === 'genres') {
+            allBtn.classList.remove('active');
+            genresBtn.classList.add('active');
+            allGrid.style.display = 'none';
+            genreGrid.style.display = 'grid';
+        } else { // 'all'
+            genresBtn.classList.remove('active');
+            allBtn.classList.add('active');
+            genreGrid.style.display = 'none';
+            allGrid.style.display = 'grid';
         }
     }
 
