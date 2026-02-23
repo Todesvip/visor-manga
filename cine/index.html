@@ -76,8 +76,10 @@
         .hero-gradient {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, var(--bg) 0%, transparent 40%),
-                        linear-gradient(to bottom, var(--bg) 0%, transparent 30%);
+            background: 
+                linear-gradient(to right, rgba(7,8,13,0.92) 0%, rgba(7,8,13,0.4) 60%, transparent 100%),
+                linear-gradient(to top, var(--bg) 0%, transparent 40%),
+                linear-gradient(to bottom, var(--bg) 0%, transparent 40%);
         }
 
         .hero-content {
@@ -2065,7 +2067,7 @@
         const isRotated = window.innerWidth > window.innerHeight;
         if (isRotated) {
             // "si pongo el boton salir... cuando esta en rotado... se pondra clik"
-            setTimeout(refreshSubtitleState, 200);
+            setTimeout(refreshSubtitleState, 50);
         }
 
         // Si estamos en fullscreen, solo salir del fullscreen y resetear rotación (quedarse en el reproductor)
@@ -2112,8 +2114,8 @@
     // Detectar cambios automáticos de Fullscreen (Entrar y Volver)
     // "cuando ponga full screen tambien debe ponerse clik automaticamente"
     // "cuando ponga full screen para volver pues se podra clik"
-    document.addEventListener('fullscreenchange', () => setTimeout(refreshSubtitleState, 300));
-    document.addEventListener('webkitfullscreenchange', () => setTimeout(refreshSubtitleState, 300));
+    document.addEventListener('fullscreenchange', () => setTimeout(refreshSubtitleState, 50));
+    document.addEventListener('webkitfullscreenchange', () => setTimeout(refreshSubtitleState, 50));
 
     // --- Control por gestos (desactivado, reservado para uso futuro) ---
     function setupTouchControls() {
