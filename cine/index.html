@@ -193,6 +193,38 @@
         .header-search-input::placeholder { color: #888; }
         .header-search-input.shake { animation: shake 0.7s cubic-bezier(.36,.07,.19,.97) both; }
 
+        /* --- NUEVA BARRA DE BÚSQUEDA (TIPO REMIX) --- */
+        .search-bar-wrapper {
+            display: flex; align-items: center;
+            background-color: #1e1e24;
+            border-radius: 8px;
+            flex-grow: 1;
+            height: 42px;
+            position: relative;
+            border: 1px solid #333;
+        }
+        
+        .filter-text-btn {
+            background: none; border: none; color: #ccc; font-size: 13px; font-weight: 600;
+            cursor: pointer; padding: 0 12px;
+            border-right: 1px solid #333;
+            height: 24px; display: flex; align-items: center;
+            white-space: nowrap;
+        }
+        
+        .filter-icon-btn {
+            background: none; border: none; color: #ccc; cursor: pointer;
+            padding: 0 12px;
+            border-left: 1px solid #333;
+            height: 24px; display: flex; align-items: center; justify-content: center;
+        }
+        .filter-icon-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+        .header-search-input-clean {
+            flex-grow: 1; background: transparent; border: none; color: #fff;
+            padding: 0 10px; font-size: 14px; outline: none; width: 100%;
+        }
+
         /* Ocultar flechas en input de número */
         input[type=number]::-webkit-outer-spin-button, 
         input[type=number]::-webkit-inner-spin-button {
@@ -216,9 +248,7 @@
             width: 40px;
             height: 40px;
             background: transparent;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: flex; justify-content: center; align-items: center;
             cursor: pointer;
             border: none;
         }
@@ -237,7 +267,7 @@
         .search-header-bar {
             display: flex; align-items: center; padding: calc(15px + env(safe-area-inset-top)) 15px 15px 15px; gap: 15px;
             background-color: #101010; border-bottom: none;
-            position: relative; /* Necesario para el menú desplegable */
+            position: relative; z-index: 102;
         }
         .search-back-btn {
             background: none; border: none; padding: 0; cursor: pointer;
@@ -249,28 +279,12 @@
         #global-search-results {
             width: 100%; flex: 1;
             background: transparent;
-            overflow-y: auto; display: none;
-            padding: 10px 0;
-        }
-        .search-result-card {
-            display: flex; gap: 15px; padding: 15px;
-            border-bottom: none;
-            cursor: pointer; transition: background 0.2s;
-        }
-        .search-result-card:hover { background: #1a1a1a; }
-        .search-poster-img {
-            width: 100px; aspect-ratio: 2/3; object-fit: cover; 
-            border-radius: 0; flex-shrink: 0;
-        }
-        .search-info {
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .search-title {
-            color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 5px;
-        }
-        .search-desc {
-            color: #ccc; font-size: 11px; line-height: 1.4;
-            display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+            overflow-y: auto;
+            display: none; /* Se cambia a 'grid' o 'block' con JS */
+            padding: 15px;
+            box-sizing: border-box;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
         }
 
         /* --- NUEVO HOME (HORIZONTAL) --- */
@@ -672,27 +686,16 @@
         }
 
         /* --- FILTRO DE FECHA (SEARCH) --- */
-        .filter-btn {
-            background: transparent; border: none; cursor: pointer; color: #ccc;
-            display: flex; align-items: center; justify-content: center;
-            padding: 8px; margin-left: 5px; border-radius: 0;
-            transition: transform 0.2s, color 0.2s;
-            width: 42px; height: 42px;
-        }
-        .filter-btn:hover, .filter-btn.active { 
-            background-color: transparent; color: #fff;
-            transform: scale(1.1);
-        }
-        .filter-btn svg { width: 26px; height: 26px; fill: currentColor; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.8)); }
-
-        .date-dropdown {
-            display: none; position: absolute; top: 100%; right: 15px;
+        .dropdown-menu {
+            display: none; position: absolute; top: 100%; 
             background: #121212; border: 1px solid #333;
-            border-radius: 0; /* Cuadrado con punta */
-            margin-top: 5px; width: 150px;
+            margin-top: 5px; min-width: 150px; max-width: 200px;
             z-index: 101; overflow: hidden; box-shadow: 6px 6px 0px rgba(0,0,0,0.5);
         }
-        .date-dropdown.show { display: block; animation: fadeIn 0.2s ease-out; }
+        #genreDropdown { left: 60px; }
+        #yearDropdown { right: 15px; }
+        
+        .dropdown-menu.show { display: block; animation: fadeIn 0.2s ease-out; }
         .dropdown-header {
             padding: 10px 15px; font-size: 12px; color: #888;
             border-bottom: 1px solid #333; text-transform: uppercase; font-weight: bold;
@@ -723,14 +726,21 @@
             <button class="search-back-btn" onclick="closeSearchOverlay()">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>
             </button>
-            <input type="text" id="overlay-search-input" class="header-search-input" placeholder="Buscar..." oninput="handleGlobalSearch(this)">
             
-            <!-- Botón Filtro de Fecha -->
-            <button class="filter-btn" id="dateFilterBtn" onclick="toggleDateDropdown(event)">
-                <!-- Icono Calendario Moderno -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
-            </button>
-            <div class="date-dropdown" id="dateDropdown">
+            <div class="search-bar-wrapper">
+                <button class="filter-text-btn" id="genreFilterBtn" onclick="toggleGenreDropdown(event)">All</button>
+                <input type="text" id="overlay-search-input" class="header-search-input-clean" placeholder="Buscar..." oninput="handleGlobalSearch(this)">
+                <button class="filter-icon-btn" id="yearFilterBtn" onclick="toggleYearDropdown(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM4 5V19H20V7H11.5858L9.58579 5H4Z"></path></svg>
+                </button>
+            </div>
+
+            <div class="dropdown-menu" id="genreDropdown">
+                <div class="dropdown-header">Género</div>
+                <ul class="date-list" id="genre-list"></ul>
+            </div>
+            
+            <div class="dropdown-menu" id="yearDropdown">
                 <div class="dropdown-header">Año</div>
                 <ul class="date-list" id="year-list"></ul>
             </div>
@@ -791,6 +801,10 @@
             <div class="settings-section">
                 <div class="switch-container">
                     <div class="settings-label">Modo Privado</div>
+                    <label class="switch">
+                        <input type="checkbox" id="private-mode-switch" onchange="handlePrivateToggle(this)">
+                        <span class="slider"></span>
+                    </label>
                 </div>
                 <p class="settings-section-desc">
                     Activa esta opción para acceder al contenido exclusivo.
@@ -799,7 +813,6 @@
                 <div id="code-entry-section">
                     <p class="settings-section-desc" style="margin-bottom: 10px;">Código de acceso</p>
                     <input type="tel" id="settings-code-input" class="header-search-input settings-code-input" placeholder="••••" pattern="[0-9]*" inputmode="numeric">
-                    <button class="settings-action-btn" style="margin-top: 20px;" onclick="enterPrivateMode()">Activar</button>
                 </div>
             </div>
         </div>
@@ -1010,6 +1023,13 @@
     const detailQuality = document.getElementById('detail-quality');
 
     const globalSearchResults = document.getElementById('global-search-results');
+    
+    // --- FILTROS DE BÚSQUEDA ---
+    let searchFilters = {
+        query: '',
+        genre: 'all',
+        year: 'all'
+    };
 
     // --- INICIO ---
     function initApp() {
@@ -1065,6 +1085,7 @@
     function closeSearchOverlay() {
         document.getElementById('search-overlay').classList.remove('active');
         document.getElementById('overlay-search-input').value = "";
+        resetFilters();
         document.getElementById('global-search-results').innerHTML = "";
     }
 
@@ -1097,19 +1118,24 @@
     // Manejar el botón "atrás" del navegador
     window.onpopstate = handleRouting;
 
-    function enterPrivateMode() {
-        const settingsCodeInput = document.getElementById('settings-code-input');
-        if (!settingsCodeInput) return;
-
-        if (settingsCodeInput.value === SECRET_CODE) {
-            isRestrictedMode = true;
-            library = privateLibrary;
-            localStorage.setItem('myApp_restrictedMode', 'true');
-            switchTab('home');
+    function handlePrivateToggle(checkbox) {
+        if (checkbox.checked) {
+            const settingsCodeInput = document.getElementById('settings-code-input');
+            if (settingsCodeInput.value === SECRET_CODE) {
+                isRestrictedMode = true;
+                library = privateLibrary;
+                localStorage.setItem('myApp_restrictedMode', 'true');
+                renderSettings();
+                switchTab('home');
+            } else {
+                checkbox.checked = false;
+                settingsCodeInput.classList.add('shake');
+                setTimeout(() => settingsCodeInput.classList.remove('shake'), 700);
+                settingsCodeInput.value = "";
+            }
         } else {
-            settingsCodeInput.classList.add('shake');
-            setTimeout(() => settingsCodeInput.classList.remove('shake'), 700);
-            settingsCodeInput.value = "";
+            exitPrivateMode();
+            renderSettings();
         }
     }
 
@@ -1399,19 +1425,14 @@
 
     function renderSettings() {
         const codeEntry = document.getElementById('code-entry-section');
-        if (!codeEntry) return;
+        const privateSwitch = document.getElementById('private-mode-switch');
+        if (!codeEntry || !privateSwitch) return;
         
-        // Limpiar botón de salida previo si existe
-        const existingExit = document.getElementById('exit-private-container');
-        if(existingExit) existingExit.remove();
+        // Sincronizar switch
+        privateSwitch.checked = isRestrictedMode;
 
         if (isRestrictedMode) {
             codeEntry.style.display = 'none';
-            // Mostrar botón para desactivar
-            const exitContainer = document.createElement('div');
-            exitContainer.id = 'exit-private-container';
-            exitContainer.innerHTML = `<button class="settings-action-btn" style="background: #333; color: white; margin-top:10px;" onclick="exitPrivateMode()">Desactivar Modo Privado</button>`;
-            codeEntry.parentNode.appendChild(exitContainer);
         } else {
             codeEntry.style.display = 'block';
         }
@@ -2091,115 +2112,136 @@
         window.history.back();
     }
 
+    function resetFilters() {
+        searchFilters = { query: '', genre: 'all', year: 'all' };
+        document.getElementById('genreFilterBtn').innerText = "All";
+        document.getElementById('yearFilterBtn').style.color = "#ccc";
+    }
+
     function handleGlobalSearch(sender) {
-        const input = sender;
-        const query = input.value.toLowerCase().trim();
-        
-        if (!query) {
-            globalSearchResults.style.display = 'none';
-            return;
-        }
+        searchFilters.query = sender.value.toLowerCase().trim();
+        applySearchFilters();
+    }
 
-        const filtered = library.filter(a => a.titulo.toLowerCase().includes(query));
+    function renderSearchResults(filtered) {
         globalSearchResults.innerHTML = "";
-        globalSearchResults.style.display = 'block';
 
-        filtered.forEach(anime => {
-            const item = document.createElement('div');
-            item.className = 'search-result-card';
-            item.innerHTML = `
-                <img src="${anime.poster}" class="search-poster-img">
-                <div class="search-info">
-                    <div class="search-title">${anime.titulo}</div>
-                    <div class="search-desc">${anime.sinopsis || 'Sin descripción.'}</div>
-                </div>
-            `;
-            item.onclick = () => {
-                globalSearchResults.style.display = 'none';
-                closeSearchOverlay();
-                openAnimeDetail(anime);
-            };
-            globalSearchResults.appendChild(item);
-        });
+        if (filtered.length > 0) {
+            globalSearchResults.style.display = 'grid';
 
-        if (filtered.length === 0) {
+            filtered.forEach(anime => {
+                const item = document.createElement('div');
+                item.className = 'poster-wrapper';
+                item.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                item.onclick = () => {
+                    globalSearchResults.style.display = 'none';
+                    closeSearchOverlay();
+                    openAnimeDetail(anime);
+                };
+                globalSearchResults.appendChild(item);
+            });
+        } else {
+            globalSearchResults.style.display = 'block';
             globalSearchResults.innerHTML = "<div style='padding:20px; color:#888; text-align:center;'>No se encontraron resultados</div>";
         }
     }
 
-    // --- LÓGICA FILTRO DE FECHAS ---
-    function toggleDateDropdown(e) {
+    function applySearchFilters() {
+        if (!searchFilters.query && searchFilters.genre === 'all' && searchFilters.year === 'all') {
+            globalSearchResults.style.display = 'none';
+            return;
+        }
+
+        let filtered = library.filter(anime => {
+            // 1. Filtro Texto
+            const matchQuery = !searchFilters.query || anime.titulo.toLowerCase().includes(searchFilters.query);
+            
+            // 2. Filtro Año
+            const matchYear = searchFilters.year === 'all' || (anime.ano && anime.ano.toString().includes(searchFilters.year));
+            
+            // 3. Filtro Género
+            let matchGenre = true;
+            if (searchFilters.genre !== 'all') {
+                if (anime.generos) {
+                    const g = Array.isArray(anime.generos) ? anime.generos : anime.generos.split(',').map(s => s.trim());
+                    matchGenre = g.includes(searchFilters.genre);
+                } else {
+                    matchGenre = false;
+                }
+            }
+
+            return matchQuery && matchYear && matchGenre;
+        });
+
+        renderSearchResults(filtered);
+    }
+
+    // --- DROPDOWNS ---
+    function toggleGenreDropdown(e) {
         e.stopPropagation();
-        const dd = document.getElementById('dateDropdown');
-        const btn = document.getElementById('dateFilterBtn');
+        closeAllDropdowns('genreDropdown');
+        const dd = document.getElementById('genreDropdown');
         dd.classList.toggle('show');
-        btn.classList.toggle('active');
         
-        // Generar lista de años si está vacía
+        // Poblar géneros
+        const list = document.getElementById('genre-list');
+        if (list.children.length === 0) {
+            // MODO VISUALIZACIÓN: Lista estática de ejemplo (Sin escanear)
+            const sorted = ["Acción", "Aventura", "Ciencia Ficción", "Comedia", "Drama", "Ecchi", "Fantasía", "Harem", "Mecha", "Misterio", "Psicológico", "Romance", "Seinen", "Shoujo", "Shounen", "Slice of Life", "Sobrenatural", "Terror"];
+            
+            let html = `<li onclick="selectGenre('all')">Todos</li>`;
+            sorted.forEach(gen => {
+                html += `<li onclick="selectGenre('${gen}')">${gen}</li>`;
+            });
+            list.innerHTML = html;
+        }
+    }
+
+    function toggleYearDropdown(e) {
+        e.stopPropagation();
+        closeAllDropdowns('yearDropdown');
+        const dd = document.getElementById('yearDropdown');
+        dd.classList.toggle('show');
+
         const list = document.getElementById('year-list');
         if (list.children.length === 0) {
             const currentYear = new Date().getFullYear();
-            let html = `<li onclick="filtrarAnime('all')">Todos</li>`;
+            let html = `<li onclick="selectYear('all')">Todos</li>`;
             for (let y = currentYear; y >= 1990; y--) {
-                html += `<li onclick="filtrarAnime('${y}')">${y}</li>`;
+                html += `<li onclick="selectYear('${y}')">${y}</li>`;
             }
             list.innerHTML = html;
         }
     }
 
+    function closeAllDropdowns(exceptId) {
+        if(exceptId !== 'genreDropdown') document.getElementById('genreDropdown').classList.remove('show');
+        if(exceptId !== 'yearDropdown') document.getElementById('yearDropdown').classList.remove('show');
+    }
+
+    function selectGenre(g) {
+        searchFilters.genre = g;
+        document.getElementById('genreFilterBtn').innerText = g === 'all' ? 'All' : g;
+        document.getElementById('genreDropdown').classList.remove('show');
+        applySearchFilters();
+    }
+
+    function selectYear(y) {
+        searchFilters.year = y;
+        document.getElementById('yearFilterBtn').style.color = y === 'all' ? '#ccc' : 'var(--accent)';
+        document.getElementById('yearDropdown').classList.remove('show');
+        applySearchFilters();
+    }
+
     // Cerrar dropdown al hacer clic fuera
     document.addEventListener('click', (e) => {
-        const dd = document.getElementById('dateDropdown');
-        const btn = document.getElementById('dateFilterBtn');
-        if (dd && dd.classList.contains('show') && !dd.contains(e.target) && !btn.contains(e.target)) {
-            dd.classList.remove('show');
-            btn.classList.remove('active');
+        if (!e.target.closest('.dropdown-menu') && !e.target.closest('.filter-text-btn') && !e.target.closest('.filter-icon-btn')) {
+            closeAllDropdowns();
         }
     });
-
-    function filtrarAnime(year) {
-        // Cerrar menú
-        document.getElementById('dateDropdown').classList.remove('show');
-        document.getElementById('dateFilterBtn').classList.remove('active');
-
-        // Limpiar input de texto para evitar confusión
-        document.getElementById('overlay-search-input').value = "";
-
-        // Filtrar
-        let filtered = [];
-        if (year === 'all') {
-            filtered = library;
-        } else {
-            filtered = library.filter(a => a.ano && a.ano.toString().includes(year));
-        }
-
-        // Mostrar resultados usando la misma lógica que la búsqueda
-        globalSearchResults.style.display = 'block';
-        globalSearchResults.innerHTML = "";
-
-        if (filtered.length === 0) {
-            globalSearchResults.innerHTML = "<div style='padding:20px; color:#888; text-align:center;'>No hay animes de este año.</div>";
-            return;
-        }
-
-        filtered.forEach(anime => {
-            const item = document.createElement('div');
-            item.className = 'search-result-card';
-            item.innerHTML = `
-                <img src="${anime.poster}" class="search-poster-img">
-                <div class="search-info">
-                    <div class="search-title">${anime.titulo}</div>
-                    <div class="search-desc">${anime.ano || 'N/A'} - ${anime.sinopsis || 'Sin descripción.'}</div>
-                </div>
-            `;
-            item.onclick = () => {
-                globalSearchResults.style.display = 'none';
-                closeSearchOverlay();
-                openAnimeDetail(anime);
-            };
-            globalSearchResults.appendChild(item);
-        });
-    }
 
     // El listener para el final del video ahora llama a playEpisode con el segundo parámetro en 'true'
     mainVideo.addEventListener('ended', () => {
