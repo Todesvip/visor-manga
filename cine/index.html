@@ -2045,31 +2045,10 @@
         ccMenu.style.display = ccMenu.style.display === 'block' ? 'none' : 'block';
     });
 
-    // --- FUNCIÓN DE REFRESCO SILENCIOSO DE SUBTÍTULOS ---
-    function refreshSubtitleState() {
-        // Si está en 'none' o no hay instancia, no hacemos nada (como pediste)
-        if (subtitlePreference === 'none' || !octopusInstance) return;
 
-        // Buscamos el botón que corresponde a la preferencia actual (Español/English)
-        const buttons = Array.from(ccMenu.children);
-        const targetBtn = buttons.find(b => b.textContent === subtitlePreference);
-        
-        if (targetBtn && targetBtn.dataset.url) {
-            // Aplicamos el track directamente (esto es el "clic" silencioso)
-            // No abrimos el menú, solo mandamos la orden al motor de subtítulos
-            octopusInstance.setTrackByUrl(targetBtn.dataset.url);
-        }
-    }
 
     // 5. Fullscreen
     function exitPlayer() {
-        // Verificamos si está rotado (Landscape) antes de salir
-        const isRotated = window.innerWidth > window.innerHeight;
-        if (isRotated) {
-            // "si pongo el boton salir... cuando esta en rotado... se pondra clik"
-            setTimeout(refreshSubtitleState, 50);
-        }
-
         // Si estamos en fullscreen, solo salir del fullscreen y resetear rotación (quedarse en el reproductor)
         if (document.fullscreenElement || document.webkitFullscreenElement) {
             try {
@@ -2110,12 +2089,6 @@
             if (exitFn) exitFn.call(document);
         }
     });
-
-    // Detectar cambios automáticos de Fullscreen (Entrar y Volver)
-    // "cuando ponga full screen tambien debe ponerse clik automaticamente"
-    // "cuando ponga full screen para volver pues se podra clik"
-    document.addEventListener('fullscreenchange', () => setTimeout(refreshSubtitleState, 50));
-    document.addEventListener('webkitfullscreenchange', () => setTimeout(refreshSubtitleState, 50));
 
     // --- Control por gestos (desactivado, reservado para uso futuro) ---
     function setupTouchControls() {
