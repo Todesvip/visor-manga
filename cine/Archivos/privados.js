@@ -38,7 +38,7 @@ const privadosData = [
         id: "Yuusha-hime",
         titulo: "Yuusha-hime Miria",
         titulo_jp: "勇者姫ミリア",
-        poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx169941-mV5b81i9JU8m.png",
+        poster: "https://dimagemfondo.github.io/visor-imgen/img/06/012.webp",
         banner: "",
         rating: "18+",
         temporada: "Temporada 1",
