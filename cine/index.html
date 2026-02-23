@@ -359,12 +359,21 @@
             padding: calc(15px + env(safe-area-inset-top)) 15px 10px 20px;
         }
         .explore-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
-            margin: 0;
+            margin: -10px 0 0 0;
         }
         .top-search-btn-explore {
             background: none; border: none; cursor: pointer; padding: 0;
+            /* Se añaden márgenes negativos para alinear con el botón de Home, compensando el padding del header */
+            margin-top: -10px;
+            margin-right: -5px;
+            /* Se iguala el tamaño y centrado al botón de Home para consistencia */
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .top-search-btn-explore svg {
             width: 28px; height: 28px; fill: white; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.8));
@@ -390,6 +399,14 @@
             position: absolute;
             bottom: -2px; left: -10px; width: calc(100% + 20px); height: 2px;
             background-color: var(--accent); box-shadow: 0 0 8px var(--glow);
+        }
+
+        /* --- HEADER FIJO (STICKY) --- */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background-color: var(--bg);
         }
 
         /* --- NUEVO: ESTILOS DE GÉNEROS --- */
@@ -828,15 +845,17 @@
 
     <!-- EXPLORAR -->
     <div id="explore-view" class="view">
-        <div class="explore-header">
-            <h1 class="explore-title">Explorar</h1>
-            <button class="top-search-btn-explore" onclick="openSearchOverlay()">
-                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-            </button>
-        </div>
-        <div class="explore-subnav">
-            <button id="subnav-all" class="explore-subnav-item active" onclick="showExploreSection('all')">Todo el anime</button>
-            <button id="subnav-genres" class="explore-subnav-item" onclick="showExploreSection('genres')">Generos de anime</button>
+        <div class="sticky-header">
+            <div class="explore-header">
+                <h1 class="explore-title">Explorar</h1>
+                <button class="top-search-btn-explore" onclick="openSearchOverlay()">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </button>
+            </div>
+            <div class="explore-subnav">
+                <button id="subnav-all" class="explore-subnav-item active" onclick="showExploreSection('all')">Todo el anime</button>
+                <button id="subnav-genres" class="explore-subnav-item" onclick="showExploreSection('genres')">Generos de anime</button>
+            </div>
         </div>
         <div class="full-list-grid" id="explore-grid" style="padding: 25px 15px;"></div>
         <div class="genre-grid" id="genre-grid"></div>
@@ -844,11 +863,24 @@
 
     <!-- FAVORITOS -->
     <div id="favorites-view" class="view">
-        <div class="settings-content">
-            <h1 class="settings-title">Mis listas</h1>
-            <div class="full-list-grid" id="favorites-grid" style="padding: 0;"></div>
-            <p id="no-favorites-msg" style="display: none; text-align: center; color: var(--text-gray); padding: 50px 0;">No has añadido nada a tus listas todavía.</p>
+        <div class="sticky-header">
+            <div class="explore-header">
+                <h1 class="explore-title">Mis listas</h1>
+                <button class="top-search-btn-explore" onclick="openSearchOverlay()">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </button>
+            </div>
+            <div class="explore-subnav">
+                <button id="subnav-favorites" class="explore-subnav-item active" onclick="showListsSection('favorites')">Favoritos</button>
+                <button id="subnav-history" class="explore-subnav-item" onclick="showListsSection('history')">Historial</button>
+            </div>
         </div>
+        <div class="full-list-grid" id="favorites-grid" style="padding-top: 25px;"></div>
+        <p id="no-favorites-msg" style="display: none; text-align: center; color: var(--text-gray); padding: 50px 0;">No has añadido nada a tus listas todavía.</p>
+
+        <!-- History content, initially hidden -->
+        <div class="full-list-grid" id="history-grid" style="display: none; padding-top: 25px;"></div>
+        <p id="no-history-msg" style="display: none; text-align: center; color: var(--text-gray); padding: 50px 0;">Tu historial de visualización está vacío.</p>
     </div>
 
     <!-- AJUSTES -->
@@ -2163,20 +2195,9 @@
         if (octopusInstance) { try { octopusInstance.freeTrack(); octopusInstance = null; } catch(e) {} }
         switchView(favoritesView);
         document.getElementById('bottom-nav').style.transform = 'translateY(0)';
-        
-        const favoritesGrid = document.getElementById('favorites-grid');
-        const noFavsMsg = document.getElementById('no-favorites-msg');
-        
-        const favoriteAnimes = library.filter(anime => favorites.includes(anime.titulo));
 
-        if (favoriteAnimes.length > 0) {
-            noFavsMsg.style.display = 'none';
-            favoritesGrid.style.display = 'grid';
-            renderGrid(favoriteAnimes, favoritesGrid);
-        } else {
-            favoritesGrid.style.display = 'none';
-            noFavsMsg.style.display = 'block';
-        }
+        // Asegurarse de que la vista correcta esté visible al entrar
+        showListsSection('favorites');
     }
 
     function renderGenreGrid() {
@@ -2209,6 +2230,54 @@
             allBtn.classList.add('active');
             genreGrid.style.display = 'none';
             allGrid.style.display = 'grid';
+        }
+    }
+
+    function showListsSection(section) {
+        const favsBtn = document.getElementById('subnav-favorites');
+        const historyBtn = document.getElementById('subnav-history');
+        
+        const favsGrid = document.getElementById('favorites-grid');
+        const noFavsMsg = document.getElementById('no-favorites-msg');
+        
+        const historyGrid = document.getElementById('history-grid');
+        const noHistoryMsg = document.getElementById('no-history-msg');
+
+        if (section === 'history') {
+            favsBtn.classList.remove('active');
+            historyBtn.classList.add('active');
+            
+            favsGrid.style.display = 'none';
+            noFavsMsg.style.display = 'none';
+            
+            // Lógica para mostrar el historial (actualmente vacío)
+            const historyItems = []; // Placeholder para futura implementación
+            if (historyItems.length > 0) {
+                historyGrid.style.display = 'grid';
+                noHistoryMsg.style.display = 'none';
+                // renderGrid(historyItems, historyGrid); // Descomentar cuando se implemente
+            } else {
+                historyGrid.style.display = 'none';
+                noHistoryMsg.style.display = 'block';
+            }
+
+        } else { // 'favorites'
+            historyBtn.classList.remove('active');
+            favsBtn.classList.add('active');
+            
+            historyGrid.style.display = 'none';
+            noHistoryMsg.style.display = 'none';
+
+            // Reutilizar la lógica original de showFavoritesView
+            const favoriteAnimes = library.filter(anime => favorites.includes(anime.titulo));
+            if (favoriteAnimes.length > 0) {
+                favsGrid.style.display = 'grid';
+                noFavsMsg.style.display = 'none';
+                renderGrid(favoriteAnimes, favsGrid);
+            } else {
+                favsGrid.style.display = 'none';
+                noFavsMsg.style.display = 'block';
+            }
         }
     }
 
