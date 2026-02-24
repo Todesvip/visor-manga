@@ -3,7 +3,7 @@ const privadosData = [
         id: "Sukebe",
         titulo: "Sukebe Elf Tanbouki",
         titulo_jp: "スケベエルフ探訪記",
-        poster: "https://veohentai.com/wp-content/uploads/2023/07/Sukebe-Elf-Tanbouki-Episode-1.jpg",
+        poster: "https://i.ibb.co/t5ykkR4/01.jpg",
         banner: "",
         rating: "18+",
         temporada: "1 Temporada",
