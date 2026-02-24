@@ -19,7 +19,7 @@ const privadosData = [
         id: "Shounen",
         titulo: "Shounen ga Otona ni Natta Natsu",
         titulo_jp: "少年が大人になった夏",
-        poster: "https://Dimagemfondo.github.io/visor-imgen/img/04/05.webp",
+        poster: "https://i.ibb.co/3mjd3F0y/02.webp",
         banner: "",
         logo: "",
         rating: "18+",
