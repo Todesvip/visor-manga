@@ -2371,7 +2371,7 @@
                 resultsGrid.appendChild(card);
             });
         } else {
-            resultsGrid.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; color: #888; padding: 20px;'>No hay animes disponibles en este género.</p>";
+            resultsGrid.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; color: #888; padding: 20px;'>No hay disponibles en este género.</p>";
         }
 
         // Mostrar resultados y ocultar lista de géneros
@@ -2412,7 +2412,7 @@
                 gridEl.appendChild(card);
             });
         } else {
-            gridEl.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; color: #888; padding: 20px;'>No hay animes disponibles.</p>";
+            gridEl.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; color: #888; padding: 20px;'>No hay resultados.</p>";
         }
 
         history.pushState({ tab: 'explore-genre' }, null, '#explore-genre');
