@@ -6,6 +6,7 @@ const popularesData = [
         poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx12467-FtvouFLt2Vkr.jpg",
         banner: "",
         rating: "13+",
+        generos: ["Romance", "Ecchi", "Seinen", "Slice of Life", "Comedia", "Misterio"],
         temporada: "Temporada 1",
         ano: "2012",
         calidad: "HD",
@@ -34,6 +35,7 @@ const popularesData = [
         poster: "https://m.media-amazon.com/images/M/MV5BYzQ2MTJmZGYtMDVmNi00ZTUyLTg3ZDQtMTdlMmVmMDk1OTg5XkEyXkFqcGc@.jpg",
         banner: "",
         rating: "18+",
+        generos: ["Acción", "Comedia", "Ecchi", "Romance", "Shounen", "Sobrenatural"],
         temporada: "Temporada 1",
         ano: "2020",
         calidad: "HD",
@@ -62,6 +64,7 @@ const popularesData = [
         poster: "https://m.media-amazon.com/images/M/MV5BNWU3ZWI4Y2YtNzUwZi00OGY3LWFkYjEtYTZkYmQ5Nzg5OTE5XkEyXkFqcGc@.jpg",
         banner: "",
         rating: "18+",
+        generos: ["Acción", "Comedia", "Ecchi", "Fantasía", "Slice of Life"],
         temporada: "Temporada 1",
         ano: "2024",
         calidad: "HD",
@@ -83,4 +86,3 @@ const popularesData = [
         ]
     }
 ];
-
