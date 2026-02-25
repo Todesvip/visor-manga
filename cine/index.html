@@ -429,6 +429,24 @@
             font-size: 14px;
             cursor: pointer;
         }
+        
+        /* --- GÉNEROS EN DETALLE --- */
+        .detail-genres {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; margin-bottom: 5px;
+        }
+        .detail-genre-tag {
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
+            color: #ddd; padding: 4px 10px; border-radius: 4px; font-size: 12px;
+            cursor: pointer; transition: background 0.2s;
+        }
+        
+        /* --- RESULTADOS DE GÉNERO (3 COLUMNAS) --- */
+        .three-col-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 0 15px 20px;
+        }
 
         /* --- LISTA COMPLETA (GRID 2 COLUMNAS) --- */
         .full-list-grid {
@@ -859,6 +877,7 @@
         </div>
         <div class="full-list-grid" id="explore-grid" style="padding: 25px 15px;"></div>
         <div class="genre-grid" id="genre-grid"></div>
+        
     </div>
 
     <!-- FAVORITOS -->
@@ -1018,6 +1037,7 @@
             <!-- SINOPSIS -->
             <div class="section-title" style="padding-left: 0; margin-top: 25px; margin-bottom: 10px;">Sinopsis</div>
             <p id="detail-synopsis" class="synopsis"></p>
+            <div class="detail-genres" id="detail-genres"></div>
 
             <div class="meta-row" style="margin-top: 20px;">
                 <button id="favorite-btn" class="icon-btn" onclick="toggleFavorite()">
@@ -1030,6 +1050,32 @@
             </div>
 
         </div>
+    </div>
+
+    <!-- VISTA DE GÉNERO ESPECÍFICO (NUEVA) -->
+    <div id="genre-view" class="view">
+        <div class="sticky-header">
+            <div class="explore-header" style="justify-content: flex-start; gap: 10px; padding-bottom: 15px;">
+                <button class="search-back-btn" onclick="window.history.back()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>
+                </button>
+                <h1 class="explore-title" id="genre-view-title" style="margin: 0; font-size: 18px;">Género</h1>
+            </div>
+        </div>
+        <div class="three-col-grid" id="genre-view-grid" style="padding-top: 10px;"></div>
+    </div>
+
+    <!-- VISTA DE GÉNERO DESDE EXPLORAR (NUEVA - SEPARADA) -->
+    <div id="explore-genre-view" class="view">
+        <div class="sticky-header">
+            <div class="explore-header" style="justify-content: flex-start; gap: 10px; padding-bottom: 15px;">
+                <button class="search-back-btn" onclick="window.history.back()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z"></path></svg>
+                </button>
+                <h1 class="explore-title" id="explore-genre-view-title" style="margin: 0; font-size: 18px;">Género</h1>
+            </div>
+        </div>
+        <div class="three-col-grid" id="explore-genre-view-grid" style="padding-top: 10px;"></div>
     </div>
 
     <!-- NAVEGACIÓN INFERIOR -->
@@ -1078,6 +1124,8 @@
     // --- VARIABLES DE ESTADO ---
     let currentAnime = null;
     let currentEpIndex = 0;
+    let currentGenreContext = ""; // Variable para guardar el género actual
+    let currentExploreTab = 'all'; // Estado de la pestaña explorar
     let hasPlayedAnyVideo = false; // [NUEVO] Flag para la nueva lógica de autoplay
     let isRestrictedMode = false;
     let privatePage = 1; // Página actual del modo privado
@@ -1092,6 +1140,8 @@
     const favoritesView = document.getElementById('favorites-view');
     const fullListView = document.getElementById('full-list-view');
     const detailView = document.getElementById('detail-view');
+    const genreView = document.getElementById('genre-view'); // Referencia a la nueva vista
+    const exploreGenreView = document.getElementById('explore-genre-view'); // Referencia a la vista separada de explorar
     const fullGrid = document.getElementById('full-grid');
     const mainVideo = document.getElementById('main-video');
     const videoContainer = document.getElementById('video-container'); // Contenedor del reproductor
@@ -1119,6 +1169,7 @@
     const epCountText = document.getElementById('ep-count-text');
     const epSelector = document.getElementById('ep-selector');
     const detailSynopsis = document.getElementById('detail-synopsis');
+    const detailGenres = document.getElementById('detail-genres');
 
     const detailRating = document.getElementById('detail-rating');
     const detailSeason = document.getElementById('detail-season');
@@ -1199,6 +1250,10 @@
             showDetailView();
         } else if (hash === '#settings') {
             showSettingsView();
+        } else if (hash === '#genre') {
+            showGenreView();
+        } else if (hash === '#explore-genre') {
+            showExploreGenreView();
         } else if (hash === '#explore') {
             showExploreView();
         } else if (hash === '#favorites') {
@@ -1228,6 +1283,7 @@
                 isRestrictedMode = true;
                 library = privateLibrary;
                 localStorage.setItem('myApp_restrictedMode', 'true');
+                document.getElementById('genre-list').innerHTML = ""; // Limpiar lista de géneros del buscador para recargar los nuevos
                 renderSettings();
                 switchTab('home');
             } else {
@@ -1247,6 +1303,7 @@
         library = publicLibrary;
         privatePage = 1; // Resetear página al salir del modo privado
         localStorage.setItem('myApp_restrictedMode', 'false');
+        document.getElementById('genre-list').innerHTML = ""; // Limpiar lista de géneros del buscador
         renderHome();
         window.scrollTo(0, 0);
     }
@@ -1618,6 +1675,19 @@
         detailQuality.innerText = anime.calidad || "";
         
         detailSynopsis.innerText = anime.sinopsis || "";
+        
+        // Renderizar géneros
+        detailGenres.innerHTML = "";
+        if (anime.generos) {
+            const gList = Array.isArray(anime.generos) ? anime.generos : anime.generos.split(',');
+            gList.forEach(g => {
+                const span = document.createElement('span');
+                span.className = 'detail-genre-tag';
+                span.innerText = g.trim();
+                span.onclick = () => openGenreView(g.trim()); // Clic para abrir la nueva vista
+                detailGenres.appendChild(span);
+            });
+        }
 
         epSelector.innerHTML = "";
         const totalEps = anime.episodios.length;
@@ -2148,6 +2218,46 @@
         window.scrollTo(0, 0);
     }
 
+    // --- NUEVA LÓGICA PARA VISTA DE GÉNERO ---
+    function openGenreView(genre) {
+        currentGenreContext = genre;
+        const titleEl = document.getElementById('genre-view-title');
+        const gridEl = document.getElementById('genre-view-grid');
+
+        titleEl.innerText = genre;
+        gridEl.innerHTML = "";
+
+        // Filtrar
+        const filtered = library.filter(anime => {
+            if (!anime.generos) return false;
+            const g = Array.isArray(anime.generos) ? anime.generos : anime.generos.split(',').map(s => s.trim());
+            return g.includes(genre);
+        });
+
+        if (filtered.length > 0) {
+            filtered.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "poster-wrapper"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                gridEl.appendChild(card);
+            });
+        } else {
+            gridEl.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; color: #888; padding: 20px;'>No hay animes disponibles.</p>";
+        }
+
+        history.pushState({ tab: 'genre' }, null, '#genre');
+        handleRouting();
+    }
+
+    function showGenreView() {
+        switchView(genreView);
+        document.getElementById('bottom-nav').style.transform = 'translateY(100%)'; // Ocultar nav inferior
+    }
+
     function showHomeView() {
         if (currentAnime) { // Solo si venimos de la vista de detalle
             mainVideo.pause();
@@ -2180,6 +2290,17 @@
         switchView(exploreView);
         document.getElementById('bottom-nav').style.transform = 'translateY(0)';
         
+        // Actualizar títulos de las pestañas según el modo
+        const allBtn = document.getElementById('subnav-all');
+        const genresBtn = document.getElementById('subnav-genres');
+        if (isRestrictedMode) {
+            allBtn.innerText = "Todo el Hentai";
+            genresBtn.innerText = "Géneros Hentai";
+        } else {
+            allBtn.innerText = "Todo el anime";
+            genresBtn.innerText = "Géneros de anime";
+        }
+
         // Renderizar la cuadrícula de animes por defecto
         renderGrid(library, document.getElementById('explore-grid'));
         
@@ -2187,7 +2308,7 @@
         renderGenreGrid();
 
         // Asegurarse de que la vista correcta esté visible al entrar
-        showExploreSection('all'); 
+        showExploreSection(currentExploreTab); 
     }
 
     function showFavoritesView() {
@@ -2202,19 +2323,109 @@
 
     function renderGenreGrid() {
         const genreGrid = document.getElementById('genre-grid');
-        if (genreGrid.children.length > 0) return; // Evitar re-renderizar
+        genreGrid.innerHTML = ""; // Limpiar siempre para asegurar el modo correcto
 
-        const genres = ["Acción", "Aventura", "Ciencia Ficción", "Comedia", "Drama", "Ecchi", "Fantasía", "Harem", "Mecha", "Misterio", "Psicológico", "Romance", "Seinen", "Shoujo", "Shounen", "Slice of Life", "Sobrenatural", "Terror"];
+        let genres = [];
+        if (isRestrictedMode) {
+            genres = ["Ahegao", "Anal", "Casadas", "Chantaje", "Chicas Mágicas", "Colegialas", "Cosplay", "Demonios", "Deportes", "Elfas", "Embarazadas", "Enfermeras", "Escolares", "Esclavas", "Fantasía", "Futanari", "Gangbang", "Harem", "Hermanas", "Hospital", "Incesto", "Ídolos", "Juguetes", "Loli", "Maestras", "Maid", "Masturbación", "Milf", "Monstruos", "Netorare", "Ninjas", "Orgías", "Romance", "Rubias", "Sexo oral", "Shota", "Sirvientas", "Sobrenatural", "Succubus", "Tentáculos", "Terror", "Tetonas", "Traición", "Tsundere", "Venganza", "Violación", "Virgenes", "Yuri"];
+        } else {
+            genres = ["Acción", "Aventura", "Ciencia Ficción", "Comedia", "Drama", "Ecchi", "Fantasía", "Harem", "Mecha", "Misterio", "Psicológico", "Romance", "Seinen", "Shoujo", "Shounen", "Slice of Life", "Sobrenatural", "Terror"];
+        }
         
-        genres.forEach(genre => {
+        genres.sort().forEach(genre => {
             const card = document.createElement('div');
             card.className = 'genre-card';
             card.innerText = genre;
+            card.onclick = () => openExploreGenreView(genre); // Usar la nueva función separada
             genreGrid.appendChild(card);
         });
     }
 
+    function showGenreResults(genre) {
+        const genreGrid = document.getElementById('genre-grid');
+        const resultsContainer = document.getElementById('genre-results-container');
+        const resultsGrid = document.getElementById('genre-results-grid');
+        const title = document.getElementById('genre-results-title');
+
+        // Filtrar librería por género
+        const filtered = library.filter(anime => {
+            if (!anime.generos) return false;
+            // Manejar si es array o string separado por comas
+            const g = Array.isArray(anime.generos) ? anime.generos : anime.generos.split(',').map(s => s.trim());
+            return g.includes(genre);
+        });
+
+        // Actualizar UI
+        title.innerText = genre;
+        resultsGrid.innerHTML = "";
+        
+        if (filtered.length > 0) {
+            filtered.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "poster-wrapper"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                resultsGrid.appendChild(card);
+            });
+        } else {
+            resultsGrid.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; color: #888; padding: 20px;'>No hay animes disponibles en este género.</p>";
+        }
+
+        // Mostrar resultados y ocultar lista de géneros
+        genreGrid.style.display = 'none';
+        resultsContainer.style.display = 'block';
+        window.scrollTo(0, 0);
+    }
+
+    function closeGenreResults() {
+        document.getElementById('genre-results-container').style.display = 'none';
+        document.getElementById('genre-grid').style.display = 'grid';
+    }
+
+    // --- NUEVA LÓGICA PARA VISTA DE GÉNERO DESDE EXPLORAR (SEPARADA) ---
+    function openExploreGenreView(genre) {
+        const titleEl = document.getElementById('explore-genre-view-title');
+        const gridEl = document.getElementById('explore-genre-view-grid');
+
+        titleEl.innerText = genre;
+        gridEl.innerHTML = "";
+
+        // Filtrar
+        const filtered = library.filter(anime => {
+            if (!anime.generos) return false;
+            const g = Array.isArray(anime.generos) ? anime.generos : anime.generos.split(',').map(s => s.trim());
+            return g.includes(genre);
+        });
+
+        if (filtered.length > 0) {
+            filtered.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "poster-wrapper"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                gridEl.appendChild(card);
+            });
+        } else {
+            gridEl.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; color: #888; padding: 20px;'>No hay animes disponibles.</p>";
+        }
+
+        history.pushState({ tab: 'explore-genre' }, null, '#explore-genre');
+        handleRouting();
+    }
+
+    function showExploreGenreView() {
+        switchView(exploreGenreView);
+        document.getElementById('bottom-nav').style.transform = 'translateY(100%)'; // Ocultar nav inferior
+    }
+
     function showExploreSection(section) {
+        currentExploreTab = section;
         const allBtn = document.getElementById('subnav-all');
         const genresBtn = document.getElementById('subnav-genres');
         const allGrid = document.getElementById('explore-grid');
@@ -2388,8 +2599,14 @@
         // Poblar géneros
         const list = document.getElementById('genre-list');
         if (list.children.length === 0) {
-            // MODO VISUALIZACIÓN: Lista estática de ejemplo (Sin escanear)
-            const sorted = ["Acción", "Aventura", "Ciencia Ficción", "Comedia", "Drama", "Ecchi", "Fantasía", "Harem", "Mecha", "Misterio", "Psicológico", "Romance", "Seinen", "Shoujo", "Shounen", "Slice of Life", "Sobrenatural", "Terror"];
+            // Poblar según el modo (Público o Privado)
+            let sorted = [];
+            if (isRestrictedMode) {
+                sorted = ["Ahegao", "Anal", "Casadas", "Chantaje", "Chicas Mágicas", "Colegialas", "Cosplay", "Demonios", "Deportes", "Elfas", "Embarazadas", "Enfermeras", "Escolares", "Esclavas", "Fantasía", "Futanari", "Gangbang", "Harem", "Hermanas", "Hospital", "Incesto", "Ídolos", "Juguetes", "Loli", "Maestras", "Maid", "Masturbación", "Milf", "Monstruos", "Netorare", "Ninjas", "Orgías", "Romance", "Rubias", "Sexo oral", "Shota", "Sirvientas", "Sobrenatural", "Succubus", "Tentáculos", "Terror", "Tetonas", "Traición", "Tsundere", "Venganza", "Violación", "Virgenes", "Yuri"];
+            } else {
+                sorted = ["Acción", "Aventura", "Ciencia Ficción", "Comedia", "Drama", "Ecchi", "Fantasía", "Harem", "Mecha", "Misterio", "Psicológico", "Romance", "Seinen", "Shoujo", "Shounen", "Slice of Life", "Sobrenatural", "Terror"];
+            }
+            sorted.sort();
             
             let html = `<li onclick="selectGenre('all')">Todos</li>`;
             sorted.forEach(gen => {
