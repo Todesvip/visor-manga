@@ -1521,6 +1521,9 @@
                 <div class="section-title">Agregados Recientemente</div>
                 <div class="horizontal-list" id="recent-list"></div>
 
+                <div class="section-title">Recomendados</div>
+                <div class="horizontal-list" id="recommended-list"></div>
+
                 <div class="section-title">Reciente en Series</div>
                 <div class="horizontal-list" id="series-list"></div>
 
@@ -1545,7 +1548,7 @@
 
                 if (anime.titulo && anime.titulo.toLowerCase().includes('kaifuku')) {
                     titleOrLogo = `<img src="https://dimagemfondo.github.io/visor-imgen/img/04/Logo.png" class="hero-logo" alt="Logo">`;
-                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/06/011.webp";
+                    bgImage = "https://dimagemfondo.github.io/visor-imgen/img/06/015.webp";
                 } else if (anime.titulo && anime.titulo.toLowerCase().includes('ishuzoku')) {
                     titleOrLogo = `<img src="https://Dimagemfondo.github.io/visor-imgen/img/04/Logo (1).png" class="hero-logo" alt="Logo">`;
                     bgImage = "https://dimagemfondo.github.io/visor-imgen/img/06/0f1.webp";
@@ -1617,6 +1620,19 @@
                     <div class="anime-title">${anime.titulo}</div>
                 `;
                 seriesContainer.appendChild(card);
+            });
+
+            // 4. Recomendado (usando populares invertido)
+            const recommendedContainer = document.getElementById('recommended-list');
+            [...popularItems].reverse().forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "horizontal-item"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                recommendedContainer.appendChild(card);
             });
         }
     }
