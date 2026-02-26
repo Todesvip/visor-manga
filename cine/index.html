@@ -1270,19 +1270,41 @@
     }
 
     function openSearchOverlay() {
-        document.getElementById('search-overlay').classList.add('active');
-        document.getElementById('overlay-search-input').focus();
+        // Cambiar el hash para abrir el overlay a través del router, lo que crea una entrada en el historial.
+        history.pushState(null, null, '#search');
+        handleRouting();
     }
 
     function closeSearchOverlay() {
-        document.getElementById('search-overlay').classList.remove('active');
-        document.getElementById('overlay-search-input').value = "";
-        resetFilters();
-        document.getElementById('global-search-results').innerHTML = "";
+        // Al usar history.back(), se activa el popstate, que nuestro router ahora maneja para cerrar el overlay.
+        window.history.back();
     }
 
     function handleRouting() {
         const hash = window.location.hash;
+
+        // Si no estamos en la ruta de búsqueda, nos aseguramos de que el overlay esté cerrado.
+        // Esto se activa al presionar "atrás" (swipe o botón) desde la búsqueda.
+        if (hash !== '#search') {
+            const searchOverlay = document.getElementById('search-overlay');
+            if (searchOverlay.classList.contains('active')) {
+                searchOverlay.classList.remove('active');
+                // Limpiar campos de búsqueda al cerrar
+                document.getElementById('overlay-search-input').value = "";
+                resetFilters();
+                document.getElementById('global-search-results').innerHTML = "";
+            }
+        }
+
+        // Si la ruta es #search, solo mostramos el overlay y detenemos la ejecución
+        // para no cambiar la vista que está debajo.
+        if (hash === '#search') {
+            if (!document.getElementById('search-overlay').classList.contains('active')) {
+                document.getElementById('search-overlay').classList.add('active');
+                document.getElementById('overlay-search-input').focus();
+            }
+            return; // Evita que se cambie la vista de fondo y el estado del nav.
+        }
 
         if (hash.startsWith('#detail') && currentAnime) {
             showDetailView();
