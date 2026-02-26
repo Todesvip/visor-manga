@@ -1160,7 +1160,10 @@
     let currentAnime = null;
     let currentEpIndex = 0;
     let currentGenreContext = ""; // Variable para guardar el género actual
+    let currentListTab = 'favorites'; // Estado de la pestaña Mis Listas
+    let listsScrollPositions = { 'favorites': 0, 'history': 0 };
     let currentExploreTab = 'all'; // Estado de la pestaña explorar
+    let exploreScrollPositions = { 'all': 0, 'genres': 0 };
     let hasPlayedAnyVideo = false; // [NUEVO] Flag para la nueva lógica de autoplay
     let isRestrictedMode = false;
     let privatePage = 1; // Página actual del modo privado
@@ -2460,6 +2463,11 @@
     }
 
     function showExploreSection(section) {
+        const scrollContainer = document.querySelector('#explore-view .scrollable-content');
+        if (scrollContainer) {
+            exploreScrollPositions[currentExploreTab] = scrollContainer.scrollTop;
+        }
+
         currentExploreTab = section;
         const allBtn = document.getElementById('subnav-all');
         const genresBtn = document.getElementById('subnav-genres');
@@ -2477,9 +2485,19 @@
             genreGrid.style.display = 'none';
             allGrid.style.display = 'grid';
         }
+
+        if (scrollContainer) {
+            scrollContainer.scrollTop = exploreScrollPositions[section] || 0;
+        }
     }
 
     function showListsSection(section) {
+        const scrollContainer = document.querySelector('#favorites-view .scrollable-content');
+        if (scrollContainer) {
+            listsScrollPositions[currentListTab] = scrollContainer.scrollTop;
+        }
+        currentListTab = section;
+
         const favsBtn = document.getElementById('subnav-favorites');
         const historyBtn = document.getElementById('subnav-history');
         
@@ -2524,6 +2542,10 @@
                 favsGrid.style.display = 'none';
                 noFavsMsg.style.display = 'block';
             }
+        }
+
+        if (scrollContainer) {
+            scrollContainer.scrollTop = listsScrollPositions[section] || 0;
         }
     }
 
