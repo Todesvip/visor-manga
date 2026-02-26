@@ -6,7 +6,7 @@ const privateCodeConfig = {
   codes: [
     {
       code: "K#S3V-8@Z1P-L7^N4-F&G6Q-R!T2B",
-      durationDays: 30
+      durationDays: 1
     },
     {
       code: "M9%D1-C@J5X-U8^E7-V*H3K-Y!P0A",
