@@ -1362,54 +1362,59 @@
     window.onpopstate = handleRouting;
 
     function handlePrivateToggle(checkbox) {
-        const settingsCodeInput = document.getElementById('settings-code-input');
+        const privateModeActiveUntil = localStorage.getItem('myApp_privateModeActiveUntil');
+        const hasValidAccess = privateModeActiveUntil && (new Date(privateModeActiveUntil) > new Date());
 
         if (checkbox.checked) {
-            // Si el modo privado ya está activo, no hacer nada.
-            const lastUsedCode = localStorage.getItem('myApp_lastUsedPrivateCode');
-            if (isRestrictedMode && lastUsedCode) {
-                exitPrivateMode();
-                return;
-            }
-            // Si el modo privado ya está activo, no hacer nada.
-            if (isRestrictedMode) return;
-
-            // Verificar que la configuración de códigos se haya cargado
-            if (typeof privateCodeConfig === 'undefined' || !privateCodeConfig.codes) {
-                console.error("La configuración de códigos privados no está disponible.");
-                checkbox.checked = false;
-                // Opcional: mostrar un mensaje al usuario
-                return;
-            }
-
-            const userInput = settingsCodeInput.value;
-            const validCodeObject = privateCodeConfig.codes.find(c => c.code === userInput);
-
-            if (validCodeObject) {
+            if (hasValidAccess) {
+                // Access is already granted, just activate the mode
                 isRestrictedMode = true;
                 library = privateLibrary;
                 localStorage.setItem('myApp_restrictedMode', 'true');
-                
-                const durationDays = validCodeObject.durationDays || 30; // Usar 30 días como default
-                const now = new Date();
-                const expirationTime = new Date(now.getTime() + (durationDays * 24 * 60 * 60 * 1000));
-                
-                localStorage.setItem('myApp_lastUsedPrivateCode', userInput);
-                localStorage.setItem('myApp_privateModeActiveUntil', expirationTime.toISOString());
-
-                document.getElementById('genre-list').innerHTML = ""; // Limpiar lista de géneros del buscador
-                settingsCodeInput.value = ""; // Limpiar el input
-                renderSettings();
-                switchTab('home'); // Cambiar a home para recargar contenido
+                renderHome(); // Refresh content
             } else {
-                checkbox.checked = false;
-                settingsCodeInput.classList.add('shake');
-                setTimeout(() => settingsCodeInput.classList.remove('shake'), 700);
-                settingsCodeInput.value = "";
+                // No access, need to validate code
+                const settingsCodeInput = document.getElementById('settings-code-input');
+                const userInput = settingsCodeInput.value;
+                
+                if (typeof privateCodeConfig === 'undefined' || !privateCodeConfig.codes) {
+                    console.error("La configuración de códigos privados no está disponible.");
+                    checkbox.checked = false;
+                    return;
+                }
+                
+                const validCodeObject = privateCodeConfig.codes.find(c => c.code === userInput);
+
+                if (validCodeObject) {
+                    // Code is valid, grant access and activate mode
+                    isRestrictedMode = true;
+                    library = privateLibrary;
+                    localStorage.setItem('myApp_restrictedMode', 'true');
+                    
+                    const durationDays = validCodeObject.durationDays || 30;
+                    const now = new Date();
+                    const expirationTime = new Date(now.getTime() + (durationDays * 24 * 60 * 60 * 1000));
+                    
+                    localStorage.setItem('myApp_lastUsedPrivateCode', userInput);
+                    localStorage.setItem('myApp_privateModeActiveUntil', expirationTime.toISOString());
+
+                    settingsCodeInput.value = "";
+                    renderSettings(); // Re-render settings to hide input and show date
+                    switchTab('home'); // Go to home to show new content
+                } else {
+                    // Invalid code
+                    checkbox.checked = false; // Revert switch
+                    settingsCodeInput.classList.add('shake');
+                    setTimeout(() => settingsCodeInput.classList.remove('shake'), 700);
+                    settingsCodeInput.value = "";
+                }
             }
         } else {
-            exitPrivateMode();
-            renderSettings();
+            // Only turn off the mode, DO NOT remove access credentials
+            isRestrictedMode = false;
+            library = publicLibrary;
+            localStorage.setItem('myApp_restrictedMode', 'false');
+            renderHome(); // Refresh content
         }
     }
 
@@ -1724,25 +1729,26 @@
 
         if (!codeEntry || !privateSwitch || !privateCodeDatesDisplay || !privateCodeEndDate) return;
         
-        // Sincronizar switch
+        // Sincronizar switch con el estado actual del modo
         privateSwitch.checked = isRestrictedMode;
 
-        if (isRestrictedMode) {
+        // Decidir qué mostrar basado en si el acceso es válido, no en si el modo está activo
+        const privateModeActiveUntil = localStorage.getItem('myApp_privateModeActiveUntil');
+        const hasValidAccess = privateModeActiveUntil && (new Date(privateModeActiveUntil) > new Date());
+
+        if (hasValidAccess) {
+            // Si el acceso es válido, NUNCA mostrar el campo de código.
             codeEntry.style.display = 'none';
             privateCodeDatesDisplay.style.display = 'block';
             
-            const privateModeActiveUntil = localStorage.getItem('myApp_privateModeActiveUntil');
-            if (privateModeActiveUntil) {
-                const expiryDate = new Date(privateModeActiveUntil);
-                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-                privateCodeEndDate.innerText = expiryDate.toLocaleDateString('es-ES', options);
-            } else {
-                privateCodeEndDate.innerText = 'No disponible';
-            }
+            const expiryDate = new Date(privateModeActiveUntil);
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            privateCodeEndDate.innerText = expiryDate.toLocaleDateString('es-ES', options);
         } else {
+            // Si no hay acceso válido, mostrar el campo de código y ocultar la fecha.
             privateCodeDatesDisplay.style.display = 'none';
-            document.getElementById('settings-code-input').value = ""; // Asegurarse de que el input esté vacío
             codeEntry.style.display = 'block';
+            document.getElementById('settings-code-input').value = "";
         }
     }
 
