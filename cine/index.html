@@ -1366,6 +1366,12 @@
 
         if (checkbox.checked) {
             // Si el modo privado ya está activo, no hacer nada.
+            const lastUsedCode = localStorage.getItem('myApp_lastUsedPrivateCode');
+            if (isRestrictedMode && lastUsedCode) {
+                exitPrivateMode();
+                return;
+            }
+            // Si el modo privado ya está activo, no hacer nada.
             if (isRestrictedMode) return;
 
             // Verificar que la configuración de códigos se haya cargado
