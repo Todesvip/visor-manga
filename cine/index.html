@@ -966,6 +966,10 @@
                 <p class="settings-section-desc">
                     Activa esta opción para acceder al contenido exclusivo.
                 </p>
+                <!-- NUEVO: Fechas de validez del código -->
+                <p class="settings-section-desc" id="private-code-dates" style="margin-top: 10px; display: none;">
+                    Acceso válido hasta: <span id="private-code-end-date"></span>
+                </p>
 
                 <div id="code-entry-section">
                     <p class="settings-section-desc" style="margin-bottom: 10px;">Código de acceso</p>
@@ -1138,6 +1142,7 @@
 <script src="https://todesvip.github.io/visor-manga/cine/Archivos/populares.js"></script>
 <script src="https://todesvip.github.io/visor-manga/cine/Archivos/series.js"></script>
 <script src="https://todesvip.github.io/visor-manga/cine/Archivos/privados.js"></script>
+<script src="https://todesvip.github.io/visor-manga/cine/Archivos/Code.js"></script>
 
 <script>
     // Combinar todas las listas públicas para el buscador y la lista completa
@@ -1167,9 +1172,7 @@
     let hasPlayedAnyVideo = false; // [NUEVO] Flag para la nueva lógica de autoplay
     let isRestrictedMode = false;
     let privatePage = 1; // Página actual del modo privado
-    const itemsPerPage = 20; // 2 columnas * 10 filas = 20 items
     let favorites = [];
-    const SECRET_CODE = atob("NDU2MA=="); // Código de acceso (codificado)
 
     // --- ELEMENTOS DOM ---
     const homeView = document.getElementById('home-view');
@@ -1217,6 +1220,7 @@
     const globalSearchResults = document.getElementById('global-search-results');
     
     // --- FILTROS DE BÚSQUEDA ---
+    const itemsPerPage = 20; // 2 columnas * 10 filas = 20 items
     let searchFilters = {
         query: '',
         genre: 'all',
@@ -1224,15 +1228,36 @@
     };
 
     // --- INICIO ---
-    function initApp() {
+    async function initApp() {
         if(!window.location.hash) window.location.hash = "home";
         
-        // Cargar estado del switch
+        // --- Cargar estado del modo privado desde localStorage ---
         const savedState = localStorage.getItem('myApp_restrictedMode');
         if (savedState === 'true') {
+            // Asumir modo privado inicialmente si está guardado, luego validar
             isRestrictedMode = true;
             library = privateLibrary;
+
+            const lastUsedCode = localStorage.getItem('myApp_lastUsedPrivateCode');
+            const privateModeActiveUntil = localStorage.getItem('myApp_privateModeActiveUntil');
+            const now = new Date();
+
+            // Validar el acceso guardado
+            if (lastUsedCode && privateModeActiveUntil && typeof privateCodeConfig !== 'undefined' && privateCodeConfig.codes) {
+                const expiryDate = new Date(privateModeActiveUntil);
+
+                // Con la nueva lógica, solo comprobamos si la fecha de acceso ha expirado.
+                // Ya no se comprueba si el código sigue en la lista, para permitir el modelo de "un solo uso".
+                if (now >= expiryDate) {
+                    // Si la fecha de acceso expiró, salir del modo privado.
+                    exitPrivateMode();
+                }
+            } else {
+                // Si falta información clave o la config no cargó, salir por seguridad
+                exitPrivateMode();
+            }
         } else {
+            isRestrictedMode = false;
             library = publicLibrary;
         }
 
@@ -1337,15 +1362,39 @@
     window.onpopstate = handleRouting;
 
     function handlePrivateToggle(checkbox) {
+        const settingsCodeInput = document.getElementById('settings-code-input');
+
         if (checkbox.checked) {
-            const settingsCodeInput = document.getElementById('settings-code-input');
-            if (settingsCodeInput.value === SECRET_CODE) {
+            // Si el modo privado ya está activo, no hacer nada.
+            if (isRestrictedMode) return;
+
+            // Verificar que la configuración de códigos se haya cargado
+            if (typeof privateCodeConfig === 'undefined' || !privateCodeConfig.codes) {
+                console.error("La configuración de códigos privados no está disponible.");
+                checkbox.checked = false;
+                // Opcional: mostrar un mensaje al usuario
+                return;
+            }
+
+            const userInput = settingsCodeInput.value;
+            const validCodeObject = privateCodeConfig.codes.find(c => c.code === userInput);
+
+            if (validCodeObject) {
                 isRestrictedMode = true;
                 library = privateLibrary;
                 localStorage.setItem('myApp_restrictedMode', 'true');
-                document.getElementById('genre-list').innerHTML = ""; // Limpiar lista de géneros del buscador para recargar los nuevos
+                
+                const durationDays = validCodeObject.durationDays || 30; // Usar 30 días como default
+                const now = new Date();
+                const expirationTime = new Date(now.getTime() + (durationDays * 24 * 60 * 60 * 1000));
+                
+                localStorage.setItem('myApp_lastUsedPrivateCode', userInput);
+                localStorage.setItem('myApp_privateModeActiveUntil', expirationTime.toISOString());
+
+                document.getElementById('genre-list').innerHTML = ""; // Limpiar lista de géneros del buscador
+                settingsCodeInput.value = ""; // Limpiar el input
                 renderSettings();
-                switchTab('home');
+                switchTab('home'); // Cambiar a home para recargar contenido
             } else {
                 checkbox.checked = false;
                 settingsCodeInput.classList.add('shake');
@@ -1363,6 +1412,8 @@
         library = publicLibrary;
         privatePage = 1; // Resetear página al salir del modo privado
         localStorage.setItem('myApp_restrictedMode', 'false');
+        localStorage.removeItem('myApp_lastUsedPrivateCode'); // Limpiar código usado
+        localStorage.removeItem('myApp_privateModeActiveUntil'); // Limpiar expiración
         document.getElementById('genre-list').innerHTML = ""; // Limpiar lista de géneros del buscador
         renderHome();
         homeView.scrollTop = 0;
@@ -1662,14 +1713,29 @@
     function renderSettings() {
         const codeEntry = document.getElementById('code-entry-section');
         const privateSwitch = document.getElementById('private-mode-switch');
-        if (!codeEntry || !privateSwitch) return;
+        const privateCodeDatesDisplay = document.getElementById('private-code-dates');
+        const privateCodeEndDate = document.getElementById('private-code-end-date');
+
+        if (!codeEntry || !privateSwitch || !privateCodeDatesDisplay || !privateCodeEndDate) return;
         
         // Sincronizar switch
         privateSwitch.checked = isRestrictedMode;
 
         if (isRestrictedMode) {
             codeEntry.style.display = 'none';
+            privateCodeDatesDisplay.style.display = 'block';
+            
+            const privateModeActiveUntil = localStorage.getItem('myApp_privateModeActiveUntil');
+            if (privateModeActiveUntil) {
+                const expiryDate = new Date(privateModeActiveUntil);
+                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                privateCodeEndDate.innerText = expiryDate.toLocaleDateString('es-ES', options);
+            } else {
+                privateCodeEndDate.innerText = 'No disponible';
+            }
         } else {
+            privateCodeDatesDisplay.style.display = 'none';
+            document.getElementById('settings-code-input').value = ""; // Asegurarse de que el input esté vacío
             codeEntry.style.display = 'block';
         }
     }
