@@ -50,6 +50,27 @@
             box-sizing: border-box;
         }
         .view.active { display: block; }
+
+        /* --- FIX: Scroll independiente para Explorar y Mis Listas --- */
+        #explore-view.active, #favorites-view.active {
+            display: flex;
+            flex-direction: column;
+        }
+        #explore-view, #favorites-view {
+            overflow-y: hidden; /* El scroll se manejará en .scrollable-content */
+            padding-bottom: 0; /* El padding se mueve a .scrollable-content */
+        }
+        #explore-view .sticky-header, #favorites-view .sticky-header {
+            position: relative; /* Se anula el sticky para este layout */
+            flex-shrink: 0;
+        }
+        .scrollable-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: calc(80px + env(safe-area-inset-bottom));
+        }
+
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
         @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
@@ -886,9 +907,10 @@
                 <button id="subnav-genres" class="explore-subnav-item" onclick="showExploreSection('genres')">Generos de anime</button>
             </div>
         </div>
-        <div class="full-list-grid" id="explore-grid" style="padding: 25px 15px;"></div>
-        <div class="genre-grid" id="genre-grid"></div>
-        
+        <div class="scrollable-content">
+            <div class="full-list-grid" id="explore-grid" style="padding: 25px 15px;"></div>
+            <div class="genre-grid" id="genre-grid"></div>
+        </div>
     </div>
 
     <!-- FAVORITOS -->
@@ -905,12 +927,14 @@
                 <button id="subnav-history" class="explore-subnav-item" onclick="showListsSection('history')">Historial</button>
             </div>
         </div>
-        <div class="full-list-grid" id="favorites-grid" style="padding-top: 25px;"></div>
-        <p id="no-favorites-msg" style="display: none; text-align: center; color: var(--text-gray); padding: 50px 0;">No has añadido nada a tus listas todavía.</p>
+        <div class="scrollable-content">
+            <div class="full-list-grid" id="favorites-grid" style="padding-top: 25px;"></div>
+            <p id="no-favorites-msg" style="display: none; text-align: center; color: var(--text-gray); padding: 50px 0;">No has añadido nada a tus listas todavía.</p>
 
-        <!-- History content, initially hidden -->
-        <div class="full-list-grid" id="history-grid" style="display: none; padding-top: 25px;"></div>
-        <p id="no-history-msg" style="display: none; text-align: center; color: var(--text-gray); padding: 50px 0;">Tu historial de visualización está vacío.</p>
+            <!-- History content, initially hidden -->
+            <div class="full-list-grid" id="history-grid" style="display: none; padding-top: 25px;"></div>
+            <p id="no-history-msg" style="display: none; text-align: center; color: var(--text-gray); padding: 50px 0;">Tu historial de visualización está vacío.</p>
+        </div>
     </div>
 
     <!-- AJUSTES -->
@@ -2558,8 +2582,6 @@
                     <div class="anime-title">${anime.titulo}</div>
                 `;
                 item.onclick = () => {
-                    globalSearchResults.style.display = 'none';
-                    closeSearchOverlay();
                     openAnimeDetail(anime);
                 };
                 globalSearchResults.appendChild(item);
