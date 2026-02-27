@@ -34,7 +34,7 @@ const recientesData = [
         banner: "",
         logo: "",
         rating: "18+",
-        generos: ["Acción", "Comedia", "Fantasía", "Elfas", "Violación", "Seinen"],
+        generos: ["Acción", "Comedia", "Fantasía", "Seinen"],
         temporada: "Temporada 1",
         ano: "2022",
         calidad: "HD",
