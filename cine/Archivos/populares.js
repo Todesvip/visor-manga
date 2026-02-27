@@ -29,6 +29,34 @@ const popularesData = [
         ]
     },
     {
+        id: "Hentai",
+        titulo: "Hentai Ouji to Warawanai Neko",
+        titulo_jp: "変態王子と笑わない猫。",
+        poster: "https://media.kitsu.app/anime/poster_images/7233/original.jpg",
+        banner: "",
+        logo: "",
+        rating: "13+",
+        generos: ["Comedia", "Romance", "Sobrenatural", "Tsundere"],
+        temporada: "Temporada 1",
+        ano: "2013",
+        calidad: "HD",
+        sinopsis: "Youto Yokodera siempre está pensando en sus deseos carnales, pero nadie lo reconoce como un pervertido. Se entera de una estatua de gato que supuestamente concede deseos. El niño va a rezar para poder expresar sus pensamientos lujuriosos cuando y donde quiera. En la estatua, Youto se encuentra con Tsukiko Tsutsukakushi, una chica de su escuela secundaria que tiene su propio deseo: no mostrar sus verdaderas intenciones tan fácilmente.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite1.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2001.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 01.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite2.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2002.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 02.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite3.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite3.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2003.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 03.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite4.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite4.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2004.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 04.es.ass" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite5.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite5.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2005.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 05.es.ass" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite6.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite6.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2006.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 06.es.ass" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite7.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite7.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2007.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 07.es.ass" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite8.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite8.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2008.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 08.es.ass" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite9.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite9.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2009.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 09.es.ass" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite10.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite10.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2010.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 10.es.ass" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite11.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite11.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2011.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 11.es.ass" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite12.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/23/sprite12.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/New Folder/Hentai%20Ouji%20to%20Warawanai%20Neko%20-%2012.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hentai Ouji to Warawanai Neko - 12.es.ass" }
+        ]
+    },
+    {
         id: "Dokyuu",
         titulo: "Dokyuu Hentai HxEros",
         titulo_jp: "ド級編隊エグゼロス",
