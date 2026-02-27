@@ -55,6 +55,23 @@ const recientesData = [
         ]
     },
     {
+        id: "your",
+        titulo: "your name",
+        titulo_jp: "サントリー 南アルプスの天然水",
+        poster: "https://media.kitsu.app/anime/poster_images/11614/original.jpg",
+        banner: "",
+        logo: "",
+        rating: "13+",
+        generos: ["Drama"],
+        temporada: "Temporada 1",
+        ano: "2016",
+        calidad: "HD",
+        sinopsis: "Comerciales de colaboración con Suntory y Kimi no Na wa.. El comercial \"Mitsuha no Omoi\" (Los pensamientos de Mitsuha) muestra al personaje Mitsuha Miyamizu bebiendo SUNTORY Minami Alps Tennensui Yogurina, que es agua mineral con sabor a yogur. El comercial \"Taki no Omoi\" (Los pensamientos de Taki) muestra al personaje Taki Tachibana bebiendo SUNTORY Minami Alps Ten'nensui, que es agua mineral. El comercial \"Kasanaru Omoi\" (Pensamientos superpuestos) muestra a Taki y Mitsuha combinando sus pensamientos a través de un diálogo mixto con algunas imágenes alternativas y una nueva canción.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/Your%20Name__S01E01_Your%20Name_%20%28Dub%29.mkv", subtitulo: "" }
+        ]
+    },
+    {
         id: "Nande",
         titulo: "Nande Koko ni Sensei ga!",
         titulo_jp: "なんでここに先生が!?",
