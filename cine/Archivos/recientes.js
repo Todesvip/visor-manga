@@ -27,6 +27,34 @@ const recientesData = [
         ]
     },
     {
+        id: "The",
+        titulo: "The Eminence in Shadow",
+        titulo_jp: "陰の実力者になりたくて！",
+        poster: "https://m.media-amazon.com/images/M/MV5BMDFmMWJlMWYtMDFkNi00OWViLTkzOGEtNDI0YWNmM2M5MzI5XkEyXkFqcGc@.jpg",
+        banner: "",
+        logo: "",
+        rating: "18+",
+        generos: ["Acción", "Comedia", "Fantasía", "Elfas", "Violación", "Seinen"],
+        temporada: "Temporada 1",
+        ano: "2022",
+        calidad: "HD",
+        sinopsis: "Algunas personas simplemente no son adecuadas para interpretar el papel del héroe llamativo y directo o del villano cobarde que se retuerce el bigote y tiene un estilo descomunal. En cambio, operan en las sombras y mueven los hilos de la sociedad a través de su ingenio e inteligencia. Ese es el papel que Cid quiere desempeñar cuando sea transportado a otro mundo. Cid teje una o tres historias y se convierte en el improbable líder de la organización clandestina Shadow Garden que lucha contra una secta amenazante (que él mismo inventó por completo). Sin embargo, hay un problema que ni siquiera su salvaje imaginación vio venir: el culto que inventó realmente existe, ¡y están más que disgustados porque su fantasía de poder se interpuso en el camino de sus malvados planes!",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/01.mkv", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/02.mkv", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/03.mkv", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/04.mkv", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/05.mkv", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/06.mkv", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/07.mkv", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/08.mkv", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/09.mkv", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/10.mkv", subtitulo: "" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/11.mkv", subtitulo: "" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/12.mkv", subtitulo: "" }
+        ]
+    },
+    {
         id: "Nande",
         titulo: "Nande Koko ni Sensei ga!",
         titulo_jp: "なんでここに先生が!?",
