@@ -288,5 +288,5 @@ const recientesData = [
             { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2010.mp4", subtitulo: "" },
             { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2011.mp4", subtitulo: "" }
         ]
-    },
+    }
 ];
