@@ -68,7 +68,7 @@ const recientesData = [
         calidad: "HD",
         sinopsis: "Comerciales de colaboración con Suntory y Kimi no Na wa.. El comercial \"Mitsuha no Omoi\" (Los pensamientos de Mitsuha) muestra al personaje Mitsuha Miyamizu bebiendo SUNTORY Minami Alps Tennensui Yogurina, que es agua mineral con sabor a yogur. El comercial \"Taki no Omoi\" (Los pensamientos de Taki) muestra al personaje Taki Tachibana bebiendo SUNTORY Minami Alps Ten'nensui, que es agua mineral. El comercial \"Kasanaru Omoi\" (Pensamientos superpuestos) muestra a Taki y Mitsuha combinando sus pensamientos a través de un diálogo mixto con algunas imágenes alternativas y una nueva canción.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/Your%20Name%20(Kimi%20no%20Na%20wa)%20(2016).mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Your Name__S01E01_Your Name_ (Dub).es.ass" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/24/sprite2016.vtt", spriteImg: "https://www.dropbox.com/scl/fi/dd7hp5x1vni2hk97n7vo4/sprite2016.jpg?rlkey=5yo36lqqc4sktmfcytlo9h905&raw=1", link: "https://ia600105.us.archive.org/1/items/kjr456/Your%20Name%20(Kimi%20no%20Na%20wa)%20(2016).mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Your Name__S01E01_Your Name_ (Dub).es.ass" }
         ]
     },
     {
