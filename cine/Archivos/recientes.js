@@ -236,6 +236,34 @@ const recientesData = [
         ]
     },
     {
+        id: "The",
+        titulo: "The Eminence in Shadow 2",
+        titulo_jp: "陰の実力者になりたくて！ 2nd season",
+        poster: "https://media.kitsu.app/anime/47099/poster_image/a3d5e652f167d91e9b308a2fcbe9e878.jpg",
+        banner: "",
+        logo: "",
+        rating: "16+",
+        generos: ["Acción", "Comedia", "Fantasía", "Seinen"],
+        temporada: "Temporada 1",
+        ano: "2023",
+        calidad: "HD",
+        sinopsis: "¡La segunda temporada de Kage no Jitsuryokusha ni Naritakute! Todo ha ido según lo planeado, pero la hora del despertar se acerca. Cid Kagenou y Shadow Garden investigan Lawless City, un pozo negro donde la luna roja cuelga baja en el cielo y tres poderosos monarcas gobiernan las calles. El verdadero atractivo para Cid, sin embargo, es alguien que puede extraer sangre: la Reina de Sangre, una vampira que ha dormido en su ataúd durante eones. Su despertar se acerca y Cid finalmente podría enfrentar el día del juicio final. Nota: Se mostró una proyección de estreno mundial del episodio 1 en el panel de la segunda temporada de The Eminence in Shadow en Anime Expo el 1 de julio de 2023.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E01.mkv", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E02.mkv", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E03.mkv", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E04.mkv", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E05.mkv", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E06.mkv", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E07.mkv", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E08.mkv", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E09.mkv", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E10.mkv", subtitulo: "" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E11.mkv", subtitulo: "" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E12.mkv", subtitulo: "" }
+        ]
+    },
+    {
         id: "Nukitashi",
         titulo: "Nukitashi - The Animation",
         titulo_jp: "ぬきたし THE ANIMATION",
