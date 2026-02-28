@@ -55,8 +55,8 @@ const recientesData = [
         ]
     },
     {
-        id: "your",
-        titulo: "your name",
+        id: "Kimi",
+        titulo: "Kimi no Na wa",
         titulo_jp: "サントリー 南アルプスの天然水",
         poster: "https://media.kitsu.app/anime/poster_images/11614/original.jpg",
         banner: "",
