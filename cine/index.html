@@ -1007,27 +1007,6 @@
         <div class="settings-content">
             <h1 class="settings-title">Ajustes</h1>
 
-            <!-- SECCIÓN CUENTA (NUEVO) -->
-            <div class="settings-section">
-                <div class="settings-section-title">Sincronización en la Nube</div>
-                <p class="settings-section-desc">Inicia sesión para guardar tus favoritos y no perderlos nunca.</p>
-                
-                <div id="user-logged-out">
-                    <button class="google-btn" onclick="loginWithGoogle()">
-                        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                        Iniciar con Google
-                    </button>
-                </div>
-
-                <div id="user-logged-in" style="display: none;">
-                    <div class="user-info">
-                        <img id="user-pic" class="user-avatar" src="" alt="">
-                        <div style="display:flex; flex-direction:column;"><span id="user-name" style="font-weight:bold; color:white;">Usuario</span><span id="user-email" style="font-size:12px; color:#888;">email</span></div>
-                    </div>
-                    <button class="settings-action-btn" onclick="logout()" style="background: #333; color: white;">Cerrar Sesión</button>
-                </div>
-            </div>
-
             <div class="settings-section">
                 <div class="switch-container">
                     <div class="switch-label">Color de Tema (Morado)</div>
@@ -1060,6 +1039,39 @@
                 <div id="code-entry-section">
                     <p class="settings-section-desc" style="margin-bottom: 10px;">Código de acceso</p>
                     <input type="tel" id="settings-code-input" class="header-search-input settings-code-input" placeholder="••••" pattern="[0-9]*" inputmode="numeric">
+                </div>
+            </div>
+
+            <!-- SECCIÓN APOYAR (NUEVO - MEJOR QUE ADS PARA APKS) -->
+            <div class="settings-section">
+                <div class="settings-section-title">Apoyar el Proyecto</div>
+                <p class="settings-section-desc">Si te gusta la app, considera hacer una donación para mantener el servidor.</p>
+                <a href="#" target="_blank" style="text-decoration: none;">
+                    <button class="settings-action-btn" style="background: #0070BA; color: white; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.15-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.29-1.87-1.43 0-2.15.77-2.15 1.55 0 .56.43 1.39 2.67 1.9 2.36.54 4.18 1.59 4.18 3.68 0 2.15-1.71 2.99-3.29 3.48z"/></svg>
+                        Donar con PayPal
+                    </button>
+                </a>
+            </div>
+
+            <!-- SECCIÓN CUENTA (NUEVO) -->
+            <div class="settings-section">
+                <div class="settings-section-title">Sincronización en la Nube</div>
+                <p class="settings-section-desc">Inicia sesión para guardar tus favoritos y no perderlos nunca.</p>
+                
+                <div id="user-logged-out">
+                    <button class="google-btn" onclick="loginWithGoogle()">
+                        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                        Iniciar con Google
+                    </button>
+                </div>
+
+                <div id="user-logged-in" style="display: none;">
+                    <div class="user-info">
+                        <img id="user-pic" class="user-avatar" src="" alt="">
+                        <div style="display:flex; flex-direction:column;"><span id="user-name" style="font-weight:bold; color:white;">Usuario</span><span id="user-email" style="font-size:12px; color:#888;">email</span></div>
+                    </div>
+                    <button class="settings-action-btn" onclick="logout()" style="background: #333; color: white;">Cerrar Sesión</button>
                 </div>
             </div>
 
