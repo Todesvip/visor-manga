@@ -13,7 +13,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
 
     <!-- OPTIMIZACIÓN: Preconectar a servidores para que el video inicie antes -->
 
@@ -1285,26 +1284,18 @@
     };
 
     // Inicializar Firebase
-    let auth, db, analytics;
+    let auth, db;
     try {
         firebase.initializeApp(firebaseConfig);
         auth = firebase.auth();
         db = firebase.firestore();
-        analytics = firebase.analytics();
         console.log("Firebase inicializado correctamente");
-        if (location.protocol === 'file:') {
-            console.warn("⚠️ Firebase Auth no funciona en protocolo file://. Usa un servidor local (http://localhost).");
-        }
     } catch (e) {
         console.error("Error inicializando Firebase (Probablemente faltan las API KEYS):", e);
     }
 
     // --- LÓGICA DE AUTENTICACIÓN ---
     function loginWithGoogle() {
-        if (location.protocol === 'file:') {
-            alert("Error: Google Login no funciona abriendo el archivo directamente (file://). Debes usar un servidor local (como 'Live Server' en VS Code) o subir la web a un hosting.");
-            return;
-        }
         if (!auth) return alert("Configura Firebase primero en el código.");
         const provider = new firebase.auth.GoogleAuthProvider();
         auth.signInWithPopup(provider).catch(error => {
