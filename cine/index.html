@@ -739,7 +739,6 @@
         .settings-section { background: #1a1a1a; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
         .settings-section-title { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
         .settings-section-desc { font-size: 13px; color: #888; margin-bottom: 20px; }
-        .settings-label { font-size: 15px; color: white; font-weight: 500; }
         .settings-action-btn {
             width: 100%; padding: 12px; background: var(--accent); color: black;
             border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
@@ -958,9 +957,6 @@
         <div class="scrollable-content">
             <div class="full-list-grid" id="explore-grid" style="padding: 25px 15px;"></div>
             <div class="genre-grid" id="genre-grid"></div>
-            <!-- Modo privado: grid paginado -->
-            <div class="full-list-grid" id="private-grid" style="display:none; padding: 25px 15px;"></div>
-            <div class="pagination-container" id="private-pagination" style="display:none;"></div>
         </div>
     </div>
 
@@ -1220,6 +1216,7 @@
     let listsScrollPositions = { 'favorites': 0, 'history': 0 };
     let currentExploreTab = 'all'; // Estado de la pestaña explorar
     let exploreScrollPositions = { 'all': 0, 'genres': 0 };
+    let homeScrollPositions = {}; // Para guardar la posición de las listas del home
     let hasPlayedAnyVideo = false; // [NUEVO] Flag para la nueva lógica de autoplay
     let isRestrictedMode = false;
     let privatePage = 1; // Página actual del modo privado
@@ -1325,8 +1322,7 @@
             if (colorSwitch) colorSwitch.checked = false;
         }
 
-        window.addEventListener('hashchange', debouncedRouting);
-        // Nota: onpopstate se asigna abajo como manejador principal del botón atrás
+        window.addEventListener('hashchange', handleRouting);
         handleRouting();
         
         setupTouchControls();
@@ -1395,8 +1391,6 @@
             showExploreView();
         } else if (hash === '#favorites') {
             showFavoritesView();
-        } else if (hash === '#fulllist') {
-            showFullListView();
         } else {
             showHomeView();
         }
@@ -1413,16 +1407,7 @@
         }
     }
     // Manejar el botón "atrás" del navegador
-    // onpopstate cubre cambios de historial sin hash (pushState/replaceState),
-    // hashchange cubre los cambios de hash. Ambos son necesarios pero debemos evitar doble disparo.
-    // Usamos un flag de debounce para ello.
-    let _routingPending = false;
-    function debouncedRouting() {
-        if (_routingPending) return;
-        _routingPending = true;
-        setTimeout(() => { _routingPending = false; handleRouting(); }, 0);
-    }
-    window.onpopstate = debouncedRouting;
+    window.onpopstate = handleRouting;
 
     function handlePrivateToggle(checkbox) {
         const privateModeActiveUntil = localStorage.getItem('myApp_privateModeActiveUntil');
@@ -1909,7 +1894,15 @@
     // --- DETALLE ---
     function openAnimeDetail(anime) {
         if (!anime) return; // Protección: si no se encuentra el anime, no hacer nada
-        hasPlayedAnyVideo = false; 
+
+        // Guardar la posición de scroll de las listas del home antes de navegar
+        document.querySelectorAll('#home-view .horizontal-list').forEach(list => {
+            if (list.id) {
+                homeScrollPositions[list.id] = list.scrollLeft;
+            }
+        });
+
+        hasPlayedAnyVideo = false;
         currentAnime = anime;
         currentEpIndex = 0;
         prepareDetailView(anime);
@@ -2527,6 +2520,17 @@
         switchView(homeView);
         document.getElementById('bottom-nav').style.transform = 'translateY(0)'; // Mostrar nav
         renderHome();
+
+        // Restaurar la posición de scroll de las listas
+        // Usar un setTimeout para asegurar que el DOM esté listo después de renderHome
+        setTimeout(() => {
+            Object.keys(homeScrollPositions).forEach(listId => {
+                const list = document.getElementById(listId);
+                if (list) {
+                    list.scrollLeft = homeScrollPositions[listId];
+                }
+            });
+        }, 0);
     }
 
     function showSettingsView() {
@@ -2555,19 +2559,7 @@
         }
 
         // Renderizar la cuadrícula de animes por defecto
-        const privateGrid = document.getElementById('private-grid');
-        const privatePagination = document.getElementById('private-pagination');
-        if (isRestrictedMode) {
-            document.getElementById('explore-grid').style.display = 'none';
-            if (privateGrid) privateGrid.style.display = 'grid';
-            if (privatePagination) privatePagination.style.display = 'flex';
-            renderPrivateGrid();
-        } else {
-            if (privateGrid) privateGrid.style.display = 'none';
-            if (privatePagination) privatePagination.style.display = 'none';
-            document.getElementById('explore-grid').style.display = 'grid';
-            renderGrid(library, document.getElementById('explore-grid'));
-        }
+        renderGrid(library, document.getElementById('explore-grid'));
         
         // Renderizar la cuadrícula de géneros (y dejarla oculta)
         renderGenreGrid();
@@ -2604,6 +2596,50 @@
             card.onclick = () => openExploreGenreView(genre); // Usar la nueva función separada
             genreGrid.appendChild(card);
         });
+    }
+
+    function showGenreResults(genre) {
+        const genreGrid = document.getElementById('genre-grid');
+        const resultsContainer = document.getElementById('genre-results-container');
+        const resultsGrid = document.getElementById('genre-results-grid');
+        const title = document.getElementById('genre-results-title');
+
+        // Filtrar librería por género
+        const filtered = library.filter(anime => {
+            if (!anime.generos) return false;
+            // Manejar si es array o string separado por comas
+            const g = Array.isArray(anime.generos) ? anime.generos : anime.generos.split(',').map(s => s.trim());
+            return g.includes(genre);
+        });
+
+        // Actualizar UI
+        title.innerText = genre;
+        resultsGrid.innerHTML = "";
+        
+        if (filtered.length > 0) {
+            filtered.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "poster-wrapper"; 
+                card.onclick = () => { openAnimeDetail(anime); };
+                card.innerHTML = `
+                    <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                    <div class="anime-title">${anime.titulo}</div>
+                `;
+                resultsGrid.appendChild(card);
+            });
+        } else {
+            resultsGrid.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; color: #888; padding: 20px;'>No hay disponibles en este género.</p>";
+        }
+
+        // Mostrar resultados y ocultar lista de géneros
+        genreGrid.style.display = 'none';
+        resultsContainer.style.display = 'block';
+        exploreView.scrollTop = 0;
+    }
+
+    function closeGenreResults() {
+        document.getElementById('genre-results-container').style.display = 'none';
+        document.getElementById('genre-grid').style.display = 'grid';
     }
 
     // --- NUEVA LÓGICA PARA VISTA DE GÉNERO DESDE EXPLORAR (SEPARADA) ---
