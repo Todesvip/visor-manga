@@ -27,51 +27,6 @@ const recientesData = [
         ]
     },
     {
-        id: "The",
-        titulo: "The Eminence in Shadow",
-        titulo_jp: "陰の実力者になりたくて！",
-        poster: "https://m.media-amazon.com/images/M/MV5BMDFmMWJlMWYtMDFkNi00OWViLTkzOGEtNDI0YWNmM2M5MzI5XkEyXkFqcGc@.jpg",
-        banner: "",
-        logo: "",
-        rating: "18+",
-        generos: ["Acción", "Comedia", "Fantasía", "Seinen"],
-        temporada: "Temporada 1",
-        ano: "2022",
-        calidad: "HD",
-        sinopsis: "Algunas personas simplemente no son adecuadas para interpretar el papel del héroe llamativo y directo o del villano cobarde que se retuerce el bigote y tiene un estilo descomunal. En cambio, operan en las sombras y mueven los hilos de la sociedad a través de su ingenio e inteligencia. Ese es el papel que Cid quiere desempeñar cuando sea transportado a otro mundo. Cid teje una o tres historias y se convierte en el improbable líder de la organización clandestina Shadow Garden que lucha contra una secta amenazante (que él mismo inventó por completo). Sin embargo, hay un problema que ni siquiera su salvaje imaginación vio venir: el culto que inventó realmente existe, ¡y están más que disgustados porque su fantasía de poder se interpuso en el camino de sus malvados planes!",
-        episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/01.mkv", subtitulo: "" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/02.mkv", subtitulo: "" },
-            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/03.mkv", subtitulo: "" },
-            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/04.mkv", subtitulo: "" },
-            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/05.mkv", subtitulo: "" },
-            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/06.mkv", subtitulo: "" },
-            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/07.mkv", subtitulo: "" },
-            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/08.mkv", subtitulo: "" },
-            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/09.mkv", subtitulo: "" },
-            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/10.mkv", subtitulo: "" },
-            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/11.mkv", subtitulo: "" },
-            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/12.mkv", subtitulo: "" }
-        ]
-    },
-    {
-        id: "Kimi",
-        titulo: "Kimi no Na wa",
-        titulo_jp: "サントリー 南アルプスの天然水",
-        poster: "https://media.kitsu.app/anime/poster_images/11614/original.jpg",
-        banner: "",
-        logo: "",
-        rating: "13+",
-        generos: ["Drama", "Sobrenatural", "Romance"],
-        temporada: "Pelicula",
-        ano: "2016",
-        calidad: "HD",
-        sinopsis: "La “historia de milagros y amor” gira en torno a Mitsuha y Taki. Mitsuha es una estudiante de secundaria que vive en un pueblo rural situado en las montañas. Su padre es el alcalde y no pasa mucho por casa, ella vive con su hermana pequeña estudiante de primaria y su abuela. Mitsuha tiene una personalidad honesta, pero a ella no le gustan las costumbres del santuario sintoísta de su familia, ni ella ni su padre participan en una campaña electoral. Ella se lamenta de que vive confinada en un pueblo rural y anhela el maravilloso estilo de vida de Tokio. Taki es un estudiante de secundaria que vive en el centro de Tokio. Él pasa su tiempo junto a sus amigos, trabajando a tiempo parcial en un restaurante italiano y está interesado en la arquitectura y las bellas artes. Un día, Mitsuha tiene un sueño en el que ella tiene el cuerpo de un hombre joven. Taki también tiene un sueño parecido y en el que él es una estudiante de secundaria en un pueblo en las montañas en él que nunca ha estado. ¿Cuál es el secreto de sus sueños?",
-        episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/24/sprite2016.vtt", spriteImg: "https://www.dropbox.com/scl/fi/dd7hp5x1vni2hk97n7vo4/sprite2016.jpg?rlkey=5yo36lqqc4sktmfcytlo9h905&raw=1", link: "https://ia600105.us.archive.org/1/items/kjr456/Your%20Name%20(Kimi%20no%20Na%20wa)%20(2016).mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Your Name__S01E01_Your Name_ (Dub).es.ass" }
-        ]
-    },
-    {
         id: "Nande",
         titulo: "Nande Koko ni Sensei ga!",
         titulo_jp: "なんでここに先生が!?",
@@ -261,6 +216,51 @@ const recientesData = [
             { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E10.mkv", subtitulo: "" },
             { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E11.mkv", subtitulo: "" },
             { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/The%20Eminence%20in%20Shadow%20S02E12.mkv", subtitulo: "" }
+        ]
+    },
+    {
+        id: "The",
+        titulo: "The Eminence in Shadow",
+        titulo_jp: "陰の実力者になりたくて！",
+        poster: "https://m.media-amazon.com/images/M/MV5BMDFmMWJlMWYtMDFkNi00OWViLTkzOGEtNDI0YWNmM2M5MzI5XkEyXkFqcGc@.jpg",
+        banner: "",
+        logo: "",
+        rating: "18+",
+        generos: ["Acción", "Comedia", "Fantasía", "Seinen"],
+        temporada: "Temporada 1",
+        ano: "2022",
+        calidad: "HD",
+        sinopsis: "Algunas personas simplemente no son adecuadas para interpretar el papel del héroe llamativo y directo o del villano cobarde que se retuerce el bigote y tiene un estilo descomunal. En cambio, operan en las sombras y mueven los hilos de la sociedad a través de su ingenio e inteligencia. Ese es el papel que Cid quiere desempeñar cuando sea transportado a otro mundo. Cid teje una o tres historias y se convierte en el improbable líder de la organización clandestina Shadow Garden que lucha contra una secta amenazante (que él mismo inventó por completo). Sin embargo, hay un problema que ni siquiera su salvaje imaginación vio venir: el culto que inventó realmente existe, ¡y están más que disgustados porque su fantasía de poder se interpuso en el camino de sus malvados planes!",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/01.mkv", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/02.mkv", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/03.mkv", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/04.mkv", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/05.mkv", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/06.mkv", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/07.mkv", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/08.mkv", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/09.mkv", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/10.mkv", subtitulo: "" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/11.mkv", subtitulo: "" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/12.mkv", subtitulo: "" }
+        ]
+    },
+    {
+        id: "Kimi",
+        titulo: "Kimi no Na wa",
+        titulo_jp: "サントリー 南アルプスの天然水",
+        poster: "https://media.kitsu.app/anime/poster_images/11614/original.jpg",
+        banner: "",
+        logo: "",
+        rating: "13+",
+        generos: ["Drama", "Sobrenatural", "Romance"],
+        temporada: "Pelicula",
+        ano: "2016",
+        calidad: "HD",
+        sinopsis: "La “historia de milagros y amor” gira en torno a Mitsuha y Taki. Mitsuha es una estudiante de secundaria que vive en un pueblo rural situado en las montañas. Su padre es el alcalde y no pasa mucho por casa, ella vive con su hermana pequeña estudiante de primaria y su abuela. Mitsuha tiene una personalidad honesta, pero a ella no le gustan las costumbres del santuario sintoísta de su familia, ni ella ni su padre participan en una campaña electoral. Ella se lamenta de que vive confinada en un pueblo rural y anhela el maravilloso estilo de vida de Tokio. Taki es un estudiante de secundaria que vive en el centro de Tokio. Él pasa su tiempo junto a sus amigos, trabajando a tiempo parcial en un restaurante italiano y está interesado en la arquitectura y las bellas artes. Un día, Mitsuha tiene un sueño en el que ella tiene el cuerpo de un hombre joven. Taki también tiene un sueño parecido y en el que él es una estudiante de secundaria en un pueblo en las montañas en él que nunca ha estado. ¿Cuál es el secreto de sus sueños?",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/24/sprite2016.vtt", spriteImg: "https://www.dropbox.com/scl/fi/dd7hp5x1vni2hk97n7vo4/sprite2016.jpg?rlkey=5yo36lqqc4sktmfcytlo9h905&raw=1", link: "https://ia600105.us.archive.org/1/items/kjr456/Your%20Name%20(Kimi%20no%20Na%20wa)%20(2016).mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Your Name__S01E01_Your Name_ (Dub).es.ass" }
         ]
     },
     {
