@@ -7,6 +7,7 @@
     <!-- Librería de subtítulos -->
     <script src="https://todesvip.github.io/visor-manga/assets/js/subtitles-octopus.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- OPTIMIZACIÓN: Preconectar a servidores para que el video inicie antes -->
 
@@ -837,6 +838,52 @@
         }
         .date-list li:hover { background-color: var(--accent); color: #000; }
 
+        /* --- LISTA TIPO CRUNCHYROLL (FAVORITOS) --- */
+        .crunchy-list {
+            display: flex; flex-direction: column; gap: 15px; padding: 20px 15px;
+        }
+        .crunchy-card {
+            display: flex; gap: 20px; cursor: pointer;
+            background: transparent;
+            transition: background 0.2s;
+            border-radius: 8px;
+        }
+        .crunchy-card:active {
+            background: rgba(255,255,255,0.05);
+        }
+        .crunchy-poster {
+            width: 90px; aspect-ratio: 2/3; border-radius: 0; overflow: hidden; flex-shrink: 0; background: #1a1a1a;
+        }
+        .crunchy-poster img { width: 100%; height: 100%; object-fit: cover; }
+        .crunchy-info {
+            display: flex; flex-direction: column; justify-content: center; flex-grow: 1;
+        }
+        .crunchy-title {
+            font-family: 'Lato', sans-serif;
+            font-size: 14px; font-weight: 400; color: #ffffff; margin-bottom: 4px; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .crunchy-meta {
+            font-size: 12px; color: var(--text-gray); margin-bottom: 4px;
+        }
+        .crunchy-ep-tag {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--text-gray);
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .delete-fav-btn {
+            background: none; border: none; padding: 0 10px; cursor: pointer;
+            margin-left: auto; /* Empujar a la derecha */
+            display: flex; align-items: center; justify-content: center;
+            color: white;
+        }
+        .delete-fav-btn svg { width: 24px; height: 24px; fill: white; }
+
     </style>
 </head>
 <body>
@@ -928,7 +975,7 @@
             </div>
         </div>
         <div class="scrollable-content">
-            <div class="full-list-grid" id="favorites-grid" style="padding-top: 25px;"></div>
+            <div class="crunchy-list" id="favorites-grid" style="padding-top: 25px;"></div>
             <p id="no-favorites-msg" style="display: none; text-align: center; color: var(--text-gray); padding: 50px 0;">No has añadido nada a tus listas todavía.</p>
 
             <!-- History content, initially hidden -->
@@ -1469,6 +1516,15 @@
         updateFavoriteButton();
     }
 
+    function removeFavorite(title) {
+        const index = favorites.indexOf(title);
+        if (index > -1) {
+            favorites.splice(index, 1);
+            saveFavorites();
+            showListsSection('favorites'); // Recargar la lista
+        }
+    }
+
     function updateFavoriteButton() {
         const favBtn = document.getElementById('favorite-btn');
         if (!currentAnime || !favBtn) return;
@@ -1802,6 +1858,33 @@
             card.innerHTML = `
                 <div class="poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
                 <div class="anime-title">${anime.titulo}</div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function renderFavoritesList(data, container) {
+        container.innerHTML = "";
+        data.forEach(anime => {
+            const card = document.createElement('div');
+            card.className = "crunchy-card"; 
+            card.onclick = () => { openAnimeDetail(anime); };
+            
+            const epCount = anime.episodios ? anime.episodios.length : 0;
+            const yearText = anime.ano || '';
+            
+            card.innerHTML = `
+                <div class="crunchy-poster"><img src="${anime.poster}" alt="${anime.titulo}"></div>
+                <div class="crunchy-info">
+                    <div class="crunchy-title">${anime.titulo}</div>
+                    <div class="crunchy-meta" style="display: flex; align-items: center; gap: 8px;">
+                        <span class="crunchy-ep-tag">EP ${epCount}</span>
+                        <span>${yearText}</span>
+                    </div>
+                </div>
+                <button class="delete-fav-btn" onclick="event.stopPropagation(); removeFavorite('${anime.titulo.replace(/'/g, "\\'")}')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 7V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V7H2V5H22V7H20ZM6 7V20H18V7H6ZM7 2H17V4H7V2ZM11 10H13V17H11V10Z"></path></svg>
+                </button>
             `;
             container.appendChild(card);
         });
@@ -2651,9 +2734,9 @@
             // Reutilizar la lógica original de showFavoritesView
             const favoriteAnimes = library.filter(anime => favorites.includes(anime.titulo));
             if (favoriteAnimes.length > 0) {
-                favsGrid.style.display = 'grid';
+                favsGrid.style.display = 'flex';
                 noFavsMsg.style.display = 'none';
-                renderGrid(favoriteAnimes, favsGrid);
+                renderFavoritesList(favoriteAnimes, favsGrid);
             } else {
                 favsGrid.style.display = 'none';
                 noFavsMsg.style.display = 'block';
