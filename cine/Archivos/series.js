@@ -49,7 +49,7 @@ const seriesData = [
         ]
     },
     {
-        id: "16",
+        id: "rick3",
         titulo: "Rick and Morty 3",
         titulo_jp: "",
         poster: "https://Dimagemfondo.github.io/visor-imgen/img/Rick_y_Morty_Temporada_3.webp",
@@ -73,9 +73,9 @@ const seriesData = [
         ]
     },
     {
-        id: "rick",
+        id: "rick4",
         titulo: "rick y morty 4",
-        titulo_jp: "陰の実力者になりたくて！ 2nd season",
+        titulo_jp: "",
         poster: "https://www.panicposters.com/cdn/shop/products/fp4913-rick-and-morty-season-4-poster.jpg?v=1681584782&width=823",
         banner: "",
         logo: "",
@@ -86,16 +86,16 @@ const seriesData = [
         calidad: "HD",
         sinopsis: "16",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/001.mkv", subtitulo: "" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/002.mkv", subtitulo: "" },
-            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/003.mkv", subtitulo: "" },
-            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/004.mkv", subtitulo: "" },
-            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/005.mkv", subtitulo: "" },
-            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/006.mkv", subtitulo: "" },
-            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/007.mkv", subtitulo: "" },
-            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/008.mkv", subtitulo: "" },
-            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/009.mkv", subtitulo: "" },
-            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/010.mkv", subtitulo: "" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/001.mp4", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/002.mp4", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/003.mp4", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/004.mp4", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/005.mp4", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/006.mp4", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/007.mp4", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/008.mp4", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/009.mp4", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600105.us.archive.org/1/items/kjr456/010.mp4", subtitulo: "" }
         ]
     }
 ];
