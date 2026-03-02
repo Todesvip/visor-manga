@@ -9,12 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- FIREBASE (Base de datos y Autenticación) -->
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js"></script>
-
     <!-- OPTIMIZACIÓN: Preconectar a servidores para que el video inicie antes -->
 
     <style>
@@ -1043,50 +1037,6 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN APOYAR (NUEVO - MEJOR QUE ADS PARA APKS) -->
-            <div class="settings-section">
-                <div class="settings-section-title">Apoyar el Proyecto</div>
-                <p class="settings-section-desc">Si te gusta la app, considera hacer una donación para mantener el servidor.</p>
-                <a href="#" target="_blank" style="text-decoration: none;">
-                    <button class="settings-action-btn" style="background: #0070BA; color: white; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.15-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.29-1.87-1.43 0-2.15.77-2.15 1.55 0 .56.43 1.39 2.67 1.9 2.36.54 4.18 1.59 4.18 3.68 0 2.15-1.71 2.99-3.29 3.48z"/></svg>
-                        Donar con PayPal
-                    </button>
-                </a>
-            </div>
-
-            <!-- SECCIÓN CUENTA (NUEVO) -->
-            <div class="settings-section">
-                <div class="settings-section-title">Sincronización en la Nube</div>
-                <p class="settings-section-desc">Inicia sesión para guardar tus favoritos y no perderlos nunca.</p>
-                
-                <div id="user-logged-out">
-                    <button class="google-btn" onclick="loginWithGoogle()">
-                        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                        Iniciar con Google
-                    </button>
-                </div>
-
-                <div id="user-logged-in" style="display: none;">
-                    <div class="user-info">
-                        <img id="user-pic" class="user-avatar" src="" alt="">
-                        <div style="display:flex; flex-direction:column;"><span id="user-name" style="font-weight:bold; color:white;">Usuario</span><span id="user-email" style="font-size:12px; color:#888;">email</span></div>
-                    </div>
-                    <button class="settings-action-btn" onclick="logout()" style="background: #333; color: white;">Cerrar Sesión</button>
-                </div>
-            </div>
-
-            <div class="settings-section">
-                <div class="settings-section-title">Medios Sociales</div>
-                <div style="display: flex; gap: 20px; margin-top: 15px;">
-                    <a href="https://youtube.com/@desvoid7?si=6UHVk38wF-8uqRwe" target="_blank" style="text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                        <div style="width: 48px; height: 48px; background: #25252b; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px;"><path d="M19.6069 6.99482C19.5307 6.69695 19.3152 6.47221 19.0684 6.40288C18.6299 6.28062 16.501 6 12.001 6C7.50098 6 5.37252 6.28073 4.93225 6.40323C4.68776 6.47123 4.4723 6.69593 4.3951 6.99482C4.2863 7.41923 4.00098 9.19595 4.00098 12C4.00098 14.804 4.2863 16.5808 4.3954 17.0064C4.47126 17.3031 4.68676 17.5278 4.93251 17.5968C5.37252 17.7193 7.50098 18 12.001 18C16.501 18 18.6299 17.7194 19.0697 17.5968C19.3142 17.5288 19.5297 17.3041 19.6069 17.0052C19.7157 16.5808 20.001 14.8 20.001 12C20.001 9.2 19.7157 7.41923 19.6069 6.99482ZM21.5442 6.49818C22.001 8.28 22.001 12 22.001 12C22.001 12 22.001 15.72 21.5442 17.5018C21.2897 18.4873 20.547 19.2618 19.6056 19.5236C17.8971 20 12.001 20 12.001 20C12.001 20 6.10837 20 4.39637 19.5236C3.45146 19.2582 2.70879 18.4836 2.45774 17.5018C2.00098 15.72 2.00098 12 2.00098 12C2.00098 12 2.00098 8.28 2.45774 6.49818C2.71227 5.51273 3.45495 4.73818 4.39637 4.47636C6.10837 4 12.001 4 12.001 4C12.001 4 17.8971 4 19.6056 4.47636C20.5505 4.74182 21.2932 5.51636 21.5442 6.49818ZM10.001 15.5V8.5L16.001 12L10.001 15.5Z"></path></svg>
-                        </div>
-                        <span style="font-size: 12px; font-weight: 500; color: #ccc;">DesVoid</span>
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1268,82 +1218,6 @@
     // Advertir si no se cargaron datos (posible fallo de red o scripts externos)
     if (publicLibrary.length === 0) {
         console.warn("⚠️ No se cargaron datos de la librería. Verifica que los scripts externos estén accesibles.");
-    }
-</script>
-
-<script>
-    // --- CONFIGURACIÓN DE FIREBASE ---
-    // ¡IMPORTANTE! REEMPLAZA ESTO CON TUS DATOS DE LA CONSOLA DE FIREBASE
-    const firebaseConfig = {
-        apiKey: "AIzaSyDbfiLUQtaK0oOY_P8GgIHtS82rmtzQoS0",
-        authDomain: "void-670de.firebaseapp.com",
-        projectId: "void-670de",
-        storageBucket: "void-670de.firebasestorage.app",
-        messagingSenderId: "936535806707",
-        appId: "1:936535806707:web:ba9f9b054d5a89d1729d86",
-        measurementId: "G-4BP7CBPRT4"
-    };
-
-    // Inicializar Firebase
-    let auth, db, analytics;
-    try {
-        firebase.initializeApp(firebaseConfig);
-        auth = firebase.auth();
-        db = firebase.firestore();
-        analytics = firebase.analytics();
-        console.log("Firebase inicializado correctamente");
-        if (location.protocol === 'file:') {
-            console.warn("⚠️ Firebase Auth no funciona en protocolo file://. Usa un servidor local (http://localhost).");
-        }
-    } catch (e) {
-        console.error("Error inicializando Firebase (Probablemente faltan las API KEYS):", e);
-    }
-
-    // --- LÓGICA DE AUTENTICACIÓN ---
-    function loginWithGoogle() {
-        if (location.protocol === 'file:') {
-            alert("Error: Google Login no funciona abriendo el archivo directamente (file://). Debes usar un servidor local (como 'Live Server' en VS Code) o subir la web a un hosting.");
-            return;
-        }
-        if (!auth) return alert("Configura Firebase primero en el código.");
-        const provider = new firebase.auth.GoogleAuthProvider();
-        auth.signInWithPopup(provider).catch(error => {
-            console.error("Error al iniciar sesión:", error);
-            alert("Error: " + error.message);
-        });
-    }
-
-    function logout() {
-        if (!auth) return;
-        auth.signOut().then(() => {
-            // Al salir, limpiamos la UI pero mantenemos los favoritos locales por seguridad
-            // Opcional: favorites = []; saveFavorites(); renderHome();
-            location.reload(); // Recargar para limpiar estado
-        });
-    }
-
-    // Escuchar cambios de sesión
-    if (auth) {
-        auth.onAuthStateChanged(user => {
-            const loginDiv = document.getElementById('user-logged-out');
-            const userDiv = document.getElementById('user-logged-in');
-            
-            if (user) {
-                // Usuario logueado
-                loginDiv.style.display = 'none';
-                userDiv.style.display = 'block';
-                document.getElementById('user-name').innerText = user.displayName;
-                document.getElementById('user-email').innerText = user.email;
-                document.getElementById('user-pic').src = user.photoURL;
-                
-                // Sincronizar favoritos
-                syncFavoritesWithCloud(user);
-            } else {
-                // Usuario no logueado
-                loginDiv.style.display = 'block';
-                userDiv.style.display = 'none';
-            }
-        });
     }
 </script>
 
@@ -1645,35 +1519,11 @@
 
     function saveFavorites() {
         localStorage.setItem('myApp_favorites', JSON.stringify(favorites));
-        // Si hay usuario logueado, guardar también en la nube
-        if (auth && auth.currentUser) {
-            db.collection('users').doc(auth.currentUser.uid).set({
-                favorites: favorites
-            }, { merge: true });
-        }
     }
 
     // Función para sincronizar nube <-> local
     function syncFavoritesWithCloud(user) {
-        const userRef = db.collection('users').doc(user.uid);
-        
-        userRef.get().then((doc) => {
-            if (doc.exists) {
-                const cloudFavs = doc.data().favorites || [];
-                // Combinar locales y nube (sin duplicados)
-                const merged = [...new Set([...favorites, ...cloudFavs])];
-                favorites = merged;
-                saveFavorites(); // Esto actualiza local y nube con la lista combinada
-                console.log("Favoritos sincronizados:", favorites);
-            } else {
-                // Si no existe en la nube, subimos los locales actuales
-                saveFavorites();
-            }
-            // Actualizar UI si estamos en la vista de favoritos
-            if (currentListTab === 'favorites') showListsSection('favorites');
-        }).catch((error) => {
-            console.error("Error obteniendo documentos:", error);
-        });
+        // La funcionalidad en la nube ha sido eliminada.
     }
 
     function toggleFavorite() {
