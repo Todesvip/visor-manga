@@ -5,6 +5,7 @@ const recientesData = [
         titulo_jp: "回復術士のやり直し",
         poster: "https://static.zerochan.net/Kaifuku.Jutsushi.no.Yarinaoshi....1024.3112751.webp",
         banner: "",
+        logo: "https://dimagemfondo.github.io/visor-imgen/img/04/Logo.png",
         rating: "16+",
         generos: ["Fantasía", "Ecchi", "Acción", "Drama", "Seinen"],
         temporada: "1 Temporada",
