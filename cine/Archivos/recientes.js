@@ -200,7 +200,7 @@ const recientesData = [
         logo: "",
         rating: "16+",
         generos: ["Acción", "Comedia", "Fantasía", "Seinen"],
-        temporada: "Temporada 1",
+        temporada: "Temporada 2",
         ano: "2023",
         calidad: "HD",
         sinopsis: "¡La segunda temporada de Kage no Jitsuryokusha ni Naritakute! Todo ha ido según lo planeado, pero la hora del despertar se acerca. Cid Kagenou y Shadow Garden investigan Lawless City, un pozo negro donde la luna roja cuelga baja en el cielo y tres poderosos monarcas gobiernan las calles. El verdadero atractivo para Cid, sin embargo, es alguien que puede extraer sangre: la Reina de Sangre, una vampira que ha dormido en su ataúd durante eones. Su despertar se acerca y Cid finalmente podría enfrentar el día del juicio final. Nota: Se mostró una proyección de estreno mundial del episodio 1 en el panel de la segunda temporada de The Eminence in Shadow en Anime Expo el 1 de julio de 2023.",
