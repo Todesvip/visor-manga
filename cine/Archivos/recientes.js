@@ -62,6 +62,7 @@ const recientesData = [
         titulo_jp: "異種族レビュアーズ",
         poster: "https://m.media-amazon.com/images/M/MV5BZjE1MTI1MDktZDQwMS00NGU2LTk1YTctYTZlNWE4Mjc2YjhmXkEyXkFqcGc@.jpg",
         banner: "",
+        logo: "https://Dimagemfondo.github.io/visor-imgen/img/04/Logo (1).png",
         rating: "18+",
         generos: ["Fantasía", "Ecchi", "Comedia"],
         temporada: "Temporada 1",
