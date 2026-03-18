@@ -33,6 +33,7 @@ const recientesData = [
         titulo_jp: "なんでここに先生が!?",
         poster: "https://m.media-amazon.com/images/M/MV5BOGY4MjdjYTQtMjJlYS00MDFjLWE2YWMtYzRmN2JmMjI0MWQ4XkEyXkFqcGc@.jpg",
         banner: "",
+        logo: "https://noads-hue.github.io/noads/logo/01.webp",
         rating: "18+",
         generos: ["Comedia", "Ecchi", "Romance", "Seinen", "Slice of Life"],
         temporada: "Temporada 1",
