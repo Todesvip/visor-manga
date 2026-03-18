@@ -91,6 +91,7 @@ const popularesData = [
         titulo_jp: "魔法少女にあこがれて",
         poster: "https://m.media-amazon.com/images/M/MV5BNWU3ZWI4Y2YtNzUwZi00OGY3LWFkYjEtYTZkYmQ5Nzg5OTE5XkEyXkFqcGc@.jpg",
         banner: "",
+        logo: "https://noads-hue.github.io/noads/logo/03.webp",
         rating: "18+",
         generos: ["Acción", "Comedia", "Ecchi", "Fantasía", "Slice of Life"],
         temporada: "Temporada 1",
