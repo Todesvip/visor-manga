@@ -33,6 +33,7 @@ const popularesData = [
         titulo: "Hentai Ouji to Warawanai Neko",
         titulo_jp: "変態王子と笑わない猫。",
         poster: "https://noads-hue.github.io/noads/logo/02.webp",
+        poster1: "https://noads-hue.github.io/noads/logo/02.webp",
         banner: "",
         logo: "https://noads-hue.github.io/noads/logo/01.webp",
         rating: "13+",
