@@ -149,7 +149,7 @@ const recientesData = [
         banner: "",
         rating: "18+",
         generos: ["Fantasía", "Ecchi", "Comedia", "Harem"],
-        temporada: "Temporada 1",
+        temporada: "Temporada 2",
         ano: "2022",
         calidad: "HD",
         sinopsis: "La segunda temporada de Peter Grill para Kenja no Jikan. ¡Peter Grill está de regreso y listo para la acción! Entre sofocar una incursión de duendes, mejorar las negociaciones comerciales con los enanos y aplacar a una hermana vigilante que podría volverse loca para mantenerlo a raya, Peter tiene mucho trabajo por delante. Es el héroe más buscado del país... y eso sin contar la miríada de mujeres interesadas en sus \"otros\" talentos. Se necesitará hasta el último resto de la fuerza de voluntad de Peter para mantenerse concentrado en ser un héroe en otra atrevida temporada de Peter Grill and the Philosopher's Time - ¡Super Extra!",
