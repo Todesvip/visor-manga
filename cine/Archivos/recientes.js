@@ -9,7 +9,7 @@ const recientesData = [
         logo: "https://dimagemfondo.github.io/visor-imgen/img/04/Logo.png",
         rating: "16+",
         generos: ["Fantasía", "Ecchi", "Acción", "Drama", "Seinen"],
-        temporada: "1 Temporada",
+        temporada: "Temporada 1",
         ano: "2024",
         calidad: "HD",
         sinopsis: "Keyar es un sanador que es usado y despreciado por sus compañeros aventureros debido a que ellos piensan que los sanadores no pueden luchar por sí mismos. Cuando Keyar consigue el hechizo definitivo de sanación, el 'cura' al mundo, lo que le permite ir cuatro años en el pasado y vengarse de sus antiguos compañeros, cambiando su destino.",
