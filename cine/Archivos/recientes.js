@@ -240,7 +240,7 @@ const recientesData = [
         episodios: [
             { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Kage/01.jpg", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/01.mkv", subtitulo: "" },
             { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Kage/02.jpg", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/02.mkv", subtitulo: "" },
-            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Kage/031.jpg", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/03.mkv", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Kage/03.jpg", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/03.mkv", subtitulo: "" },
             { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Kage/04.jpg", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/04.mkv", subtitulo: "" },
             { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Kage/05.jpg", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/05.mkv", subtitulo: "" },
             { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Kage/06.jpg", sprite: "", spriteImg: "", link: "https://ia800105.us.archive.org/1/items/kjr456/06.mkv", subtitulo: "" },
