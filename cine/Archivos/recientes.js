@@ -197,8 +197,8 @@ const recientesData = [
         ]
     },
     {
-        id: "The2",
-        titulo: "The Eminence in Shadow 2",
+        id: "Kage2",
+        titulo: "Kage no Jitsuryokusha ni Naritakute! 2nd Season",
         titulo_jp: "陰の実力者になりたくて！ 2nd season",
         poster: "https://media.kitsu.app/anime/47099/poster_image/a3d5e652f167d91e9b308a2fcbe9e878.jpg",
         banner: "",
@@ -225,8 +225,8 @@ const recientesData = [
         ]
     },
     {
-        id: "The",
-        titulo: "The Eminence in Shadow",
+        id: "Kage",
+        titulo: "Kage no Jitsuryokusha ni Naritakute!",
         titulo_jp: "陰の実力者になりたくて！",
         poster: "https://m.media-amazon.com/images/M/MV5BMDFmMWJlMWYtMDFkNi00OWViLTkzOGEtNDI0YWNmM2M5MzI5XkEyXkFqcGc@.jpg",
         banner: "",
