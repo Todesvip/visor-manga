@@ -294,5 +294,33 @@ const recientesData = [
             { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Nukitashi/10.jpg", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2010.mp4", subtitulo: "" },
             { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Nukitashi/11.jpg", sprite: "", spriteImg: "", link: "https://ia802901.us.archive.org/21/items/csdd_20260203/Nukitashi%20-%20The%20Animation%20-%2011.mp4", subtitulo: "" }
         ]
+    },
+    {
+        id: "Ulysses",
+        titulo: "Ulysses Jeanne d'Arc and the Alchemist Knight",
+        titulo_jp: "ユリシーズ　ジャンヌ・ダルクと錬金の騎士",
+        poster: "https://noads-hue.github.io/noads/img/Ulysses/poster.png",
+        banner: "",
+        logo: "",
+        rating: "16+",
+        generos: ["Acción", "Aventura", "Fantasía", "Romance"],
+        temporada: "Temporada 1",
+        ano: "2018",
+        calidad: "HD",
+        sinopsis: "En plena guerra entre Inglaterra y Francia, varios jóvenes franceses se forman como caballeros y disfrutan de su amistad, jurándose que pese a que en el futuro la política se interponga entre ellos, siempre mantendrán ese vínculo. Montmorency es un joven aspirante a alquimista que espera dominar el poder de la piedra filosofal y así proteger a sus amigos y acabar con la guerra que acabará contando con la ayuda de la reina de las hadas, Astaroth, para tal labor. Pese a todo, tras siete años de intentos y con la guerra en su apogeo, sus experimentos siguen sin dar resultado.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E01.mkv", subtitulo: "" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E02.mkv", subtitulo: "" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E03.mkv", subtitulo: "" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E04.mkv", subtitulo: "" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E05.mkv", subtitulo: "" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E06.mkv", subtitulo: "" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E07.mkv", subtitulo: "" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E08.mkv", subtitulo: "" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E09.mkv", subtitulo: "" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E10.mkv", subtitulo: "" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E11.mkv", subtitulo: "" },
+            { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia800807.us.archive.org/9/items/01_20260206_20260206_1936/Ulysses%20Jeanne%20d%27Arc%20and%20the%20Alchemist%20Knight%20-%20S01E12.mkv", subtitulo: "" }
+        ]
     }
 ];
