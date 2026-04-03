@@ -22,6 +22,7 @@ const privadosData = [
         titulo: "Kanochi x Netorare Kazoku The Animation",
         titulo_jp: "完堕ちX寝取られ家族 The Animation 〜アナタ、許して。私たち、浮気セックスに本気でハマっちゃったの〜",
         poster: "https://noads-hue.github.io/noads/img/Kanochi/poster.webp",
+        poster1: "https://noads-hue.github.io/noads/img/Kanochi/logo.webp",
         banner: "",
         logo: "https://noads-hue.github.io/noads/img/Kanochi/icon_whitebear.png",
         rating: "18+",
