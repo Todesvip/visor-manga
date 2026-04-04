@@ -196,7 +196,7 @@ const privadosData = [
         poster: "https://Dimagemfondo.github.io/visor-imgen/img/06/013.webp",
         poster1: "https://Dimagemfondo.github.io/visor-imgen/img/06/013.webp",
         banner: "",
-        logo: "",
+        logo: "https://noads-hue.github.io/img/Shounen/icon_queenbee.png",
         rating: "18+",
         generos: ["Fantasía", "Tentáculos", "Monstruos"],
         temporada: "Temporada 1",
