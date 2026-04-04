@@ -4,7 +4,6 @@ const privadosData = [
         titulo: "Sukebe Elf Tanbouki",
         titulo_jp: "スケベエルフ探訪記",
         poster: "https://dimagemfondo.github.io/visor-imgen/img/08/01.jpg",
-        poster1: "https://dimagemfondo.github.io/visor-imgen/img/08/01.jpg",
         banner: "",
         rating: "18+",
         generos: ["Fantasía", "Tetonas", "Elfas"],
