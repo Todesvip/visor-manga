@@ -24,7 +24,7 @@ const privadosData = [
         banner: "",
         logo: "https://noads-hue.github.io/noads/img/Euphoria/logo.webp",
         rating: "18+",
-        generos: ["Drama", "Psicológico", "Violación", "Esclavas", "Ahegao", "Juguetes", "Incesto", "Tsundere"],
+        generos: ["Violación", "Esclavas", "Ahegao", "Juguetes", "Incesto", "Tsundere"],
         temporada: "Temporada 1",
         ano: "2011",
         calidad: "HD",
