@@ -21,6 +21,7 @@ const privadosData = [
         titulo: "Ikuiku Succubus Saikyouiku",
         titulo_jp: "家庭教師X催眠2 The Animation",
         poster: "https://noads-hue.github.io/noads/img/Ikuiku/poster.webp",
+        poster1: "https://noads-hue.github.io/noads/img/Ikuiku/poster1.webp",
         banner: "",
         logo: "https://noads-hue.github.io/noads/img/Ikuiku/logo.webp",
         rating: "18+",
