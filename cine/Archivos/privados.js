@@ -18,6 +18,25 @@ const privadosData = [
         ]
     },
     {
+        id: "Kateikyoushi",
+        titulo: "Kateikyoushi x Saimin 2 The Animation",
+        titulo_jp: "家庭教師X催眠2 The Animation",
+        poster: "https://noads-hue.github.io/noads/img/Kateikyoushi/poster.webp",
+        poster1: "https://noads-hue.github.io/noads/img/Kateikyoushi/poster1.webp",
+        banner: "",
+        logo: "https://noads-hue.github.io/noads/img/Kateikyoushi/logo.webp",
+        rating: "18+",
+        generos: ["Cosplay", "Juguetes"],
+        temporada: "Temporada 1",
+        ano: "2024",
+        calidad: "HD",
+        sinopsis: "Basado en el juego erótico de POISON. ¡Las tutoras del personaje principal, Masato, son \"las hermanas sexualmente viciosas\" que conocía desde la infancia! Haruna Shinjo, la famosa hermana mayor, combina inteligencia, un par de cejas finas y el peor tipo de personalidad. Serina Shinjo, una estudiante universitaria con una personalidad y un cuerpo egoístas, está llena de lagunas. Ambos lo maltratan constantemente y ya está harto de su vida. Entonces, un día, Masato conoce a Sakiko Ichinose, la dueña del club secreto \"Gentildonna\", y le entrega un dispositivo de hipnosis. Usando el dispositivo, se le dice que puede manipular la mente y el cuerpo de cualquier persona a voluntad.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Kateikyoushi X Saimin The Animation - 1.mkv", subtitulo: "https://noads-hue.github.io/noads/img/Kateikyoushi/Kateikyoushi x Saimin The Animation - 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Kateikyoushi X Saimin The Animation - 2.mkv", subtitulo: "https://noads-hue.github.io/noads/img/Kateikyoushi/Kateikyoushi x Saimin The Animation - 2.es.ass" }
+        ]
+    },
+    {
         id: "Kanochi",
         titulo: "Kanochi x Netorare Kazoku The Animation",
         titulo_jp: "完堕ちX寝取られ家族 The Animation 〜アナタ、許して。私たち、浮気セックスに本気でハマっちゃったの〜",
