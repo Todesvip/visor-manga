@@ -21,7 +21,7 @@ const privadosData = [
         titulo: "Euphoria",
         titulo_jp: "euphoria",
         poster: "https://noads-hue.github.io/noads/img/Euphoria/poster.webp",
-        poster: "https://noads-hue.github.io/noads/img/Euphoria/poster1.webp",
+        poster1: "https://noads-hue.github.io/noads/img/Euphoria/poster1.webp",
         banner: "",
         logo: "https://noads-hue.github.io/noads/img/Euphoria/logo.webp",
         rating: "18+",
