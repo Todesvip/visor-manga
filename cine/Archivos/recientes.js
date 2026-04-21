@@ -104,7 +104,7 @@ const recientesData = [
         titulo: "Ishuzoku Reviewers",
         titulo_jp: "異種族レビュアーズ",
         poster: "https://m.media-amazon.com/images/M/MV5BZjE1MTI1MDktZDQwMS00NGU2LTk1YTctYTZlNWE4Mjc2YjhmXkEyXkFqcGc@.jpg",
-        poster1: "https://noads-hue.github.io/noads/img/03.webp",
+        poster1: "https://noads-hue.github.io/noads/img/Ishuzoku/03.webp",
         banner: "",
         logo: "https://Dimagemfondo.github.io/visor-imgen/img/04/Logo (1).png",
         rating: "18+",
