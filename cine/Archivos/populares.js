@@ -35,7 +35,7 @@ const popularesData = [
         poster: "https://noads-hue.github.io/noads/logo/02.webp",
         poster1: "https://noads-hue.github.io/noads/logo/02.webp",
         banner: "",
-        logo: "https://noads-hue.github.io/noads/logo/01.webp",
+        logo: "https://noads-hue.github.io/noads/img/Hentai/01.webp",
         rating: "13+",
         generos: ["Comedia", "Romance", "Sobrenatural", "Tsundere"],
         temporada: "Temporada 1",
