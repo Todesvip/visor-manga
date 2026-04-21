@@ -74,7 +74,7 @@ const recientesData = [
         titulo: "Nande Koko ni Sensei ga!",
         titulo_jp: "なんでここに先生が!?",
         poster: "https://m.media-amazon.com/images/M/MV5BOGY4MjdjYTQtMjJlYS00MDFjLWE2YWMtYzRmN2JmMjI0MWQ4XkEyXkFqcGc@.jpg",
-        poster1: "https://noads-hue.github.io/noads/img/05.webp",
+        poster1: "https://noads-hue.github.io/noads/img/Nande/05.webp",
         banner: "",
         logo: "https://dimagemfondo.github.io/visor-imgen/img/04/Logo%20(2).png",
         rating: "18+",
