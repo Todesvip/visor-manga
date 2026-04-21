@@ -29,7 +29,7 @@ const recientesData = [
         ]
     },
     {
-        id: "The",
+        id: "Daily",
         titulo: "The Daily Life of a Middle-Aged Online Shopper in Another World",
         titulo_jp: "アラフォー男の異世界通販生活",
         poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx180292-GG0nwYZ5HeN7.jpg",
