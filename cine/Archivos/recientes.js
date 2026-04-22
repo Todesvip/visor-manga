@@ -59,7 +59,7 @@ const recientesData = [
         ]
     },
     {
-        id: "Dr.",
+        id: "Dr",
         titulo: "Dr. STONE",
         titulo_jp: "Dr.STONE",
         poster: "https://noads-hue.github.io/noads/img/Dr./poster.webp",
