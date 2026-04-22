@@ -339,7 +339,7 @@ const recientesData = [
         titulo_jp: "君の名は。",
         poster: "https://media.kitsu.app/anime/poster_images/11614/original.jpg",
         banner: "",
-        logo: "",
+        logo: "https://noads-hue.github.io/noads/img/Kimi/Logo.png",
         rating: "13+",
         generos: ["Drama", "Sobrenatural", "Romance"],
         temporada: "Pelicula",
