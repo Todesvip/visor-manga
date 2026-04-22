@@ -219,6 +219,7 @@ const recientesData = [
         titulo: "Peter Grill to Kenja no Jikan Super Extra",
         titulo_jp: "ピーター・グリルと賢者の時間 Super Extra",
         poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx141400-IHU8WRGMWrCh.jpg",
+        logo: "https://noads-hue.github.io/noads/img/Peter2/Logo2.webp",
         banner: "",
         rating: "18+",
         generos: ["Fantasía", "Ecchi", "Comedia", "Harem"],
