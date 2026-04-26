@@ -5,6 +5,7 @@ const popularesData = [
         titulo_jp: "謎の彼女X",
         poster: "https://noads-hue.github.io/noads/img/Nazo/poster.webp",
         poster1: "https://noads-hue.github.io/noads/img/Nazo/poster.webp",
+        poster3: "https://noads-hue.github.io/noads/img/Nazo/poster.webp",
         logo: "https://noads-hue.github.io/noads/img/Nazo/Logo.webp",
         banner: "",
         rating: "14+",
