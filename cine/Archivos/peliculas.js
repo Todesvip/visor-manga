@@ -1,6 +1,4 @@
-
-
-
+const peliculasData = [
 {
         id: "Kimi",
         titulo: "Kimi no Na wa",
