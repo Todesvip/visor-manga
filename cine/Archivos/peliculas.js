@@ -1,5 +1,5 @@
 const peliculasData = [
-{
+    {
         id: "Kimi",
         titulo: "Kimi no Na wa",
         titulo_jp: "君の名は。",
