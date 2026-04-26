@@ -16,3 +16,4 @@ const peliculasData = [
             { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/kiwi/01.jpg", sprite: "https://noads-hue.github.io/noads/img/Kimi/sprite.vtt", spriteImg: "https://noads-hue.github.io/noads/img/Kimi/sprite01.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/Kimi%20No%20Na%20Wa.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Kimi/Kimi no Na wa.es.ass" }
         ]
     },
+ ];
