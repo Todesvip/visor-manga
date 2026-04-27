@@ -59,6 +59,34 @@ const peliculasData = [
         ]
     },
     {
+        id: "OSHI3",
+        titulo: "OSHI NO KO 3",
+        titulo_jp: "【推しの子】第3期",
+        poster: "",
+        poster1: "",
+        poster3: "",
+        logo: "",
+        rating: "13+",
+        generos: ["Drama", "Misterio", "Psicológico", "Sobrenatural", "Venganza", "Ídolos", "Seinen", "Cosplay", "Tsundere", "Incesto"],
+        temporada: "Temporada 3",
+        ano: "2026",
+        calidad: "HD",
+        sinopsis: "La tercera temporada de [Oshi no Ko]. La historia entra en una nueva etapa. Han pasado seis meses desde que se lanzó \"POP IN 2\". Gracias al arduo trabajo de MEM-Cho, B-Komachi está a punto de conseguir su gran oportunidad. Aqua es una artista con múltiples talentos y la carrera de Akane como actriz talentosa va sin problemas. Mientras tanto, Kana perdió la alegría que alguna vez tuvo. Para descubrir la verdad detrás de las muertes de Ai y Goro, Ruby sigue ascendiendo en el mundo del entretenimiento... Usar la mentira como arma. Nota: El último episodio tiene una duración extendida de ~54 minutos.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/01.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite1.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite1.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e01.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E01.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/02.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite2.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite2.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e02.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E02.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/03.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite3.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite3.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e03.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E03.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/04.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite4.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite4.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e04.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E04.es.ass" },
+            { num: 5, nombre: "Episodio 5", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/05.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite5.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite5.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e05.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E05.es.ass" },
+            { num: 6, nombre: "Episodio 6", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/06.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite6.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite6.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e06.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E06.es.ass" },
+            { num: 7, nombre: "Episodio 7", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/07.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite7.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite7.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e07.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E07.es.ass" },
+            { num: 8, nombre: "Episodio 8", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/08.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite8.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite8.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e08.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E08.es.ass" },
+            { num: 9, nombre: "Episodio 9", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/09.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite9.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite9.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e09.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E09.es.ass" },
+            { num: 10, nombre: "Episodio 10", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/10.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite10.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite10.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e10.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E10.es.ass" },
+            { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/OSHI3/11.jpg", sprite: "https://noads-hue.github.io/noads/img/OSHI3/sprite11.vtt", spriteImg: "https://noads-hue.github.io/noads/img/OSHI3/sprite11.jpg", link: "https://ia600609.us.archive.org/3/items/dsodsods/%E3%80%90Oshi%20No%20Ko%E3%80%91%20-%20S03e11.mp4", subtitulo: "https://noads-hue.github.io/noads/img/OSHI3/【OSHI NO KO】 - S03E11.es.ass" }
+        ]
+    },
+    {
         id: "Kimi",
         titulo: "Kimi no Na wa",
         titulo_jp: "君の名は。",
