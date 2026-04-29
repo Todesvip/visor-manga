@@ -1,4 +1,5 @@
-    {
+const recomendadosprivadosData = [
+     {
         id: "Dropout",
         titulo: "Dropout",
         titulo_jp: "ドロップアウト",
