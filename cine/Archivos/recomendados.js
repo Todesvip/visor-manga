@@ -129,4 +129,4 @@ const recomendadosData = [
             { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Nande/13.jpg", sprite: "https://dimagemfondo.github.io/visor-imgen/sprite/22/sprite13.vtt", spriteImg: "https://dimagemfondo.github.io/visor-imgen/sprite/22/sprite13.jpg", link: "https://ia600105.us.archive.org/1/items/kjr456/Nande%20Koko%20ni%20Sensei%20ga%21%20-%2013.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Nande Koko ni Sensei ga! - 13.es.ass" }
         ]
     }
-]
+];
