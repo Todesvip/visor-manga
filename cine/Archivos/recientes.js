@@ -1,4 +1,25 @@
 const recientesData = [
+      {
+        id: "Warrior",
+        titulo: "The Warrior Princess and the Barbaric King",
+        titulo_jp: "姫騎士は蛮族の嫁",
+        poster: "https://noads-hue.github.io/noads/img/Warrior/poster.webp",
+        poster1: "https://noads-hue.github.io/noads/img/Warrior/poster1.webp",
+        poster3: "https://noads-hue.github.io/noads/img/Warrior/poster3.webp",
+        logo: "https://noads-hue.github.io/noads/img/Warrior/Logo.webp",
+        rating: "13+",
+        generos: ["Comedia", "Fantasía", "Romance", "Shounen"],
+        temporada: "Temporada 1",
+        ano: "2026",
+        calidad: "HD",
+        sinopsis: "Serafina, el caballero más feroz de Occidente, esperaba la tortura cuando fuera capturado por los bárbaros. ¡En cambio, recibió una propuesta de matrimonio! ¡Casarse con su enemigo jurado es un duro no! Pero después de ver la cultura y el rostro tan bonito de su captor de bodas, puede verse tentada a cambiar su espada por un velo de novia. Prepárate para el arco definitivo de enemigos a quizás amantes.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Warrior/01.jpg", sprite: "https://noads-hue.github.io/noads/img/Warrior/sprite1.vtt", spriteImg: "https://noads-hue.github.io/noads/img/Warrior/sprite1.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/The%20Warrior%20Princess%20And%20The%20Barbaric%20King%20-%20S01e01.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Warrior/The Warrior Princess and the Barbaric King - S01E01.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Warrior/02.jpg", sprite: "https://noads-hue.github.io/noads/img/Warrior/sprite2.vtt", spriteImg: "https://noads-hue.github.io/noads/img/Warrior/sprite2.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/The%20Warrior%20Princess%20And%20The%20Barbaric%20King%20-%20S01e02.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Warrior/The Warrior Princess and the Barbaric King - S01E02.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Warrior/03.jpg", sprite: "https://noads-hue.github.io/noads/img/Warrior/sprite3.vtt", spriteImg: "https://noads-hue.github.io/noads/img/Warrior/sprite3.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/The%20Warrior%20Princess%20And%20The%20Barbaric%20King%20-%20S01e03.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Warrior/The Warrior Princess and the Barbaric King - S01E03.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Warrior/04.jpg", sprite: "https://noads-hue.github.io/noads/img/Warrior/sprite4.vtt", spriteImg: "https://noads-hue.github.io/noads/img/Warrior/sprite4.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/The%20Warrior%20Princess%20And%20The%20Barbaric%20King%20-%20S01e04.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Warrior/The Warrior Princess and the Barbaric King - S01E04.es.ass" }
+        ]
+    },
     {
         id: "Kaifuku",
         titulo: "Kaifuku Jutsushi no Yarinaoshi",
