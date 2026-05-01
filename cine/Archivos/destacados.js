@@ -1,3 +1,3 @@
 {
-  "carrusel_ids": ["Kaifuku", "Daily", "Dr", "Ishuzoku", "Gushing"]
+  "carrusel_ids": ["Gals", "Daily", "Dr", "Ishuzoku", "Gushing"]
 }
