@@ -1,4 +1,25 @@
 const recomendadosData = [
+     {
+        id: "Gals",
+        titulo: "Gals Can't be Kind to Otaku!",
+        titulo_jp: "オタクに優しいギャルはいない!?",
+        poster: "https://noads-hue.github.io/noads/img/Gals/poster.webp",
+        poster1: "https://noads-hue.github.io/noads/img/Gals/poster1.webp",
+        poster3: "https://noads-hue.github.io/noads/img/Gals/poster3.webp",
+        logo: "https://noads-hue.github.io/noads/img/Gals/Logo.webp",
+        rating: "13+",
+        generos: ["Comedia", "Romance", "Seinen"],
+        temporada: "Temporada 1",
+        ano: "2026",
+        calidad: "HD",
+        sinopsis: "Conoce a Takuya Seo, un otaku que se sienta detrás de las chicas populares de la clase, Ijichi y Amane. Dado que son personas de diferentes \"castas\", no se esperaría que tuvieran mucho en común. Pero cuando sus mundos chocan por un borrador prestado, Takuya comete un error sobre su anime favorito, y Amane... se apresura a corregirlo. Ella dice que no es fanática, pero su familiaridad con la serie sugiere lo contrario. ¿Podría ser... una compañera geek?",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Gals/01.jpg", sprite: "https://noads-hue.github.io/noads/img/Gals/sprite1.vtt", spriteImg: "https://noads-hue.github.io/noads/img/Gals/sprite1.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Gals%20Can%27t%20Be%20Kind%20To%20Otaku%21%20-%20S01e01.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Gals/Gals Can't be Kind to Otaku! - S01E01.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Gals/02.jpg", sprite: "https://noads-hue.github.io/noads/img/Gals/sprite2.vtt", spriteImg: "https://noads-hue.github.io/noads/img/Gals/sprite2.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Gals%20Can%27t%20Be%20Kind%20To%20Otaku%21%20-%20S01e02.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Gals/Gals Can't be Kind to Otaku! - S01E02.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Gals/03.jpg", sprite: "https://noads-hue.github.io/noads/img/Gals/sprite3.vtt", spriteImg: "https://noads-hue.github.io/noads/img/Gals/sprite3.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Gals%20Can%27t%20Be%20Kind%20To%20Otaku%21%20-%20S01e03.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Gals/Gals Can't be Kind to Otaku! - S01E03.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Gals/04.jpg", sprite: "https://noads-hue.github.io/noads/img/Gals/sprite4.vtt", spriteImg: "https://noads-hue.github.io/noads/img/Gals/sprite4.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Gals%20Can%27t%20Be%20Kind%20To%20Otaku%21%20-%20S01e04.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Gals/Gals Can't be Kind to Otaku! - S01E04.es.ass" }
+        ]
+    },
     {
         id: "Kaifuku",
         titulo: "Kaifuku Jutsushi no Yarinaoshi",
