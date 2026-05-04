@@ -1,6 +1,6 @@
 const recientesData = [
     {
-        id: "Hell's",
+        id: "Hell",
         titulo: "Hell's Paradise",
         titulo_jp: "地獄楽",
         poster: "https://noads-hue.github.io/noads/img/hell/poster.webp",
@@ -27,6 +27,31 @@ const recientesData = [
             { num: 11, nombre: "Episodio 11", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/11.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite11.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite11.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e11.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E11.es.ass" },
             { num: 12, nombre: "Episodio 12", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/12.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite12.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite12.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e12.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E12.es.ass" },
             { num: 13, nombre: "Episodio 13", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/13.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite13.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite13.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e13.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E13.es.ass" }
+        ]
+    },
+    {
+        id: "Hell2",
+        titulo: "Hell's Paradise 2",
+        titulo_jp: "地獄楽",
+        rating: "18+",
+        generos: ["Acción", "Aventura", "Misterio", "Sobrenatural", "Shounen", "Ninjas"],
+        temporada: "Temporada 2",
+        ano: "2023",
+        calidad: "HD",
+        sinopsis: "La segunda temporada de Jigokuraku.",
+        episodios: [
+            { num: 14, nombre: "Episodio 14", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/14.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite14.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite14.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e14.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E14.es.ass" },
+            { num: 15, nombre: "Episodio 15", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/15.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite15.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite15.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e15.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E15.es.ass" },
+            { num: 16, nombre: "Episodio 16", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/16.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite16.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite16.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e16.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E16.es.ass" },
+            { num: 17, nombre: "Episodio 17", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/17.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite17.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite17.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e17.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E17.es.ass" },
+            { num: 18, nombre: "Episodio 18", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/18.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite18.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite18.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e18.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E18.es.ass" },
+            { num: 19, nombre: "Episodio 19", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/19.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite19.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite19.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e19.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E19.es.ass" },
+            { num: 20, nombre: "Episodio 20", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/20.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite20.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite20.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e20.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E20.es.ass" },
+            { num: 21, nombre: "Episodio 21", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/21.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite21.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite21.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e21.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E21.es.ass" },
+            { num: 22, nombre: "Episodio 22", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/22.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite22.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite22.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e22.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E22.es.ass" },
+            { num: 23, nombre: "Episodio 23", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/23.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite23.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite23.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e23.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E23.es.ass" },
+            { num: 24, nombre: "Episodio 24", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/24.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite24.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite24.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e24.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E24.es.ass" },
+            { num: 25, nombre: "Episodio 25", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/hell/25.jpg", sprite: "https://noads-hue.github.io/noads/img/hell/sprite25.vtt", spriteImg: "https://noads-hue.github.io/noads/img/hell/sprite25.jpg", link: "https://ia902901.us.archive.org/21/items/csdd_20260203/Hell%27s%20Paradise%20-%20S01e25.mp4", subtitulo: "https://noads-hue.github.io/noads/img/hell/Hell's Paradise - S01E25.es.ass" }
         ]
     },
     {
