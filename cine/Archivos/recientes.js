@@ -33,6 +33,7 @@ const recientesData = [
         id: "Hell2",
         titulo: "Hell's Paradise 2",
         titulo_jp: "地獄楽",
+        poster: "https://noads-hue.github.io/noads/img/hell/poster.webp",
         rating: "18+",
         generos: ["Acción", "Aventura", "Misterio", "Sobrenatural", "Shounen", "Ninjas"],
         temporada: "Temporada 2",
