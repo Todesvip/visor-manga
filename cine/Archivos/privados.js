@@ -145,7 +145,7 @@ const privadosData = [
         calidad: "HD",
         sinopsis: "Todo el mundo ve a la presidenta del consejo estudiantil, Mitarai Keiko, como la chica perfecta, pero lo que no saben es que lo que más le gusta en el mundo es practicarle una felación a su hermano menor, Noboru. Como sus padres siempre viajan, cumplen este deseo con bastante frecuencia y de maneras bastante aventureras.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/18/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/18/sprite1.jpg", link: "https://ia601503.us.archive.org/10/items/c32e3/Fella%20Pure%20Mitarashi-san%20Chi%20no%20Jijou%20The%20Animation%20-%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Fella Pure Mitarashi-san Chi no Jijou The Animation - 1.eng.ass" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/18/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/18/sprite1.jpg", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Fella%20Pure%20Mitarashi-San%20Chi%20No%20Jijou%20The%20Animation%20-%201.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Fella Pure Mitarashi-san Chi no Jijou The Animation - 1.eng.ass" }
         ]
     },
     {
