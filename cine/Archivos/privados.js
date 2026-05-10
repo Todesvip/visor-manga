@@ -310,8 +310,8 @@ const privadosData = [
         calidad: "HD",
         sinopsis: "Después de reprobar sus exámenes de ingreso, la hermosa y talentosa estudiante de último año cae a un nuevo nivel y se convierte en una total esclava sexual.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Dropout/01.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/12/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/12/sprite1.jpg", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Dropout%201.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Dropout 1.es.ass" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Dropout/02.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/12/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/12/sprite2.jpg", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Dropout%202.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Dropout 2.es.ass" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Dropout/01.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/12/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/12/sprite1.jpg", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Dropout%201.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Dropout/Dropout 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Dropout/02.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/12/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/12/sprite2.jpg", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Dropout%202.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Dropout/Dropout 2.es.ass" }
         ]
     },
     {
