@@ -81,7 +81,6 @@ const privadosData = [
         titulo_jp: "完堕ちX寝取られ家族 The Animation 〜アナタ、許して。私たち、浮気セックスに本気でハマっちゃったの〜",
         poster: "https://noads-hue.github.io/noads/img/Kanochi/poster.webp",
         poster1: "https://noads-hue.github.io/noads/img/Kanochi/logo.jpg",
-        banner: "",
         logo: "https://noads-hue.github.io/noads/img/Kanochi/icon_whitebear.png",
         rating: "18+",
         generos: ["Ahegao", "Traición", "Esclavas", "Violación"],
@@ -100,7 +99,6 @@ const privadosData = [
         titulo_jp: "少年が大人になった夏",
         poster: "https://dimagemfondo.github.io/visor-imgen/img/04/05.webp",
         poster1: "https://noads-hue.github.io/noads/img/Shounen/poster1.png",
-        banner: "",
         logo: "https://noads-hue.github.io/noads/img/Shounen/icon_queenbee.png",
         rating: "18+",
         generos: ["Shota", "Incesto", "Romance"],
@@ -120,7 +118,6 @@ const privadosData = [
         titulo: "Yuusha-hime Miria",
         titulo_jp: "勇者姫ミリア",
         poster: "https://dimagemfondo.github.io/visor-imgen/img/06/012.webp",
-        banner: "",
         rating: "18+",
         generos: ["Fantasía", "Ahegao"],
         temporada: "Temporada 1",
@@ -137,7 +134,6 @@ const privadosData = [
         titulo: "Fella Pure Mitarashi-san Chi no Jijou The Animation",
         titulo_jp: "フェラピュア ~御手洗さん家の事情~ THE ANIMATION",
         poster: "https://dimagemfondo.github.io/visor-imgen/img/03/folder.jpg",
-        banner: "",
         rating: "18+",
         generos: ["Shota", "Incesto", "Colegialas", "Sexo oral"],
         temporada: "Temporada 1",
@@ -329,10 +325,10 @@ const privadosData = [
         calidad: "HD",
         sinopsis: "Adaptación al anime del relanzamiento de 2013 del juego de PC para adultos de AliceSoft de 1989, Rance 01: The Quest for Hikari. Al guerrero bárbaro Rance nada le gusta más que la compañía de mujeres hermosas. Viajando por el continente con su fiel esclavo Sill Plain, Rance acepta trabajos ocasionales para tener la oportunidad de apaciguar su insaciable libido. Aunque sus instintos pervertidos a menudo lo meten en problemas, gente de todas partes elogia sus hazañas heroicas. Mientras realizan una petición para localizar a una joven noble desaparecida, Rance y Sill llegan al majestuoso Reino de Leazas. Mientras se separan para investigar varias pistas, Rance se encuentra ayudando a la gente del pueblo con varios problemas, desde rescatar a una camarera secuestrada hasta purgar un brote de no-muertos. Al acumular fortuna y mujeres, el guerrero finalmente descubre un oscuro secreto dentro del reino al que sólo él puede enfrentarse.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 1.es.ass" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 2.es.ass" },
-            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%203.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 3.es.ass" },
-            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%204.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 4.es.ass" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/01.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/sprite1.jpg", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%201.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/02.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/sprite2.jpg", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%202.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 2.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/03.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/sprite3.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/sprite3.jpg", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%203.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 3.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/04.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/sprite4.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/sprite4.jpg", link: "https://ia801707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Rance%2001%20Hikari%20wo%20Motomete%20The%20Animation%20-%204.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Rance 01 Hikari wo Motomete The Animation - 4.es.ass" }
 
         ]
     },
