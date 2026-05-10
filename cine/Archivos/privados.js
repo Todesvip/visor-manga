@@ -318,8 +318,10 @@ const privadosData = [
         id: "Rance",
         titulo: "Rance Hikari wo Motomete The Animation",
         titulo_jp: "ランス01 光をもとめて THE ANIMATION",
-        poster: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20783-tAGqOxaFFNaO.png",
-        banner: "",
+        poster: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/poster.webp",
+        poster1: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/poster1.webp",
+        poster3: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/poster3.webp",
+        Logo: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/Logo.webp",
         rating: "18+",
         generos: ["Fantasía", "Harem"],
         temporada: "Temporada 1",
@@ -364,7 +366,7 @@ const privadosData = [
         id: "Gaki",
         titulo: "Gaki ni Modotte Yarinaoshi!!!",
         titulo_jp: "ガキに戻ってやり直し!!!",
-        poster: "https://veohentai.com/wp-content/uploads/2022/08/gaki-ni-modotte-yarinaoshi-1-cv3.png",
+        poster: "https://noads-hue.github.io/noads/img/Gaki/poster.webp",
         banner: "",
         rating: "18+",
         generos: ["Shota", "Loli", "Harem", "Sobrenatural"],
@@ -381,7 +383,8 @@ const privadosData = [
         id: "Hachishaku",
         titulo: "Hachishaku Hachiwa Keraku Meguri: Igyou Kaikitan The Animation",
         titulo_jp: "",
-        poster: "https://veohentai.com/wp-content/uploads/2022/08/hachishaku-hachiwa-keraku-meguri-igyou-kaikitan-GAPGn.jpg",
+        poster: "https://Dimagemfondo.github.io/visor-imgen/img/Hachishaku/poster.webp",
+        poster1: "https://Dimagemfondo.github.io/visor-imgen/img/Hachishaku/poster1.webp",
         banner: "",
         rating: "18+",
         generos: ["Sobrenatural", "Terror", "Tetonas", "Shota", "Monstruos"],
@@ -390,9 +393,9 @@ const privadosData = [
         calidad: "HD",
         sinopsis: "Basado en el manga erótico de Jyoka.",
         episodios: [
-           { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Hachishaku/01.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite1.jpg", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Hachishaku%20Hachiwa%20Keraku%20Meguri%20Igyou%20Kaikitan%20The%20Animation%2001.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hachishaku Hachiwa Keraku Meguri Igyou Kaikitan The Animation 01.es.ass" },
-           { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Hachishaku/02.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite2.jpg", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Hachishaku%20Hachiwa%20Keraku%20Meguri%20Igyou%20Kaikitan%20The%20Animation%2002.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hachishaku Hachiwa Keraku Meguri Igyou Kaikitan The Animation 03.es.ass" },
-           { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Hachishaku/03.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite3.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite3.jpg", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Hachishaku%20Hachiwa%20Keraku%20Meguri%20Igyou%20Kaikitan%20The%20Animation%2003.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hachishaku Hachiwa Keraku Meguri Igyou Kaikitan The Animation 02.es.ass" }
+           { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Hachishaku/01.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite1.jpg", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Hachishaku%20Hachiwa%20Keraku%20Meguri%20Igyou%20Kaikitan%20The%20Animation%2001.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hachishaku Hachiwa Keraku Meguri Igyou Kaikitan The Animation 01.es.ass" },
+           { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Hachishaku/02.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite2.jpg", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Hachishaku%20Hachiwa%20Keraku%20Meguri%20Igyou%20Kaikitan%20The%20Animation%2002.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hachishaku Hachiwa Keraku Meguri Igyou Kaikitan The Animation 03.es.ass" },
+           { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Hachishaku/03.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite3.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/02/sprite3.jpg", link: "https://ia601707.us.archive.org/34/items/sukebe-elf-tanbouki-1/Hachishaku%20Hachiwa%20Keraku%20Meguri%20Igyou%20Kaikitan%20The%20Animation%2003.mkv", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Hachishaku Hachiwa Keraku Meguri Igyou Kaikitan The Animation 02.es.ass" }
         ]
     }
 ];
