@@ -207,6 +207,27 @@ const privadosData = [
         ]
     },
     {
+        id: "Katainaka",
+        titulo: "Katainaka ni Totsui de Kita Russia Musume to H Shimakuru Ohanashi",
+        titulo_jp: "片田舎に嫁いできた○シア娘とHしまくるお話",
+        poster: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/poster.webp",
+        poster1: "",
+        poster3: "",
+        logo: "",
+        rating: "18+",
+        generos: ["Ahegao", "Masturbación", "Cosplay", "Esclavas", "Maid"],
+        temporada: "Temporada 1",
+        ano: "2017",
+        calidad: "HD",
+        sinopsis: "Basado en la colección CG de TORYA!/Otona teikoku (TORYA!/オトナテイコク). Fue un verano caluroso. Sin trabajo, el protagonista visitó la casa de su familia en el campo. Sus ambiciones estaban hechas jirones. Renunció a la búsqueda de empleo y se dedicó a holgazanear en casa. Así se hizo cercano a la esposa de su hermano. Su nombre era Arisa. Era una novia rusa increíblemente hermosa trasplantada a Japón. Su interés por el japonés era fuerte y era refrescantemente abierta y tierna. No pasó mucho tiempo antes de que el amargado protagonista fantaseara con robársela. Por la misma época, su hermano se fue de viaje. La noche antes de que su hermano se fuera, escuchó que Arisa y su hermano estaban básicamente en un matrimonio sin sexo. ¿Qué podría ser más perfecto? El protagonista hizo golpear a su hermano en dos aspectos: virilidad y perversión. Más que simplemente hacer suya a Arisa... ¿podría lograr que ella se enamorara de él?",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/01.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/sprite1.jpg", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Katainaka%20Ni%20Totsui%20De%20Kita%20Russia%20Musume%20To%20H%20Shimakuru%20Ohanashi%201.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/Katainaka ni Totsui de Kita Russia Musume to H Shimakuru Ohanashi 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/02.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/sprite2.jpg", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Katainaka%20Ni%20Totsui%20De%20Kita%20Russia%20Musume%20To%20H%20Shimakuru%20Ohanashi%202.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/Katainaka ni Totsui de Kita Russia Musume to H Shimakuru Ohanashi 2.es.ass" },
+            { num: 3, nombre: "Episodio 3", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/03.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/sprite3.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/sprite3.jpg", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Katainaka%20Ni%20Totsui%20De%20Kita%20Russia%20Musume%20To%20H%20Shimakuru%20Ohanashi%203.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/Katainaka ni Totsui de Kita Russia Musume to H Shimakuru Ohanashi 3.es.ass" },
+            { num: 4, nombre: "Episodio 4", duracion: "24m", thumb: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/04.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/sprite4.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/sprite4.jpg", link: "https://ia600107.us.archive.org/28/items/jdiwued384d/Katainaka%20Ni%20Totsui%20De%20Kita%20Russia%20Musume%20To%20H%20Shimakuru%20Ohanashi%204.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/img/Katainaka/Katainaka ni Totsui de Kita Russia Musume to H Shimakuru Ohanashi 4.es.ass" }
+        ]
+    },
+    {
         id: "Goblin",
         titulo: "Goblin no suana",
         titulo_jp: "ゴブリンの巣穴",
