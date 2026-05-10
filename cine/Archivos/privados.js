@@ -118,6 +118,7 @@ const privadosData = [
         titulo: "Yuusha-hime Miria",
         titulo_jp: "勇者姫ミリア",
         poster: "https://dimagemfondo.github.io/visor-imgen/img/06/012.webp",
+        poster: "https://dimagemfondo.github.io/visor-imgen/img/Yuusha/poster1.webp",
         rating: "18+",
         generos: ["Fantasía", "Ahegao"],
         temporada: "Temporada 1",
