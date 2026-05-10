@@ -301,7 +301,7 @@ const privadosData = [
         id: "Dropout",
         titulo: "Dropout",
         titulo_jp: "ドロップアウト",
-        poster: "https://veohentai.com/wp-content/uploads/2022/08/drop-out-1-EvLZG.jpg",
+        poster: "https://noads-hue.github.io/noads/img/Dropout/poster.webp",
         banner: "",
         rating: "18+",
         generos: ["Esclavas", "Colegialas", "Violación"],
