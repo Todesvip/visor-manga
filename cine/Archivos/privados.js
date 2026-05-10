@@ -317,7 +317,7 @@ const privadosData = [
         poster: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/poster.webp",
         poster1: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/poster1.webp",
         poster3: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/poster3.webp",
-        Logo: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/Logo.webp",
+        logo: "https://Dimagemfondo.github.io/visor-imgen/img/Rance/Logo.webp",
         rating: "18+",
         generos: ["Fantasía", "Harem"],
         temporada: "Temporada 1",
