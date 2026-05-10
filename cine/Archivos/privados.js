@@ -362,7 +362,7 @@ const privadosData = [
         id: "Gaki",
         titulo: "Gaki ni Modotte Yarinaoshi!!!",
         titulo_jp: "ガキに戻ってやり直し!!!",
-        poster: "https://noads-hue.github.io/noads/img/Gaki/poster.webp",
+        poster: "https://Dimagemfondo.github.io/visor-imgen/img/Gaki/poster.webp",
         banner: "",
         rating: "18+",
         generos: ["Shota", "Loli", "Harem", "Sobrenatural"],
