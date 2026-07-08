@@ -1,5 +1,5 @@
 const peliculasData = [
-     {
+      {
         id: "Chainsaw",
         titulo: "Chainsaw Man – The Movie: Reze Arc",
         titulo_jp: "チェンソーマン レゼ篇",
@@ -14,9 +14,9 @@ const peliculasData = [
         calidad: "HD",
         sinopsis: "Seguimiento teatral de Chainsaw Man. Denji se convirtió en \"Chainsaw Man\", un niño con corazón de diablo, y ahora forma parte de los cazadores de demonios de la División Especial 4. Después de una cita con Makima, la mujer de sus sueños, Denji se refugia de la lluvia. Allí conoce a Reze, una chica que trabaja en un café.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802800.us.archive.org/4/items/evt5v5v5/Chainsaw%20Man%20%E2%80%93%20The%20Movie%20Reze%20Arc%20-%20S01.mp4", subtitulo: "" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://noads-hue.github.io/noads/img/Chainsaw Man/1080.jpg", sprite: "https://noads-hue.github.io/noads/img/Chainsaw Man/sprite1080.vtt", spriteImg: "https://noads-hue.github.io/noads/img/Chainsaw Man/sprite1080a.jpg", spriteImg2: "https://noads-hue.github.io/noads/img/Chainsaw Man/sprite1080b.jpg", link: "https://ia802800.us.archive.org/4/items/evt5v5v5/Chainsaw%20Man%20%E2%80%93%20The%20Movie%20Reze%20Arc%20-%20S01.mp4", subtitulo: "https://noads-hue.github.io/noads/img/Chainsaw%20Man/CHAINSAW%20MAN%20%E2%80%93%20THE%20MOVIE%20REZE%20ARC%20-%20S00ESP%20GMEE00000001JAJP.es.ass" }
         ]
-    },
+     },
      {
         id: "OSHI",
         titulo: "OSHI NO KO",
