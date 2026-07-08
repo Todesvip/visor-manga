@@ -1,5 +1,23 @@
 const peliculasData = [
      {
+        id: "Chainsaw",
+        titulo: "Chainsaw Man – The Movie: Reze Arc",
+        titulo_jp: "チェンソーマン レゼ篇",
+        poster: "https://media.kitsu.app/anime/48323/poster_image/6ce67992ee95240e78a42f78d7d4bdab.jpg",
+        poster1: "",
+        poster3: "",
+        logo: "",
+        rating: "13+",
+        generos: ["Acción", "Drama", "Terror", "Romance", "Sobrenatural", "Monstruos", "Shounen", "Violación"],
+        temporada: "Pelicula",
+        ano: "2025",
+        calidad: "HD",
+        sinopsis: "Seguimiento teatral de Chainsaw Man. Denji se convirtió en \"Chainsaw Man\", un niño con corazón de diablo, y ahora forma parte de los cazadores de demonios de la División Especial 4. Después de una cita con Makima, la mujer de sus sueños, Denji se refugia de la lluvia. Allí conoce a Reze, una chica que trabaja en un café.",
+        episodios: [
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "", spriteImg: "", link: "https://ia802800.us.archive.org/4/items/evt5v5v5/Chainsaw%20Man%20%E2%80%93%20The%20Movie%20Reze%20Arc%20-%20S01.mp4", subtitulo: "" }
+        ]
+    },
+     {
         id: "OSHI",
         titulo: "OSHI NO KO",
         titulo_jp: "【推しの子】",
