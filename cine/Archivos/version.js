@@ -1,6 +1,6 @@
 {
-  "version": 2,
+  "version": 3,
   "link": "https://t.me/TrrN11",
-  "mensaje": "¡Nuevas funciones Actualiza ahora!."
+  "mensaje": "¡Nuevas funciones Actualiza ahora!.",
   "required": false
 }
