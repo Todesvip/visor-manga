@@ -1,3 +1,3 @@
 {
-  "carrusel_ids": ["Euphoria", "Ikuiku", "Kateikyoushi", "Kanochi", "Shounen"]
+  "carrusel_ids": ["Ikuiku", "Kateikyoushi", "Kanochi", "Shounen"]
 }
