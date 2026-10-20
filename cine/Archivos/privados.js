@@ -321,7 +321,7 @@ const privadosData = [
         id: "Cherry",
         titulo: "Cherry & Gals↑↑",
         titulo_jp: "Cherry＆GAL’s↑↑",
-        poster: "",
+        poster: "https://image.tmdb.org/t/p/original/of4f1JRlU5MifU6LNDVwcOYltv5.jpg",
         banner: "",
         rating: "18+",
         generos: ["Incesto", "Colegialas"],
@@ -330,8 +330,8 @@ const privadosData = [
         calidad: "HD",
         sinopsis: "Ruruna no se siente segura de su asociación Gyaru (término Gyaru utilizado para las jóvenes a la moda). Debido a que Ruruna nunca había tenido relaciones sexuales, no pudo participar charlando y contando historias con los amigos de Gyaru que siempre están hablando de problemas sexuales. Finalmente, Ria le ofrece a Ruruna tener sexo con el hermano menor de Ria, para que Ruruna pueda tener experiencia sobre sexo y pueda llegar a contar historias con otros amigos sobre sexo.",
         episodios: [
-            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/13/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/13/sprite1.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/Cherry%20%26%20Gals%E2%86%91%E2%86%91%201.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Cherry & Gals↑↑ 1.es.ass" },
-            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/13/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/13/sprite2.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/Cherry%20%26%20Gals%E2%86%91%E2%86%91%202.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Cherry & Gals↑↑ 2.es.ass" }
+            { num: 1, nombre: "Episodio 1", duracion: "24m", thumb: "https://image.tmdb.org/t/p/original/9fCYGgMMrB0VvS77c0AA1wU27nm.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/13/sprite1.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/13/sprite1.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/Cherry%20%26%20Gals%E2%86%91%E2%86%91%201.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Cherry & Gals↑↑ 1.es.ass" },
+            { num: 2, nombre: "Episodio 2", duracion: "24m", thumb: "https://image.tmdb.org/t/p/original/jXfskwHgE2nUO2FWFuEoS7RjpDr.jpg", sprite: "https://Dimagemfondo.github.io/visor-imgen/sprite/13/sprite2.vtt", spriteImg: "https://Dimagemfondo.github.io/visor-imgen/sprite/13/sprite2.jpg", link: "https://ia903102.us.archive.org/33/items/vf5v5v/Cherry%20%26%20Gals%E2%86%91%E2%86%91%202.mp4", subtitulo: "https://Dimagemfondo.github.io/visor-imgen/src/Cherry & Gals↑↑ 2.es.ass" }
         ]
     },
     {
