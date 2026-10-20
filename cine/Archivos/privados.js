@@ -269,7 +269,7 @@ const privadosData = [
         id: "Abandon",
         titulo: "Abandon 100 Nuki Shinai to Derarenai Fushigi na Kyoushitsu",
         titulo_jp: "Abandon‐100ヌキしないと出られない不思議な教室‐",
-        poster: "",
+        poster: "https://image.tmdb.org/t/p/original/8rwmNsfvSRk5PIYUpHdzbrMxFe3.jpg",
         banner: "",
         rating: "18+",
         generos: ["Colegialas", "Escolares"],
