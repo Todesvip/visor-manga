@@ -1,8 +1,11 @@
 # Arma cada hora, con cine/Archivos/build_primicias.py, los JSON del Home privado y los sube al repo:
-#   cine/Archivos/primicias.json      Primicias H en español (buscador de muchohentai)
-#   cine/Archivos/privados_home.json  Top 10, Más vistos (VeoHentai), Avances (PV) y Comics
+#   cine/Archivos/primicias.json   Primicias H en español (buscador de muchohentai)
+#   cine/Archivos/top10.json       Top 10 de la semana (VeoHentai)
+#   cine/Archivos/mas_vistos.json  Más vistos (VeoHentai)
+#   cine/Archivos/avances.json     Avances recientes (PV de muchohentai)
+#   cine/Archivos/comics.json      Comics (los dos sitios)
 # GitHub Pages los sirve en https://todesvip.github.io/visor-manga/cine/Archivos/ y la app solo los descarga
-# (config/urls/primicias y config/urls/privados_home en Firebase).
+# (config/urls/primicias, top10, mas_vistos, avances y comics en Firebase).
 #
 # Para cambiar cada cuánto corre, toca solo la línea del cron (está en hora UTC; Lima = UTC-5):
 #   "23 * * * *"    cada hora, al minuto 23
@@ -39,14 +42,14 @@ jobs:
       - name: Dependencias
         run: pip install requests beautifulsoup4 html5lib
 
-      - name: Armar primicias.json y privados_home.json
+      - name: Armar los JSON (primicias, top10, mas_vistos, avances, comics)
         run: python cine/Archivos/build_primicias.py --salida cine/Archivos/primicias.json
 
       - name: Subir al repo si cambió
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for f in cine/Archivos/primicias.json cine/Archivos/privados_home.json; do
+          for f in cine/Archivos/primicias.json cine/Archivos/top10.json cine/Archivos/mas_vistos.json cine/Archivos/avances.json cine/Archivos/comics.json; do
             if [ -f "$f" ]; then git add "$f"; fi
           done
           if git diff --cached --quiet; then
