@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Arma cine/Archivos/primicias.json: la lista "Primicias H en español" del Home privado, ya lista para que la app
-solo la descargue (una petición) en vez de buscar en muchohentai.com desde el celular.
+Arma los JSON del Home privado para que la app solo los descargue (una petición cada uno) en vez de buscar en
+los sitios desde el celular:
 
-Es un calco de MuchoHentaiSearcher.searchEspanol() de la app (mismas búsquedas, misma fusión Raw/Eng/Es por
-episodio, mismos PV, misma consolidación de nombres, mismos ids "mh_..."), para que favoritos e historial sigan
-reconociendo las mismas series.
+  cine/Archivos/primicias.json      "Primicias H en español": calco de MuchoHentaiSearcher.searchEspanol() de la app
+                                    (mismas búsquedas, misma fusión Raw/Eng/Es por episodio, mismos PV, misma
+                                    consolidación de nombres, mismos ids "mh_..."), para que favoritos e historial
+                                    sigan reconociendo las mismas series.
+  cine/Archivos/privados_home.json  Top 10 de la semana y Más vistos (VeoHentai), Avances recientes (PV de
+                                    muchohentai) y Comics (los dos sitios WordPress): calco de los parsers de la app.
+                                    Cada sección lleva su fecha (xxx_ts); si un sitio falla se conserva la anterior.
 
-Uso:  python scripts/build_primicias.py            (lo corre GitHub Actions cada hora)
-      python scripts/build_primicias.py --paginas 10 --salida cine/Archivos/primicias.json
+Uso:  python cine/Archivos/build_primicias.py            (lo corre GitHub Actions cada hora)
+      python cine/Archivos/build_primicias.py --paginas 10 --salida cine/Archivos/primicias.json
+      python cine/Archivos/build_primicias.py --solo-home   (solo privados_home.json, para probar)
 """
 import argparse
 import json
@@ -453,19 +458,712 @@ def limpiar(anime):
     }
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--paginas", type=int, default=10, help="páginas del buscador por categoría (la app usa 10)")
-    ap.add_argument("--salida", default="cine/Archivos/primicias.json")
-    args = ap.parse_args()
+# ── Home privado: Top 10 y Más vistos (VeoHentai), Avances (PV de muchohentai) y Comics (WP REST) ──────────────
+# Calco de VeoHentaiTopRepository.parse(), VeoHentaiExploreRepository.parsePage() (?orden=vistas) y de
+# fetchHentaiVideosForHome() / fetchPostsFromSource() de MainActivity: mismas URLs, mismos selectores, mismos
+# filtros, para que la app reciba exactamente la lista que armaría ella misma.
+# Cada sección es independiente: si un sitio falla, se conserva la versión anterior de ESA sección (con su fecha).
 
+import html as _html
+import os
+from urllib.parse import urljoin, unquote_plus
+
+try:
+    from bs4 import BeautifulSoup
+    from bs4.element import NavigableString, Tag, Comment, Declaration, Doctype, ProcessingInstruction, CData
+    try:
+        from bs4.element import Script, Stylesheet, TemplateString
+    except ImportError:          # bs4 viejo
+        Script = Stylesheet = TemplateString = type("_NoStr", (), {})
+    _BS4 = True
+except ImportError:
+    _BS4 = False
+
+VEO = "https://veohentai.com"
+VEO_HEADERS = {
+    "User-Agent": UA,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "es-ES,es;q=0.9",
+    "Referer": VEO + "/",
+}
+MH_PREVIEW_URL = BASE + "/g/preview/"
+MH_PREVIEW_HEADERS = {
+    "User-Agent": UA,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "es-ES,es;q=0.9",
+    "Referer": BASE + "/",
+}
+COMIC_SOURCES = [
+    "https://comicspornow.com/wp-json/wp/v2/posts",
+    "https://comiquetaxxx.com/wp-json/wp/v2/posts",
+]
+COMIC_UA = ("Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.6367.82 Mobile Safari/537.36")
+MOST_COUNT = 20
+AVANCES_COUNT = 20
+
+# Etiquetas que Jsoup trata como "bloque" al sacar el texto (mete un espacio entre bloques pegados)
+_JSOUP_BLOCK = {
+    "html", "head", "body", "frameset", "script", "noscript", "style", "meta", "link", "title", "frame", "noframes",
+    "section", "nav", "aside", "hgroup", "header", "footer", "p", "h1", "h2", "h3", "h4", "h5", "h6", "ul", "ol",
+    "pre", "div", "blockquote", "hr", "address", "figure", "figcaption", "form", "fieldset", "ins", "del", "dl",
+    "dt", "dd", "li", "table", "caption", "thead", "tfoot", "tbody", "colgroup", "col", "tr", "th", "td", "video",
+    "audio", "canvas", "details", "summary", "menu", "plaintext", "template", "article", "main", "svg", "math",
+    "center", "dir", "applet", "marquee", "listing",
+}
+_JSOUP_WS = " \t\n\f\r "
+
+
+def _get_text_page(url, headers, referer=None):
+    """GET de una página HTML (2 intentos). None si no hubo respuesta útil (como httpGetText de la app)."""
+    s = requests.Session()
+    h = dict(headers)
+    if referer:
+        h["Referer"] = referer
+    for intento in range(2):
+        try:
+            r = s.get(url, headers=h, timeout=TIMEOUT)
+            if r.status_code in (429, 503):
+                print(f"  HTTP {r.status_code} en {url} (intento {intento + 1})", file=sys.stderr)
+                time.sleep(3 + 3 * intento)
+                continue
+            if r.status_code != 200:
+                print(f"  HTTP {r.status_code} en {url}", file=sys.stderr)
+                return None
+            if "Just a moment" in r.text[:2000] and "cf-" in r.text[:5000]:
+                print(f"  Cloudflare pide verificación en {url}", file=sys.stderr)
+                return None
+            return r.text if r.text.strip() else None
+        except requests.RequestException as e:
+            print(f"  GET falló {url}: {e}", file=sys.stderr)
+            time.sleep(2)
+    return None
+
+
+def _soup(html):
+    try:
+        return BeautifulSoup(html, "html5lib")
+    except Exception:
+        return BeautifulSoup(html, "html.parser")
+
+
+def _doc_base(soup, default):
+    """Jsoup toma el <base href> del documento (si es absoluto) como base para absUrl()."""
+    for b in soup.find_all("base"):
+        href = (b.get("href") or "").strip()
+        if href.startswith(("http://", "https://")):
+            return href
+    return default
+
+
+def _abs_url(el, attr, base):
+    """Element.absUrl(attr) de Jsoup: '' si no está el atributo; relativo → resuelto contra la base."""
+    if not el.has_attr(attr):
+        return ""
+    v = (el.get(attr) or "").strip()
+    if not base:
+        if re.match(r"^[a-zA-Z][a-zA-Z0-9+\-.]*:", v):
+            return v
+        return ""
+    try:
+        return urljoin(base, v)
+    except ValueError:
+        return v if re.match(r"^[a-zA-Z][a-zA-Z0-9+\-.]*:", v) else ""
+
+
+def _attr(el, name):
+    """Element.attr(name) de Jsoup: '' si no existe."""
+    if el is None:
+        return ""
+    v = el.get(name)
+    if v is None:
+        return ""
+    return " ".join(v) if isinstance(v, list) else v
+
+
+def _jsoup_text(el):
+    """Element.text() de Jsoup 1.15: texto normalizado (espacios colapsados; un espacio entre bloques y texto)."""
+    if el is None:
+        return ""
+    out = []
+
+    def last_ws():
+        return not out or out[-1][-1:] == " "
+
+    def walk(node):
+        if isinstance(node, (Comment, Declaration, Doctype, ProcessingInstruction, CData, Script, Stylesheet,
+                             TemplateString)):
+            return
+        if isinstance(node, NavigableString):
+            buf = []
+            for c in str(node):
+                if c in ("\u200b", "\u00ad"):
+                    continue
+                if c in _JSOUP_WS:
+                    if (buf and buf[-1] == " ") or (not buf and last_ws()):
+                        continue
+                    buf.append(" ")
+                else:
+                    buf.append(c)
+            if buf:
+                out.append("".join(buf))
+            return
+        if isinstance(node, Tag):
+            if node.name in ("script", "style"):
+                return
+            is_block = node.name in _JSOUP_BLOCK
+            if (is_block or node.name == "br") and not last_ws():
+                out.append(" ")
+            for ch in node.contents:
+                walk(ch)
+            if is_block and isinstance(node.next_sibling, NavigableString) and not last_ws():
+                out.append(" ")
+
+    walk(el)
+    return "".join(out).strip()
+
+
+def _select_first(el, selector):
+    """Element.selectFirst() de Jsoup: el primero en orden de documento, contando al propio elemento."""
+    if isinstance(el, Tag) and el.name and el.name != "[document]":
+        try:
+            import soupsieve
+            if soupsieve.match(selector, el):
+                return el
+        except Exception:
+            pass
+    return el.select_one(selector)
+
+
+# ── Top 10 de la semana (VeoHentaiTopRepository.parse) ───────────────────────────────────────────────────────
+
+def _veo_normalize_img(raw):
+    if not raw:
+        return raw
+    if "/_next/image" in raw and "url=" in raw:
+        enc = raw.split("url=", 1)[1].split("&", 1)[0]
+        try:
+            dec = unquote_plus(enc)
+        except Exception:
+            dec = enc
+        return VEO + dec if dec.startswith("/") else dec
+    return raw
+
+
+def parse_top10(html):
+    soup = _soup(html)
+    base = _doc_base(soup, VEO + "/")
+    section = None
+    for sec in soup.select("section"):
+        if sec.select_one('a[href*="orden=vistas-semana"]') is not None:
+            section = sec
+            break
+    if section is None:
+        for sec in soup.select("section"):
+            h2 = sec.select_one("h2")
+            if h2 is not None and "top 10" in _jsoup_text(h2).lower():
+                section = sec
+                break
+    if section is None:
+        return []
+    out, seen = [], set()
+    for a in section.select('a[href^="/ver/"]'):
+        slug = _attr(a, "href").strip().strip("/")
+        if slug.startswith("ver/"):
+            slug = slug[4:]
+        slug = slug.strip("/")
+        if not slug or slug in seen:
+            continue
+        seen.add(slug)
+        img = _select_first(a, "img")
+        if img is None:
+            continue
+        raw_src = _abs_url(img, "src", base) or _abs_url(img, "data-src", base)
+        image_url = _veo_normalize_img(raw_src)
+        if not image_url:
+            continue
+        h3 = _select_first(a, "h3")
+        title = _jsoup_text(h3).strip() if h3 is not None else ""
+        if not title:
+            title = _attr(img, "alt").strip()
+        if not title:
+            title = slug.replace("-", " ")
+        rank = None
+        for sp in a.select("span[aria-hidden]"):
+            t = _jsoup_text(sp).strip()
+            if re.fullmatch(r"\d{1,2}", t):
+                rank = int(t)
+                break
+        if rank is None:
+            rank = len(out) + 1
+        out.append({"rank": rank, "slug": slug, "title": title, "imageUrl": image_url})
+        if len(out) >= 10:
+            break
+    return sorted(out, key=lambda x: x["rank"])
+
+
+def build_top10():
+    html = _get_text_page(VEO + "/", VEO_HEADERS)
+    if not html:
+        return []
+    try:
+        return parse_top10(html)
+    except Exception as e:
+        print(f"  Top 10: no se pudo leer la página: {e}", file=sys.stderr)
+        return []
+
+
+# ── Más vistos (VeoHentaiExploreRepository.parsePage con ?orden=vistas) ──────────────────────────────────────
+
+def _rsc_stream(html):
+    """El flujo de Next.js: self.__next_f.push([1,"…"]) con el texto escapado como cadena JS (calco de rscStream)."""
+    key = 'self.__next_f.push([1,"'
+    out = []
+    n = len(html)
+    start = 0
+    while True:
+        s = html.find(key, start)
+        if s < 0:
+            break
+        i = s + len(key)
+        while i < n:
+            c = html[i]
+            if c == "\\" and i + 1 < n:
+                nx = html[i + 1]
+                if nx == "n":
+                    out.append("\n")
+                elif nx == "r":
+                    out.append("\r")
+                elif nx == "t":
+                    out.append("\t")
+                elif nx == "b":
+                    out.append("\b")
+                elif nx == "f":
+                    out.append("\f")
+                elif nx == "u":
+                    cp = None
+                    if i + 6 <= n:
+                        hx = html[i + 2:i + 6]
+                        if re.fullmatch(r"[+-]?[0-9a-fA-F]+", hx):
+                            try:
+                                cp = int(hx, 16)
+                            except ValueError:
+                                cp = None
+                    if cp is not None and 0 <= cp <= 0xFFFF:
+                        out.append(chr(cp))
+                        i += 4
+                else:
+                    out.append(nx)
+                i += 2
+            elif c == '"':
+                break
+            else:
+                out.append(c)
+                i += 1
+        start = i + 1
+    s = "".join(out)
+    # Los 😀 (parejas sustitutas) se juntan en un solo carácter, como hace Kotlin con su String
+    return s.encode("utf-16-le", "surrogatepass").decode("utf-16-le", "replace")
+
+
+def _read_json_at(stream, start):
+    try:
+        v, _end = json.JSONDecoder(strict=False).raw_decode(stream, start)
+        return v
+    except Exception:
+        return None
+
+
+def _prim_str(v):
+    """JsonObject.str(k): solo primitivos (string/número/bool), como texto."""
+    if isinstance(v, bool):
+        return "true" if v else "false"
+    if isinstance(v, str):
+        return v
+    if isinstance(v, int):
+        return str(v)
+    if isinstance(v, float):
+        return repr(v)
+    return None
+
+
+def _prim_int(v):
+    """JsonPrimitive.getAsInt(): número → entero; texto numérico → entero; otra cosa → error (como Gson)."""
+    if v is None or isinstance(v, (dict, list)):
+        return None
+    if isinstance(v, bool):
+        raise ValueError("bool no es entero")
+    if isinstance(v, int):
+        return v
+    if isinstance(v, float):
+        return int(v)
+    if isinstance(v, str):
+        if re.fullmatch(r"[+-]?\d+", v.strip()) and v == v.strip():
+            return int(v)
+        raise ValueError(f"'{v}' no es entero")
+    return None
+
+
+def _obj(o, k):
+    v = o.get(k)
+    return v if isinstance(v, dict) else None
+
+
+def _parse_items(stream):
+    key = '"initial":'
+    idx = stream.find(key + "[")
+    if idx < 0:
+        return []
+    arr = _read_json_at(stream, idx + len(key))
+    if not isinstance(arr, list):
+        return []
+    out = []
+    for o in arr:
+        if not isinstance(o, dict):
+            continue
+        slug = _prim_str(o.get("slug"))
+        if slug is None:
+            continue
+        title = _prim_str(o.get("title"))
+        if title is None:
+            continue
+        featured, backdrop = _obj(o, "featured"), _obj(o, "backdrop")
+        path = (_prim_str(featured.get("path")) if featured else None)
+        if path is None:
+            path = (_prim_str(backdrop.get("path")) if backdrop else None)
+        if path is None:
+            continue
+        date = _prim_str(o.get("releaseDate"))
+        if date is None:
+            date = _prim_str(o.get("uploadDate"))
+        year = 0
+        if date is not None:
+            y4 = date[:4]
+            year = int(y4) if re.fullmatch(r"[+-]?\d+", y4) else 0
+        series, studio = _obj(o, "series"), _obj(o, "studio")
+        item_id = _prim_int(o.get("id"))
+        episode = _prim_int(o.get("episodeNumber"))
+        bpath = _prim_str(backdrop.get("path")) if backdrop else None
+        out.append({
+            "id": item_id if item_id is not None else 0,
+            "slug": slug,
+            "title": title,
+            "episode": episode if episode is not None else 0,
+            "seriesName": (_prim_str(series.get("name")) if series else None) or "",
+            "imageUrl": f"{VEO}/media/{path}",
+            "studioSlug": (_prim_str(studio.get("slug")) if studio else None) or "",
+            "year": year,
+            "backdropUrl": f"{VEO}/media/{bpath}" if bpath is not None else None,
+        })
+    return out
+
+
+def _parse_explore_dom(html):
+    """Plan B de la app si cambiara el formato: el HTML visible (sin estudio ni año)."""
+    soup = _soup(html)
+    base = _doc_base(soup, VEO + "/")
+    out, seen = [], set()
+    for a in soup.select('main a[href^="/ver/"]'):
+        slug = _attr(a, "href").strip().strip("/")
+        if slug.startswith("ver/"):
+            slug = slug[4:]
+        slug = slug.strip("/")
+        if not slug or slug in seen:
+            continue
+        seen.add(slug)
+        img = _select_first(a, "img")
+        if img is None:
+            continue
+        src = _abs_url(img, "src", base)
+        if not src:
+            continue
+        h3 = _select_first(a, "h3")
+        title = _jsoup_text(h3).strip() if h3 is not None else ""
+        if not title:
+            title = _attr(img, "alt").strip()
+        m = re.search(r"(?i)episodio\s*(\d+)", title)
+        ep = int(m.group(1)) if m else 0
+        out.append({"id": 0, "slug": slug, "title": title, "episode": ep, "seriesName": "", "imageUrl": src,
+                    "studioSlug": "", "year": 0, "backdropUrl": None})
+    return out
+
+
+def parse_explore_page(html):
+    """VeoHentaiExploreRepository.parsePage(): los episodios de una página de /explorar/ (None si no se pudo leer)."""
+    try:
+        items = _parse_items(_rsc_stream(html))
+    except Exception as e:
+        print(f"  Más vistos: no se pudo leer la página: {e}", file=sys.stderr)
+        return None
+    if items:
+        return items
+    try:
+        return _parse_explore_dom(html)
+    except Exception as e:
+        print(f"  Más vistos: no se pudo leer el HTML: {e}", file=sys.stderr)
+        return None
+
+
+def build_mas_vistos():
+    html = _get_text_page(VEO + "/explorar/?orden=vistas", VEO_HEADERS)
+    if not html:
+        return []
+    items = parse_explore_page(html)
+    return (items or [])[:MOST_COUNT]
+
+
+# ── Avances recientes (fetchHentaiVideosForHome: muchohentai.com/g/preview/) ─────────────────────────────────
+
+_MH_EXCL = ("/tag/", "/category/", "?", "/page/")
+
+
+def _mh_url_ok(url):
+    if url == "https://muchohentai.com/":
+        return False
+    return not any(x in url for x in _MH_EXCL)
+
+
+def _first_thumb(img, attrs):
+    if img is None:
+        return ""
+    for a in attrs:
+        v = _attr(img, a)
+        if v and not v.startswith("data:"):
+            return v
+    return ""
+
+
+def parse_avances(html):
+    soup = _soup(html)
+    base = _doc_base(soup, "")          # la app parsea sin base: solo valen los enlaces absolutos
+    videos = []
+    for el in soup.select("article, .post, .video-item, .video-card, .thumb-block, .item, li.video"):
+        anchor = _select_first(el, "a[href]")
+        if anchor is None:
+            continue
+        url = _abs_url(anchor, "href", base)
+        if "muchohentai.com" not in url:
+            continue
+        if not _mh_url_ok(url):
+            continue
+        img = _select_first(el, "img")
+        thumb = _first_thumb(img, ("data-src", "data-lazy-src", "data-original", "src"))
+        tel = _select_first(el, ".entry-title, .title, .video-title, h1, h2, h3, h4, .name")
+        title = _jsoup_text(tel) if tel is not None else ""
+        if not title:
+            title = _attr(anchor, "title")
+        if not title:
+            title = _attr(img, "alt") if img is not None else ""
+        title = title.strip()
+        del_ = _select_first(el, ".duration, .time, .length, .thumb-duration")
+        duration = _jsoup_text(del_) if del_ is not None else ""
+        if title and thumb:
+            videos.append({"title": title, "url": url, "thumb": thumb, "duration": duration})
+
+    if not videos:
+        for anchor in soup.select("a[href]"):
+            url = _abs_url(anchor, "href", base)
+            if "muchohentai.com" not in url:
+                continue
+            if not _mh_url_ok(url):
+                continue
+            img = _select_first(anchor, "img")
+            if img is None:
+                continue
+            thumb = _first_thumb(img, ("data-src", "data-lazy-src", "src"))
+            title = _attr(anchor, "title") or _attr(img, "alt") or ""
+            title = title.strip()
+            if title and thumb:
+                videos.append({"title": title, "url": url, "thumb": thumb, "duration": ""})
+
+    seen, uniq = set(), []
+    for v in videos:
+        if v["url"] in seen:
+            continue
+        seen.add(v["url"])
+        uniq.append(v)
+    pv = [v for v in uniq if ("pv" in v["title"].lower() or "【" in v["title"] or "/g/preview" in v["url"]
+                              or "category-pv" in v["url"] or "category/pv" in v["url"])]
+    return pv[:AVANCES_COUNT]
+
+
+def build_avances():
+    html = _get_text_page(MH_PREVIEW_URL, MH_PREVIEW_HEADERS)
+    if not html:
+        return []
+    try:
+        return parse_avances(html)
+    except Exception as e:
+        print(f"  Avances: no se pudo leer la página: {e}", file=sys.stderr)
+        return []
+
+
+# ── Comics (fetchPostsFromSource: WP REST de los dos sitios, primera página) ────────────────────────────────
+
+_IMG_SRC_RE = re.compile(r'''src=["']([^"']+\.(?:jpg|jpeg|png|webp))["']''', re.I)
+
+
+def _from_html_text(s):
+    """Html.fromHtml(s).toString().trim() de Android, para títulos: sin etiquetas, entidades decodificadas,
+    espacios y saltos de línea seguidos convertidos en un solo espacio."""
+    s = re.sub(r"<[^>]*>", "", s or "")
+    s = _html.unescape(s)
+    s = re.sub(r"[ \n]+", " ", s)
+    return s.strip()
+
+
+def _wp_thumb(post):
+    emb = post.get("_embedded")
+    media = None
+    if isinstance(emb, dict):
+        fm = emb.get("wp:featuredmedia")
+        if isinstance(fm, list) and fm and isinstance(fm[0], dict):
+            media = fm[0]
+    thumb = None
+    if media is not None:
+        md = media.get("media_details")
+        sizes = md.get("sizes") if isinstance(md, dict) else None
+        if isinstance(sizes, dict):
+            for name in ("medium_large", "large", "medium", "full", "thumbnail"):
+                sz = sizes.get(name)
+                if isinstance(sz, dict) and sz.get("source_url") is not None:
+                    thumb = sz.get("source_url")
+                    break
+        if thumb is None and media.get("source_url") is not None:
+            thumb = media.get("source_url")
+    if thumb is None:
+        thumb = ""
+    if thumb == "":
+        content = post.get("content")
+        html_c = content.get("rendered") if isinstance(content, dict) else None
+        m = _IMG_SRC_RE.search(html_c or "")
+        thumb = m.group(1) if m else ""
+    return thumb
+
+
+def parse_wp_posts(raw):
+    posts = json.loads(raw)
+    out = []
+    for post in posts:
+        title = _from_html_text(post["title"]["rendered"])
+        thumb = _wp_thumb(post)
+        if not thumb:
+            continue
+        out.append({"title": title, "url": post["link"], "thumb": thumb})
+    return out
+
+
+def fetch_comics_source(base_url, idx):
+    origin = base_url.split("/wp-json", 1)[0]
+    url = f"{base_url}?per_page=20&page=1&_embed=1"
+    headers = {
+        "User-Agent": COMIC_UA,
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Referer": origin + "/",
+        "Connection": "keep-alive",
+    }
+    s = requests.Session()
+    for attempt in (1, 2):
+        try:
+            if attempt > 1:
+                time.sleep(3)
+            r = s.get(url, headers=headers, timeout=25)
+            code, raw = r.status_code, r.text
+            if code in (429, 503):
+                raise Exception(f"HTTP {code} (reintento {attempt})")
+            if not raw.lstrip().startswith("["):
+                if code < 200 or code > 299:
+                    raise Exception(f"HTTP {code} desde {base_url}: {raw[:200]}")
+                raise Exception(f"Respuesta inesperada de {base_url} (no es JSON array)")
+            out = parse_wp_posts(raw)
+            for c in out:
+                c["src"] = idx
+            return out
+        except Exception as e:
+            print(f"  Comics [{base_url}] intento {attempt} fallido: {e}", file=sys.stderr)
+    return None
+
+
+def build_comics(previous):
+    """La fusión A + B de la primera página. Si un sitio falla, se reutilizan sus cómics del JSON anterior."""
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        results = list(pool.map(lambda t: fetch_comics_source(t[1], t[0]), list(enumerate(COMIC_SOURCES))))
+    out = []
+    for idx, res in enumerate(results):
+        if res is None:
+            prev = [c for c in (previous or []) if c.get("src") == idx]
+            print(f"  Comics: sitio {idx + 1} sin respuesta; se conservan {len(prev)} del JSON anterior", file=sys.stderr)
+            res = prev
+        out.extend(res)
+    return out
+
+
+# ── Armado del JSON del Home privado ─────────────────────────────────────────────────────────────────────────
+
+def _load_previous(path):
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def build_home(path):
+    """Escribe privados_home.json. True si al menos una sección tiene datos."""
+    if not _BS4:
+        print("Falta beautifulsoup4 (pip install beautifulsoup4 html5lib): no se arma el Home privado", file=sys.stderr)
+        return False
+    prev = _load_previous(path)
+    ahora = datetime.now(timezone.utc)
+    now_ms = int(ahora.timestamp() * 1000)
+    doc = {"generado": ahora.isoformat(timespec="seconds"), "ts": now_ms}
     t0 = time.time()
-    series = search_espanol(args.paginas)
+
+    def seccion(nombre, items):
+        if items:
+            doc[nombre], doc[nombre + "_ts"] = items, now_ms
+            print(f"  {nombre}: {len(items)}")
+        else:
+            doc[nombre] = prev.get(nombre) or []
+            doc[nombre + "_ts"] = int(prev.get(nombre + "_ts") or 0)
+            print(f"  {nombre}: sin datos nuevos; se conserva lo anterior ({len(doc[nombre])})", file=sys.stderr)
+
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        f_top = pool.submit(build_top10)
+        f_mas = pool.submit(build_mas_vistos)
+        f_av = pool.submit(build_avances)
+        f_com = pool.submit(build_comics, prev.get("comics"))
+        seccion("top10", f_top.result())
+        seccion("masVistos", f_mas.result())
+        seccion("avances", f_av.result())
+        seccion("comics", f_com.result())
+
+    con_datos = any(doc[k] for k in ("top10", "masVistos", "avances", "comics"))
+    print(f"Home privado armado en {time.time() - t0:.0f} s")
+    if not con_datos:
+        print("Ninguna sección del Home privado tiene datos: no se escribe nada", file=sys.stderr)
+        return False
+    for k in ("top10", "masVistos", "avances", "comics"):
+        doc[k] = [{a: b for a, b in it.items() if b is not None} for it in doc[k]]
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(doc, f, ensure_ascii=False, separators=(",", ":"))
+        f.write("\n")
+    print(f"Escrito {path}")
+    return True
+
+
+def build_primicias(paginas, salida):
+    """Escribe primicias.json. False (y no toca el archivo) si salieron muy pocas series."""
+    t0 = time.time()
+    series = search_espanol(paginas)
     print(f"Series: {len(series)}, episodios: {sum(len(s['episodios']) for s in series)}, {time.time() - t0:.0f} s")
 
     if len(series) < MIN_SERIES:
         print(f"Salieron solo {len(series)} series: parece un fallo del sitio, se conserva el JSON anterior", file=sys.stderr)
-        sys.exit(1)
+        return False
 
     ahora = datetime.now(timezone.utc)
     doc = {
@@ -474,10 +1172,37 @@ def main():
         "total": len(series),
         "series": [limpiar(s) for s in series],
     }
-    with open(args.salida, "w", encoding="utf-8") as f:
+    with open(salida, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, separators=(",", ":"))
         f.write("\n")
-    print(f"Escrito {args.salida}")
+    print(f"Escrito {salida}")
+    return True
+
+
+def main():
+    try:
+        sys.stdout.reconfigure(line_buffering=True)   # para que en el log de Actions salga todo en orden
+    except Exception:
+        pass
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--paginas", type=int, default=10, help="páginas del buscador por categoría (la app usa 10)")
+    ap.add_argument("--salida", default="cine/Archivos/primicias.json")
+    ap.add_argument("--home", default=None, help="JSON del Home privado (por defecto, privados_home.json junto a --salida)")
+    ap.add_argument("--solo-home", action="store_true", help="solo arma privados_home.json (para probar)")
+    args = ap.parse_args()
+    home_path = args.home or os.path.join(os.path.dirname(args.salida) or ".", "privados_home.json")
+
+    print("== Home privado: Top 10, Más vistos, Avances, Comics ==")
+    ok_home = build_home(home_path)
+
+    ok_prim = False
+    if not args.solo_home:
+        print("== Primicias H en español ==")
+        ok_prim = build_primicias(args.paginas, args.salida)
+
+    # Solo se marca el run como fallido si no salió NADA (si falla una parte, se conserva la anterior y se sigue)
+    if not ok_home and not ok_prim:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
