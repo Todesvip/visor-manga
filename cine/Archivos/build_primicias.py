@@ -8,13 +8,14 @@ los sitios desde el celular:
                                     (mismas búsquedas, misma fusión Raw/Eng/Es por episodio, mismos PV, misma
                                     consolidación de nombres, mismos ids "mh_..."), para que favoritos e historial
                                     sigan reconociendo las mismas series.
-  cine/Archivos/privados_home.json  Top 10 de la semana y Más vistos (VeoHentai), Avances recientes (PV de
-                                    muchohentai) y Comics (los dos sitios WordPress): calco de los parsers de la app.
-                                    Cada sección lleva su fecha (xxx_ts); si un sitio falla se conserva la anterior.
+  cine/Archivos/top10.json          Top 10 de la semana (VeoHentai)          ┐ calco de los parsers de la app;
+  cine/Archivos/mas_vistos.json     Más vistos (VeoHentai)                   │ cada uno con su fecha (ts). Si un
+  cine/Archivos/avances.json        Avances recientes (PV de muchohentai)    │ sitio falla, su archivo no se toca
+  cine/Archivos/comics.json         Comics (los dos sitios WordPress)        ┘ (se queda el anterior).
 
 Uso:  python cine/Archivos/build_primicias.py            (lo corre GitHub Actions cada hora)
       python cine/Archivos/build_primicias.py --paginas 10 --salida cine/Archivos/primicias.json
-      python cine/Archivos/build_primicias.py --solo-home   (solo privados_home.json, para probar)
+      python cine/Archivos/build_primicias.py --solo-home   (solo las 4 secciones del Home, para probar)
 """
 import argparse
 import json
@@ -1101,7 +1102,10 @@ def build_comics(previous):
     return out
 
 
-# ── Armado del JSON del Home privado ─────────────────────────────────────────────────────────────────────────
+# ── Armado de los JSON del Home privado (uno por sección, como primicias.json) ───────────────────────────────
+
+HOME_FILES = {"top10": "top10.json", "masVistos": "mas_vistos.json", "avances": "avances.json", "comics": "comics.json"}
+
 
 def _load_previous(path):
     try:
@@ -1111,48 +1115,48 @@ def _load_previous(path):
         return {}
 
 
-def build_home(path):
-    """Escribe privados_home.json. True si al menos una sección tiene datos."""
-    if not _BS4:
-        print("Falta beautifulsoup4 (pip install beautifulsoup4 html5lib): no se arma el Home privado", file=sys.stderr)
-        return False
-    prev = _load_previous(path)
+def _write_section(path, items):
     ahora = datetime.now(timezone.utc)
-    now_ms = int(ahora.timestamp() * 1000)
-    doc = {"generado": ahora.isoformat(timespec="seconds"), "ts": now_ms}
-    t0 = time.time()
-
-    def seccion(nombre, items):
-        if items:
-            doc[nombre], doc[nombre + "_ts"] = items, now_ms
-            print(f"  {nombre}: {len(items)}")
-        else:
-            doc[nombre] = prev.get(nombre) or []
-            doc[nombre + "_ts"] = int(prev.get(nombre + "_ts") or 0)
-            print(f"  {nombre}: sin datos nuevos; se conserva lo anterior ({len(doc[nombre])})", file=sys.stderr)
-
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        f_top = pool.submit(build_top10)
-        f_mas = pool.submit(build_mas_vistos)
-        f_av = pool.submit(build_avances)
-        f_com = pool.submit(build_comics, prev.get("comics"))
-        seccion("top10", f_top.result())
-        seccion("masVistos", f_mas.result())
-        seccion("avances", f_av.result())
-        seccion("comics", f_com.result())
-
-    con_datos = any(doc[k] for k in ("top10", "masVistos", "avances", "comics"))
-    print(f"Home privado armado en {time.time() - t0:.0f} s")
-    if not con_datos:
-        print("Ninguna sección del Home privado tiene datos: no se escribe nada", file=sys.stderr)
-        return False
-    for k in ("top10", "masVistos", "avances", "comics"):
-        doc[k] = [{a: b for a, b in it.items() if b is not None} for it in doc[k]]
+    doc = {
+        "generado": ahora.isoformat(timespec="seconds"),
+        "ts": int(ahora.timestamp() * 1000),
+        "total": len(items),
+        "items": [{a: b for a, b in it.items() if b is not None} for it in items],
+    }
     with open(path, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, separators=(",", ":"))
         f.write("\n")
-    print(f"Escrito {path}")
-    return True
+
+
+def build_home(folder):
+    """Escribe top10.json, mas_vistos.json, avances.json y comics.json en `folder` (cada uno solo si salió algo;
+    si un sitio falla, su archivo anterior se queda tal cual). True si al menos uno se escribió."""
+    if not _BS4:
+        print("Falta beautifulsoup4 (pip install beautifulsoup4 html5lib): no se arman las secciones del Home", file=sys.stderr)
+        return False
+    t0 = time.time()
+    paths = {k: os.path.join(folder, v) for k, v in HOME_FILES.items()}
+    prev_comics = _load_previous(paths["comics"]).get("items")
+
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        futures = {
+            "top10": pool.submit(build_top10),
+            "masVistos": pool.submit(build_mas_vistos),
+            "avances": pool.submit(build_avances),
+            "comics": pool.submit(build_comics, prev_comics),
+        }
+        results = {k: f.result() for k, f in futures.items()}
+
+    escritos = 0
+    for k, items in results.items():
+        if items:
+            _write_section(paths[k], items)
+            escritos += 1
+            print(f"  {k}: {len(items)} → {HOME_FILES[k]}")
+        else:
+            print(f"  {k}: sin datos; se conserva {HOME_FILES[k]} anterior", file=sys.stderr)
+    print(f"Home privado armado en {time.time() - t0:.0f} s ({escritos} de 4 archivos escritos)")
+    return escritos > 0
 
 
 def build_primicias(paginas, salida):
@@ -1187,13 +1191,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--paginas", type=int, default=10, help="páginas del buscador por categoría (la app usa 10)")
     ap.add_argument("--salida", default="cine/Archivos/primicias.json")
-    ap.add_argument("--home", default=None, help="JSON del Home privado (por defecto, privados_home.json junto a --salida)")
-    ap.add_argument("--solo-home", action="store_true", help="solo arma privados_home.json (para probar)")
+    ap.add_argument("--home", default=None, help="carpeta de los JSON del Home (por defecto, la misma de --salida)")
+    ap.add_argument("--solo-home", action="store_true", help="solo arma las 4 secciones del Home (para probar)")
     args = ap.parse_args()
-    home_path = args.home or os.path.join(os.path.dirname(args.salida) or ".", "privados_home.json")
+    home_folder = args.home or (os.path.dirname(args.salida) or ".")
 
     print("== Home privado: Top 10, Más vistos, Avances, Comics ==")
-    ok_home = build_home(home_path)
+    ok_home = build_home(home_folder)
 
     ok_prim = False
     if not args.solo_home:
