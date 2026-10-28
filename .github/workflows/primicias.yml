@@ -57,4 +57,11 @@ jobs:
             exit 0
           fi
           git commit -m "Home privado: actualización automática ($(date -u +'%Y-%m-%d %H:%M') UTC)"
-          git push
+          # el workflow del Catálogo (catalogo.yml) también sube a esta rama: si se adelantó, se acomoda encima y se reintenta
+          for intento in 1 2 3 4 5; do
+            if git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            sleep $((intento * 5))
+          done
+          exit 1
