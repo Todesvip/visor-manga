@@ -8,10 +8,13 @@ los sitios desde el celular:
                                     (mismas búsquedas, misma fusión Raw/Eng/Es por episodio, mismos PV, misma
                                     consolidación de nombres, mismos ids "mh_..."), para que favoritos e historial
                                     sigan reconociendo las mismas series.
-  cine/Archivos/top10.json          Top 10 de la semana (VeoHentai)          ┐ calco de los parsers de la app;
-  cine/Archivos/mas_vistos.json     Más vistos (VeoHentai)                   │ cada uno con su fecha (ts). Si un
+  cine/Archivos/top10.json          Top 10 de la semana (Hentaila*)          ┐ calco de los parsers de la app;
+  cine/Archivos/mas_vistos.json     Más vistos (Hentaila*)                   │ cada uno con su fecha (ts). Si un
   cine/Archivos/avances.json        Avances recientes (PV de muchohentai)    │ sitio falla, su archivo no se toca
   cine/Archivos/comics.json         Comics (los dos sitios WordPress)        ┘ (se queda el anterior).
+
+  (*) VeoHentai se mudó a Hentaila (hentaila.io): mismos episodios y mismos slugs, imágenes en /uploads/. Top 10 y Más
+      vistos se arman primero de ahí y, si no responde, del sitio viejo.
 
 Uso:  python cine/Archivos/build_primicias.py            (lo corre GitHub Actions cada hora)
       python cine/Archivos/build_primicias.py --paginas 10 --salida cine/Archivos/primicias.json
@@ -467,7 +470,8 @@ def limpiar(anime):
 
 import html as _html
 import os
-from urllib.parse import urljoin, unquote_plus
+import threading
+from urllib.parse import quote, urljoin, unquote_plus
 
 try:
     from bs4 import BeautifulSoup
@@ -703,7 +707,7 @@ def parse_top10(html):
     return sorted(out, key=lambda x: x["rank"])
 
 
-def build_top10():
+def _build_top10_veo():
     html = _get_text_page(VEO + "/", VEO_HEADERS)
     if not html:
         return []
@@ -905,12 +909,195 @@ def parse_explore_page(html):
         return None
 
 
-def build_mas_vistos():
+def _build_mas_vistos_veo():
     html = _get_text_page(VEO + "/explorar/?orden=vistas", VEO_HEADERS)
     if not html:
         return []
     items = parse_explore_page(html)
     return (items or [])[:MOST_COUNT]
+
+
+# ── Hentaila (hentaila.io): ahí se mudó VeoHentai ─────────────────────────────────────────────────────────────
+# Son los mismos episodios y los mismos slugs (/ver/<slug>/), pero con otro diseño: las imágenes salen de /uploads/AAAA/MM/
+# (antes /media/AAAA/MM/), "Más vistos" es /sort/most-views/ y "Trending" es /trending/. Cada episodio es una tarjeta:
+#   <a class="a_item" href="/ver/<slug>/"><div class="v_item"><div class="video_cover"><img src="/uploads/…"/>
+#   <span class="card_badge">EP 2</span> … </div><div class="video_title">Título Episodio 2</div></div></a>
+# Top 10 y Más vistos se arman primero de ahí; si Hentaila no responde se prueba el sitio viejo (VeoHentai).
+
+try:
+    # Con la huella TLS de Chrome Cloudflare no pone reto a los servidores de GitHub; si no está instalada se usa requests.
+    from curl_cffi import requests as _curl_requests
+    _CURL = True
+except ImportError:
+    _CURL = False
+
+HENTAILA = "https://hentaila.io"
+HENTAILA_HEADERS = {
+    "User-Agent": UA,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "es-ES,es;q=0.9",
+    "Referer": HENTAILA + "/",
+}
+HENTAILA_TOP_PAGES = ["/trending/", "/sort/most-views/"]       # Top 10: si la primera no sirve, se usa la segunda
+HENTAILA_MOST_PAGES = ["/sort/most-views/", "/trending/"]      # Más vistos: igual, al revés
+_hentaila_pages = {}                                           # páginas ya bajadas en esta corrida (Top 10 y Más vistos comparten)
+_hentaila_lock = threading.Lock()
+_EP_AL_FINAL = re.compile(r"(?i)\s*[-–:]?\s*episodio\s*\d+\s*$")   # igual que seriesTitle de la app
+
+
+def _get_hentaila_page(url):
+    """GET de una página de hentaila.io (2 intentos). None si no hubo respuesta útil; cada fallo deja escrita su causa."""
+    with _hentaila_lock:
+        if url in _hentaila_pages:
+            return _hentaila_pages[url]
+    for intento in range(2):
+        try:
+            if _CURL:
+                r = _curl_requests.get(url, headers={"Accept-Language": "es-ES,es;q=0.9", "Referer": HENTAILA + "/"},
+                                       impersonate="chrome", timeout=TIMEOUT)
+            else:
+                r = requests.get(url, headers=HENTAILA_HEADERS, timeout=TIMEOUT)
+            if r.status_code in (429, 503):
+                print(f"  Hentaila: HTTP {r.status_code} en {url} (intento {intento + 1})", file=sys.stderr)
+                time.sleep(3 + 3 * intento)
+                continue
+            if r.status_code != 200:
+                print(f"  Hentaila: HTTP {r.status_code} en {url}", file=sys.stderr)
+                return None
+            texto = r.text
+            if "Just a moment" in texto[:2000] and "cf-" in texto[:5000]:
+                print(f"  Hentaila: Cloudflare pide verificación en {url}", file=sys.stderr)
+                return None
+            if not texto.strip():
+                return None
+            with _hentaila_lock:
+                _hentaila_pages[url] = texto
+            return texto
+        except Exception as e:
+            print(f"  Hentaila: GET falló {url}: {e}", file=sys.stderr)
+            time.sleep(2)
+    return None
+
+
+def _hentaila_portada(img, base):
+    """La portada de una tarjeta como dirección absoluta y bien escrita; None si no tiene o es el aviso de 'sin portada'."""
+    if img is None:
+        return None
+    raw = (_attr(img, "src") or _attr(img, "data-src")).strip()
+    if "/_next/image" in raw and "url=" in raw:            # el optimizador de Next.js: la imagen de verdad va dentro de url=
+        enc = raw.split("url=", 1)[1].split("&", 1)[0]
+        try:
+            raw = unquote_plus(enc)
+        except Exception:
+            raw = enc
+    if not raw or raw.startswith("data:") or "poster-unavailable" in raw or raw.lower().split("?")[0].endswith(".svg"):
+        return None
+    return quote(urljoin(base, raw), safe="/:?&=%#+@!$'()*,;~-._[]")   # los %XX que ya traía se respetan
+
+
+def parse_hentaila_cards(html):
+    """Las tarjetas de episodio de una página de Hentaila, en su orden:
+    [{"slug", "title", "episode", "seriesName", "imageUrl" (None si no tiene portada)}]."""
+    soup = _soup(html)
+    base = _doc_base(soup, HENTAILA + "/")
+    out, por_slug = [], {}
+    for a in soup.select('a[href*="/ver/"]'):
+        m = re.search(r"/ver/([^/?#]+)", _attr(a, "href"))
+        if not m:
+            continue
+        slug = m.group(1).strip()
+        img = _select_first(a, "img")
+        portada = _hentaila_portada(img, base)
+        previa = por_slug.get(slug)
+        if previa is not None:                    # la misma serie con otro enlace (p. ej. el del título): solo se le completa la portada
+            if previa["imageUrl"] is None and portada is not None:
+                previa["imageUrl"] = portada
+            continue
+        titulo_el = _select_first(a, ".video_title")
+        titulo = _jsoup_text(titulo_el).strip() if titulo_el is not None else ""
+        if not titulo and img is not None:
+            titulo = _attr(img, "alt").strip()
+        if not titulo:
+            titulo = slug.replace("-", " ")
+        insignia = _select_first(a, ".card_badge")
+        n = re.search(r"\d+", _jsoup_text(insignia)) if insignia is not None else None
+        if n is None:
+            n = re.search(r"episodio-(\d+)$", slug)
+        episodio = int(n.group(1) if n.lastindex else n.group()) if n else 0
+        item = {"slug": slug, "title": titulo, "episode": episodio,
+                "seriesName": _EP_AL_FINAL.sub("", titulo).strip() or titulo, "imageUrl": portada}
+        por_slug[slug] = item
+        out.append(item)
+    return out
+
+
+def _hentaila_tarjetas(rutas):
+    """Las tarjetas CON portada de la primera página de [rutas] que dé algo ([] si ninguna)."""
+    for ruta in rutas:
+        html = _get_hentaila_page(HENTAILA + ruta)
+        if not html:
+            continue
+        try:
+            tarjetas = parse_hentaila_cards(html)
+        except Exception as e:
+            print(f"  Hentaila: no se pudo leer {ruta}: {e}", file=sys.stderr)
+            continue
+        con_portada = [t for t in tarjetas if t["imageUrl"]]
+        if con_portada:
+            print(f"  Hentaila {ruta}: {len(tarjetas)} tarjetas, {len(con_portada)} con portada")
+            return con_portada
+        print(f"  Hentaila {ruta}: sin tarjetas con portada ({len(html)} bytes)", file=sys.stderr)
+    return []
+
+
+HENTAILA_MIN_TOP = 5          # una página con menos tarjetas que estas es un error del sitio, no una lista: no se pisa el JSON anterior
+HENTAILA_MIN_MAS = 10
+
+
+def _build_top10_hentaila():
+    items = [{"rank": i, "slug": t["slug"], "title": t["title"], "imageUrl": t["imageUrl"]}
+             for i, t in enumerate(_hentaila_tarjetas(HENTAILA_TOP_PAGES)[:10], 1)]
+    if 0 < len(items) < HENTAILA_MIN_TOP:
+        print(f"  Top 10: Hentaila dio solo {len(items)}: se descarta", file=sys.stderr)
+        return []
+    return items
+
+
+def _build_mas_vistos_hentaila():
+    # Hentaila no da id, estudio, año ni imagen horizontal en la tarjeta: van vacíos (la app solo usa slug, título, episodio y portada)
+    items = [{"id": 0, "slug": t["slug"], "title": t["title"], "episode": t["episode"], "seriesName": t["seriesName"],
+              "imageUrl": t["imageUrl"], "studioSlug": "", "year": 0, "backdropUrl": None}
+             for t in _hentaila_tarjetas(HENTAILA_MOST_PAGES)[:MOST_COUNT]]
+    if 0 < len(items) < HENTAILA_MIN_MAS:
+        print(f"  Más vistos: Hentaila dio solo {len(items)}: se descarta", file=sys.stderr)
+        return []
+    return items
+
+
+def build_top10():
+    """Top 10 de la semana: primero de Hentaila (donde se mudó VeoHentai) y, si no responde, del sitio viejo."""
+    try:
+        items = _build_top10_hentaila()
+    except Exception as e:
+        print(f"  Top 10: Hentaila falló: {e}", file=sys.stderr)
+        items = []
+    if items:
+        return items
+    print("  Top 10: Hentaila sin datos, se prueba VeoHentai", file=sys.stderr)
+    return _build_top10_veo()
+
+
+def build_mas_vistos():
+    """Más vistos: primero de Hentaila y, si no responde, del sitio viejo."""
+    try:
+        items = _build_mas_vistos_hentaila()
+    except Exception as e:
+        print(f"  Más vistos: Hentaila falló: {e}", file=sys.stderr)
+        items = []
+    if items:
+        return items
+    print("  Más vistos: Hentaila sin datos, se prueba VeoHentai", file=sys.stderr)
+    return _build_mas_vistos_veo()
 
 
 # ── Avances recientes (fetchHentaiVideosForHome: muchohentai.com/g/preview/) ─────────────────────────────────

@@ -1,7 +1,7 @@
 # Arma cada hora, con cine/Archivos/build_primicias.py, los JSON del Home privado y los sube al repo:
 #   cine/Archivos/primicias.json   Primicias H en español (buscador de muchohentai)
-#   cine/Archivos/top10.json       Top 10 de la semana (VeoHentai)
-#   cine/Archivos/mas_vistos.json  Más vistos (VeoHentai)
+#   cine/Archivos/top10.json       Top 10 de la semana (Hentaila: ahí se mudó VeoHentai)
+#   cine/Archivos/mas_vistos.json  Más vistos (Hentaila)
 #   cine/Archivos/avances.json     Avances recientes (PV de muchohentai)
 #   cine/Archivos/comics.json      Comics (los dos sitios)
 # GitHub Pages los sirve en https://todesvip.github.io/visor-manga/cine/Archivos/ y la app solo los descarga
@@ -40,7 +40,7 @@ jobs:
           python-version: "3.12"
 
       - name: Dependencias
-        run: pip install requests beautifulsoup4 html5lib
+        run: pip install requests beautifulsoup4 html5lib curl_cffi
 
       - name: Armar los JSON (primicias, top10, mas_vistos, avances, comics)
         run: python cine/Archivos/build_primicias.py --salida cine/Archivos/primicias.json
