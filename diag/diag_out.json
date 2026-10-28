@@ -1,0 +1,917 @@
+{
+ "curl_cffi": true,
+ "bp_usa_curl": true,
+ "inicio": "2026-10-28 18:38:57 UTC",
+ "produccion": {
+  "stdout": "  Hentaila /trending/: 40 tarjetas, 40 con portada\n  Hentaila /sort/most-views/: 40 tarjetas, 39 con portada\n",
+  "stderr": "",
+  "top10": [
+   "my-mother-episodio-1",
+   "imaizumin-chi-wa-douyara-gal-no-tamariba-ni-natteru-rashii-episodio-4",
+   "torokase-orgasm-the-animation-episodio-1",
+   "kowaremono-risa-the-animation-episodio-3",
+   "himawari-ga-yoru-ni-saku-episodio-1",
+   "tsundero-episodio-1",
+   "maid-kyouiku-botsuraku-kizoku-rurikawa-tsubaki-the-animation-episodio-1",
+   "kaede-to-suzu-the-animation-episodio-2",
+   "ova-jashin-shoukan-inran-kyonyuu-oyako-ikenie-gishiki-episodio-1",
+   "kotowarenai-haha-episodio-1"
+  ],
+  "mas_vistos": [
+   "my-mother-episodio-1",
+   "imaizumin-chi-wa-douyara-gal-no-tamariba-ni-natteru-rashii-episodio-4",
+   "torokase-orgasm-the-animation-episodio-1",
+   "kowaremono-risa-the-animation-episodio-3",
+   "himawari-ga-yoru-ni-saku-episodio-1",
+   "tsundero-episodio-1",
+   "kaede-to-suzu-the-animation-episodio-2",
+   "ova-jashin-shoukan-inran-kyonyuu-oyako-ikenie-gishiki-episodio-1",
+   "kotowarenai-haha-episodio-1",
+   "imouto-wa-gal-kawaii-episodio-1",
+   "hatsukoi-jikan-episodio-1",
+   "akane-wa-tsumare-somerareru-episodio-1",
+   "boku-ni-sexfriend-ga-dekita-riyuu-episodio-2",
+   "kemonokko-tsuushin-the-animation-episodio-3",
+   "boku-ni-sexfriend-ga-dekita-riyuu-episodio-6",
+   "okusama-no-kaifukujutsu-the-animation-episodio-1",
+   "tsundero-episodio-4",
+   "mesudachi-the-animation-episodio-1",
+   "sukebe-elf-tanbouki-episodio-1",
+   "oyasumi-sex-episodio-4"
+  ],
+  "top10_igual_a_los_10_primeros_de_mas_vistos": false
+ },
+ "segundos": {
+  "produccion": 1.5,
+  "paginas": 4.7,
+  "jsons_nuevos": 0.0,
+  "imagenes": 15.5,
+  "fichas": 3.4
+ },
+ "paginas": {
+  "/trending/": {
+   "status": 200,
+   "final": null,
+   "bytes": 129645,
+   "error": null,
+   "titulo": "Más Visitados - Hentaila",
+   "cloudflare": false,
+   "tarjetas": 40,
+   "con_portada": 40,
+   "slugs_md5": "d69837a917",
+   "primeros": [
+    [
+     "my-mother-episodio-1",
+     1,
+     "/uploads/2023/04/My-Mother-Episode-1-721x1024-1.jpg"
+    ],
+    [
+     "imaizumin-chi-wa-douyara-gal-no-tamariba-ni-natteru-rashii-episodio-4",
+     4,
+     "/uploads/2023/08/Imaizumin-chi-wa-Douyara-Gal-no-Tamariba-ni-Natteru-Rashii-Episode-4.jpg"
+    ],
+    [
+     "torokase-orgasm-the-animation-episodio-1",
+     1,
+     "/uploads/2022/08/torokase-orgasm-1-cv1.png"
+    ],
+    [
+     "kowaremono-risa-the-animation-episodio-3",
+     3,
+     "/uploads/2022/08/kowaremono-the-animation.jpg"
+    ],
+    [
+     "himawari-ga-yoru-ni-saku-episodio-1",
+     1,
+     "/uploads/2022/08/himawari-wa-yoru-ni-saku-1-cv1.png"
+    ],
+    [
+     "tsundero-episodio-1",
+     1,
+     "/uploads/2023/09/Tsundero-Episode-1.jpg"
+    ],
+    [
+     "maid-kyouiku-botsuraku-kizoku-rurikawa-tsubaki-the-animation-episodio-1",
+     1,
+     "/uploads/2023/05/Maid-Kyouiku.-Botsuraku-Kizoku-Rurikawa-Tsubaki-The-Animation-Episode-1.jpg"
+    ],
+    [
+     "kaede-to-suzu-the-animation-episodio-2",
+     2,
+     "/uploads/2022/10/c1191257package.jpg"
+    ],
+    [
+     "ova-jashin-shoukan-inran-kyonyuu-oyako-ikenie-gishiki-episodio-1",
+     1,
+     "/uploads/2022/08/jashin-shoukan-inran-kyonyuu-oyako-ikenie-gishiki-1-cv1.png"
+    ],
+    [
+     "kotowarenai-haha-episodio-1",
+     1,
+     "/uploads/2024/04/Kotowarenai-Haha-Episode-1.jpg"
+    ],
+    [
+     "imouto-wa-gal-kawaii-episodio-1",
+     1,
+     "/uploads/2023/02/Imouto-wa-Gal-Kawaii-Episode-1.jpg"
+    ],
+    [
+     "hatsukoi-jikan-episodio-1",
+     1,
+     "/uploads/2023/11/Hatsukoi-Jikan.-Episode-1.jpg"
+    ],
+    [
+     "akane-wa-tsumare-somerareru-episodio-1",
+     1,
+     "/uploads/2022/08/akane-wa-tsumare-somerareru-1-cv1.png"
+    ],
+    [
+     "boku-ni-sexfriend-ga-dekita-riyuu-episodio-2",
+     2,
+     "/uploads/2022/10/Boku-ni-Sexfriend-ga-Dekita-Riyuu-Episode-2.jpg"
+    ],
+    [
+     "kemonokko-tsuushin-the-animation-episodio-3",
+     3,
+     "/uploads/2024/02/Kemonokko-Tsuushin-The-Animation-Episode-3-724x1024-1.jpg"
+    ],
+    [
+     "boku-ni-sexfriend-ga-dekita-riyuu-episodio-6",
+     6,
+     "/uploads/2023/02/Boku-ni-Sexfriend-ga-Dekita-Riyuu-Episode-6.jpg"
+    ]
+   ]
+  },
+  "/sort/most-views/": {
+   "status": 200,
+   "final": null,
+   "bytes": 168339,
+   "error": null,
+   "titulo": "Más visitas Episodios | Hentaila",
+   "cloudflare": false,
+   "tarjetas": 40,
+   "con_portada": 40,
+   "slugs_md5": "d69837a917",
+   "primeros": [
+    [
+     "my-mother-episodio-1",
+     1,
+     "/uploads/2023/04/My-Mother-Episode-1-721x1024-1.jpg"
+    ],
+    [
+     "imaizumin-chi-wa-douyara-gal-no-tamariba-ni-natteru-rashii-episodio-4",
+     4,
+     "/uploads/2023/08/Imaizumin-chi-wa-Douyara-Gal-no-Tamariba-ni-Natteru-Rashii-Episode-4.jpg"
+    ],
+    [
+     "torokase-orgasm-the-animation-episodio-1",
+     1,
+     "/uploads/2022/08/torokase-orgasm-1-cv1.png"
+    ],
+    [
+     "kowaremono-risa-the-animation-episodio-3",
+     3,
+     "/uploads/2022/08/kowaremono-the-animation.jpg"
+    ],
+    [
+     "himawari-ga-yoru-ni-saku-episodio-1",
+     1,
+     "/uploads/2022/08/himawari-wa-yoru-ni-saku-1-cv1.png"
+    ],
+    [
+     "tsundero-episodio-1",
+     1,
+     "/uploads/2023/09/Tsundero-Episode-1.jpg"
+    ],
+    [
+     "maid-kyouiku-botsuraku-kizoku-rurikawa-tsubaki-the-animation-episodio-1",
+     1,
+     "/uploads/2023/05/Maid-Kyouiku.-Botsuraku-Kizoku-Rurikawa-Tsubaki-The-Animation-Episode-1.jpg"
+    ],
+    [
+     "kaede-to-suzu-the-animation-episodio-2",
+     2,
+     "/uploads/2022/10/c1191257package.jpg"
+    ],
+    [
+     "ova-jashin-shoukan-inran-kyonyuu-oyako-ikenie-gishiki-episodio-1",
+     1,
+     "/uploads/2022/08/jashin-shoukan-inran-kyonyuu-oyako-ikenie-gishiki-1-cv1.png"
+    ],
+    [
+     "kotowarenai-haha-episodio-1",
+     1,
+     "/uploads/2024/04/Kotowarenai-Haha-Episode-1.jpg"
+    ],
+    [
+     "imouto-wa-gal-kawaii-episodio-1",
+     1,
+     "/uploads/2023/02/Imouto-wa-Gal-Kawaii-Episode-1.jpg"
+    ],
+    [
+     "hatsukoi-jikan-episodio-1",
+     1,
+     "/uploads/2023/11/Hatsukoi-Jikan.-Episode-1.jpg"
+    ],
+    [
+     "akane-wa-tsumare-somerareru-episodio-1",
+     1,
+     "/uploads/2022/08/akane-wa-tsumare-somerareru-1-cv1.png"
+    ],
+    [
+     "boku-ni-sexfriend-ga-dekita-riyuu-episodio-2",
+     2,
+     "/uploads/2022/10/Boku-ni-Sexfriend-ga-Dekita-Riyuu-Episode-2.jpg"
+    ],
+    [
+     "kemonokko-tsuushin-the-animation-episodio-3",
+     3,
+     "/uploads/2024/02/Kemonokko-Tsuushin-The-Animation-Episode-3-724x1024-1.jpg"
+    ],
+    [
+     "boku-ni-sexfriend-ga-dekita-riyuu-episodio-6",
+     6,
+     "/uploads/2023/02/Boku-ni-Sexfriend-ga-Dekita-Riyuu-Episode-6.jpg"
+    ]
+   ]
+  },
+  "/sort/most-likes/": {
+   "status": 200,
+   "final": null,
+   "bytes": 172569,
+   "error": null,
+   "titulo": "Más Destacado - Hentaila",
+   "cloudflare": false,
+   "tarjetas": 40,
+   "con_portada": 39,
+   "slugs_md5": "a806f40dd6",
+   "primeros": [
+    [
+     "my-mother-episodio-1",
+     1,
+     "/uploads/2023/04/My-Mother-Episode-1-721x1024-1.jpg"
+    ],
+    [
+     "gaki-ni-modotte-yarinaoshi-episodio-1",
+     1,
+     "/uploads/2022/08/gaki-ni-modotte-yarinaoshi-1-cv3.png"
+    ],
+    [
+     "ane-wa-yan-mama-junyuu-chuu-episodio-1",
+     1,
+     "/uploads/2022/08/ane-wa-yanmama-junyuu-chuu-1-cv1.png"
+    ],
+    [
+     "succubus-yondara-gibo-ga-kita-episodio-1",
+     1,
+     "/uploads/2022/11/c1193011package.jpg"
+    ],
+    [
+     "himawari-ga-yoru-ni-saku-episodio-1",
+     1,
+     "/uploads/2022/08/himawari-wa-yoru-ni-saku-1-cv1.png"
+    ],
+    [
+     "uchi-no-otouto-maji-de-dekain-dakedo-mi-ni-konai-episodio-1",
+     1,
+     "/uploads/2022/08/uchi-no-otouto-maji-de-dekain-dakedo-mi-ni-konai-1-cv2.png"
+    ],
+    [
+     "boku-ni-sexfriend-ga-dekita-riyuu-episodio-1",
+     1,
+     ""
+    ],
+    [
+     "torokase-orgasm-the-animation-episodio-1",
+     1,
+     "/uploads/2022/08/torokase-orgasm-1-cv1.png"
+    ],
+    [
+     "mayohiga-no-onee-san-the-animation-episodio-1",
+     1,
+     "/uploads/2022/08/mayohiga-no-onee-san-the-animation-1-JVlXhvSQJA.jpg"
+    ],
+    [
+     "imaizumin-chi-wa-douyara-gal-no-tamariba-ni-natteru-rashii-episodio-1",
+     1,
+     "/uploads/2022/08/imaizumin-chi-wa-douyara-gal-no-tamariba-ni-natteru-rashii-1-cv1.png"
+    ],
+    [
+     "muttsuri-do-sukebe-tsuyu-gibo-shimai-no-honshitsu-minuite-sex-sanmai-episodio-1",
+     1,
+     "/uploads/2022/08/muttsuri-do-sukebe-1-1.jpg"
+    ],
+    [
+     "mankitsu-happening-episodio-1",
+     1,
+     "/uploads/2022/08/mankitsu-happening-1-1.jpg"
+    ],
+    [
+     "fela-pure-mitarashi-san-chi-no-jijou-episodio-1",
+     1,
+     "/uploads/2022/08/fela-pure-mitarashi-san-chi-no-jijou-the-animation-1.jpg"
+    ],
+    [
+     "yarichin-kateikyoushi-netori-koukoku-episodio-1",
+     1,
+     "/uploads/2022/08/yarichin-kateikyoushi-netori-houkoku-dosukebe-kyonyuu-oyakodon-1-cv2b.png"
+    ],
+    [
+     "akane-wa-tsumare-somerareru-episodio-1",
+     1,
+     "/uploads/2022/08/akane-wa-tsumare-somerareru-1-cv1.png"
+    ],
+    [
+     "tsuma-ni-damatte-sokubaikai-ni-ikun-ja-nakatta-episodio-1",
+     1,
+     "/uploads/2023/10/Tsuma-ni-Damatte-Sokubaikai-ni-Ikun-ja-Nakatta-Episode-1.jpg"
+    ]
+   ]
+  },
+  "/sort/newest/": {
+   "status": 200,
+   "final": null,
+   "bytes": 168375,
+   "error": null,
+   "titulo": "Ver Hentai Online Gratis en HentaiLA",
+   "cloudflare": false,
+   "tarjetas": 40,
+   "con_portada": 39,
+   "slugs_md5": "2eeb2a7685",
+   "primeros": [
+    [
+     "oushun-jogakuen-no-danyuu-episodio-2",
+     2,
+     "/uploads/2026/10/mvppfuxn-da015207.webp"
+    ],
+    [
+     "netorareta-bakunyuu-tsuma-tachi-2-episodio-2",
+     2,
+     "/uploads/2026/10/mvpn4n0k-b8dd5f27.jpg"
+    ],
+    [
+     "seishidouin-no-oshigoto-the-animation-episodio-2",
+     2,
+     "/uploads/2026/10/seishidouin-no-oshigoto-the-animation-episodio-2.jpg"
+    ],
+    [
+     "mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-2",
+     2,
+     "/uploads/2026/10/mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episode-2.jpg"
+    ],
+    [
+     "mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-1",
+     1,
+     "/uploads/2026/10/mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-1.jpg"
+    ],
+    [
+     "enjo-kouhai-episodio-12",
+     12,
+     "/uploads/2026/10/enjo-kouhai-episodio-12.jpg"
+    ],
+    [
+     "muramata-san-no-aijou-episodio-1",
+     1,
+     "/uploads/2026/10/muramata-san-no-aijou-episode-1.jpg"
+    ],
+    [
+     "ntr-kishi-episodio-1",
+     1,
+     "/uploads/2026/10/ntr-kishi-episode-1.jpg"
+    ],
+    [
+     "hamehara-sore-sekuhara-desu-episodio-2",
+     2,
+     "/uploads/2026/10/hamehara-sore-sekuhara-desu-2.jpg"
+    ],
+    [
+     "shoujo-ramune-episodio-8",
+     8,
+     "/uploads/2026/10/shoujo-ramune-episode-8.jpg"
+    ],
+    [
+     "oushun-jogakuen-no-danyuu-episodio-1",
+     1,
+     "/uploads/2026/10/Oushun-Jogakuen-no-Danyuu-1.jpg"
+    ],
+    [
+     "netorareta-bakunyuu-tsuma-tachi-2-episodio-1",
+     1,
+     "/uploads/2026/10/Netorareta-Bakunyuu-Tsuma-tachi-2-Episode-1.jpg"
+    ],
+    [
+     "pure-x-holic-junketsu-otome-to-konin-kankei-the-animation-episodio-2",
+     2,
+     "/uploads/2026/09/Pure-x-Holic-2-1.jpg"
+    ],
+    [
+     "pure-x-holic-junketsu-otome-to-konin-kankei-the-animation-episodio-1",
+     1,
+     "/uploads/2026/09/Pure-x-Holic-1-1.jpg"
+    ],
+    [
+     "sare-tsuma-wa-ubawaretai-episodio-1",
+     1,
+     "/uploads/2026/09/Sare-Tsuma-wa-Ubawaretai-1.jpg"
+    ],
+    [
+     "kokuhaku-episodio-4",
+     4,
+     "/uploads/2026/09/Kokuhaku%E2%80%A6-4-1.jpg"
+    ]
+   ]
+  },
+  "/": {
+   "status": 200,
+   "final": null,
+   "bytes": 160883,
+   "error": null,
+   "titulo": "Hentai online en español | Hentaila",
+   "cloudflare": false,
+   "tarjetas": 40,
+   "con_portada": 39,
+   "slugs_md5": "2eeb2a7685",
+   "primeros": [
+    [
+     "oushun-jogakuen-no-danyuu-episodio-2",
+     2,
+     "/uploads/2026/10/mvppfuxn-da015207.webp"
+    ],
+    [
+     "netorareta-bakunyuu-tsuma-tachi-2-episodio-2",
+     2,
+     "/uploads/2026/10/mvpn4n0k-b8dd5f27.jpg"
+    ],
+    [
+     "seishidouin-no-oshigoto-the-animation-episodio-2",
+     2,
+     "/uploads/2026/10/seishidouin-no-oshigoto-the-animation-episodio-2.jpg"
+    ],
+    [
+     "mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-2",
+     2,
+     "/uploads/2026/10/mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episode-2.jpg"
+    ],
+    [
+     "mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-1",
+     1,
+     "/uploads/2026/10/mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-1.jpg"
+    ],
+    [
+     "enjo-kouhai-episodio-12",
+     12,
+     "/uploads/2026/10/enjo-kouhai-episodio-12.jpg"
+    ],
+    [
+     "muramata-san-no-aijou-episodio-1",
+     1,
+     "/uploads/2026/10/muramata-san-no-aijou-episode-1.jpg"
+    ],
+    [
+     "ntr-kishi-episodio-1",
+     1,
+     "/uploads/2026/10/ntr-kishi-episode-1.jpg"
+    ],
+    [
+     "hamehara-sore-sekuhara-desu-episodio-2",
+     2,
+     "/uploads/2026/10/hamehara-sore-sekuhara-desu-2.jpg"
+    ],
+    [
+     "shoujo-ramune-episodio-8",
+     8,
+     "/uploads/2026/10/shoujo-ramune-episode-8.jpg"
+    ],
+    [
+     "oushun-jogakuen-no-danyuu-episodio-1",
+     1,
+     "/uploads/2026/10/Oushun-Jogakuen-no-Danyuu-1.jpg"
+    ],
+    [
+     "netorareta-bakunyuu-tsuma-tachi-2-episodio-1",
+     1,
+     "/uploads/2026/10/Netorareta-Bakunyuu-Tsuma-tachi-2-Episode-1.jpg"
+    ],
+    [
+     "pure-x-holic-junketsu-otome-to-konin-kankei-the-animation-episodio-2",
+     2,
+     "/uploads/2026/09/Pure-x-Holic-2-1.jpg"
+    ],
+    [
+     "pure-x-holic-junketsu-otome-to-konin-kankei-the-animation-episodio-1",
+     1,
+     "/uploads/2026/09/Pure-x-Holic-1-1.jpg"
+    ],
+    [
+     "sare-tsuma-wa-ubawaretai-episodio-1",
+     1,
+     "/uploads/2026/09/Sare-Tsuma-wa-Ubawaretai-1.jpg"
+    ],
+    [
+     "kokuhaku-episodio-4",
+     4,
+     "/uploads/2026/09/Kokuhaku%E2%80%A6-4-1.jpg"
+    ]
+   ]
+  }
+ },
+ "jsons_nuevos": [
+  "https://hentaila.io/uploads/2023/04/My-Mother-Episode-1-721x1024-1.jpg",
+  "https://hentaila.io/uploads/2023/08/Imaizumin-chi-wa-Douyara-Gal-no-Tamariba-ni-Natteru-Rashii-Episode-4.jpg",
+  "https://hentaila.io/uploads/2022/08/torokase-orgasm-1-cv1.png",
+  "https://hentaila.io/uploads/2022/08/kowaremono-the-animation.jpg",
+  "https://hentaila.io/uploads/2022/08/himawari-wa-yoru-ni-saku-1-cv1.png",
+  "https://hentaila.io/uploads/2023/09/Tsundero-Episode-1.jpg",
+  "https://hentaila.io/uploads/2023/05/Maid-Kyouiku.-Botsuraku-Kizoku-Rurikawa-Tsubaki-The-Animation-Episode-1.jpg",
+  "https://hentaila.io/uploads/2022/10/c1191257package.jpg",
+  "https://hentaila.io/uploads/2022/08/jashin-shoukan-inran-kyonyuu-oyako-ikenie-gishiki-1-cv1.png",
+  "https://hentaila.io/uploads/2024/04/Kotowarenai-Haha-Episode-1.jpg",
+  "https://hentaila.io/uploads/2023/04/My-Mother-Episode-1-721x1024-1.jpg",
+  "https://hentaila.io/uploads/2023/08/Imaizumin-chi-wa-Douyara-Gal-no-Tamariba-ni-Natteru-Rashii-Episode-4.jpg",
+  "https://hentaila.io/uploads/2022/08/torokase-orgasm-1-cv1.png",
+  "https://hentaila.io/uploads/2022/08/kowaremono-the-animation.jpg",
+  "https://hentaila.io/uploads/2022/08/himawari-wa-yoru-ni-saku-1-cv1.png",
+  "https://hentaila.io/uploads/2023/09/Tsundero-Episode-1.jpg",
+  "https://hentaila.io/uploads/2023/05/Maid-Kyouiku.-Botsuraku-Kizoku-Rurikawa-Tsubaki-The-Animation-Episode-1.jpg",
+  "https://hentaila.io/uploads/2022/10/c1191257package.jpg",
+  "https://hentaila.io/uploads/2022/08/jashin-shoukan-inran-kyonyuu-oyako-ikenie-gishiki-1-cv1.png",
+  "https://hentaila.io/uploads/2024/04/Kotowarenai-Haha-Episode-1.jpg",
+  "https://hentaila.io/uploads/2023/02/Imouto-wa-Gal-Kawaii-Episode-1.jpg",
+  "https://hentaila.io/uploads/2023/11/Hatsukoi-Jikan.-Episode-1.jpg",
+  "https://hentaila.io/uploads/2022/08/akane-wa-tsumare-somerareru-1-cv1.png",
+  "https://hentaila.io/uploads/2022/10/Boku-ni-Sexfriend-ga-Dekita-Riyuu-Episode-2.jpg",
+  "https://hentaila.io/uploads/2024/02/Kemonokko-Tsuushin-The-Animation-Episode-3-724x1024-1.jpg",
+  "https://hentaila.io/uploads/2023/02/Boku-ni-Sexfriend-ga-Dekita-Riyuu-Episode-6.jpg",
+  "https://hentaila.io/uploads/2023/08/Okusama-no-Kaifukujutsu-The-Animation-Episode-1.jpg",
+  "https://hentaila.io/uploads/2023/12/Tsundero-Episodio-4.jpg",
+  "https://hentaila.io/uploads/2022/11/c1194059package1.jpg",
+  "https://hentaila.io/uploads/2023/07/Sukebe-Elf-Tanbouki-Episode-1.jpg"
+ ],
+ "imagenes_nuevas": {
+  "total": 20,
+  "resumen": {
+   "200/jpeg": 16,
+   "200/png": 4
+  },
+  "fallos": {}
+ },
+ "imagenes_viejas": {
+  "total": 204,
+  "resumen": {
+   "200/png": 14,
+   "200/jpeg": 179,
+   "206/webp": 2,
+   "404/-": 9
+  },
+  "ok_y_fallo_por_mes": {
+   "2022": [
+    23,
+    0
+   ],
+   "2023": [
+    21,
+    0
+   ],
+   "2024": [
+    22,
+    0
+   ],
+   "2025": [
+    31,
+    0
+   ],
+   "2026-01": [
+    10,
+    0
+   ],
+   "2026-02": [
+    8,
+    1
+   ],
+   "2026-03": [
+    10,
+    0
+   ],
+   "2026-04": [
+    7,
+    0
+   ],
+   "2026-05": [
+    11,
+    0
+   ],
+   "2026-06": [
+    14,
+    0
+   ],
+   "2026-07": [
+    7,
+    1
+   ],
+   "2026-08": [
+    11,
+    0
+   ],
+   "2026-09": [
+    2,
+    5
+   ],
+   "2026-10": [
+    18,
+    2
+   ]
+  },
+  "fallos_ejemplos": {
+   "https://veohentai.com/media/2026/10/oushun-jogakuen-no-danyuu-1-2.jpg": {
+    "status": 404,
+    "ct": "text/plain;charset=UTF-8",
+    "tipo": null,
+    "error": null,
+    "final": null
+   },
+   "https://veohentai.com/media/2026/10/netorareta-bakunyuu-tsuma-tachi-2-episode-1.jpg": {
+    "status": 404,
+    "ct": "text/plain;charset=UTF-8",
+    "tipo": null,
+    "error": null,
+    "final": null
+   },
+   "https://veohentai.com/media/2026/09/mtrr65pp-97d87bcc-1.jpg": {
+    "status": 404,
+    "ct": "text/plain;charset=UTF-8",
+    "tipo": null,
+    "error": null,
+    "final": null
+   },
+   "https://veohentai.com/media/2026/09/mtrpbvv5-f2e00c1c-1.jpg": {
+    "status": 404,
+    "ct": "text/plain;charset=UTF-8",
+    "tipo": null,
+    "error": null,
+    "final": null
+   },
+   "https://veohentai.com/media/2026/09/mtroowvr-b637fe10-1.jpg": {
+    "status": 404,
+    "ct": "text/plain;charset=UTF-8",
+    "tipo": null,
+    "error": null,
+    "final": null
+   },
+   "https://veohentai.com/media/2026/09/mtrl535k-78a553f5-1-2.jpg": {
+    "status": 404,
+    "ct": "text/plain;charset=UTF-8",
+    "tipo": null,
+    "error": null,
+    "final": null
+   },
+   "https://veohentai.com/media/2026/09/mtrjx81d-eddfb830-1.jpg": {
+    "status": 404,
+    "ct": "text/plain;charset=UTF-8",
+    "tipo": null,
+    "error": null,
+    "final": null
+   },
+   "https://veohentai.com/media/2026/07/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-7.jpg": {
+    "status": 404,
+    "ct": "text/plain;charset=UTF-8",
+    "tipo": null,
+    "error": null,
+    "final": null
+   },
+   "https://veohentai.com/media/2026/02/Iribitari-Gal-ni-Manko-Tsukawasete-Morau-Hanashi-Episode-4-725x1024-1.webp": {
+    "status": 404,
+    "ct": "text/plain;charset=UTF-8",
+    "tipo": null,
+    "error": null,
+    "final": null
+   }
+  }
+ },
+ "imagenes_sin_huella_chrome": {
+  "total": 40,
+  "resumen": {
+   "200/jpeg": 27,
+   "200/png": 13
+  },
+  "fallos": {}
+ },
+ "fichas": {
+  "total": 30,
+  "resumen": {
+   "200": 30
+  },
+  "detalle": {
+   "oushun-jogakuen-no-danyuu-episodio-2": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Oushun Jogakuen no Danyuu Episodio 2 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/mvppfuxn-da015207.webp"
+   },
+   "netorareta-bakunyuu-tsuma-tachi-2-episodio-2": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Netorareta Bakunyuu Tsuma-tachi 2 Episodio 2 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/mvpn4n0k-b8dd5f27.jpg"
+   },
+   "seishidouin-no-oshigoto-the-animation-episodio-2": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Seishidouin no Oshigoto The Animation Episodio 2 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/seishidouin-no-oshigoto-the-animation-episodio-2.jpg"
+   },
+   "mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-2": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Mujikaku na Osananajimi to Kyoumi Honi de Yatte… | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episode-2.jpg"
+   },
+   "mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Mujikaku na Osananajimi to Kyoumi Honi de Yatte… | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-1.jpg"
+   },
+   "enjo-kouhai-episodio-12": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Enjo Kouhai Episodio 12 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/enjo-kouhai-episodio-12.jpg"
+   },
+   "muramata-san-no-aijou-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Muramata-san no Aijou Episodio 1 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/muramata-san-no-aijou-episode-1.jpg"
+   },
+   "ntr-kishi-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "NTR Kishi Episodio 1 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/ntr-kishi-episode-1.jpg"
+   },
+   "hamehara-sore-sekuhara-desu-episodio-2": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Hamehara: Sore Sekuhara Desu! Episodio 2 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/hamehara-sore-sekuhara-desu-2.jpg"
+   },
+   "shoujo-ramune-episodio-8": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Shoujo Ramune Episodio 8 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/shoujo-ramune-episode-8.jpg"
+   },
+   "oushun-jogakuen-no-danyuu-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Oushun Jogakuen no Danyuu Episodio 1 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/Oushun-Jogakuen-no-Danyuu-1.jpg"
+   },
+   "netorareta-bakunyuu-tsuma-tachi-2-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Netorareta Bakunyuu Tsuma-tachi 2 Episodio 1 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/10/Netorareta-Bakunyuu-Tsuma-tachi-2-Episode-1.jpg"
+   },
+   "pure-x-holic-junketsu-otome-to-konin-kankei-the-animation-episodio-2": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Pure x Holic: Junketsu Otome to Konin Kankei!? The… | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/09/Pure-x-Holic-2-1.jpg"
+   },
+   "pure-x-holic-junketsu-otome-to-konin-kankei-the-animation-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Pure x Holic: Junketsu Otome to Konin Kankei!? The… | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/09/Pure-x-Holic-1-1.jpg"
+   },
+   "sare-tsuma-wa-ubawaretai-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Sare Tsuma wa Ubawaretai Episodio 1 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2026/09/Sare-Tsuma-wa-Ubawaretai-1.jpg"
+   },
+   "stringendo-my-blow-jober-episodio-6": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Stringendo My Blow Jober: Episodio 6 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/stringendo-angel-tachi-no-private-lesson-6-1.jpg"
+   },
+   "suki-de-suki-de-suki-de-the-animation-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Suki de Suki de Suki de The Animation: Episodio 1 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/suki-de-suki-de-suki-de-1-JPeqD.jpg"
+   },
+   "osananajimi-to-doukyuusei-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Osananajimi to Doukyuusei: Episodio 1 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/osananajimi-to-doukyuusei-1-FdNoC.jpg"
+   },
+   "hime-sama-love-life-episodio-3": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Hime-sama Love Life!: Episodio 3 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/hime-sama-love-life-3-cv1.png"
+   },
+   "69-itsuwari-no-bishou-episodio-2": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "69: Itsuwari no Bishou Episodio 2 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2024/05/69-Itsuwari-no-Bishou-Episodio-2.jpg"
+   },
+   "mezzo-forte-episodio-2": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Mezzo Forte : Episodio 2 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/mezzo-forte-2-1.jpg"
+   },
+   "kuro-gal-ni-natta-kara-shinyuu-to-shite-mita-episodio-7": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Kuro Gal ni Natta kara Shin`yuu to Shite Mita.… | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/257053.jpg"
+   },
+   "doukyuusei-2-episodio-7": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Doukyuusei 2: Episodio 7 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/doukyuusei-2-ep-7-cv1b.png"
+   },
+   "tsugou-no-yoi-sexfriend-episodio-4": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Tsugou no Yoi SexFriend: Episodio 4 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/tsugou-no-yoi-sexfriend-4-1.jpg"
+   },
+   "imaizumin-chi-wa-douyara-gal-no-tamariba-ni-natteru-rashii-episodio-2": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Imaizumin-chi wa Douyara Gal no Tamariba ni Natteru… | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/imaizumin-chi-wa-douyara-gal-no-tamariba-ni-natteru-rashii-2-cv1.png"
+   },
+   "kanojo-ga-nekomimi-ni-kigaetara-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Kanojo ga Nekomimi ni Kigaetara: Episodio 1 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/kanojo-ga-nekomimi-ni-kigaetara.jpg"
+   },
+   "furyou-ni-hamerarete-jusei-suru-kyonyuu-okaasan-episodio-2": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Furyou ni Hamerarete Jusei Suru Kyonyuu Okaasan:… | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/furyou-ni-hamerarete-jusei-suru-kyonyuu-okaa-san-2-1.jpg"
+   },
+   "kowaremono-risa-the-animation-episodio-3": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Kowaremono Risa The Animation: Episodio 3 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/kowaremono-the-animation.jpg"
+   },
+   "ran-sem-hakudaku-delmo-tsuma-no-miira-tori-episodio-1": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Ran-Sem: Hakudaku Delmo Tsuma no Miira Tori:… | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/ran-sem-1-1.jpg"
+   },
+   "ma-ga-ochiru-yoru-episodio-3": {
+    "status": 200,
+    "error": null,
+    "final": null,
+    "titulo": "Ma ga Ochiru Yoru: Episodio 3 | Hentaila",
+    "og_image": "https://hentaila.io/uploads/2022/08/the-night-when-evil-falls-3-1.jpg"
+   }
+  }
+ },
+ "fin": "2026-10-28 18:39:22 UTC"
+}
