@@ -14,7 +14,8 @@ los sitios desde el celular:
   cine/Archivos/comics.json         Comics (los dos sitios WordPress)        ┘ (se queda el anterior).
 
   (*) VeoHentai se mudó a Hentaila (hentaila.io): mismos episodios y mismos slugs, imágenes en /uploads/. Top 10 y Más
-      vistos se arman primero de ahí y, si no responde, del sitio viejo.
+      vistos se arman primero de ahí y, si no responde, del sitio viejo. La fila del Top 10 usa la imagen HORIZONTAL de
+      cada episodio (la captura que Hentaila muestra en la página del episodio); Más vistos, la portada vertical.
 
 Uso:  python cine/Archivos/build_primicias.py            (lo corre GitHub Actions cada hora)
       python cine/Archivos/build_primicias.py --paginas 10 --salida cine/Archivos/primicias.json
@@ -1050,17 +1051,86 @@ def _hentaila_tarjetas(rutas):
     return []
 
 
+def parse_hentaila_miniatura(html, slug):
+    """La imagen HORIZONTAL de un episodio: la que Hentaila muestra de él en su propia página (/ver/<slug>/). La columna
+    de la derecha lista los episodios de la serie («Más de …») y los relacionados, cada uno con una miniatura
+    (div.poster > a > img) que es la captura horizontal del episodio; se toma la del enlace a ESTE episodio.
+    None si no sale, o si es la misma portada vertical (episodios sin captura: ahí Hentaila repite la portada)."""
+    soup = _soup(html)
+    base = _doc_base(soup, HENTAILA + "/")
+    portada = _hentaila_portada(_select_first(soup, ".cover img"), base)
+    for a in soup.select('a[href*="/ver/"]'):
+        m = re.search(r"/ver/([^/?#]+)", _attr(a, "href"))
+        if not m or m.group(1) != slug:
+            continue
+        img = _select_first(a, "img")
+        if img is None:
+            continue
+        # la miniatura de la columna derecha (div.poster) o, si cambiaran las clases, cualquier imagen más ancha que alta
+        w, h = _attr(img, "width"), _attr(img, "height")
+        apaisada = w.isdigit() and h.isdigit() and int(w) > int(h)
+        if a.find_parent(class_="poster") is None and not apaisada:
+            continue
+        url = _hentaila_portada(img, base)
+        if url and url != portada:
+            return url
+    return None
+
+
+def _hentaila_horizontal(slug, respaldo):
+    """La imagen horizontal del episodio `slug`: la de su página en Hentaila; si ahí no sale (los episodios viejos de una
+    serie larga no aparecen en su propia lista), la del catálogo (`respaldo`: slug → url). None si no hay ninguna."""
+    html = _get_hentaila_page(f"{HENTAILA}/ver/{slug}/")
+    if html:
+        try:
+            url = parse_hentaila_miniatura(html, slug)
+        except Exception as e:
+            print(f"  Hentaila: no se pudo leer la página de {slug}: {e}", file=sys.stderr)
+            url = None
+        if url:
+            return url
+    return respaldo.get(slug)
+
+
+_VEO_MEDIA = re.compile(r"^https?://(?:www\.)?veohentai\.com/media/(.+)$", re.I)
+
+
+def _backdrops_del_catalogo(folder):
+    """slug → imagen horizontal, leída del catalogo.json que arma build_catalogo.py en la misma carpeta ({} si no existe).
+    Las direcciones del sitio viejo (veohentai.com/media/…) se pasan a las de Hentaila (hentaila.io/uploads/…)."""
+    try:
+        with open(os.path.join(folder, "catalogo.json"), encoding="utf-8") as f:
+            items = json.load(f).get("items") or []
+    except Exception:
+        return {}
+    out = {}
+    for it in items:
+        if not isinstance(it, dict) or not it.get("slug") or not it.get("backdropUrl"):
+            continue
+        url = str(it["backdropUrl"])
+        m = _VEO_MEDIA.match(url)
+        out[it["slug"]] = quote(HENTAILA + "/uploads/" + m.group(1), safe="/:?&=%#+@!$'()*,;~-._[]") if m else url
+    return out
+
+
 HENTAILA_MIN_TOP = 5          # una página con menos tarjetas que estas es un error del sitio, no una lista: no se pisa el JSON anterior
 HENTAILA_MIN_MAS = 10
 
 
-def _build_top10_hentaila():
-    items = [{"rank": i, "slug": t["slug"], "title": t["title"], "imageUrl": t["imageUrl"]}
-             for i, t in enumerate(_hentaila_tarjetas(HENTAILA_TOP_PAGES)[:10], 1)]
-    if 0 < len(items) < HENTAILA_MIN_TOP:
-        print(f"  Top 10: Hentaila dio solo {len(items)}: se descarta", file=sys.stderr)
+def _build_top10_hentaila(respaldo=None):
+    tarjetas = _hentaila_tarjetas(HENTAILA_TOP_PAGES)[:10]
+    if 0 < len(tarjetas) < HENTAILA_MIN_TOP:
+        print(f"  Top 10: Hentaila dio solo {len(tarjetas)}: se descarta", file=sys.stderr)
         return []
-    return items
+    # La fila del Top 10 es de imágenes HORIZONTALES (la captura de cada episodio), no de portadas verticales: salen de la
+    # página de cada episodio (un pedido por episodio, 4 a la vez). Sin captura, se deja la portada para no dejar un hueco.
+    respaldo = respaldo or {}
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        horizontales = list(pool.map(lambda t: _hentaila_horizontal(t["slug"], respaldo), tarjetas))
+    sin = sum(1 for h in horizontales if not h)
+    print(f"  Top 10: {len(tarjetas) - sin} de {len(tarjetas)} con imagen horizontal" + (f" ({sin} con la portada)" if sin else ""))
+    return [{"rank": i, "slug": t["slug"], "title": t["title"], "imageUrl": h or t["imageUrl"]}
+            for i, (t, h) in enumerate(zip(tarjetas, horizontales), 1)]
 
 
 def _build_mas_vistos_hentaila():
@@ -1074,10 +1144,11 @@ def _build_mas_vistos_hentaila():
     return items
 
 
-def build_top10():
-    """Top 10 de la semana: primero de Hentaila (donde se mudó VeoHentai) y, si no responde, del sitio viejo."""
+def build_top10(respaldo=None):
+    """Top 10 de la semana: primero de Hentaila (donde se mudó VeoHentai) y, si no responde, del sitio viejo.
+    `respaldo` = slug → imagen horizontal del catálogo, para los episodios cuya página no la trae."""
     try:
-        items = _build_top10_hentaila()
+        items = _build_top10_hentaila(respaldo)
     except Exception as e:
         print(f"  Top 10: Hentaila falló: {e}", file=sys.stderr)
         items = []
@@ -1324,10 +1395,11 @@ def build_home(folder):
     t0 = time.time()
     paths = {k: os.path.join(folder, v) for k, v in HOME_FILES.items()}
     prev_comics = _load_previous(paths["comics"]).get("items")
+    respaldo = _backdrops_del_catalogo(folder)
 
     with ThreadPoolExecutor(max_workers=4) as pool:
         futures = {
-            "top10": pool.submit(build_top10),
+            "top10": pool.submit(build_top10, respaldo),
             "masVistos": pool.submit(build_mas_vistos),
             "avances": pool.submit(build_avances),
             "comics": pool.submit(build_comics, prev_comics),
