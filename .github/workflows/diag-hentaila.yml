@@ -20,16 +20,16 @@ jobs:
           python-version: "3.12"
 
       - name: Dependencias
-        run: pip install requests beautifulsoup4 html5lib curl_cffi
+        run: pip install requests beautifulsoup4 html5lib curl_cffi pillow
 
-      - name: Diagnóstico
-        run: python diag/diag_hentaila.py
+      - name: Medir pesos de los pósters
+        run: python diag/medir_pesos.py
 
       - name: Guardar el resultado en la rama
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add diag/diag_out.json
+          git add diag/pesos_out.json
           git commit -m "diag: resultado" || echo "nada que guardar"
           git push
