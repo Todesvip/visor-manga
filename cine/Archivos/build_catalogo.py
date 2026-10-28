@@ -232,12 +232,19 @@ def _cargar(path):
         return None
 
 
+def _clave(slug):
+    """El slug con los %xx en mayúsculas: el sitio escribe a veces %e2 y a veces %E2 para el mismo episodio (es la misma
+    dirección) y, si se compararan tal cual, ese episodio perdería su id, su estudio, su año y su imagen horizontal."""
+    return re.sub(r"%[0-9a-fA-F]{2}", lambda m: m.group().upper(), slug or "")
+
+
 def armar_items(tarjetas, previo):
     """Los episodios del catálogo, uno por tarjeta y en su orden. De cada slug que ya estaba se conserva lo que el sitio no
     pone en la tarjeta (id, serie, estudio, año, imagen horizontal). (items, omitidos): los omitidos no tienen portada."""
     items, omitidos = [], 0
+    previo = {_clave(s): p for s, p in previo.items()}
     for c in tarjetas:
-        p = previo.get(c["slug"]) or {}
+        p = previo.get(_clave(c["slug"])) or {}
         imagen = c["imageUrl"] or _de_hentaila(p.get("imageUrl"))
         if not imagen:
             omitidos += 1
