@@ -83,7 +83,9 @@ ESPEJO_MUERTAS_MIN = 10               # si no existen más de la mitad de las co
 IMAGEN_MAX_BYTES = 32 * 1024 * 1024   # tope de ImgBB
 GENEROS_EXCLUIDOS = {"lolicon", "shota"}
 HSTREAM = "https://hstream.moe/images/hentai"     # portadas de respaldo: <serie>/cover-ep-<N>.webp (verticales, 268×394)
-PARALELO_IMG = 8                      # portadas que se comprueban a la vez (salen del caché de Cloudflare: unos 20 s las 2541)
+PARALELO_IMG = 4                      # portadas de Hentaila que se comprueban a la vez (sin apurar al sitio)
+PARALELO_ESPEJO = 8                   # copias en ImgBB que se comprueban a la vez (su CDN aguanta)
+PORTADAS_POR_CORRIDA = 400            # portadas de Hentaila que se comprueban por corrida, de la más nueva a la más vieja
 MUERTAS_FRACCION = 0.05               # si el sitio dice «no existe» de más del 5 % de las portadas, es un bloqueo: no se cambia nada
 MUERTAS_TOPE_MIN = 25                 # (y nunca menos de 25, para que un catálogo chico no se bloquee por una o dos)
 HERMANAS_MAX = 3                      # portadas de otros episodios de la serie que se prueban como último remedio
@@ -411,7 +413,7 @@ def _portada_viva(url, limite=None):
     return None
 
 
-def verificar_portadas(items):
+def verificar_portadas(items, saltar=()):
     """Comprueba que cada portada exista de verdad y cambia las que no. Cuando la tarjeta de Hentaila sale «sin portada» se
     deja la dirección que había antes (la del sitio viejo) y esa a veces ya no existe: el episodio sale con la tarjeta en blanco
     en la app. Para cada portada que el sitio dice que NO existe se busca, en este orden:
@@ -420,8 +422,10 @@ def verificar_portadas(items):
       3. la imagen horizontal del episodio, si existe.
     Si no hay ninguna se deja como estaba. Lo que no se pudo comprobar (red, 429, 5xx) tampoco se toca; y si el sitio dice «no
     existe» de más del 5 % de las portadas es un bloqueo, no un hueco de datos: no se cambia nada.
+    Para no apurar a Hentaila se comprueban como mucho PORTADAS_POR_CORRIDA por corrida, de la más nueva a la más vieja, y
+    nunca las de `saltar` (las que ya tienen copia en ImgBB: el catálogo lleva la copia, y esa se comprueba aparte).
     Devuelve (cambiadas, sin_remedio, sin_comprobar)."""
-    urls = sorted({it["imageUrl"] for it in items})
+    urls = [u for u in dict.fromkeys(it["imageUrl"] for it in items) if u not in saltar][:PORTADAS_POR_CORRIDA]
     limite = time.monotonic() + PORTADAS_TIEMPO_MAX_S
     with ThreadPoolExecutor(max_workers=PARALELO_IMG) as pool:
         estado = dict(zip(urls, pool.map(lambda u: _portada_viva(u, limite), urls)))
@@ -536,9 +540,9 @@ def espejar(items, espejo, key):
       3. cada episodio con copia lleva la copia.
     Devuelve (con_copia, subidas, muertas, sin_comprobar)."""
     limite = time.monotonic() + ESPEJO_TIEMPO_MAX_S
-    originales = sorted({it["imageUrl"] for it in items})
+    originales = list(dict.fromkeys(it["imageUrl"] for it in items))        # en el orden del catálogo: lo más nuevo primero
     con_copia = [u for u in originales if u in espejo]
-    with ThreadPoolExecutor(max_workers=PARALELO_IMG) as pool:
+    with ThreadPoolExecutor(max_workers=PARALELO_ESPEJO) as pool:
         estado = dict(zip(con_copia, pool.map(lambda u: _portada_viva(espejo[u], limite), con_copia)))
     muertas = [u for u in con_copia if estado[u] is False]
     sin_comprobar = sum(1 for v in estado.values() if v is None)
@@ -612,8 +616,8 @@ def build_catalogo(previo_doc, presupuesto=PRESUPUESTO, max_paginas=MAX_PAGINAS,
             print(f"  No se pudo leer el directorio de estudios: {e}", file=sys.stderr)
     completar_fichas(items, presupuesto, nombres)
     try:
-        cambiadas, sin_remedio, sin_comprobar = verificar_portadas(items)
-        print(f"Portadas: {len(items)} revisadas, {cambiadas} cambiadas" + (f", {sin_remedio} sin remedio" if sin_remedio else "")
+        cambiadas, sin_remedio, sin_comprobar = verificar_portadas(items, saltar=espejo or ())
+        print(f"Portadas: {cambiadas} cambiadas" + (f", {sin_remedio} sin remedio" if sin_remedio else "")
               + (f", {sin_comprobar} sin poder comprobar" if sin_comprobar else ""))
     except Exception as e:                  # la revisión es un extra: si falla, el catálogo sale igual (con las portadas como estaban)
         print(f"Portadas: no se pudieron revisar ({type(e).__name__}: {e})", file=sys.stderr)
