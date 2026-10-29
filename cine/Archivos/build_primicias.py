@@ -947,8 +947,12 @@ _hentaila_lock = threading.Lock()
 _EP_AL_FINAL = re.compile(r"(?i)\s*[-–:]?\s*episodio\s*\d+\s*$")   # igual que seriesTitle de la app
 
 
-def _get_hentaila_page(url):
-    """GET de una página de hentaila.io (2 intentos). None si no hubo respuesta útil; cada fallo deja escrita su causa."""
+_HENTAILA_REINTENTAR = {429, 500, 502, 503, 504, 520, 521, 522, 523, 524}   # fallos pasajeros del sitio o de Cloudflare
+
+
+def _get_hentaila_page(url, timeout=TIMEOUT):
+    """GET de una página de hentaila.io (2 intentos; un fallo pasajero del sitio o de Cloudflare espera y reintenta).
+    None si no hubo respuesta útil; cada fallo deja escrita su causa."""
     with _hentaila_lock:
         if url in _hentaila_pages:
             return _hentaila_pages[url]
@@ -956,10 +960,10 @@ def _get_hentaila_page(url):
         try:
             if _CURL:
                 r = _curl_requests.get(url, headers={"Accept-Language": "es-ES,es;q=0.9", "Referer": HENTAILA + "/"},
-                                       impersonate="chrome", timeout=TIMEOUT)
+                                       impersonate="chrome", timeout=timeout)
             else:
-                r = requests.get(url, headers=HENTAILA_HEADERS, timeout=TIMEOUT)
-            if r.status_code in (429, 503):
+                r = requests.get(url, headers=HENTAILA_HEADERS, timeout=timeout)
+            if r.status_code in _HENTAILA_REINTENTAR:
                 print(f"  Hentaila: HTTP {r.status_code} en {url} (intento {intento + 1})", file=sys.stderr)
                 time.sleep(3 + 3 * intento)
                 continue
