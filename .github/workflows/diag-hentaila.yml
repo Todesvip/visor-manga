@@ -22,8 +22,8 @@ jobs:
       - name: Dependencias
         run: pip install requests beautifulsoup4 html5lib curl_cffi pillow
 
-      - name: Probar TODAS las portadas del catálogo
-        run: python diag/diag_extra.py
+      - name: Probar las imágenes del Top 10 y Más vistos
+        run: python diag/diag_top10.py
 
       - name: Guardar el resultado en la rama
         if: always()
