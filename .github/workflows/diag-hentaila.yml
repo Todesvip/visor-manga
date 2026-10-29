@@ -11,9 +11,14 @@ permissions:
 jobs:
   diag:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: principal
 
       - uses: actions/setup-python@v5
         with:
@@ -22,15 +27,22 @@ jobs:
       - name: Dependencias
         run: pip install requests beautifulsoup4 html5lib curl_cffi pillow
 
-      - name: Probar las imágenes del Top 10 y Más vistos
-        run: python diag/diag_top10.py
+      - name: Armar el catálogo con el código de main (una sola vez, con todo el detalle)
+        run: |
+          mkdir -p diag/salida_catalogo
+          cp principal/cine/Archivos/catalogo.json principal/cine/Archivos/generos.json diag/salida_catalogo/ || true
+          set +e
+          python principal/cine/Archivos/build_catalogo.py --carpeta diag/salida_catalogo > diag/catalogo_log.txt 2>&1
+          echo "codigo de salida: $?" >> diag/catalogo_log.txt
+          exit 0
 
       - name: Guardar el resultado en la rama
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f diag/salida_catalogo/*.json
           git add -A diag
-          git commit -m "diag: resultado" || echo "nada que guardar"
+          git commit -m "diag: log del catálogo" || echo "nada que guardar"
           git pull --rebase origin diag-hentaila || true
           git push
