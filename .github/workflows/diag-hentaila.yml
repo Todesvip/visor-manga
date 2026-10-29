@@ -27,8 +27,8 @@ jobs:
       - name: Dependencias
         run: pip install requests beautifulsoup4 html5lib curl_cffi pillow
 
-      - name: Lo que sirve GitHub Pages ahora
-        run: python diag/diag_final.py
+      - name: Qué portadas fallan ahora
+        run: python diag/diag_fallos.py
 
       - name: Guardar el resultado en la rama
         if: always()
