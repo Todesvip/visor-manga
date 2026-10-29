@@ -1,0 +1,6446 @@
+{
+ "inicio": "2026-10-29 04:39:12 UTC",
+ "catalogo_ts": 1793224310457,
+ "total_items": 2541,
+ "curl_cffi": true,
+ "portadas": [
+  {
+   "grupo": "problema",
+   "slug": "oushun-jogakuen-no-danyuu-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/10/mvppfuxn-da015207.webp",
+   "app": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 41218,
+    "seg": 0.21,
+    "magia": "52494646faa0000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     850,
+     1202
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 41218,
+    "seg": 0.06,
+    "magia": "52494646faa0000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     850,
+     1202
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 41218,
+    "seg": 0.08,
+    "magia": "52494646faa0000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     850,
+     1202
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "netorareta-bakunyuu-tsuma-tachi-2-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/10/mvpn4n0k-b8dd5f27.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 114535,
+    "seg": 0.24,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 114535,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 114535,
+    "seg": 0.13,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "oushun-jogakuen-no-danyuu-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/10/Oushun-Jogakuen-no-Danyuu-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 141509,
+    "seg": 0.22,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 141509,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 141509,
+    "seg": 0.13,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "netorareta-bakunyuu-tsuma-tachi-2-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/10/Netorareta-Bakunyuu-Tsuma-tachi-2-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 107274,
+    "seg": 0.85,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 107274,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 107274,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "kokuhaku-episodio-4",
+   "url": "https://hentaila.io/uploads/2026/09/Kokuhaku%E2%80%A6-4-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 134362,
+    "seg": 0.23,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 134362,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 134362,
+    "seg": 0.11,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-8",
+   "url": "https://hentaila.io/uploads/2026/08/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-8.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 165396,
+    "seg": 0.25,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 165396,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 165396,
+    "seg": 0.11,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-7",
+   "url": "https://hentaila.io/uploads/2026/07/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-7.jpg",
+   "app": {
+    "status": 404,
+    "tipo": "text/plain;charset=UTF-8",
+    "bytes": 9,
+    "seg": 0.31,
+    "magia": "4e6f7420666f756e64",
+    "cf": "BYPASS",
+    "servidor": "cloudflare",
+    "inicio": "Not found"
+   },
+   "okhttp": {
+    "status": 404,
+    "tipo": "text/plain;charset=UTF-8",
+    "bytes": 9,
+    "seg": 0.2,
+    "magia": "4e6f7420666f756e64",
+    "cf": "BYPASS",
+    "servidor": "cloudflare",
+    "inicio": "Not found"
+   },
+   "chrome": {
+    "status": 404,
+    "tipo": "text/plain;charset=UTF-8",
+    "bytes": 9,
+    "seg": 0.21,
+    "magia": "4e6f7420666f756e64",
+    "cf": "BYPASS",
+    "servidor": "cloudflare",
+    "inicio": "Not found"
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "kokuhaku-episodio-3",
+   "url": "https://hentaila.io/uploads/2026/05/Kokuhaku%E2%80%A6%E2%80%A6-Episode-3.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 113913,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 113913,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 113913,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-6",
+   "url": "https://hentaila.io/uploads/2025/12/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-6.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 140343,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 140343,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 140343,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-5",
+   "url": "https://hentaila.io/uploads/2025/07/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-5.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 92932,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 92932,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 92932,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-4",
+   "url": "https://hentaila.io/uploads/2024/09/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-4.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 68283,
+    "seg": 0.54,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 68283,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 68283,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-3",
+   "url": "https://hentaila.io/uploads/2024/04/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-3.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 28484,
+    "seg": 0.63,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     396
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 28484,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     396
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 28484,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     396
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-2",
+   "url": "https://hentaila.io/uploads/2023/10/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 97498,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     564,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 97498,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     564,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 97498,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     564,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "kokuhaku-episodio-2",
+   "url": "https://hentaila.io/uploads/2023/10/Kokuhaku%E2%80%A6-Episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 70911,
+    "seg": 0.54,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 70911,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 70911,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-1",
+   "url": "https://hentaila.io/uploads/2023/07/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 97662,
+    "seg": 0.56,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 97662,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 97662,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "problema",
+   "slug": "kokuhaku-episodio-1",
+   "url": "https://hentaila.io/uploads/2023/04/Kokuhaku%E2%80%A6-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 98419,
+    "seg": 0.64,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     561,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 98419,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     561,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 98419,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     561,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "seishidouin-no-oshigoto-the-animation-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/10/seishidouin-no-oshigoto-the-animation-episodio-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 156327,
+    "seg": 0.1,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 156327,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 156327,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/10/mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 133711,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     571,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 133711,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     571,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 133711,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     571,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/10/mujikaku-na-osananajimi-to-kyoumi-honi-de-yatte-mitara-the-animation-episodio-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 136221,
+    "seg": 0.08,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     571,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 136221,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     571,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 136221,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     571,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "enjo-kouhai-episodio-12",
+   "url": "https://hentaila.io/uploads/2026/10/enjo-kouhai-episodio-12.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 128048,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 128048,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 128048,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "muramata-san-no-aijou-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/10/muramata-san-no-aijou-episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 103665,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 103665,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 103665,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "ntr-kishi-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/10/ntr-kishi-episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 106735,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 106735,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 106735,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "hamehara-sore-sekuhara-desu-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/10/hamehara-sore-sekuhara-desu-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 115567,
+    "seg": 0.68,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 115567,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 115567,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "shoujo-ramune-episodio-8",
+   "url": "https://hentaila.io/uploads/2026/10/shoujo-ramune-episode-8.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 130843,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     586,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 130843,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     586,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 130843,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     586,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "pure-x-holic-junketsu-otome-to-konin-kankei-the-animation-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/09/Pure-x-Holic-2-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 165642,
+    "seg": 0.69,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 165642,
+    "seg": 0.09,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 165642,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "pure-x-holic-junketsu-otome-to-konin-kankei-the-animation-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/09/Pure-x-Holic-1-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 175823,
+    "seg": 0.69,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 175823,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 175823,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "sare-tsuma-wa-ubawaretai-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/09/Sare-Tsuma-wa-Ubawaretai-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 124141,
+    "seg": 0.69,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 124141,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 124141,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "muchuu-no-tou-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/09/Muchuu-no-Tou-Episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 163470,
+    "seg": 0.66,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 163470,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 163470,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "kanojo-saimin-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/09/Kanojo-Saimin-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 143132,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 143132,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 143132,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "kanojo-saimin-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/09/Kanojo-Saimin-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 117343,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 117343,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 117343,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "shoujo-ramune-episodio-7",
+   "url": "https://hentaila.io/uploads/2026/08/Shoujo-Ramune-Episode-7.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 149779,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     586,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 149779,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     586,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 149779,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     586,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "harem-jima-e-youkoso-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/08/Harem-jima-e-Youkoso-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 166530,
+    "seg": 0.09,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 166530,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 166530,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "deco-x-deco-the-animation-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/08/Deco-x-Deco-The-Animation-Episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 202889,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 202889,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 202889,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "deco-x-deco-the-animation-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/08/Deco-x-Deco-The-Animation-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 183502,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 183502,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 183502,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "juurin-oukoku-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/08/Juurin-Oukoku-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 151857,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     563,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 151857,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     563,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 151857,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     563,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "nuki-nuki-zupposism-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/08/Nuki-Nuki-Zupposism-Episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 167608,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 167608,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 167608,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "phantom-alchemia-silvia-no-dokidoki-sakusei-toshi-keikaku-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/08/Phantom-Alchemia-Silvia-no-Dokidoki-Sakusei-Toshi-Keikaku-Episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 159517,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 159517,
+    "seg": 0.08,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 159517,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "so_low-futago-shimai-to-katei-kyoshi-episodio-3",
+   "url": "https://hentaila.io/uploads/2026/08/So_low-Futago-Shimai-to-Katei-Kyoshi-Episode-3.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 104664,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 104664,
+    "seg": 0.08,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 104664,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "inaka-ni-wa-kore-kurai-shika-goraku-ga-nai-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/08/Inaka-ni-wa-Kore-kurai-shika-Goraku-ga-Nai-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 133452,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 133452,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 133452,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "inaka-ni-wa-kore-kurai-shika-goraku-ga-nai-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/08/Inaka-ni-wa-Kore-Kurai-Shika-Goraku-ga-Nai-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 142151,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 142151,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 142151,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "kare-no-shiranai-himitsu-o-irete-the-animation-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/07/Kare-no-Shiranai-Himitsu-o-Irete.-The-Animation-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 115698,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 115698,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 115698,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "enjo-kouhai-episodio-11",
+   "url": "https://hentaila.io/uploads/2026/07/Enjo-Kouhai-11.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 115027,
+    "seg": 0.1,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 115027,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 115027,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "hamehara-sore-sekuhara-desu-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/07/Hamehara-Sore-Sekuhara-Desu-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 102537,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 102537,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 102537,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "todo-no-tsumari-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/07/Todo-no-Tsumari-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 99555,
+    "seg": 0.09,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 99555,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 99555,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "nuki-nuki-zupposism-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/07/Nuki-Nuki-Zupposism-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 157984,
+    "seg": 0.08,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 157984,
+    "seg": 0.09,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 157984,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "love-wa-gal-kara-hajimaru-unmei-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/07/Love-wa-Gal-kara-Hajimaru-Unmei-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 165024,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 165024,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 165024,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "cheat-item-kanrikyoku-no-oshigoto-ex-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/07/Cheat-Item-Kanrikyoku-no-Oshigoto-EX.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63724,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     460,
+     607
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63724,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     460,
+     607
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63724,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     460,
+     607
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "furachi-episodio-1",
+   "url": "https://hentaila.io/uploads/2026/06/furachi-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 107816,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 107816,
+    "seg": 0.08,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 107816,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "primeros40",
+   "slug": "furachi-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/06/furachi-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 101865,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 101865,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 101865,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "yubisaki-kara-no-honki-no-netsujou-osananajimi-wa-shouboushi-episodio-7",
+   "url": "https://hentaila.io/uploads/2022/08/yubisaki-kara-honki-no-netsujou-osananajimi-wa-shouboushi-season-1-cv1.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 60250,
+    "seg": 0.53,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 60250,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 60250,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "souryo-to-majiwaru-shikiyoku-no-yoru-ni-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/574147.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 25544,
+    "seg": 0.45,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     260,
+     370
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 25544,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     260,
+     370
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 25544,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     260,
+     370
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "machi-gurumi-no-wana-hakudaku-ni-mamireta-shitai-episodio-4",
+   "url": "https://hentaila.io/uploads/2022/08/machi-gurumi-no-wana-hakudaku-ni-mamireta-shitai-4.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 26484,
+    "seg": 0.43,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 26484,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 26484,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "ai-shimai-futari-no-kajitsu-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/immoral-sisters-1-ep-2-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 60893,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 60893,
+    "seg": 0.08,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 60893,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "isaku-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/isaku-1-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 41838,
+    "seg": 0.44,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 41838,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 41838,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "crimson-climax-episodio-3",
+   "url": "https://hentaila.io/uploads/2022/08/hotaruko-3-Emylc.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 35145,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 35145,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 35145,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "osananajimi-to-doukyuusei-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/osananajimi-to-doukyuusei-2-BrzBM.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 61015,
+    "seg": 0.54,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 61015,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 61015,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "rinkan-gakuen-yamete-okaa-san-minaide-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/rinkan-gakuen-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 36393,
+    "seg": 0.47,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 36393,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 36393,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "megachu-megami-sama-episodio-3",
+   "url": "https://hentaila.io/uploads/2022/08/megachu-3-igGqb.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 39833,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 39833,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 39833,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "shusaku-liberty-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/shusaku-liberty-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 62703,
+    "seg": 0.2,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 62703,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 62703,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "joshi-luck-episodio-4",
+   "url": "https://hentaila.io/uploads/2023/05/Joshi-Luck-Episode-4.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 95354,
+    "seg": 0.57,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 95354,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 95354,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "yokorenbo-immoral-mother-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/yokorenbo-immoral-mother-2-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 37927,
+    "seg": 0.43,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 37927,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 37927,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "kanpeki-ojou-sama-no-watakushi-ga-dogeza-de-mazo-ochisuru-choroin-na-wakenai-desu-wa-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/kanpeki-ojou-sama-no-watakushi-1-1.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 54694,
+    "seg": 0.53,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 54694,
+    "seg": 0.05,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 54694,
+    "seg": 0.06,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "soshite-watashi-wa-sensei-ni-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/soshite-watashi-wa-sensei-ni-1-cv1.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 41334,
+    "seg": 0.44,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 41334,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 41334,
+    "seg": 0.03,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "renseijutsushi-collet-no-h-na-shibo-shirage-monogatari-episodio-4",
+   "url": "https://hentaila.io/uploads/2023/07/Renseijutsushi-Collet-no-H-na-Shibo-Shirage-Monogatari-Episode-4.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 942118,
+    "seg": 1.0,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "RGBA",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 942118,
+    "seg": 0.06,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "RGBA",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 942118,
+    "seg": 0.06,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "RGBA",
+    "tamano": [
+     569,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "helter-skelter-hakudaku-no-mura-episodio-3",
+   "url": "https://hentaila.io/uploads/2022/08/helter-skelter-hakudaku-no-mura-3-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 40185,
+    "seg": 0.08,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 40185,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 40185,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "shinsei-kourin-dacryon-luna-episodio-1",
+   "url": "https://hentaila.io/uploads/2025/01/Shinsei-Kourin-Dacryon-Luna-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 110986,
+    "seg": 0.67,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 110986,
+    "seg": 0.08,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 110986,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "yakin-byoutou-san-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/night-shift-nurses-3-ep-2-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 37642,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 37642,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 37642,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "soredemo-tsuma-wo-aishiteru-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/soredemo-tsuma-o-aishiteru-2-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 40574,
+    "seg": 0.47,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 40574,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 40574,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "kanojo-wa-hanayome-kouhosei-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/kanojo-wa-hanayome-kouhosei-1-rjCfs.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38578,
+    "seg": 0.42,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38578,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38578,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "bitch-na-inane-sama-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/bitch-na-in-ane-sama-1-cv1.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 61778,
+    "seg": 0.57,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 61778,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 61778,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "kiken-na-mori-episodio-2",
+   "url": "https://hentaila.io/uploads/2025/12/Kiken-na-Mori-Onigokko-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 152037,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 152037,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 152037,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "shuudengo-capsule-hotel-de-joushi-ni-binetsu-utawaru-yoru-episodio-5",
+   "url": "https://hentaila.io/uploads/2022/08/2L.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 66614,
+    "seg": 0.57,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     480,
+     678
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 66614,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     480,
+     678
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 66614,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     480,
+     678
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "katei-kyoushi-x-saimin-2-the-animation-episodio-1",
+   "url": "https://hentaila.io/uploads/2024/04/Kateikyoushi-x-2-The-Animation-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 25344,
+    "seg": 0.42,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 25344,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 25344,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "gobaku-moe-mama-tsurezure-episodio-1",
+   "url": "https://hentaila.io/uploads/2024/07/rc1278690package.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 23476,
+    "seg": 0.44,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     392
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 23476,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     392
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 23476,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     392
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "yumemiru-otome-episodio-3",
+   "url": "https://hentaila.io/uploads/2025/04/Yumemiru-Otome-Episode-3.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 85929,
+    "seg": 0.57,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 85929,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 85929,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "jimihen-jimiko-o-kaechauu-jun-isei-kouyuu-episodio-7",
+   "url": "https://hentaila.io/uploads/2022/08/4768743.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 32691,
+    "seg": 0.42,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     260,
+     370
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 32691,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     260,
+     370
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 32691,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     260,
+     370
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "imouto-bitch-ni-shiboraretai-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/imouto-bitch-ni-shiboraretai-1-AhvteuGqVu.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 44844,
+    "seg": 0.52,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 44844,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 44844,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "la-blue-girl-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/la-blue-girl-1-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 57732,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 57732,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 57732,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "succubus-connect-episode-3",
+   "url": "https://hentaila.io/uploads/2025/06/Succubus-Connect-Episode-3.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 88457,
+    "seg": 0.58,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 88457,
+    "seg": 0.09,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 88457,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "kateikyoushi-no-onee-san-h-no-hensachi-agechaimasu-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/kateikyoushi-no-onee-san-1-ep-2-3.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 73604,
+    "seg": 0.56,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 73604,
+    "seg": 0.07,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 73604,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "cherry-gals%E2%86%91%E2%86%91-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/cherry-gal-s-2-x1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 71038,
+    "seg": 0.57,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 71038,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 71038,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "aku-no-onna-kanbu-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/aku-no-onna-kanbu-1-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63545,
+    "seg": 0.57,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63545,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63545,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "papa-datte-shitai-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/225357.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 23682,
+    "seg": 0.3,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     260,
+     370
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 23682,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     260,
+     370
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 23682,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     260,
+     370
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "dyogrammaton-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/dyogrammaton-1-WjkKn.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38568,
+    "seg": 0.42,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38568,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38568,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "makai-kishi-ingrid-re-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/makai-kishi-ingrid-re-1-1.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 50103,
+    "seg": 0.56,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 50103,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 50103,
+    "seg": 0.06,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "oni-chichi-episodio-5",
+   "url": "https://hentaila.io/uploads/2022/08/oni-chichi-rebirth-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 36025,
+    "seg": 0.33,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 36025,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 36025,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "kimekoi-takane-no-hana-to-osananajimi-ga-kimatta-riyuu-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/kimekoi-takane-no-hana-1-WzNylYXduE.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 34241,
+    "seg": 0.44,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 34241,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 34241,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "bakunyuu-bomb-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/bakunyuu-bomb-2-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 34994,
+    "seg": 0.3,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 34994,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 34994,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "kyonyuu-ga-futari-inai-to-bokki-shinai-otto-no-tame-ni-tomodachi-wo-tsuretekita-tsuma-episodio-2",
+   "url": "https://hentaila.io/uploads/2026/05/Kyonyuu-ga-Futari-Inai-to-Bokki-Shinai-Otto-no-Tame-ni-Tomodachi-wo-Tsuretekita-Tsuma-Episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 133184,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 133184,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 133184,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     569,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "tsundero-episodio-1",
+   "url": "https://hentaila.io/uploads/2023/09/Tsundero-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 75005,
+    "seg": 0.55,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 75005,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 75005,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "yarimoku-beach-ni-shuugakuryokou-de-the-animation-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/yarimoku-beach-ni-shuugakuryokou-de-cXrWtJHTmN.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 40925,
+    "seg": 0.45,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 40925,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 40925,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "tenioha-2-nee-motto-ecchi-na-koto-ippai-shiyo-the-animation-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/tenioha-2-nee-motto-ecchi-na-koto-ippai-shiyo-1-cv1-1.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 54794,
+    "seg": 0.55,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 54794,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 54794,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "kichiku-oyako-choukyou-nikki-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/kichiku-oyako-choukyou-nikki-1-TazTN.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 62390,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 62390,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 62390,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "haramasete-seiryuu-kun-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/haramasete-seiryuu-kun-1-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 35898,
+    "seg": 0.32,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 35898,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 35898,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "reiju-gakuen-episodio-1",
+   "url": "https://hentaila.io/uploads/2023/09/reiju-gakuen-1-cv1.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 54670,
+    "seg": 0.05,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 54670,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 54670,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "kanojo-x-kanojo-x-kanojo-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/kanojo-x-kanojo-x-kanojo-1-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 66737,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 66737,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 66737,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "joshikousei-no-koshitsuki-episodio-5",
+   "url": "https://hentaila.io/uploads/2022/08/joshikousei-no-koshitsuki-5-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38637,
+    "seg": 0.33,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38637,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38637,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "youkoso-sukebe-elf-no-mori-e-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/youkoso-sukebe-elf-no-mori-e-2-OlfTqrsaGe.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63720,
+    "seg": 0.57,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63720,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63720,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "tsuma-no-haha-sayuri-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/sayuri-s-mother-in-law-1-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38551,
+    "seg": 0.4,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38551,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38551,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "imouto-paradise-2-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/imouto-paradise-2-ep-1-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 58458,
+    "seg": 0.56,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 58458,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 58458,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "yuusha-chan-no-bouken-wa-owatteshimatta-episodio-2",
+   "url": "https://hentaila.io/uploads/2025/06/Yuusha-chan-no-Bouken-wa-Owatteshimatta-Episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 91875,
+    "seg": 0.55,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 91875,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 91875,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "yama-hime-no-mi-episodio-3",
+   "url": "https://hentaila.io/uploads/2024/02/11rc690966package11.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 70493,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     398
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 70493,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     398
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 70493,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     280,
+     398
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "midnight-panther-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/midnight-panther-1-kACNn.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 36209,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 36209,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 36209,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "kaede-to-suzu-the-animation-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/10/c1191257package.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 48912,
+    "seg": 0.48,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 48912,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 48912,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "akina-to-onsen-de-h-shiyo-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/akina-to-onsen-de-h-shiyo-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 39761,
+    "seg": 0.48,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 39761,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 39761,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "haji-shinchishin-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/10/c1191278package1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 82631,
+    "seg": 0.43,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 82631,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 82631,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     572,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "sotsugyou-chikan-densha-episodio-3",
+   "url": "https://hentaila.io/uploads/2022/08/sotsugyou-chikan-densha-3-cv1.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 53203,
+    "seg": 0.54,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 53203,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 53203,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "sansha-mendan-rensa-suru-chijoku-choukyou-no-gakuen-episodio-3",
+   "url": "https://hentaila.io/uploads/2022/08/sansha-mendan-rensa-suru-chijoku-choukyou-no-gakuen-3-cv1.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 50039,
+    "seg": 0.54,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 50039,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 50039,
+    "seg": 0.05,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "sinisistar-episodio-2",
+   "url": "https://hentaila.io/uploads/2024/04/Sinisistar-Episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 32518,
+    "seg": 0.45,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 32518,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 32518,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "honey-blonde-2-episodio-1",
+   "url": "https://hentaila.io/uploads/2025/11/Honey-Blonde-2-Episode-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 109719,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 109719,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 109719,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "reika-wa-karei-na-boku-no-joou-the-animation-episodio-4",
+   "url": "https://hentaila.io/uploads/2026/06/Reika-wa-Karei-na-Boku-no-Joou-The-Animation-Episode-4.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 138883,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 138883,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 138883,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     566,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "watashi-ga-toriko-ni-natte-yaru-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/watashi-ga-toriko-ni-natte-yaru-2-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 35022,
+    "seg": 0.32,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 35022,
+    "seg": 0.08,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 35022,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "jitaku-keibiin-2-episodio-8",
+   "url": "https://hentaila.io/uploads/2022/08/jitaku-keibiin-2-ep-8-cv1.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 52332,
+    "seg": 0.54,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 52332,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 52332,
+    "seg": 0.05,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "imaria-episodio-2",
+   "url": "https://hentaila.io/uploads/2024/09/Imaria-Episode-2.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63667,
+    "seg": 0.43,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63667,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 63667,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     565,
+     800
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "seikoujo-haitoku-no-biden-dorei-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/seikoujo-haitoku-no-biden-dorei-2.png",
+   "app": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 56432,
+    "seg": 0.44,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 56432,
+    "seg": 0.04,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/png",
+    "bytes": 56432,
+    "seg": 0.03,
+    "magia": "89504e470d0a1a0a0000000d",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "PNG",
+    "modo": "P",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "do-s-na-seitokaichou-sama-ga-m-note-ni-shihai-saremashita-episodio-1",
+   "url": "https://hentaila.io/uploads/2022/08/do-s-na-seitokaichou-sama-ga-m-note-1-ZhYcQZDohy.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 39856,
+    "seg": 0.45,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 39856,
+    "seg": 0.05,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 39856,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "kuro-no-kyoushitsu-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/kuro-no-kyoushitsu-2-PmmBW.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38336,
+    "seg": 0.43,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38336,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 38336,
+    "seg": 0.03,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "grupo": "azar",
+   "slug": "tsundere-inran-shoujo-sukumi-episodio-2",
+   "url": "https://hentaila.io/uploads/2022/08/tsundere-inran-shoujo-sukumi-2-1.jpg",
+   "app": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 67914,
+    "seg": 0.6,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "MISS",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 67914,
+    "seg": 0.06,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/jpeg",
+    "bytes": 67914,
+    "seg": 0.04,
+    "magia": "ffd8ffe000104a4649460001",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "JPEG",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  }
+ ],
+ "hstream": [
+  {
+   "url": "https://hstream.moe/images/hentai/1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi/cover-ep-7.webp",
+   "app": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 19158,
+    "seg": 0.63,
+    "magia": "52494646ce4a000057454250",
+    "cf": "REVALIDATED",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 19158,
+    "seg": 0.04,
+    "magia": "52494646ce4a000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 19158,
+    "seg": 0.06,
+    "magia": "52494646ce4a000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "url": "https://hstream.moe/images/hentai/1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi/cover-ep-8.webp",
+   "app": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 17638,
+    "seg": 0.21,
+    "magia": "52494646de44000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 17638,
+    "seg": 0.05,
+    "magia": "52494646de44000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 17638,
+    "seg": 0.07,
+    "magia": "52494646de44000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "url": "https://hstream.moe/images/hentai/1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi/cover-ep-1.webp",
+   "app": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 32480,
+    "seg": 0.61,
+    "magia": "52494646d87e000057454250",
+    "cf": "REVALIDATED",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 32480,
+    "seg": 0.04,
+    "magia": "52494646d87e000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 32480,
+    "seg": 0.06,
+    "magia": "52494646d87e000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "url": "https://hstream.moe/images/hentai/oushun-jogakuen-no-danyuu/cover-ep-1.webp",
+   "app": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 15708,
+    "seg": 0.22,
+    "magia": "52494646543d000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 15708,
+    "seg": 0.05,
+    "magia": "52494646543d000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 15708,
+    "seg": 0.06,
+    "magia": "52494646543d000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  },
+  {
+   "url": "https://hstream.moe/images/hentai/netorareta-bakunyuu-tsuma-tachi-2/cover-ep-1.webp",
+   "app": {
+    "status": 404,
+    "tipo": "text/html; charset=utf-8",
+    "bytes": 42010,
+    "seg": 0.69,
+    "magia": "3c21444f4354595045206874",
+    "cf": "BYPASS",
+    "servidor": "cloudflare",
+    "inicio": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <!-- Meta -->\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n "
+   },
+   "okhttp": {
+    "status": 404,
+    "tipo": "text/html; charset=utf-8",
+    "bytes": 42010,
+    "seg": 0.44,
+    "magia": "3c21444f4354595045206874",
+    "cf": "BYPASS",
+    "servidor": "cloudflare",
+    "inicio": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <!-- Meta -->\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n "
+   },
+   "chrome": {
+    "status": 404,
+    "tipo": "text/html; charset=utf-8",
+    "bytes": 42377,
+    "seg": 0.24,
+    "magia": "3c21444f4354595045206874",
+    "cf": "BYPASS",
+    "servidor": "cloudflare",
+    "inicio": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <!-- Meta -->\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n "
+   }
+  },
+  {
+   "url": "https://hstream.moe/images/hentai/kokuhaku/cover-ep-4.webp",
+   "app": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 15506,
+    "seg": 0.21,
+    "magia": "524946468a3c000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "okhttp": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 15506,
+    "seg": 0.04,
+    "magia": "524946468a3c000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   },
+   "chrome": {
+    "status": 200,
+    "tipo": "image/webp",
+    "bytes": 15506,
+    "seg": 0.06,
+    "magia": "524946468a3c000057454250",
+    "cf": "HIT",
+    "servidor": "cloudflare",
+    "formato": "WEBP",
+    "modo": "RGB",
+    "tamano": [
+     268,
+     394
+    ]
+   }
+  }
+ ],
+ "paginas": [
+  {
+   "slug": "oushun-jogakuen-no-danyuu-episodio-2",
+   "status": 200,
+   "bytes": 82426,
+   "portada": "/uploads/2026/10/mvppfuxn-da015207.webp",
+   "uploads": [
+    "/uploads/2026/10/mvppfuxn-da015207.webp",
+    "/uploads/2026/10/rfgdesrgdersg.png",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/09/4c9cb94669187a03e85a928f87dc0273.jpg",
+    "/uploads/2026/09/b36187988114796d4b805cc35bc3735f.jpg"
+   ],
+   "sin_portada": false
+  },
+  {
+   "slug": "netorareta-bakunyuu-tsuma-tachi-2-episodio-2",
+   "status": 200,
+   "bytes": 81887,
+   "portada": "/uploads/2026/10/mvpn4n0k-b8dd5f27.jpg",
+   "uploads": [
+    "/uploads/2026/10/mvpn4n0k-b8dd5f27.jpg",
+    "/uploads/2026/10/rfesgd.png",
+    "/uploads/2026/10/a0fa96fc113b0284cb1a214e44258229.jpg",
+    "/uploads/2024/02/No-Wife-No-Life-1.jpg",
+    "/uploads/2025/11/c1344674sample5.jpg",
+    "/uploads/2025/11/115146h.jpg",
+    "/uploads/2025/11/c1336571sample4.jpg"
+   ],
+   "sin_portada": false
+  },
+  {
+   "slug": "oushun-jogakuen-no-danyuu-episodio-1",
+   "status": 200,
+   "bytes": 83461,
+   "portada": "/uploads/2026/10/Oushun-Jogakuen-no-Danyuu-1.jpg",
+   "uploads": [
+    "/uploads/2026/10/Oushun-Jogakuen-no-Danyuu-1.jpg",
+    "/uploads/2026/10/rfgdesrgdersg.png",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2025/07/109869h.jpg",
+    "/uploads/2025/03/103656h.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg"
+   ],
+   "sin_portada": false
+  },
+  {
+   "slug": "netorareta-bakunyuu-tsuma-tachi-2-episodio-1",
+   "status": 200,
+   "bytes": 83607,
+   "portada": "/uploads/2026/10/Netorareta-Bakunyuu-Tsuma-tachi-2-Episode-1.jpg",
+   "uploads": [
+    "/uploads/2026/10/Netorareta-Bakunyuu-Tsuma-tachi-2-Episode-1.jpg",
+    "/uploads/2026/10/rfesgd.png",
+    "/uploads/2026/10/a0fa96fc113b0284cb1a214e44258229.jpg",
+    "/uploads/2025/11/c1336571sample4.jpg",
+    "/uploads/2025/10/114165h.jpg",
+    "/uploads/2024/02/No-Wife-No-Life-1.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg"
+   ],
+   "sin_portada": false
+  },
+  {
+   "slug": "kokuhaku-episodio-4",
+   "status": 200,
+   "bytes": 84661,
+   "portada": "/uploads/2026/09/Kokuhaku…-4-1.jpg",
+   "uploads": [
+    "/uploads/2026/09/Kokuhaku…-4-1.jpg",
+    "/uploads/2026/09/b0125c5fdccc5f3d43673b1f499a9d7b.jpg",
+    "/uploads/2026/05/431h.jpg",
+    "/uploads/2023/10/c1237835sample6.jpg",
+    "/uploads/2023/04/c1215610sample10-1.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/09/4c9cb94669187a03e85a928f87dc0273.jpg"
+   ],
+   "sin_portada": false
+  },
+  {
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-8",
+   "status": 200,
+   "bytes": 88268,
+   "portada": "/uploads/2026/08/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-8.jpg",
+   "uploads": [
+    "/uploads/2026/08/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-8.jpg",
+    "/uploads/2026/08/407587h.jpg",
+    "/uploads/2025/12/143645h.jpg",
+    "/uploads/2025/07/109865h.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/09/b0125c5fdccc5f3d43673b1f499a9d7b.jpg"
+   ],
+   "sin_portada": true
+  },
+  {
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-7",
+   "status": 200,
+   "bytes": 85647,
+   "portada": "/images/poster-unavailable.svg",
+   "uploads": [
+    "/uploads/2026/08/407587h.jpg",
+    "/uploads/2025/12/143645h.jpg",
+    "/uploads/2025/07/109865h.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/09/b0125c5fdccc5f3d43673b1f499a9d7b.jpg"
+   ],
+   "sin_portada": true
+  },
+  {
+   "slug": "kokuhaku-episodio-3",
+   "status": 200,
+   "bytes": 85541,
+   "portada": "/uploads/2026/05/Kokuhaku……-Episode-3.jpg",
+   "uploads": [
+    "/uploads/2026/05/Kokuhaku……-Episode-3.jpg",
+    "/uploads/2026/09/b0125c5fdccc5f3d43673b1f499a9d7b.jpg",
+    "/uploads/2026/05/431h.jpg",
+    "/uploads/2023/10/c1237835sample6.jpg",
+    "/uploads/2023/04/c1215610sample10-1.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/09/4c9cb94669187a03e85a928f87dc0273.jpg"
+   ],
+   "sin_portada": false
+  },
+  {
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-6",
+   "status": 200,
+   "bytes": 87831,
+   "portada": "/uploads/2025/12/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-6.jpg",
+   "uploads": [
+    "/uploads/2025/12/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-6.jpg",
+    "/uploads/2026/08/407587h.jpg",
+    "/uploads/2025/12/143645h.jpg",
+    "/uploads/2025/07/109865h.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/09/b0125c5fdccc5f3d43673b1f499a9d7b.jpg"
+   ],
+   "sin_portada": true
+  },
+  {
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-5",
+   "status": 200,
+   "bytes": 90522,
+   "portada": "/uploads/2025/07/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-5.jpg",
+   "uploads": [
+    "/uploads/2025/07/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-5.jpg",
+    "/uploads/2026/08/407587h.jpg",
+    "/uploads/2025/12/143645h.jpg",
+    "/uploads/2025/07/109865h.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/09/b0125c5fdccc5f3d43673b1f499a9d7b.jpg"
+   ],
+   "sin_portada": true
+  },
+  {
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-4",
+   "status": 200,
+   "bytes": 88236,
+   "portada": "/uploads/2024/09/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-4.jpg",
+   "uploads": [
+    "/uploads/2024/09/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-4.jpg",
+    "/uploads/2026/08/407587h.jpg",
+    "/uploads/2025/12/143645h.jpg",
+    "/uploads/2025/07/109865h.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/09/b0125c5fdccc5f3d43673b1f499a9d7b.jpg"
+   ],
+   "sin_portada": true
+  },
+  {
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-3",
+   "status": 200,
+   "bytes": 89032,
+   "portada": "/uploads/2024/04/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-3.jpg",
+   "uploads": [
+    "/uploads/2024/04/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-3.jpg",
+    "/uploads/2026/08/407587h.jpg",
+    "/uploads/2025/12/143645h.jpg",
+    "/uploads/2025/07/109865h.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/09/b0125c5fdccc5f3d43673b1f499a9d7b.jpg"
+   ],
+   "sin_portada": true
+  },
+  {
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-2",
+   "status": 200,
+   "bytes": 90153,
+   "portada": "/uploads/2023/10/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-2.jpg",
+   "uploads": [
+    "/uploads/2023/10/1LDK-JK-Ikinari-Doukyo-Micchaku-Hatsu-Ecchi-Episode-2.jpg",
+    "/uploads/2026/08/407587h.jpg",
+    "/uploads/2025/12/143645h.jpg",
+    "/uploads/2025/07/109865h.jpg",
+    "/uploads/2026/10/bb874542f9b1066c271bb3a58143a106.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg"
+   ],
+   "sin_portada": true
+  },
+  {
+   "slug": "kokuhaku-episodio-2",
+   "status": 200,
+   "bytes": 87007,
+   "portada": "/uploads/2023/10/Kokuhaku…-Episode-2.jpg",
+   "uploads": [
+    "/uploads/2023/10/Kokuhaku…-Episode-2.jpg",
+    "/uploads/2026/09/b0125c5fdccc5f3d43673b1f499a9d7b.jpg",
+    "/uploads/2026/05/431h.jpg",
+    "/uploads/2023/10/c1237835sample6.jpg",
+    "/uploads/2023/04/c1215610sample10-1.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/09/4c9cb94669187a03e85a928f87dc0273.jpg"
+   ],
+   "sin_portada": false
+  },
+  {
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-7",
+   "status": 200,
+   "bytes": 85647,
+   "portada": "/images/poster-unavailable.svg",
+   "uploads": [
+    "/uploads/2026/08/407587h.jpg",
+    "/uploads/2025/12/143645h.jpg",
+    "/uploads/2025/07/109865h.jpg",
+    "/uploads/2026/10/1d915e5b0062ffa52d3e47828204ae91.jpg",
+    "/uploads/2026/10/76c062ad8d95cf3d9a2176137b51edba.jpg",
+    "/uploads/2026/10/sd32qeddqewadasd.jpg",
+    "/uploads/2026/09/b0125c5fdccc5f3d43673b1f499a9d7b.jpg"
+   ],
+   "sin_portada": true
+  }
+ ],
+ "resumen": {
+  "app": {
+   "ok": 117,
+   "de": 118,
+   "fallan": [
+    "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-7"
+   ]
+  },
+  "okhttp": {
+   "ok": 117,
+   "de": 118,
+   "fallan": [
+    "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-7"
+   ]
+  },
+  "chrome": {
+   "ok": 117,
+   "de": 118,
+   "fallan": [
+    "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-7"
+   ]
+  }
+ },
+ "segundos": 11.5
+}
