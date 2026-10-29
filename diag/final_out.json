@@ -1,0 +1,41 @@
+{
+ "inicio": "2026-10-29 06:32:11 UTC",
+ "status": {
+  "catalogo": 200,
+  "generos": 200
+ },
+ "catalogo": {
+  "ts": 1793224310457,
+  "total": 2541,
+  "items": 2541,
+  "imagen_1ldk_ep7": "https://hstream.moe/images/hentai/1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi/cover-ep-7.webp",
+  "es_hstream": true,
+  "ocurrencias_muerta": 0
+ },
+ "generos": {
+  "ts": 1793223186058,
+  "total": 41,
+  "ocurrencias_hstream": 4,
+  "ocurrencias_muerta": 0
+ },
+ "hstream": {
+  "status": 200,
+  "tipo": "image/webp",
+  "bytes": 19158,
+  "magia": "52494646ce4a000057454250",
+  "formato": "WEBP",
+  "tam": [
+   268,
+   394
+  ]
+ },
+ "portadas": {
+  "distintas": 2413,
+  "estados": {
+   "500": 102,
+   "ReadTimeout": 207,
+   "200": 1439,
+   "520": 665
+  }
+ }
+}
