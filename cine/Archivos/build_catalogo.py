@@ -425,9 +425,12 @@ def build_catalogo(previo_doc, presupuesto=PRESUPUESTO, max_paginas=MAX_PAGINAS)
         except Exception as e:
             print(f"  No se pudo leer el directorio de estudios: {e}", file=sys.stderr)
     completar_fichas(items, presupuesto, nombres)
-    cambiadas, sin_remedio, sin_comprobar = verificar_portadas(items)
-    print(f"Portadas: {len(items)} revisadas, {cambiadas} cambiadas" + (f", {sin_remedio} sin remedio" if sin_remedio else "")
-          + (f", {sin_comprobar} sin poder comprobar" if sin_comprobar else ""))
+    try:
+        cambiadas, sin_remedio, sin_comprobar = verificar_portadas(items)
+        print(f"Portadas: {len(items)} revisadas, {cambiadas} cambiadas" + (f", {sin_remedio} sin remedio" if sin_remedio else "")
+              + (f", {sin_comprobar} sin poder comprobar" if sin_comprobar else ""))
+    except Exception as e:                  # la revisión es un extra: si falla, el catálogo sale igual (con las portadas como estaban)
+        print(f"Portadas: no se pudieron revisar ({type(e).__name__}: {e})", file=sys.stderr)
 
     usados = sorted({it["studioSlug"] for it in items if it["studioSlug"]})
     estudios = sorted(({"slug": s, "name": nombres.get(s) or _nombre_de_slug(s)} for s in usados), key=lambda e: e["name"].lower())
