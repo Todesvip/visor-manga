@@ -1,0 +1,417 @@
+{
+ "inicio": "06:48:34",
+ "total_probadas": 353,
+ "malas": 15,
+ "por_mes": {
+  "2022-08": {
+   "ok": 201,
+   "mal": 11
+  },
+  "2022-12": {
+   "ok": 2,
+   "mal": 0
+  },
+  "2023-02": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2023-04": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2023-05": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2023-07": {
+   "ok": 3,
+   "mal": 0
+  },
+  "2023-09": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2023-10": {
+   "ok": 2,
+   "mal": 0
+  },
+  "2023-11": {
+   "ok": 2,
+   "mal": 0
+  },
+  "2023-12": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2024-02": {
+   "ok": 3,
+   "mal": 0
+  },
+  "2024-04": {
+   "ok": 2,
+   "mal": 0
+  },
+  "2024-05": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2024-06": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2024-07": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2024-08": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2024-09": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2024-10": {
+   "ok": 2,
+   "mal": 0
+  },
+  "2024-11": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2024-12": {
+   "ok": 2,
+   "mal": 0
+  },
+  "2025-01": {
+   "ok": 2,
+   "mal": 0
+  },
+  "2025-04": {
+   "ok": 2,
+   "mal": 0
+  },
+  "2025-05": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2025-07": {
+   "ok": 2,
+   "mal": 0
+  },
+  "2025-08": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2025-09": {
+   "ok": 1,
+   "mal": 0
+  },
+  "2025-11": {
+   "ok": 2,
+   "mal": 0
+  },
+  "2025-12": {
+   "ok": 2,
+   "mal": 1
+  },
+  "2026-01": {
+   "ok": 10,
+   "mal": 0
+  },
+  "2026-02": {
+   "ok": 9,
+   "mal": 0
+  },
+  "2026-03": {
+   "ok": 9,
+   "mal": 1
+  },
+  "2026-04": {
+   "ok": 7,
+   "mal": 0
+  },
+  "2026-05": {
+   "ok": 11,
+   "mal": 0
+  },
+  "2026-06": {
+   "ok": 13,
+   "mal": 0
+  },
+  "2026-07": {
+   "ok": 6,
+   "mal": 1
+  },
+  "2026-08": {
+   "ok": 11,
+   "mal": 0
+  },
+  "2026-09": {
+   "ok": 7,
+   "mal": 0
+  },
+  "2026-10": {
+   "ok": 11,
+   "mal": 1
+  },
+  "?": {
+   "ok": 1,
+   "mal": 0
+  }
+ },
+ "hstream_con_portada": 11,
+ "hstream_probadas": 15,
+ "especiales": [
+  {
+   "g": "especial",
+   "slug": "oushun-jogakuen-no-danyuu-episodio-2",
+   "mes": "2026-10",
+   "s": 200,
+   "cf": "HIT",
+   "age": "190831",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "netorareta-bakunyuu-tsuma-tachi-2-episodio-2",
+   "mes": "2026-10",
+   "s": 200,
+   "cf": "HIT",
+   "age": "190831",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "oushun-jogakuen-no-danyuu-episodio-1",
+   "mes": "2026-10",
+   "s": 200,
+   "cf": "HIT",
+   "age": "437241",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "netorareta-bakunyuu-tsuma-tachi-2-episodio-1",
+   "mes": "2026-10",
+   "s": 200,
+   "cf": "HIT",
+   "age": "1828874",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "kokuhaku-episodio-4",
+   "mes": "2026-09",
+   "s": 200,
+   "cf": "HIT",
+   "age": "1715358",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-8",
+   "mes": "2026-08",
+   "s": 200,
+   "cf": "HIT",
+   "age": "1828723",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-7",
+   "mes": "?",
+   "s": 200,
+   "cf": "REVALIDATED",
+   "age": null,
+   "seg": 0.4
+  },
+  {
+   "g": "especial",
+   "slug": "kokuhaku-episodio-3",
+   "mes": "2026-05",
+   "s": 200,
+   "cf": "HIT",
+   "age": "1828684",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-6",
+   "mes": "2025-12",
+   "s": 200,
+   "cf": "HIT",
+   "age": "1781075",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-5",
+   "mes": "2025-07",
+   "s": 200,
+   "cf": "HIT",
+   "age": "1149829",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-4",
+   "mes": "2024-09",
+   "s": 200,
+   "cf": "HIT",
+   "age": "435494",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-3",
+   "mes": "2024-04",
+   "s": 200,
+   "cf": "HIT",
+   "age": "1069257",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-2",
+   "mes": "2023-10",
+   "s": 200,
+   "cf": "HIT",
+   "age": "1140210",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "kokuhaku-episodio-2",
+   "mes": "2023-10",
+   "s": 200,
+   "cf": "HIT",
+   "age": "1735733",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "1ldk-jk-ikinari-doukyo-micchaku-hatsu-ecchi-episodio-1",
+   "mes": "2023-07",
+   "s": 200,
+   "cf": "HIT",
+   "age": "1145211",
+   "seg": 0.1
+  },
+  {
+   "g": "especial",
+   "slug": "kokuhaku-episodio-1",
+   "mes": "2023-04",
+   "s": 200,
+   "cf": "HIT",
+   "age": "959447",
+   "seg": 0.1
+  }
+ ],
+ "malas_detalle": [
+  {
+   "slug": "seishidouin-no-oshigoto-the-animation-episodio-2",
+   "mes": "2026-10",
+   "s": 520,
+   "cf": null,
+   "hstream": 200
+  },
+  {
+   "slug": "nuki-nuki-zupposism-episodio-1",
+   "mes": "2026-07",
+   "s": 520,
+   "cf": null,
+   "hstream": 200
+  },
+  {
+   "slug": "kegareboshi-episodio-4",
+   "mes": "2026-03",
+   "s": "ReadTimeout",
+   "hstream": 200
+  },
+  {
+   "slug": "tsundere-inran-shoujo-sukumi-episodio-2",
+   "mes": "2022-08",
+   "s": 520,
+   "cf": null,
+   "hstream": 200
+  },
+  {
+   "slug": "jitaku-keibiin-2-episodio-7",
+   "mes": "2022-08",
+   "s": 520,
+   "cf": null,
+   "hstream": 200
+  },
+  {
+   "slug": "ma-ga-ochiru-yoru-episodio-1",
+   "mes": "2022-08",
+   "s": 520,
+   "cf": null,
+   "hstream": 200
+  },
+  {
+   "slug": "ore-no-yubi-de-midarero-heitengo-futarikiri-no-salon-de-episodio-7",
+   "mes": "2022-08",
+   "s": 520,
+   "cf": null,
+   "hstream": 404
+  },
+  {
+   "slug": "venus-blood-brave-episodio-2",
+   "mes": "2022-08",
+   "s": 520,
+   "cf": null,
+   "hstream": 404
+  },
+  {
+   "slug": "showtime-uta-no-onee-san-datte-shitai-episodio-8",
+   "mes": "2022-08",
+   "s": 520,
+   "cf": null,
+   "hstream": 404
+  },
+  {
+   "slug": "uwaki-to-honki-the-animation-episodio-1",
+   "mes": "2022-08",
+   "s": 520,
+   "cf": null,
+   "hstream": 200
+  },
+  {
+   "slug": "shihai-no-kyoudan-episodio-2",
+   "mes": "2022-08",
+   "s": 520,
+   "cf": null,
+   "hstream": 200
+  },
+  {
+   "slug": "kanojo-wa-dare-to-demo-sex-suru-episodio-1",
+   "mes": "2022-08",
+   "s": 500,
+   "cf": "BYPASS",
+   "hstream": 200
+  },
+  {
+   "slug": "choukou-sennin-haruka-episodio-3",
+   "mes": "2022-08",
+   "s": 500,
+   "cf": "BYPASS",
+   "hstream": 404
+  },
+  {
+   "slug": "dokidoki-little-ooyasan-episodio-6",
+   "mes": "2022-08",
+   "s": 520,
+   "cf": null,
+   "hstream": 200
+  },
+  {
+   "slug": "iribitari-gal-ni-manko-tsukawasete-morau-hanashi-episodio-3",
+   "mes": "2025-12",
+   "s": 520,
+   "cf": null,
+   "hstream": 200
+  }
+ ]
+}
