@@ -15,6 +15,9 @@ Mismo formato que armaba el script de VeoHentai, para que la app lo lea igual. L
 (estudio, año e imagen horizontal) se completa con la página de cada episodio, pero solo de los episodios nuevos (unas
 decenas por corrida) y se conserva lo que ya estaba en el catalogo.json anterior.
 
+Antes de escribir se comprueba que cada portada exista de verdad (unos 20 s con las 2541): la que el sitio dice que no existe
+se cambia por la del mismo episodio en hstream.moe o, si ahí no está, por la de otro episodio de la serie.
+
 Cada JSON lleva "ts" (cuándo se armó). Solo se reescribe si cambió el contenido (o si el anterior tiene más de 12 h),
 así el repo no crece con subidas iguales. Si una página falla o salen muy pocos episodios, NO se escribe un catálogo
 incompleto: se conserva el anterior (y el programa termina con código 1, para que el workflow lo reintente).
@@ -36,6 +39,8 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from urllib.parse import quote
 
+import requests
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_primicias as bp          # los mismos lectores de Hentaila que usa el Home (tarjetas, miniatura, descarga)
 
@@ -49,8 +54,16 @@ REESCRIBIR_CADA_MS = 12 * 60 * 60 * 1000
 PARALELO = 3                          # peticiones a la vez
 PAUSA_S = 0.15                        # pausa tras cada petición (para no apurar al sitio)
 GENEROS_EXCLUIDOS = {"lolicon", "shota"}
+HSTREAM = "https://hstream.moe/images/hentai"     # portadas de respaldo: <serie>/cover-ep-<N>.webp (verticales, 268×394)
+PARALELO_IMG = 8                      # portadas que se comprueban a la vez (salen del caché de Cloudflare: unos 20 s las 2541)
+MUERTAS_FRACCION = 0.05               # si el sitio dice «no existe» de más del 5 % de las portadas, es un bloqueo: no se cambia nada
+MUERTAS_TOPE_MIN = 25                 # (y nunca menos de 25, para que un catálogo chico no se bloquee por una o dos)
+HERMANAS_MAX = 3                      # portadas de otros episodios de la serie que se prueban como último remedio
 
 _SAFE = "/:?&=%#+@!$'()*,;~-._[]"
+_SERIE_Y_EPISODIO = re.compile(r"^(.+)-episodio-(\d+)$")
+_MAGIA_IMAGEN = (b"\xff\xd8\xff", b"\x89PNG", b"GIF8", b"RIFF")      # jpg, png, gif y webp
+_img_local = threading.local()
 
 
 # ── Descarga de listados ────────────────────────────────────────────────────────────────────────────────────
@@ -292,6 +305,95 @@ def completar_fichas(items, presupuesto, estudios_nombres):
     return hechos
 
 
+def _serie_y_episodio(slug):
+    """«una-serie-episodio-7» → («una-serie», 7); (None, None) si el slug no termina en «-episodio-N»."""
+    m = _SERIE_Y_EPISODIO.match(slug or "")
+    return (m.group(1), int(m.group(2))) if m else (None, None)
+
+
+def _portada_hstream(slug):
+    """La portada de ese episodio en hstream.moe (puede no existir: hay que comprobarla). None si el slug no es de episodio."""
+    serie, n = _serie_y_episodio(slug)
+    return f"{HSTREAM}/{serie}/cover-ep-{n}.webp" if serie else None
+
+
+def _portada_viva(url):
+    """¿Existe de verdad esta imagen? True: responde con una imagen. False: el sitio dice que no existe (404 o 410 dos veces
+    seguidas, o una página en vez de una imagen). None: no se pudo saber (sin red, 429, 5xx…): ahí no se toca nada."""
+    s = getattr(_img_local, "s", None)
+    if s is None:
+        s = _img_local.s = requests.Session()
+    referer = "https://hstream.moe/" if "hstream.moe" in url else HENTAILA + "/"
+    cabeceras = {"User-Agent": bp.UA, "Referer": referer, "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"}
+    no_existe = 0
+    for intento in range(3):
+        try:
+            with s.get(url, headers=cabeceras, stream=True, timeout=bp.TIMEOUT) as r:
+                if r.status_code in (404, 410):
+                    no_existe += 1
+                    if no_existe >= 2:
+                        return False
+                elif r.status_code == 200:
+                    principio = next(r.iter_content(64), b"")
+                    return r.headers.get("content-type", "").startswith("image/") and principio.startswith(_MAGIA_IMAGEN)
+        except Exception:
+            pass
+        time.sleep(1.5)
+    return None
+
+
+def verificar_portadas(items):
+    """Comprueba que cada portada exista de verdad y cambia las que no. Cuando la tarjeta de Hentaila sale «sin portada» se
+    deja la dirección que había antes (la del sitio viejo) y esa a veces ya no existe: el episodio sale con la tarjeta en blanco
+    en la app. Para cada portada que el sitio dice que NO existe se busca, en este orden:
+      1. la portada de ese mismo episodio en hstream.moe (…/<serie>/cover-ep-<N>.webp), comprobada;
+      2. la portada de otro episodio de la serie que sí exista (los más cercanos);
+      3. la imagen horizontal del episodio, si existe.
+    Si no hay ninguna se deja como estaba. Lo que no se pudo comprobar (red, 429, 5xx) tampoco se toca; y si el sitio dice «no
+    existe» de más del 5 % de las portadas es un bloqueo, no un hueco de datos: no se cambia nada.
+    Devuelve (cambiadas, sin_remedio, sin_comprobar)."""
+    urls = sorted({it["imageUrl"] for it in items})
+    with ThreadPoolExecutor(max_workers=PARALELO_IMG) as pool:
+        estado = dict(zip(urls, pool.map(_portada_viva, urls)))
+    muertas = {u for u, v in estado.items() if v is False}
+    sin_comprobar = sum(1 for v in estado.values() if v is None)
+    if len(muertas) > max(MUERTAS_TOPE_MIN, int(MUERTAS_FRACCION * len(urls))):
+        print(f"Portadas: {len(muertas)} de {len(urls)} «no existen»: parece un bloqueo del sitio, no se cambia ninguna", file=sys.stderr)
+        return 0, len(muertas), sin_comprobar
+
+    por_serie = {}                          # con las portadas de ANTES de cambiar nada: el orden de los episodios no importa
+    for it in items:
+        serie, n = _serie_y_episodio(it["slug"])
+        if serie:
+            por_serie.setdefault(serie, []).append((n, it["imageUrl"]))
+
+    def viva(url):
+        if url not in estado:
+            estado[url] = _portada_viva(url)
+        return estado[url] is True
+
+    cambiadas = sin_remedio = 0
+    for it in items:
+        malo = it["imageUrl"]
+        if malo not in muertas:
+            continue
+        candidatas = [_portada_hstream(it["slug"])]
+        serie, n = _serie_y_episodio(it["slug"])
+        if serie:
+            hermanas = sorted(((abs(m - n), m, u) for m, u in por_serie[serie] if u not in muertas), key=lambda t: t[:2])
+            candidatas += [u for _, _, u in hermanas[:HERMANAS_MAX]]
+        candidatas.append(it.get("backdropUrl"))
+        nueva = next((u for u in candidatas if u and viva(u)), None)
+        if nueva:
+            print(f"  Portada muerta de {it['slug']}: {malo} → {nueva}")
+            it["imageUrl"] = nueva
+            cambiadas += 1
+        else:
+            print(f"  Portada muerta de {it['slug']} y sin remedio: {malo}", file=sys.stderr)
+            sin_remedio += 1
+    return cambiadas, sin_remedio, sin_comprobar
+
+
 def _nombre_de_slug(slug):
     return " ".join(w[:1].upper() + w[1:] for w in slug.replace("-", " ").split())
 
@@ -323,6 +425,9 @@ def build_catalogo(previo_doc, presupuesto=PRESUPUESTO, max_paginas=MAX_PAGINAS)
         except Exception as e:
             print(f"  No se pudo leer el directorio de estudios: {e}", file=sys.stderr)
     completar_fichas(items, presupuesto, nombres)
+    cambiadas, sin_remedio, sin_comprobar = verificar_portadas(items)
+    print(f"Portadas: {len(items)} revisadas, {cambiadas} cambiadas" + (f", {sin_remedio} sin remedio" if sin_remedio else "")
+          + (f", {sin_comprobar} sin poder comprobar" if sin_comprobar else ""))
 
     usados = sorted({it["studioSlug"] for it in items if it["studioSlug"]})
     estudios = sorted(({"slug": s, "name": nombres.get(s) or _nombre_de_slug(s)} for s in usados), key=lambda e: e["name"].lower())
