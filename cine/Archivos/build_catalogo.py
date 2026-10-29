@@ -18,6 +18,11 @@ decenas por corrida) y se conserva lo que ya estaba en el catalogo.json anterior
 Antes de escribir se comprueba que cada portada exista de verdad (unos 20 s con las 2541): la que el sitio dice que no existe
 se cambia por la del mismo episodio en hstream.moe o, si ahí no está, por la de otro episodio de la serie.
 
+Hentaila frena a quien pide muy seguido desde GitHub (páginas que se quedan colgadas o dan 520 de pasada, aunque desde un
+navegador carguen al instante). Por eso se pide de a 2 con pausa, una página colgada se corta a los 20 s y se vuelve a pedir,
+las que no respondieron se repescan de una en una esperando cada vez más, y las fichas y la revisión de portadas (extras)
+tienen un tiempo máximo por corrida.
+
 Cada JSON lleva "ts" (cuándo se armó). Solo se reescribe si cambió el contenido (o si el anterior tiene más de 12 h),
 así el repo no crece con subidas iguales. Si una página falla o salen muy pocos episodios, NO se escribe un catálogo
 incompleto: se conserva el anterior (y el programa termina con código 1, para que el workflow lo reintente).
@@ -51,8 +56,16 @@ MIN_ITEMS = 200                       # menos episodios que estos = error del si
 FRACCION_MIN = 0.9                    # si salen menos del 90 % de los que ya había, algo falló: no se pisa
 PRESUPUESTO = 120                     # páginas de episodio (estudio, año, imagen horizontal) que se piden por corrida
 REESCRIBIR_CADA_MS = 12 * 60 * 60 * 1000
-PARALELO = 3                          # peticiones a la vez
-PAUSA_S = 0.15                        # pausa tras cada petición (para no apurar al sitio)
+PARALELO = 2                          # peticiones a la vez (desde GitHub, Hentaila frena a quien pide muy seguido)
+PAUSA_S = 0.5                         # pausa tras cada petición (para no apurar al sitio)
+LISTADO_TIMEOUT_S = 20                # una página que tarda más que esto se da por colgada y se vuelve a pedir (las buenas tardan < 2 s)
+LISTADO_TIEMPO_MAX_S = 600            # la primera pasada por un listado no pasa de 10 min: lo que falte va a la repesca
+REPESCA_ESPERA_S = 10                 # las páginas que no respondieron se vuelven a pedir de una en una, esperando 10, 20, 40… s
+REPESCA_RONDAS = 5                    # …hasta 5 rondas
+REPESCA_TIEMPO_MAX_S = 240            # …y sin pasar de 4 min
+FICHAS_TIEMPO_MAX_S = 300             # las fichas (estudio, año, imagen horizontal) son un extra: no pasan de 5 min por corrida
+PORTADAS_TIEMPO_MAX_S = 300           # la revisión de portadas tampoco (lo que no se alcanzó a comprobar no se toca)
+PORTADA_TIMEOUT_S = 15                # una portada que tarda más que esto se da por colgada (las buenas salen del caché en < 1 s)
 GENEROS_EXCLUIDOS = {"lolicon", "shota"}
 HSTREAM = "https://hstream.moe/images/hentai"     # portadas de respaldo: <serie>/cover-ep-<N>.webp (verticales, 268×394)
 PARALELO_IMG = 8                      # portadas que se comprueban a la vez (salen del caché de Cloudflare: unos 20 s las 2541)
@@ -84,12 +97,15 @@ def total_paginas(html):
     return n
 
 
-def tarjetas_pagina(url, intentos=3):
+def tarjetas_pagina(url, intentos=3, limite=None):
     """(tarjetas, html) de una página de listado, o (None, None) si no hubo manera. Si alguna tarjeta llega con el aviso
-    de «sin portada» (el sitio lo pone a veces de pasada), se vuelve a pedir y se completan las portadas que faltaban."""
+    de «sin portada» (el sitio lo pone a veces de pasada), se vuelve a pedir y se completan las portadas que faltaban.
+    `limite` (time.monotonic): pasado ese momento no se intenta más (lo que falte lo recoge la repesca)."""
     mejor, html_ok = None, None
     for i in range(intentos):
-        html = bp._get_hentaila_page(url)
+        if limite is not None and time.monotonic() > limite:
+            break
+        html = bp._get_hentaila_page(url, timeout=LISTADO_TIMEOUT_S)
         with bp._hentaila_lock:
             bp._hentaila_pages.pop(url, None)         # que el siguiente intento vuelva a pedirla de verdad
         time.sleep(PAUSA_S)
@@ -115,23 +131,55 @@ def tarjetas_pagina(url, intentos=3):
     return mejor, html_ok
 
 
+def _repescar(base, faltan):
+    """Las páginas que no respondieron en la primera pasada se vuelven a pedir de una en una y con calma: antes de cada
+    ronda se espera REPESCA_ESPERA_S, el doble, el doble… (Hentaila frena a quien pide muy seguido desde GitHub y, al rato,
+    vuelve a responder). {n: tarjetas} de las que respondieron."""
+    out, pendientes = {}, list(faltan)
+    limite = time.monotonic() + REPESCA_TIEMPO_MAX_S
+    espera = REPESCA_ESPERA_S
+    for _ronda in range(REPESCA_RONDAS):
+        if not pendientes or time.monotonic() > limite:
+            break
+        time.sleep(espera)
+        espera *= 2
+        for n in list(pendientes):
+            if time.monotonic() > limite:
+                break
+            cards, _h = tarjetas_pagina(HENTAILA + _ruta(base, n), intentos=1)
+            if cards is not None:
+                out[n] = cards
+                pendientes.remove(n)
+    return out
+
+
 def recorrer(base, max_paginas=MAX_PAGINAS):
-    """Todas las páginas de un listado (en orden). (tarjetas, paginas) o None si alguna página no se pudo leer.
-    Las tarjetas repetidas (el mismo episodio en dos páginas porque el listado se movió mientras se leía) se quitan."""
+    """Todas las páginas de un listado (en orden). (tarjetas, paginas) o None si alguna página no se pudo leer ni en la
+    repesca. Las tarjetas repetidas (el mismo episodio en dos páginas porque el listado se movió mientras se leía) se quitan."""
     c1, h1 = tarjetas_pagina(HENTAILA + _ruta(base, 1))
     if c1 is None:
         print(f"  {base}: la primera página no responde", file=sys.stderr)
         return None
     paginas = max(1, min(total_paginas(h1), max_paginas))
     por_pagina = {1: c1}
+    faltan = []
     if paginas > 1:
+        limite = time.monotonic() + LISTADO_TIEMPO_MAX_S
         with ThreadPoolExecutor(max_workers=PARALELO) as pool:
             for n, (cards, _h) in zip(range(2, paginas + 1),
-                                      pool.map(lambda n: tarjetas_pagina(HENTAILA + _ruta(base, n)), range(2, paginas + 1))):
+                                      pool.map(lambda n: tarjetas_pagina(HENTAILA + _ruta(base, n), limite=limite), range(2, paginas + 1))):
                 if cards is None:
-                    print(f"  {base}: la página {n} no responde", file=sys.stderr)
-                    return None
-                por_pagina[n] = cards
+                    faltan.append(n)
+                else:
+                    por_pagina[n] = cards
+    if faltan:
+        print(f"  {base}: no respondieron {len(faltan)} páginas ({', '.join(map(str, faltan[:8]))}{'…' if len(faltan) > 8 else ''}): "
+              "se vuelven a pedir de una en una, con calma", file=sys.stderr)
+        por_pagina.update(_repescar(base, faltan))
+        faltan = [n for n in faltan if n not in por_pagina]
+        if faltan:
+            print(f"  {base}: la página {faltan[0]} no responde", file=sys.stderr)
+            return None
     vistos, out = set(), []
     for n in range(1, paginas + 1):
         for c in por_pagina[n]:
@@ -275,9 +323,12 @@ def completar_fichas(items, presupuesto, estudios_nombres):
     pendientes = [it for it in items if not it["year"]][:presupuesto]
     if not pendientes:
         return 0
+    limite = time.monotonic() + FICHAS_TIEMPO_MAX_S
 
     def uno(it):
-        html = bp._get_hentaila_page(f"{HENTAILA}/ver/{it['slug']}/")
+        if time.monotonic() > limite:                 # se acabó el tiempo: queda para la próxima corrida
+            return it, None
+        html = bp._get_hentaila_page(f"{HENTAILA}/ver/{it['slug']}/", timeout=LISTADO_TIMEOUT_S)
         time.sleep(PAUSA_S)
         if not html:
             return it, None
@@ -317,9 +368,10 @@ def _portada_hstream(slug):
     return f"{HSTREAM}/{serie}/cover-ep-{n}.webp" if serie else None
 
 
-def _portada_viva(url):
+def _portada_viva(url, limite=None):
     """¿Existe de verdad esta imagen? True: responde con una imagen. False: el sitio dice que no existe (404 o 410 dos veces
-    seguidas, o una página en vez de una imagen). None: no se pudo saber (sin red, 429, 5xx…): ahí no se toca nada."""
+    seguidas, o una página en vez de una imagen). None: no se pudo saber (sin red, 429, 5xx, o se pasó `limite`): ahí no se
+    toca nada."""
     s = getattr(_img_local, "s", None)
     if s is None:
         s = _img_local.s = requests.Session()
@@ -327,8 +379,10 @@ def _portada_viva(url):
     cabeceras = {"User-Agent": bp.UA, "Referer": referer, "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"}
     no_existe = 0
     for intento in range(3):
+        if limite is not None and time.monotonic() > limite:
+            return None
         try:
-            with s.get(url, headers=cabeceras, stream=True, timeout=bp.TIMEOUT) as r:
+            with s.get(url, headers=cabeceras, stream=True, timeout=PORTADA_TIMEOUT_S) as r:
                 if r.status_code in (404, 410):
                     no_existe += 1
                     if no_existe >= 2:
@@ -353,8 +407,9 @@ def verificar_portadas(items):
     existe» de más del 5 % de las portadas es un bloqueo, no un hueco de datos: no se cambia nada.
     Devuelve (cambiadas, sin_remedio, sin_comprobar)."""
     urls = sorted({it["imageUrl"] for it in items})
+    limite = time.monotonic() + PORTADAS_TIEMPO_MAX_S
     with ThreadPoolExecutor(max_workers=PARALELO_IMG) as pool:
-        estado = dict(zip(urls, pool.map(_portada_viva, urls)))
+        estado = dict(zip(urls, pool.map(lambda u: _portada_viva(u, limite), urls)))
     muertas = {u for u, v in estado.items() if v is False}
     sin_comprobar = sum(1 for v in estado.values() if v is None)
     if len(muertas) > max(MUERTAS_TOPE_MIN, int(MUERTAS_FRACCION * len(urls))):
@@ -369,7 +424,7 @@ def verificar_portadas(items):
 
     def viva(url):
         if url not in estado:
-            estado[url] = _portada_viva(url)
+            estado[url] = _portada_viva(url, limite)
         return estado[url] is True
 
     cambiadas = sin_remedio = 0
