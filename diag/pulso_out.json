@@ -1,110 +1,35 @@
 {
- "inicio": "06:15:44",
+ "inicio": "07:47:05",
  "rondas": [
   {
-   "t": "06:15:44",
+   "t": "07:47:05",
    "/": {
     "status": 200,
-    "bytes": 159935,
-    "seg": 0.42,
-    "cf": "MSP"
+    "bytes": 160883,
+    "seg": 0.37,
+    "cf": "DFW"
    },
    "/?page=2": {
     "status": 200,
     "bytes": 157533,
-    "seg": 0.3,
-    "cf": "MSP"
+    "seg": 0.32,
+    "cf": "DFW"
    },
    "/?page=7": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.27,
-    "cf": "MSP"
+    "status": 200,
+    "bytes": 158570,
+    "seg": 0.36,
+    "cf": "DFW"
    },
    "/?page=15": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.29,
-    "cf": "MSP"
+    "status": 200,
+    "bytes": 159347,
+    "seg": 0.32,
+    "cf": "DFW"
    }
   },
   {
-   "t": "06:16:01",
-   "/": {
-    "status": 200,
-    "bytes": 159935,
-    "seg": 0.27,
-    "cf": "MSP"
-   },
-   "/?page=2": {
-    "status": 200,
-    "bytes": 157533,
-    "seg": 0.27,
-    "cf": "MSP"
-   },
-   "/?page=7": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.28,
-    "cf": "MSP"
-   },
-   "/?page=15": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
-   }
-  },
-  {
-   "t": "06:16:46",
-   "/": {
-    "status": 200,
-    "bytes": 159935,
-    "seg": 0.31,
-    "cf": "MSP"
-   },
-   "/?page=2": {
-    "status": 200,
-    "bytes": 157533,
-    "seg": 0.26,
-    "cf": "MSP"
-   },
-   "/?page=7": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.29,
-    "cf": "MSP"
-   },
-   "/?page=15": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.28,
-    "cf": "MSP"
-   }
-  },
-  {
-   "t": "06:17:03",
-   "/": {
-    "status": 200,
-    "bytes": 159935,
-    "seg": 0.29,
-    "cf": "MSP"
-   },
-   "/?page=2": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
-   },
-   "/?page=7": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
-   },
-   "/?page=15": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.28,
-    "cf": "MSP"
-   }
-  },
-  {
-   "t": "06:18:18",
+   "t": "07:47:21",
    "/": {
     "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
     "seg": 30.0
@@ -112,179 +37,62 @@
    "/?page=2": {
     "status": 200,
     "bytes": 157533,
-    "seg": 0.26,
-    "cf": "MSP"
+    "seg": 0.35,
+    "cf": "DFW"
    },
    "/?page=7": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.28,
-    "cf": "MSP"
-   },
-   "/?page=15": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.25,
-    "cf": "MSP"
-   }
-  },
-  {
-   "t": "06:19:04",
-   "/": {
-    "status": 200,
-    "bytes": 159935,
-    "seg": 1.4,
-    "cf": "MSP"
-   },
-   "/?page=2": {
-    "status": 200,
-    "bytes": 157533,
-    "seg": 0.29,
-    "cf": "MSP"
-   },
-   "/?page=7": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.3,
-    "cf": "MSP"
-   },
-   "/?page=15": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.25,
-    "cf": "MSP"
-   }
-  },
-  {
-   "t": "06:19:21",
-   "/": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
-   },
-   "/?page=2": {
-    "status": 200,
-    "bytes": 157533,
-    "seg": 0.27,
-    "cf": "MSP"
-   },
-   "/?page=7": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.27,
-    "cf": "MSP"
-   },
-   "/?page=15": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
-   }
-  },
-  {
-   "t": "06:20:37",
-   "/": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
-   },
-   "/?page=2": {
     "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30000 milliseconds with 0 bytes received. See",
     "seg": 30.0
    },
-   "/?page=7": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.26,
-    "cf": "MSP"
-   },
    "/?page=15": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30000 milliseconds with 0 bytes received. See",
+    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
     "seg": 30.0
    }
   },
   {
-   "t": "06:22:22",
+   "t": "07:49:07",
    "/": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
+    "status": 200,
+    "bytes": 160883,
+    "seg": 0.36,
+    "cf": "DFW"
    },
    "/?page=2": {
     "status": 200,
     "bytes": 157533,
-    "seg": 0.28,
-    "cf": "MSP"
+    "seg": 0.32,
+    "cf": "DFW"
    },
    "/?page=7": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.26,
-    "cf": "MSP"
+    "status": 200,
+    "bytes": 158570,
+    "seg": 0.33,
+    "cf": "DFW"
    },
    "/?page=15": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.29,
-    "cf": "MSP"
+    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
+    "seg": 30.0
    }
   },
   {
-   "t": "06:23:08",
+   "t": "07:49:53",
    "/": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
-   },
-   "/?page=2": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
-   },
-   "/?page=7": {
-    "status": 500,
-    "bytes": 939,
-    "seg": 0.29,
-    "cf": "MSP"
-   },
-   "/?page=15": {
-    "status": 500,
-    "bytes": 939,
-    "seg": 0.27,
-    "cf": "MSP"
-   }
-  },
-  {
-   "t": "06:24:23",
-   "/": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
+    "status": 200,
+    "bytes": 160883,
+    "seg": 19.39,
+    "cf": "DFW"
    },
    "/?page=2": {
     "status": 200,
     "bytes": 157533,
-    "seg": 0.28,
-    "cf": "MSP"
+    "seg": 0.33,
+    "cf": "DFW"
    },
    "/?page=7": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.29,
-    "cf": "MSP"
-   },
-   "/?page=15": {
-    "status": 520,
-    "bytes": 7326,
-    "seg": 0.26,
-    "cf": "MSP"
-   }
-  },
-  {
-   "t": "06:25:09",
-   "/": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
-   },
-   "/?page=2": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
-   },
-   "/?page=7": {
-    "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
-    "seg": 30.0
+    "status": 200,
+    "bytes": 158570,
+    "seg": 0.32,
+    "cf": "DFW"
    },
    "/?page=15": {
     "error": "Timeout: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See",
