@@ -27,14 +27,8 @@ jobs:
       - name: Dependencias
         run: pip install requests beautifulsoup4 html5lib curl_cffi pillow
 
-      - name: Armar el catálogo con el código de main (una sola vez, con todo el detalle)
-        run: |
-          mkdir -p diag/salida_catalogo
-          cp principal/cine/Archivos/catalogo.json principal/cine/Archivos/generos.json diag/salida_catalogo/ || true
-          set +e
-          python principal/cine/Archivos/build_catalogo.py --carpeta diag/salida_catalogo > diag/catalogo_log.txt 2>&1
-          echo "codigo de salida: $?" >> diag/catalogo_log.txt
-          exit 0
+      - name: Pulso de Hentaila
+        run: python diag/diag_pulso.py
 
       - name: Guardar el resultado en la rama
         if: always()
