@@ -41,7 +41,11 @@ def main():
     items = cat["items"]
     sel, vistos = [], set()
     rnd = random.Random(5)
-    de2026 = [i for i in items if (MES.search(i["imageUrl"]) or [0, "0"])[1:2] and MES.search(i["imageUrl"]) and MES.search(i["imageUrl"]).group(1) == "2026"]
+    def anio(i):
+        m = MES.search(i["imageUrl"])
+        return m.group(1) if m else "?"
+
+    de2026 = [i for i in items if anio(i) == "2026"]
     otros = [i for i in items if i not in de2026]
     for grupo, lista in (("especial", [i for i in items if any(p in i["slug"] for p in ESPECIALES)]), ("2026", de2026),
                          ("antes", rnd.sample(otros, min(250, len(otros))))):
