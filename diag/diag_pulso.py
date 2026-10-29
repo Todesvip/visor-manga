@@ -24,7 +24,7 @@ def pedir(url):
 
 def main():
     out = {"inicio": time.strftime("%H:%M:%S", time.gmtime()), "rondas": []}
-    for i in range(12):
+    for i in range(4):
         ronda = {"t": time.strftime("%H:%M:%S", time.gmtime())}
         for u in URLS:
             ronda[u.replace("https://hentaila.io", "") or "/"] = pedir(u)
