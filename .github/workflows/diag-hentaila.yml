@@ -23,7 +23,7 @@ jobs:
         run: pip install requests beautifulsoup4 html5lib curl_cffi pillow
 
       - name: Probar TODAS las portadas del catálogo
-        run: python diag/diag_todo.py
+        run: python diag/diag_extra.py
 
       - name: Guardar el resultado en la rama
         if: always()
