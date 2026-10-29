@@ -22,8 +22,8 @@ jobs:
       - name: Dependencias
         run: pip install requests beautifulsoup4 html5lib curl_cffi pillow
 
-      - name: Mirar la estructura de Hentaila
-        run: python diag/diag_sitio.py
+      - name: Probar las portadas del catálogo
+        run: python diag/diag_imagenes.py
 
       - name: Guardar el resultado en la rama
         if: always()
