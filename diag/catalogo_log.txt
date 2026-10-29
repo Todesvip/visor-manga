@@ -1,0 +1,37 @@
+== Catálogo ==
+  Hentaila: GET falló https://hentaila.io/: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: GET falló https://hentaila.io/: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: GET falló https://hentaila.io/?page=3: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: GET falló https://hentaila.io/?page=4: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: GET falló https://hentaila.io/?page=2: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: HTTP 520 en https://hentaila.io/?page=7
+  Hentaila: HTTP 520 en https://hentaila.io/?page=7
+  Hentaila: HTTP 500 en https://hentaila.io/?page=7
+  Hentaila: HTTP 520 en https://hentaila.io/?page=15
+  Hentaila: HTTP 520 en https://hentaila.io/?page=15
+  Hentaila: HTTP 520 en https://hentaila.io/?page=15
+  Hentaila: HTTP 520 en https://hentaila.io/?page=16
+  Hentaila: HTTP 520 en https://hentaila.io/?page=16
+  Hentaila: HTTP 520 en https://hentaila.io/?page=16
+  Hentaila: GET falló https://hentaila.io/?page=5: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: HTTP 520 en https://hentaila.io/?page=17
+  Hentaila: GET falló https://hentaila.io/?page=11: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: GET falló https://hentaila.io/?page=5: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: GET falló https://hentaila.io/?page=17: Failed to perform, curl: (28) Operation timed out after 30000 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: GET falló https://hentaila.io/?page=20: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: HTTP 520 en https://hentaila.io/?page=17
+  /: la página 7 no responde
+  Hentaila: HTTP 520 en https://hentaila.io/?page=21
+  Hentaila: HTTP 520 en https://hentaila.io/?page=20
+  Hentaila: HTTP 520 en https://hentaila.io/?page=20
+  Hentaila: HTTP 520 en https://hentaila.io/?page=20
+  Hentaila: GET falló https://hentaila.io/?page=21: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: GET falló https://hentaila.io/?page=17: Failed to perform, curl: (28) Operation timed out after 30001 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+  Hentaila: HTTP 520 en https://hentaila.io/?page=21
+  Hentaila: HTTP 520 en https://hentaila.io/?page=17
+  Hentaila: HTTP 520 en https://hentaila.io/?page=21
+== Géneros ==
+Géneros: 41 (recorridos de nuevo: 0)
+Géneros armados en 0 s
+  diag/salida_catalogo/generos.json: sin cambios, no se reescribe
+codigo de salida: 1
