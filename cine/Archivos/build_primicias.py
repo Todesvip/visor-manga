@@ -14,8 +14,9 @@ los sitios desde el celular:
   cine/Archivos/comics.json         Comics (los dos sitios WordPress)        ┘ (se queda el anterior).
 
   (*) VeoHentai se mudó a Hentaila (hentaila.io): mismos episodios y mismos slugs, imágenes en /uploads/. Top 10 y Más
-      vistos se arman primero de ahí y, si no responde, del sitio viejo. La fila del Top 10 usa la imagen HORIZONTAL de
-      cada episodio (la captura que Hentaila muestra en la página del episodio); Más vistos, la portada vertical.
+      vistos se arman primero de ahí y, si no responde, del sitio viejo. La fila del Top 10 es de imágenes HORIZONTALES:
+      la miniatura del episodio en MuchoHentai (del enlaces.json de la otra cuenta) y, solo si MuchoHentai no tiene la
+      serie, la captura que Hentaila muestra en la página del episodio; Más vistos usa la portada vertical de Hentaila.
 
 Uso:  python cine/Archivos/build_primicias.py            (lo corre GitHub Actions cada hora)
       python cine/Archivos/build_primicias.py --paginas 10 --salida cine/Archivos/primicias.json
@@ -1113,24 +1114,68 @@ def _backdrops_del_catalogo(folder):
     return out
 
 
+ENLACES_URL = "https://noads-hue.github.io/noads/cine/Archivos/enlaces.json"    # series ya resueltas en MuchoHentai (las arma la otra cuenta cada 3 h)
+_MH_IMAGEN = re.compile(r"^https?://(?:www\.)?muchohentai\.com/\S+\.(?:jpe?g|png|webp)$", re.I)
+
+
+def _enlaces_muchohentai(url=ENLACES_URL):
+    """clave (título de la serie en minúsculas) → serie de MuchoHentai ya resuelta, del enlaces.json que la otra cuenta arma
+    con las series del Home. {} si no responde o no trae lo esperado: el Top 10 sale entonces con lo de Hentaila."""
+    try:
+        r = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT)
+        if r.status_code != 200:
+            print(f"  enlaces.json: HTTP {r.status_code}", file=sys.stderr)
+            return {}
+        items = r.json().get("items") or []
+    except Exception as e:
+        print(f"  enlaces.json: no se pudo leer: {e}", file=sys.stderr)
+        return {}
+    out = {}
+    for it in items:
+        if isinstance(it, dict) and it.get("clave") and isinstance(it.get("anime"), dict):
+            out[str(it["clave"]).strip().lower()] = it["anime"]
+    print(f"  enlaces.json: {len(out)} series resueltas en MuchoHentai")
+    return out
+
+
+def _miniatura_muchohentai(serie, episodio, enlaces):
+    """La miniatura (rectangular) del episodio `episodio` de la serie `serie` en MuchoHentai; si ese episodio no la trae,
+    la imagen de la serie en MuchoHentai. None si MuchoHentai no tiene la serie."""
+    anime = (enlaces or {}).get((serie or "").strip().lower())
+    if not isinstance(anime, dict):
+        return None
+    if episodio > 0:                                  # los PV de MuchoHentai llevan número negativo: no son episodios
+        for ep in anime.get("episodios") or []:
+            if isinstance(ep, dict) and ep.get("num") == episodio and _MH_IMAGEN.match(str(ep.get("thumb") or "")):
+                return ep["thumb"]
+    poster = str(anime.get("poster") or "")
+    return poster if _MH_IMAGEN.match(poster) else None
+
+
 HENTAILA_MIN_TOP = 5          # una página con menos tarjetas que estas es un error del sitio, no una lista: no se pisa el JSON anterior
 HENTAILA_MIN_MAS = 10
 
 
-def _build_top10_hentaila(respaldo=None):
+def _build_top10_hentaila(respaldo=None, enlaces=None):
     tarjetas = _hentaila_tarjetas(HENTAILA_TOP_PAGES)[:10]
     if 0 < len(tarjetas) < HENTAILA_MIN_TOP:
         print(f"  Top 10: Hentaila dio solo {len(tarjetas)}: se descarta", file=sys.stderr)
         return []
-    # La fila del Top 10 es de imágenes HORIZONTALES (la captura de cada episodio), no de portadas verticales: salen de la
-    # página de cada episodio (un pedido por episodio, 4 a la vez). Sin captura, se deja la portada para no dejar un hueco.
+    # La fila del Top 10 es de imágenes HORIZONTALES (la captura de cada episodio), no de portadas verticales. Salen de
+    # MuchoHentai: la miniatura de ese episodio, ya resuelta en enlaces.json. Solo las series que MuchoHentai no tiene usan la
+    # de la página del episodio en Hentaila (un pedido por episodio, 4 a la vez) y, sin ella, la portada para no dejar un hueco.
     respaldo = respaldo or {}
+    miniaturas = [_miniatura_muchohentai(t["seriesName"], t["episode"], enlaces) for t in tarjetas]
+    faltan = [t for t, m in zip(tarjetas, miniaturas) if not m]
     with ThreadPoolExecutor(max_workers=4) as pool:
-        horizontales = list(pool.map(lambda t: _hentaila_horizontal(t["slug"], respaldo), tarjetas))
-    sin = sum(1 for h in horizontales if not h)
-    print(f"  Top 10: {len(tarjetas) - sin} de {len(tarjetas)} con imagen horizontal" + (f" ({sin} con la portada)" if sin else ""))
-    return [{"rank": i, "slug": t["slug"], "title": t["title"], "imageUrl": h or t["imageUrl"]}
-            for i, (t, h) in enumerate(zip(tarjetas, horizontales), 1)]
+        horizontales = dict(zip((t["slug"] for t in faltan),
+                                pool.map(lambda t: _hentaila_horizontal(t["slug"], respaldo), faltan)))
+    con_horizontal = sum(1 for h in horizontales.values() if h)
+    print(f"  Top 10: {len(tarjetas) - len(faltan)} de {len(tarjetas)} con la miniatura de MuchoHentai"
+          + (f", {con_horizontal} con la horizontal de Hentaila" if con_horizontal else "")
+          + (f", {len(faltan) - con_horizontal} con la portada" if len(faltan) > con_horizontal else ""))
+    return [{"rank": i, "slug": t["slug"], "title": t["title"], "imageUrl": m or horizontales.get(t["slug"]) or t["imageUrl"]}
+            for i, (t, m) in enumerate(zip(tarjetas, miniaturas), 1)]
 
 
 def _build_mas_vistos_hentaila():
@@ -1144,11 +1189,12 @@ def _build_mas_vistos_hentaila():
     return items
 
 
-def build_top10(respaldo=None):
+def build_top10(respaldo=None, enlaces=None):
     """Top 10 de la semana: primero de Hentaila (donde se mudó VeoHentai) y, si no responde, del sitio viejo.
-    `respaldo` = slug → imagen horizontal del catálogo, para los episodios cuya página no la trae."""
+    `enlaces` = las series de MuchoHentai ya resueltas (_enlaces_muchohentai): de ahí sale la imagen de cada episodio.
+    `respaldo` = slug → imagen horizontal del catálogo, para las series que MuchoHentai no tiene y cuya página no la trae."""
     try:
-        items = _build_top10_hentaila(respaldo)
+        items = _build_top10_hentaila(respaldo, enlaces)
     except Exception as e:
         print(f"  Top 10: Hentaila falló: {e}", file=sys.stderr)
         items = []
@@ -1396,10 +1442,11 @@ def build_home(folder):
     paths = {k: os.path.join(folder, v) for k, v in HOME_FILES.items()}
     prev_comics = _load_previous(paths["comics"]).get("items")
     respaldo = _backdrops_del_catalogo(folder)
+    enlaces = _enlaces_muchohentai()
 
     with ThreadPoolExecutor(max_workers=4) as pool:
         futures = {
-            "top10": pool.submit(build_top10, respaldo),
+            "top10": pool.submit(build_top10, respaldo, enlaces),
             "masVistos": pool.submit(build_mas_vistos),
             "avances": pool.submit(build_avances),
             "comics": pool.submit(build_comics, prev_comics),
