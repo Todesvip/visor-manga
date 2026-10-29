@@ -18,6 +18,12 @@ decenas por corrida) y se conserva lo que ya estaba en el catalogo.json anterior
 Antes de escribir se comprueba que cada portada exista de verdad (unos 20 s con las 2541): la que el sitio dice que no existe
 se cambia por la del mismo episodio en hstream.moe o, si ahí no está, por la de otro episodio de la serie.
 
+Las portadas se copian a ImgBB (cine/Archivos/espejo.json: dirección original → copia) y el catálogo lleva la copia, así la
+app no depende de Hentaila para las imágenes. Se suben de a tandas por corrida (las que aún no tienen copia), con la clave
+del secreto IMGBB_KEY (sin clave solo se usan las copias que ya hay). Cada corrida comprueba que las copias sigan existiendo:
+la que murió vuelve a la original (y se vuelve a subir); si casi todas murieron (ImgBB caído o la cuenta cerrada) esa
+corrida no se usa el espejo.
+
 Hentaila frena a quien pide muy seguido desde GitHub (páginas que se quedan colgadas o dan 520 de pasada, aunque desde un
 navegador carguen al instante). Por eso se pide de a 2 con pausa, una página colgada se corta a los 20 s y se vuelve a pedir,
 las que no respondieron se repescan de una en una esperando cada vez más, y las fichas y la revisión de portadas (extras)
@@ -33,6 +39,7 @@ Uso:  python cine/Archivos/build_catalogo.py                       (lo corre Git
       python cine/Archivos/build_catalogo.py --carpeta cine/Archivos --presupuesto 60
 """
 import argparse
+import base64
 import json
 import math
 import os
@@ -42,7 +49,7 @@ import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 import requests
 
@@ -66,6 +73,14 @@ REPESCA_TIEMPO_MAX_S = 240            # …y sin pasar de 4 min
 FICHAS_TIEMPO_MAX_S = 300             # las fichas (estudio, año, imagen horizontal) son un extra: no pasan de 5 min por corrida
 PORTADAS_TIEMPO_MAX_S = 300           # la revisión de portadas tampoco (lo que no se alcanzó a comprobar no se toca)
 PORTADA_TIMEOUT_S = 15                # una portada que tarda más que esto se da por colgada (las buenas salen del caché en < 1 s)
+IMGBB_API = "https://api.imgbb.com/1/upload"
+ESPEJO_POR_CORRIDA = 300              # portadas que se suben a ImgBB por corrida (las que aún no tienen copia), de una en una
+ESPEJO_PAUSA_S = 0.5                  # pausa entre subidas
+ESPEJO_TIEMPO_MAX_S = 600             # comprobar las copias + subir: tope por corrida (10 min); lo que falte, en la siguiente
+ESPEJO_FALLOS_SEGUIDOS = 5            # con 5 subidas seguidas fallidas ImgBB no está respondiendo: se deja para la siguiente
+ESPEJO_MUERTAS_MIN = 10               # si no existen más de la mitad de las copias (y al menos 10), ImgBB está caído o la cuenta
+                                      # cerrada: esa corrida se usan las originales (y no se borra nada del espejo)
+IMAGEN_MAX_BYTES = 32 * 1024 * 1024   # tope de ImgBB
 GENEROS_EXCLUIDOS = {"lolicon", "shota"}
 HSTREAM = "https://hstream.moe/images/hentai"     # portadas de respaldo: <serie>/cover-ep-<N>.webp (verticales, 268×394)
 PARALELO_IMG = 8                      # portadas que se comprueban a la vez (salen del caché de Cloudflare: unos 20 s las 2541)
@@ -449,12 +464,128 @@ def verificar_portadas(items):
     return cambiadas, sin_remedio, sin_comprobar
 
 
+# ── Espejo de portadas en ImgBB ───────────────────────────────────────────────────────────────────────────────
+
+def _nombre_imagen(url):
+    """Un nombre de archivo limpio para la copia: «Oushun-Jogakuen-no-Danyuu-1» (ImgBB lo pone en la dirección)."""
+    base = unquote(url.rsplit("/", 1)[-1].split("?")[0].rsplit(".", 1)[0])
+    base = re.sub(r"-{2,}", "-", re.sub(r"[^A-Za-z0-9._-]+", "-", base)).strip("-.")
+    return base[:60] or "portada"
+
+
+def _bajar_imagen(url):
+    """La imagen completa (bytes) o None si no responde, no es una imagen o es demasiado grande."""
+    s = getattr(_img_local, "s", None)
+    if s is None:
+        s = _img_local.s = requests.Session()
+    referer = "https://hstream.moe/" if "hstream.moe" in url else HENTAILA + "/"
+    cabeceras = {"User-Agent": bp.UA, "Referer": referer, "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"}
+    try:
+        with s.get(url, headers=cabeceras, stream=True, timeout=PORTADA_TIMEOUT_S) as r:
+            if r.status_code != 200 or not r.headers.get("content-type", "").startswith("image/"):
+                return None
+            datos = b""
+            for trozo in r.iter_content(65536):
+                datos += trozo
+                if len(datos) > IMAGEN_MAX_BYTES:
+                    return None
+    except Exception:
+        return None
+    return datos if datos.startswith(_MAGIA_IMAGEN) else None
+
+
+def _subir_imgbb(datos, nombre, key):
+    """Sube una imagen a ImgBB y devuelve la dirección directa de la copia (https://i.ibb.co/…) o None.
+    La clave va solo en la petición: ningún mensaje la repite (el texto de un error de red trae la dirección completa)."""
+    try:
+        r = requests.post(IMGBB_API, params={"key": key},
+                          data={"image": base64.b64encode(datos).decode("ascii"), "name": nombre}, timeout=90)
+    except Exception as e:
+        print(f"  ImgBB: no se pudo subir {nombre}: {type(e).__name__}", file=sys.stderr)
+        return None
+    try:
+        j = r.json()
+    except Exception:
+        j = None
+    if not isinstance(j, dict):
+        j = {}
+    data = j.get("data") if isinstance(j.get("data"), dict) else {}
+    url = str(data.get("url") or "")
+    if r.status_code == 200 and url.startswith("https://") and ".ibb.co/" in url:
+        return url
+    msg = str(j["error"].get("message") or "")[:80] if isinstance(j.get("error"), dict) else ""
+    print(f"  ImgBB: HTTP {r.status_code} al subir {nombre}" + (f": {msg}" if msg else ""), file=sys.stderr)
+    return None
+
+
+def cargar_espejo(doc):
+    """El mapa original → copia del espejo.json anterior (solo las entradas bien formadas)."""
+    items = doc.get("items") if isinstance(doc, dict) else None
+    if not isinstance(items, dict):
+        return {}
+    return {o: c for o, c in items.items() if isinstance(o, str) and isinstance(c, str)
+            and o.startswith("https://") and c.startswith("https://") and ".ibb.co/" in c}
+
+
+def espejar(items, espejo, key):
+    """Pone a cada episodio la copia de su portada en ImgBB (espejo: original → copia; se actualiza aquí mismo):
+      1. se comprueba que las copias que se van a usar sigan existiendo: la que no, vuelve a la original y sale del
+         espejo (se volverá a subir); si no existen más de la mitad, ImgBB está caído o la cuenta cerrada: esta corrida
+         se usan las originales y el espejo no se toca;
+      2. se suben las portadas que aún no tienen copia (hasta ESPEJO_POR_CORRIDA, mientras haya tiempo y clave);
+      3. cada episodio con copia lleva la copia.
+    Devuelve (con_copia, subidas, muertas, sin_comprobar)."""
+    limite = time.monotonic() + ESPEJO_TIEMPO_MAX_S
+    originales = sorted({it["imageUrl"] for it in items})
+    con_copia = [u for u in originales if u in espejo]
+    with ThreadPoolExecutor(max_workers=PARALELO_IMG) as pool:
+        estado = dict(zip(con_copia, pool.map(lambda u: _portada_viva(espejo[u], limite), con_copia)))
+    muertas = [u for u in con_copia if estado[u] is False]
+    sin_comprobar = sum(1 for v in estado.values() if v is None)
+    if len(muertas) > max(ESPEJO_MUERTAS_MIN, len(con_copia) // 2):
+        print(f"Espejo: no existen {len(muertas)} de {len(con_copia)} copias: ImgBB parece caído o la cuenta cerrada; "
+              "esta corrida se usan las portadas originales", file=sys.stderr)
+        return 0, 0, len(muertas), sin_comprobar
+    for u in muertas:
+        print(f"  Espejo: la copia de {u} ya no existe: vuelve la original y se volverá a subir", file=sys.stderr)
+        del espejo[u]
+
+    subidas = 0
+    faltan = [u for u in originales if u not in espejo and ".ibb.co/" not in u]   # (una copia heredada del catálogo anterior ya es copia)
+    if faltan and not key:
+        print(f"  Espejo: sin IMGBB_KEY no se sube nada ({len(faltan)} portadas sin copia)")
+    elif faltan:
+        seguidos = 0
+        for u in faltan[:ESPEJO_POR_CORRIDA]:
+            if time.monotonic() > limite:
+                break
+            datos = _bajar_imagen(u)
+            copia = _subir_imgbb(datos, _nombre_imagen(u), key) if datos else None
+            time.sleep(ESPEJO_PAUSA_S)
+            if copia:
+                espejo[u] = copia
+                subidas += 1
+                seguidos = 0
+            else:
+                seguidos += 1
+                if seguidos >= ESPEJO_FALLOS_SEGUIDOS:
+                    print(f"  Espejo: {seguidos} subidas seguidas fallaron: se sigue en la próxima corrida", file=sys.stderr)
+                    break
+
+    con = 0
+    for it in items:
+        it["imageUrl"] = espejo.get(it["imageUrl"], it["imageUrl"])
+        con += ".ibb.co/" in it["imageUrl"]
+    return con, subidas, len(muertas), sin_comprobar
+
+
 def _nombre_de_slug(slug):
     return " ".join(w[:1].upper() + w[1:] for w in slug.replace("-", " ").split())
 
 
-def build_catalogo(previo_doc, presupuesto=PRESUPUESTO, max_paginas=MAX_PAGINAS):
-    """El catálogo completo (dict para escribir) o None si no se pudo armar."""
+def build_catalogo(previo_doc, presupuesto=PRESUPUESTO, max_paginas=MAX_PAGINAS, espejo=None, key=None):
+    """El catálogo completo (dict para escribir) o None si no se pudo armar. `espejo` (original → copia en ImgBB) se
+    actualiza aquí mismo; None = sin espejo."""
     previo_items = (previo_doc or {}).get("items") or []
     previo = {it["slug"]: it for it in previo_items if isinstance(it, dict) and it.get("slug")}
     r = recorrer("/", max_paginas)
@@ -486,6 +617,13 @@ def build_catalogo(previo_doc, presupuesto=PRESUPUESTO, max_paginas=MAX_PAGINAS)
               + (f", {sin_comprobar} sin poder comprobar" if sin_comprobar else ""))
     except Exception as e:                  # la revisión es un extra: si falla, el catálogo sale igual (con las portadas como estaban)
         print(f"Portadas: no se pudieron revisar ({type(e).__name__}: {e})", file=sys.stderr)
+    if espejo is not None:
+        try:
+            con, subidas, muertas, sin_comprobar = espejar(items, espejo, key)
+            print(f"Espejo: {con} de {len(items)} con copia en ImgBB, {subidas} subidas ahora"
+                  + (f", {muertas} copias muertas" if muertas else "") + (f", {sin_comprobar} sin poder comprobar" if sin_comprobar else ""))
+        except Exception as e:              # el espejo también es un extra
+            print(f"Espejo: falló ({type(e).__name__})", file=sys.stderr)
 
     usados = sorted({it["studioSlug"] for it in items if it["studioSlug"]})
     estudios = sorted(({"slug": s, "name": nombres.get(s) or _nombre_de_slug(s)} for s in usados), key=lambda e: e["name"].lower())
@@ -501,9 +639,11 @@ def _item_corto(c):
             "imageUrl": c["imageUrl"], "studioSlug": "", "year": 0}
 
 
-def build_generos(previo_doc, items_por_slug, max_paginas=MAX_PAGINAS):
+def build_generos(previo_doc, items_por_slug, max_paginas=MAX_PAGINAS, espejo=None):
     """Los géneros (dict para escribir) o None si no se pudieron armar. De cada género solo se vuelve a recorrer lo que
-    cambió de tamaño desde la vez anterior (un episodio nuevo mueve unos pocos géneros)."""
+    cambió de tamaño desde la vez anterior (un episodio nuevo mueve unos pocos géneros). `espejo`: original → copia en
+    ImgBB, para la miniatura del género y los episodios que el catálogo no tiene."""
+    espejo = espejo or {}
     html = bp._get_hentaila_page(HENTAILA + "/generos/")
     if not html:
         print("Géneros: /generos/ no responde", file=sys.stderr)
@@ -545,6 +685,9 @@ def build_generos(previo_doc, items_por_slug, max_paginas=MAX_PAGINAS):
         else:
             items = [items_por_slug.get(s) for s in slugs[:POR_PAGINA]]
         items = [{k: v for k, v in i.items() if v is not None} for i in items if i]
+        for i in items:
+            i["imageUrl"] = espejo.get(i.get("imageUrl"), i.get("imageUrl"))
+        thumb = espejo.get(thumb, thumb)
         out.append({"slug": g["slug"], "name": g["name"], "description": g["description"],
                     "image": g["image"], "thumb": thumb, "pageCount": paginas, "episodios": episodios,
                     "items": items, "slugs": slugs})
@@ -580,6 +723,19 @@ def write_if_changed(path, doc_parcial):
     return True
 
 
+def escribir_espejo(path, espejo, antes):
+    """Guarda espejo.json si el mapa cambió. True si se escribió."""
+    if espejo == antes:
+        return False
+    doc = {"generado": datetime.now(timezone.utc).isoformat(timespec="seconds"), "ts": int(time.time() * 1000),
+           "total": len(espejo), "items": dict(sorted(espejo.items()))}
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(doc, f, ensure_ascii=False, separators=(",", ":"))
+        f.write("\n")
+    print(f"  Escrito {path} ({len(espejo)} copias)")
+    return True
+
+
 def main():
     try:
         sys.stdout.reconfigure(line_buffering=True)
@@ -596,6 +752,10 @@ def main():
         sys.exit(1)
     ruta_cat = os.path.join(args.carpeta, "catalogo.json")
     ruta_gen = os.path.join(args.carpeta, "generos.json")
+    ruta_esp = os.path.join(args.carpeta, "espejo.json")
+    espejo = cargar_espejo(_cargar(ruta_esp))
+    espejo_antes = dict(espejo)
+    key = os.environ.get("IMGBB_KEY", "").strip() or None      # el secreto del workflow; nunca se imprime
 
     pedidos, ok = 0, 0
     t0 = time.time()
@@ -604,17 +764,18 @@ def main():
     if args.solo != "generos":
         pedidos += 1
         print("== Catálogo ==")
-        cat = build_catalogo(previo_cat, args.presupuesto, args.max_paginas)
+        cat = build_catalogo(previo_cat, args.presupuesto, args.max_paginas, espejo, key)
         if cat is not None:
             print(f"Catálogo armado en {time.time() - t0:.0f} s")
             write_if_changed(ruta_cat, cat)
+            escribir_espejo(ruta_esp, espejo, espejo_antes)
             items_por_slug = {it["slug"]: it for it in cat["items"]}
             ok += 1
     if args.solo != "catalogo":
         pedidos += 1
         print("== Géneros ==")
         t1 = time.time()
-        gen = build_generos(_cargar(ruta_gen), items_por_slug, args.max_paginas)
+        gen = build_generos(_cargar(ruta_gen), items_por_slug, args.max_paginas, espejo)
         if gen is not None:
             print(f"Géneros armados en {time.time() - t1:.0f} s")
             write_if_changed(ruta_gen, gen)

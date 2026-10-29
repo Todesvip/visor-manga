@@ -1,7 +1,9 @@
 # Arma cada 6 horas, con cine/Archivos/build_catalogo.py, el Catálogo y los Géneros del modo privado y los sube al repo:
 #   cine/Archivos/catalogo.json  Todos los episodios de Hentaila (póster, estudio, año, imagen horizontal) + estudios y años
 #   cine/Archivos/generos.json   Los géneros con su miniatura, su primera página y la lista completa de episodios
-# (VeoHentai se mudó a Hentaila: de ahí salen ahora.) GitHub Pages los sirve en
+#   cine/Archivos/espejo.json    Portada original → su copia en ImgBB (el catálogo lleva las copias; se suben de a tandas)
+# (VeoHentai se mudó a Hentaila: de ahí salen ahora.) La clave de ImgBB va en el secreto IMGBB_KEY del repo
+# (Settings → Secrets and variables → Actions); sin ella solo se usan las copias que ya hay. GitHub Pages los sirve en
 # https://todesvip.github.io/visor-manga/cine/Archivos/ y la app solo los descarga
 # (config/urls/catalogo y config/urls/generos en Firebase).
 #
@@ -40,8 +42,10 @@ jobs:
       - name: Dependencias
         run: pip install requests beautifulsoup4 html5lib curl_cffi
 
-      - name: Armar catalogo.json y generos.json (hasta 3 intentos)
+      - name: Armar catalogo.json, generos.json y espejo.json (hasta 3 intentos)
         id: armar
+        env:
+          IMGBB_KEY: ${{ secrets.IMGBB_KEY }}
         run: |
           for intento in 1 2 3; do
             if python cine/Archivos/build_catalogo.py --carpeta cine/Archivos; then
@@ -57,14 +61,14 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for f in cine/Archivos/catalogo.json cine/Archivos/generos.json; do
+          for f in cine/Archivos/catalogo.json cine/Archivos/generos.json cine/Archivos/espejo.json; do
             if [ -f "$f" ]; then git add "$f"; fi
           done
           if git diff --cached --quiet; then
             echo "Sin cambios: no se sube nada"
             exit 0
           fi
-          git commit -m "Catálogo y géneros: actualización automática ($(date -u +'%Y-%m-%d %H:%M') UTC)"
+          git commit -m "Catálogo, géneros y espejo: actualización automática ($(date -u +'%Y-%m-%d %H:%M') UTC)"
           # otro workflow (el del Home) puede haber subido algo mientras tanto: se acomoda encima y se reintenta
           for intento in 1 2 3 4 5; do
             if git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"; then
