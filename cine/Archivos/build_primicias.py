@@ -8,15 +8,19 @@ los sitios desde el celular:
                                     (mismas búsquedas, misma fusión Raw/Eng/Es por episodio, mismos PV, misma
                                     consolidación de nombres, mismos ids "mh_..."), para que favoritos e historial
                                     sigan reconociendo las mismas series.
-  cine/Archivos/top10.json          Top 10 de la semana (Hentaila*)          ┐ calco de los parsers de la app;
-  cine/Archivos/mas_vistos.json     Más vistos (Hentaila*)                   │ cada uno con su fecha (ts). Si un
+  cine/Archivos/top10.json          Top 10 de la semana (VeoHentai*)         ┐ calco de los parsers de la app;
+  cine/Archivos/mas_vistos.json     Más vistos (VeoHentai*)                  │ cada uno con su fecha (ts). Si un
   cine/Archivos/avances.json        Avances recientes (PV de muchohentai)    │ sitio falla, su archivo no se toca
   cine/Archivos/comics.json         Comics (los dos sitios WordPress)        ┘ (se queda el anterior).
 
-  (*) VeoHentai se mudó a Hentaila (hentaila.io): mismos episodios y mismos slugs, imágenes en /uploads/. Top 10 y Más
-      vistos se arman primero de ahí y, si no responde, del sitio viejo. La fila del Top 10 es de imágenes HORIZONTALES:
-      la miniatura del episodio en MuchoHentai (del enlaces.json de la otra cuenta) y, solo si MuchoHentai no tiene la
-      serie, la captura que Hentaila muestra en la página del episodio; Más vistos usa la portada vertical de Hentaila.
+  (*) VeoHentai (veohentai.com) y Hentaila (hentaila.io) son el mismo sitio con dos diseños: mismos episodios, mismos
+      slugs y las mismas imágenes (veohentai.com/media/X = hentaila.io/uploads/X). VeoHentai tiene las portadas completas
+      y sus datos ya vienen armados: Top 10 y Más vistos se arman primero de ahí y, si no responde, de Hentaila.
+      La fila del Top 10 es de imágenes HORIZONTALES: la miniatura del episodio en MuchoHentai (del enlaces.json de la
+      otra cuenta) y, solo si MuchoHentai no tiene la serie, la horizontal que VeoHentai muestra en su Top 10 (desde
+      Hentaila: la captura de la página del episodio); Más vistos usa la portada vertical. Cada episodio del Top 10 lleva
+      el NOMBRE que la serie tiene en MuchoHentai («Himawari wa Yoru ni Saku Episodio 1», no «Himawari ga…» como la llama
+      el sitio), que es el que la app usa para abrirla; sin resolver, el del sitio.
 
 Uso:  python cine/Archivos/build_primicias.py            (lo corre GitHub Actions cada hora)
       python cine/Archivos/build_primicias.py --paginas 10 --salida cine/Archivos/primicias.json
@@ -522,14 +526,18 @@ _JSOUP_WS = " \t\n\f\r "
 
 
 def _get_text_page(url, headers, referer=None):
-    """GET de una página HTML (2 intentos). None si no hubo respuesta útil (como httpGetText de la app)."""
+    """GET de una página HTML (2 intentos). None si no hubo respuesta útil (como httpGetText de la app). Con curl_cffi
+    (huella TLS de Chrome) Cloudflare no pone reto a los servidores de GitHub; si no está instalada, requests."""
     s = requests.Session()
     h = dict(headers)
     if referer:
         h["Referer"] = referer
     for intento in range(2):
         try:
-            r = s.get(url, headers=h, timeout=TIMEOUT)
+            if _CURL:
+                r = _curl_requests.get(url, headers={k: v for k, v in h.items() if k != "User-Agent"}, impersonate="chrome", timeout=TIMEOUT)
+            else:
+                r = s.get(url, headers=h, timeout=TIMEOUT)
             if r.status_code in (429, 503):
                 print(f"  HTTP {r.status_code} en {url} (intento {intento + 1})", file=sys.stderr)
                 time.sleep(3 + 3 * intento)
@@ -707,17 +715,6 @@ def parse_top10(html):
         if len(out) >= 10:
             break
     return sorted(out, key=lambda x: x["rank"])
-
-
-def _build_top10_veo():
-    html = _get_text_page(VEO + "/", VEO_HEADERS)
-    if not html:
-        return []
-    try:
-        return parse_top10(html)
-    except Exception as e:
-        print(f"  Top 10: no se pudo leer la página: {e}", file=sys.stderr)
-        return []
 
 
 # ── Más vistos (VeoHentaiExploreRepository.parsePage con ?orden=vistas) ──────────────────────────────────────
@@ -912,19 +909,23 @@ def parse_explore_page(html):
 
 
 def _build_mas_vistos_veo():
+    """Más vistos desde /explorar/?orden=vistas de VeoHentai (tarjetas completas: id, serie, estudio, año, portada)."""
     html = _get_text_page(VEO + "/explorar/?orden=vistas", VEO_HEADERS)
     if not html:
         return []
-    items = parse_explore_page(html)
-    return (items or [])[:MOST_COUNT]
+    items = (parse_explore_page(html) or [])[:MOST_COUNT]
+    if 0 < len(items) < HENTAILA_MIN_MAS:
+        print(f"  Más vistos: VeoHentai dio solo {len(items)}: se descarta", file=sys.stderr)
+        return []
+    return items
 
 
-# ── Hentaila (hentaila.io): ahí se mudó VeoHentai ─────────────────────────────────────────────────────────────
+# ── Hentaila (hentaila.io): el otro diseño de VeoHentai ───────────────────────────────────────────────────────
 # Son los mismos episodios y los mismos slugs (/ver/<slug>/), pero con otro diseño: las imágenes salen de /uploads/AAAA/MM/
-# (antes /media/AAAA/MM/), "Más vistos" es /sort/most-views/ y "Trending" es /trending/. Cada episodio es una tarjeta:
+# (en VeoHentai, /media/AAAA/MM/), "Más vistos" es /sort/most-views/ y "Trending" es /trending/. Cada episodio es una tarjeta:
 #   <a class="a_item" href="/ver/<slug>/"><div class="v_item"><div class="video_cover"><img src="/uploads/…"/>
 #   <span class="card_badge">EP 2</span> … </div><div class="video_title">Título Episodio 2</div></div></a>
-# Top 10 y Más vistos se arman primero de ahí; si Hentaila no responde se prueba el sitio viejo (VeoHentai).
+# Top 10 y Más vistos se arman primero desde VeoHentai (tiene las portadas completas); si no responde, desde aquí.
 
 try:
     # Con la huella TLS de Chrome Cloudflare no pone reto a los servidores de GitHub; si no está instalada se usa requests.
@@ -1142,6 +1143,22 @@ def _enlaces_muchohentai(url=ENLACES_URL):
     return out
 
 
+def _nombre_muchohentai(serie, enlaces):
+    """El nombre que la serie tiene en MuchoHentai (anime.titulo del enlaces.json) si está resuelta; None si no."""
+    anime = (enlaces or {}).get((serie or "").strip().lower())
+    titulo = str(anime.get("titulo") or "").strip() if isinstance(anime, dict) else ""
+    return titulo or None
+
+
+def _titulo_top10(t, enlaces):
+    """El título de la fila del Top 10: el nombre que la serie tiene en MuchoHentai (así la app la abre con ese mismo
+    nombre, que es el que su buscador entiende) + «Episodio N»; si MuchoHentai no la tiene, el de Hentaila tal cual."""
+    nombre = _nombre_muchohentai(t["seriesName"], enlaces)
+    if not nombre:
+        return t["title"]
+    return f"{nombre} Episodio {t['episode']}" if t["episode"] > 0 else nombre
+
+
 def _miniatura_muchohentai(serie, episodio, enlaces):
     """La miniatura (rectangular) del episodio `episodio` de la serie `serie` en MuchoHentai; si ese episodio no la trae,
     la imagen de la serie en MuchoHentai. None si MuchoHentai no tiene la serie."""
@@ -1160,26 +1177,67 @@ HENTAILA_MIN_TOP = 5          # una página con menos tarjetas que estas es un e
 HENTAILA_MIN_MAS = 10
 
 
+def _armar_top10(tarjetas, enlaces, fuente, horizontal_de=None, sin_nada="la portada"):
+    """Las filas del Top 10 a partir de tarjetas ({slug, title, episode, seriesName, imageUrl}, en orden). La fila es de
+    imágenes HORIZONTALES (la captura de cada episodio), no de portadas verticales: salen de MuchoHentai (la miniatura de
+    ese episodio, ya resuelta en enlaces.json). Solo las series que MuchoHentai no tiene usan `horizontal_de(tarjeta)` (en
+    Hentaila, la de la página del episodio: un pedido por episodio, 4 a la vez) y, sin ella, la imagen de la tarjeta para no
+    dejar un hueco. El título lleva el nombre que la serie tiene en MuchoHentai."""
+    miniaturas = [_miniatura_muchohentai(t["seriesName"], t["episode"], enlaces) for t in tarjetas]
+    faltan = [t for t, m in zip(tarjetas, miniaturas) if not m]
+    horizontales = {}
+    if faltan and horizontal_de is not None:
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            horizontales = dict(zip((t["slug"] for t in faltan), pool.map(horizontal_de, faltan)))
+    con_horizontal = sum(1 for h in horizontales.values() if h)
+    print(f"  Top 10 ({fuente}): {len(tarjetas) - len(faltan)} de {len(tarjetas)} con la miniatura de MuchoHentai"
+          + (f", {con_horizontal} con la horizontal de Hentaila" if con_horizontal else "")
+          + (f", {len(faltan) - con_horizontal} con {sin_nada}" if len(faltan) > con_horizontal else ""))
+    return [{"rank": i, "slug": t["slug"], "title": _titulo_top10(t, enlaces), "imageUrl": m or horizontales.get(t["slug"]) or t["imageUrl"]}
+            for i, (t, m) in enumerate(zip(tarjetas, miniaturas), 1)]
+
+
+def _episodio_de(titulo, slug):
+    """El número de episodio de una tarjeta de VeoHentai: del título («… Episodio 7») o, si no, del final del slug."""
+    m = re.search(r"(?i)episodio\s*(\d+)\s*$", titulo) or re.search(r"episodio-(\d+)$", slug)
+    return int(m.group(1)) if m else 0
+
+
+def _build_top10_veo(enlaces=None):
+    """Top 10 de la semana desde la portada de VeoHentai: su sección «Top 10» ya trae la imagen HORIZONTAL de cada episodio
+    (es la fila que la app mostraba antes), así que a las series que MuchoHentai no tiene les queda esa. La serie y el
+    número de cada episodio salen de la lista de últimos episodios de la misma portada (trae series.name y episodeNumber) y,
+    si el episodio no está entre ellos, del título."""
+    html = _get_text_page(VEO + "/", VEO_HEADERS)
+    if not html:
+        return []
+    try:
+        top = parse_top10(html)
+    except Exception as e:
+        print(f"  Top 10: no se pudo leer la portada de VeoHentai: {e}", file=sys.stderr)
+        return []
+    if 0 < len(top) < HENTAILA_MIN_TOP:
+        print(f"  Top 10: VeoHentai dio solo {len(top)}: se descarta", file=sys.stderr)
+        return []
+    try:
+        recientes = {it["slug"]: it for it in _parse_items(_rsc_stream(html))}
+    except Exception:
+        recientes = {}
+    tarjetas = []
+    for t in top:
+        r = recientes.get(t["slug"]) or {}
+        tarjetas.append({"slug": t["slug"], "title": t["title"], "episode": r.get("episode") or _episodio_de(t["title"], t["slug"]),
+                         "seriesName": r.get("seriesName") or _EP_AL_FINAL.sub("", t["title"]).strip() or t["title"], "imageUrl": t["imageUrl"]})
+    return _armar_top10(tarjetas, enlaces, "VeoHentai", sin_nada="la horizontal de VeoHentai")
+
+
 def _build_top10_hentaila(respaldo=None, enlaces=None):
     tarjetas = _hentaila_tarjetas(HENTAILA_TOP_PAGES)[:10]
     if 0 < len(tarjetas) < HENTAILA_MIN_TOP:
         print(f"  Top 10: Hentaila dio solo {len(tarjetas)}: se descarta", file=sys.stderr)
         return []
-    # La fila del Top 10 es de imágenes HORIZONTALES (la captura de cada episodio), no de portadas verticales. Salen de
-    # MuchoHentai: la miniatura de ese episodio, ya resuelta en enlaces.json. Solo las series que MuchoHentai no tiene usan la
-    # de la página del episodio en Hentaila (un pedido por episodio, 4 a la vez) y, sin ella, la portada para no dejar un hueco.
     respaldo = respaldo or {}
-    miniaturas = [_miniatura_muchohentai(t["seriesName"], t["episode"], enlaces) for t in tarjetas]
-    faltan = [t for t, m in zip(tarjetas, miniaturas) if not m]
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        horizontales = dict(zip((t["slug"] for t in faltan),
-                                pool.map(lambda t: _hentaila_horizontal(t["slug"], respaldo), faltan)))
-    con_horizontal = sum(1 for h in horizontales.values() if h)
-    print(f"  Top 10: {len(tarjetas) - len(faltan)} de {len(tarjetas)} con la miniatura de MuchoHentai"
-          + (f", {con_horizontal} con la horizontal de Hentaila" if con_horizontal else "")
-          + (f", {len(faltan) - con_horizontal} con la portada" if len(faltan) > con_horizontal else ""))
-    return [{"rank": i, "slug": t["slug"], "title": t["title"], "imageUrl": m or horizontales.get(t["slug"]) or t["imageUrl"]}
-            for i, (t, m) in enumerate(zip(tarjetas, miniaturas), 1)]
+    return _armar_top10(tarjetas, enlaces, "Hentaila", lambda t: _hentaila_horizontal(t["slug"], respaldo))
 
 
 def _build_mas_vistos_hentaila():
@@ -1194,31 +1252,40 @@ def _build_mas_vistos_hentaila():
 
 
 def build_top10(respaldo=None, enlaces=None):
-    """Top 10 de la semana: primero de Hentaila (donde se mudó VeoHentai) y, si no responde, del sitio viejo.
+    """Top 10 de la semana: primero de VeoHentai y, si no responde, de Hentaila (el otro diseño del mismo sitio).
     `enlaces` = las series de MuchoHentai ya resueltas (_enlaces_muchohentai): de ahí sale la imagen de cada episodio.
-    `respaldo` = slug → imagen horizontal del catálogo, para las series que MuchoHentai no tiene y cuya página no la trae."""
+    `respaldo` = slug → imagen horizontal del catálogo, para cuando se arma desde Hentaila y una serie que MuchoHentai no
+    tiene tampoco trae la horizontal en su página."""
     try:
-        items = _build_top10_hentaila(respaldo, enlaces)
+        items = _build_top10_veo(enlaces)
     except Exception as e:
-        print(f"  Top 10: Hentaila falló: {e}", file=sys.stderr)
+        print(f"  Top 10: VeoHentai falló: {e}", file=sys.stderr)
         items = []
     if items:
         return items
-    print("  Top 10: Hentaila sin datos, se prueba VeoHentai", file=sys.stderr)
-    return _build_top10_veo()
+    print("  Top 10: VeoHentai sin datos, se prueba Hentaila", file=sys.stderr)
+    try:
+        return _build_top10_hentaila(respaldo, enlaces)
+    except Exception as e:
+        print(f"  Top 10: Hentaila falló: {e}", file=sys.stderr)
+        return []
 
 
 def build_mas_vistos():
-    """Más vistos: primero de Hentaila y, si no responde, del sitio viejo."""
+    """Más vistos: primero de VeoHentai y, si no responde, de Hentaila."""
     try:
-        items = _build_mas_vistos_hentaila()
+        items = _build_mas_vistos_veo()
     except Exception as e:
-        print(f"  Más vistos: Hentaila falló: {e}", file=sys.stderr)
+        print(f"  Más vistos: VeoHentai falló: {e}", file=sys.stderr)
         items = []
     if items:
         return items
-    print("  Más vistos: Hentaila sin datos, se prueba VeoHentai", file=sys.stderr)
-    return _build_mas_vistos_veo()
+    print("  Más vistos: VeoHentai sin datos, se prueba Hentaila", file=sys.stderr)
+    try:
+        return _build_mas_vistos_hentaila()
+    except Exception as e:
+        print(f"  Más vistos: Hentaila falló: {e}", file=sys.stderr)
+        return []
 
 
 # ── Avances recientes (fetchHentaiVideosForHome: muchohentai.com/g/preview/) ─────────────────────────────────
