@@ -77,6 +77,9 @@ IMGBB_API = "https://api.imgbb.com/1/upload"
 ESPEJO_POR_CORRIDA = 300              # portadas que se suben a ImgBB por corrida (las que aún no tienen copia), de una en una
 ESPEJO_PAUSA_S = 0.5                  # pausa entre subidas
 ESPEJO_TIEMPO_MAX_S = 600             # comprobar las copias + subir: tope por corrida (10 min); lo que falte, en la siguiente
+ESPEJO_COMPROBAR_POR_CORRIDA = 150    # copias que se comprueban por corrida: una tanda distinta cada vez (todas, en unos días)
+ESPEJO_COMPROBAR_TIEMPO_S = 120       # …y como mucho 2 min, para que quede tiempo de subir
+ESPEJO_TANDA_CADA_S = 6 * 60 * 60     # la tanda avanza cada 6 h (lo que tarda en volver a correr el catálogo)
 ESPEJO_FALLOS_SEGUIDOS = 5            # con 5 subidas seguidas fallidas ImgBB no está respondiendo: se deja para la siguiente
 ESPEJO_MUERTAS_MIN = 10               # si no existen más de la mitad de las copias (y al menos 10), ImgBB está caído o la cuenta
                                       # cerrada: esa corrida se usan las originales (y no se borra nada del espejo)
@@ -84,7 +87,7 @@ IMAGEN_MAX_BYTES = 32 * 1024 * 1024   # tope de ImgBB
 GENEROS_EXCLUIDOS = {"lolicon", "shota"}
 HSTREAM = "https://hstream.moe/images/hentai"     # portadas de respaldo: <serie>/cover-ep-<N>.webp (verticales, 268×394)
 PARALELO_IMG = 4                      # portadas de Hentaila que se comprueban a la vez (sin apurar al sitio)
-PARALELO_ESPEJO = 8                   # copias en ImgBB que se comprueban a la vez (su CDN aguanta)
+PARALELO_ESPEJO = 4                   # copias en ImgBB que se comprueban a la vez (ImgBB también frena las ráfagas)
 PORTADAS_POR_CORRIDA = 400            # portadas de Hentaila que se comprueban por corrida, de la más nueva a la más vieja
 MUERTAS_FRACCION = 0.05               # si el sitio dice «no existe» de más del 5 % de las portadas, es un bloqueo: no se cambia nada
 MUERTAS_TOPE_MIN = 25                 # (y nunca menos de 25, para que un catálogo chico no se bloquee por una o dos)
@@ -531,23 +534,35 @@ def cargar_espejo(doc):
             and o.startswith("https://") and c.startswith("https://") and ".ibb.co/" in c}
 
 
+def _tanda(con_copia):
+    """Las copias que se comprueban en esta corrida: todas si son pocas; si no, una ventana de ESPEJO_COMPROBAR_POR_CORRIDA
+    que avanza cada ESPEJO_TANDA_CADA_S (así en unos días pasan todas, sin ráfagas que ImgBB frene)."""
+    if len(con_copia) <= ESPEJO_COMPROBAR_POR_CORRIDA:
+        return list(con_copia)
+    desde = int(time.time() // ESPEJO_TANDA_CADA_S) * ESPEJO_COMPROBAR_POR_CORRIDA % len(con_copia)
+    return (con_copia + con_copia)[desde:desde + ESPEJO_COMPROBAR_POR_CORRIDA]
+
+
 def espejar(items, espejo, key):
     """Pone a cada episodio la copia de su portada en ImgBB (espejo: original → copia; se actualiza aquí mismo):
-      1. se comprueba que las copias que se van a usar sigan existiendo: la que no, vuelve a la original y sale del
-         espejo (se volverá a subir); si no existen más de la mitad, ImgBB está caído o la cuenta cerrada: esta corrida
-         se usan las originales y el espejo no se toca;
+      1. se comprueba que una tanda de las copias que se van a usar siga existiendo (una tanda distinta por corrida, 2 min
+         como mucho): la que no, vuelve a la original y sale del espejo (se volverá a subir); si no existen más de la
+         mitad de las comprobadas, ImgBB está caído o la cuenta cerrada: esta corrida se usan las originales y el espejo
+         no se toca;
       2. se suben las portadas que aún no tienen copia (hasta ESPEJO_POR_CORRIDA, mientras haya tiempo y clave);
       3. cada episodio con copia lleva la copia.
     Devuelve (con_copia, subidas, muertas, sin_comprobar)."""
     limite = time.monotonic() + ESPEJO_TIEMPO_MAX_S
     originales = list(dict.fromkeys(it["imageUrl"] for it in items))        # en el orden del catálogo: lo más nuevo primero
     con_copia = [u for u in originales if u in espejo]
+    tanda = _tanda(con_copia)
+    limite_comprobar = min(limite, time.monotonic() + ESPEJO_COMPROBAR_TIEMPO_S)
     with ThreadPoolExecutor(max_workers=PARALELO_ESPEJO) as pool:
-        estado = dict(zip(con_copia, pool.map(lambda u: _portada_viva(espejo[u], limite), con_copia)))
-    muertas = [u for u in con_copia if estado[u] is False]
+        estado = dict(zip(tanda, pool.map(lambda u: _portada_viva(espejo[u], limite_comprobar), tanda)))
+    muertas = [u for u in tanda if estado[u] is False]
     sin_comprobar = sum(1 for v in estado.values() if v is None)
-    if len(muertas) > max(ESPEJO_MUERTAS_MIN, len(con_copia) // 2):
-        print(f"Espejo: no existen {len(muertas)} de {len(con_copia)} copias: ImgBB parece caído o la cuenta cerrada; "
+    if len(muertas) > max(ESPEJO_MUERTAS_MIN, len(tanda) // 2):
+        print(f"Espejo: no existen {len(muertas)} de {len(tanda)} copias comprobadas: ImgBB parece caído o la cuenta cerrada; "
               "esta corrida se usan las portadas originales", file=sys.stderr)
         return 0, 0, len(muertas), sin_comprobar
     for u in muertas:
