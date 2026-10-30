@@ -1,8 +1,608 @@
 {
- "generado": "2026-10-30T19:42:10+00:00",
- "ts": 1793389330004,
- "total": 4,
+ "generado": "2026-10-30T22:24:19+00:00",
+ "ts": 1793399059689,
+ "total": 50,
  "items": {
+  "monos_20-seiki-denki-mokuroku-eureka-evrika": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Kioto, a principios del siglo XX. Kihachi presencia las maravillas de la electricidad junto a Seiroku. Cuatro años después, solo y cínico, conoce a una chica absorta en la oración."
+    },
+    {
+     "descripcion": "Entre una nube de incienso, Yosuke irrumpe en el taller de Kihachi y exige el Catálogo, y también a su prometida. Pero, ¿por qué Inako lo tiene en primer lugar?",
+     "titulo": "Los misterios del Catálogo"
+    },
+    {
+     "descripcion": "Lleno de negación, Yosuke choca con Kihachi. Más tarde, los agudos sentidos de Inako revelan un secreto, y su fe inspira a Kihachi a recrear un invento."
+    },
+    {
+     "descripcion": "Inako conoce a una dueña de tienda afligida cuya pérdida se parece a la suya. Creyendo plenamente en las habilidades de Kihachi, le pide que construya una máquina eléctrica para ayudarla."
+    },
+    {
+     "descripcion": "El último experimento de Kihachi llama la atención de un extraño graduado universitario, convencido de que puede ayudarlo a demostrar su pasión a la chica que le gusta."
+    },
+    {
+     "descripcion": "Yosuke desafía a Kihachi y a la pandilla a una batalla musical. Con solo Inako con experiencia musical, ¿podrán dominar los instrumentos eléctricos en una semana?",
+     "titulo": "El sonido de la innovación"
+    },
+    {
+     "descripcion": "El día de la ceremonia de compromiso de Inako, Kihachi la insta a perseguir sus sueños y la ayuda a escapar. Guiados por la carta de Stuart, se dirigen a Shiga."
+    },
+    {
+     "descripcion": "Antes de que Kihachi pueda descubrir cómo reparar la llave eléctrica, Kengo se derrumba y confiesa el secreto que ha cargado durante los últimos tres años."
+    },
+    {
+     "descripcion": "Kihachi toma una decisión impactante para proteger a Inako, pero ella toma las riendas del asunto. Yosuke rememora su primer encuentro con Seiroku."
+    },
+    {
+     "descripcion": "Yosuke hace un descubrimiento crucial. Después de que Inako y Kihachi aclaran su malentendido, ayudan a Kengo a reconciliarse con Noriko mediante un plan sorprendente."
+    },
+    {
+     "descripcion": "Tras colarse Inako y Saki en la oficina de Yosuke para buscar pistas sobre el Brocado Eléctrico, Kihachi desaparece. Inako se da cuenta de que su padre tiene la clave."
+    },
+    {
+     "descripcion": "Inako y Kihachi se entregan por completo a perseguir sus sueños. Decidido a cumplir la visión de Seiroku, Yosuke arrastra a Kihachi a un proyecto colosal."
+    },
+    {
+     "descripcion": "A medida que el Cerebro Eléctrico enloquece, Kihachi, Inako y Yosuke enfrentan su destino. ¿Quién se quedará atrapado en el pasado o mirará hacia el futuro?",
+     "titulo": "Hacia el futuro que deseamos"
+    }
+   ]
+  },
+  "monos_25-jigen-no-ririsa": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Okumura puede no estar interesado en las chicas 3D, pero se sorprende al descubrir que él y Ririsa comparten pasiones similares."
+    },
+    {
+     "descripcion": "Mikari es una nueva alumna en la escuela y todos los chicos están locos por ella, ya que es modelo. Además, resulta ser la amiga de la infancia de Okumura."
+    },
+    {
+     "descripcion": "Mikari no entiende por qué a Okumura y a Ririsa les encanta el cosplay, pero está dispuesta a intentarlo si con eso logra ganarse el corazón del chico que le gusta."
+    },
+    {
+     "descripcion": "Okumura y Ririsa acuden a su primer evento de cosplay, pero lo único en lo que piensan es en lo mucho que esto se parece a una cita."
+    },
+    {
+     "descripcion": "Ririsa deslumbra a todo el recinto con su increíble cosplay de Lilliel, pero ahora ella y Okumura deben lidiar con su recién descubierta popularidad."
+    },
+    {
+     "descripcion": "Existe un vínculo especial entre los cosplayers y los fotógrafos, un vínculo del que Mikari no puede evitar sentir celos."
+    },
+    {
+     "descripcion": "¡El Club de Manga necesita un asesor o Okumura y Ririsa perderán su aula del club! La nueva profesora podría ayudar, sobre todo porque parece muy familiar..."
+    },
+    {
+     "descripcion": "Okumura y Ririsa no quieren ocultar sus actividades a la escuela, así que deciden participar en un próximo evento de cosplay como actividad oficial del club."
+    },
+    {
+     "descripcion": "Nagomi es la estrella del evento, y sus palabras sacudieron a Ririsa hasta lo más profundo. Ahora le toca a Okumura, Mayuri y los demás devolverle la confianza."
+    },
+    {
+     "descripcion": "La legendaria Mayura ha regresado, y ahora dos Reinas del Cosplay se enfrentan durante la sesión de fotos."
+    }
+   ]
+  },
+  "monos_bungo-stray-dogs-wan-temporada-2": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Los perros callejeros regresan, Atsushi y Kyouka hacen crepas, y los compañeros de Dazai especulan sobre su comportamiento."
+    },
+    {
+     "descripcion": "La agencia está embrujada, Atsushi y Kunikida van de campamento, y Dazai tienta a Atsushi con un dispositivo de grabación.",
+     "titulo": "Convocatoria y servicio nocturno / Entre la libertad y el deber / Atsushi-kun, el ángel y el demonio"
+    },
+    {
+     "descripcion": "Los sentidos de Jouno son asaltados, Tachihara pregunta por las debilidades del escuadrón y Fukuchi presenta sus inventos.",
+     "titulo": "¡Llegan los perros de caza! / ¡Investiguen al escuadrón de policías militares más fuerte! / El laboratorio de perros de caza del escuadrón científico (paralelo) de policías militares definitivos (súpe"
+    },
+    {
+     "descripcion": "El Gremio se muda a su nueva sede, Poe es aterrorizado por genios, y Kyouka y Lucy van de compras."
+    },
+    {
+     "descripcion": "Alguien dibuja sobre el peluche del sensei Dazai, los niños le tienen miedo a los fantasmas y el sensei Ango llega para entrenar."
+    },
+    {
+     "descripcion": "Estallan batallas cuando Atsushi y Akutagawa se encuentran en una tienda de soba y en un día lluvioso."
+    },
+    {
+     "descripcion": "La Agencia de Detectives y la Mafia Portuaria juegan al hombre lobo, y Sigma colma de amor a su querido Sky Casino.",
+     "titulo": "¡La fuerza lo es todo! ¡Sobrevive a la noche! / El secreto de Sigma"
+    },
+    {
+     "descripcion": "La Agencia de Detectives y la Mafia Portuaria se enfrentan en una amistosa competencia en un día de campo conjunto."
+    },
+    {
+     "descripcion": "Mushitarou y Poe se encuentran en un parque, los usuarios de lentes se reúnen y Fukuzawa recuerda sus primeros días.",
+     "titulo": "El extraño y encantador encuentro / Atrapa la mano invisible de Dios / Una cierta reunión secreta / Primeros días"
+    },
+    {
+     "descripcion": "Un Dazai y un Chuuya adolescentes intentan superarse mutuamente con historias geniales e hipotéticos."
+    },
+    {
+     "descripcion": "Odasaku se encuentra con Dazai y Ango en el parque para un picnic."
+    },
+    {
+     "descripcion": "Mushitarou intenta escribir, Kyouka planea una fiesta sorpresa y la Agencia de Detectives se toma una foto."
+    }
+   ]
+  },
+  "monos_dark-summoner-to-dekiteiru": {
+   "episodios": {
+    "4": {
+     "descripcion": "Roni está a la altura de las circunstancias cuando Amona es capturada por orcos."
+    }
+   }
+  },
+  "monos_futoku-no-guild": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Las habilidades de Hitamuki impresionaron a Kikuru. Luego se dio cuenta de que su falta de autoprotección la mete en problemas de más de una manera. Va a ser una sesión de entrenamiento muy larga…"
+    },
+    {
+     "descripcion": "Antes de que Kikuru se diera cuenta, estaba a cargo de cuatro aprendices. Y, como si fuera cosa de suerte, todas tienen problemas particulares que necesitan resolverse.",
+     "titulo": "Un rayo en un cielo azul / Cazadora en peligro"
+    },
+    {
+     "descripcion": "Como las cuatro heroínas son incapaces de trabajar en equipo, Kikuru sugiere que se tomen el día libre para estrechar lazos entre ellas. Eso le da tiempo para reflexionar sobre el comportamiento inusual de los monstruos."
+    },
+    {
+     "descripcion": "Kikuru accede a hacerse pasar por médico para encubrir el error de una enfermera. Y, por pura coincidencia, sus cuatro aprendices deben someterse a exámenes físicos."
+    },
+    {
+     "descripcion": "Kikuru intenta ayudar a Hanabata a entender que no siempre puede depender de su furia berserker en una pelea. Lo cual, en todos los sentidos, es más fácil decirlo que hacerlo.",
+     "titulo": "El secreto del Berserk / Un festín de carne"
+    },
+    {
+     "descripcion": "¿De quién fue la brillante idea de enviar a las magas a una misión para recolectar flores que causan el efecto de mudez? Debería ser obvio lo que pasaría después."
+    },
+    {
+     "descripcion": "El equipo se dispone a cazar a la temible araña veloz. Y, por supuesto, las cosas terminan como siempre, ¿por qué habrían de ser distintas?"
+    },
+    {
+     "descripcion": "¡Kikuru y Toxico se vengarán de la araña veloz, y nada los detendrá esta vez! Esperemos que sí…"
+    },
+    {
+     "descripcion": "Kikuru y Hitamuki llevan a una nueva recluta en una misión para cazar monstruos."
+    },
+    {
+     "descripcion": "El caos es la nueva normalidad de Kikuru, y ya se cansó. Cuando decide confiarse a Hanabata, la guerrera malinterpreta sus intenciones por algo completamente distinto."
+    },
+    {
+     "descripcion": "Maidena y Toxico pertenecen a dos facciones que están constantemente en desacuerdo. Ahora el conflicto estalla. Otra vez. Por una razón realmente estúpida."
+    },
+    {
+     "descripcion": "Tras recibir su primer sueldo, las cuatro heroínas desean devolverle a Kikuru todo lo que los ayudó. Es un bonito sentimiento, pero obviamente las cosas no salen como lo planeaban…",
+     "titulo": "No quiero volver a casa hoy / El pequeño detective de misterios"
+    }
+   ]
+  },
+  "monos_futsutsuka-na-akujo-de-wa-gozaimasu-ga-sugu-choso-torikae-den": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Varios clanes nobles viven en la Corte de las Doncellas, un subconjunto de la corte interior del Reino de Ei. Reirin, la Doncella del clan Kou, es hermosa y brillante, y se gana el favor del príncipe heredero Gyoumei. En cambio, Keigetsu, la Doncella del clan Shu, es infame como villana y todos en la corte la odian. La noche del Festival del Doble Siete, Keigetsu usa magia prohibida para intercambiar cuerpos con Reirin. Cuando \"Reirin\" despierta, la ejecución de Keigetsu ya ha sido fijada. Pero incluso en esta época de peligro, la frágil Reirin se alegra de haber obtenido un cuerpo sano..."
+    },
+    {
+     "descripcion": "Como resultado del revuelo en la corte interior, la Consorte Noble Shu ordena a Reirin que traslade su habitación, aunque esto no es más que un destierro disfrazado. Como la nueva residencia es básicamente un cobertizo abandonado, Leelee, la dama de corte personal de Keigetsu, libera las frustraciones que se han ido acumulando en su corazón. Tras arremeter con ira contra Reirin, Leelee dice que no la cuidará y se marcha. Reirin queda sola, radiante de alegría por haber obtenido por fin la libertad...",
+     "titulo": "¿Voy a vivir aquí?"
+    },
+    {
+     "descripcion": "Han pasado cuatro días desde el intercambio. Reirin, desterrada a una cabaña en el Palacio Shu, se dedica a la agricultura aprovechando el cuerpo sano de Keigetsu. Disfrutando de una libertad en la que no molesta a nadie, Reirin pasa sus días sintiéndose realizada. Mientras tanto, Leelee es provocada por Gayou, una dama de la alta corte de la familia Kin que de repente apareció ante ella, para acosar a Reirin..."
+    },
+    {
+     "descripcion": "Keigetsu, que sufre una fiebre severa, controla una llama para pedir ayuda a Reirin. Reirin se siente desconsolada al ver que Keigetsu logra calmarse a sí misma. Reirin sugiere cancelar el intercambio, pero la petición es rechazada. Para el próximo ritual del Festival de los Espíritus, Reirin le presenta a Leelee una prenda que había cosido especialmente para ella. Mientras tanto, Leelee percibe que algo no encaja en una frase que Reirin pronunció sin querer."
+    },
+    {
+     "descripcion": "Para ajustar cuentas con Gayou, quien incitó a Leelee al acoso, Reirin lleva a Leelee consigo y se dirige al ritual del Festival de los Espíritus. Sin inmutarse por el hecho de que no le han preparado un asiento, Reirin, con una prenda hecha a mano y bordada con hermosos diseños, se mantiene digna en el salón. Al poco tiempo, comienzan las ofrendas de danzas de las Doncellas. Seika, del clan Kin, anfitrión del ritual, baila de manera brillante...",
+     "titulo": "¿Quién es esa chica?"
+    },
+    {
+     "descripcion": "Reirin encuentra sospechoso que Seika haya dicho que no hay nadie llamada Gayou en el clan Kin. Justo cuando estaba a punto de pedir detalles, la dama de corte del clan Kou, Tousetsu, llega con un aviso: ¡la vida de \"Reirin\" corre peligro! Reirin desea salvar la vida de \"Reirin\", pero Gyoumei rechaza su ofrecimiento, diciendo que no confía en ella. Sin embargo, la emperatriz Kou Kenshuu le dice a Reirin que se le permitirá cuidarla si demuestra su sinceridad dibujando el Arco de Protección toda la noche."
+    },
+    {
+     "descripcion": "Tras dibujar el Arco de Protección sin parar, Reirin pierde el conocimiento. Reirin despierta y ve a Tousetsu, quien ha descubierto el intercambio de las Doncellas. Al mismo tiempo, Keigetsu se da cuenta de que se colocó una maldición en un regalo que recibió. Mientras tanto, en la Corte de las Doncellas se celebra un té en honor a la recuperación de \"Reirin\". Allí, Kenshuu recuerda los días en que fue Doncella, los que pasó junto a Shu Gabi, la Consorte Noble."
+    },
+    {
+     "descripcion": "Keigetsu se da cuenta de que la causa de su enfermedad es una maldición creada mediante el arte del veneno, y tiene una idea de quién la colocó... Los obsequios de visita de Seika llevan a Reirin a suponer que alguien conspira para hacer parecer que el acoso fue obra del clan Kin. Preocupada por Keigetsu, Reirin habla con una llama. Keigetsu aparece en la llama como si respondiera a ese llamado. Pero entonces, Keigetsu le pide ayuda a Reirin..."
+    },
+    {
+     "descripcion": "Reirin se da cuenta de que la agonía de Kenshuu es producto de una maldición, lo que le permite comprender el verdadero objetivo de Gabi. Reirin le pide a Gyoumei que le permita tomar prestado una vez más el Arco de Protección, pero él no atiende su petición. Incapaz de rendirse, Reirin se dirige sola a ver a Keigetsu para cancelar el intercambio. Justo cuando pasa junto a Gyoumei, una cierta imagen llama su atención...",
+     "titulo": "Te salvaré, te lo prometo"
+    },
+    {
+     "descripcion": "Gyoumei se da cuenta del intercambio entre Reirin y Keigetsu y se dirige al Palacio Kou en busca de Reirin. Gyoumei interroga a Tousetsu sobre las circunstancias, pero ella no puede revelar la verdad por la promesa que hizo a Reirin. Gyoumei adivina la verdad por la actitud de Tousetsu y muestra su determinación al quitarse voluntariamente la corona. Mientras tanto, Reirin regresa al Palacio Shu con Keigetsu a cuestas para lidiar con la maldición..."
+    },
+    {
+     "descripcion": "Con los planes de asesinar a Kenshuu mediante una maldición al descubierto, Gabi queda acorralada. Intenta atacar a Reirin con una cuchilla, pero queda inmovilizada en el acto. Con todo resuelto, Reirin y Keigetsu deciden cancelar el intercambio. Mientras las envuelven las llamas, las dos Doncellas se confiesan lo que sienten la una por la otra..."
+    }
+   ]
+  },
+  "monos_gaikotsu-kishi-sama-tadaima-isekai-e-odekakechu-temporada-2": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Arc continúa su viaje con sus nuevos amigos, cuando se topan con una red de trata de personas.",
+     "titulo": "¿Duelo a muerte? ¡Caballero de Plata contra Caballero de Plata!"
+    },
+    {
+     "descripcion": "Arc y Ariane visitan a una pareja de recién casados, humano y elfo, que atraen la hostilidad por su matrimonio.",
+     "titulo": "Los colmillos tóxicos del asesinato apuntan a la espada élfica"
+    },
+    {
+     "descripcion": "Arc y Ariane se dirigen a una ciudad donde una joven artista está siendo manipulada para ayudar a una red de secuestros.",
+     "titulo": "La caída de los villanos y la danza del amor fraternal"
+    },
+    {
+     "descripcion": "La hermana de Ariane, Eevin, las llama a Ariane y Arc para ayudarla a investigar un santuario para elfos.",
+     "titulo": "El espíritu de la santa vaga por el santuario maldito"
+    },
+    {
+     "descripcion": "Tras descubrir una amenaza de no muertos al acecho, Arc, Ariane y Eevin luchan para liberar a los cautivos de la trama."
+    },
+    {
+     "descripcion": "Arc llega al manantial que podría curar su naturaleza esquelética, pero primero deberá superar a su guardián.",
+     "titulo": "La naturaleza de este mundo flota sobre el manantial del Señor Dragón"
+    },
+    {
+     "descripcion": "Con una nueva aldea de hombres bestia construida cerca de la Corona del Señor, el clan de Chiyome celebra, y Arc se une a la fiesta.",
+     "titulo": "El espíritu de la caballerosidad florece en la aldea shinobi"
+    },
+    {
+     "descripcion": "Mientras Arc y el grupo viajan al continente del sur, Chiyome comparte su pasado con Sasuke.",
+     "titulo": "El mar escucha el relato del pasado trágico de la kunoichi"
+    },
+    {
+     "descripcion": "Arc y su grupo se reencuentran con Danka, quien les habla de su misión y de la amenaza que la pone en peligro.",
+     "titulo": "Reunido con el aullido de una bestia oscura"
+    },
+    {
+     "descripcion": "Mientras intentan evitar ataques a las aldeas de hombres bestia, el grupo se enfrenta a un rostro conocido.",
+     "titulo": "¡El código de sangre fría! Cazando a un hermano con lágrimas en los ojos"
+    },
+    {
+     "descripcion": "Se revelan los autores intelectuales detrás de los secuestros y los experimentos con no muertos."
+    },
+    {
+     "descripcion": "Arc se encuentra en batalla contra uno de los siete cardenales de la Iglesia de Hilk.",
+     "titulo": "¡Castigo divino! ¡El esqueleto imparte justicia que aniquila el mal!"
+    }
+   ]
+  },
+  "monos_gantz": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Presentación del cruel y egoísta entorno de Korono Kei y de Kato Masaku. El episodio termina con el primer vistazo a la esfera negra conocida solo como Gantz y con un par de los otros personajes que tendrán papeles más importantes más adelante. La mayor parte del episodio se desarrolla a través del monólogo interno de Korono.",
+     "titulo": "Es el comienzo de un nuevo día"
+    },
+    {
+     "descripcion": "Con cebollines me basta. Eso es lo que dice el pobre pequeño extraterrestre, pero los cebollines no bastan para los cazadores de aliens gatillo fácil que son controlados por la esfera negra llamada Gantz. Después de ver a un perro subirse sobre una chica y a la misma chica casi siendo violada, uno pensaría que no podría empeorar, ¿verdad? Equivocado. En este episodio vemos lo despiadados que pueden ser los \"muertos\" cuando se les dan armas de era espacial y una misión."
+    },
+    {
+     "descripcion": "Los nuevos participantes de Gantz tienen que enfrentarse a un alienígena realmente peligroso."
+    },
+    {
+     "descripcion": "Kei, Katou y Kishimoto aprenden de Nishi sobre el sistema de puntuación de la caza de aliens. Nishi también les explica los límites y las reglas básicas cuando no son transportados para pelear contra aliens."
+    },
+    {
+     "descripcion": "Ahora que Kurono, Kato y Kishimoto están vivos otra vez, pueden regresar a su vida cotidiana... ¿o no? ¿Qué problemas les esperan a los tres en el futuro? ¿Están realmente vivos? Y ¿Kurono podrá sobrevivir a una pelea con un matón de la escuela?",
+     "titulo": "Eso significa que en ese momento..."
+    },
+    {
+     "descripcion": "Tras encontrar a Kishimoto dormida frente a su puerta, Kurono tiene una racha de suerte tras otra. Finalmente, ¡Kishimoto le pregunta si puede quedarse con él! Sin embargo, Kato no está al tanto de los problemas de Kishimoto. ¿Se lo contará? Mientras tanto, todos los demás tienen problemas propios..."
+    },
+    {
+     "descripcion": "Kurono y Kishimoto deciden ir a la antigua casa de Kishimoto para ver cómo es \"la otra Kishimoto\". ¿Qué descubrirán? Mientras tanto, Kato tiene problemas en casa, pues su tía golpea a su hermanito menor, y en la escuela, donde unos matones molestan a sus amigos. Cuando un alumno mayor lo reta a pelear, ¿Kato se pasará de la raya?"
+    },
+    {
+     "descripcion": "Gantz vuelve a llamar a Kurono, Kishimoto, Kato y Nishi. Pero ¿a quién más llamará y qué nueva misión tiene para ellos?"
+    },
+    {
+     "descripcion": "Los motociclistas expulsan a Tetsu de la pandilla, Kurono no tiene su traje, Nishi insulta a todos y luego comienza la caza del alienígena Suzuki."
+    },
+    {
+     "descripcion": "Kurono, sin traje, sigue al alien Suzuki hasta enfurecerlo y luego lo lleva hacia los demás. Nishi y el alien se enfrentan en el canal."
+    },
+    {
+     "descripcion": "Kato se enfrenta al alien."
+    },
+    {
+     "descripcion": "El equipo se divide. Kato, Kishimoto y Hojo van tras los otros aliens Suzuki. El traje de Kato se queda sin energía. Kurono, Tetsu y Haruya encuentran a los demás."
+    },
+    {
+     "descripcion": "Kurono se enfrenta solo al alien principal. Los sobrevivientes reciben sus puntuaciones."
+    }
+   ]
+  },
+  "monos_gekijoban-kimetsu-no-yaiba-mugenjo-hen": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Es la época Taishō (es decir, 1912-1926). Tanjiro Kamado vive una vida modesta pero feliz en las montañas junto a su familia. Un día, al regresar de vender carbón en el pueblo, encuentra los restos de su familia masacrada, sobre charcos de sangre, tras un ataque de un demonio. Tanjiro baja corriendo por la montaña nevada con la única superviviente, su hermana Nezuko, a la espalda. Pero en el camino, Nezuko de repente gruñe y se vuelve contra Tanjiro."
+    }
+   ]
+  },
+  "monos_gekijoban-mononoke-dai-san-sho-hebigami": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "En las cámaras del harén de Edo, dos recién llegadas descubren intrigas políticas, rivalidades y un espíritu vengativo que solo un vendedor ambulante de medicinas puede derrotar.",
+     "titulo": "Mononoke the Movie: La figura fantasmal bajo la lluvia"
+    }
+   ]
+  },
+  "monos_grow-up-show-himawari-no-circus-dan": {
+   "episodios": [
+    null,
+    {
+     "titulo": "¡Bienvenidos al Circo Girasol!"
+    },
+    {
+     "descripcion": "El \"Circo Girasol\" se dirige a Toyokawa, un popular y oficialmente autorizado lugar de presentaciones.",
+     "titulo": "Eso fue tan deslumbrante"
+    },
+    {
+     "descripcion": "Decidido a superar al \"Lavanda Brillante\", el \"Circo Girasol\" se prepara para su próxima función."
+    },
+    {
+     "descripcion": "El \"Circo Girasol\" tuvo una función exitosa en Toyokawa, pero sus ganancias fueron embargadas por los cobradores de deudas.",
+     "titulo": "Simplemente no puedo obligarme a ser honesta"
+    },
+    {
+     "descripcion": "Akane se marcha furiosa mientras Mizuka busca en las montañas al François desaparecido del Circo Rafflesia."
+    },
+    {
+     "descripcion": "El equipo de Nanami Sumeragi acapara titulares en los periódicos, que se preguntan si podrán superar al \"Circo Loto\"."
+    },
+    {
+     "descripcion": "Mizuka, decidida a desafiar a Mitscher, regresa con los miembros del grupo, que todos lucen muy serios."
+    },
+    {
+     "descripcion": "Con la tropa de élite del Grupo Sumeragi, el \"Circo Rosa Azul\", cerca, el \"Circo Girasol\" enfrenta una asistencia previsiblemente escasa para su próxima función. Mizuka, habiendo resuelto subir al escenario como artista, observa nerviosa al público desde detrás de las cortinas. Después de confiarle su ansiedad a Ouka entre bastidores, confía en el consejo de esta —\"mira al público antes de volar\"— y Mizuka sube al trapecio.",
+     "titulo": "Esto es lo que siempre quise"
+    },
+    {
+     "descripcion": "Maria se desploma por el agotamiento, y Rin reprende furiosamente a la troupe por causar caos en el hospital.",
+     "titulo": "¿Es toda esa amabilidad solo una mentira?"
+    },
+    {
+     "descripcion": "El \"Circo Girasol\" ha obtenido permiso para participar en el \"Torneo Circus Collection Japan\".",
+     "titulo": "Más allá del escenario de los sueños"
+    },
+    {
+     "descripcion": "Mizuka y Ouka no pueden ocultar su creciente ansiedad, y se exigen en exceso con el entrenamiento.",
+     "titulo": "¿Por el bien de quién es este sueño sin cumplir?"
+    },
+    {
+     "descripcion": "Con la cirugía en Estados Unidos acercándose rápidamente, a Maria se le aplicó una estricta política de no visitas."
+    }
+   ]
+  },
+  "monos_hanaori-san-wa-tensei-shite-mo-kenka-ga-shitai": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "El héroe reencarnado visita a la Señora Demonio reencarnada, y el ex NEET se convierte en profesor en su escuela."
+    },
+    {
+     "descripcion": "Meteor y Ryusei conocen a las dos nuevas alumnas transferidas, y luego se revelan sus identidades secretas.",
+     "titulo": "Las brujas de Oz"
+    },
+    {
+     "descripcion": "Meteor y Ryusei conversan sobre la comida de sus vidas pasada y nueva. Después van a una cita en una mazmorra."
+    },
+    {
+     "titulo": "Aquellos que no pueden ser perdonados"
+    },
+    {
+     "descripcion": "Ryusei resuelve algunos de los problemas de las chicas. Luego sale en una falsa cita con Meteor."
+    },
+    null,
+    {
+     "descripcion": "Las brujas se quejan de su trabajo para Oz. Hanaori se corrompe y lucha contra Ryusei."
+    },
+    {
+     "descripcion": "Meteor descubre que la espada sagrada que Ryusei le regaló vale 1000 millones de yenes. Ryusei entrena a las brujas."
+    },
+    {
+     "descripcion": "Ryusei se enfrenta a un robot de otro mundo y a fantasmas en el festival cultural. Ayame enfrenta a sus acosadoras."
+    },
+    {
+     "descripcion": "Un mago de la Tierra 13 intenta fusionar sus dimensiones, y la princesa de Ryusei llega a su mundo."
+    },
+    {
+     "descripcion": "Ryusei y Meteor luchan juntos para derrotar a la princesa malvada."
+    },
+    {
+     "descripcion": "Tras recuperar su vida cotidiana, la casa de Ryusei se incendia y comienza su arco de convivencia con Meteor."
+    }
+   ]
+  },
+  "monos_kami-wa-game-ni-ueteiru": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "En una pared de hielo formada durante la última edad de hielo, un grupo descubre a una joven con muy poca ropa. Para su sorpresa, ella se presenta como una antigua diosa y de inmediato exige al mejor jugador del mundo..."
+    },
+    {
+     "descripcion": "Fay y Leshea son arrojadas juntas a su primer juego de dioses contra Titán. El juego que deben jugar es el Escondite de Dios. Fay y Leshea intentan burlar a Titán mientras sus compañeros de equipo quedan incapacitados uno tras otro."
+    },
+    {
+     "descripcion": "A Fay y Leshea les dicen que deben encontrar a otros miembros del equipo para participar con ellas en los juegos de dioses. Por casualidad conocen a otra Apóstol llamada Pearl Diamond, pero parece tener un pasado interesante con un equipo distinto..."
+    },
+    {
+     "descripcion": "Fay, Leshea y Pearl se unen al antiguo equipo de Pearl para intentar derrotar al dios Uroboros en los juegos de dioses."
+    },
+    {
+     "descripcion": "Fay, Leshea y Pearl son invitadas a la ciudad de Mal-ra para participar en algo llamado World Games Tour."
+    },
+    {
+     "descripcion": "Fay y Pearl se enfrentan a Dax y Kelritch. El juego: Card Battle Sugoroku: Mind Arena. ¿Podrá Pearl demostrar su valía ante sus amigas?"
+    },
+    {
+     "descripcion": "Fay, Leshea y Pearl forman equipo con Dax y Kelritch para enfrentarse al dios Mahtma II en su próximo juego de dioses, que tiene lugar en el desierto."
+    },
+    {
+     "descripcion": "El equipo de Fay comienza su juego contra Mahtma II y su ejército. El equipo de Fay está en gran desventaja numérica y Dax hace un movimiento sorprendente. ¿Lograrán llevar el girasol hasta la cima de la pirámide?"
+    },
+    {
+     "descripcion": "Nel debe enfrentarse al Bookmaster y apostar las victorias de Fay en un juego para intentar remontar y así poder unirse al equipo de Fay."
+    },
+    {
+     "descripcion": "Tras la derrota de Nel frente al Bookmaster, Fay debe intentar vencer al Bookmaster y a los Tres Tramposos.",
+     "titulo": "Los Tres Tramposos que trae el dios"
+    },
+    {
+     "descripcion": "Apóstoles de todo el mundo son obligados a jugar un juego en el Laberinto de Luceimia. A diferencia de la mayoría de los juegos, en los que, una vez que el jugador pierde, es enviado de vuelta al mundo real, en este cada vez que alguien pierde se ve forzado a reaparecer.",
+     "titulo": "El Laberinto del No Retorno: Luceimia"
+    },
+    {
+     "descripcion": "Fay y los demás Apóstoles logran encontrar el objeto de guardado que permite a algunos de ellos escapar del laberinto. Uroboros se une a Fay y su grupo mientras continúan por el laberinto.",
+     "titulo": "El \"Laberinto\" de Muerte y Renacimiento: Luceimia"
+    },
+    {
+     "descripcion": "¿Fay y sus amigos enfrentarán al jefe final de Luceimia? ¿Podrán salir con vida del laberinto?"
+    }
+   ]
+  },
+  "monos_kekkon-yubiwa-monogatari": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Satou, un estudiante común, no logró confesarle su amor a su amiga de la infancia, Hime, pero un día ella anuncia de repente que se mudará muy lejos. Satou corre tras Hime y la sigue a través de una puerta de luz hacia otro mundo conocido como Arnulus."
+    },
+    {
+     "descripcion": "Satou se ha casado con Hime y se ha convertido en el legendario Rey Anillo, que salvará Arnulus de la amenaza del Rey Abismo. Luchan por avanzar en su relación, pero no hay tiempo para disfrutar de su vida de recién casados, pues los perseguidores del Rey Abismo les pisan los talones."
+    },
+    {
+     "descripcion": "Satou y los demás han llegado a la patria élfica de Romca, la Tierra del Viento, donde él planea casarse con Nefritis, princesa del Anillo del Viento. Debido a su naturaleza tímida, Nefritis se niega rotundamente a casarse con Satou."
+    },
+    {
+     "descripcion": "Creyendo que los ejércitos del Rey Abismo se acercan, Alabaster propone posponer el matrimonio de Satou con Nefritis y dirigirse a otro país. Justo cuando se marchan, un caballero del Rey Abismo logra atravesar la barrera y ataca Romca."
+    },
+    {
+     "descripcion": "Satou y su grupo continúan su viaje hacia el siguiente anillo. Hime se pone celosa de que Satou cuide de Nefritis. Poco después, aparece ante ellos una gran caravana: es la Tierra del Fuego, Needakitta. Piden una audiencia con la princesa, pero..."
+    },
+    {
+     "descripcion": "Satou entrena con Marse, con la esperanza de vencer a Granart en el duelo de espadas para cortejarla. Satou se debate entre enfrentarla con justicia para lucir genial ante Hime y priorizar su deber como Rey Anillo. Mientras tanto, las garras malignas del Rey Abismo se acercan a Needakitta."
+    },
+    {
+     "descripcion": "Satou visita Maasa, la Tierra del Agua, y de manera inesperada termina casándose con Saphir, la princesa del Anillo. Saphir cree que necesita el poder del Rey Anillo para salvar a su patria de caer bajo el control del Imperio Gisaras."
+    },
+    {
+     "descripcion": "El oráculo que dirige en secreto Maasa, la Tierra del Agua, ofrece un consejo a Marse, quien fracasó en su misión. Satou y Sluder se preparan para repeler la horda del Rey Abismo que se aproxima. Mientras Satou lucha, una persona en particular aparece de pronto frente a él."
+    },
+    {
+     "descripcion": "La paz ha regresado a Maasa y el grupo puede tomarse un breve descanso. Satou y Hime salen en una cita a solas, pero Nefritis, Granart y Saphir los siguen en secreto. Satou y Hime disfrutan de su cita, pero entonces recuerdan las palabras de Alabaster."
+    },
+    {
+     "descripcion": "Satou y sus amigos se dirigen a Idanokan, la Tierra de la Tierra. Sin embargo, como fue destruida previamente en una batalla contra el Rey Abismo, los enanos han abandonado la ciudad. Mientras el grupo busca a la princesa del Anillo, ocurre aquello que más temían."
+    },
+    {
+     "descripcion": "Satou y sus amigos han llegado a su mundo sin forma de regresar a Arnulus. Satou sufre por no poder cumplir su deber como Rey Anillo cuando Amber, la princesa del Anillo de Idanokan, la Tierra de la Tierra, aparece ante él."
+    },
+    {
+     "descripcion": "Satou y sus amigos regresan a Arnulus entre incontables cadáveres de soldados imperiales y monstruos. Satou se enfrenta al Rey Abismo en una situación desesperada. Usando el poder de las princesas del Anillo, lo desafía en un enfrentamiento para salvar Arnulus!"
+    }
+   ]
+  },
+  "monos_kido-senshi-gundam-senko-no-hathaway": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Doce años después de la rebelión de Char, Hathaway Noa lidera una insurgencia contra la Federación de la Tierra, pero el encuentro con un oficial enemigo y con una misteriosa mujer altera su destino."
+    }
+   ]
+  },
+  "monos_kikansha-no-mahou-wa-tokubetsu-desu-temporada-2": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Desir y los demás contraatacan a Esteban en el Evernatten del Mundo de las Sombras para corregir errores en la historia."
+    },
+    {
+     "descripcion": "Tras resolver el conflicto con Esteban, Desir y los demás ahora deben resolver la crisis de los refugiados."
+    },
+    {
+     "descripcion": "Desir y su grupo visitan el Reino de Prillecha para realizar un entrenamiento especial de cara al Campeonato del Océano Amarillo."
+    },
+    {
+     "descripcion": "Mientras Romantica, Pram y Azest avanzan en el campeonato, un hombre con máscara de cuervo ataca el castillo."
+    }
+   ]
+  },
+  "monos_magicalexplorer": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Takioto Kousuke reencarna en su eroge favorito, Magical Explorer, pero como el desafortunado personaje secundario, ¡¿?!",
+     "titulo": "Reencarnado como un personaje secundario en un eroge, pero usaré mi conocimiento del juego para hacer lo que quiero"
+    },
+    {
+     "descripcion": "Kousuke apenas salva a Ludie de un ataque de la Iglesia del Dios Malvado, así que jura volverse más fuerte.",
+     "titulo": "Saludos desde la tierra de los elfos"
+    },
+    {
+     "descripcion": "Kousuke le pide a Mizumori Yukine que lo entrene para poder aprender la habilidad Ojo de la Mente."
+    },
+    {
+     "descripcion": "Para volverse más fuerte más rápido, Kousuke entra a la mazmorra en solitario «Caverna del Crepúsculo» para encontrar a Nanami."
+    },
+    {
+     "descripcion": "Kousuke e Iori llegan tarde a su primer día en la Academia de Magia Tsukuyomi, ¡y Kousuke termina en una batalla simulada?!"
+    }
+   ]
+  },
+  "monos_mahou-shoujo-ni-akogarete": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Hiiragi Utena es solo una fan promedio de las chicas mágicas que anhela parecerse a las superheroínas que admira. De pronto, un personaje mascota le ofrece hacer realidad su sueño."
+    },
+    {
+     "descripcion": "¡Hiiragi fue obligada a convertirse en villana! Ahora que probó el BDSM, sin embargo, está con ganas de más: esta vez, de Magia Azure.",
+     "titulo": "¡Su nombre es Magia Baiser!"
+    },
+    {
+     "descripcion": "Utena visita la guarida malvada de Enormita, la Base Nacht, donde conoce a Aragawa Kiwi, alias Leoparde. A pesar de afirmar que deberían ser amigas, ¡Leoparde la ataca!"
+    },
+    {
+     "descripcion": "El trabajo principal de Tres Magia es derrotar a Enormita, pero también tienen trabajos secundarios, como mantener su imagen. ¡Están en medio de una sesión de fotos cuando se ven interrumpidas!"
+    },
+    {
+     "descripcion": "Utena y Kiwi conocen a una nueva integrante de su equipo malvado, Neroalice. Pronto, Venalita les muestra una demostración de lo que la joven puede hacerles a sus enemigas chicas mágicas..."
+    },
+    {
+     "descripcion": "Haruka se encuentra con Korisu en el parque, y se divierten muchísimo jugando a la casita. Cuando Korisu se pone triste al verla irse, la villana usa sus poderes para que el juego continúe."
+    },
+    {
+     "descripcion": "Tras las recientes batallas contra Enormita, Azure se pregunta por qué no puede pensar con claridad. Robándole tiempo a su propia vida, se encuentra en una situación comprometedora."
+    },
+    {
+     "descripcion": "Baiser conoce al escuadrón original de Enormita, que no está nada contento con las travesuras de las chicas mágicas. Sin embargo, están dispuestas a darles una segunda oportunidad."
+    },
+    {
+     "descripcion": "¡Loco Musica intenta cumplir su sueño de convertirse en una idol del pop, hasta que Baiser y su equipo irrumpen en su concierto! ¿Podrá Loco cambiar el rumbo de la siguiente batalla?"
+    },
+    {
+     "descripcion": "Loco y Leber desertan y quieren volver con Utena. Sin embargo, primero deben participar en un ejercicio de \"formación de equipo\" de los retorcidos diseños de Utena."
+    },
+    {
+     "descripcion": "Lady Enorme ya no soporta a la villana traidora que se niega a unirse a ella en su búsqueda de dominar el mundo. Baiser encuentra una manera creativa de derrotar a Lady Enorme."
+    },
+    {
+     "descripcion": "Todos sufrieron una gran paliza durante la batalla contra Lord: tanto las villanas de Enormita, agotadas, como la ciudad misma. Cuando aparecen las chicas mágicas, Utena se topa con Azure."
+    },
+    {
+     "descripcion": "Utena y su grupo se dirigen a la playa para tomarse un día libre. Pero la diversión del verano no durará mucho, cuando Enormita y Tres Magia aparecen para enfrentarse a muerte."
+    }
+   ]
+  },
   "monos_mairimashita-iruma-kun-4th-season": {
    "episodios": [
     null,
@@ -77,11 +677,568 @@
     }
    ]
   },
+  "monos_marika-chan-no-koukando-ha-bukkowareteiru": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Sin atreverme a confesarle mis sentimientos a mi amiga de la infancia, Marika, pido un deseo fervoroso a una estrella fugaz. Y ahora puedo ver los medidores de amor sobre las chicas de mi clase. Desconcertado por esta visión surrealista, miro a Marika, solo para descubrir que su medidor ha sufrido un colapso total hacia profundidades podridas...?! Marika, ¿por qué siempre fuiste tan amable conmigo, entonces...? ¿Cuál es el verdadero significado detrás del medidor de amor...?"
+    },
+    {
+     "descripcion": "Tengo que hacer algo con el medidor de amor roto de Marika, la chica que me gusta. Primero, pensé que debía llevarme bien con Toyotomi, cuyo medidor está bajo, pero me trata con tanta dureza que pierdo el ánimo enseguida. Sin embargo, después de clases, cuando ayudo a una niña que llora en el parque de siempre y la acompaño a casa, ¡resulta que era la casa de Toyotomi?! Al parecer, la niña era la hermana menor de Toyotomi. En cuanto me invita a cenar juntos como agradecimiento, su medidor sube...",
+     "titulo": "Los altibajos del medidor de amor"
+    },
+    {
+     "descripcion": "Devanándome los sesos sobre qué hacer con el medidor de amor de Marika, me topo con mi compañera de clase, Mikasa, que paseaba a su perro en el parque de siempre. Como ambas somos amantes de los perros y charlamos animadamente sobre ellos, su medidor está alto. Intento actuar de forma poco cool para bajar el medidor de Mikasa por el bien de mi verdadero amor, Marika, pero, ¡al contrario...?! Sin que yo lo sepa, Marika, que pasaba por allí, presencia todo el episodio...",
+     "titulo": "El despertar del medidor de amor"
+    },
+    {
+     "descripcion": "Ese día, el medidor de amor de Marika fue completamente poseído por una demonio enfurecida y celosa, mientras que ella misma tenía una expresión inexpresiva. Sigo esforzándome por acercarme a Marika, sin querer caerle mal. Hiciera lo que hiciera, ella no sonreía. Pero no me rendiré. Entonces, aprovechando la ocasión, ¡consigo invitar a Marika a una cita durante la hora del almuerzo! Pero Toyotomi aparece frente a nosotros, y el medidor sufre un cambio repentino?! En respuesta a eso, el medidor de amor de Marika..."
+    },
+    {
+     "descripcion": "Estaba en las nubes tras conseguir por fin una cita con mi amada Marika en el acuario. A ella le encantan las focas, y ver su sonrisa despreocupada lo valió todo. Pero, aunque quería dar un paso más, simplemente no reuní el valor... Luego, durante el espectáculo de delfines, ¡terminamos empapados hasta los huesos! Como había preparado una muda de ropa por si acaso, me dirijo a nuestros respectivos vestuarios... Pero entonces, ocurrió lo impensable?!"
+    },
+    {
+     "descripcion": "Niino, una regresada de aspecto marimacho, se transfiere a nuestra escuela, y los chicos están emocionados. Por alguna razón, no puedo ver el medidor de amor de Niino, pero me resulta extrañamente familiar. ¿Por qué Marika me sonríe, mientras mi corazón se acelera por la belleza de Niino...? Después de clases, Niino y yo terminamos caminando juntos a casa y llegamos al parque de siempre. Este lugar guarda tantos recuerdos de la infancia con Marika... Espera, ¿podrías ser aquella niña de mis recuerdos de jugar en el parque...?!"
+    },
+    {
+     "descripcion": "Un demonio habitaba el medidor de amor de Marika. Durante la hora del almuerzo, mientras comía con una Marika deprimida, llega Toyotomi. Entonces, con una expresión aniñada impensable para su carácter habitualmente duro, pregunta si puede almorzar con ellas...!? El rostro de Marika se ensombrece, ¡y el demonio que habita en su medidor comienza a enfurecerse! Luego, Mikasa y Niino se unen a la refriega, provocando que los medidores de amor sufran un cambio decisivo!!!"
+    },
+    {
+     "descripcion": "¡Los medidores de amor de Marika, Toyotomi, Mikasa y Niino se desatan! Siento que me asfixian todos estos medidores... Justo cuando pensaba con fuerza que nadie debía pelearse por mí, me bautiza el medidor de amor que solo yo puedo ver, y me encuentro al borde de la muerte. Como sea, logro confesarle a Marika que es a ella a quien realmente amo, pero... ¡Con eso, el medidor de amor de Marika se descontrola aún más???!"
+    }
+   ]
+  },
+  "monos_mushoku-tensei-ii-isekai-ittara-honki-dasu-part-2": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Recién curado y lleno de confianza, Rudeus decide casarse con Sylphie. Solo hay un problema: no tiene idea de cómo funciona el matrimonio en este mundo. Y cuando sus amigos le dicen que todo recién casado necesita una casa, termina con una mansión embrujada."
+    },
+    {
+     "descripcion": "Los recién casados se han instalado en su nuevo hogar. Lo siguiente, según la costumbre, es organizar una fiesta para todos los que conocen. Preparar la recepción para tanta gente no será fácil. Y aunque logren hacerlo, el gran día les tiene reservadas algunas sorpresas."
+    },
+    {
+     "descripcion": "Rudeus recibe una carta de Paul. En ella se explica que Norn y Aisha, las hermanas menores de Rudeus, han sido enviadas para reunirse con él. Mientras tanto, Nanahoshi continúa su investigación sobre la magia de invocación, en busca de una forma de regresar a su mundo original."
+    },
+    {
+     "descripcion": "Las hermanas de Rudeus llegan acompañadas por una inesperada carabina. Tras ponerse al día con una vieja amiga, Rudeus decide que es hora de enviar a las niñas a la escuela. Pero convencer a Norn y a Aisha resulta más complicado de lo que esperaba."
+    },
+    {
+     "descripcion": "Norn se encierra en su habitación de la residencia y se niega a asistir a clases. Atormentado por el fantasma de su vida pasada, Rudeus se propone resolver los problemas de su hermana, solo para descubrir que él es la causa."
+    },
+    {
+     "descripcion": "La vida le sonríe a Rudeus. Sus hermanas se están adaptando y tiene tiempo de sobra para amigos y familia... hasta que un anuncio de Sylphie y una carta inesperada trastocan su idílica vida escolar."
+    },
+    {
+     "descripcion": "Con la ayuda de Nanahoshi, Rudeus consigue una forma de acortar el viaje, pero él y Elinalise aún deberán apresurarse si quieren regresar antes de que Sylphie dé a luz. Su primer obstáculo: el árido desierto de Begaritt y sus monstruosos habitantes."
+    },
+    {
+     "descripcion": "Rudeus y Elinalise llegan a Rapan y pronto se reúnen con Paul, solo para descubrir que un laberinto mortal ha atrapado a Zenith y a Roxy. Los frutos de los estudios de Rudeus ofrecen una última y tenue esperanza de llegar a tiempo para su madre y su mentora."
+    },
+    {
+     "descripcion": "Con el rescate de Roxy, la búsqueda de Zenith se reanuda con seriedad. Rudeus se reencuentra con su mentora en medio de los peligros del laberinto. Pero ¿por qué parece un poco más incómoda con él que antes?",
+     "titulo": "Círculo mágico hasta el sexto estrato"
+    },
+    {
+     "descripcion": "El grupo de rescate llega al corazón del Laberinto Teletransportador y se enfrenta a su guardián. Pero cuando el monstruo ignora la magia de Rudeus, comprenden que quizá se han metido en un lío más grande de lo que pueden manejar."
+    },
+    {
+     "descripcion": "Roxy toma una decisión desesperada para sacar a Rudeus de su depresión. Mientras el grupo emprende el viaje de regreso a casa, ambos deberán enfrentar sus sentimientos y afrontar las consecuencias."
+    },
+    {
+     "descripcion": "Rudeus llega a casa, angustiado por si algo salió mal en su ausencia. Pero las conversaciones que le esperan podrían convertirse en desastres por sí mismas. ¿Cómo puede presentar a una nueva esposa a una familia que aún se recupera de la muerte de Paul?"
+    }
+   ]
+  },
+  "monos_oni-no-hanayome": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Yuzu sueña con que alguien la ame, ya que su familia siempre la ha dejado de lado."
+    },
+    {
+     "descripcion": "Reiya lleva a Yuzu a su casa y anuncia que ella es su novia."
+    },
+    {
+     "descripcion": "Karin regresa a la casa de sus padres para recoger sus pertenencias y formalizar su adopción por parte de sus abuelos."
+    },
+    {
+     "descripcion": "Mientras Reiya le proporciona a Yuzu todo lo que necesita, ella se resiste a depender demasiado de él.",
+     "titulo": "¿Es eterno su amor por sus novias?"
+    },
+    {
+     "descripcion": "Yuzu comienza a trabajar para Reiya y descubre más sobre su relación con su secretario Takamichi."
+    },
+    {
+     "descripcion": "Mientras Yuzu reflexiona sobre sus sentimientos por Reiya, Touko le explica cómo ella y Nyankichi llegaron a estar juntos."
+    },
+    {
+     "descripcion": "Sakurako visita a Yuzu y le advierte que no se interponga entre Reiya y Takamichi."
+    },
+    {
+     "descripcion": "La hermana y los padres de Yuzu irrumpen en la casa de sus abuelos y exigen que ella regrese a casa."
+    },
+    {
+     "descripcion": "Yuzu confronta a Reiya sobre los rumores que ha estado escuchando."
+    },
+    {
+     "descripcion": "Yuzu asiste al banquete de demonios, donde conoce a los padres de Reiya y se encuentra con su hermana."
+    },
+    {
+     "descripcion": "Años antes de que Karin sintiera tanto desprecio por Yuzu, adoraba a su hermana mayor."
+    },
+    {
+     "descripcion": "Yuzu se despide de su hermana para siempre y abraza su nueva vida."
+    }
+   ]
+  },
+  "monos_ossan-kensei-temporada-2": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Algunos meses después de su nombramiento como instructor especial de la Orden Liberion, Beryl Gardenant se está acomodando a su nueva vida en la capital. Un día, recibe la visita de Lucy y Ficelle, quienes le piden que se convierta en instructor temporal en el Instituto de Magia. Beryl se une al curso de magia de espada, en el que está inscrita Mewi, presencia los métodos de enseñanza de Ficelle y termina enfrentándose a ella...",
+     "titulo": "El pueblerino asume un nuevo cargo"
+    },
+    {
+     "descripcion": "Beryl lucha por enseñarle a Ficelle, que es una pésima maestra, a enseñar de verdad. Mewi tiene dificultades para integrarse con sus compañeros, pero una conversación con Cindy durante el almuerzo insinúa que esto empieza a cambiar. En una pequeña fiesta, Beryl observa con satisfacción el crecimiento de Mewi y de Ficelle. Y entonces, una perturbación inesperada sacude el Instituto de Magia."
+    },
+    {
+     "descripcion": "Sombras con forma de lobo atacan a los profesores, y la magia queda inutilizada en el campus. Capaces de luchar incluso sin magia, Beryl y Ficelle se abren paso hacia la escuela para descubrir la causa de los extraños sucesos. Cuando aparecen lobos de sombra en la cafetería, Mewi y sus compañeros deciden enfrentarlos, a pesar de su falta de experiencia. Se desarrollan dos batallas: ¿cómo terminarán?",
+     "titulo": "El pueblerino se ve reflejado en un anciano"
+    },
+    {
+     "descripcion": "Llega una carta dirigida a Beryl desde Beaden. Enviada por su padre, Mordea, le pide que regrese al pueblo para un evento anual único de la aldea. Con el Instituto de Magia en vacaciones de verano, Beryl invita a Mewi a acompañarlo a él y a Henblitz. Luego, Curuni se invita sola. Es la primera vez que Beryl vuelve a casa desde que se mudó a la ciudad. Al día siguiente, se produce un enfrentamiento inesperado."
+    },
+    {
+     "descripcion": "Comienza la misión para derrotar al sablejabalí. Curuni cumple su anhelado objetivo de abatir a uno y comprende cuánto se ha fortalecido. Randrid aprovecha al máximo las habilidades que perfeccionó como aventurero y pone su esgrima al servicio de la misión. Impresionado, Henblitz lo desafía a un combate de entrenamiento, lo que despierta algo en el corazón de Beryl y en el de otro espadachín."
+    },
+    {
+     "descripcion": "Con la amenaza del sablejabalí eliminada, Beaden celebra su festival anual. La amistad entre Henblitz y Randrid crece, mientras Adel y Edel se preocupan en exceso por Mewi. Beryl observa todo y reflexiona sobre sus propios sentimientos a lo largo de los años. Luego llega Mordea, y ambos se dirigen al dojo. ¿Podrá Beryl superar el muro gigantesco que es su padre?",
+     "titulo": "El pueblerino se enfrenta a su padre"
+    },
+    {
+     "descripcion": "Se celebra un banquete en las tierras del margrave de Flumvelk, región que limita con Sphenedyardvania, y tanto Allucia como Beryl han sido invitados. La visita también sirve para confirmar la ruta que tomará la princesa Salacia, próxima a casarse, rumbo a su nuevo hogar. En el camino, Beryl aconseja a un joven caballero. Al llegar a su destino, lo espera un reencuentro inesperado.",
+     "titulo": "El pueblerino recibe una invitación de la nobleza"
+    },
+    {
+     "descripcion": "Shueste, la hermana de Warren, antiguo alumno de Beryl, lo persigue sin descanso, aunque por una buena razón. Al verlo, Allucia se preocupa; Warren explica los motivos suyos y de Shueste, y anima a Allucia a dar su propio paso. Las acciones de Beryl en el banquete dejan a Shueste aún más enamorada. Tras terminar su misión, Beryl y Allucia emprenden el regreso a casa, pero en el camino se topan con un encuentro imprevisto."
+    },
+    {
+     "descripcion": "De vuelta en la capital, Beryl lucha por sacudirse la culpa por las graves heridas de Vesper, mientras Surena intenta animarlo. Se acerca el día de la boda de la princesa Salacia, y Beryl se une a la escolta. Tras un breve reencuentro con Shueste y con la amenaza de un ataque de la Compañía Mercenaria Verdapis en el horizonte, llegan a Dilmahakha, la ciudad santa de Sphenedyardvania. Pero, ¿quién lo está observando?",
+     "titulo": "El pueblerino llega a la Ciudad Santa"
+    },
+    {
+     "descripcion": "Allucia y Gatoga visitan a Beryl en su alojamiento de Dilmahakha, y Gatoga le muestra la ciudad. Una vez a solas, Gatoga le cuenta lo que le sucedió a Rose. De vuelta en Baltrain, Curuni y Ficelle someten a Mewi a un entrenamiento especial, mientras Lucy e Ibroy se reúnen en secreto. Llega el Año Nuevo, trayendo consigo la boda de la princesa Salacia, y en la catedral resuenan gritos de terror.",
+     "titulo": "El pueblerino recibe el Año Nuevo"
+    },
+    {
+     "descripcion": "La Compañía Mercenaria Verdapis irrumpe en la catedral. Beryl se dispone a detenerlos, pero Ibroy grita: «¡Están de nuestro lado!». Obligados a una alianza incómoda, Beryl y los demás escoltan al príncipe y a la princesa hasta el palacio sin contratiempos. En el camino, la ira de Beryl choca con el orgullo de Hanoy como mercenario. Pero una crisis aún mayor envuelve a la Ciudad Santa, provocada nada menos que por el propio papa Morris."
+    },
+    {
+     "descripcion": "La enmascarada Doncella Blanca resulta ser nada menos que Rose, antigua alumna de Beryl. Beryl y la Doncella Blanca se reúnen con Allucia y Surena, quienes han derrotado con éxito a la Quimera, y se dirigen a apoyar a la Compañía Mercenaria Verdapis. Allí encuentran a Hanoy al borde de la derrota y al papa Morris de pie con calma frente a él. La batalla final está a punto de comenzar."
+    }
+   ]
+  },
+  "monos_overlord": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Momonga es un empleado asalariado común que lidera un gremio en un MMORPG conocido como Yggdrasil. Tras doce años jugando, los servidores por fin están a punto de cerrarse. Momonga inicia sesión por última vez, para ver el juego llegar a su fin. Sin embargo, cuando el reloj marca la medianoche, nada cambia."
+    },
+    {
+     "descripcion": "Agradecidos de no haber sido abandonados, los Guardianes de Piso experimentan por primera vez el gobierno de su verdadero amo. Momonga evalúa rápidamente la situación y trabaja para proteger la tumba de los invasores mientras reflexiona sobre lo que debe hacer."
+    },
+    {
+     "descripcion": "Momonga continúa sus esfuerzos por proteger Nazarick de las fuerzas desconocidas a las que quizás deba enfrentarse en este mundo. Mientras manipula el Espejo de Visión Remota, nota que una aldea está siendo atacada y decide poner a prueba su fuerza contra los humanos."
+    },
+    {
+     "descripcion": "Momonga descubre que los atacantes de la aldea Carne eran soldados de la Teocracia de Slane disfrazados de habitantes del Imperio Baharuth. Mientras continúa el ataque destinado a atraer y eliminar a Gazef Stronoff, Momonga aprovecha la oportunidad para seguir con sus pruebas..."
+    },
+    {
+     "descripcion": "Momonga parte con Narberal, disfrazados de humanos bajo los nombres de Momon y Nabe, rumbo a la ciudad de E-Rantel. Allí se registran como aventureros para obtener más información sobre este mundo desconocido. Mientras lo hacen, el mal se reúne a su alrededor."
+    },
+    {
+     "descripcion": "Aunque Momonga tiene algunas dudas, acepta la petición de Nphirea Balear con la condición de que los miembros de los Espadas de las Tinieblas se unan a ellos. Aunque su impulso de matar sigue distrayéndola, Clementine avanza poco a poco hacia Nphirea."
+    },
+    {
+     "descripcion": "Momonga y su grupo continúan hacia la aldea Carne. Allí observan que los aldeanos trabajan para fortificar sus defensas frente a posibles enemigos futuros. Nphirea se reúne con Enri y le pregunta sobre aquel hombre llamado Ains Ooal Gown."
+    },
+    {
+     "descripcion": "Después de que Momonga registra a Hamusuke en el gremio, se dirige a la casa de Nphirea y descubre que su cliente ha sido secuestrada. Los restos zombificados de los Espadas de las Tinieblas yacen esparcidos por el almacén. Y allí, Momonga encuentra el cuerpo torturado de Ninya."
+    },
+    {
+     "descripcion": "Momonga y Narberal inician sus respectivas batallas contra Clementine y Khajit. Momonga aprovecha la ocasión para conocer la mecánica del combate en este mundo, pero al final debe mostrarle a Clementine las consecuencias de ofenderlo."
+    },
+    {
+     "descripcion": "Momonga descubre que Shalltear se ha rebelado contra él, debido a algo que ocurrió durante su misión junto a Sebas y Solution. La historia retrocede un poco y repasa ese mismo suceso. ¿Qué pudo cambiar su lealtad hacia él?"
+    },
+    {
+     "descripcion": "Momonga controla los daños en el gremio mientras evalúa la razón de la rebelión de Shalltear. Tras concluir que está bajo un efecto de estado incurable, Momonga se dirige a la tesorería para recuperar algunas de las poderosas armas de Nazarick."
+    },
+    {
+     "descripcion": "Aunque el conjunto de habilidades de Shalltear coloca a Momonga en una desventaja total, él da un paso al frente para combatir. Había entregado diversos objetos del mundo a sus guardianes para garantizar la seguridad de Nazarick en su ausencia. ¡Ahora solo queda una batalla de vida o muerte!"
+    },
+    {
+     "descripcion": "Momonga le recuerda a Shalltear que es el amo de Nazarick y que su nombre carga con el peso de todos los seres supremos de Ains Ooal Gown. Tras concluir la batalla, Momonga actúa de inmediato para reforzar las defensas de Nazarick."
+    }
+   ]
+  },
+  "monos_overlord-iv": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Mientras Ains se abre paso a tropezones para gobernar su nuevo reino, sigue dándole vueltas a una pregunta especialmente importante. Todos en su reino y en la Tumba de Nazarick también esperan su respuesta. ¿Qué clase de reino desea crear?"
+    },
+    {
+     "descripcion": "Albedo viaja en persona hasta el Reino de Re-Estize como enviada del Reino de los Hechiceros. Mientras tanto, la gente de Re-Estize sigue haciendo lo que puede para recuperarse de la reciente guerra y prepararse para el futuro. Aunque no todos tienen la paz en mente."
+    },
+    {
+     "descripcion": "Las grandes potencias de otros países se inquietan cada vez más por el Reino de los Hechiceros. En especial el emperador del Imperio Baharuth, que podría quedarse calvo por el estrés que le provoca el enorme poder de Ains Ooal Gown. ¿De qué lado se pondrá?"
+    },
+    {
+     "descripcion": "Mientras Albedo y los demás dan sus pasos hacia la dominación del mundo, Ains tiene su propio pequeño plan. Quiere cultivar verdaderos aventureros que exploren lo desconocido, como los jugadores de Yggdrasil. Sus esfuerzos de reclutamiento lo llevan al Imperio Baharuth...",
+     "titulo": "El Gobernante de la Conspiración"
+    },
+    {
+     "descripcion": "Tras su visita al Imperio, Ains decide ir a forjar una relación amistosa con el Reino Enano. Por desgracia, al llegar solo encuentra una ciudad vacía. En lo profundo de los túneles se encuentra con un enano llamado Gondo, que le cuenta lo que ocurrió.",
+     "titulo": "En busca de la Tierra de los Enanos"
+    },
+    {
+     "descripcion": "Ains decide echar una mano a los enanos que luchan contra los Quagoa, pero no gratis. Quiere reunir a Gondo y a los demás runaforjadores para el Reino de los Hechiceros. Al mismo tiempo, Ains encuentra la oportunidad perfecta para enseñarle una lección o dos a Shalltear."
+    },
+    {
+     "descripcion": "El Señor del Clan descubre que Ains y su grupo se acercan a la capital real y pide ayuda a los dragones de escarcha. El Señor de los Dragones envía a su hijo para interceptar al grupo, mientras Ains decide dividir a los suyos para enfrentarse a los Quagoa y a los dragones de escarcha."
+    },
+    {
+     "descripcion": "Mientras ocurren diversos acontecimientos en los países vecinos, Philip sigue hundido en el fracaso dentro del Reino de Re-Estize. Tras reunirse con algunos nobles de su nueva facción, de repente se le ocurre una idea brillante..."
+    },
+    {
+     "descripcion": "El Reino de los Hechiceros declara la guerra al Reino de Re-Estize y les concede exactamente un mes para prepararse. Ains planea mostrarle al mundo lo que les ocurre a los enemigos de Ains Ooal Gown. Sin embargo, algunos en Nazarick consideran que esta masacre es excesiva."
+    },
+    {
+     "descripcion": "Ains y su ejército marchan hacia la capital real para aniquilar por fin al Reino de Re-Estize. Diversas fuerzas se preparan para la embestida que se avecina. Antes de la batalla final, Zanac cabalga solo para reunirse con Ains y mantener una conversación pacífica."
+    },
+    {
+     "descripcion": "Para obtener más información, Ains y Albedo se usan a sí mismos como cebo mientras se acercan a la capital real. Azuth acude a defender la capital y rápidamente los separa. Mientras los dos intercambian golpes en el aire, una misteriosa figura va a visitar a Ains."
+    },
+    {
+     "descripcion": "Todos en el Reino de Re-Estize hacen sus preparativos finales mientras el ejército del Reino de los Hechiceros invade la capital real. Algunos intentan huir, otros simplemente esperan la muerte. Pero hay unos pocos entre ellos que desean luchar hasta el final.",
+     "titulo": "Invasión de la capital real"
+    },
+    {
+     "descripcion": "La princesa Renner decide quedarse con su padre y luchar contra el Rey Hechicero hasta el final. Climb obedece las órdenes de la princesa y se escabulle del palacio real, solo para llevarse una sorpresa con lo que lo recibe cuando regresa.",
+     "titulo": "La bruja del reino caído"
+    }
+   ]
+  },
+  "monos_overlord-movie-1-fushisha-no-ou": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Sigue al veterano jugador de MMORPG Momonga, que acaba de quedar atrapado en el mundo de su juego favorito. Al darse cuenta del poder sin precedentes que controla, Momonga decide dar gloria a Nazarick y cambiar el curso de la historia."
+    }
+   ]
+  },
+  "monos_overlord-ple-ple-pleiades-clementine-toubou-hen": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Uno de los 12 ejecutivos de Zuranon y antigua Novena Silla de las Escrituras Negras: Clementine. Con absoluta confianza en sus brazos, emprende la vida huyendo y ocultándose de cierto lanzador de magia. Mientras tanto, Nazarick reúne información sobre artes marciales bajo la dirección de Ainz Ooal Gown. Yuri Alpha y Lupusregina Beta salen a recopilar información para su señor, lo que las lleva a un bar por insistencia de Beta. Allí encuentran a Clementine ahogando sus penas en bebida. Lupusregina la presenta con entusiasmo a ella y a Yuri ante la fugitiva. Clementine, al ver que son un poco extrañas pero inofensivas, decide entretenerlas y se presenta como Claire. Ella y Lupusregina se llevan bien y, finalmente, la segunda reta a la humana a un concurso de bebida. Sin querer rehuir un desafío, Clementine acepta, y ambas mujeres empiezan a beber grandes cantidades de alcohol. Lupusregina logra evitar emborracharse usando [Cura de Veneno] sin que Clementine lo note."
+    },
+    {
+     "descripcion": "Clementine despierta de una resaca y se encuentra en una habitación. Tras haber sido asesinada y luego resucitada, Clementine, en su estado actual, se siente cansada de huir de su pasado. Antes de poder explicar su razón, vomita en el acto. Decide que, con las cosas como están, debería irse.\r\nSolution Epsilon y Entoma Vasilissa Zeta llegan a la taberna donde sus hermanas habían entrado para recopilar información. Esta última acepta con seguridad y la visita.\r\nAfuera, Clementine reconoce vagamente la taberna, pero no logra recordar nada y decide entrar para reunir suministros para su viaje al Imperio Baharuth. Clementine nota a las dos sirvientas, mientras Entoma se da cuenta de que la primera las está observando. Solution también repara en la chica que las estaba mirando interactuar. Entoma pregunta si deberían matarla, pero Solution descarta la idea, pues actualmente están recopilando información bajo las órdenes de Ainz."
+    },
+    {
+     "descripcion": "Clementine despierta en la misma habitación del episodio anterior. Se pregunta por qué se siente tan avergonzada. Comienza su presentación, pero se detiene a mitad de la frase, sintiendo que algo no anda bien en la situación en la que se encuentra.\r\nDe vuelta en la Gran Tumba de Nazarick, Ainz Ooal Gown comenta que reunir información es difícil. Albedo está de acuerdo y afirma que también viajará con regularidad al Reino de Re-Estize para recopilar información. Ainz señala que, si se trata de una visita a la princesa, sugiere preguntarle a Albedo si quizás puede obtener información sobre artes marciales de ella.\r\nClementine encuentra en ruinas la taberna en la que había estado antes. Recuerda haber bebido algo allí, pero nada más. Siente que algo malo ocurrió en ese lugar. El tabernero la llama y le dice que, a pesar de los destrozos, seguirán dispuestos a servir bebidas. Clementine pregunta qué le pasó al local, pero el tabernero se derrumba mentalmente y llora de rodillas. La fugitiva piensa que lo mejor es irse y apresurarse hacia el Imperio."
+    }
+   ]
+  },
+  "monos_overlord-s3": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Con los sucesos del Reino de Re-Estize y los hombres lagarto atrás, los leales servidores de Nazarick retoman sus rutinas diarias. Ainz, sin embargo, se preocupa por el equilibrio entre trabajo y vida de sus PNJ. Trabajan día tras día sin descanso..."
+    },
+    {
+     "descripcion": "Mientras Nazarick decide sus próximos pasos, el pueblo de Carne se concentra en reconstruir sus hogares. Enri y su tropa de goblins están ocupados protegiendo a los aldeanos, entrenando a la milicia de vigilantes y trabajando en los campos. Mientras tanto, la inquietud crece en el bosque."
+    },
+    {
+     "descripcion": "Enri conoce a Agu, quien les cuenta a todos que el Gigante del Este y la Serpiente Demoníaca del Oeste están reuniendo fuerzas para combatir al amo del Monumento de la Ruina. Enri y los demás toman medidas, pero no imagina lo loco que se volverá el día..."
+    },
+    {
+     "descripcion": "Ainz decide ir a ver en persona al Gigante del Este y a la Serpiente Demoníaca del Oeste. Si son similares a Hamusuke, podrían tener valor como sujetos de experimentación. También podrían ser útiles para probar las capacidades de Lupisregina con la aldea.",
+     "titulo": "Gigante del Este, Serpiente Demoníaca del Oeste"
+    },
+    {
+     "descripcion": "El \"Gigante del Este\" ha llegado para atacar la aldea de Carne, pero los aldeanos están dispuestos a jugarse la vida para proteger su hogar y sus familias. Mientras la tropa de goblins defiende las puertas delanteras, Enri y Nphirea defienden la aldea desde la retaguardia."
+    },
+    {
+     "descripcion": "La Tumba de Nazarick continúa con su plan de dominación mundial, y Ainz visita el Imperio Baharuth como Momon de la Oscuridad. Mientras tanto, el conde Femel contrata a un gran número de trabajadores para explorar una tumba descubierta recientemente en el Reino de Re-Estize."
+    },
+    {
+     "descripcion": "Los necios trabajadores que han entrado en la Tumba de Nazarick enfurecen enormemente a Ainz Ooal Gown. Albedo y los demás ya han terminado los preparativos para su bienvenida, y el señor Ainz observa, decidido a que ni uno solo abandone su tumba con vida."
+    },
+    {
+     "descripcion": "El grupo de trabajadores Foresight es teletransportado a la arena de combate del sexto piso para desafiar al gran Ainz Ooal Gown. Ainz intenta contener su furia ardiente mientras elimina a los últimos de los sucios ladrones que osaron pisotear su preciado Nazarick."
+    },
+    {
+     "descripcion": "Ainz envía a Aura y a Mare al Imperio con un mensaje: vengan a disculparse o vean cómo su país arde hasta los cimientos. Sin otra opción, el emperador Jircniv se dirige hacia Nazarick con la cabeza de un noble a cuestas. Sin embargo, las cosas no son lo que parecen."
+    },
+    {
+     "descripcion": "El Reino de Re-Estize se prepara para la guerra tras recibir una declaración del Imperio, que reclamará las tierras cercanas a E-Rantel para el Rey Hechicero Gown. Gazef conoce la fuerza del lanzador de magia, pero no puede detener lo que ya se ha puesto en marcha."
+    },
+    {
+     "descripcion": "El pueblo de Carne vuelve a estar en apuros. Un ejército encabezado por el primer príncipe de Re-Estize ha aparecido, exigiendo que se le permita entrar para interrogar a los aldeanos sobre Ainz Ooal Gown. Enri debe tomar una decisión por la aldea y su gente."
+    },
+    {
+     "descripcion": "La guerra por fin comienza. El Imperio planea aprovechar esta oportunidad para conocer los límites del poder del Rey Hechicero, y el Reino está seguro de que se ha preparado por completo para esta guerra. Gazef está listo. Ahora, que comience el desespero."
+    },
+    {
+     "descripcion": "Gazef desafía a Ainz a un duelo imposible de ganar, y Ainz decide aceptarlo. La batalla pronto llegará a su fin y el destino de E-Rantel será decidido. Incluso en medio del derramamiento de sangre, Gazef y Ainz se profesan un profundo respeto mutuo."
+    }
+   ]
+  },
+  "monos_peter-grill-to-kenja-no-jikan-super-extra": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "¿Alguien dijo goblins? Peter acaba de recibir órdenes de contener a una horda de goblins hembra que invade el campo.",
+     "titulo": "Peter Grill y el Apocalipsis de los Goblins"
+    },
+    {
+     "descripcion": "Mientras Peter llora en su celda, una Hobgoblin de Élite llamada Gobuko inesperadamente acude a rescatarlo. ¡Es casi como si tuviera algo en mente...!",
+     "titulo": "Peter Grill y el Goblin que Devolvió el Favor"
+    },
+    {
+     "descripcion": "Cuando los humanos logren dispersar a la horda, ¿la exterminación es la única solución? ¡Esto parece un trabajo para un tipo de cazagoblins completamente distinto!",
+     "titulo": "Peter Grill y lo Único Sensato por Hacer"
+    },
+    {
+     "descripcion": "Lucy Grill tiene mucho valor. ¡Vaya, se pondrá furiosa si alguna vez descubre que su hermano engañó a Luvellia!",
+     "titulo": "Peter Grill y la Hermanita más Fuerte del Mundo"
+    },
+    {
+     "descripcion": "La ya complicada vida de Peter se complica aún más cuando Lucy se une al Gremio de Guerreros. ¡Ahora tendrá que tener mucho cuidado!"
+    },
+    {
+     "descripcion": "Peter necesita un descanso después de todo lo que ha pasado. Por desgracia para él, ciertas personas tienen otros planes.",
+     "titulo": "Peter Grill y el Disfrute del Balneario"
+    },
+    {
+     "descripcion": "Tras ser secuestrado del balneario, Peter despierta y se encuentra frente a la hermana de Vegan. ¡Adivina tres veces qué quiere!"
+    },
+    {
+     "descripcion": "¡Vegan no va a quedarse de brazos cruzados y dejar que su hermana se lleve a Peter!",
+     "titulo": "Peter Grill y la Disputa entre Hermanas"
+    },
+    {
+     "descripcion": "La rivalidad entre hermanos de Vegan y Fulltalia se está saliendo de control.",
+     "titulo": "Peter Grill y la Esencia de una Disculpa"
+    },
+    {
+     "descripcion": "¿El Gremio jura reconocer a Peter si este reafirma la alianza del Gremio con los enanos? Peter huele una trampa...",
+     "titulo": "Peter Grill y la Alianza Enana"
+    },
+    {
+     "descripcion": "Peter y Misslim quedan encerrados juntos en una habitación, y la única forma de escapar es realizando una acción sospechosamente específica…",
+     "titulo": "Peter Grill y la Habitación Inescapable"
+    },
+    {
+     "descripcion": "¡El plan del Maestre del Gremio da resultado! Afortunadamente para Peter (pero desafortunadamente para todos los demás), el depredador natural de los enanos elige este momento para atacar la ceremonia.",
+     "titulo": "Peter Grill y el Legado del Futuro"
+    }
+   ]
+  },
   "monos_prison-school-ova-kangoku-gakuen-ova": {
    "episodios": [
     null,
     {
      "descripcion": "Cinco chicos recién inscritos en una escuela que antes era solo para chicas, que ya tienen dificultades para relacionarse con las alumnas, chocan con el \"Consejo Estudiantil Clandestino\" de la escuela y se enfrentan a medidas disciplinarias estrictas."
+    }
+   ]
+  },
+  "monos_psyren": {
+   "episodios": [
+    null,
+    null,
+    {
+     "descripcion": "El juego Psyren comienza. Ageha debe proteger a Amamiya en un mundo invadido por monstruos."
+    },
+    {
+     "descripcion": "Ageha y sus amigos han terminado en un juego de la muerte. Mientras se dirigen a la meta, antes de que puedan llegar a un lugar seguro, aparece ante ellos un monstruo de otro mundo que invoca un Tabú."
+    },
+    {
+     "descripcion": "En un intento por sobrevivir, Ageha se somete a un entrenamiento PSI. Mientras tanto, el actor Oboro y el oportunista Kabuto también reciben tarjetas telefónicas."
+    }
+   ]
+  },
+  "monos_rakudai-kenja-no-gakuin-muso-nido-tensei-shita-saikyo-kenja": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Un sabio sin talento mágico comienza su segunda reencarnación."
+    },
+    {
+     "descripcion": "Eftal descubre que la magia en esta nueva era es mucho más débil de lo que pensaba."
+    },
+    {
+     "descripcion": "El padre de Eftal se propone asesinar al príncipe heredero, y Eftal se ve involucrado."
+    },
+    {
+     "descripcion": "Eftal se topa con una esclava y la libera de su malvado amo."
+    },
+    {
+     "descripcion": "Eftal se reencuentra con su antiguo alumno."
+    },
+    {
+     "descripcion": "Eftal se enfrenta a Merlín y muestra su hechizo más poderoso."
+    },
+    null,
+    {
+     "descripcion": "Anastasia roba Raikiri y escapa con su verdadero amo."
+    },
+    {
+     "descripcion": "Anastasia recurre a Eftal en busca de ayuda contra su amo."
+    },
+    {
+     "descripcion": "Anastasia y Merlín sufren una maldición que los convierte en niños pequeños."
+    },
+    {
+     "descripcion": "Eftal lucha contra la bestia de contrato para liberar a Anastasia."
+    },
+    {
+     "descripcion": "Eftal termina la pelea para liberar a Anastasia."
+    }
+   ]
+  },
+  "monos_reiwa-no-dara-san": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "En una montaña apartada existe una misteriosa entidad a la que los habitantes del lugar advierten que no deben acercarse de ninguna manera...",
+     "titulo": "Yamatagi-Madara de la tierra maldita"
+    },
+    {
+     "descripcion": "Dara-san, con curiosidad por la vida de Kaoru y Hinata, decide deslizarse sigilosamente para ver qué está pasando.",
+     "titulo": "Visita a la escuela por primera vez"
+    },
+    {
+     "descripcion": "El guardarropa de Dara-san crece mientras enseña a Kaoru y Hinata sobre adentrarse en territorio sobrenatural.",
+     "titulo": "Las leyes del terreno prohibido"
+    },
+    {
+     "descripcion": "Una nueva alumna inesperada llega a la clase de Hinata.",
+     "titulo": "El regreso de Yamatagi-Madara"
+    },
+    {
+     "descripcion": "Hinata cumple años, y su mamá, Chiyo, recuerda sus encuentros con el guardián de la montaña."
+    },
+    {
+     "descripcion": "Hinata y Kaoru salen de la ciudad y tienen un encuentro con una entidad sobrenatural distinta."
+    },
+    {
+     "descripcion": "Dara-san se pregunta qué ocurrió en la montaña después de que perdiera la razón como espíritu maldito."
+    },
+    {
+     "descripcion": "Yamatagi-Madara planea su venganza contra Dara-san con resultados cuestionables."
+    },
+    {
+     "descripcion": "Hinata se queda hasta tarde en su escuela secundaria para preparar el festival cultural.",
+     "titulo": "Siete maravillas de la escuela"
+    },
+    {
+     "descripcion": "Mientras Hinata trabaja en el festival cultural de su escuela, Kaoru prepara un café privado para Dara-san."
+    },
+    {
+     "titulo": "La prueba tabú del valor"
+    },
+    {
+     "descripcion": "Al final de las vacaciones de invierno, Dara-san y sus hermanos organizan una sesión de cine."
+    },
+    {
+     "descripcion": "Una proyección de película en el territorio de Dara-san desemboca en un enfrentamiento inesperado con una vieja amenaza...",
+     "titulo": "Dara-san de la era Reiwa"
+    }
+   ]
+  },
+  "monos_seitokai-ni-mo-ana-wa-aru": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Ume Mizunoe se une al consejo estudiantil para no tener que repetir el año, pero todos los que están allí tienen personalidades muy peculiares. ¡Comienza a trabajar allí con nerviosismo y los fuertes caracteres del consejo lo traen de un lado para otro!"
+    },
+    {
+     "descripcion": "Ume pasa por la sala del consejo estudiantil mientras se encarga de algo temprano en la mañana. ¡Entonces encuentra a una niña cubierta de sangre desplomada sobre un escritorio! ¿Y parece que la niña se ha encariñado bastante con Ume?!"
+    },
+    {
+     "descripcion": "Cuando Ume llega a casa, encuentra una figura sospechosa, ¡que resulta ser nada menos que su hermana, Sho Mizunoe! Sho, Arisu y Komaro se enfrascan en una batalla de a ver quién conoce más a Ume. ¡¿Qué está pasando aquí?!"
+    },
+    {
+     "descripcion": "El consejo estudiantil recibe una queja del club de ceremonia del té británico, que dice que el club de música cercano hace demasiado ruido. No son los instrumentos los que causan el alboroto, ¡sino algo un poco más sensual!?"
+    }
+   ]
+  },
+  "monos_sekai-saikyou-no-kouei-meikyuukoku-no-shinjin-tansakusha": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Arihito renace en un lugar llamado País Laberinto y debe elegir su clase."
+    },
+    {
+     "descripcion": "Arihito encuentra a Kyouka atacada por un poderoso monstruo Nombrado y debe encontrar la manera de salvarla."
+    },
+    {
+     "descripcion": "Mientras ayuda a Suzuna a rescatar a su amiga, Arihito descubre la sorprendente verdad sobre Elitia."
+    },
+    {
+     "descripcion": "El grupo de Arihito empieza a vivir bajo un mismo techo."
+    },
+    {
+     "descripcion": "Tras recibir algunos tesoros y equipo raros de un cofre del tesoro, el grupo de Arihito regresa a Campo del Amanecer.",
+     "titulo": "El cofre negro del tesoro y el secreto de la joven esposa"
+    },
+    {
+     "descripcion": "Al llegar a un piso inexplorado de Campo del Amanecer, el grupo de Arihito se enfrenta a un gólem de muy alto nivel."
+    },
+    {
+     "descripcion": "Tras descubrir que la esposa de Rikerton es una semihumana, Arihito renueva su promesa de encontrar una forma de curar a los semihumanos.",
+     "titulo": "La esperanza de los semihumanos"
+    },
+    {
+     "descripcion": "Una estampida se desata, y todos los Buscadores de la ciudad deben unirse para detener a la horda de monstruos."
+    },
+    {
+     "descripcion": "Un juego sugerido por Misaki lleva a Elitia a revelar la parte de su pasado que la impulsa a seguir adelante."
+    },
+    {
+     "descripcion": "Madoka sale por primera vez con Melissa mientras el grupo entra al laberinto.",
+     "titulo": "La hermosa chica del bosque enloquecedor"
+    },
+    {
+     "descripcion": "El grupo de Arihito salva a Polaris del Titiritero de Enredaderas, pero Sophie sigue bajo su control.",
+     "titulo": "La atracción de volver al punto de partida"
+    },
+    {
+     "descripcion": "El grupo de Arihito visita una isla turística para tomarse un descanso muy necesario.",
+     "titulo": "Hacia el futuro de País Laberinto"
+    }
+   ]
+  },
+  "monos_shiotaio-no-sato-san-ga-ore-ni-dake-amai": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Sota se encuentra con Koharu, conocida como la \"Sato-san fría\", en la cafetería de su familia, donde trabaja a tiempo parcial."
+    },
+    {
+     "descripcion": "Koharu invita a Sota a aprender a tomar fotos dignas de Instagram en lugares populares."
+    },
+    {
+     "descripcion": "Sota revela sus sentimientos por Koharu de una manera inesperada.",
+     "titulo": "El fin de su mutuo enamoramiento"
+    },
+    {
+     "descripcion": "Tras un malentendido, Sota invita al padre de Koharu a la cafetería para una conversación."
     }
    ]
   },
@@ -99,6 +1256,112 @@
     }
    ]
   },
+  "monos_tempal-item-no-chikara": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Grid espera hacerse rico en el juego de realidad virtual Satisfy. Mientras emprende una misión de rango S, descubre el Tomo de Pagma."
+    },
+    {
+     "descripcion": "Grid ha comenzado de nuevo. Sin otro lugar adónde recurrir, empieza a aprender los fundamentos de la herrería."
+    },
+    {
+     "descripcion": "La Compañía Mero envía a Huroi, un Orador, al pueblo. Allí, activa a la fuerza una misión oculta...!?"
+    },
+    {
+     "descripcion": "Grid se enfrenta a Euphemina en un concurso de herrería. El concurso se convierte en una misión de rango S para rescatar a Huroi."
+    },
+    {
+     "descripcion": "Grid sigue con su herrería. Pone a subasta una armadura épica y recibe una solicitud para fabricar más."
+    }
+   ]
+  },
+  "monos_temple": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Tras ser abandonado a temprana edad por un padre mujeriego, Akagami Akemitsu está decidido a llevar una vida de soltero. Sin embargo, tras cometer un desliz y encapricharse con el sexo opuesto, decide renunciar al mundo secular y hacerse monje."
+    },
+    {
+     "descripcion": "Akagami Akemitsu comienza a acomodarse a su nueva vida como sirviente de las mujeres del Templo Mikazuki. Sin embargo, no todas están contentas con su presencia. Tsukuyo y algunas otras traman incriminarlo para que lo expulsen."
+    },
+    {
+     "descripcion": "Mia y Akemitsu quedan en el templo para resolver su disputa con un duelo. Cuando eso sale terriblemente mal, se ven obligados a reconciliarse de otras maneras. Mia, Akemitsu y Kagura se acercan íntimamente con nuevas prácticas de penitencia."
+    },
+    {
+     "descripcion": "Akagami y Yuzuki emprenden una carrera desesperada hacia el Templo Ryukoku para la reunión de casamentera. Al llegar, una de las monjas del templo recluta a Akagami de inmediato. Tras perder el último autobús y el último tren, los dos buscan refugio en un lugar poco común."
+    },
+    {
+     "descripcion": "Los compañeros de clase de Tsukuyo sospechan que tiene novio tras verla en público con Akagami. Los cariñosos intentos de Akagami por volver a involucrarla en el club de tiro con arco avivan los rumores."
+    },
+    {
+     "descripcion": "Todas las chicas se reúnen para hablar de la terrible maldición puesta en su báscula, que hace parecer que pesan más de lo que deberían. Akagami, Yuzuki y Mia comienzan su entrenamiento de tokudo para convertirse en sacerdotes apropiados."
+    },
+    {
+     "descripcion": "Una nueva fecha límite presiona a los aprendices del templo para que se preparen para el tokudo. Por ello, Kiki los guía tanto en el entrenamiento convencional como en el no convencional. Al acercarse la Navidad, Akagami enfrenta recuerdos desagradables mientras Yuzuki intenta animarlo."
+    },
+    {
+     "descripcion": "Todos los residentes del templo se reúnen para celebrar la Navidad. Tras intercambiar regalos, una intimidad accidental es interrumpida por la dura realidad. Una traición latente amenaza el lugar de Akagami en el templo."
+    },
+    {
+     "descripcion": "Los residentes del Templo Mikazuki participan en su tradición de fin de año de preparar mochi a golpes. Varios de ellos se acaloran y se alteran mientras lidian con algunas de las implicaciones de tanto golpeteo en el templo."
+    },
+    {
+     "descripcion": "La incomodidad de Akagami alrededor de Kagura empuja a Mia a juntarlos a la fuerza. Con el templo al borde de la ruina, Akagami, Mia y Yuzuki piden ayuda a los feligreses para salir adelante. Sin embargo, sus respuestas no son del todo las que esperaban."
+    },
+    {
+     "descripcion": "Con la ceremonia a punto de llegar, los residentes del Templo Mikazuki se afanan por reunir fondos para reparar la figura principal del templo. Para hacer su parte, Akagami se pone en contacto con las hermanas Aoba y le pide una cita a Tsukuyo."
+    },
+    {
+     "descripcion": "Para transmitir una sabiduría muy necesaria, Kiki se niega de repente a seguir entrenando a Yuzuki. Yuzuki y Akagami reflexionan profundamente sobre las palabras de su maestro y las circunstancias que los han llevado a luchar con tanto empeño por el Templo Mikazuki."
+    }
+   ]
+  },
+  "monos_tensei-goblin-dakedo-shitsumon-aru": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Tras reencarnar en otro mundo como un simple goblin, las habilidades de Akira de su vida anterior le resultan muy útiles.",
+     "titulo": "¿Y qué tiene de malo renacer como goblin?"
+    },
+    {
+     "descripcion": "El jefe de la frontera local resulta no ajustarse a las expectativas cuando Akira acude a negociar con él."
+    },
+    {
+     "descripcion": "Los goblins se vuelven cada vez más poderosos, así que Akira busca mejorar la opinión pública que los humanos tienen de ellos.",
+     "titulo": "¿Y qué tiene de malo negociar con humanos?"
+    },
+    {
+     "descripcion": "Varios intentos contra la vida de Akira lo llevan a alcanzar una nueva comprensión con Karen y Simon.",
+     "titulo": "¿Y qué tiene de malo ser objetivo de un asesinato?"
+    },
+    {
+     "descripcion": "Cuando Eunomia se pone celosa de que su hermana Diké le preste atención a Akira, ¿habrá algo que la convenza de lo contrario?",
+     "titulo": "¿Y qué tiene de malo que una elfa adolescente te desprecie?"
+    }
+   ]
+  },
+  "monos_tensei-kizoku-kantei-skill-de-nariagaru-s3": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Ars se establece como jefe de Canarre y reflexiona sobre el statu quo."
+    },
+    {
+     "descripcion": "El nuevo gobernador de Seitz marcha contra Canarre en un intento por separarlos de las fuerzas de Couran."
+    },
+    {
+     "descripcion": "Un nuevo avance de las fuerzas de Seitz pone a prueba las habilidades de la unidad de élite de Canarre."
+    },
+    {
+     "descripcion": "Ars le pide a Pham que debilite al enemigo antes de que pueda lanzar un ataque devastador."
+    },
+    {
+     "descripcion": "Couran y Vasmarque libran la batalla final para decidir el control de Missian.",
+     "titulo": "El fin de Vasmarque"
+    }
+   ]
+  },
   "monos_to-aru-anbu-no-item": {
    "episodios": [
     null,
@@ -110,6 +1373,239 @@
     },
     {
      "descripcion": "Choubi Hanano se une a ITEM mientras investigan un circuito clandestino de peleas."
+    }
+   ]
+  },
+  "monos_togen-anki-nikko-kegon-falls-arc": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Shiki descubre que es un Oni cuando lo ataca Momotaro."
+    },
+    {
+     "descripcion": "Shiki despierta confundido frente a Naito, quien le explica la situación entre los Oni y los Momotaro.",
+     "titulo": "Si quieres llegar lejos, sigue ganando"
+    },
+    {
+     "descripcion": "La primera prueba que enfrentan los chicos para entrar a la academia es jugar a \"atrapa demonios\"."
+    },
+    {
+     "descripcion": "Si quieren aprobar la prueba que les ha asignado su maestro, los alumnos deben trabajar juntos."
+    }
+   ]
+  },
+  "monos_tokyo-revengers-santen-sensou-hen": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "La guerra con Tenjiku llega a una conclusión mortal. Takemichi aprovecha la ocasión para decirle a Mikey que es un Time Leaper y le explica todo por lo que ha pasado. Tras escuchar la verdad, Mikey anuncia que la Tokyo Manji Gang se disuelve. La legendaria organización que alguna vez estuvo en la cima de Japón llega a su fin."
+    },
+    {
+     "descripcion": "Tras la disolución de la Tokyo Manji Gang, Takemichi está a punto de regresar a su línea temporal original, pero un regalo de San Valentín olvidado para Hina desemboca en una propuesta inesperada. Después de enterrar una cápsula del tiempo con sus compañeros y prometer reencontrarse dentro de 12 años, Takemichi realiza un salto en el tiempo. Llega a un mundo en el que todos sus amigos viven felices, pero Mikey no aparece por ninguna parte.",
+     "titulo": "Quedarse atrás en el tiempo"
+    },
+    {
+     "descripcion": "Doce años después, el inframundo criminal está dominado por Bonten, una organización mucho más despiadada que la antigua Tokyo Manji Gang. Takemichi se queda atónito al descubrir que Bonten está liderada por alguien de su vida anterior. Quiere regresar en el tiempo, pero el poder en el que antes confiaba ya no está a su alcance. Sin ninguna forma de volver, Takemichi se reúne con sus amigos para abrir la cápsula del tiempo que enterraron hace 12 años."
+    },
+    {
+     "descripcion": "Takemichi reproduce la cinta de video que Mikey deslizó en la cápsula del tiempo, la cual incluye un mensaje dirigido solo a él. El Mikey de hace doce años revela una oscuridad en su interior que Shinichiro, Emma y Baji habían mantenido a raya. Tras perder a todos los que podían detenerlo, Mikey ha roto lazos con la Tokyo Manji Gang y se ha alejado de sus amigos. Al enterarse de la angustia de Mikey, Takemichi ignora el peligro e intenta ponerse en contacto con él."
+    },
+    {
+     "descripcion": "Takemichi intenta desesperadamente sujetar a Mikey mientras este se lanza desde la azotea. Arrojado diez años al pasado, Takemichi aterriza en un mundo dos años después de la disolución de la Tokyo Manji Gang, donde una guerra por la supremacía arrasa entre Rokuhara Tandai, Brahman y Kanto Manji."
+    }
+   ]
+  },
+  "monos_unansweredbutterfly-sword-art-online": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "El 6 de noviembre de 2022 se lanza oficialmente el VRMMORPG Sword Art Online (SAO), y se venden de inmediato sus 10 000 copias. Kirito, que probó la versión beta del juego, inicia sesión en el mundo de Aincrad y conoce a Klein, un jugador novato, quien le pide que le enseñe lo básico del juego, incluido el sistema de combate con Habilidades de Espada. Más tarde, tras varias horas dentro del juego, Kirito y Klein descubren que no pueden desconectarse. Poco después, ambos son teletransportados a la plaza del pueblo, donde ven que todos los demás jugadores también han sido trasladados a ese lugar. Entonces aparece en el cielo un Game Master con capucha roja que se revela ante la multitud como Akihiko Kayaba, el creador del juego. Les dice que eliminó intencionalmente la opción de cerrar sesión. Les advierte que no pueden salir simplemente quitándose el NerveGear, el casco de realidad virtual que usan para ingresar al juego, pues eso los matará al instante. La única forma de salir es que los jugadores superen y completen los 100 pisos del juego. Si mueren dentro del juego, sus cuerpos reales también morirán. Como regalo de despedida, Akihiko les entrega un espejo que modifica los avatares del juego para que se parezcan a su apariencia real. Kirito le pide a Klein que lo siga al siguiente pueblo para subir de nivel antes de que se agoten los recursos, pero Klein declina cortésmente, pues desea quedarse con sus amigos. Kirito entonces se marcha, jurando liberarse del juego. Al final del primer mes, han muerto 2000 jugadores y el primer piso aún no ha sido completado.",
+     "titulo": "El mundo de las espadas"
+    }
+   ]
+  },
+  "monos_virgin-punk-clockwork-girl": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "En un mundo despiadado, Ubu Kamigori caza criminales como cazarrecompensas. Pero un día, esperándola en su casa está el hombre con quien comparte una historia turbia: el señor Elegancia. Y así, su destino comienza a desenredarse."
+    }
+   ]
+  },
+  "monos_watashi-no-shiawase-na-kekkon": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Despreciada por su madrastra y su hermana, Miyo es tratada como una sirvienta en su propia casa. Un día, su padre la llama para hablarle sobre su futuro."
+    },
+    {
+     "descripcion": "Decidida a ser útil, Miyo se levanta temprano y prepara el desayuno, pero Kiyoka la acusa de intentar envenenarlo y se niega a probar bocado.",
+     "titulo": "Sobre mi prometido"
+    },
+    {
+     "descripcion": "Mientras Kiyoka lleva a Miyo a recorrer el pueblo, pronto nota que ella se comporta de una manera muy distinta a la de otras hijas adineradas que ha conocido."
+    },
+    {
+     "descripcion": "Para sorprender a Kiyoka con un regalo hecho a mano, Miyo va al pueblo a comprar algunos materiales. Mientras tanto, Kiyoka visita a los padres de Miyo."
+    },
+    {
+     "descripcion": "Consumida por los celos, Kaya intenta frustrar el compromiso de Miyo con Kiyoka. Miyo deja la casa y olvida llevar el amuleto de la buena suerte que Kiyoka le regaló."
+    },
+    {
+     "descripcion": "Miyo despierta y encuentra a su hermana y a su madrastra amenazándola. Junto con Koji, Kiyoka llega a la casa de los Saimori y exige ver a su prometida."
+    },
+    {
+     "descripcion": "Kiyoka acompaña a Miyo a los restos de la casa de los Saimori, como ella se lo pidió. Más tarde, una impresionante visitante llega a su hogar."
+    },
+    {
+     "descripcion": "Hazuki y Miyo se acercan más gracias a sus lecciones. Preocupado, Kiyoka intenta averiguar el origen de las implacables pesadillas de Miyo."
+    },
+    {
+     "descripcion": "Aunque angustiada por sus pesadillas, Miyo sigue esforzándose por ser una esposa comprensiva. Entonces, Arata Tsuruki va a hablar con ella mientras Kiyoka está fuera."
+    },
+    {
+     "descripcion": "Arata revela su verdadera identidad y presenta a Miyo al abuelo que nunca conoció. Afirman que pueden curar sus pesadillas, con una sola condición.",
+     "titulo": "Cerezos de verano y el error"
+    },
+    {
+     "descripcion": "Yoshiro Usuba le cuenta a Miyo cómo su madre llegó a casarse con su padre y por qué tomó una decisión que cambió para siempre la vida de su única hija."
+    },
+    {
+     "descripcion": "Los poderes de Miyo son la última esperanza de todos para despertar a Kiyoka de su estado inconsciente. Pero antes de poder rescatarlo, debe enfrentar la sombra de su pasado.",
+     "titulo": "Luz en la oscuridad"
+    }
+   ]
+  },
+  "monos_watashi-no-shiawase-na-kekkon-s2": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Mientras hacía compras, Miyo tiene una visión escalofriante, solo para llevarse una sorpresa con su futuro suegro, quien la invita a ella y a Kiyoka a su finca en el campo."
+    },
+    {
+     "descripcion": "Descontenta con el compromiso de su hijo, Fuyu ordena a Miyo que se encargue de las tareas domésticas. Mientras tanto, Kiyoka hace un descubrimiento impactante en una casa abandonada."
+    },
+    {
+     "descripcion": "Mientras Miyo intenta salvar a un aldeano usando la Vista de Sueños, Kiyoka combate contra un demonio. Más tarde, Arata comparte información sorprendente sobre el fundador de la Comunión de los Dotados.",
+     "titulo": "Los dotados de la comunión y los demonios"
+    },
+    {
+     "descripcion": "Al regresar a la capital, el grupo tiene un inquietante encuentro con Naoshi Usui. Kiyoka asigna a Miyo una guardaespaldas: la apuesta Kaoruko Jinnouchi."
+    },
+    {
+     "descripcion": "Miyo escucha a unos soldados menospreciar a Kaoruko y defiende a su amiga. Más tarde, tiene una perturbadora pesadilla. ¿Es solo un sueño o un vistazo al futuro?"
+    },
+    {
+     "descripcion": "Mientras Kiyoka se apresura a reunirse con Arata en la finca vacacional de la familia imperial, Usui sorprende a Miyo y a sus guardias en el dojo, revelando a un traidor entre ellos."
+    },
+    {
+     "descripcion": "Tras una tierna noche de Año Nuevo, Miyo y Kiyoka hacen juntos su primera visita al santuario. Mientras tanto, Takahito se entera del creciente malestar en las calles."
+    },
+    {
+     "descripcion": "En una reunión sorpresa, Hazuki y sus invitados comparten sus ideas sobre el amor. Más tarde, las preocupaciones de Miyo crecen al enterarse de la siniestra visión de Takahito.",
+     "titulo": "Una velada de banquete y nieve lejana"
+    },
+    null,
+    {
+     "descripcion": "Decidida a salvar a su prometido, Miyo se escapa a hurtadillas y se topa con un niño de rostro familiar. Más tarde, sueña con una trágica promesa del pasado."
+    },
+    {
+     "descripcion": "Al despertar de su sueño, Miyo comienza a reunir aliados para la misión de rescate. ¿Serán suficientes sus poderes en flor para salvar a Kiyoka y detener a Usui?"
+    },
+    {
+     "descripcion": "En la batalla final, Usui abruma a Kiyoka y lo atrapa en una terrible pesadilla. Desesperada por evitar más derramamiento de sangre, Miyo se sumerge en el sueño."
+    },
+    {
+     "descripcion": "Después de la batalla, Miyo confía a Arata sus arrepentimientos. Kiyoka toma una gran decisión de vida. Más tarde, Hazuki sorprende a Miyo con un conmovedor regalo de boda."
+    }
+   ]
+  },
+  "monos_yanineko": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "La chica gato Yani lucha para pagar el alquiler y gasta lo poco que tiene en cigarrillos, hasta que un mensaje urgente de su hermana Imoko desata una crisis mucho mayor."
+    },
+    {
+     "descripcion": "Yani quiere seguir con su vida despreocupada, pero recibe una oferta de trabajo justo cuando la presión económica aumenta. ¿Aceptará esta oportunidad o conservará su libertad?"
+    },
+    {
+     "descripcion": "Tras otro enfrentamiento con su casero, Yani acepta cuidar su jardín para pagar el alquiler. Parece la solución perfecta, hasta que se encuentra con su parche de repollos."
+    },
+    {
+     "descripcion": "Yani consigue un trabajo como asistente de Saori Tatsuro, una mangaka de temática atrevida. Después de que Yani quema por error su manuscrito, recibe una inesperada visita de la policía."
+    },
+    {
+     "descripcion": "A pesar de los intentos de su hermana por quitarle los cigarrillos, Yani se niega a dejarlos. Al mismo tiempo, Imoko vive un romance juvenil."
+    },
+    {
+     "descripcion": "La compañera de piso de Yani, Aruko, desaparece durante una fiesta de bebida, mientras tres nuevos asistentes llegan al lugar de trabajo de Tatsuro a medida que se acerca su fecha límite."
+    },
+    {
+     "descripcion": "Yani acepta un trabajo de limpieza en una instalación clandestina y turbia. Mientras tanto, su casero recibe a un nuevo huésped, seguido rápidamente por un percance inesperado.",
+     "titulo": "Yo también nací de padres, nya"
+    },
+    {
+     "descripcion": "Yani espera un cumpleaños solitario, sin saber que Imoko está preparando una fiesta sorpresa para ella. Mientras tanto, el casero queda atrapado en un bucle temporal muy desagradable."
+    },
+    {
+     "descripcion": "Los peculiares hábitos en el baño de Yani provocan el caos a su alrededor, mientras Imoko recibe un regalo de un admirador secreto que resulta ser cualquier cosa menos ordinario."
+    },
+    {
+     "descripcion": "Los vecinos de Yani, Yakuneko y Hameneko, se dirigen a una cascada mística, pero el egoísmo de Hameneko lleva a Yakuneko a tramar un salvaje plan de venganza."
+    },
+    {
+     "descripcion": "Yani y sus compañeros de piso emprenden una escapada a Kioto y Nara, pero sus travesuras la llevan a un encuentro con el “Rey de los Ciervos”, una criatura de sabiduría ancestral."
+    },
+    {
+     "descripcion": "Con sus problemas llevando al límite a los demás inquilinos, una Yani agotada arremete contra su casero y desata la pelea más grande en la historia del edificio.",
+     "titulo": "Igual voy a fumar en el último episodio, nya"
+    }
+   ]
+  },
+  "monos_yasei-no-last-boss-ga-arawareta": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Tras terminar la batalla más grande en la historia de Exgate Online, el jugador es encarnado en su personaje."
+    },
+    {
+     "descripcion": "Lufas viaja a Svel y se entera de lo que sucedió en el mundo durante sus 200 años de ausencia."
+    },
+    {
+     "descripcion": "Aries ataca Svel, luchando contra Megrez y Levia antes de que Lufas intervenga para detenerlo."
+    },
+    {
+     "descripcion": "Tras devolverle el juicio a Aries, Lufas castiga a los demonios que lo manipularon y alcanza a Megrez.",
+     "titulo": "¡Estaban manipulando los hilos tras bambalinas!"
+    },
+    {
+     "descripcion": "Lufas crea un golem RV y disfruta de una aguas termales con Dina. Luego se atreven a explorar la tumba de Lufas."
+    },
+    {
+     "descripcion": "Lufas recupera a Libra, mientras el grupo de Jean cree que conquistó la Tumba del Rey de Alas Negras.",
+     "titulo": "¡Apareció Libra de las Balanzas!"
+    },
+    {
+     "descripcion": "Lufas hace una parada en el nuevo hogar de su pueblo y los recuerdos resurgen. Libra y Aries descubren cada uno a un enemigo."
+    },
+    {
+     "descripcion": "Las tensiones en Gjallarhorn están a punto de desembocar en una guerra civil mientras Lufas debate qué hacer. Libra comienza a sospechar de Dina."
+    },
+    {
+     "descripcion": "Libra captura a Jupiter, Lufas detiene a Aigokeros y Dina calma a la población. Después, Merak recibe unas palabras de ánimo."
+    },
+    {
+     "descripcion": "La verdad sobre Dina sale a la luz y ella se enfrenta a Lufas. ¿Pero realmente está diciendo la verdad?",
+     "titulo": "¿Quién eres?"
+    },
+    {
+     "descripcion": "¡El verdadero Héroe es invocado para derrotar al Rey Demonio! ¡Pero su viaje comienza enfrentándose a ambos Últimos Jefes!",
+     "titulo": "¡Un Lufas Maphaal salvaje y un Rey Demonio salvaje han aparecido al mismo tiempo!!!"
+    },
+    {
+     "descripcion": "En su tierra natal, Lufas descubre la razón de las acciones de Parthenos y sugiere cuáles son los verdaderos objetivos del Lufas original.",
+     "titulo": "¡Había algo increíble en mi tierra natal!"
     }
    ]
   }
