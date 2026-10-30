@@ -10,6 +10,9 @@ celular pida página por página). El catálogo sale de VEOHENTAI (veohentai.com
   cine/Archivos/generos.json    Los géneros de /generos/ con su miniatura (póster del primer episodio), su imagen
                                 propia, la primera página de episodios y la lista COMPLETA de episodios (slugs; los
                                 datos de cada uno están en catalogo.json). "porPagina" = episodios por página.
+  cine/Archivos/ediciones.json  Copia de lo que el staff editó desde la app (Firebase /ediciones): póster, logo y
+                                descripción de una serie y la descripción de cada episodio. Los pósters editados entran
+                                al catálogo (todos los episodios de esa serie): así se ven también en Explorar y la lupa.
 
 VeoHentai volvió (veohentai.com): es la fuente principal del catálogo porque trae TODAS las portadas y, en la misma tarjeta,
 el estudio, el año y la imagen horizontal (sin pedir la página de cada episodio). Si VeoHentai no responde, el catálogo se
@@ -92,6 +95,8 @@ IMAGEN_MAX_BYTES = 32 * 1024 * 1024   # tope de ImgBB
 GENEROS_EXCLUIDOS = {"lolicon", "shota"}
 HSTREAM = "https://hstream.moe/images/hentai"     # portadas de respaldo: <serie>/cover-ep-<N>.webp (verticales, 268×394)
 VEO = bp.VEO                                      # https://veohentai.com: la fuente principal del catálogo
+EDICIONES_URL = "https://void-670de-default-rtdb.firebaseio.com/ediciones.json"   # lo que el staff editó desde la app (Firebase; lectura pública)
+_IMGBB = re.compile(r"^https://i\.ibb\.co(?:\.com)?/[A-Za-z0-9_.~%+/-]+$")
 _HENTAILA_UPLOADS = re.compile(r"^https?://(?:www\.)?hentaila\.io/uploads/(.+)$", re.I)
 PARALELO_IMG = 4                      # portadas de Hentaila que se comprueban a la vez (sin apurar al sitio)
 PARALELO_ESPEJO = 4                   # copias en ImgBB que se comprueban a la vez (ImgBB también frena las ráfagas)
@@ -826,6 +831,68 @@ def _limpiar(items):
     return [{k: v for k, v in it.items() if v is not None} for it in items]
 
 
+# ── Ediciones del staff (desde la app: póster, logo y descripciones) ──────────────────────────────────────────
+
+def cargar_ediciones(url=EDICIONES_URL):
+    """Lo que el staff editó desde la app, tal como está en Firebase: {clave de serie: {poster, logo, descripcion,
+    episodios}}. {} si no hay nada; None si Firebase no respondió (entonces se deja el ediciones.json anterior)."""
+    try:
+        r = requests.get(url, headers={"User-Agent": bp.UA}, timeout=bp.TIMEOUT)
+        if r.status_code != 200:
+            print(f"  Ediciones: HTTP {r.status_code}", file=sys.stderr)
+            return None
+        doc = r.json()
+    except Exception as e:
+        print(f"  Ediciones: no se pudieron leer: {type(e).__name__}", file=sys.stderr)
+        return None
+    if doc is None:
+        return {}
+    return doc if isinstance(doc, dict) else None
+
+
+def escribir_ediciones(path, ediciones):
+    """Guarda ediciones.json (una copia en GitHub de lo editado; las claves ordenadas) si cambió. True si se escribió."""
+    prev = _cargar(path)
+    if isinstance(prev, dict) and prev.get("items") == ediciones:
+        return False
+    doc = {"generado": datetime.now(timezone.utc).isoformat(timespec="seconds"), "ts": int(time.time() * 1000),
+           "total": len(ediciones), "items": dict(sorted(ediciones.items()))}
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(doc, f, ensure_ascii=False, indent=1)
+        f.write("\n")
+    print(f"  Escrito {path} ({len(ediciones)} series editadas)")
+    return True
+
+
+def _clave_app(id_):
+    """La clave con que la app guarda una serie en /ediciones (Ediciones.claveDe): su id dejando solo letras, números, _ y -."""
+    return re.sub(r"[^A-Za-z0-9_-]", "_", str(id_ or "").strip())[:120]
+
+
+def aplicar_ediciones(items, ediciones, enlaces):
+    """Pone a todos los episodios de una serie el póster que el staff le editó (así Explorar, los géneros y la lupa lo
+    muestran, no solo la ficha). La edición se guarda con el id de la serie en MuchoHentai («mh_…»); `enlaces` (clave =
+    título de la serie en minúsculas → serie de MuchoHentai, del enlaces.json) dice a qué serie del catálogo corresponde.
+    Devuelve cuántos episodios cambiaron."""
+    por_id = {}
+    for clave, anime in (enlaces or {}).items():
+        if isinstance(anime, dict) and anime.get("id"):
+            por_id[_clave_app(anime["id"])] = clave
+    posters = {}
+    for serie_id, ed in (ediciones or {}).items():
+        poster = ed.get("poster") if isinstance(ed, dict) else None
+        clave = por_id.get(str(serie_id))
+        if clave and isinstance(poster, str) and _IMGBB.match(poster):
+            posters[clave] = poster
+    cambiados = 0
+    for it in items:
+        poster = posters.get((it.get("seriesName") or "").strip().lower())
+        if poster and it["imageUrl"] != poster:
+            it["imageUrl"] = poster
+            cambiados += 1
+    return cambiados
+
+
 def write_if_changed(path, doc_parcial):
     prev = _cargar(path)
     now_ms = int(time.time() * 1000)
@@ -875,6 +942,7 @@ def main():
     ruta_cat = os.path.join(args.carpeta, "catalogo.json")
     ruta_gen = os.path.join(args.carpeta, "generos.json")
     ruta_esp = os.path.join(args.carpeta, "espejo.json")
+    ruta_ed = os.path.join(args.carpeta, "ediciones.json")
     espejo = cargar_espejo(_cargar(ruta_esp))
     espejo_antes = dict(espejo)
     key = os.environ.get("IMGBB_KEY", "").strip() or None      # el secreto del workflow; nunca se imprime
@@ -889,6 +957,16 @@ def main():
         cat = build_catalogo(previo_cat, args.presupuesto, args.max_paginas, espejo, key)
         if cat is not None:
             print(f"Catálogo armado en {time.time() - t0:.0f} s")
+            # Lo editado por el staff desde la app: se copia a ediciones.json y los pósters editados entran al catálogo
+            ediciones = cargar_ediciones()
+            if ediciones is not None:
+                escribir_ediciones(ruta_ed, ediciones)
+            else:                                     # Firebase no respondió: vale la copia de la corrida anterior
+                anterior = _cargar(ruta_ed)
+                ediciones = anterior.get("items") if isinstance(anterior, dict) else None
+            if ediciones:
+                cambiados = aplicar_ediciones(cat["items"], ediciones, bp._enlaces_muchohentai())
+                print(f"  Ediciones del staff: {len(ediciones)} series, {cambiados} episodios con póster editado")
             write_if_changed(ruta_cat, cat)
             escribir_espejo(ruta_esp, espejo, espejo_antes)
             items_por_slug = {it["slug"]: it for it in cat["items"]}
