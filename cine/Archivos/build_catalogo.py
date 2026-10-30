@@ -2,14 +2,19 @@
 # -*- coding: utf-8 -*-
 """
 Arma, para la app Nimaru, el Catálogo y los Géneros del modo privado ya listos para descargar (en vez de que el
-celular pida página por página). Salen de HENTAILA (hentaila.io), donde se mudó VeoHentai: mismos episodios y mismos
-slugs, imágenes en /uploads/.
+celular pida página por página). El catálogo sale de VEOHENTAI (veohentai.com) y, si no responde, de HENTAILA
+(hentaila.io); los géneros, de Hentaila.
 
   cine/Archivos/catalogo.json   TODOS los episodios del sitio (el inicio, página por página: de más nuevo a más viejo),
                                 con su póster, estudio, año e imagen horizontal; más la lista de estudios y de años.
   cine/Archivos/generos.json    Los géneros de /generos/ con su miniatura (póster del primer episodio), su imagen
                                 propia, la primera página de episodios y la lista COMPLETA de episodios (slugs; los
                                 datos de cada uno están en catalogo.json). "porPagina" = episodios por página.
+
+VeoHentai volvió (veohentai.com): es la fuente principal del catálogo porque trae TODAS las portadas y, en la misma tarjeta,
+el estudio, el año y la imagen horizontal (sin pedir la página de cada episodio). Si VeoHentai no responde, el catálogo se
+arma desde Hentaila (hentaila.io, donde se mudó mientras estuvo caído: mismos episodios y mismos slugs). Las imágenes son
+las mismas en los dos sitios (veohentai.com/media/X ↔ hentaila.io/uploads/X): una portada muerta en uno se busca en el otro.
 
 Mismo formato que armaba el script de VeoHentai, para que la app lo lea igual. Lo que Hentaila no pone en las tarjetas
 (estudio, año e imagen horizontal) se completa con la página de cada episodio, pero solo de los episodios nuevos (unas
@@ -86,6 +91,8 @@ ESPEJO_MUERTAS_MIN = 10               # si no existen más de la mitad de las co
 IMAGEN_MAX_BYTES = 32 * 1024 * 1024   # tope de ImgBB
 GENEROS_EXCLUIDOS = {"lolicon", "shota"}
 HSTREAM = "https://hstream.moe/images/hentai"     # portadas de respaldo: <serie>/cover-ep-<N>.webp (verticales, 268×394)
+VEO = bp.VEO                                      # https://veohentai.com: la fuente principal del catálogo
+_HENTAILA_UPLOADS = re.compile(r"^https?://(?:www\.)?hentaila\.io/uploads/(.+)$", re.I)
 PARALELO_IMG = 4                      # portadas de Hentaila que se comprueban a la vez (sin apurar al sitio)
 PARALELO_ESPEJO = 4                   # copias en ImgBB que se comprueban a la vez (ImgBB también frena las ráfagas)
 PORTADAS_POR_CORRIDA = 400            # portadas de Hentaila que se comprueban por corrida, de la más nueva a la más vieja
@@ -151,10 +158,10 @@ def tarjetas_pagina(url, intentos=3, limite=None):
     return mejor, html_ok
 
 
-def _repescar(base, faltan):
+def _repescar(pedir, faltan):
     """Las páginas que no respondieron en la primera pasada se vuelven a pedir de una en una y con calma: antes de cada
     ronda se espera REPESCA_ESPERA_S, el doble, el doble… (Hentaila frena a quien pide muy seguido desde GitHub y, al rato,
-    vuelve a responder). {n: tarjetas} de las que respondieron."""
+    vuelve a responder). `pedir(n)` → tarjetas de la página n o None. {n: tarjetas} de las que respondieron."""
     out, pendientes = {}, list(faltan)
     limite = time.monotonic() + REPESCA_TIEMPO_MAX_S
     espera = REPESCA_ESPERA_S
@@ -166,11 +173,72 @@ def _repescar(base, faltan):
         for n in list(pendientes):
             if time.monotonic() > limite:
                 break
-            cards, _h = tarjetas_pagina(HENTAILA + _ruta(base, n), intentos=1)
+            cards = pedir(n)
             if cards is not None:
                 out[n] = cards
                 pendientes.remove(n)
     return out
+
+
+def _pagina_veo(n, intentos=3, limite=None):
+    """(tarjetas, páginas) de la página n de /explorar/ de VeoHentai (cada tarjeta ya trae id, serie, estudio, año, portada e
+    imagen horizontal), o (None, None) si no hubo manera. Si el formato cambiara, el HTML visible (sin estudio ni año)."""
+    url = VEO + "/explorar/" + ("" if n <= 1 else f"?pagina={n}")
+    for i in range(intentos):
+        if limite is not None and time.monotonic() > limite:
+            break
+        html = bp._get_text_page(url, bp.VEO_HEADERS)
+        time.sleep(PAUSA_S)
+        if html:
+            try:
+                stream = bp._rsc_stream(html)
+                tarjetas = bp._parse_items(stream)
+                if tarjetas:
+                    m = re.search(r'"pageCount":(\d+)', stream[max(stream.find('"initial":['), 0):])
+                    return tarjetas, (int(m.group(1)) if m else 1)
+                tarjetas = bp._parse_explore_dom(html)
+                if tarjetas:
+                    paginas = [int(x) for x in re.findall(r"[?&]pagina=(\d+)", html)]
+                    return tarjetas, (max(paginas) if paginas else 1)
+            except Exception as e:
+                print(f"  No se pudo leer {url}: {e}", file=sys.stderr)
+        time.sleep(1.5 * (i + 1))
+    return None, None
+
+
+def recorrer_veo(max_paginas=MAX_PAGINAS):
+    """Todas las páginas de /explorar/ de VeoHentai, en orden: (tarjetas, páginas, por_página) o None si alguna página no
+    se pudo leer ni en la repesca. Misma mecánica que `recorrer` (primera pasada a la vez, repesca con calma)."""
+    c1, total = _pagina_veo(1)
+    if not c1:
+        print("  VeoHentai: la primera página de /explorar/ no responde", file=sys.stderr)
+        return None
+    paginas = max(1, min(total, max_paginas))
+    por_pagina = {1: c1}
+    faltan = []
+    if paginas > 1:
+        limite = time.monotonic() + LISTADO_TIEMPO_MAX_S
+        with ThreadPoolExecutor(max_workers=PARALELO) as pool:
+            for n, (cards, _p) in zip(range(2, paginas + 1), pool.map(lambda n: _pagina_veo(n, limite=limite), range(2, paginas + 1))):
+                if cards is None:
+                    faltan.append(n)
+                else:
+                    por_pagina[n] = cards
+    if faltan:
+        print(f"  VeoHentai: no respondieron {len(faltan)} páginas ({', '.join(map(str, faltan[:8]))}{'…' if len(faltan) > 8 else ''}): "
+              "se vuelven a pedir de una en una, con calma", file=sys.stderr)
+        por_pagina.update(_repescar(lambda n: _pagina_veo(n, intentos=1)[0], faltan))
+        faltan = [n for n in faltan if n not in por_pagina]
+        if faltan:
+            print(f"  VeoHentai: la página {faltan[0]} no responde", file=sys.stderr)
+            return None
+    vistos, out = set(), []
+    for n in range(1, paginas + 1):
+        for c in por_pagina[n]:
+            if c["slug"] not in vistos:
+                vistos.add(c["slug"])
+                out.append(c)
+    return out, paginas, len(c1)
 
 
 def recorrer(base, max_paginas=MAX_PAGINAS):
@@ -195,7 +263,7 @@ def recorrer(base, max_paginas=MAX_PAGINAS):
     if faltan:
         print(f"  {base}: no respondieron {len(faltan)} páginas ({', '.join(map(str, faltan[:8]))}{'…' if len(faltan) > 8 else ''}): "
               "se vuelven a pedir de una en una, con calma", file=sys.stderr)
-        por_pagina.update(_repescar(base, faltan))
+        por_pagina.update(_repescar(lambda n: tarjetas_pagina(HENTAILA + _ruta(base, n), intentos=1)[0], faltan))
         faltan = [n for n in faltan if n not in por_pagina]
         if faltan:
             print(f"  {base}: la página {faltan[0]} no responde", file=sys.stderr)
@@ -245,8 +313,9 @@ def parse_ficha(html, slug):
 
 
 def anio_de_subida(url):
-    """El año en que se subió la portada (…/uploads/2024/05/x.jpg → 2024): último recurso si la página no trae fecha."""
-    m = re.search(r"/uploads/((?:19|20)\d{2})/", url or "")
+    """El año en que se subió la portada (…/uploads/2024/05/x.jpg o …/media/2024/05/x.jpg → 2024): último recurso si la
+    página no trae fecha."""
+    m = re.search(r"/(?:uploads|media)/((?:19|20)\d{2})/", url or "")
     return int(m.group(1)) if m else 0
 
 
@@ -298,11 +367,32 @@ def parse_generos(html):
 # ── Catálogo ──────────────────────────────────────────────────────────────────────────────────────────────
 
 def _de_hentaila(url):
-    """Las direcciones del sitio viejo (veohentai.com/media/X) pasan a las de Hentaila (hentaila.io/uploads/X)."""
+    """Las direcciones de VeoHentai (veohentai.com/media/X) en su forma de Hentaila (hentaila.io/uploads/X): es la forma
+    «canónica» con la que se guardan las copias del espejo, venga la portada del sitio que venga. Lo demás, tal cual."""
     if not url:
         return url
     m = bp._VEO_MEDIA.match(str(url))
     return quote(HENTAILA + "/uploads/" + m.group(1), safe=_SAFE) if m else url
+
+
+def _gemela(url):
+    """La misma imagen en el otro sitio (veohentai.com/media/X ↔ hentaila.io/uploads/X); None si no es de ninguno."""
+    u = str(url or "")
+    m = bp._VEO_MEDIA.match(u)
+    if m:
+        return quote(HENTAILA + "/uploads/" + m.group(1), safe=_SAFE)
+    m = _HENTAILA_UPLOADS.match(u)
+    return quote(VEO + "/media/" + m.group(1), safe=_SAFE) if m else None
+
+
+def _referer_de(url):
+    """El Referer con el que se pide una imagen: el de su propio sitio."""
+    u = str(url or "")
+    if "hstream.moe" in u:
+        return "https://hstream.moe/"
+    if bp._VEO_MEDIA.match(u):
+        return VEO + "/"
+    return HENTAILA + "/"
 
 
 def _cargar(path):
@@ -319,21 +409,27 @@ def _clave(slug):
     return re.sub(r"%[0-9a-fA-F]{2}", lambda m: m.group().upper(), slug or "")
 
 
-def armar_items(tarjetas, previo):
-    """Los episodios del catálogo, uno por tarjeta y en su orden. De cada slug que ya estaba se conserva lo que el sitio no
-    pone en la tarjeta (id, serie, estudio, año, imagen horizontal). (items, omitidos): los omitidos no tienen portada."""
+def armar_items(tarjetas, previo, completas=False):
+    """Los episodios del catálogo, uno por tarjeta y en su orden. Con `completas` (tarjetas de VeoHentai: traen id, serie,
+    estudio, año e imagen horizontal) manda lo que trae la tarjeta; si no (las de Hentaila solo traen título y portada, y
+    la serie se deduce del título) se conserva lo que ya estaba en el catálogo anterior. Una tarjeta sin portada usa la
+    del catálogo anterior. (items, omitidos): los omitidos no tienen portada en ningún lado."""
     items, omitidos = [], 0
     previo = {_clave(s): p for s, p in previo.items()}
     for c in tarjetas:
         p = previo.get(_clave(c["slug"])) or {}
-        imagen = c["imageUrl"] or _de_hentaila(p.get("imageUrl"))
+        imagen = c["imageUrl"] or p.get("imageUrl")
         if not imagen:
             omitidos += 1
             continue
-        items.append({"id": int(p.get("id") or 0), "slug": c["slug"], "title": c["title"], "episode": c["episode"],
-                      "seriesName": p.get("seriesName") or c["seriesName"], "imageUrl": imagen,
-                      "studioSlug": p.get("studioSlug") or "", "year": int(p.get("year") or 0),
-                      "backdropUrl": _de_hentaila(p.get("backdropUrl")) or None})
+        if completas:
+            serie, estudio = c.get("seriesName") or p.get("seriesName") or "", c.get("studioSlug") or p.get("studioSlug") or ""
+            ident, anio, horizontal = c.get("id") or p.get("id") or 0, c.get("year") or p.get("year") or 0, c.get("backdropUrl") or p.get("backdropUrl")
+        else:
+            serie, estudio = p.get("seriesName") or c.get("seriesName") or "", p.get("studioSlug") or ""
+            ident, anio, horizontal = p.get("id") or 0, p.get("year") or 0, p.get("backdropUrl")
+        items.append({"id": int(ident), "slug": c["slug"], "title": c["title"], "episode": c["episode"], "seriesName": serie,
+                      "imageUrl": imagen, "studioSlug": estudio, "year": int(anio), "backdropUrl": horizontal or None})
     return items, omitidos
 
 
@@ -395,8 +491,7 @@ def _portada_viva(url, limite=None):
     s = getattr(_img_local, "s", None)
     if s is None:
         s = _img_local.s = requests.Session()
-    referer = "https://hstream.moe/" if "hstream.moe" in url else HENTAILA + "/"
-    cabeceras = {"User-Agent": bp.UA, "Referer": referer, "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"}
+    cabeceras = {"User-Agent": bp.UA, "Referer": _referer_de(url), "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"}
     no_existe = 0
     for intento in range(3):
         if limite is not None and time.monotonic() > limite:
@@ -420,15 +515,17 @@ def verificar_portadas(items, saltar=()):
     """Comprueba que cada portada exista de verdad y cambia las que no. Cuando la tarjeta de Hentaila sale «sin portada» se
     deja la dirección que había antes (la del sitio viejo) y esa a veces ya no existe: el episodio sale con la tarjeta en blanco
     en la app. Para cada portada que el sitio dice que NO existe se busca, en este orden:
-      1. la portada de ese mismo episodio en hstream.moe (…/<serie>/cover-ep-<N>.webp), comprobada;
-      2. la portada de otro episodio de la serie que sí exista (los más cercanos);
-      3. la imagen horizontal del episodio, si existe.
+      1. la misma imagen en el otro sitio (veohentai.com/media/X ↔ hentaila.io/uploads/X);
+      2. la portada de ese mismo episodio en hstream.moe (…/<serie>/cover-ep-<N>.webp), comprobada;
+      3. la portada de otro episodio de la serie que sí exista (los más cercanos);
+      4. la imagen horizontal del episodio, si existe.
     Si no hay ninguna se deja como estaba. Lo que no se pudo comprobar (red, 429, 5xx) tampoco se toca; y si el sitio dice «no
     existe» de más del 5 % de las portadas es un bloqueo, no un hueco de datos: no se cambia nada.
     Para no apurar a Hentaila se comprueban como mucho PORTADAS_POR_CORRIDA por corrida, de la más nueva a la más vieja, y
-    nunca las de `saltar` (las que ya tienen copia en ImgBB: el catálogo lleva la copia, y esa se comprueba aparte).
+    nunca las de `saltar` (las que ya tienen copia en ImgBB, en la forma de Hentaila con que se guardan: el catálogo lleva la
+    copia, y esa se comprueba aparte).
     Devuelve (cambiadas, sin_remedio, sin_comprobar)."""
-    urls = [u for u in dict.fromkeys(it["imageUrl"] for it in items) if u not in saltar][:PORTADAS_POR_CORRIDA]
+    urls = [u for u in dict.fromkeys(it["imageUrl"] for it in items) if _de_hentaila(u) not in saltar][:PORTADAS_POR_CORRIDA]
     limite = time.monotonic() + PORTADAS_TIEMPO_MAX_S
     with ThreadPoolExecutor(max_workers=PARALELO_IMG) as pool:
         estado = dict(zip(urls, pool.map(lambda u: _portada_viva(u, limite), urls)))
@@ -454,7 +551,7 @@ def verificar_portadas(items, saltar=()):
         malo = it["imageUrl"]
         if malo not in muertas:
             continue
-        candidatas = [_portada_hstream(it["slug"])]
+        candidatas = [_gemela(malo), _portada_hstream(it["slug"])]
         serie, n = _serie_y_episodio(it["slug"])
         if serie:
             hermanas = sorted(((abs(m - n), m, u) for m, u in por_serie[serie] if u not in muertas), key=lambda t: t[:2])
@@ -485,8 +582,7 @@ def _bajar_imagen(url):
     s = getattr(_img_local, "s", None)
     if s is None:
         s = _img_local.s = requests.Session()
-    referer = "https://hstream.moe/" if "hstream.moe" in url else HENTAILA + "/"
-    cabeceras = {"User-Agent": bp.UA, "Referer": referer, "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"}
+    cabeceras = {"User-Agent": bp.UA, "Referer": _referer_de(url), "Accept": "image/avif,image/webp,image/*,*/*;q=0.8"}
     try:
         with s.get(url, headers=cabeceras, stream=True, timeout=PORTADA_TIMEOUT_S) as r:
             if r.status_code != 200 or not r.headers.get("content-type", "").startswith("image/"):
@@ -554,11 +650,11 @@ def espejar(items, espejo, key):
     Devuelve (con_copia, subidas, muertas, sin_comprobar)."""
     limite = time.monotonic() + ESPEJO_TIEMPO_MAX_S
     originales = list(dict.fromkeys(it["imageUrl"] for it in items))        # en el orden del catálogo: lo más nuevo primero
-    con_copia = [u for u in originales if u in espejo]
+    con_copia = [u for u in originales if _de_hentaila(u) in espejo]       # (la copia se guarda con la forma de Hentaila: vale para los dos sitios)
     tanda = _tanda(con_copia)
     limite_comprobar = min(limite, time.monotonic() + ESPEJO_COMPROBAR_TIEMPO_S)
     with ThreadPoolExecutor(max_workers=PARALELO_ESPEJO) as pool:
-        estado = dict(zip(tanda, pool.map(lambda u: _portada_viva(espejo[u], limite_comprobar), tanda)))
+        estado = dict(zip(tanda, pool.map(lambda u: _portada_viva(espejo[_de_hentaila(u)], limite_comprobar), tanda)))
     muertas = [u for u in tanda if estado[u] is False]
     sin_comprobar = sum(1 for v in estado.values() if v is None)
     if len(muertas) > max(ESPEJO_MUERTAS_MIN, len(tanda) // 2):
@@ -567,10 +663,10 @@ def espejar(items, espejo, key):
         return 0, 0, len(muertas), sin_comprobar
     for u in muertas:
         print(f"  Espejo: la copia de {u} ya no existe: vuelve la original y se volverá a subir", file=sys.stderr)
-        del espejo[u]
+        del espejo[_de_hentaila(u)]
 
     subidas = 0
-    faltan = [u for u in originales if u not in espejo and ".ibb.co/" not in u]   # (una copia heredada del catálogo anterior ya es copia)
+    faltan = [u for u in originales if _de_hentaila(u) not in espejo and ".ibb.co/" not in u]   # (una copia heredada del catálogo anterior ya es copia)
     if faltan and not key:
         print(f"  Espejo: sin IMGBB_KEY no se sube nada ({len(faltan)} portadas sin copia)")
     elif faltan:
@@ -582,7 +678,7 @@ def espejar(items, espejo, key):
             copia = _subir_imgbb(datos, _nombre_imagen(u), key) if datos else None
             time.sleep(ESPEJO_PAUSA_S)
             if copia:
-                espejo[u] = copia
+                espejo[_de_hentaila(u)] = copia
                 subidas += 1
                 seguidos = 0
             else:
@@ -593,7 +689,7 @@ def espejar(items, espejo, key):
 
     con = 0
     for it in items:
-        it["imageUrl"] = espejo.get(it["imageUrl"], it["imageUrl"])
+        it["imageUrl"] = espejo.get(_de_hentaila(it["imageUrl"]), it["imageUrl"])
         con += ".ibb.co/" in it["imageUrl"]
     return con, subidas, len(muertas), sin_comprobar
 
@@ -607,12 +703,19 @@ def build_catalogo(previo_doc, presupuesto=PRESUPUESTO, max_paginas=MAX_PAGINAS,
     actualiza aquí mismo; None = sin espejo."""
     previo_items = (previo_doc or {}).get("items") or []
     previo = {it["slug"]: it for it in previo_items if isinstance(it, dict) and it.get("slug")}
-    r = recorrer("/", max_paginas)
-    if r is None:
-        return None
-    tarjetas, paginas = r
-    items, omitidos = armar_items(tarjetas, previo)
-    print(f"Catálogo: {len(tarjetas)} episodios en {paginas} páginas" + (f" ({omitidos} sin portada, omitidos)" if omitidos else ""))
+    r = recorrer_veo(max_paginas)
+    if r is not None:
+        tarjetas, paginas, por_pagina = r
+        fuente, completas = "VeoHentai", True
+    else:
+        print("Catálogo: VeoHentai no respondió: se arma desde Hentaila", file=sys.stderr)
+        r = recorrer("/", max_paginas)
+        if r is None:
+            return None
+        tarjetas, paginas = r
+        por_pagina, fuente, completas = POR_PAGINA, "Hentaila", False
+    items, omitidos = armar_items(tarjetas, previo, completas)
+    print(f"Catálogo ({fuente}): {len(tarjetas)} episodios en {paginas} páginas" + (f" ({omitidos} sin portada, omitidos)" if omitidos else ""))
     minimo = max(MIN_ITEMS, int(FRACCION_MIN * len(previo_items)))
     if len(items) < minimo:
         print(f"Salieron solo {len(items)} episodios (hacen falta al menos {minimo}): parece un fallo del sitio, "
@@ -647,7 +750,7 @@ def build_catalogo(previo_doc, presupuesto=PRESUPUESTO, max_paginas=MAX_PAGINAS,
     usados = sorted({it["studioSlug"] for it in items if it["studioSlug"]})
     estudios = sorted(({"slug": s, "name": nombres.get(s) or _nombre_de_slug(s)} for s in usados), key=lambda e: e["name"].lower())
     anios = sorted({it["year"] for it in items if it["year"]}, reverse=True)
-    return {"items": items, "extra": {"paginas": paginas, "porPagina": POR_PAGINA, "estudios": estudios, "anios": anios}}
+    return {"items": items, "extra": {"paginas": paginas, "porPagina": por_pagina, "estudios": estudios, "anios": anios}}
 
 
 # ── Géneros ───────────────────────────────────────────────────────────────────────────────────────────────
@@ -705,8 +808,8 @@ def build_generos(previo_doc, items_por_slug, max_paginas=MAX_PAGINAS, espejo=No
             items = [items_por_slug.get(s) for s in slugs[:POR_PAGINA]]
         items = [{k: v for k, v in i.items() if v is not None} for i in items if i]
         for i in items:
-            i["imageUrl"] = espejo.get(i.get("imageUrl"), i.get("imageUrl"))
-        thumb = espejo.get(thumb, thumb)
+            i["imageUrl"] = espejo.get(_de_hentaila(i.get("imageUrl")), i.get("imageUrl"))
+        thumb = espejo.get(_de_hentaila(thumb), thumb)
         out.append({"slug": g["slug"], "name": g["name"], "description": g["description"],
                     "image": g["image"], "thumb": thumb, "pageCount": paginas, "episodios": episodios,
                     "items": items, "slugs": slugs})
