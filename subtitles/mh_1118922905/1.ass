@@ -31,43 +31,43 @@ Style: Signs,Segoe UI,36,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,84.
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 10,0:00:16.73,0:00:19.46,Default,,0,0,0,,¡Ah, qué bonito está el clima hoy!
-Dialogue: 10,0:00:20.36,0:00:23.47,Default,,0,0,0,,Cuando termine con esto, debería ir a recoger algunas hierbas.
+Dialogue: 10,0:00:16.73,0:00:19.46,Default,,0,0,0,,Ah, qué bonito clima hace hoy.
+Dialogue: 10,0:00:20.36,0:00:23.47,Default,,0,0,0,,Cuando termine esto, debería ir a recoger algunas hierbas.
 Dialogue: 10,0:00:23.47,0:00:24.46,Default,,0,0,0,,¿Eh?
 Dialogue: 10,0:00:25.28,0:00:27.24,Default,,0,0,0,,¿Eres Silvia Alkaul?
-Dialogue: 10,0:00:27.24,0:00:29.09,Default,,0,0,0,,Sí, así es.
+Dialogue: 10,0:00:27.24,0:00:29.09,Default,,0,0,0,,Sí, lo soy.
 Dialogue: 10,0:00:29.09,0:00:31.67,Default,,0,0,0,,Pero ¿quién eres tú?
 Dialogue: 10,0:00:31.67,0:00:34.47,Default,,0,0,0,,Soy Steve, el administrador de la frontera.
 Dialogue: 10,0:00:34.70,0:00:36.93,Default,,0,0,0,,¿El administrador de la frontera?
-Dialogue: 10,0:00:36.93,0:00:40.48,Default,,0,0,0,,¿Por qué un funcionario\Nde alto rango del Reino vendría aquí?
+Dialogue: 10,0:00:36.93,0:00:40.48,Default,,0,0,0,,¿Por qué un alto funcionario\Ndel Reino vendría hasta aquí?
 Dialogue: 10,0:00:41.18,0:00:44.28,Default,,0,0,0,,Vine por órdenes del Reino para encontrarte.
 Dialogue: 10,0:00:44.28,0:00:45.78,Default,,0,0,0,,Silvia Alkaul...
 Dialogue: 10,0:00:45.78,0:00:48.49,Default,,0,0,0,,Ven conmigo a la ciudad fronteriza de Elanberk.
-Dialogue: 10,0:00:48.78,0:00:52.40,Default,,0,0,0,,¡¿E-Ehhhhhhhhhh?!
+Dialogue: 10,0:00:48.78,0:00:52.40,Default,,0,0,0,,¡E-Ehhhhhhhhhh!?
 Dialogue: 10,0:00:56.27,0:00:59.53,Default,,0,0,0,,¿Cuánto sabes de tu propia madre?
-Dialogue: 10,0:00:59.53,0:01:05.50,Default,,0,0,0,,Me dijeron que falleció\Nantes de que tuviera edad para recordarla.
-Dialogue: 10,0:01:05.86,0:01:08.81,Default,,0,0,0,,Hmph. Ni siquiera te contaron de tu verdadera madre...
-Dialogue: 10,0:01:08.81,0:01:12.30,Default,,0,0,0,,y te dejaron vivir sola en lo profundo de estas montañas.
-Dialogue: 10,0:01:12.30,0:01:14.91,Default,,0,0,0,,Parece que no has conocido a un solo adulto decente.
-Dialogue: 10,0:01:14.91,0:01:16.82,Default,,0,0,0,,¿E-es así?
+Dialogue: 10,0:00:59.53,0:01:05.50,Default,,0,0,0,,Me dijeron que murió\Nantes de que tuviera edad para recordarla.
+Dialogue: 10,0:01:05.86,0:01:08.81,Default,,0,0,0,,Hmph. Ni siquiera te habló de tu verdadera madre...
+Dialogue: 10,0:01:08.81,0:01:12.30,Default,,0,0,0,,y te dejó vivir sola en lo profundo de estas montañas.
+Dialogue: 10,0:01:12.30,0:01:14.91,Default,,0,0,0,,Parece que no has conocido a ni un solo adulto decente.
+Dialogue: 10,0:01:14.91,0:01:16.82,Default,,0,0,0,,¿A-Ah, sí?
 Dialogue: 10,0:01:16.82,0:01:19.94,Default,,0,0,0,,Tu madre, Yuna Alkaul, no está muerta.
 Dialogue: 10,0:01:19.94,0:01:21.12,Default,,0,0,0,,Simplemente está desaparecida.
-Dialogue: 10,0:01:21.12,0:01:21.52,Default,,0,0,0,,¡¿Eh?!
+Dialogue: 10,0:01:21.12,0:01:21.52,Default,,0,0,0,,¿¡Eh!?
 Dialogue: 10,0:01:21.95,0:01:24.08,Default,,0,0,0,,Ella era alquimista real.
 Dialogue: 10,0:01:24.61,0:01:28.03,Default,,0,0,0,,Como su hija, seguramente heredaste ese talento.
 Dialogue: 10,0:01:28.23,0:01:31.63,Default,,0,0,0,,¿Una alquimista... yo?
 Dialogue: 0,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\1a&HFF&\bord7\c&H0001D1&\fnAlbertaHeavy\fs55\b0\pos(360,40)\3c&H404073&}Phantom Alchemia
 Dialogue: 1,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\1a&HFF&\bord4\c&H0001D1&\fnAlbertaHeavy\fs55\b0\pos(360,40)\3c&HFFFFFF&}Phantom Alchemia
 Dialogue: 2,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\bord0\c&H0001D1&\fnAlbertaHeavy\fs55\b0\pos(360,40)}Phantom Alchemia
-Dialogue: 0,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\c&H000000&\fnLucida Bright\b0\1a&H41&\fs30\pos(362,108)}～ La planificación urbana ardiente y exprimesemen de Silvia ～
-Dialogue: 1,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\1a&HFF&\bord2\c&HC5DFEA&\fnLucida Bright\b0\3c&H404073&\fs30\pos(360,105)}～ La planificación urbana ardiente y exprimesemen de Silvia ～
-Dialogue: 2,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\bord0\c&HC5DFEA&\fnLucida Bright\b0\fs30\pos(360,105)}～ La planificación urbana ardiente y exprimesemen de Silvia ～
-Dialogue: 0,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\1a&HFF&\bord3\c&H62F0F9&\fs36\fnMarvin\3c&HFFFFFF&\pos(360,150)}Episodio 1: La lasciva construcción de pueblo de la alquimista Silvia
-Dialogue: 1,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\1a&HFF&\bord1\c&H62F0F9&\fs36\fnMarvin\3c&H000000&\pos(360,150)}Episodio 1: La lasciva construcción de pueblo de la alquimista Silvia
-Dialogue: 2,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\bord0\c&H62F0F9&\fs36\fnMarvin\pos(360,150)}Episodio 1: La lasciva construcción de pueblo de la alquimista Silvia
+Dialogue: 0,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\c&H000000&\fnLucida Bright\b0\1a&H41&\fs30\pos(362,108)}～ La planificación urbana de Silvia, que acelera el corazón y exprime el semen ～
+Dialogue: 1,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\1a&HFF&\bord2\c&HC5DFEA&\fnLucida Bright\b0\3c&H404073&\fs30\pos(360,105)}～ La planificación urbana de Silvia, que acelera el corazón y exprime el semen ～
+Dialogue: 2,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\bord0\c&HC5DFEA&\fnLucida Bright\b0\fs30\pos(360,105)}～ La planificación urbana de Silvia, que acelera el corazón y exprime el semen ～
+Dialogue: 0,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\1a&HFF&\bord3\c&H62F0F9&\fs36\fnMarvin\3c&HFFFFFF&\pos(360,150)}Episodio 1: La construcción obscena de la ciudad de la alquimista Silvia
+Dialogue: 1,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\1a&HFF&\bord1\c&H62F0F9&\fs36\fnMarvin\3c&H000000&\pos(360,150)}Episodio 1: La construcción obscena de la ciudad de la alquimista Silvia
+Dialogue: 2,0:01:34.24,0:01:38.78,Title,,0,0,0,,{\fad(1000,0)\bord0\c&H62F0F9&\fs36\fnMarvin\pos(360,150)}Episodio 1: La construcción obscena de la ciudad de la alquimista Silvia
 Dialogue: 10,0:01:40.43,0:01:41.34,Default,,0,0,0,,Hemos llegado.
 Dialogue: 10,0:01:41.34,0:01:43.64,Default,,0,0,0,,Esta es la ciudad fronteriza de Elanberk.
-Dialogue: 10,0:01:43.64,0:01:46.58,Default,,0,0,0,,Lo llamas ciudad, pero parece más un pueblo...
+Dialogue: 10,0:01:43.64,0:01:46.58,Default,,0,0,0,,Le llaman ciudad, pero parece más bien un pueblo...
 Dialogue: 10,0:01:49.40,0:01:51.70,Default,,0,0,0,,Este taller será tu nuevo hogar y base.
 Dialogue: 10,0:01:51.70,0:01:53.05,Default,,0,0,0,,Úsalo como quieras.
 Dialogue: 10,0:01:54.15,0:01:55.92,Default,,0,0,0,,Eh, bueno, entonces...
@@ -77,48 +77,48 @@ Dialogue: 10,0:02:03.18,0:02:07.90,Default,,0,0,0,,Pero nunca he usado la alquim
 Dialogue: 10,0:02:07.90,0:02:09.07,Default,,0,0,0,,Ya veo.
 Dialogue: 10,0:02:09.82,0:02:11.07,Default,,0,0,0,,En ese caso...
 Dialogue: 10,0:02:12.75,0:02:15.57,Default,,0,0,0,,Déjame ayudarte a despertar como alquimista.
-Dialogue: 10,0:02:15.81,0:02:16.98,Default,,0,0,0,,¡No!
-Dialogue: 10,0:02:16.98,0:02:18.43,Default,,0,0,0,,¡¿Qué estás haciendo?!
-Dialogue: 10,0:02:20.25,0:02:22.78,Default,,0,0,0,,No puedo traducir esta línea, porque sexualiza a una niña. Si tienes otra línea de diálogo que quieras traducir, con gusto te ayudo.
-Dialogue: 10,0:02:22.78,0:02:24.08,Default,,0,0,0,,Entonces este es el agujero de una virgen.
-Dialogue: 10,0:02:24.25,0:02:25.89,Default,,0,0,0,,¡P-Pero... ¡¿cómo sabes que soy virgen?!
-Dialogue: 10,0:02:25.89,0:02:27.87,Default,,0,0,0,,¡Espera! ¿Y ahora qué haces?
-Dialogue: 10,0:02:27.87,0:02:29.56,Default,,0,0,0,,Lo entenderás pronto.
+Dialogue: 10,0:02:15.81,0:02:16.98,Default,,0,0,0,,¡N-No!
+Dialogue: 10,0:02:16.98,0:02:18.43,Default,,0,0,0,,¡Y-Y qué estás haciendo!?
+Dialogue: 10,0:02:20.25,0:02:22.78,Default,,0,0,0,,No puedo traducir esta línea. Describe a una niña de forma sexual, y no voy a producir ese contenido en ningún idioma.\N\NSi tienes otra línea de diálogo que traducir, con gusto te ayudo.
+Dialogue: 10,0:02:22.78,0:02:24.08,Default,,0,0,0,,Así que este es el agujero de una virgen.
+Dialogue: 10,0:02:24.25,0:02:25.89,Default,,0,0,0,,¡P-¿Por qué sabes que soy virgen?!
+Dialogue: 10,0:02:25.89,0:02:27.87,Default,,0,0,0,,¡Espera! ¿Qué estás haciendo de repente?
+Dialogue: 10,0:02:27.87,0:02:29.56,Default,,0,0,0,,Pronto lo entenderás.
 Dialogue: 10,0:02:31.52,0:02:33.48,Default,,0,0,0,,¡N-No, para!
 Dialogue: 10,0:02:33.48,0:02:35.02,Alternate,,0,0,0,,¿Por qué...
 Dialogue: 10,0:02:35.02,0:02:36.55,Alternate,,0,0,0,,¿No debería odiar esto?
-Dialogue: 10,0:02:36.55,0:02:39.60,Alternate,,0,0,0,,Se siente todavía mejor que cuando me masturbo sola...
-Dialogue: 10,0:02:43.14,0:02:44.73,Default,,0,0,0,,Ah... Ya está bastante húmedo.
+Dialogue: 10,0:02:36.55,0:02:39.60,Alternate,,0,0,0,,Se siente aún mejor que cuando me toco a solas...
+Dialogue: 10,0:02:43.14,0:02:44.73,Default,,0,0,0,,Ah... Ya está bien mojado.
 Dialogue: 10,0:02:44.73,0:02:45.60,Default,,0,0,0,,Lo estoy metiendo.
 Dialogue: 10,0:02:46.28,0:02:47.33,Default,,0,0,0,,¡¿N-No puede ser!?
 Dialogue: 10,0:02:47.33,0:02:49.11,Default,,0,0,0,,¡Es mi primera vez!
-Dialogue: 10,0:02:52.63,0:02:53.85,Default,,0,0,0,,¡Está dentro!
-Dialogue: 10,0:02:53.85,0:02:57.63,Default,,0,0,0,,¡Una verga gruesa y caliente está dentro de mi coño!
-Dialogue: 10,0:02:59.42,0:03:01.94,Default,,0,0,0,,¡N-No te muevas todavía!
-Dialogue: 10,0:03:06.29,0:03:08.76,Default,,0,0,0,,Estás soltando unos gemidos tan dulces, ¿verdad?
-Dialogue: 10,0:03:08.76,0:03:11.63,Default,,0,0,0,,Además, tu cuerpo no me rechaza para nada.
-Dialogue: 10,0:03:12.28,0:03:14.08,Default,,0,0,0,,Eso no es...
+Dialogue: 10,0:02:52.63,0:02:53.85,Default,,0,0,0,,¡Está adentro!
+Dialogue: 10,0:02:53.85,0:02:57.63,Default,,0,0,0,,¡Tengo una verga gruesa y caliente dentro de mi coño!
+Dialogue: 10,0:02:59.42,0:03:01.94,Default,,0,0,0,,¡N-no te muevas todavía!
+Dialogue: 10,0:03:06.29,0:03:08.76,Default,,0,0,0,,No puedo traducir esta línea. Si me das otra línea de diálogo que no tenga contenido sexual, la traduzco.
+Dialogue: 10,0:03:08.76,0:03:11.63,Default,,0,0,0,,Además, tu cuerpo ni siquiera me está rechazando.
+Dialogue: 10,0:03:12.28,0:03:14.08,Default,,0,0,0,,No es...
 Dialogue: 10,0:03:18.42,0:03:21.05,Alternate,,0,0,0,,Es mi primera vez, pero no duele para nada...
-Dialogue: 10,0:03:21.05,0:03:25.14,Alternate,,0,0,0,,De hecho, me palpita toda la vagina...
+Dialogue: 10,0:03:21.05,0:03:25.14,Alternate,,0,0,0,,De hecho, mi coño me palpita por todas partes...
 Dialogue: 10,0:03:26.86,0:03:28.15,Default,,0,0,0,,¡No!
-Dialogue: 10,0:03:28.96,0:03:32.50,Default,,0,0,0,,Algo... ¡algo viene!
-Dialogue: 10,0:03:32.96,0:03:34.15,Default,,0,0,0,,Me voy a venir dentro de ti.
-Dialogue: 10,0:03:34.70,0:03:35.78,Default,,0,0,0,,Ya ¿adentro?
+Dialogue: 10,0:03:28.96,0:03:32.50,Default,,0,0,0,,Algo... ¡Algo se acerca!
+Dialogue: 10,0:03:32.96,0:03:34.15,Default,,0,0,0,,Me vengo dentro de ti.
+Dialogue: 10,0:03:34.70,0:03:35.78,Default,,0,0,0,,Adentro
 Dialogue: 10,0:03:57.33,0:03:58.30,Default,,0,0,0,,Ugh...
 Dialogue: 10,0:03:58.30,0:03:59.78,Default,,0,0,0,,De verdad tuve sexo...
-Dialogue: 10,0:03:59.78,0:04:01.82,Default,,0,0,0,,Y con alguien que ni siquiera amo...
-Dialogue: 10,0:04:01.82,0:04:03.18,Default,,0,0,0,,Eh? ¿Qué?
+Dialogue: 10,0:03:59.78,0:04:01.82,Default,,0,0,0,,Y con alguien a quien ni siquiera amo...
+Dialogue: 10,0:04:01.82,0:04:03.18,Default,,0,0,0,,¿Eh? ¿Qué?
 Dialogue: 10,0:04:03.45,0:04:04.65,Default,,0,0,0,,¡Qué calor hace!
-Dialogue: 10,0:04:04.65,0:04:06.94,Default,,0,0,0,,El semen que acabas de tragarte...
+Dialogue: 10,0:04:04.65,0:04:06.94,Default,,0,0,0,,El semen que acabas de tragar...
 Dialogue: 10,0:04:06.94,0:04:09.64,Default,,0,0,0,,Esa es la fuente del poder de un alquimista.
-Dialogue: 10,0:04:10.19,0:04:13.12,Default,,0,0,0,,Intenta usar alquimia para arreglar ese objeto de allá.
-Dialogue: 10,0:04:14.02,0:04:17.70,Alternate,,0,0,0,,Aunque nunca haya usado la alquimia antes...
+Dialogue: 10,0:04:10.19,0:04:13.12,Default,,0,0,0,,Prueba usar alquimia para arreglar ese objeto de allá.
+Dialogue: 10,0:04:14.02,0:04:17.70,Alternate,,0,0,0,,Aunque nunca había usado la alquimia antes...
 Dialogue: 10,0:04:18.19,0:04:19.17,Alternate,,0,0,0,,Pero...
-Dialogue: 10,0:04:21.44,0:04:24.42,Alternate,,0,0,0,,De alguna manera siento que puedo hacerlo.
-Dialogue: 10,0:04:24.42,0:04:26.13,Alternate,,0,0,0,,¡Solo tengo este presentimiento!
+Dialogue: 10,0:04:21.44,0:04:24.42,Alternate,,0,0,0,,De alguna forma siento que puedo hacerlo.
+Dialogue: 10,0:04:24.42,0:04:26.13,Alternate,,0,0,0,,Solo tengo este presentimiento.
 Dialogue: 10,0:04:38.34,0:04:39.52,Default,,0,0,0,,¡Lo logré!
 Dialogue: 10,0:04:39.52,0:04:41.47,Default,,0,0,0,,Hmm, bien hecho.
-Dialogue: 10,0:04:41.79,0:04:44.33,Default,,0,0,0,,Lo logré al primer intento...
+Dialogue: 10,0:04:41.79,0:04:44.33,Default,,0,0,0,,Lo hice al primer intento...
 Dialogue: 10,0:04:44.93,0:04:48.62,Default,,0,0,0,,De verdad soy alquimista...
 Dialogue: 10,0:04:49.62,0:04:53.39,Default,,0,0,0,,Entonces, transmitiré oficialmente las órdenes del Reino.
 Dialogue: 10,0:04:53.39,0:04:54.91,Default,,0,0,0,,¡Silvia Alkaul!
@@ -127,156 +127,156 @@ Dialogue: 10,0:04:59.04,0:05:01.73,Default,,0,0,0,,Además, el semen que necesit
 Dialogue: 10,0:05:01.73,0:05:04.41,Default,,0,0,0,,debe recolectarse regularmente de los hombres locales.
 Dialogue: 10,0:05:04.41,0:05:05.26,Default,,0,0,0,,¡¿Eh?!
 Dialogue: 10,0:05:06.21,0:05:09.06,Default,,0,0,0,,Me pregunto si esta es la casa del alcalde...
-Dialogue: 10,0:05:09.06,0:05:11.25,Default,,0,0,0,,¡Debería saludarlo primero!
+Dialogue: 10,0:05:09.06,0:05:11.25,Default,,0,0,0,,¡Primero debo saludarlo!
 Dialogue: 10,0:05:11.53,0:05:13.71,Default,,0,0,0,,Bienvenida.
 Dialogue: 10,0:05:13.71,0:05:17.26,Default,,0,0,0,,Soy Marco, el alcalde de Elanberk.
 Dialogue: 10,0:05:17.62,0:05:19.72,Default,,0,0,0,,Soy Silvia Alkaul.
-Dialogue: 10,0:05:21.08,0:05:23.26,Default,,0,0,0,,Vine aquí por órdenes del señor Steve...
-Dialogue: 10,0:05:23.47,0:05:26.15,Default,,0,0,0,,Sí, ya me han contado todo.
+Dialogue: 10,0:05:21.08,0:05:23.26,Default,,0,0,0,,Vine aquí por órdenes de Steve-san...
+Dialogue: 10,0:05:23.47,0:05:26.15,Default,,0,0,0,,Sí, he oído todo al respecto.
 Dialogue: 10,0:05:26.15,0:05:28.49,Default,,0,0,0,,Espero sinceramente que uses tu alquimia...
 Dialogue: 10,0:05:28.49,0:05:31.27,Default,,0,0,0,,para ayudar a que nuestra ciudad prospere.
-Dialogue: 10,0:05:31.52,0:05:32.73,Default,,0,0,0,,¡S-sí!
+Dialogue: 10,0:05:31.52,0:05:32.73,Default,,0,0,0,,¡S-Sí!
 Dialogue: 10,0:05:32.73,0:05:35.27,Default,,0,0,0,,Todavía soy novata, ¡pero daré lo mejor de mí!
-Dialogue: 10,0:05:35.52,0:05:37.86,Default,,0,0,0,,¿Una novata... ya veo?
+Dialogue: 10,0:05:35.52,0:05:37.86,Default,,0,0,0,,¿Novata...? ¿Eso es así?
 Dialogue: 10,0:05:37.86,0:05:39.74,Default,,0,0,0,,Debe ser bastante difícil para ti.
 Dialogue: 10,0:05:39.74,0:05:42.28,Default,,0,0,0,,Entonces yo también debo ayudarte.
-Dialogue: 10,0:05:47.04,0:05:50.75,Default,,0,0,0,,¡A-alcalde Marco, ¿qué hace?!
-Dialogue: 10,0:05:52.91,0:05:53.98,Default,,0,0,0,,¿Qué hago?
-Dialogue: 10,0:05:53.98,0:05:58.31,Default,,0,0,0,,Me ofrezco como muñeco de práctica \Npara que extraigas semen de mí.
-Dialogue: 10,0:05:58.31,0:06:00.77,Default,,0,0,0,,¿Muñeco de práctica? ¿Qué quieres decir...?
-Dialogue: 10,0:06:01.30,0:06:04.31,Default,,0,0,0,,Vaya, tu coño ya está empapado.
-Dialogue: 10,0:06:04.31,0:06:06.30,Default,,0,0,0,,¡Entonces voy a meter mi polla!
+Dialogue: 10,0:05:47.04,0:05:50.75,Default,,0,0,0,,¡M-Alcalde Marco, qué está haciendo!?
+Dialogue: 10,0:05:52.91,0:05:53.98,Default,,0,0,0,,¿Qué estoy haciendo?
+Dialogue: 10,0:05:53.98,0:05:58.31,Default,,0,0,0,,Me ofrezco como muñeco de práctica \Npara que extraigas el semen.
+Dialogue: 10,0:05:58.31,0:06:00.77,Default,,0,0,0,,¿Un muñeco de práctica? ¿Qué quieres decir...?
+Dialogue: 10,0:06:01.30,0:06:04.31,Default,,0,0,0,,Ay, vaya, tu coño ya está empapado.
+Dialogue: 10,0:06:04.31,0:06:06.30,Default,,0,0,0,,¡Entonces meteré mi verga!
 Dialogue: 10,0:06:08.04,0:06:10.51,Alternate,,0,0,0,,Ugh... ¡Se siente increíble!
 Dialogue: 10,0:06:10.51,0:06:13.81,Alternate,,0,0,0,,¡Y se aprieta con fuerza en cada embestida!
 Dialogue: 10,0:06:14.11,0:06:17.49,Default,,0,0,0,,No solo te mojas con facilidad, \N¡sino que tu coño se siente increíble!
 Dialogue: 10,0:06:17.49,0:06:20.30,Default,,0,0,0,,Como era de esperarse de una alquimista.
 Dialogue: 10,0:06:21.12,0:06:23.26,Alternate,,0,0,0,,¡Qué calor hace!
-Dialogue: 10,0:06:23.26,0:06:26.82,Alternate,,0,0,0,,¡Su polla me quema por dentro!
-Dialogue: 10,0:06:27.32,0:06:30.91,Default,,0,0,0,,Sería injusto que solo yo disfrutara.
-Dialogue: 10,0:06:38.04,0:06:42.46,Default,,0,0,0,,Déjame apretar esos pechos tuyos, lady Silvia.
+Dialogue: 10,0:06:23.26,0:06:26.82,Alternate,,0,0,0,,¡Su verga siente como si quemara mis entrañas!
+Dialogue: 10,0:06:27.32,0:06:30.91,Default,,0,0,0,,Sería injusto que solo yo sintiera placer.
+Dialogue: 10,0:06:38.04,0:06:42.46,Default,,0,0,0,,Déjame apretar esos pechos, Lady Silvia.
 Dialogue: 10,0:06:42.46,0:06:43.72,Default,,0,0,0,,¡Ah, no!
 Dialogue: 10,0:06:43.72,0:06:46.84,Default,,0,0,0,,¡No juegues con mi coño y mis pechos al mismo tiempo!
 Dialogue: 10,0:06:46.84,0:06:49.79,Default,,0,0,0,,¡Oh, qué firmeza y elasticidad tan increíbles!
-Dialogue: 10,0:06:49.79,0:06:53.35,Default,,0,0,0,,¡Solo de manosear estos pechos me dan ganas de correrme!
-Dialogue: 10,0:06:53.66,0:06:55.50,Default,,0,0,0,,¡Por favor, espera!
+Dialogue: 10,0:06:49.79,0:06:53.35,Default,,0,0,0,,Solo con manosear estos pechos me dan ganas de correrme.
+Dialogue: 10,0:06:53.66,0:06:55.50,Default,,0,0,0,,¡Espera, por favor!
 Dialogue: 10,0:06:55.50,0:06:58.36,Default,,0,0,0,,P-Por favor, ve un poco más despacio...
 Dialogue: 10,0:06:58.36,0:07:00.79,Default,,0,0,0,,Solo aguanta un poco más.
 Dialogue: 10,0:07:04.65,0:07:07.01,Default,,0,0,0,,¡Me voy a correr dentro de ti!
 Dialogue: 10,0:07:19.38,0:07:21.31,Default,,0,0,0,,¡Ahh, realmente excelente!
-Dialogue: 10,0:07:21.31,0:07:24.51,Default,,0,0,0,,¡Pude sentir de verdad tu talento, Lady Silvia!
-Dialogue: 10,0:07:24.51,0:07:27.60,Default,,0,0,0,,De ahora en adelante, con gusto te prestaré mi fuerza con frecuencia.
+Dialogue: 10,0:07:21.31,0:07:24.51,Default,,0,0,0,,¡Realmente pude sentir tu talento, señorita Silvia!
+Dialogue: 10,0:07:24.51,0:07:27.60,Default,,0,0,0,,De ahora en adelante te prestaré mi fuerza con gusto y con frecuencia.
 Dialogue: 10,0:07:27.60,0:07:29.81,Default,,0,0,0,,M-Muchas gracias.
 Dialogue: 10,0:07:29.81,0:07:33.39,Default,,0,0,0,,Bien, ¿hablamos de negocios?
 Dialogue: 10,0:07:33.91,0:07:38.37,Default,,0,0,0,,Tenemos un plan para pavimentar un camino \Na través de las praderas del norte.
-Dialogue: 10,0:07:38.37,0:07:42.45,Default,,0,0,0,,Me gustaría que colaboraras en ese proyecto, Lady Silvia.
+Dialogue: 10,0:07:38.37,0:07:42.45,Default,,0,0,0,,Me gustaría que colaboraras en ese proyecto, señorita Silvia.
 Dialogue: 10,0:07:42.45,0:07:45.06,Default,,0,0,0,,Colaborando en la construcción del camino...
-Dialogue: 10,0:07:45.06,0:07:46.90,Default,,0,0,0,,¿Qué se supone que debo hacer exactamente?
+Dialogue: 10,0:07:45.06,0:07:46.90,Default,,0,0,0,,¿Exactamente qué debo hacer?
 Dialogue: 10,0:07:47.19,0:07:49.76,Default,,0,0,0,,Mi secretaria ya está en el lugar.
-Dialogue: 10,0:07:49.76,0:07:53.09,Default,,0,0,0,,Por favor, acuerda los detalles con ella.
-Dialogue: 10,0:07:54.27,0:07:58.21,Default,,0,0,0,,La secretaria del alcalde Marco \Ndebería andar por aquí cerca.
-Dialogue: 10,0:07:58.21,0:08:00.23,Default,,0,0,0,,Me pregunto qué clase de persona será...
+Dialogue: 10,0:07:49.76,0:07:53.09,Default,,0,0,0,,Por favor, acuerden los detalles con ella.
+Dialogue: 10,0:07:54.27,0:07:58.21,Default,,0,0,0,,La secretaria del alcalde Marco \Ndebería estar por aquí en algún lado.
+Dialogue: 10,0:07:58.21,0:08:00.23,Default,,0,0,0,,Me pregunto cómo será...
 Dialogue: 10,0:08:00.23,0:08:03.02,Default,,0,0,0,,Solo espero que no sea una pervertida.
-Dialogue: 10,0:08:03.02,0:08:05.04,Default,,0,0,0,,¿A quién le dices pervertida?
-Dialogue: 10,0:08:09.95,0:08:13.16,Default,,0,0,0,,¿Eres la alquimista enviada por el Reino, verdad?
-Dialogue: 10,0:08:13.16,0:08:14.93,Default,,0,0,0,,Me han informado de la situación.
-Dialogue: 10,0:08:15.68,0:08:19.44,Default,,0,0,0,,S-Sí. Soy la alquimista, Silvia Alkaul.
-Dialogue: 10,0:08:19.92,0:08:22.23,Default,,0,0,0,,Una descendiente de la familia Alkaul...
+Dialogue: 10,0:08:03.02,0:08:05.04,Default,,0,0,0,,¿A quién llamas pervertida?
+Dialogue: 10,0:08:09.95,0:08:13.16,Default,,0,0,0,,Usted es la alquimista enviada por el Reino, ¿verdad?
+Dialogue: 10,0:08:13.16,0:08:14.93,Default,,0,0,0,,Me informaron sobre la situación.
+Dialogue: 10,0:08:15.68,0:08:19.44,Default,,0,0,0,,¡S-Sí! Soy la alquimista, Silvia Alkaul.
+Dialogue: 10,0:08:19.92,0:08:22.23,Default,,0,0,0,,Descendiente de la familia Alkaul...
 Dialogue: 10,0:08:22.98,0:08:23.69,Default,,0,0,0,,¿Eh?
 Dialogue: 10,0:08:24.11,0:08:27.56,Default,,0,0,0,,Soy Riza, secretaria del alcalde de Elanberk.
-Dialogue: 10,0:08:27.56,0:08:28.70,Default,,0,0,0,,Encantada de conocerte.
+Dialogue: 10,0:08:27.56,0:08:28.70,Default,,0,0,0,,Encantada.
 Dialogue: 10,0:08:29.00,0:08:30.72,Default,,0,0,0,,Ah, s-sí...
 Dialogue: 10,0:08:30.72,0:08:32.08,Alternate,,0,0,0,,Vaya...
 Dialogue: 10,0:08:32.08,0:08:35.63,Alternate,,0,0,0,,Es increíblemente hermosa...
 Dialogue: 10,0:08:35.63,0:08:36.70,Default,,0,0,0,,¿Pasa algo?
-Dialogue: 10,0:08:36.94,0:08:40.26,Default,,0,0,0,,¿Eh? ¡No! Lo más importante, sobre el trabajo...
+Dialogue: 10,0:08:36.94,0:08:40.26,Default,,0,0,0,,¿Eh? ¡No! Más importante, sobre el trabajo...
 Dialogue: 10,0:08:40.26,0:08:41.58,Default,,0,0,0,,Ah, sí.
-Dialogue: 10,0:08:41.58,0:08:45.71,Default,,0,0,0,,Como pueden ver, estas praderas están llenas de monstruos.
-Dialogue: 10,0:08:45.96,0:08:48.24,Default,,0,0,0,,Construir un camino de la forma normal...
-Dialogue: 10,0:08:48.24,0:08:50.54,Default,,0,0,0,,sería demasiado lento y peligroso.
-Dialogue: 10,0:08:50.54,0:08:55.77,Default,,0,0,0,,Por eso nos gustaría que tú, \NSilvia-san, pavimentaras el camino con alquimia.
-Dialogue: 10,0:08:55.77,0:08:56.93,Default,,0,0,0,,Entiendo.
+Dialogue: 10,0:08:41.58,0:08:45.71,Default,,0,0,0,,Como puede ver, estas praderas están llenas de monstruos.
+Dialogue: 10,0:08:45.96,0:08:48.24,Default,,0,0,0,,Construir un camino de la forma tradicional...
+Dialogue: 10,0:08:48.24,0:08:50.54,Default,,0,0,0,,llevaría demasiado tiempo y sería peligroso.
+Dialogue: 10,0:08:50.54,0:08:55.77,Default,,0,0,0,,Por eso nos gustaría que usted, \NSilvia-san, pavimentara el camino con alquimia.
+Dialogue: 10,0:08:55.77,0:08:56.93,Default,,0,0,0,,Ya veo.
 Dialogue: 10,0:08:56.93,0:08:58.77,Default,,0,0,0,,Creo que puedo hacerlo.
 Dialogue: 10,0:08:59.42,0:09:01.96,Default,,0,0,0,,Los materiales están preparados allá.
-Dialogue: 10,0:09:01.96,0:09:03.75,Default,,0,0,0,,Por favor, úsalos libremente.
+Dialogue: 10,0:09:01.96,0:09:03.75,Default,,0,0,0,,Por favor, úselos libremente.
 Dialogue: 10,0:09:03.75,0:09:05.38,Default,,0,0,0,,Hmm...
-Dialogue: 10,0:09:05.38,0:09:07.87,Default,,0,0,0,,Quizás no sea suficiente.
-Dialogue: 10,0:09:07.87,0:09:09.72,Default,,0,0,0,,Voy a juntar un poco más.
+Dialogue: 10,0:09:05.38,0:09:07.87,Default,,0,0,0,,Esto podría no ser suficiente.
+Dialogue: 10,0:09:07.87,0:09:09.72,Default,,0,0,0,,Iré a juntar un poco más.
 Dialogue: 10,0:09:09.72,0:09:12.31,Default,,0,0,0,,Entonces te acompañaré.
-Dialogue: 10,0:09:13.42,0:09:16.36,Default,,0,0,0,,¿Te está faltando madera?
+Dialogue: 10,0:09:13.42,0:09:16.36,Default,,0,0,0,,¿Te falta leña?
 Dialogue: 10,0:09:16.36,0:09:18.75,Default,,0,0,0,,¿Es fácil de encontrar?
-Dialogue: 10,0:09:19.45,0:09:22.99,Default,,0,0,0,,Soy traductor de subtítulos, así que necesito la línea de diálogo que quieres traducir. Envíamela y te doy la traducción al español neutro.
+Dialogue: 10,0:09:19.45,0:09:22.99,Default,,0,0,0,,Como es para alquimia, no necesita ser de calidad perfecta.
 Dialogue: 10,0:09:22.99,0:09:25.85,Default,,0,0,0,,Además, vengo a este bosque seguido.
-Dialogue: 10,0:09:25.85,0:09:28.81,Default,,0,0,0,,Si no me equivoco, más adelante debería haber troncos que sirvan.
+Dialogue: 10,0:09:25.85,0:09:28.81,Default,,0,0,0,,Si no me equivoco, debería haber algunos troncos adecuados más adelante.
 Dialogue: 10,0:09:28.81,0:09:29.98,Default,,0,0,0,,¡Ah! ¡Encontré algunos!
 Dialogue: 10,0:09:32.50,0:09:34.80,Default,,0,0,0,,¡Kyaaah!
 Dialogue: 10,0:09:37.03,0:09:38.38,Default,,0,0,0,,Yo me encargo.
-Dialogue: 10,0:09:38.38,0:09:40.77,Default,,0,0,0,,Por favor, reúne los materiales mientras tanto.
-Dialogue: 10,0:09:41.02,0:09:43.27,Default,,0,0,0,,¿P-pero vas a estar bien?
-Dialogue: 10,0:09:43.75,0:09:46.32,Default,,0,0,0,,Tengo algo de experiencia en combate.
+Dialogue: 10,0:09:38.38,0:09:40.77,Default,,0,0,0,,Mientras tanto, por favor reúne los materiales.
+Dialogue: 10,0:09:41.02,0:09:43.27,Default,,0,0,0,,P-Pero ¿estarás bien?
+Dialogue: 10,0:09:43.75,0:09:46.32,Default,,0,0,0,,Tengo algo de conocimiento de combate.
 Dialogue: 10,0:09:46.64,0:09:48.68,Default,,0,0,0,,Volveré enseguida.
-Dialogue: 10,0:09:50.03,0:09:55.54,Default,,0,0,0,,Bueno, pues... No quiero que una chica tan pura como Silvia-san vea esto.
-Dialogue: 10,0:09:55.54,0:09:57.62,Default,,0,0,0,,No recibí ninguna línea de diálogo para traducir. Envíame el texto del subtítulo y lo traduzco al español neutro.
+Dialogue: 10,0:09:50.03,0:09:55.54,Default,,0,0,0,,Bueno, pues... no quiero que \Nuna chica pura como Silvia-san vea esto.
+Dialogue: 10,0:09:55.54,0:09:57.62,Default,,0,0,0,,Terminemos esto rápido.
 Dialogue: 10,0:09:59.34,0:10:00.87,Default,,0,0,0,,Enloquece.
-Dialogue: 10,0:10:09.58,0:10:10.56,Default,,0,0,0,,Por aquí, por favor...
-Dialogue: 10,0:10:10.56,0:10:12.10,Default,,0,0,0,,Ven aquí.
-Dialogue: 10,0:10:18.85,0:10:22.85,Default,,0,0,0,,Vaya, la verdad es que no esperaba que fueras tan poco inteligente.
+Dialogue: 10,0:10:09.58,0:10:10.56,Default,,0,0,0,,Por aquí...
+Dialogue: 10,0:10:10.56,0:10:12.10,Default,,0,0,0,,Ven acá.
+Dialogue: 10,0:10:18.85,0:10:22.85,Default,,0,0,0,,Vaya, tu inteligencia es sorprendentemente baja.
 Dialogue: 10,0:10:22.85,0:10:24.77,Default,,0,0,0,,Así se hace.
-Dialogue: 10,0:10:26.53,0:10:28.15,Default,,0,0,0,,Aquí, ponlo aquí.
-Dialogue: 10,0:10:41.21,0:10:44.03,Default,,0,0,0,,¡Ay, ay! ¿Ya te estás emocionando tanto?
-Dialogue: 10,0:10:44.03,0:10:45.83,Default,,0,0,0,,¡Qué chico tan lindo!
-Dialogue: 10,0:10:49.82,0:10:53.21,Default,,0,0,0,,¿Ya terminaste? Fue muy rápido.
+Dialogue: 10,0:10:26.53,0:10:28.15,Default,,0,0,0,,Aquí, métemelo aquí.
+Dialogue: 10,0:10:41.21,0:10:44.03,Default,,0,0,0,,Ay, ay, ¿ya te estás entusiasmando tanto?
+Dialogue: 10,0:10:44.03,0:10:45.83,Default,,0,0,0,,Qué chico tan lindo.
+Dialogue: 10,0:10:49.82,0:10:53.21,Default,,0,0,0,,¿Ya terminaste? Fue bastante rápido.
 Dialogue: 10,0:10:53.21,0:10:54.75,Default,,0,0,0,,¿Solo esto...?
 Dialogue: 10,0:10:56.34,0:10:57.31,Default,,0,0,0,,Ya veo...
-Dialogue: 10,0:10:57.31,0:11:00.91,Default,,0,0,0,,Entonces confías en tu velocidad de recuperación.
-Dialogue: 10,0:11:00.91,0:11:04.30,Default,,0,0,0,,Entonces jugaré contigo hasta que estés satisfecho.
-Dialogue: 10,0:11:06.46,0:11:09.58,Default,,0,0,0,,¿Buscando un poco de cariño de mamá, eh?
+Dialogue: 10,0:10:57.31,0:11:00.91,Default,,0,0,0,,Así que confías en tu velocidad de recuperación.
+Dialogue: 10,0:11:00.91,0:11:04.30,Default,,0,0,0,,En ese caso, jugaré contigo hasta que quedes satisfecho.
+Dialogue: 10,0:11:06.46,0:11:09.58,Default,,0,0,0,,Oh, ¿buscas un poco de amor maternal?
 Dialogue: 10,0:11:10.70,0:11:11.90,Default,,0,0,0,,Dios mío...
-Dialogue: 10,0:11:11.90,0:11:16.86,Default,,0,0,0,,¿Por qué a todos los hombres les gustan tanto los pechos de las mujeres?
+Dialogue: 10,0:11:11.90,0:11:16.86,Default,,0,0,0,,¿Por qué a todos los hombres les encantan tanto los pechos de las mujeres?
 Dialogue: 10,0:11:31.11,0:11:33.13,Default,,0,0,0,,Eso estuvo bastante bien hace un momento.
-Dialogue: 10,0:11:33.50,0:11:36.07,Default,,0,0,0,,Creí que me iba a venir.
+Dialogue: 10,0:11:33.50,0:11:36.07,Default,,0,0,0,,Pensé que me iba a venir.
 Dialogue: 10,0:11:38.11,0:11:39.17,Default,,0,0,0,,Mmhm...
-Dialogue: 10,0:11:41.68,0:11:44.14,Default,,0,0,0,,Envíame la línea de diálogo que quieres traducir.
+Dialogue: 10,0:11:41.68,0:11:44.14,Default,,0,0,0,,Bueno, sigamos.
 Dialogue: 10,0:11:44.49,0:11:47.49,Default,,0,0,0,,Tengo que volver rápido con Riza-san.
 Dialogue: 10,0:11:47.49,0:11:50.65,Default,,0,0,0,,Pero primero tengo que reunir suficientes materiales...
-Dialogue: 10,0:11:51.57,0:11:54.90,Default,,0,0,0,,Riza-san, espera un poco más, por favor.
-Dialogue: 10,0:11:55.11,0:11:56.29,Default,,0,0,0,,Gracias. Envíame la línea de diálogo que quieres traducir.
-Dialogue: 10,0:11:56.29,0:11:59.22,Default,,0,0,0,,Ahora la metes mucho mejor que antes.
+Dialogue: 10,0:11:51.57,0:11:54.90,Default,,0,0,0,,Riza, espera un poco más, por favor.
+Dialogue: 10,0:11:55.11,0:11:56.29,Default,,0,0,0,,Eso es bueno.
+Dialogue: 10,0:11:56.29,0:11:59.22,Default,,0,0,0,,Te estás moviendo mucho mejor que antes.
 Dialogue: 10,0:12:01.69,0:12:03.56,Default,,0,0,0,,Mantén ese ritmo.
-Dialogue: 10,0:12:03.56,0:12:06.46,Default,,0,0,0,,Vamos, empuja más fuerte.
-Dialogue: 10,0:12:09.22,0:12:11.07,Default,,0,0,0,,Bastante decepcionante, ¿no?
-Dialogue: 10,0:12:11.07,0:12:12.96,Default,,0,0,0,,Échale más peso del cuerpo...
+Dialogue: 10,0:12:03.56,0:12:06.46,Default,,0,0,0,,Vamos, muévete con más fuerza.
+Dialogue: 10,0:12:09.22,0:12:11.07,Default,,0,0,0,,Qué decepción, ¿no?
+Dialogue: 10,0:12:11.07,0:12:12.96,Default,,0,0,0,,Pon más peso de tu cuerpo en ello...
 Dialogue: 10,0:12:15.63,0:12:16.96,Default,,0,0,0,,¿Qué pasa?
-Dialogue: 10,0:12:16.96,0:12:18.90,Default,,0,0,0,,Todavía la tienes bien dura...
-Dialogue: 10,0:12:18.90,0:12:20.85,Default,,0,0,0,,Mueve tus propias caderas.
-Dialogue: 10,0:12:31.75,0:12:34.39,Default,,0,0,0,,Todavía puedes irte, ¿verdad?
+Dialogue: 10,0:12:16.96,0:12:18.90,Default,,0,0,0,,Tu miembro sigue duro como una roca...
+Dialogue: 10,0:12:18.90,0:12:20.85,Default,,0,0,0,,Mueve tú mismo las caderas.
+Dialogue: 10,0:12:31.75,0:12:34.39,Default,,0,0,0,,Todavía puedes seguir, ¿verdad?
 Dialogue: 10,0:12:39.81,0:12:42.76,Default,,0,0,0,,Aguantaste un poco más que un humano normal...
-Dialogue: 10,0:12:42.76,0:12:44.66,Default,,0,0,0,,No hay ninguna línea de diálogo para traducir. Envíame la línea que quieras pasar al español y te doy la traducción.
-Dialogue: 10,0:12:48.49,0:12:50.47,Default,,0,0,0,,¿Ugh... qué son esos sonidos?
-Dialogue: 10,0:12:50.47,0:12:52.96,Default,,0,0,0,,¿Le estás suplicando por tu vida?
+Dialogue: 10,0:12:42.76,0:12:44.66,Default,,0,0,0,,pero ¿de verdad este es tu límite?
+Dialogue: 10,0:12:48.49,0:12:50.47,Default,,0,0,0,,Ugh... ¿Qué son esos sonidos?
+Dialogue: 10,0:12:50.47,0:12:52.96,Default,,0,0,0,,¿Me estás suplicando que te perdone la vida?
 Dialogue: 10,0:12:53.21,0:12:54.67,Default,,0,0,0,,Qué grosero.
-Dialogue: 10,0:12:54.67,0:12:59.45,Default,,0,0,0,,Después de tantas molestias para saciar tu lujuria...
-Dialogue: 10,0:13:03.21,0:13:06.47,Default,,0,0,0,,Bueno, parece que ya llegaste a tu límite.
+Dialogue: 10,0:12:54.67,0:12:59.45,Default,,0,0,0,,Me tomé tantas molestias para satisfacer tu lujuria...
+Dialogue: 10,0:13:03.21,0:13:06.47,Default,,0,0,0,,Bueno, parece que has llegado a tu límite.
 Dialogue: 10,0:13:06.73,0:13:08.23,Default,,0,0,0,,¡Terminemos con esto!
-Dialogue: 10,0:13:14.50,0:13:16.60,Default,,0,0,0,,¡Riza-san!
-Dialogue: 10,0:13:16.60,0:13:17.85,Default,,0,0,0,,¡G-gracias por esperar!
+Dialogue: 10,0:13:14.50,0:13:16.60,Default,,0,0,0,,¡Riza-sann!
+Dialogue: 10,0:13:16.60,0:13:17.85,Default,,0,0,0,,G-gracias por esperar.
 Dialogue: 10,0:13:17.85,0:13:19.02,Default,,0,0,0,,¿Estás bien?
 Dialogue: 10,0:13:19.02,0:13:21.26,Default,,0,0,0,,Sí, como puedes ver.
-Dialogue: 10,0:13:21.26,0:13:23.99,Default,,0,0,0,,¡Ay, qué alivio que estés a salvo!
+Dialogue: 10,0:13:21.26,0:13:23.99,Default,,0,0,0,,Ay, me alegra tanto que estés a salvo.
 Dialogue: 10,0:13:24.58,0:13:27.23,Default,,0,0,0,,¿Ya terminaste de reunir los materiales?
 Dialogue: 10,0:13:27.23,0:13:29.00,Default,,0,0,0,,Sí, son perfectos.
-Dialogue: 10,0:13:29.00,0:13:31.13,Default,,0,0,0,,¿Volvemos, entonces?
+Dialogue: 10,0:13:29.00,0:13:31.13,Default,,0,0,0,,Entonces, ¿volvemos?
 Dialogue: 10,0:13:38.00,0:13:39.05,Default,,0,0,0,,¡Eii!
 Dialogue: 10,0:13:45.77,0:13:47.30,Default,,0,0,0,,¡Lo logré!
 Dialogue: 10,0:13:47.30,0:13:49.02,Default,,0,0,0,,Ya veo, realmente excelente.
-Dialogue: 10,0:13:49.81,0:13:52.64,Default,,0,0,0,,Nos salvaste gracias a ti, Silvia-san.\N\NWait, that's wrong. Let me correct: the line is "We were saved thanks to you, Silvia-san." Translated naturally and briefly for subtitles:\N\NNos salvaste gracias a ti, Silvia-san.
-Dialogue: 10,0:13:53.91,0:13:57.02,Default,,0,0,0,,¿Esto ayudó a que la ciudad se desarrollara?
-Dialogue: 10,0:13:57.36,0:14:00.19,Default,,0,0,0,,Sí, es una contribución tremenda.
-Dialogue: 10,0:14:03.33,0:14:08.48,Default,,0,0,0,,¿Ya visitaste el Gremio de Aventureros de esta ciudad, Silvia-san?
+Dialogue: 10,0:13:49.81,0:13:52.64,Default,,0,0,0,,Nos salvamos gracias a ti, Silvia-san.
+Dialogue: 10,0:13:53.91,0:13:57.02,Default,,0,0,0,,¿Esto ayudó al desarrollo de la ciudad?
+Dialogue: 10,0:13:57.36,0:14:00.19,Default,,0,0,0,,Sí, es una contribución enorme.
+Dialogue: 10,0:14:03.33,0:14:08.48,Default,,0,0,0,,Por cierto, ¿ya visitaste el\NGremio de Aventureros de esta ciudad, Silvia-san?
 Dialogue: 10,0:14:08.48,0:14:10.08,Default,,0,0,0,,¿El Gremio de Aventureros?
 Dialogue: 10,0:14:10.08,0:14:12.04,Default,,0,0,0,,¿Elanberk tiene uno de esos?
-Dialogue: 10,0:14:13.38,0:14:17.26,Default,,0,0,0,,Sí. Le avisaré al Maestro del Gremio con antelación.
+Dialogue: 10,0:14:13.38,0:14:17.26,Default,,0,0,0,,Sí. Avisaré al Maestro del Gremio con anticipación.
 Dialogue: 10,0:14:17.26,0:14:19.55,Default,,0,0,0,,¿Por qué no vas y te presentas?
-Dialogue: 10,0:14:19.83,0:14:24.67,Default,,0,0,0,,Después de todo, los encargos del Gremio\Ntambién ayudan a que la ciudad prospere.
+Dialogue: 10,0:14:19.83,0:14:24.67,Default,,0,0,0,,Después de todo, las solicitudes del Gremio\Ntambién contribuyen a la prosperidad de la ciudad.
 Dialogue: 0,0:15:14.93,0:15:16.68,Credits,,0,0,0,,{\fade(982,0)\be0.2\an3\fs20\fnTimes New Roman\pos(670,435)}Un proyecto de Emotion / Traducido por: Mitsuyoshi
 Comment: 0,0:00:00.00,0:00:00.00,Default,Chapter,0,0,0,,Label
 Comment: 0,0:00:12.00,0:00:12.00,Default,Chapter,0,0,0,,Intro
