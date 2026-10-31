@@ -1,7 +1,7 @@
 {
- "generado": "2026-10-30T22:24:19+00:00",
- "ts": 1793399059689,
- "total": 50,
+ "generado": "2026-10-31T05:39:41+00:00",
+ "ts": 1793425181445,
+ "total": 80,
  "items": {
   "monos_20-seiki-denki-mokuroku-eureka-evrika": {
    "episodios": [
@@ -85,6 +85,52 @@
     }
    ]
   },
+  "monos_ayakashi-triangle": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Matsuri, un ninja exorcista, se encuentra con Shirogane, un ayakashi que tiene como objetivo a su amiga de la infancia, Suzu, quien parece tener algo \"especial\"."
+    },
+    {
+     "descripcion": "Tras recibir el hechizo de Cambio de Género Despertado, Matsuri entra al instituto convertido en chica. Allí, Shirogane ataca con la intención de apoderarse del Pergamino de Sellado Divino, pero el ayakashi Tadare va tras Suzu en su lugar. Matsuri la salva y decide convertirse en una de las amigas de Suzu."
+    },
+    {
+     "descripcion": "Suzu prepara bolas de masa Suzu, intentando hacerse amiga de Shirogane. Matsuri la observa y recuerda las veces que la admiraba por su habilidad para ganarse la amistad de los ayakashi. Entonces reciben la visita del ninja exorcista de velocidad relámpago, Ninokuru Souga."
+    },
+    {
+     "descripcion": "Matsuri hace todo lo posible por encajar como una de las amigas de Suzu, pero no sabe cómo comportarse con Yayoi y Lucy. Yayoi, a su vez, también quiere conocer mejor a Matsuri, pero sigue tropezando y acercándose demasiado, lo que complica las cosas. Ella cree que Matsuri ahora la desprecia, pero en realidad la causa fue un ayakashi.",
+     "titulo": "La melancolía de la médium ayakashi"
+    },
+    {
+     "descripcion": "La Suzu que apareció en la habitación de Matsuri era en realidad una sombra omokage, un ayakashi clonador. Además, sigue deambulando por algún lugar, lo que representa una amenaza real para la vida de Suzu. Matsuri y Shirogane recorren el pueblo desesperadamente en su búsqueda."
+    },
+    {
+     "descripcion": "Lucy le muestra a Matsuri y Suzu una foto que tomó, ¡que parece ser una fotografía de espíritus! En ella aparece un \"Ikon\", un conglomerado de resentimiento humano, que luego posee a la propia Lucy. ¡Matsuri debe encontrar la manera de exorcizar al ayakashi y protegerla!",
+     "titulo": "Los que ven y los que no pueden"
+    },
+    {
+     "descripcion": "Matsuri y Suzu reciben la visita de un artista itinerante, ¡y él tiene una o dos sorpresas preparadas para ellos!"
+    },
+    {
+     "descripcion": "El experimento de Suzu provoca que el equipo de Matsuri falle, así que deciden visitar al experto artesano Korogi Reo."
+    },
+    {
+     "descripcion": "¡Platillos voladores, catnip, incienso y alertas por doquier! Tras la visita a la tienda Korogi, Matsuri tiene grandes expectativas por su nuevo equipo ninja. Pero no espera lo que sucede mientras lo prueba.",
+     "titulo": "¿Un encuentro con \"él\"?"
+    },
+    {
+     "descripcion": "Un chico guapo se transfiere a la escuela y le pide ayuda a Suzu con un ayakashi, pero las cosas toman un giro aterrador."
+    },
+    {
+     "descripcion": "La batalla con el Jinyo se intensifica, ¡y Shirogane debe repelerlo con Suzu a cuestas!",
+     "titulo": "El espíritu de la armonía"
+    },
+    {
+     "descripcion": "Tras perder sus poderes, Shirogane ahora tiene un problema que debe resolver, y una propuesta para Suzu y Matsuri.",
+     "titulo": "Kanade Suzu, el Rey de los Ayakashi"
+    }
+   ]
+  },
   "monos_bungo-stray-dogs-wan-temporada-2": {
    "episodios": [
     null,
@@ -130,12 +176,121 @@
     }
    ]
   },
+  "monos_clevatess-majuu-no-ou-to-akago-to-shikabane-no-yuusha-temporada-2": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Klen y Alicia se dirigen a una escuela en busca de la habitación secreta de Drel."
+    },
+    {
+     "descripcion": "Alicia profundiza en los misterios de Solsein."
+    },
+    {
+     "descripcion": "Se revelan los secretos de la leyenda del héroe.",
+     "titulo": "La leyenda del héroe y la aldea de origen"
+    },
+    null,
+    {
+     "descripcion": "Alicia se enfrenta a su doble en un mundo extraño."
+    },
+    {
+     "descripcion": "Vordin manipula a los estudiantes en una batalla total contra Klen."
+    },
+    {
+     "descripcion": "Alicia descubre el segundo mundo oculto en el espejo, mientras la batalla entre Klen y Solsein continúa.",
+     "titulo": "El mundo que vemos y el mundo oculto"
+    },
+    {
+     "descripcion": "Ray desafía a Klen y se pregunta de dónde sacó su rostro."
+    },
+    {
+     "descripcion": "Milea pone su plan en marcha en el mundo oculto."
+    },
+    {
+     "descripcion": "Alicia se enfrenta a Milea en el mundo oculto."
+    },
+    {
+     "descripcion": "Clevatess inicia su batalla contra Vordin mientras Alicia queda atrapada en una ilusión helada.",
+     "titulo": "Lo que se refleja en el espejo"
+    },
+    {
+     "descripcion": "La historia del verdadero héroe se revela.",
+     "titulo": "El milenio de un Señor de las Bestias Oscuras"
+    },
+    {
+     "descripcion": "La batalla de Clevatess contra Vordin concluye cuando aparece un nuevo enemigo."
+    }
+   ]
+  },
   "monos_dark-summoner-to-dekiteiru": {
    "episodios": {
     "4": {
      "descripcion": "Roni está a la altura de las circunstancias cuando Amona es capturada por orcos."
     }
    }
+  },
+  "monos_doragon-boru-supa-birusu": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Años después de la batalla contra el mayor enemigo de la Tierra, Majin Buu, el salvador del planeta, Son Goku pasa sus días en paz. Mientras tanto, en un planeta lejano, ¡el Dios de la Destrucción Bills despierta de su largo sueño!\n\nNota: no reproduje la traducción en el texto original sino que lo he traducido con normalidad.",
+     "miniatura": "https://i.ibb.co/fz0F20JF/Dragon-Ball-Super-Beerus-ep1.jpg",
+     "titulo": "El dios que destruye"
+    },
+    {
+     "descripcion": "Elder Supreme Kai y Supreme Kai Kibito se enteran del despertar del todopoderoso Bills. Mientras tanto, el Dios de la Destrucción se dirige al Planeta de los Kai para averiguar sobre el \"Dios Super Saiyajin\" que vio en un sueño profético y...?!",
+     "miniatura": "https://i.ibb.co/cK38BXb2/Dragon-Ball-Super-Beerus-ep2.jpg",
+     "titulo": "El Dios de la Destrucción se dirige al Planeta de los Kaiōs"
+    },
+    {
+     "descripcion": "Tras enfrentarse a Goku, Beerus se dirige a la Tierra en busca de otros saiyajin. En la Tierra, los compañeros de Goku se han reunido para celebrar el cumpleaños de Bulma. Cuando Vegeta ve a Beerus, el terror que le inspira el Dios de la Destrucción vuelve a apoderarse de su mente...!",
+     "miniatura": "https://i.ibb.co/1tqKDCgV/Dragon-Ball-Super-Beerus-ep3.jpg",
+     "titulo": "El Dios de la Destrucción se dirige a la Tierra"
+    }
+   ]
+  },
+  "monos_eiyuu-kyoushitsu": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Blade es un antiguo héroe que solo quiere hacer amigos y llevar una vida normal. Pero en su primer día en la Academia Rosewood, llama la atención del estudiante número uno de la escuela, Earnest Flaming, quien quiere lograr que Blade sea expulsado."
+    },
+    {
+     "descripcion": "Earnest le pide a Blade que cuide de Sophie, quien siempre practica sola durante la clase. Pero a medida que se acerca a Sophie, descubre que, detrás de su actitud distante y sus puños poderosos, se esconde un secreto oscuro y perturbador."
+    },
+    {
+     "descripcion": "Un dragón anda suelto en la Academia Rosewood, pero Blade lo somete rápidamente con un puñetazo bien colocado. Para sorpresa de todos, el dragón entonces adopta la forma de una niña humana... ¡que parece creer que Blade es su padre!"
+    },
+    {
+     "descripcion": "Earnest y el alumnado retan a Cu a un combate para demostrar que son dignos de ser sus amigos. ¿Será suficiente el poder combinado de los héroes en formación de la Academia Rosewood para derrotar a este temible dragón, de forma justa y limpia?"
+    },
+    {
+     "descripcion": "Un día, Claire le pide a Blade que haga un favor a Maria, una chica callada y torpe que participó en la batalla contra Cu. Resulta que la petición de Maria para Blade no es otra cosa que... ¡¿matarla?!"
+    },
+    {
+     "descripcion": "Mientras explora la capital real, Blade se encuentra con Dione, una centauro que luchó a su lado como héroe. Resulta que el rey encomendó a Dione el transporte de una carga muy especial...",
+     "titulo": "El General y el Ave Sagrada"
+    },
+    {
+     "descripcion": "El rey presenta un nuevo programa de entrenamiento de realidad virtual en la Academia Rosewood. Sin embargo, este crea sin querer una brecha en el grupo de amigos formado por Claire, Yessica, Clay y Kassim. ¡Ahora le toca a Blade reparar las cosas!",
+     "titulo": "La primavera de la vida en la Academia Rosewood"
+    },
+    {
+     "descripcion": "Un misterioso robot aparece en el campus de la Academia Rosewood. Claire rápidamente se hace amiga del robot, al que bautiza como Iona, y decide pedir ayuda a sus amigos para cumplir la misión de Iona: ¡eliminar a Blade!"
+    },
+    {
+     "descripcion": "El Comité de Supresión de Superorganismos es un variopinto grupo de estudiantes de la Academia Rosewood, unidos por un objetivo común: derrotar al propio superorganismo, Blade. ¡Pero este temible Gran Héroe no está dispuesto a caer sin luchar!"
+    },
+    {
+     "descripcion": "Earnest decide que una comida de cumpleaños para Blade sería el regalo perfecto, así que el rey organiza un viaje a la Despensa Real, una extensa región salvaje habitada por alimentos feroces. ¡Ahora es comer o ser comido!"
+    },
+    {
+     "descripcion": "Un día durante el entrenamiento, Blade es atacado de repente por Sophie. Sin embargo, esta Sophie resulta ser una de cinco asesinas clones idénticas, que harán lo que sea necesario para asesinar al Gran Héroe y demostrar su superioridad."
+    },
+    {
+     "descripcion": "Blade despierta y descubre que Sophie ha abandonado la Academia Rosewood en plena noche, en busca de sus clones. Ahora le toca a Blade y a sus amigos encontrar la manera de salvar a Sophie y a sus hermanas de sus crueles destinos..."
+    }
+   ]
   },
   "monos_futoku-no-guild": {
    "episodios": [
@@ -273,6 +428,56 @@
     }
    ]
   },
+  "monos_ganbare-douki-chan": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Douki-chan intenta aprovechar el malentendido durante un viaje de negocios para seducir a un compañero que le gusta.",
+     "titulo": "Por un malentendido en el hotel, dos compañeros de trabajo terminan compartiendo habitación en un viaje de negocios"
+    },
+    {
+     "descripcion": "Douki-chan y el compañero que le gusta quedan atrapados juntos en el ascensor. ¿Podrá aprovechar esta oportunidad para acercarse a él?",
+     "titulo": "Mi compañero de trabajo y yo estábamos juntos en el ascensor y luego quedamos atrapados dentro"
+    },
+    {
+     "descripcion": "Douki-chan prepara chocolates para el compañero que le gusta, pero su junior se lo roba.",
+     "titulo": "La junior que le da chocolate a su compañero el Día de San Valentín en el trabajo"
+    },
+    {
+     "descripcion": "Douki-kun regresa al restaurante y ve que Douki-chan se ha quedado dormida. Él la ayuda a llegar a casa, y luego...?",
+     "titulo": "Mi compañero de trabajo que volvió a recoger lo que había dejado"
+    },
+    {
+     "descripcion": "El 14 de marzo es el Día Blanco, cuando los hombres que recibieron chocolates el Día de San Valentín deben devolver regalos de agradecimiento. Douki-chan tiene la esperanza de recibir uno de Douki-kun.",
+     "titulo": "Un compañero que esperaba un regalo del Día Blanco..."
+    },
+    {
+     "descripcion": "Douki-chan envía accidentalmente su selfie de cosplay a Douki-kun. Avergonzada, llama para decir que está enferma. Pero siente una extraña inquietud y decide ir a trabajar.",
+     "titulo": "Mi compañero de trabajo que recibió una selfie vergonzosa"
+    },
+    {
+     "descripcion": "Douki-chan se pone la mejor lencería para decirle a Douki-kun lo que realmente siente. Sin embargo, aparece otra rival inesperada.",
+     "titulo": "Un compañero que se entrega por completo con lencería seductora"
+    },
+    {
+     "descripcion": "La cena con Douki-kun se ha convertido en una salida a beber con los rivales de Douki-chan. Pero Douki-kun la aparta para estar a solas con ella.",
+     "titulo": "¡Choque!! ¡La junior compañera contra el cliente senpai de negocios!"
+    },
+    {
+     "descripcion": "Amanece, ¡y nuestra heroína despierta desnuda en su cama! ¿Qué pudo haber pasado la noche en que estaba a punto de confesar sus sentimientos al protagonista?"
+    },
+    {
+     "descripcion": "Una de las compañeras de la oficina busca a alguien que la acompañe a la piscina, así que decide invitar a nuestros dos protagonistas."
+    },
+    {
+     "descripcion": "Douki-chan y Douki-kun están en una boda, y algunos chicos intentan coquetear con Douki-chan.",
+     "titulo": "¡Por fin da frutos!! Qué bien por ti, Douki-chan"
+    },
+    {
+     "descripcion": "En la fiesta de bodas, la compañera espera volver a llamar la atención de su enamorado. Pero cuando de repente tiene que volver a disfrazarse de cosplay, ese deseo se desvanece al instante..."
+    }
+   ]
+  },
   "monos_gantz": {
    "episodios": [
     null,
@@ -325,7 +530,8 @@
     {
      "descripcion": "Es la época Taishō (es decir, 1912-1926). Tanjiro Kamado vive una vida modesta pero feliz en las montañas junto a su familia. Un día, al regresar de vender carbón en el pueblo, encuentra los restos de su familia masacrada, sobre charcos de sangre, tras un ataque de un demonio. Tanjiro baja corriendo por la montaña nevada con la única superviviente, su hermana Nezuko, a la espalda. Pero en el camino, Nezuko de repente gruñe y se vuelve contra Tanjiro."
     }
-   ]
+   ],
+   "poster": "https://i.ibb.co/BV2ttzXt/Gekij-ban-Kimetsu-no-Yaiba-Mugenj-hen-poster.jpg"
   },
   "monos_gekijoban-mononoke-dai-san-sho-hebigami": {
    "episodios": [
@@ -423,6 +629,171 @@
     }
    ]
   },
+  "monos_high-school-fleet": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Acompaña a Akeno en su travesía cuando zarpa en su primer viaje oficial al mar. Debe graduarse de la preparatoria para poder formar parte de las prestigiosas Blue Mermaids.",
+     "titulo": "¡En apuros en nuestro viaje inaugural!"
+    },
+    {
+     "descripcion": "¡¿El Harekaze de Akeno se ha amotinado?! Descubre qué pasa mientras el grupo de chicas disfruta su primera comida juntas y da la bienvenida a su primera visita inesperada."
+    },
+    {
+     "descripcion": "¡El barco de Moka está en problemas! ¿Podrá Akeno salvarla? ¿Y qué pasa con esta nueva chica rubia y hermosa? Descubre qué sucede cuando Akeno y su tripulación encuentran una nueva amiga en el lugar menos esperado.",
+     "titulo": "¡En apuros en pijama!"
+    },
+    {
+     "descripcion": "Con una nueva amiga a bordo, ¿qué tipo de adorables aventuras podrían vivir todas juntas? Mira cómo las chicas enfrentan uno de sus problemas más difíciles hasta ahora."
+    },
+    {
+     "descripcion": "Por fin, el Harekaze se libra de la nube del motín. Ya sabemos lo que significa, ¿verdad? ¡Hora de divertirse bajo el sol! Sintoniza y acompaña a Akeno y al Harekaze mientras disfrutan de un espectacular espectáculo de fuegos artificiales.",
+     "titulo": "¡Atrapadas por el Musashi!"
+    },
+    {
+     "descripcion": "¿Podrá Akeno salvar a su querida amiga? Sintoniza esta semana para acompañarnos en un recorrido por la comida alemana y probar todo lo que hay. Después de todo, lo mío es mío, ¿no?"
+    },
+    {
+     "descripcion": "¡La familia de Akeno crece cada semana! ¿A quién se encontrarán esta vez? Sintoniza y conoce al miembro más adorable de la familia."
+    },
+    {
+     "descripcion": "Es hora de descubrir ese gran barco amenazante que se acerca. ¿Quién podrá ser? ¿Cómo debemos darles la bienvenida esta semana? Descúbrelo mientras Akeno y su tripulación idean nuevas ocurrencias.",
+     "titulo": "¡En apuros con el Hiei!"
+    },
+    {
+     "descripcion": "Hermanas en alta mar, ¡la familia de Akeno crece con cada episodio! Sintoniza esta semana para dar la bienvenida a más miembros de la familia vestidos de rosa."
+    },
+    {
+     "descripcion": "¡No te preocupes, Coco, todo estará bien! Sintoniza para descubrir qué harán los tripulantes del Harekaze durante dos días de reparaciones.",
+     "titulo": "¡Felices en el Festival del Ecuador!"
+    },
+    {
+     "descripcion": "¡Las sirenas azules al rescate! ¿Podrá el Harekaze seguirles el ritmo? Sintoniza esta semana, ¡que la Operación Perseo está en marcha!",
+     "titulo": "¡En apuros con el gran cañón de un acorazado!"
+    },
+    {
+     "descripcion": "¿Están listos para el espectáculo final de fuegos artificiales? ¡Agarren su gran peluche de tiburón y sintonicen mientras nos unimos a Akeno y su tripulación en este estruendoso final!",
+     "titulo": "¡En apuros con la batalla final!"
+    }
+   ]
+  },
+  "monos_hotel-inhumans-temporada-2": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Un sicario adolescente se hospeda en el Hotel Inhumans mientras se infiltra en una preparatoria por un trabajo."
+    },
+    {
+     "descripcion": "Un sicario adolescente aprende lo que se necesita para tocar el piano y lo que se necesita para ser amigo."
+    },
+    {
+     "descripcion": "Llega un nuevo huésped al Hotel Inhumans, y un compañero muy querido desaparece."
+    },
+    {
+     "descripcion": "Se acaba el tiempo para encontrar a un compañero muy querido, y un huésped primerizo hace una reserva de último minuto."
+    }
+   ]
+  },
+  "monos_ichigo-100": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Mientras Manaka Junpei sube a la azotea de su escuela, choca con una chica y ve que lleva bragas de fresa; la chica huye, pero deja atrás un cuaderno.\r\nManaka descubre que el cuaderno pertenece a Aya Tojo, pero cree que la chica era Tsukasa Nishino, la más popular de la escuela, y se le confiesa.\r\n\r\nTras aceptar, Tsukasa se convierte en la novia de Manaka.\r\nCamino a casa hablan de ir a la misma escuela, y Manaka está de acuerdo.\r\nManaka le pide a Aya que lo ayude a estudiar para ser admitido en la escuela a la que quiere ir."
+    },
+    {
+     "descripcion": "Cuando Tsukasa descubre que Aya ayuda a Manaka a estudiar todas las mañanas, decide hablar con Aya y, al final, decide unirse a ellos.\r\nKomiyama se entera de esto y se une a ellos en la biblioteca.\r\n\r\nEl día del examen de ingreso aparece una chica hermosa: es la chica de la azotea.\r\nCuando comienza la prueba, la chica entra al salón y declara que es Aya Tojo.\r\nManaka no puede dejar de pensar en ella y, al final del día, se da cuenta de que la ama.",
+     "titulo": "Amor inestable en el grupo de estudio / ¡La hermosa chica ilusoria otra vez!"
+    },
+    {
+     "descripcion": "Después de los exámenes, todos han aprobado y han ingresado a la escuela.\r\nEl día de la graduación, Manaka se encuentra con Tsukasa, que le dice que sabe que a él le gusta Aya y que ella no irá a la misma escuela que él.\r\nRompen, y Manaka y Aya se encuentran de nuevo en la azotea.\r\n\r\nUna mañana, Manaka despierta y ve a su amiga de la infancia, Yui, medio desnuda.\r\nYui le dice que vino a visitar escuelas para el próximo año, y salen a buscarlas.\r\nDe regreso, ven a dos perros a los que Yui le tiene miedo, y Manaka los salva de ser atacados.\r\nPor la mañana, Yui debía irse, pero durmió demasiado y perdió su tren.",
+     "titulo": "El segundo botón de los recuerdos / La amiga de la infancia es una tormenta de primavera"
+    },
+    {
+     "descripcion": "Manaka recibió una videocámara por su graduación y sale a filmar en el parque. Mientras filma a una chica, el viento levanta su falda y le muestra sus bragas.\r\nEl primer día de clases, todos se sienten atraídos por Aya, y antes de la clase Manaka descubre que la chica del parque está en su salón y que se llama Kitaouji Satsuki.\r\nAl día siguiente, Aya llega a la escuela de manera diferente y, sin querer, provoca una pelea que al final hace que Satsuki comprenda algo.\r\n\r\nManaka quiere revivir el club de cine, pero para hacerlo necesita cinco miembros. Le pide a Komiyama, y también aparece un chico llamado Sotomura, que quiere unirse. Y finalmente, Satsuki ofrece que también se unirá al club.\r\nManaka se encuentra con Aya en la azotea, donde ella le dice que ya se unió a otro club y huye. Satsuki llega a preguntar qué pasó y, mientras habla con Manaka, le confiesa que le gusta.\r\nCamino a casa, Manaka se encuentra con Tsukasa.",
+     "titulo": "Problemática vida en la preparatoria / El corazón y la mente equivocados"
+    },
+    {
+     "descripcion": "Manaka invita a Aya a su casa para encontrar una idea para su película.\r\nMientras están ahí, aparecen Tsukasa, Satsuki, Komiyama, Yui, Sotomura y Oukusa, y todo sale mal.\r\n\r\nPara su campamento de verano, el club de cine va a la playa.\r\nDe noche, Manaka se encuentra con Satsuki en el pasillo y conversan.",
+     "titulo": "¡Pánico en mi habitación! / Olas embravecidas del campamento de verano"
+    },
+    {
+     "descripcion": "Es el cumpleaños de Nisino y ella espera que suceda algo; ¿qué es lo que espera?\r\nDe noche, ella y Manaka se encuentran.\r\n\r\nPara que Manaka decida de quién está enamorado y con quién debe salir, acude a Oukusa en busca de ayuda.\r\nManaka decide y le dice a Satsuki algo que la sorprenderá.",
+     "titulo": "El regalo de todas las fuerzas / Destino desconocido de los sentimientos"
+    },
+    {
+     "titulo": "¡Un estallido repentino! La guerra civil / La Navidad de la soledad pasada"
+    },
+    {
+     "titulo": "El sueño continúa una vez más / ¡Un abrazo en medio de la nieve!"
+    },
+    null,
+    {
+     "titulo": "La gratitud de subir de nivel / ¡Primera cita que acelera el corazón!?"
+    },
+    null,
+    {
+     "titulo": "Otro encuentro bajo la lluvia / Una verdadera heroína"
+    }
+   ]
+  },
+  "monos_isekai-maou-to-shoukan-shoujo-no-dorei-majutsu-w": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Takuma Sakamoto era un gamer recluso que alcanzó renombre como el Señor Demonio en Cross Reverie, un MMORPG, gracias a su equipo abrumador y su habilidad."
+    },
+    {
+     "descripcion": "Tras despertar con las manos llenas de senos, Diablo sigue a Shera y Rem para registrarse como nuevos miembros del Gremio de Aventureros. Mientras el gremio identifica a Shera como una Invocadora de nivel 30, el nivel de Diablo resulta demasiado alto para que puedan medirlo."
+    },
+    {
+     "descripcion": "El guerrero Emile, defensor y aliado de todas las mujeres, desafía a Diablo a un combate."
+    },
+    {
+     "descripcion": "Rem, Celestine e incluso Emile luchan con dificultad contra el ataque repentino de Gregore. Mientras tanto, Diablo y Edelgard se enfrentan en el Puente de Ulug."
+    },
+    {
+     "descripcion": "El Reino de Greenwood exige que la Ciudad de Faltra entregue a la princesa Shera. Si se niegan, habrá guerra, así que Diablo se reúne con Galford, el Señor de la Ciudad de Faltra, y acepta una misión para evitar que estalle la guerra."
+    },
+    {
+     "descripcion": "Mientras las exigencias de Greenwood siguen sin cumplirse, Diablo y las chicas visitan un mercado de esclavos para ver si pueden descubrir el secreto mágico de los Collares de Esclavitud."
+    },
+    {
+     "descripcion": "Al día siguiente de la visita del príncipe Keera, Shera se despide de Diablo de repente mientras preparan pociones. Incapaz de detenerla, Diablo se encierra en la posada, consumido por el arrepentimiento. Rem también se inquieta al verlo tan negativo."
+    },
+    {
+     "descripcion": "Diablo se enfrenta a la Invocación del príncipe Keera, la Hidra de Fuerza, un monstruo al que nunca antes se había enfrentado."
+    },
+    {
+     "descripcion": "Alicia regresa a la Capital Imperial para presentar su informe sobre el incidente entre Faltra y el Reino de Greenwood. Allí se encuentra con el Paladín Saddler."
+    },
+    {
+     "descripcion": "La noche de la resurrección del Señor Demonio llega por fin. Rem revela finalmente a Shera y Alicia que el alma del Señor Demonio Krebskulm está sellada en su interior. Juntos, el grupo de Diablo se dirige a la Torre de la Caída Estelar, donde Edelgard los espera."
+    }
+   ]
+  },
+  "monos_iya-na-kao-sarenagara-opantsu-misete-moraitai-2": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Tras suplicar por ver su ropa interior la última vez, nuestro protagonista regresa con la esperanza de volver a vislumbrar las bragas de su criada, Chitose. Entonces ella le pregunta: «Así que quieres volver a ver mis bragas, ¿verdad?». ¡Su respuesta supera todas sus expectativas!"
+    },
+    {
+     "descripcion": "Como tutor particular que visita la casa de los gemelos Yuno y Kano, nuestro protagonista recibe la petición de llevarlos a un parque temático como premio por sus buenas calificaciones. Sin embargo, tiene una condición especial para acompañarlos al parque..."
+    },
+    {
+     "descripcion": "La tendera de la librería Shiori recibe a nuestro protagonista con su personalidad cálida y amable, y luego le dice que le encantaría conocer sus opiniones sobre los libros que pidió. Sin embargo, tras un giro de los acontecimientos, esta amable tendera recibe una petición de otro tipo, muy especial..."
+    },
+    {
+     "descripcion": "Durante una cita con el dentista, la higienista dental Natsumi le ofrece a nuestro protagonista una \"recompensa\" especial si logra aguantar el resto del procedimiento dental… ¡Sin embargo, él tiene en mente un tipo de recompensa muy distinto!"
+    },
+    {
+     "descripcion": "Como regalo especial por su cumpleaños, nuestro protagonista invita a Noriko, una estudiante alegre y llena de energía, a una buena comida en un restaurante familiar. Noriko, encantada con la amabilidad del protagonista, se ofrece a hacer algo a cambio por el cumpleaños de él. Sin embargo, lo que él tiene en mente no es lo que ella espera."
+    },
+    {
+     "descripcion": "Nuestro protagonista visita a la monja María en la capilla, donde ella lo saluda amablemente. Es entonces cuando él le entrega una carta escrita a mano, y María descubre que esta contiene una cierta petición."
+    }
+   ]
+  },
   "monos_kami-wa-game-ni-ueteiru": {
    "episodios": [
     null,
@@ -467,6 +838,59 @@
     },
     {
      "descripcion": "¿Fay y sus amigos enfrentarán al jefe final de Luceimia? ¿Podrán salir con vida del laberinto?"
+    }
+   ]
+  },
+  "monos_kaminaki-sekai-no-kamisama-katsudou": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Urabe Yukito era el hijo del fundador de una secta turbia, pero cuando muere en un ritual demencial, renace en otro mundo donde no existen los conceptos de dioses ni de religión. Este debería ser un mundo ideal para él, pero entonces...!?",
+     "titulo": "Sabemos que no somos dignos, oh gran Señor Mitama. Purifícanos, por favor. Límpianos, Señor Mitama. Te suplicamos que escuches nuestra plegaria."
+    },
+    {
+     "descripcion": "Tras el incidente ocurrido en el evento de fin forzado de vida para los aldeanos, el Imperio inicia una investigación. Como esto podría conducir a la destrucción de la aldea, Yukito debe idear un plan para defenderla del Imperio.",
+     "titulo": "Sabemos que no somos dignos, oh gran Señor Mitama. Qué hermosa es—"
+    },
+    {
+     "descripcion": "Tras ser resucitado por Mitama, Bertrand es expulsado de la capital imperial por haberse sometido a un cambio de sexo. Al encontrar a Bertrand sin un lugar adónde ir, Yukito le tiende una mano amistosa, pero...",
+     "titulo": "Sabemos que no somos dignos, oh gran Señor Mitama, tú que gobiernas sobre todas las colinas de Takaamahara. Todos nuestros—"
+    },
+    {
+     "descripcion": "Usando los poderes de Mitama para invocar combinados, plomería y electricidad, Yukito catapulta la tecnología del campamento de aislamiento hacia el futuro. Tal como estaba planeado, consiguen muchos seguidores, pero entonces aparece una misteriosa asesina de la capital imperial...",
+     "titulo": "Sabemos que no somos dignos. ¡Oh, gran Señor Mitama! Tú has... ¡aaaahhhh!—"
+    },
+    {
+     "descripcion": "Clen revela que su verdadero nombre es «Loki» y que ella es una de los arcontes. Luego, lleva a Yukito y a Mitama ante el Emperador. Pero una vez allí, lo que ven es una tecnología súper avanzada que controla el mundo...",
+     "titulo": "Sabemos que no somos dignos, oh gran Señor Mitama. Tú creaste todas las cosas..."
+    },
+    {
+     "descripcion": "Tras liberarse del dominio del Imperio, la fe de Mitama también ha formado una alianza con Atar y está ganando seguidores de manera constante. Es entonces cuando Yukito se entera de un gran grupo religioso con 10 000 seguidores encabezado por la arconte «Dakini».",
+     "titulo": "Sabemos que no somos dignos, oh gran Señor Mitama"
+    },
+    {
+     "descripcion": "Con la ayuda de Riche, quien quiere escapar de la secta, Yukito y su equipo logran infiltrarse en el culto de Dakini. Usando la influencia de Riche, Yukito procede a dividir la lealtad de los seguidores. ¡Sin embargo, Dakini lo descubre y los somete a juicio a todos!",
+     "titulo": "Sabemos que no somos dignos, oh gran Señor Mitama. Todos los seres vivos nacieron de—"
+    },
+    {
+     "descripcion": "La fase siguiente del plan de Yukito para socavar a Dakini está en marcha, pero ¿llegarán a tiempo antes de ser purgados? ¡Incluso debilitada, los poderes de Dakini son formidables!",
+     "titulo": "Sabemos que no somos dignos, oh gran Señor Mitama. El mal no puede tocarnos."
+    },
+    {
+     "descripcion": "Ahora que Dakini ha sido capturada, Yukito idea un plan para que sus seguidores sigan a Mitama. Más tarde, de camino de regreso a la aldea, Yukito y los demás son atacados por extrañas bestias.",
+     "titulo": "Sabemos que no somos dignos, oh gran Señor Mitama. Tu perfectamente pur—"
+    },
+    {
+     "descripcion": "Yukito hace que algunas de las chicas formen una banda y den un concierto para poner a prueba una teoría sobre los poderes de un dios. Después, Yukito le pide a Bertrand que siga y vigile a Gaia para averiguar qué está tramando.",
+     "titulo": "Sabemos que no somos dignos, oh gran Señor Mitama"
+    },
+    {
+     "descripcion": "Para evitar que Gaia obtenga más poder, el plan de Yukito es separarla de sus hijos. Pero Gaia ya estaba preparada y convoca a la bestia extraña definitiva, Typhon. A pesar de sus mejores esfuerzos por huir, Yukito es devorado por ella...",
+     "titulo": "Sabemos que no somos dignos, oh gran Señor Mitama. En los tiempos antiguos—"
+    },
+    {
+     "descripcion": "Yukito y Mitama siguen luchando contra Gaia. Atar les dice a los asistentes del concierto que ella quiere dar un paso al costado y que deberían redirigir su devoción hacia Mitama. ¿Serán suficientes los poderes reforzados de Mitama para detener a Gaia y salvar a la aldea?",
+     "titulo": "Sabemos que no somos dignos. Oh, gran Señor Mitama. En el trono—"
     }
    ]
   },
@@ -533,6 +957,61 @@
     },
     {
      "descripcion": "Mientras Romantica, Pram y Azest avanzan en el campeonato, un hombre con máscara de cuervo ataca el castillo."
+    }
+   ]
+  },
+  "monos_kokaku-kidotai-the-ghost-in-the-shell": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Durante una redada en una reunión con un representante extranjero que sospecha que involucra corrupción y actividades criminales, Daisuke Aramaki, de Seguridad Pública, se encuentra con una misteriosa ciborg. Presentándose como Motoko Kusanagi, la ciborg propone a la ministra del Interior la formación de una nueva unidad de fuerzas especiales. Aramaki le pide a Kusanagi que investigue algo como primer paso."
+    },
+    {
+     "descripcion": "Kusanagi y su equipo comienzan a operar como el Escuadrón Shell tras ser reclutados por Aramaki. En algún momento, el cerebro cibernético del intérprete del ministro de Asuntos Exteriores es infectado por un virus. Aramaki percibe que el coronel Malles, quien vive exiliado en el país, intenta interferir en una reunión secreta. Le ordena a Kusanagi rastrear el hackeo hacia atrás y encontrar al culpable."
+    },
+    {
+     "descripcion": "Kusanagi y Togusa capturan a su sospechoso tras una feroz persecución con sus Fuchikomas. Mientras tanto, Aramaki y Batou vigilan al coronel Malles cuando recibe la visita de alguien que sospechan que es el Titiritero, el hacker que liberó el virus por orden suya."
+    },
+    {
+     "descripcion": "Ha habido una oleada de ataques contra humanos por parte de robots de muestra promocionales. El equipo de Kusanagi captura robots de esa misma línea de modelos y descubre que todos comparten un rasgo en común. Batou y Togusa se dirigen a Hanka Precision Instruments, la fábrica donde son fabricados, para determinar qué hay detrás de los ataques."
+    },
+    {
+     "descripcion": "Kusanagi y el equipo viajan al Lejano Norte para vigilar a un ciborg de combate llamado Koil Krasnov. Para determinar qué busca Koil y descubrir la corrupción detrás de la expansión de la fábrica subterránea de Sagawa Electronics, Kusanagi se infiltra en las oficinas de Sagawa mientras Batou y el resto se dirigen a la fábrica subterránea."
+    },
+    {
+     "descripcion": "Kusanagi y su novio son trasladados de urgencia al hospital tras ser atacados sin previo aviso. Sospechan de Toru Soma, un terrorista con quien Kusanagi tiene un pasado. Kusanagi y Togusa abandonan el hospital y, tras llevar a sus perseguidores en una persecución, se encuentran en una feroz batalla contra un grupo armado en una fábrica abandonada."
+    },
+    {
+     "descripcion": "Un robot huye de Megatech Body Co., Ltd. La Sección 9 lo pone bajo custodia, solo para descubrir que el Titiritero está dentro de él. El Titiritero anuncia al equipo de Aramaki que es \"una forma de vida que surgió espontáneamente en el mar de la información\". Momentos después de solicitar asilo político, es robado por una parte desconocida."
+    },
+    {
+     "descripcion": "Kusanagi recupera la conciencia tras una inmersión cerebral en el Titiritero. Aunque ahora conocen la verdad detrás de lo sucedido, Kusanagi percibe de vez en cuando la presencia del Titiritero. El Escuadrón Shell asalta un barco utilizado por una célula terrorista, y Kusanagi mata por error a su líder a tiros."
+    },
+    {
+     "descripcion": "Alguna parte desconocida filtra las imágenes del incidente a los medios, y Kusanagi es acusada de asesinar a sangre fría al terrorista. Kusanagi, sospechando que el servicio de inteligencia ghoranta mueve los hilos tras bambalinas, realiza una investigación en solitario, pero se encuentra con que es sometida a juicio."
+    },
+    {
+     "descripcion": "Kusanagi pierde su cuerpo protésico cuando este recibe disparos, y huye de la escena con Batou como un cerebro sin cuerpo. Se dirigen al refugio seguro de Batou para conseguirle un nuevo cuerpo, pero mientras está en modo de bloqueo, el Titiritero, que se presumía destruido, se infiltra en ella."
+    }
+   ]
+  },
+  "monos_kyou-no-asuka-show": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Asuka no se da cuenta de que su ropa interior está expuesta. Un hombre de negocios intenta señalárselo, pero no recibe la respuesta que esperaba."
+    },
+    {
+     "descripcion": "Asuka decide que no es vergonzoso usar trajes de baño \"cerca de cuerpos de agua\" y pone a prueba esta teoría en un día lluvioso."
+    },
+    {
+     "descripcion": "Asuka quiere comprar un helado de palito, pero se ha olvidado la billetera. El vendedor le ofrece uno gratis si se lo come de una manera bastante sugerente."
+    },
+    {
+     "descripcion": "Asuka ayuda a una anciana a cruzar la calle mientras camina a casa con un compañero de clase, lo que provoca otra \"exposición\" inesperada."
+    },
+    {
+     "descripcion": "Un compañero de clase intenta invitar a salir a Asuka. Ella lo rechaza, pero le ofrece algunos consejos útiles para venderse mejor."
     }
    ]
   },
@@ -708,6 +1187,50 @@
     }
    ]
   },
+  "monos_megami-ryou-no-ryoubo-kun": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "El desamparado y desesperado Koushi ha recibido una oferta de trabajo. Pero tras una mala primera impresión, Atena necesitará tiempo para acostumbrarse a la idea de que Koushi viva en la Residencia de la Diosa.",
+     "titulo": "Koushi se convierte en madre de la residencia / El problema con Mineru y Frey"
+    },
+    {
+     "descripcion": "¿Cómo ha logrado Koushi ganarse tan rápido a las residentes de la residencia? ¡Atena lo considera súper sospechoso! Pero cuando una salida de compras sale mal, ¿podrá aceptar su ayuda?",
+     "titulo": "El problema con Kiriya y Serene / Atena despierta"
+    },
+    {
+     "descripcion": "Ahora que se ha adaptado a su nueva vida, Koushi regresa a la escuela. Todos quieren saber dónde ha estado, pero ¿apreciará su amiga de la infancia, Sutea, la verdad?",
+     "titulo": "Koushi, desconcertado / Koushi vuelve a la escuela"
+    },
+    {
+     "descripcion": "Sutea conoce a las residentes de la Residencia de la Diosa, con resultados variados. Más tarde, Koushi se infiltra en la universidad y se mete en problemas.",
+     "titulo": "Una amiga de la infancia visita la residencia / Koushi se infiltra en una universidad femenina"
+    },
+    {
+     "descripcion": "Es hora de divertirse bajo el sol durante las vacaciones de verano, pero Serene no parece muy interesada en la idea. ¡Es momento de ayudar a la miembro más misteriosa de la residencia!",
+     "titulo": "Serene, la chica retraída / La Residencia de la Diosa se va de vacaciones"
+    },
+    {
+     "descripcion": "Las residentes de la Residencia de la Diosa y Sutea pasan un día en la playa. Mientras observa a las chicas divirtiéndose en el agua, Koushi nota que su amiga de la infancia tiene un problema y decide rescatarla... Preocupada por el ánimo distraído de Koushi, Frey decide llevar al estudiante a un estudio de cosplay para distraerlo y averiguar qué le pasa.",
+     "titulo": "Sutea reflexiona sobre el mar / Koushi debuta como cosplayer"
+    },
+    {
+     "descripcion": "Koushi y Sutea acuden al 45.º Festival Seikan. Se encuentran con Frey, que en esta ocasión forma parte del comité ejecutivo del evento. La cosplayer será guía de los dos estudiantes universitarios durante ese día.",
+     "titulo": "El festival escolar de la Universidad Femenina Seikan"
+    },
+    {
+     "descripcion": "Koushi y Atena ofrecen su ayuda a Kiriya, que debe organizar una fiesta de Navidad por su cuenta para los pequeños discípulos del dojo de su familia. Pero tras un incidente, Atena se ve obligada a quedarse en casa. Así que Koushi y Kiriya terminan yendo de compras solos los dos..."
+    },
+    {
+     "descripcion": "\"Kotatsu\" ha llegado al Dormitorio de las Diosas. Koushi-kun está encantado con el kotatsu que tanto admira. Se suponía que todos se meterían en el kotatsu y se sentirían como en casa... ¿En el kotatsu, Frey y Mineru usan los pies? Comienzan a gastarle bromas a Koushi.",
+     "titulo": "Sutea reflexiona sobre el kotatsu / Koushi se enfrenta a la limpieza de primavera"
+    },
+    {
+     "descripcion": "Cuando Koushi enferma justo antes de Año Nuevo, los residentes del dormitorio deben unirse para cuidarlo y devolverle la salud… pero sus esfuerzos podrían hacer más daño que bien.",
+     "titulo": "Las diosas del Dormitorio de las Diosas"
+    }
+   ]
+  },
   "monos_mushoku-tensei-ii-isekai-ittara-honki-dasu-part-2": {
    "episodios": [
     null,
@@ -750,6 +1273,66 @@
     }
    ]
   },
+  "monos_mushoku-tensei-isekai-ittara-honki-dasu-2nd-season": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Dead End descubre que Ruijerd tendrá que pagar una fortuna en tasas para salir del Continente Demonio. Mientras luchan por encontrar una forma de sortear este inesperado obstáculo, Rudeus recibe otra visión.",
+     "titulo": "La mujer de los ojos demoníacos"
+    },
+    {
+     "descripcion": "Roxy llega al Continente Demonio para comenzar su búsqueda de la familia desaparecida de Paul. Mientras tanto, Rudeus cierra un trato con contrabandistas para transportar a Ruijerd a través del océano."
+    },
+    {
+     "descripcion": "Rudeus se encuentra encarcelado por los hombres bestia en la aldea de Doldia. ¿Llegarán Ruijerd y Eris a limpiar su nombre antes de que él pierda la paciencia e intente abrirse camino a la fuerza para recuperar su libertad?"
+    },
+    {
+     "descripcion": "Dead End decide esperar la temporada de lluvias en la aldea de Doldia. Eris se hace amiga de la nieta del jefe, pero su aprecio por Ghislaine provoca un conflicto inesperado.",
+     "titulo": "Vida tranquila en la aldea de Doldia"
+    },
+    {
+     "descripcion": "Rudeus, Eris y Ruijerd llegan al Reino Santo de Millis, donde los pensamientos de Rudeus se dirigen a casa. Cuando los tres se separan para tomarse un día libre, un encuentro casual en un callejón lleva a Rudeus a una reunión impactante."
+    },
+    {
+     "descripcion": "Tras las consecuencias de su desastroso reencuentro, Paul y Rudeus reflexionan sobre sus acciones y buscan una forma de seguir adelante."
+    },
+    {
+     "descripcion": "Después de partir de Millishion, Rudeus, Eris y Ruijerd suben a un barco de regreso al Continente Central. Mientras tanto, Roxy llega a Rikarisu, donde se encuentra con algunos rostros conocidos."
+    },
+    {
+     "descripcion": "Dead End por fin llega al Reino de Shirone en el Continente Central. Rudeus está ansioso por reencontrarse con Roxy, pero una visión inesperada del Dios Hombre indica que podría enfrentarse a más de lo que esperaba."
+    },
+    {
+     "descripcion": "Rudeus está en una situación desesperada, encarcelado en una mazmorra a prueba de magia por un príncipe despótico. Pero justo cuando todo parece perdido, aparece un visitante inesperado con una extraña petición. ¿Logrará Rudeus convencerlo para salir de esta?",
+     "titulo": "El nacimiento de mi hermanita, la criada"
+    },
+    {
+     "descripcion": "Rudeus, Eris y Ruijerd están cerca del final de su viaje, pero un encuentro casual en un paso de montaña nevado amenaza con poner un final prematuro a sus aventuras."
+    },
+    {
+     "descripcion": "Rudeus y Eris por fin regresan a Fittoa, pero las despedidas repentinas y las noticias desagradables convierten su regreso a casa en algo agridulce."
+    },
+    {
+     "descripcion": "Rudeus cae en la depresión tras la partida de Eris. Mientras lucha por volver a ponerse en pie, las muchas personas que ha conocido continúan sus propios caminos."
+    }
+   ]
+  },
+  "monos_mushoku-tensei-isekai-ittara-honki-dasu-special": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Un recluso de 34 años, desempleado, es atropellado por un camión... ¡y despierta como un bebé recién nacido en un mundo de fantasía! Con unos padres cariñosos, una vida llena de arrepentimientos y un libro de magia para principiantes, se propone aprovechar al máximo su segunda oportunidad en la vida."
+    }
+   ]
+  },
+  "monos_naruto-la-pelicula-blood-prison": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Tras su captura por intentar asesinar al Raikage, líder de Kumogakure, y por matar a jōnin de Kirigakure e Iwagakure, Naruto es encarcelado en Hōzukijou: una instalación de contención de criminales conocida como la Prisión de Sangre. Mui, el amo del castillo, utiliza la técnica de encarcelamiento definitivo para robar el poder de los prisioneros, y es entonces cuando Naruto nota que su vida ha sido puesta como objetivo. Así comienza la batalla por descubrir la verdad detrás de los misteriosos asesinatos y demostrar la inocencia de Naruto."
+    }
+   ]
+  },
   "monos_oni-no-hanayome": {
    "episodios": [
     null,
@@ -789,6 +1372,51 @@
     },
     {
      "descripcion": "Yuzu se despide de su hermana para siempre y abraza su nueva vida."
+    }
+   ]
+  },
+  "monos_ore-dake-haireru-kakushi-dungeon": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Noir es el tercer hijo de un noble pobre, y su puesto de trabajo le es arrebatado por un noble más poderoso. Además, por desgracia, carece de suficientes habilidades para asistir a la Academia de Héroes. Intenta encontrar la manera de usar mejor su habilidad [Gran Sabio] y se topa con una mazmorra oculta."
+    },
+    {
+     "descripcion": "Para reunir el dinero necesario para pagar la matrícula de la Academia de Héroes, Noir visita el Gremio de Aventureros. Sin embargo, la recepcionista del gremio, Lola, duda de sus habilidades, así que él debe demostrar su valía. Una vez que ella descubre que dice la verdad, se supone que le ofrecerá una recompensa, y...",
+     "titulo": "El Gremio y la recepcionista"
+    },
+    {
+     "descripcion": "Noir descubre la jerarquía social de la Academia de Héroes. La hija de un duque llamada Maria es la única que le tiende una mano. Pero descubre que ella tiene una maldición que la matará cuando cumpla 16 años."
+    },
+    {
+     "descripcion": "Justo antes de su cita con Luna, Noir visita a Olivia. Le pregunta si existe una forma más eficaz de obtener PE y ella le habla de una habilidad prohibida que lo hará muy afortunado de la manera más inesperada."
+    },
+    {
+     "descripcion": "Para obtener PE y dinero, Noir y los demás participan en un torneo de harenes. En este torneo, los concursantes exhiben sus harenes para ser juzgados por un público exigente. Noir se acerca a Emma, Lola y Luna para intentar impresionar a los jueces y ¡ganar!",
+     "titulo": "El futuro de este harén"
+    },
+    {
+     "descripcion": "Noir cura con éxito la maldición de Maria, recibe una montaña de dinero y decide abrir una tienda que venda materiales raros, así que va a la mazmorra a reunir dichos materiales. Avanza más hacia las profundidades y se encuentra con un león que aparentemente habla palabras humanas."
+    },
+    {
+     "descripcion": "Lola se enzarza en una discusión con una recepcionista rival. Noir visita el Gremio de Aventureros y termina atrapado en su pelea. Noir decide derrotar a un dragón, tanto para su examen como por Lola, pero..."
+    },
+    {
+     "descripcion": "Noir llega al piso 7 de la mazmorra y se encuentra con un misterioso espíritu que se parece mucho a Emma cuando era más joven. Al parecer, el espíritu está siendo drenado de su vida por algo siniestro y le pide a Noir que lo derrote a cambio de un tesoro."
+    },
+    {
+     "descripcion": "Emma invita a Noir a una fiesta de alta sociedad. La fiesta se alborota cuando unos ladrones anuncian que la visitarán y robarán algunos objetos que hay allí, pero entonces Noir participa en una batalla de baile contra un noble para ganarse el honor de Emma.",
+     "titulo": "Rumbo a la gala"
+    },
+    {
+     "descripcion": "¡Ha llegado por fin el día de la tradición de la Academia de Héroes, su viaje a las aguas termales! Los monstruos que enfrentan en el camino hacia las aguas termales son duros, pero los chicos de la clase que no pueden controlar su lujuria representan una amenaza mucho mayor. ¿Qué debe hacer Noir para proteger a Emma y a las demás chicas?",
+     "titulo": "Vamos a las aguas termales"
+    },
+    {
+     "descripcion": "La tienda de materiales que Noir deseaba administrar por fin está abierta. Todo comenzó después de conocer a Olivia, así que quiere retribuirle deshaciendo su maldición. Se dirige al piso 15 de la mazmorra y ve..."
+    },
+    {
+     "descripcion": "Se revela la razón por la que Olivia tiene tanto cariño y es tan protectora con Noir. Tiene que ver con un aventurero del pasado. Mientras tanto, Noir lucha por su vida contra la falsa Olivia. ¿Logrará descubrir algo?"
     }
    ]
   },
@@ -998,6 +1626,50 @@
     }
    ]
   },
+  "monos_peach-boy-riverside-orden-cronologico": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Sally conoce a la demihumana Frau, quien de inmediato se une a su viaje. Tras sufrir la discriminación que los demihumanos padecen a manos de los humanos, Sally y Frau son arrestadas por Hawthorn, comandante de los Caballeros de Rimdarl.",
+     "titulo": "La exprincesa y la gente liebre"
+    },
+    {
+     "descripcion": "Sally empuña su poder del melocotón contra el ogro de alto rango Sett, que arrasa el Reino de Rimdarl. Mientras tanto, Meki, compañero de Sett y también ogro de alto rango, se topa con Mikoto. ¡¿Cómo les irá a los luchadores del melocotón contra los ogros de alto rango?!"
+    },
+    {
+     "descripcion": "Sumeragi convoca una reunión para advertir a los demás ogros sobre el camino de destrucción que ha dejado Mikoto. Mientras los otros ogros entran en pánico, el luchador Todoroki expresa sus dudas sobre las motivaciones de Sumeragi... hasta que Sumeragi revela el destino de Meki."
+    },
+    {
+     "descripcion": "En un mundo donde los ogros devoradores de hombres pululan y la gente se oculta en ciudades amuralladas, Sally, princesa del Reino de Aldarake, anhela emprender un viaje y ver la vida fuera de los muros. Pero su vida cambiará para siempre cuando un viajero llamado Mikoto llegue al reino... seguido de un ejército de ogros.",
+     "titulo": "La princesa y el melocotón"
+    },
+    {
+     "descripcion": "Sally y sus compañeros llegan a una aldea asolada por ataques de vampiros... y por la discriminación hacia los demihumanos. Cuando Sally se niega, a instancias de Carrot, a castigar a los humanos por su trato hacia Frau, Carrot decide buscar otra ayuda... ¡de manos del propio vampiro!",
+     "titulo": "Frau y el vampiro"
+    },
+    {
+     "descripcion": "Frau regresa a la vida con la ayuda del ángel Atla, pero su forma queda temporalmente alterada. Mientras tanto, Mikoto comienza a viajar con Millia (Hatsuki), la joven desmemoriada, cuando ambos se ven enfrentados por un ogro de rango medio sin nombre."
+    },
+    {
+     "descripcion": "El Reino de Rimdarl es destruido por el cañón de Somenki, dejando a Hawthorn a la deriva. Él y Meki (ahora Carrot) se unen a ella, pero en el siguiente pueblo que visitan, Sally empieza a cuestionarse la naturaleza de los prejuicios."
+    },
+    {
+     "descripcion": "Mientras Sally toma su decisión entre Mikoto y Sumeragi, Todoroki y sus compañeros atacan, buscando venganza contra el Niño Melocotón."
+    },
+    {
+     "descripcion": "Kibitsu Mikoto, también conocido como el Niño Melocotón, navega hasta la Isla de los Ogros y derrota al líder ogro... pero la historia no termina ahí. Un día después, se encuentra con Mikoto, una niña mitad humana, mitad ogro..."
+    },
+    {
+     "descripcion": "Mientras Sally corre a salvar a sus compañeros, Frau lucha contra Basoo, y Carrot se esfuerza por enfrentarse a su antigua aliada, Shinki. Hawthorn está dispuesto a morir para contener a Todoroki. ¿Alguien podrá salvarlo en el último momento?"
+    },
+    {
+     "descripcion": "Sally visita a Winnie la Bruja y le pide que le enseñe magia. En ese momento, aparecen los líderes de los clanes de elfos y hombres lagarto. Normalmente enemigos mortales, han venido a pedirle a Winnie un favor: ¡liberar al ogro gigante sellado en el bosque!"
+    },
+    {
+     "descripcion": "Durante la batalla contra Juki, Sally declara que todos los presentes deberían intentar hacer las paces. Mientras tanto, Sumeragi le plantea a Mikoto la posibilidad de una convivencia entre ogros y humanos."
+    }
+   ]
+  },
   "monos_peter-grill-to-kenja-no-jikan-super-extra": {
    "episodios": [
     null,
@@ -1046,6 +1718,138 @@
     {
      "descripcion": "¡El plan del Maestre del Gremio da resultado! Afortunadamente para Peter (pero desafortunadamente para todos los demás), el depredador natural de los enanos elige este momento para atacar la ceremonia.",
      "titulo": "Peter Grill y el Legado del Futuro"
+    }
+   ]
+  },
+  "monos_plunderer": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Desde que su madre desapareció, Hina ha viajado sola. Las últimas palabras de su madre para Hina fueron que encontrara al \"As Legendario\". Hina sigue un rumor hasta un pueblo, donde conoce a Nana, la dueña de una taberna, y a Licht, un enorme pervertido."
+    },
+    {
+     "descripcion": "Licht, el legendario As de Flashing Strikes, salva a Hina del corrupto oficial militar. Hina está decidida a que él sea la persona que su madre le dijo que encontrara, pero Licht parece no estar de acuerdo."
+    },
+    {
+     "descripcion": "Lynn y Pele son oficiales militares que vigilan un tranquilo pueblo apartado. Se encuentran con un extraño vendedor de pudín que se parece sospechosamente al legendario As del cartel de se busca."
+    },
+    {
+     "descripcion": "Licht no puede evitar sentirse impresionado por lo pacíficas y felices que son las personas del pueblo de Lynn. Sin embargo, esa paz se rompe con la llegada de Jail, el superior de Lynn."
+    },
+    {
+     "descripcion": "Jail revela su verdadero Conteo de 12500. Incluso supera a Licht en velocidad pura, la especialidad de Licht. Mientras los habitantes del pueblo y Lynn observan, Licht es acorralado."
+    },
+    {
+     "descripcion": "Hina alcanza a Licht, guiada por una corazonada y ayudada por Nana. Se encuentran con Pelmo, otra mujer guiada por sus corazonadas. Pelmo persigue un sueño de toda la vida, que resulta ser bastante peligroso."
+    },
+    {
+     "descripcion": "Lynn y Pele también alcanzan a Licht. Al percibir la formación de un incómodo triángulo amoroso, Nana propone una competencia de cocina para aligerar el ambiente.",
+     "titulo": "Estaba delicioso"
+    },
+    {
+     "descripcion": "Jail, Lynn y Pele entran en la ciudad de Linden y descubren que sus habitantes fueron aniquilados por una entidad desconocida. Jail está seguro de que Licht debe saber algo al respecto.",
+     "titulo": "Demonio del Abismo"
+    },
+    {
+     "descripcion": "El Demonio del Abismo se muestra. Nadie sabe qué es ni cómo derrotarlo, excepto Licht, quien toma el mando."
+    },
+    {
+     "descripcion": "Licht desata su verdadero poder, convirtiéndose en una máquina de matar arrasadora. Sin embargo, parece que sus fuerzas incomparables tienen un alto costo."
+    },
+    {
+     "descripcion": "Licht y Mizuka han regresado a su estado normal. Mientras las chicas del grupo sufren las consecuencias del Star Stake sin resolver de Licht y Mizuka, Jail recibe una orden de presentarse ante el comandante supremo de las fuerzas militares."
+    },
+    {
+     "descripcion": "Nana envía a Jail, Lynn, Pele y Hina 300 años atrás en el tiempo. Llegan a una institución desconocida con una tecnología muy superior al mundo al que están acostumbrados, y conocen a Rihito, un joven que Hina está convencida de que es el mismo Licht."
+    },
+    {
+     "descripcion": "Los viajeros del tiempo se adaptan a su nuevo papel como estudiantes en la academia militar. Sin embargo, cuando Schmerman revela las \"reglas\" de la escuela, queda claro que hay mucho más en este lugar que diversión y amistad."
+    },
+    {
+     "descripcion": "Un voyeur espía habitualmente el baño de las chicas, y los estudiantes deben atrapar al culpable. Mientras tanto, Jail intenta averiguar más sobre esta línea temporal y descubrir por qué Nana los envió aquí."
+    },
+    {
+     "descripcion": "Jail descubre más secretos sobre este mundo a través de Nana, pero Alan lo intercepta durante su huida. Mientras tanto, los estudiantes de la Clase A se acercan a cumplir su sueño de convertirse en una fuerza militar que no quita vidas humanas.",
+     "titulo": "Un ejército que no mata"
+    },
+    {
+     "descripcion": "Rihito decide someterse a la operación que lo convertirá en un As. Este es el momento decisivo de la historia que los viajeros del tiempo querían cambiar, pero, sabiendo lo que saben ahora, no logran ponerse de acuerdo sobre lo que es mejor para todos.",
+     "titulo": "La guerra de la eliminación de desechos"
+    },
+    {
+     "descripcion": "Jail y el escuadrón tienen éxito. Con sus recién adquiridos poderes abrumadores, Rihito debería poder derrotar al enemigo con facilidad. Sin embargo, el enemigo, un grupo de soldados entrenados y decididos, no caerá sin oponer resistencia."
+    },
+    {
+     "descripcion": "Los viajeros del tiempo regresan al futuro y conocen la verdadera historia de su mundo. Aunque no pudieron cambiar el pasado, están decididos a corregir el presente y forjar el futuro."
+    },
+    {
+     "descripcion": "Nana organiza una fiesta para los agotados viajeros del tiempo después de su largo recorrido por la historia. Uno a uno, se recuperan de la atmósfera sombría provocada por lo que habían presenciado."
+    },
+    {
+     "descripcion": "Después de la fiesta de Nana, Hina confronta a Licht justo cuando él se dispone a marcharse otra vez por su cuenta. Mientras la Unidad de Servicios Especiales de Schmerman persigue sus propios objetivos misteriosos, Alex medita su próximo movimiento."
+    },
+    {
+     "descripcion": "Licht se marcha por su cuenta y se enfrenta a Doan, cuyo poder lo supera por completo. Los demás lo persiguen, mientras Jail visita a su padre adoptivo para buscar un cierre."
+    },
+    {
+     "descripcion": "Licht está muerto. Doan determina que los demás también intentan derribar a Alcia, así que decide matarlos a todos también."
+    },
+    {
+     "descripcion": "Como ya hizo en el pasado, Licht regresa a la vida tras su aparente muerte y vuelve a salvar a los demás de Doan. Sin embargo, Mizuka se une a Doan. Licht debe enfrentarse a ambos Ases a la vez."
+    },
+    {
+     "descripcion": "Con Mizuka neutralizada, la única oposición que enfrenta Licht es Doan. Doan atrapa a Licht en una prisión de gravedad, de la que no hay escape. Hina, sin embargo, sigue creyendo en Licht."
+    }
+   ]
+  },
+  "monos_prison-school-kangoku-gakuen": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Cinco chicos recién inscritos en una escuela antes exclusiva para chicas, que ya tienen dificultades para relacionarse con las estudiantes, chocan con el \"Consejo Estudiantil Clandestino\" de la escuela y enfrentan medidas disciplinarias estrictas.",
+     "titulo": "El trabajo del mirón"
+    },
+    {
+     "descripcion": "Hana se avergüenza cuando Kiyoshi la ve en una posición comprometedora. Kiyoshi se desespera por no faltar a su cita con Chiyo y busca la manera de salir de la prisión a tiempo para encontrarse con ella. Gakuto tiene sus propios planes.",
+     "titulo": "El hombre que vio demasiado"
+    },
+    {
+     "descripcion": "Con la atención de Meiko dividida entre dos grupos, Kiyoshi logra ensanchar el agujero de escape lo suficiente como para pasar a tiempo a su cita. Un Shingo ya sospechoso se lleva una sorpresa mayor de la que esperaba."
+    },
+    {
+     "descripcion": "Tras cometer una ofensa atroz contra Mari, Gakuto recibe un castigo drástico de parte de Meiko. Kiyoshi y Gakuto trabajan desesperadamente para sacar a Kiyoshi de la prisión, haciendo que se haga pasar por una chica.",
+     "titulo": "Llévame al país del sumo"
+    },
+    {
+     "descripcion": "Kiyoshi regresa de su fuga, pero debe enfrentar las consecuencias junto a Gakuto y los demás cuando la verdad salga a la luz. Chiyo reconsidera su reacción hacia Kiyoshi y decide darle una segunda oportunidad."
+    },
+    {
+     "descripcion": "Mari le presenta el plan DTO a Hana, y comienzan a idear formas de expulsar a los chicos de la escuela. Shingo lidera a los demás chicos en el rechazo hacia Kiyoshi, pero Meiko planea abrir una brecha aún más profunda entre ellos.",
+     "titulo": "La venganza es de Hana"
+    },
+    {
+     "descripcion": "Shingo, con un permiso de la prisión, conoce a una chica llamada Anzu en el salón de videojuegos del pueblo. Cuando Gakuto recurre a su figurilla de Guan Yu en busca de orientación, la punta de su espada se desprende, desencadenando una cadena de eventos de consecuencias trascendentales.",
+     "titulo": "El delicioso restaurante de Meiko"
+    },
+    {
+     "descripcion": "Andre sufre un colapso mental cuando pasa una semana sin recibir ningún castigo. Shingo lleva a Anzu al cine, pero sus expectativas se ven frustradas. El Consejo Estudiantil Clandestino avanza con su proyecto DTO.",
+     "titulo": "El diario de Andre"
+    },
+    {
+     "descripcion": "Shingo se da cuenta de que vio correos electrónicos sobre DTO en la computadora de la oficina de la correccional, los cuales, si los chicos logran recuperarlos, demostrarían que les tendieron una trampa. Los chicos planean irrumpir en la oficina de la correccional.",
+     "titulo": "Lleno de fluidos corporales"
+    },
+    {
+     "descripcion": "Los chicos aceptan resignados sus próximas expulsiones, y el ánimo está por los suelos, hasta que Gakuto, sufriendo un ataque temporal de locura, idea una última estrategia para sacarlos de su predicamento, siempre que logren ganar el tiempo suficiente para llevarla a cabo.",
+     "titulo": "¡Qué vida tan vagabundamente maravillosa!"
+    },
+    {
+     "descripcion": "Con una prórroga de un día, los chicos deben ejecutar nuevamente un plan para entrar en la oficina de la correccional, pero el Consejo Estudiantil Clandestino no se lo pondrá fácil. Hana tiene una cuenta personal que desea saldar con Kiyoshi.",
+     "titulo": "Eryngii Brockovich"
+    },
+    {
+     "descripcion": "Hana sigue presionando a Kiyoshi para cobrarse su venganza, pero Kiyoshi emplea una adaptación de una estrategia militar clásica para contrarrestarla. Una vez que todos los chicos estén encerrados en sus celdas por la noche, ¿podrán completar su plan?",
+     "titulo": "¡Buenos días, prisión!"
     }
    ]
   },
@@ -1161,6 +1965,106 @@
     }
    ]
   },
+  "monos_ryomin-0-nin-start-no-henkyo-ryoshu-sama": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "A Dias le conceden un dominio por sus servicios en la guerra, pero hay un pequeño problema. ¿Vive alguien allí siquiera?",
+     "titulo": "El señor de la frontera y la chica del cuerno azul"
+    },
+    {
+     "descripcion": "Dias se acomoda en la vida cotidiana con Alna y, poco a poco, la gente empieza a acercarse a visitarlo.",
+     "titulo": "El señor de la frontera y su primer visitante"
+    },
+    {
+     "descripcion": "La población de Nezrose crece lentamente, incluyendo algunas sorpresas gracias a un visitante poco común.",
+     "titulo": "El señor de la frontera y el extraño mercader"
+    },
+    {
+     "descripcion": "Dias conoce al nuevo señor del dominio vecino y se entera de que circulan muchos rumores sobre ambos.",
+     "titulo": "El señor de la frontera y el señor vecino"
+    },
+    {
+     "descripcion": "Dias intenta la agricultura, y Eldan envía una caravana de obsequios para ayudarlo a establecer su dominio.",
+     "titulo": "El señor de la frontera y los atacantes del desierto"
+    },
+    {
+     "descripcion": "Senai y Ayhan quieren ayudar en secreto a Dias a cultivar su campo. ¿Podrá una recién llegada ofrecerles una solución?",
+     "titulo": "El señor de la frontera y la plegaria de los gemelos"
+    },
+    {
+     "descripcion": "Se espera poco de un nuevo grupo de inmigrantes cinocinos, pero Dias tiene algunas ideas sobre cómo serían útiles.",
+     "titulo": "El señor de la frontera y los nuevos súbditos"
+    },
+    {
+     "descripcion": "Los planes de Diane se tuercen rápidamente cuando lanza un ataque contra Dias en su propio dominio.",
+     "titulo": "El señor de la frontera y la batalla de la estepa"
+    },
+    {
+     "descripcion": "Klaus y Canis se han acercado mucho, y debe celebrarse un evento, aunque Dias no se dé cuenta.",
+     "titulo": "El Señor de la Frontera y la boda"
+    },
+    {
+     "descripcion": "Llegan muchos rostros nuevos a la aldea de Iluk, pero no muchos resultan ser completos desconocidos.",
+     "titulo": "El Señor de la Frontera y sus hijos e hijas"
+    },
+    {
+     "descripcion": "Zorg corre a casa para salvar a su hermana Alna del perverso señor del dominio, totalmente desprevenido para lo que le espera.",
+     "titulo": "El Señor de la Frontera y el hermano mayor de Alna"
+    },
+    {
+     "descripcion": "Eldan visita el dominio de Dias y entrega una serie de anuncios oficiales del rey.",
+     "titulo": "El Señor de la Frontera y la historia que comenzó sin súbditos"
+    }
+   ]
+  },
+  "monos_sayonara-lara": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Grace, la bruja desterrada, le da a Lara, una princesa sirena, una poción que la convierte en humana."
+    },
+    {
+     "descripcion": "Lara despierta en el mundo humano en Shiga y se encuentra con Grace, en forma de pez de compañía, que es cuidado por Mari."
+    },
+    {
+     "descripcion": "Lara siente curiosidad por la \"escuela\", y Mari se enfrenta a su senpai para participar en el próximo torneo de boxeo."
+    },
+    {
+     "descripcion": "Lara convence a Mari para que la lleve a la escuela, conoce a Himeka y le pregunta por su \"príncipe\".",
+     "titulo": "La princesa y el príncipe"
+    },
+    {
+     "descripcion": "Lara y Mari son contratadas en una panadería. Lara lucha con las presiones del trabajo y con la búsqueda de su príncipe.",
+     "titulo": "¡Estoy dispuesta a morir por un pastel!"
+    },
+    {
+     "descripcion": "Se revelan el pasado de Lisa y Kota y cómo se convirtieron en humanos.",
+     "titulo": "La luz que brilla sobre mí"
+    },
+    {
+     "descripcion": "Lara se encuentra con Luca, un chico que se parece exactamente al príncipe que alguna vez amó.",
+     "titulo": "Nos vemos en Biwako Terrace el sábado a las 10"
+    },
+    {
+     "descripcion": "Con la final del torneo de boxeo acercándose, Mari se da cuenta de que le queda poco tiempo para Lara. Mientras Mari se reúne con Lisa, Lara empieza a sentirse mal, pues su tiempo está por agotarse.",
+     "titulo": "La noche de la final"
+    },
+    {
+     "descripcion": "Lara siente la presión de encontrar el amor verdadero mientras la magia de la bruja se agota. ¿Será Luca el indicado?"
+    },
+    {
+     "descripcion": "La familia de Lara comienza a despertar cuando se levanta la magia de la bruja. Están desesperados por la luz de Lara.",
+     "titulo": "La princesa con una espada"
+    },
+    {
+     "descripcion": "Grace y su hermana gemela Rigmor compartieron alguna vez un sueño. Pero ese sueño lleva a Rowan a crear una ley estricta."
+    },
+    {
+     "descripcion": "Lara debe atravesar a la persona que ama. La única que le viene a la mente es Mari."
+    }
+   ]
+  },
   "monos_seitokai-ni-mo-ana-wa-aru": {
    "episodios": [
     null,
@@ -1253,6 +2157,38 @@
     },
     {
      "descripcion": "Peru y Sona conocen a un extraño hombre fumador de cadena en el pueblo de Cornwall."
+    }
+   ]
+  },
+  "monos_tefuda-ga-ome-no-bikutoria": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Chloe decide dejar atrás su vida como agente para empezar de nuevo como \"Victoria Sellars\" y buscar su felicidad."
+    },
+    {
+     "descripcion": "Tras encontrar un trabajo y un lugar donde vivir, Victoria se reencuentra con Jeffrey."
+    },
+    null,
+    {
+     "titulo": "¿Me vas a arrestar?"
+    },
+    {
+     "descripcion": "Victoria consigue sacar de prisión al atacante de la fiesta de baile.",
+     "titulo": "Dispuesta a pagar por lo que he hecho"
+    },
+    {
+     "descripcion": "Justo cuando Victoria parece estar ganando aliados, aparece un Barone y pide adoptar a la Nonna."
+    },
+    {
+     "descripcion": "La Nonna regresa, pero Victoria toma la decisión de marcharse."
+    },
+    {
+     "descripcion": "Victoria y la Nonna viven en Randall bajo identidades falsas, y Jeffrey renuncia a su trabajo para encontrar a Victoria."
+    },
+    {
+     "descripcion": "Jeffrey encuentra a Victoria en el festival de verano de Cádiz, y ambos confiesan sus secretos el uno al otro.",
+     "titulo": "Pase lo que pase en el futuro"
     }
    ]
   },
@@ -1362,6 +2298,15 @@
     }
    ]
   },
+  "monos_tensei-shitara-slime-datta-ken-soukai-no-namida-hen": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Tras concluir la ceremonia de inauguración de la Federación del Reino Demonio Tempest, Rimuru y sus compañeros son invitados por la Emperatriz Celestial Hermesia de la gran nación élfica —la Dinastía de Magos Salion— a visitar su isla privada de descanso. Mientras el grupo disfruta de unas breves vacaciones, aparece una misteriosa mujer llamada Yura. Un nuevo incidente se desarrolla en el trasfondo del ilimitado mar azul.",
+     "titulo": "Tensei shitara Slime Datta Ken the Movie: Lágrimas del Mar Azul"
+    }
+   ]
+  },
   "monos_to-aru-anbu-no-item": {
    "episodios": [
     null,
@@ -1415,12 +2360,122 @@
     }
    ]
   },
+  "monos_toukutsuou": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Cuando Jooheon Suh resulta gravemente herido en batalla, un misterioso cuervo que habla le concede otra oportunidad.",
+     "titulo": "Otra vez desde el final"
+    },
+    {
+     "descripcion": "Ryoga regresa a casa solo para descubrir que una tumba se ha abierto donde antes estaba su apartamento.",
+     "titulo": "Quienes buscan poseer reliquias"
+    },
+    {
+     "descripcion": "Cuando aparece la tumba que alberga la reliquia Masamune, Ryoga corre para reclamarla antes que un extranjero."
+    },
+    {
+     "descripcion": "La Guía del Futuro insinúa la existencia de una poderosa reliquia que será subastada en Las Vegas.",
+     "titulo": "Quien robó el futuro"
+    },
+    {
+     "descripcion": "Ryoga gana varias reliquias en la casa de subastas Midas, pero el presidente Ogawara no pierde tiempo en localizarlo.",
+     "titulo": "El dueño del Árbol de la Vida"
+    },
+    {
+     "descripcion": "Cuando Ogawara intenta usar su reliquia para someter a Ryoga, su poder despierta otro conjunto de reliquias."
+    },
+    {
+     "descripcion": "Ryoga busca la ayuda de cierta persona para restaurar las reliquias que se rompieron en su pelea contra Ogawara."
+    },
+    {
+     "descripcion": "A Jooheon le ofrecen un trabajo: encontrar una reliquia para la \"Reina de la Guerra\", una general militar estadounidense.",
+     "titulo": "El secreto del cuervo"
+    },
+    {
+     "descripcion": "Jooheon se queda con la reliquia-mapa que consiguió para la general Kiera y planea destruir sus otras reliquias-mapa.",
+     "titulo": "El gobernante de las reliquias"
+    },
+    {
+     "descripcion": "Se funda una organización internacional llamada Pandora para evitar que las reliquias caigan en manos de los ciudadanos.",
+     "titulo": "La maldición de las reliquias"
+    },
+    {
+     "descripcion": "Mientras busca la Reliquia de Tian Fu, Jooheon descubre un campo de té subterráneo donde trabajan niños."
+    },
+    {
+     "descripcion": "Jooheon e Irene regresan a la casa de los Holton para sanar a sus padres... solo para descubrir que ha sido atacada."
+    }
+   ]
+  },
   "monos_unansweredbutterfly-sword-art-online": {
    "episodios": [
     null,
     {
      "descripcion": "El 6 de noviembre de 2022 se lanza oficialmente el VRMMORPG Sword Art Online (SAO), y se venden de inmediato sus 10 000 copias. Kirito, que probó la versión beta del juego, inicia sesión en el mundo de Aincrad y conoce a Klein, un jugador novato, quien le pide que le enseñe lo básico del juego, incluido el sistema de combate con Habilidades de Espada. Más tarde, tras varias horas dentro del juego, Kirito y Klein descubren que no pueden desconectarse. Poco después, ambos son teletransportados a la plaza del pueblo, donde ven que todos los demás jugadores también han sido trasladados a ese lugar. Entonces aparece en el cielo un Game Master con capucha roja que se revela ante la multitud como Akihiko Kayaba, el creador del juego. Les dice que eliminó intencionalmente la opción de cerrar sesión. Les advierte que no pueden salir simplemente quitándose el NerveGear, el casco de realidad virtual que usan para ingresar al juego, pues eso los matará al instante. La única forma de salir es que los jugadores superen y completen los 100 pisos del juego. Si mueren dentro del juego, sus cuerpos reales también morirán. Como regalo de despedida, Akihiko les entrega un espejo que modifica los avatares del juego para que se parezcan a su apariencia real. Kirito le pide a Klein que lo siga al siguiente pueblo para subir de nivel antes de que se agoten los recursos, pero Klein declina cortésmente, pues desea quedarse con sus amigos. Kirito entonces se marcha, jurando liberarse del juego. Al final del primer mes, han muerto 2000 jugadores y el primer piso aún no ha sido completado.",
      "titulo": "El mundo de las espadas"
+    }
+   ]
+  },
+  "monos_uzaki-chan-wa-asobitai-double": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Un estudiante de tercer año de universidad, Shinichi Sakurai, solo quiere estar a solas, pero Hana Uzaki, una alumna de segundo año muy escandalosa, considera que su misión es evitar que se sienta solo."
+    },
+    {
+     "descripcion": "Uzaki visita la cafetería donde trabaja Sakurai, para su desgracia. Un encuentro con un gato sale terriblemente mal. Sakurai almuerza con un amigo de verdad."
+    },
+    {
+     "descripcion": "Resulta que la hija del dueño de la cafetería, Ami, también disfruta observar a la gente. Sakurai se resfría muy fuerte. Uzaki tiene una gran petición para su senpai.",
+     "titulo": "¡La familia Asai quiere cuidarnos!"
+    },
+    {
+     "descripcion": "Uzaki intenta sacar a Sakurai de casa durante la extensa vacación de la Semana Dorada. Un tren abarrotado lleva a Sakurai a un lugar al que no quiere ir.",
+     "titulo": "¡Quiero pasar el feriado juntos!"
+    },
+    {
+     "descripcion": "El amigo de Sakurai está decidido a juntarlo con Uzaki, pero encuentra resistencia en un lugar inesperado. Uzaki tiene algunas opiniones sobre el chocolate con menta.",
+     "titulo": "¡Quiero meterme en los asuntos de mi amigo!"
+    },
+    {
+     "descripcion": "Uzaki comienza su trabajo de medio tiempo. Sakaki organiza una escapada de verano para los cuatro amigos, que incluye un día divertido en la playa y una espeluznante caminata nocturna.",
+     "titulo": "¡Verano! ¡La playa! ¡Quiero poner a prueba mi valentía!"
+    },
+    {
+     "descripcion": "Sakurai le pide a Uzaki que lo acompañe a acariciar a gatos amigables en un café de gatos. Uzaki le pide a Sakurai que la acompañe a un bar a tomar algo en su cumpleaños número 20.",
+     "titulo": "¡Quiero pasar el rato en un café de gatos y en un bar!"
+    },
+    {
+     "descripcion": "El dueño de la cafetería y Ami animan a Sakurai a llevar a una Uzaki desanimada a un festival de fuegos artificiales, en un intento por que las cosas vuelvan a la normalidad entre ellos."
+    },
+    {
+     "descripcion": "Sakurai conoce a la madre de Uzaki, quien se sorprende al enterarse de algunos datos básicos sobre él. Un cambio repentino de personalidad deja desconcertados a los compañeros de trabajo de Uzaki."
+    },
+    {
+     "descripcion": "Un viaje inocente a Tottori pronto se convierte en un esfuerzo calculado para convertir a Sakurai y Uzaki en una pareja de pleno derecho. ¡Después de todo, Tottori es para los enamorados!",
+     "titulo": "¡Quiero pasar el rato en Tottori!"
+    },
+    {
+     "descripcion": "Sakurai obliga a Uzaki a ordenar sus cosas y luego recibe clases de cocina de su madre. Un viaje solitario al karaoke se descontrola y termina en desastre."
+    },
+    {
+     "descripcion": "Uzaki recuerda su tiempo con Sakurai en la preparatoria y luego urde un plan para ver cómo es él cuando está borracho, justo cuando el verano llega a su fin."
+    }
+   ]
+  },
+  "monos_vertex-force": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Cuando la red global se ve interrumpida, Haruka debe usar un poder heredado de su padre para proteger a su familia."
+    },
+    null,
+    {
+     "descripcion": "Haruka y Akira parten hacia Hokkaido junto con Eleanor y Lala para encontrar el quinto Vértice."
+    },
+    {
+     "descripcion": "En una isla desierta, Lala idea un plan para usar a Akira como carnada y atraer a EDVA hacia ellos."
     }
    ]
   },
@@ -1518,7 +2573,8 @@
     {
      "descripcion": "Después de la batalla, Miyo confía a Arata sus arrepentimientos. Kiyoka toma una gran decisión de vida. Más tarde, Hazuki sorprende a Miyo con un conmovedor regalo de boda."
     }
-   ]
+   ],
+   "logo": "https://i.ibb.co/Kp97p6hg/Watashi-no-Shiawase-na-Kekkon-S2-logo.jpg"
   },
   "monos_yanineko": {
    "episodios": [
@@ -1606,6 +2662,73 @@
     {
      "descripcion": "En su tierra natal, Lufas descubre la razón de las acciones de Parthenos y sugiere cuáles son los verdaderos objetivos del Lufas original.",
      "titulo": "¡Había algo increíble en mi tierra natal!"
+    }
+   ]
+  },
+  "monos_yuusha-ga-shinda": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Touka Scott no se preocupa mucho por los demonios que supuestamente asolan el mundo... hasta que una visita del héroe legendario lo cambia todo.",
+     "titulo": "¿El héroe legendario está muerto?!"
+    },
+    {
+     "descripcion": "El grupo del nuevo héroe emprende una misión de caza de demonios, pero surgen dudas sobre las motivaciones de Kyle, su nuevo compañero."
+    },
+    {
+     "descripcion": "El grupo llega a la capital real con la esperanza de conseguir fondos, pero Touka primero tendrá que aprender a sortear los, eh, desafíos de su nuevo cuerpo...",
+     "titulo": "¡El héroe legendario es un esqueleto!"
+    },
+    {
+     "descripcion": "Touka intenta mantener su farsa frente a la princesa, mientras una siniestra trama comienza a moverse bajo la capital.",
+     "titulo": "El héroe legendario y la novia"
+    },
+    {
+     "descripcion": "Touka y su improvisado grupo enfrentan el verdadero terror que acecha la capital.",
+     "titulo": "El héroe legendario resucita"
+    },
+    {
+     "descripcion": "Un extraño hechizo que convierte a los habitantes del pueblo en monstruos obliga al grupo del héroe a tomar decisiones difíciles.",
+     "titulo": "El héroe legendario es una chica"
+    },
+    {
+     "descripcion": "Mientras Touka y sus amigos persiguen a la entidad que esclaviza a los habitantes, un encuentro con otro grupo de aventureros plantea nuevas preguntas."
+    },
+    {
+     "descripcion": "Los malvados nigromantes contratan a un mercenario letal para retrasar al grupo, mientras surgen nuevas revelaciones sobre el pasado de Touka.",
+     "titulo": "¡El héroe legendario es un estudiante!"
+    },
+    {
+     "descripcion": "Touka despierta en un lugar familiar: ¿es el pasado? ¿Es un sueño? Sea lo que sea, deberá resolver el misterio antes de que se acabe el tiempo para él y para Yuna."
+    },
+    {
+     "descripcion": "El grupo del héroe legendario por fin llega a Elvania, mientras el rey traza sus propios planes para detener la conspiración de los nigromantes.",
+     "titulo": "La incursión del héroe legendario"
+    },
+    {
+     "descripcion": "Todo se reduce a la gran batalla final. ¿Podrá Touka derrotar a Diego y salvar a Yuna antes de que se acabe el tiempo?",
+     "titulo": "¡El héroe legendario lucha hasta la muerte!"
+    },
+    {
+     "descripcion": "La situación es desesperada: Touka sigue sin despertar, mientras el tiempo se agota. ¿Se salvará el día o el héroe legendario terminará muerto, otra vez?",
+     "titulo": "¡El héroe legendario es un dúo!"
+    }
+   ]
+  },
+  "monos_zombie-sagashitemasu": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "13 años después del \"Día Rojo\", Aki abandona la aldea junto a Natsuki y Haru para buscar a su padre."
+    },
+    {
+     "descripcion": "Aki y su grupo se encuentran con Mikazuki, quien está buscando a sus amigos."
+    },
+    {
+     "descripcion": "Aki y su grupo salen en busca de una tienda de fotografía para revelar el rollo que quedó en la cámara de su papá."
+    },
+    {
+     "descripcion": "Aki y Yu parten en busca de un hospital para tratar la herida de Natsuki."
     }
    ]
   }
