@@ -203,7 +203,7 @@ const popularesData = [
         titulo: "Killed again, Mr. Detective",
         titulo_jp: "また殺されてしまったのですね、探偵様",
         poster: "https://noads-hue.github.io/noads/img/Killed/poster.webp",
-        poster1: "https://noads-hue.github.io/noads/img/Killed/poster1.webp",
+        poster1: "https://image.tmdb.org/t/p/original/fSpRpKZPj6FapUMn0IXi0wY7Az3.jpg",
         poster3: "https://noads-hue.github.io/noads/img/Killed/poster3.webp",
         logo: "https://noads-hue.github.io/noads/img/Killed/Logo.webp",
         rating: "13+",
