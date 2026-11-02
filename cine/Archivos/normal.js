@@ -4,7 +4,7 @@ const popularesData = [
         titulo: "Gals Can't be Kind to Otaku!",
         titulo_jp: "オタクに優しいギャルはいない!?",
         poster: "https://noads-hue.github.io/noads/img/Gals/poster.webp",
-        poster1: "https://noads-hue.github.io/noads/img/Gals/poster1.webp",
+        poster1: "https://image.tmdb.org/t/p/original/7837uc8fhaREbOVnqIwXrFu335o.jpgp",
         poster3: "https://noads-hue.github.io/noads/img/Gals/poster3.webp",
         logo: "https://noads-hue.github.io/noads/img/Gals/Logo.webp",
         rating: "13+",
