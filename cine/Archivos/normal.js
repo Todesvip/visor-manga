@@ -117,7 +117,7 @@ const popularesData = [
         titulo: "Gushing Over Magical Girls",
         titulo_jp: "魔法少女にあこがれて",
         poster: "https://m.media-amazon.com/images/M/MV5BNWU3ZWI4Y2YtNzUwZi00OGY3LWFkYjEtYTZkYmQ5Nzg5OTE5XkEyXkFqcGc@.jpg",
-        poster1: "https://noads-hue.github.io/noads/img/Gushing/04.webp",
+        poster1: "https://image.tmdb.org/t/p/original/ktSdwXX3kj74pVR6KAvMfPLqxCk.jpg",
         banner: "",
         logo: "https://noads-hue.github.io/noads/img/Gushing/03.webp",
         rating: "18+",
