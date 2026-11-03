@@ -1,6 +1,6 @@
 {
- "generado": "2026-10-31T05:39:41+00:00",
- "ts": 1793425181445,
+ "generado": "2026-11-03T23:23:19+00:00",
+ "ts": 1793748199309,
  "total": 80,
  "items": {
   "monos_20-seiki-denki-mokuroku-eureka-evrika": {
@@ -2406,7 +2406,8 @@
     {
      "descripcion": "Jooheon e Irene regresan a la casa de los Holton para sanar a sus padres... solo para descubrir que ha sido atacada."
     }
-   ]
+   ],
+   "oculta": true
   },
   "monos_unansweredbutterfly-sword-art-online": {
    "episodios": [
