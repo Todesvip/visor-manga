@@ -1,3 +1,3 @@
 {
-  "carrusel_ids": ["Gals", "Im", "Killed", "Gushing"]
+  "carrusel_ids": ["Gals", "Nande", "", "Gushing"]
 }
