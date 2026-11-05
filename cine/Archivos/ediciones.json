@@ -1,7 +1,7 @@
 {
- "generado": "2026-11-03T23:23:19+00:00",
- "ts": 1793748199309,
- "total": 80,
+ "generado": "2026-11-05T06:45:21+00:00",
+ "ts": 1793861121759,
+ "total": 83,
  "items": {
   "monos_20-seiki-denki-mokuroku-eureka-evrika": {
    "episodios": [
@@ -1156,6 +1156,31 @@
     }
    ]
   },
+  "monos_majikku-naito-reiasu-sub-espanol": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Tres chicas de tres escuelas diferentes son transportadas a una tierra de estilo medieval llamada Cephiro. Las chicas se presentan como Hikaru, Umi y Fuu. Las recibe un mago llamado Clef, quien les explica que las tres son los Caballeros Mágicos Legendarios, destinados a salvar Cephiro. La alta gobernante, la princesa Emeraude, ha sido encarcelada por el Gran Sacerdote Zagato, que la mantiene suspendida sobre los cielos de Cephiro. Su ausencia provoca inestabilidad en el reino. Clef les indica cómo salvar Cephiro y les enseña a usar la magia. Estalla la traición y se trazan las líneas de batalla.",
+     "titulo": "El nacimiento de los legendarios Caballeros Mágicos"
+    },
+    {
+     "descripcion": "Guiadas por las palabras de Clef, las chicas llegan al Bosque del Silencio y encuentran un edificio con aspecto de fortaleza. Conocen a Presea, dueña del castillo, quien confirma que solo un Caballero Mágico Legendario podría haber entrado. Presea les pide que elijan sus armas y les explica que estas aparecerán solo cuando se necesiten. Sin embargo, deben llevarlas al Lago Eterna para recoger un mineral, el Escudo, que dará energía a sus máquinas. Antes de salir de la fortaleza, se ven obligadas a usar su astucia y su nuevo equipo para derrotar a un monstruo. Mokona, una criatura amistosa de la fortaleza, las guía hasta el lago.",
+     "titulo": "Presea, la maestra herrera del Bosque del Silencio"
+    },
+    {
+     "descripcion": "Mientras viajan al Lago Eterna, se topan con un chico llamado Ferrio, que las salva de un monstruo. Luego, Ferrio les ofrece ser su guía para salir del Bosque del Silencio. Ellas se niegan e intentan perderlo, pero él las sigue igualmente.\r\nDespués, las chicas discuten si debería ser su guía, pero no pueden confiar en él, pues sigue siendo un desconocido. Deciden aceptarlo y pagarle con comida, ya que no tienen dinero. Descubrimos que Ferrio era artista de espectáculos y que la princesa Emeraude le salvó la vida cuando creyeron que había robado en el castillo. La princesa entonces dijo a los guardias que el tesoro con forma de huevo era un regalo para él. Por eso se ha embarcado en la misión de salvar a la princesa Emeraude.",
+     "titulo": "Ferio, el misterioso y apuesto espadachín"
+    },
+    {
+     "descripcion": "Las chicas llegan a lo que parece un pueblo abandonado. Quedan atrapadas en una red y descubren que los aldeanos se escondían de los monstruos que corrompen su tierra. Entonces aparece un monstruo, obligando a los aldeanos a regresar a su escondite.",
+     "titulo": "Alcyone, la hechicera vengativa"
+    },
+    {
+     "descripcion": "Alcyone le ruega a Zagato otra oportunidad para acabar con los Caballeros Mágicos, asegurando que esta vez tiene un plan. Las chicas llegan a un lago, creyendo que es el Eterna. Un monstruo las ataca y Umi lo destruye con su Dragón de Agua. La lluvia del monstruo cae sobre ellas, haciéndolas brillar, pero, tras secarse, lo sacuden y no le dan importancia. Se dirigen al Eterna mientras Alcyone las observa desde lejos, riendo para sí misma.",
+     "titulo": "Escudo, el mineral legendario"
+    }
+   ]
+  },
   "monos_marika-chan-no-koukando-ha-bukkowareteiru": {
    "episodios": [
     null,
@@ -1965,6 +1990,57 @@
     }
    ]
   },
+  "monos_reiwa-no-dara-san-sub-espanol": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "En una montaña apartada existe una misteriosa entidad a la que los lugareños son advertidos de no acercarse jamás...",
+     "titulo": "Yamatagi-Madara de la Tierra Maldita"
+    },
+    {
+     "descripcion": "La señorita Dara, curiosa por la vida de Kaoru e Hinata, decide deslizarse sigilosamente para ver qué está pasando.",
+     "titulo": "Visitando la escuela por primera vez"
+    },
+    {
+     "descripcion": "El guardarropa de la señorita Dara se expande mientras les enseña a Kaoru e Hinata sobre adentrarse en territorio sobrenatural.",
+     "titulo": "Las leyes del territorio prohibido"
+    },
+    {
+     "descripcion": "Una nueva alumna inesperada llega a la clase de Hinata.",
+     "titulo": "El regreso de Yamatagi-Madara"
+    },
+    {
+     "descripcion": "Hinata cumple años, y su madre, Chiyo, recuerda sus encuentros con el guardián de la montaña."
+    },
+    {
+     "descripcion": "Hinata y Kaoru salen de la ciudad, donde se encuentran con una entidad sobrenatural distinta."
+    },
+    {
+     "descripcion": "La señorita Dara se pregunta qué ocurrió en la montaña después de que perdió la razón como espíritu maldito."
+    },
+    {
+     "descripcion": "Yamatagi-Madara planea su venganza contra la señorita Dara, con resultados cuestionables."
+    },
+    {
+     "descripcion": "Hinata se queda hasta tarde en su escuela secundaria preparándose para el festival cultural.",
+     "titulo": "Las siete maravillas de la escuela"
+    },
+    {
+     "descripcion": "Mientras Hinata trabaja en el festival cultural de su escuela, Kaoru prepara un café privado para la señorita Dara."
+    },
+    {
+     "titulo": "La prueba tabú del coraje"
+    },
+    {
+     "descripcion": "Al final de las vacaciones de invierno, Dara-san y los hermanos organizan una sesión de cine.",
+     "titulo": "Cómo pasar el Año Nuevo"
+    },
+    {
+     "descripcion": "Una proyección de película en el territorio de Dara-san desemboca en un enfrentamiento inesperado con una vieja amenaza...",
+     "titulo": "Dara-san de la era Reiwa"
+    }
+   ]
+  },
   "monos_ryomin-0-nin-start-no-henkyo-ryoshu-sama": {
    "episodios": [
     null,
@@ -2304,6 +2380,58 @@
     {
      "descripcion": "Tras concluir la ceremonia de inauguración de la Federación del Reino Demonio Tempest, Rimuru y sus compañeros son invitados por la Emperatriz Celestial Hermesia de la gran nación élfica —la Dinastía de Magos Salion— a visitar su isla privada de descanso. Mientras el grupo disfruta de unas breves vacaciones, aparece una misteriosa mujer llamada Yura. Un nuevo incidente se desarrolla en el trasfondo del ilimitado mar azul.",
      "titulo": "Tensei shitara Slime Datta Ken the Movie: Lágrimas del Mar Azul"
+    }
+   ]
+  },
+  "monos_tenshi-no-3p": {
+   "episodios": [
+    null,
+    {
+     "descripcion": "Kyo Nukui es un estudiante de secundaria que no sale de casa y ama la música; a menudo publica sus canciones en internet bajo el nombre falso de HibikiP. Un día, un remitente anónimo le pide reunirse en un parque, y Kyo acepta, pensando que se trata de un hombre de mediana edad interesado en hablar de música como él. Sin embargo, el remitente anónimo resulta ser tres niñas de primaria: Jūn Goto, Nozomi Momijidani y Sora Kaneshiro, quienes le piden que toque su música con su banda en un próximo concierto. Primero le presentan su interpretación y, aunque queda muy impresionado con sus habilidades musicales y sus instrumentos vintage, sigue sin estar seguro de su decisión.",
+     "titulo": "¡Corazones palpitantes para los chicos de primaria!"
+    },
+    {
+     "descripcion": "Kyo accede a ayudar a las niñas con el concierto, pero Masayoshi Sawatari, director del orfanato donde viven, le pide que las disuada.",
+     "titulo": "Un deseo de hacerlo juntos"
+    },
+    {
+     "descripcion": "Kyo descubre que Jūn y las demás son compañeras de clase de su hermana menor, Kurumi, pero por alguna razón no se llevan bien con el resto de los niños en la escuela. También se entera de que su amiga de la infancia, Sakura Toriumi, también es huérfana de Little Wing, y le pide que lo guarde en secreto.",
+     "titulo": "El chico en pausa desciende y huye, y las niñas de la iglesia"
+    },
+    {
+     "descripcion": "Kyo y las niñas no logran reunir a nadie para asistir al concierto, por lo que él decide volver a la escuela y pedir ayuda a sus compañeros de clase, mientras sugiere a las niñas que hagan lo mismo en la suya.",
+     "titulo": "El mundo no es más que rock and roll"
+    },
+    {
+     "descripcion": "El concierto es un éxito, y el siguiente paso de Kyo y las niñas es atraer a más público para obtener ingresos estables con sus presentaciones. Por sugerencia de un amigo, Kyo decide hacer un videoclip promocional de ellas.",
+     "titulo": "Es tan divertido tomarte fotos, porque no te das cuenta de lo linda que eres"
+    },
+    {
+     "descripcion": "Nozomi conoce a su abuelo, que quiere adoptarla y llevarla a Inglaterra. Kyo y los demás deciden no pedirle que se quede, para no influir en su decisión, hasta que la hermana de Kyo, Kurumi, le dice lo que piensa.",
+     "titulo": "¡No te lleves al bajista!"
+    },
+    {
+     "descripcion": "Kyo es invitado por su amiga Yuzuha Aigae, junto con las niñas, a dar un concierto en una isla turística, sin saber cuáles son sus verdaderas intenciones."
+    },
+    {
+     "descripcion": "Incómoda por la cercanía de Kyo con las niñas, Yuzuha recurre a varias artimañas contra ellas, solo para ser descubierta por Sakura. Cuando una tormenta se acerca a la isla, Yuzuha desaparece y, tras encontrarla, Kyo descubre su secreto.",
+     "titulo": "La chica del mural"
+    },
+    {
+     "descripcion": "Kyo descubre que su amiga en línea no era Yuzuha, sino Kiryu Yume, y que Yuzuha actuaba en su lugar. Cuando Kiryu decide cortar todo contacto con Kyo y los demás, ellos deciden encontrar la manera de animarla.",
+     "titulo": "Los niños de primaria quizá no habrían podido salvar al dios ahogado si no hubieran llegado a tiempo"
+    },
+    {
+     "descripcion": "Kiryu y Yuzuha obtienen permiso para salir de la isla y transferirse a la escuela local. Mientras ayudan a Yuzuha a recorrer la ciudad, Kyō termina pasando un tiempo de calidad con ella, lo que despierta los celos de las otras chicas.",
+     "titulo": "Totalmente una cita"
+    },
+    {
+     "descripcion": "Furiosa por el tiempo que Kyō pasa con las chicas de Lien de Famille, Kiryu decide formar su propio grupo con la ayuda de Yuzuha y Kurumi y retarlas a un duelo. En esa ocasión, Jun expresa su deseo de componer una canción propia, y Kyō accede a ayudarla con ella.",
+     "titulo": "Batallas de bandas y melodías"
+    },
+    {
+     "descripcion": "Tras terminar sus preparativos, ha llegado el momento de que Lien de Famille y la banda de Kiryu actúen juntas.",
+     "titulo": "No puedo evitar amar la música"
     }
    ]
   },
