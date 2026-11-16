@@ -1,6 +1,6 @@
 {
- "generado": "2026-11-09T06:22:14+00:00",
- "ts": 1794205334655,
+ "generado": "2026-11-16T06:24:38+00:00",
+ "ts": 1794810278712,
  "total": 84,
  "items": {
   "mh_-1909134757": {
@@ -1882,7 +1882,8 @@
      "descripcion": "Hana sigue presionando a Kiyoshi para cobrarse su venganza, pero Kiyoshi emplea una adaptación de una estrategia militar clásica para contrarrestarla. Una vez que todos los chicos estén encerrados en sus celdas por la noche, ¿podrán completar su plan?",
      "titulo": "¡Buenos días, prisión!"
     }
-   ]
+   ],
+   "oculta": true
   },
   "monos_prison-school-ova-kangoku-gakuen-ova": {
    "episodios": [
@@ -1890,7 +1891,8 @@
     {
      "descripcion": "Cinco chicos recién inscritos en una escuela que antes era solo para chicas, que ya tienen dificultades para relacionarse con las alumnas, chocan con el \"Consejo Estudiantil Clandestino\" de la escuela y se enfrentan a medidas disciplinarias estrictas."
     }
-   ]
+   ],
+   "oculta": true
   },
   "monos_psyren": {
    "episodios": [
