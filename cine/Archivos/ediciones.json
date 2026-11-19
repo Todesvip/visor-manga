@@ -1,6 +1,6 @@
 {
- "generado": "2026-11-16T06:24:38+00:00",
- "ts": 1794810278712,
+ "generado": "2026-11-19T07:22:12+00:00",
+ "ts": 1795072932302,
  "total": 84,
  "items": {
   "mh_-1909134757": {
@@ -226,14 +226,25 @@
    ]
   },
   "monos_dark-summoner-to-dekiteiru": {
-   "episodios": {
-    "4": {
+   "episodios": [
+    null,
+    null,
+    null,
+    null,
+    {
      "descripcion": "Roni está a la altura de las circunstancias cuando Amona es capturada por orcos."
     },
-    "5": {
+    {
      "titulo": "La Invocadora Oscura y el Pasado de la Elfa"
+    },
+    {
+     "titulo": "La invocadora oscura y el misterioso buscador de venganza"
+    },
+    {
+     "descripcion": "La falta de pureza de Amona es controvertida entre los goblins.",
+     "titulo": "La invocadora oscura y la mejor chica residente"
     }
-   }
+   ]
   },
   "monos_doragon-boru-supa-birusu": {
    "episodios": [
